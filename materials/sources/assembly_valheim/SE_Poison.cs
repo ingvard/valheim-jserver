@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x02000029 RID: 41
 public class SE_Poison : StatusEffect
 {
-	// Token: 0x060003B3 RID: 947 RVA: 0x0001F81C File Offset: 0x0001DA1C
+	// Token: 0x060003B4 RID: 948 RVA: 0x0001F8D0 File Offset: 0x0001DAD0
 	public override void UpdateStatusEffect(float dt)
 	{
 		base.UpdateStatusEffect(dt);
@@ -20,7 +20,7 @@ public class SE_Poison : StatusEffect
 		}
 	}
 
-	// Token: 0x060003B4 RID: 948 RVA: 0x0001F8A4 File Offset: 0x0001DAA4
+	// Token: 0x060003B5 RID: 949 RVA: 0x0001F958 File Offset: 0x0001DB58
 	public void AddDamage(float damage)
 	{
 		if (damage >= this.m_damageLeft)
@@ -45,28 +45,28 @@ public class SE_Poison : StatusEffect
 		}
 	}
 
-	// Token: 0x040003A2 RID: 930
+	// Token: 0x040003A6 RID: 934
 	[Header("SE_Poison")]
 	public float m_damageInterval = 1f;
 
-	// Token: 0x040003A3 RID: 931
+	// Token: 0x040003A7 RID: 935
 	public float m_baseTTL = 2f;
 
-	// Token: 0x040003A4 RID: 932
+	// Token: 0x040003A8 RID: 936
 	public float m_TTLPerDamagePlayer = 2f;
 
-	// Token: 0x040003A5 RID: 933
+	// Token: 0x040003A9 RID: 937
 	public float m_TTLPerDamage = 2f;
 
-	// Token: 0x040003A6 RID: 934
+	// Token: 0x040003AA RID: 938
 	public float m_TTLPower = 0.5f;
 
-	// Token: 0x040003A7 RID: 935
+	// Token: 0x040003AB RID: 939
 	private float m_timer;
 
-	// Token: 0x040003A8 RID: 936
+	// Token: 0x040003AC RID: 940
 	private float m_damageLeft;
 
-	// Token: 0x040003A9 RID: 937
+	// Token: 0x040003AD RID: 941
 	private float m_damagePerHit;
 }

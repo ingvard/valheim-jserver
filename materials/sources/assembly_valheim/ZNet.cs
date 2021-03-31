@@ -14,7 +14,7 @@ using UnityEngine.UI;
 public class ZNet : MonoBehaviour
 {
 	// Token: 0x17000019 RID: 25
-	// (get) Token: 0x0600080B RID: 2059 RVA: 0x0003EBF2 File Offset: 0x0003CDF2
+	// (get) Token: 0x0600080C RID: 2060 RVA: 0x0003ECA6 File Offset: 0x0003CEA6
 	public static ZNet instance
 	{
 		get
@@ -23,7 +23,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600080C RID: 2060 RVA: 0x0003EBFC File Offset: 0x0003CDFC
+	// Token: 0x0600080D RID: 2061 RVA: 0x0003ECB0 File Offset: 0x0003CEB0
 	private void Awake()
 	{
 		ZNet.m_instance = this;
@@ -69,7 +69,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600080D RID: 2061 RVA: 0x0003ED88 File Offset: 0x0003CF88
+	// Token: 0x0600080E RID: 2062 RVA: 0x0003EE3C File Offset: 0x0003D03C
 	private void Start()
 	{
 		if (!ZNet.m_isServer)
@@ -87,7 +87,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600080E RID: 2062 RVA: 0x0003EDF8 File Offset: 0x0003CFF8
+	// Token: 0x0600080F RID: 2063 RVA: 0x0003EEAC File Offset: 0x0003D0AC
 	private string GetPublicIP()
 	{
 		string result;
@@ -106,7 +106,7 @@ public class ZNet : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x0600080F RID: 2063 RVA: 0x0003EE74 File Offset: 0x0003D074
+	// Token: 0x06000810 RID: 2064 RVA: 0x0003EF28 File Offset: 0x0003D128
 	public void Shutdown()
 	{
 		ZLog.Log("ZNet Shutdown");
@@ -115,7 +115,7 @@ public class ZNet : MonoBehaviour
 		base.enabled = false;
 	}
 
-	// Token: 0x06000810 RID: 2064 RVA: 0x0003EE94 File Offset: 0x0003D094
+	// Token: 0x06000811 RID: 2065 RVA: 0x0003EF48 File Offset: 0x0003D148
 	private void StopAll()
 	{
 		if (this.m_haveStoped)
@@ -147,7 +147,7 @@ public class ZNet : MonoBehaviour
 		this.m_peers.Clear();
 	}
 
-	// Token: 0x06000811 RID: 2065 RVA: 0x0003EF74 File Offset: 0x0003D174
+	// Token: 0x06000812 RID: 2066 RVA: 0x0003F028 File Offset: 0x0003D228
 	private void OnDestroy()
 	{
 		ZLog.Log("ZNet OnDestroy");
@@ -157,7 +157,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000812 RID: 2066 RVA: 0x0003EF94 File Offset: 0x0003D194
+	// Token: 0x06000813 RID: 2067 RVA: 0x0003F048 File Offset: 0x0003D248
 	public void Connect(CSteamID hostID)
 	{
 		ZNetPeer peer = new ZNetPeer(new ZSteamSocket(hostID), true);
@@ -166,7 +166,7 @@ public class ZNet : MonoBehaviour
 		this.m_connectingDialog.gameObject.SetActive(true);
 	}
 
-	// Token: 0x06000813 RID: 2067 RVA: 0x0003EFCC File Offset: 0x0003D1CC
+	// Token: 0x06000814 RID: 2068 RVA: 0x0003F080 File Offset: 0x0003D280
 	public void Connect(SteamNetworkingIPAddr host)
 	{
 		ZNetPeer peer = new ZNetPeer(new ZSteamSocket(host), true);
@@ -175,7 +175,7 @@ public class ZNet : MonoBehaviour
 		this.m_connectingDialog.gameObject.SetActive(true);
 	}
 
-	// Token: 0x06000814 RID: 2068 RVA: 0x0003F004 File Offset: 0x0003D204
+	// Token: 0x06000815 RID: 2069 RVA: 0x0003F0B8 File Offset: 0x0003D2B8
 	private void UpdateClientConnector(float dt)
 	{
 		if (this.m_serverConnector != null && this.m_serverConnector.UpdateStatus(dt, true))
@@ -197,7 +197,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000815 RID: 2069 RVA: 0x0003F084 File Offset: 0x0003D284
+	// Token: 0x06000816 RID: 2070 RVA: 0x0003F138 File Offset: 0x0003D338
 	private void OnNewConnection(ZNetPeer peer)
 	{
 		this.m_peers.Add(peer);
@@ -213,7 +213,7 @@ public class ZNet : MonoBehaviour
 		peer.m_rpc.Invoke("ServerHandshake", Array.Empty<object>());
 	}
 
-	// Token: 0x06000816 RID: 2070 RVA: 0x0003F148 File Offset: 0x0003D348
+	// Token: 0x06000817 RID: 2071 RVA: 0x0003F1FC File Offset: 0x0003D3FC
 	private void RPC_ServerHandshake(ZRpc rpc)
 	{
 		ZNetPeer peer = this.GetPeer(rpc);
@@ -230,7 +230,7 @@ public class ZNet : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06000817 RID: 2071 RVA: 0x0003F1AF File Offset: 0x0003D3AF
+	// Token: 0x06000818 RID: 2072 RVA: 0x0003F263 File Offset: 0x0003D463
 	private void UpdatePassword()
 	{
 		if (this.m_passwordDialog.gameObject.activeSelf)
@@ -239,13 +239,13 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000818 RID: 2072 RVA: 0x0003F1D3 File Offset: 0x0003D3D3
+	// Token: 0x06000819 RID: 2073 RVA: 0x0003F287 File Offset: 0x0003D487
 	public bool InPasswordDialog()
 	{
 		return this.m_passwordDialog.gameObject.activeSelf;
 	}
 
-	// Token: 0x06000819 RID: 2073 RVA: 0x0003F1E8 File Offset: 0x0003D3E8
+	// Token: 0x0600081A RID: 2074 RVA: 0x0003F29C File Offset: 0x0003D49C
 	private void RPC_ClientHandshake(ZRpc rpc, bool needPassword)
 	{
 		this.m_connectingDialog.gameObject.SetActive(false);
@@ -262,7 +262,7 @@ public class ZNet : MonoBehaviour
 		this.SendPeerInfo(rpc, "");
 	}
 
-	// Token: 0x0600081A RID: 2074 RVA: 0x0003F265 File Offset: 0x0003D465
+	// Token: 0x0600081B RID: 2075 RVA: 0x0003F319 File Offset: 0x0003D519
 	private void OnPasswordEnter(string pwd)
 	{
 		if (!this.m_tempPasswordRPC.IsConnected())
@@ -274,7 +274,7 @@ public class ZNet : MonoBehaviour
 		this.m_tempPasswordRPC = null;
 	}
 
-	// Token: 0x0600081B RID: 2075 RVA: 0x0003F29C File Offset: 0x0003D49C
+	// Token: 0x0600081C RID: 2076 RVA: 0x0003F350 File Offset: 0x0003D550
 	private void SendPeerInfo(ZRpc rpc, string password = "")
 	{
 		ZPackage zpackage = new ZPackage();
@@ -309,7 +309,7 @@ public class ZNet : MonoBehaviour
 		});
 	}
 
-	// Token: 0x0600081C RID: 2076 RVA: 0x0003F39C File Offset: 0x0003D59C
+	// Token: 0x0600081D RID: 2077 RVA: 0x0003F450 File Offset: 0x0003D650
 	private void RPC_PeerInfo(ZRpc rpc, ZPackage pkg)
 	{
 		ZNetPeer peer = this.GetPeer(rpc);
@@ -455,7 +455,7 @@ public class ZNet : MonoBehaviour
 		this.m_routedRpc.AddPeer(peer);
 	}
 
-	// Token: 0x0600081D RID: 2077 RVA: 0x0003F7C0 File Offset: 0x0003D9C0
+	// Token: 0x0600081E RID: 2078 RVA: 0x0003F874 File Offset: 0x0003DA74
 	private void SendDisconnect()
 	{
 		ZLog.Log("Sending disconnect msg");
@@ -465,7 +465,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600081E RID: 2078 RVA: 0x0003F820 File Offset: 0x0003DA20
+	// Token: 0x0600081F RID: 2079 RVA: 0x0003F8D4 File Offset: 0x0003DAD4
 	private void SendDisconnect(ZNetPeer peer)
 	{
 		if (peer.m_rpc != null)
@@ -475,7 +475,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600081F RID: 2079 RVA: 0x0003F85C File Offset: 0x0003DA5C
+	// Token: 0x06000820 RID: 2080 RVA: 0x0003F910 File Offset: 0x0003DB10
 	private void RPC_Disconnect(ZRpc rpc)
 	{
 		ZLog.Log("RPC_Disconnect ");
@@ -490,14 +490,14 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000820 RID: 2080 RVA: 0x0003F894 File Offset: 0x0003DA94
+	// Token: 0x06000821 RID: 2081 RVA: 0x0003F948 File Offset: 0x0003DB48
 	private void RPC_Error(ZRpc rpc, int error)
 	{
 		ZNet.m_connectionStatus = (ZNet.ConnectionStatus)error;
 		ZLog.Log("Got connectoin error msg " + (ZNet.ConnectionStatus)error);
 	}
 
-	// Token: 0x06000821 RID: 2081 RVA: 0x0003F8C0 File Offset: 0x0003DAC0
+	// Token: 0x06000822 RID: 2082 RVA: 0x0003F974 File Offset: 0x0003DB74
 	public bool IsConnected(long uid)
 	{
 		if (uid == this.GetUID())
@@ -517,14 +517,14 @@ public class ZNet : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000822 RID: 2082 RVA: 0x0003F928 File Offset: 0x0003DB28
+	// Token: 0x06000823 RID: 2083 RVA: 0x0003F9DC File Offset: 0x0003DBDC
 	private void ClearPlayerData(ZNetPeer peer)
 	{
 		this.m_routedRpc.RemovePeer(peer);
 		this.m_zdoMan.RemovePeer(peer);
 	}
 
-	// Token: 0x06000823 RID: 2083 RVA: 0x0003F942 File Offset: 0x0003DB42
+	// Token: 0x06000824 RID: 2084 RVA: 0x0003F9F6 File Offset: 0x0003DBF6
 	public void Disconnect(ZNetPeer peer)
 	{
 		this.ClearPlayerData(peer);
@@ -536,13 +536,13 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000824 RID: 2084 RVA: 0x0003F96B File Offset: 0x0003DB6B
+	// Token: 0x06000825 RID: 2085 RVA: 0x0003FA1F File Offset: 0x0003DC1F
 	private void FixedUpdate()
 	{
 		this.UpdateNetTime(Time.fixedDeltaTime);
 	}
 
-	// Token: 0x06000825 RID: 2085 RVA: 0x0003F978 File Offset: 0x0003DB78
+	// Token: 0x06000826 RID: 2086 RVA: 0x0003FA2C File Offset: 0x0003DC2C
 	private void Update()
 	{
 		float deltaTime = Time.deltaTime;
@@ -559,7 +559,7 @@ public class ZNet : MonoBehaviour
 		this.UpdatePassword();
 	}
 
-	// Token: 0x06000826 RID: 2086 RVA: 0x0003F9CC File Offset: 0x0003DBCC
+	// Token: 0x06000827 RID: 2087 RVA: 0x0003FA80 File Offset: 0x0003DC80
 	private void UpdateNetTime(float dt)
 	{
 		if (this.IsServer())
@@ -576,7 +576,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000827 RID: 2087 RVA: 0x0003FA00 File Offset: 0x0003DC00
+	// Token: 0x06000828 RID: 2088 RVA: 0x0003FAB4 File Offset: 0x0003DCB4
 	private void UpdateBanList(float dt)
 	{
 		this.m_banlistTimer += dt;
@@ -591,7 +591,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000828 RID: 2088 RVA: 0x0003FA84 File Offset: 0x0003DC84
+	// Token: 0x06000829 RID: 2089 RVA: 0x0003FB38 File Offset: 0x0003DD38
 	private void CheckWhiteList()
 	{
 		if (this.m_permittedList.Count() == 0)
@@ -619,13 +619,13 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000829 RID: 2089 RVA: 0x0003FB30 File Offset: 0x0003DD30
+	// Token: 0x0600082A RID: 2090 RVA: 0x0003FBE4 File Offset: 0x0003DDE4
 	public bool IsSaving()
 	{
 		return this.m_saveThread != null;
 	}
 
-	// Token: 0x0600082A RID: 2090 RVA: 0x0003FB3C File Offset: 0x0003DD3C
+	// Token: 0x0600082B RID: 2091 RVA: 0x0003FBF0 File Offset: 0x0003DDF0
 	public void ConsoleSave()
 	{
 		if (this.IsServer())
@@ -640,7 +640,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600082B RID: 2091 RVA: 0x0003FB73 File Offset: 0x0003DD73
+	// Token: 0x0600082C RID: 2092 RVA: 0x0003FC27 File Offset: 0x0003DE27
 	private void RPC_Save(ZRpc rpc)
 	{
 		if (rpc != null && !this.m_adminList.Contains(rpc.GetSocket().GetHostName()))
@@ -652,7 +652,7 @@ public class ZNet : MonoBehaviour
 		this.Save(false);
 	}
 
-	// Token: 0x0600082C RID: 2092 RVA: 0x0003FBB0 File Offset: 0x0003DDB0
+	// Token: 0x0600082D RID: 2093 RVA: 0x0003FC64 File Offset: 0x0003DE64
 	public void Save(bool sync)
 	{
 		if (this.m_loadError || ZoneSystem.instance.SkipSaving() || DungeonDB.instance.SkipSaving())
@@ -666,7 +666,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600082D RID: 2093 RVA: 0x0003FC00 File Offset: 0x0003DE00
+	// Token: 0x0600082E RID: 2094 RVA: 0x0003FCB4 File Offset: 0x0003DEB4
 	private void SendPeriodicData(float dt)
 	{
 		this.m_periodicSendTimer += dt;
@@ -693,7 +693,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600082E RID: 2094 RVA: 0x0003FCC4 File Offset: 0x0003DEC4
+	// Token: 0x0600082F RID: 2095 RVA: 0x0003FD78 File Offset: 0x0003DF78
 	private void SendNetTime()
 	{
 		foreach (ZNetPeer znetPeer in this.m_peers)
@@ -708,13 +708,13 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600082F RID: 2095 RVA: 0x0003FD3C File Offset: 0x0003DF3C
+	// Token: 0x06000830 RID: 2096 RVA: 0x0003FDF0 File Offset: 0x0003DFF0
 	private void RPC_NetTime(ZRpc rpc, double time)
 	{
 		this.m_netTime = time;
 	}
 
-	// Token: 0x06000830 RID: 2096 RVA: 0x0003FD48 File Offset: 0x0003DF48
+	// Token: 0x06000831 RID: 2097 RVA: 0x0003FDFC File Offset: 0x0003DFFC
 	private void RPC_RefPos(ZRpc rpc, Vector3 pos, bool publicRefPos)
 	{
 		ZNetPeer peer = this.GetPeer(rpc);
@@ -725,7 +725,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000831 RID: 2097 RVA: 0x0003FD70 File Offset: 0x0003DF70
+	// Token: 0x06000832 RID: 2098 RVA: 0x0003FE24 File Offset: 0x0003E024
 	private void UpdatePeers(float dt)
 	{
 		foreach (ZNetPeer znetPeer in this.m_peers)
@@ -754,7 +754,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000832 RID: 2098 RVA: 0x0003FE1C File Offset: 0x0003E01C
+	// Token: 0x06000833 RID: 2099 RVA: 0x0003FED0 File Offset: 0x0003E0D0
 	private void CheckForIncommingServerConnections()
 	{
 		if (this.m_hostSocket == null)
@@ -774,7 +774,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000833 RID: 2099 RVA: 0x0003FE60 File Offset: 0x0003E060
+	// Token: 0x06000834 RID: 2100 RVA: 0x0003FF14 File Offset: 0x0003E114
 	public ZNetPeer GetPeerByPlayerName(string name)
 	{
 		foreach (ZNetPeer znetPeer in this.m_peers)
@@ -787,7 +787,7 @@ public class ZNet : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000834 RID: 2100 RVA: 0x0003FECC File Offset: 0x0003E0CC
+	// Token: 0x06000835 RID: 2101 RVA: 0x0003FF80 File Offset: 0x0003E180
 	public ZNetPeer GetPeerByHostName(string endpoint)
 	{
 		foreach (ZNetPeer znetPeer in this.m_peers)
@@ -800,7 +800,7 @@ public class ZNet : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000835 RID: 2101 RVA: 0x0003FF3C File Offset: 0x0003E13C
+	// Token: 0x06000836 RID: 2102 RVA: 0x0003FFF0 File Offset: 0x0003E1F0
 	public ZNetPeer GetPeer(long uid)
 	{
 		foreach (ZNetPeer znetPeer in this.m_peers)
@@ -813,7 +813,7 @@ public class ZNet : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000836 RID: 2102 RVA: 0x0003FF98 File Offset: 0x0003E198
+	// Token: 0x06000837 RID: 2103 RVA: 0x0004004C File Offset: 0x0003E24C
 	private ZNetPeer GetPeer(ZRpc rpc)
 	{
 		foreach (ZNetPeer znetPeer in this.m_peers)
@@ -826,13 +826,13 @@ public class ZNet : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000837 RID: 2103 RVA: 0x0003FFF4 File Offset: 0x0003E1F4
+	// Token: 0x06000838 RID: 2104 RVA: 0x000400A8 File Offset: 0x0003E2A8
 	public List<ZNetPeer> GetConnectedPeers()
 	{
 		return new List<ZNetPeer>(this.m_peers);
 	}
 
-	// Token: 0x06000838 RID: 2104 RVA: 0x00040004 File Offset: 0x0003E204
+	// Token: 0x06000839 RID: 2105 RVA: 0x000400B8 File Offset: 0x0003E2B8
 	private void SaveWorld(bool sync)
 	{
 		if (this.m_saveThread != null && this.m_saveThread.IsAlive)
@@ -854,7 +854,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000839 RID: 2105 RVA: 0x000400A4 File Offset: 0x0003E2A4
+	// Token: 0x0600083A RID: 2106 RVA: 0x00040158 File Offset: 0x0003E358
 	private void UpdateSave()
 	{
 		if (this.m_saveThread != null && !this.m_saveThread.IsAlive)
@@ -873,7 +873,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600083A RID: 2106 RVA: 0x00040138 File Offset: 0x0003E338
+	// Token: 0x0600083B RID: 2107 RVA: 0x000401EC File Offset: 0x0003E3EC
 	private void SaveWorldThread()
 	{
 		DateTime now = DateTime.Now;
@@ -904,7 +904,7 @@ public class ZNet : MonoBehaviour
 		ZLog.Log("World saved ( " + (DateTime.Now - now).TotalMilliseconds.ToString() + "ms )");
 	}
 
-	// Token: 0x0600083B RID: 2107 RVA: 0x0004022C File Offset: 0x0003E42C
+	// Token: 0x0600083C RID: 2108 RVA: 0x000402E0 File Offset: 0x0003E4E0
 	private void LoadWorld()
 	{
 		ZLog.Log("Load world " + ZNet.m_world.m_name);
@@ -955,14 +955,14 @@ public class ZNet : MonoBehaviour
 		GC.Collect();
 	}
 
-	// Token: 0x0600083C RID: 2108 RVA: 0x00040348 File Offset: 0x0003E548
+	// Token: 0x0600083D RID: 2109 RVA: 0x000403FC File Offset: 0x0003E5FC
 	private bool CheckDataVersion(BinaryReader reader, out int version)
 	{
 		version = reader.ReadInt32();
 		return global::Version.IsWorldVersionCompatible(version);
 	}
 
-	// Token: 0x0600083D RID: 2109 RVA: 0x0004035E File Offset: 0x0003E55E
+	// Token: 0x0600083E RID: 2110 RVA: 0x00040412 File Offset: 0x0003E612
 	public int GetHostPort()
 	{
 		if (this.m_hostSocket != null)
@@ -972,19 +972,19 @@ public class ZNet : MonoBehaviour
 		return 0;
 	}
 
-	// Token: 0x0600083E RID: 2110 RVA: 0x00040375 File Offset: 0x0003E575
+	// Token: 0x0600083F RID: 2111 RVA: 0x00040429 File Offset: 0x0003E629
 	public long GetUID()
 	{
 		return this.m_zdoMan.GetMyID();
 	}
 
-	// Token: 0x0600083F RID: 2111 RVA: 0x00040382 File Offset: 0x0003E582
+	// Token: 0x06000840 RID: 2112 RVA: 0x00040436 File Offset: 0x0003E636
 	public long GetWorldUID()
 	{
 		return ZNet.m_world.m_uid;
 	}
 
-	// Token: 0x06000840 RID: 2112 RVA: 0x0004038E File Offset: 0x0003E58E
+	// Token: 0x06000841 RID: 2113 RVA: 0x00040442 File Offset: 0x0003E642
 	public string GetWorldName()
 	{
 		if (ZNet.m_world != null)
@@ -994,7 +994,7 @@ public class ZNet : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000841 RID: 2113 RVA: 0x000403A3 File Offset: 0x0003E5A3
+	// Token: 0x06000842 RID: 2114 RVA: 0x00040457 File Offset: 0x0003E657
 	public void SetCharacterID(ZDOID id)
 	{
 		this.m_characterID = id;
@@ -1007,7 +1007,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000842 RID: 2114 RVA: 0x000403E0 File Offset: 0x0003E5E0
+	// Token: 0x06000843 RID: 2115 RVA: 0x00040494 File Offset: 0x0003E694
 	private void RPC_CharacterID(ZRpc rpc, ZDOID characterID)
 	{
 		ZNetPeer peer = this.GetPeer(rpc);
@@ -1024,31 +1024,31 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000843 RID: 2115 RVA: 0x00040431 File Offset: 0x0003E631
+	// Token: 0x06000844 RID: 2116 RVA: 0x000404E5 File Offset: 0x0003E6E5
 	public void SetPublicReferencePosition(bool pub)
 	{
 		this.m_publicReferencePosition = pub;
 	}
 
-	// Token: 0x06000844 RID: 2116 RVA: 0x0004043A File Offset: 0x0003E63A
+	// Token: 0x06000845 RID: 2117 RVA: 0x000404EE File Offset: 0x0003E6EE
 	public bool IsReferencePositionPublic()
 	{
 		return this.m_publicReferencePosition;
 	}
 
-	// Token: 0x06000845 RID: 2117 RVA: 0x00040442 File Offset: 0x0003E642
+	// Token: 0x06000846 RID: 2118 RVA: 0x000404F6 File Offset: 0x0003E6F6
 	public void SetReferencePosition(Vector3 pos)
 	{
 		this.m_referencePosition = pos;
 	}
 
-	// Token: 0x06000846 RID: 2118 RVA: 0x0004044B File Offset: 0x0003E64B
+	// Token: 0x06000847 RID: 2119 RVA: 0x000404FF File Offset: 0x0003E6FF
 	public Vector3 GetReferencePosition()
 	{
 		return this.m_referencePosition;
 	}
 
-	// Token: 0x06000847 RID: 2119 RVA: 0x00040454 File Offset: 0x0003E654
+	// Token: 0x06000848 RID: 2120 RVA: 0x00040508 File Offset: 0x0003E708
 	public List<ZDO> GetAllCharacterZDOS()
 	{
 		List<ZDO> list = new List<ZDO>();
@@ -1071,7 +1071,7 @@ public class ZNet : MonoBehaviour
 		return list;
 	}
 
-	// Token: 0x06000848 RID: 2120 RVA: 0x000404F8 File Offset: 0x0003E6F8
+	// Token: 0x06000849 RID: 2121 RVA: 0x000405AC File Offset: 0x0003E7AC
 	public int GetPeerConnections()
 	{
 		int num = 0;
@@ -1085,13 +1085,13 @@ public class ZNet : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x06000849 RID: 2121 RVA: 0x00040535 File Offset: 0x0003E735
+	// Token: 0x0600084A RID: 2122 RVA: 0x000405E9 File Offset: 0x0003E7E9
 	public ZNat GetZNat()
 	{
 		return this.m_nat;
 	}
 
-	// Token: 0x0600084A RID: 2122 RVA: 0x0004053D File Offset: 0x0003E73D
+	// Token: 0x0600084B RID: 2123 RVA: 0x000405F1 File Offset: 0x0003E7F1
 	public static void SetServer(bool server, bool openServer, bool publicServer, string serverName, string password, World world)
 	{
 		ZNet.m_isServer = server;
@@ -1102,7 +1102,7 @@ public class ZNet : MonoBehaviour
 		ZNet.m_world = world;
 	}
 
-	// Token: 0x0600084B RID: 2123 RVA: 0x0004057C File Offset: 0x0003E77C
+	// Token: 0x0600084C RID: 2124 RVA: 0x00040630 File Offset: 0x0003E830
 	private static string HashPassword(string password)
 	{
 		byte[] bytes = Encoding.ASCII.GetBytes(password);
@@ -1110,46 +1110,46 @@ public class ZNet : MonoBehaviour
 		return Encoding.ASCII.GetString(bytes2);
 	}
 
-	// Token: 0x0600084C RID: 2124 RVA: 0x000405AC File Offset: 0x0003E7AC
+	// Token: 0x0600084D RID: 2125 RVA: 0x00040660 File Offset: 0x0003E860
 	public static void ResetServerHost()
 	{
 		ZNet.m_serverSteamID = 0UL;
 		ZNet.m_serverIPAddr.Clear();
 	}
 
-	// Token: 0x0600084D RID: 2125 RVA: 0x000405BF File Offset: 0x0003E7BF
+	// Token: 0x0600084E RID: 2126 RVA: 0x00040673 File Offset: 0x0003E873
 	public static void SetServerHost(ulong serverID)
 	{
 		ZNet.m_serverSteamID = serverID;
 		ZNet.m_serverIPAddr.Clear();
 	}
 
-	// Token: 0x0600084E RID: 2126 RVA: 0x000405D1 File Offset: 0x0003E7D1
+	// Token: 0x0600084F RID: 2127 RVA: 0x00040685 File Offset: 0x0003E885
 	public static void SetServerHost(SteamNetworkingIPAddr serverAddr)
 	{
 		ZNet.m_serverSteamID = 0UL;
 		ZNet.m_serverIPAddr = serverAddr;
 	}
 
-	// Token: 0x0600084F RID: 2127 RVA: 0x000405E0 File Offset: 0x0003E7E0
+	// Token: 0x06000850 RID: 2128 RVA: 0x00040694 File Offset: 0x0003E894
 	public static string GetServerString()
 	{
 		return ZNet.m_serverSteamID + "/" + ZNet.m_serverIPAddr.ToString();
 	}
 
-	// Token: 0x06000850 RID: 2128 RVA: 0x00040606 File Offset: 0x0003E806
+	// Token: 0x06000851 RID: 2129 RVA: 0x000406BA File Offset: 0x0003E8BA
 	public bool IsServer()
 	{
 		return ZNet.m_isServer;
 	}
 
-	// Token: 0x06000851 RID: 2129 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000852 RID: 2130 RVA: 0x000023E2 File Offset: 0x000005E2
 	public bool IsDedicated()
 	{
 		return false;
 	}
 
-	// Token: 0x06000852 RID: 2130 RVA: 0x00040610 File Offset: 0x0003E810
+	// Token: 0x06000853 RID: 2131 RVA: 0x000406C4 File Offset: 0x0003E8C4
 	private void UpdatePlayerList()
 	{
 		this.m_players.Clear();
@@ -1188,7 +1188,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000853 RID: 2131 RVA: 0x00040740 File Offset: 0x0003E940
+	// Token: 0x06000854 RID: 2132 RVA: 0x000407F4 File Offset: 0x0003E9F4
 	private void SendPlayerList()
 	{
 		this.UpdatePlayerList();
@@ -1220,7 +1220,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000854 RID: 2132 RVA: 0x00040860 File Offset: 0x0003EA60
+	// Token: 0x06000855 RID: 2133 RVA: 0x00040914 File Offset: 0x0003EB14
 	private void RPC_PlayerList(ZRpc rpc, ZPackage pkg)
 	{
 		this.m_players.Clear();
@@ -1242,13 +1242,13 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000855 RID: 2133 RVA: 0x000408E8 File Offset: 0x0003EAE8
+	// Token: 0x06000856 RID: 2134 RVA: 0x0004099C File Offset: 0x0003EB9C
 	public List<ZNet.PlayerInfo> GetPlayerList()
 	{
 		return this.m_players;
 	}
 
-	// Token: 0x06000856 RID: 2134 RVA: 0x000408F0 File Offset: 0x0003EAF0
+	// Token: 0x06000857 RID: 2135 RVA: 0x000409A4 File Offset: 0x0003EBA4
 	public void GetOtherPublicPlayers(List<ZNet.PlayerInfo> playerList)
 	{
 		foreach (ZNet.PlayerInfo playerInfo in this.m_players)
@@ -1264,13 +1264,13 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000857 RID: 2135 RVA: 0x00040970 File Offset: 0x0003EB70
+	// Token: 0x06000858 RID: 2136 RVA: 0x00040A24 File Offset: 0x0003EC24
 	public int GetNrOfPlayers()
 	{
 		return this.m_players.Count;
 	}
 
-	// Token: 0x06000858 RID: 2136 RVA: 0x00040980 File Offset: 0x0003EB80
+	// Token: 0x06000859 RID: 2137 RVA: 0x00040A34 File Offset: 0x0003EC34
 	public void GetNetStats(out float localQuality, out float remoteQuality, out int ping, out float outByteSec, out float inByteSec)
 	{
 		localQuality = 0f;
@@ -1320,32 +1320,32 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000859 RID: 2137 RVA: 0x00040ABC File Offset: 0x0003ECBC
+	// Token: 0x0600085A RID: 2138 RVA: 0x00040B70 File Offset: 0x0003ED70
 	public void SetNetTime(double time)
 	{
 		this.m_netTime = time;
 	}
 
-	// Token: 0x0600085A RID: 2138 RVA: 0x00040AC8 File Offset: 0x0003ECC8
+	// Token: 0x0600085B RID: 2139 RVA: 0x00040B7C File Offset: 0x0003ED7C
 	public DateTime GetTime()
 	{
 		long ticks = (long)(this.m_netTime * 1000.0 * 10000.0);
 		return new DateTime(ticks);
 	}
 
-	// Token: 0x0600085B RID: 2139 RVA: 0x00040AF7 File Offset: 0x0003ECF7
+	// Token: 0x0600085C RID: 2140 RVA: 0x00040BAB File Offset: 0x0003EDAB
 	public float GetWrappedDayTimeSeconds()
 	{
 		return (float)(this.m_netTime % 86400.0);
 	}
 
-	// Token: 0x0600085C RID: 2140 RVA: 0x00040B0A File Offset: 0x0003ED0A
+	// Token: 0x0600085D RID: 2141 RVA: 0x00040BBE File Offset: 0x0003EDBE
 	public double GetTimeSeconds()
 	{
 		return this.m_netTime;
 	}
 
-	// Token: 0x0600085D RID: 2141 RVA: 0x00040B12 File Offset: 0x0003ED12
+	// Token: 0x0600085E RID: 2142 RVA: 0x00040BC6 File Offset: 0x0003EDC6
 	public static ZNet.ConnectionStatus GetConnectionStatus()
 	{
 		if (ZNet.m_instance != null && ZNet.m_instance.IsServer())
@@ -1355,13 +1355,13 @@ public class ZNet : MonoBehaviour
 		return ZNet.m_connectionStatus;
 	}
 
-	// Token: 0x0600085E RID: 2142 RVA: 0x00040B34 File Offset: 0x0003ED34
+	// Token: 0x0600085F RID: 2143 RVA: 0x00040BE8 File Offset: 0x0003EDE8
 	public bool HasBadConnection()
 	{
 		return this.GetServerPing() > this.m_badConnectionPing;
 	}
 
-	// Token: 0x0600085F RID: 2143 RVA: 0x00040B44 File Offset: 0x0003ED44
+	// Token: 0x06000860 RID: 2144 RVA: 0x00040BF8 File Offset: 0x0003EDF8
 	public float GetServerPing()
 	{
 		if (this.IsServer())
@@ -1385,7 +1385,7 @@ public class ZNet : MonoBehaviour
 		return 0f;
 	}
 
-	// Token: 0x06000860 RID: 2144 RVA: 0x00040BD8 File Offset: 0x0003EDD8
+	// Token: 0x06000861 RID: 2145 RVA: 0x00040C8C File Offset: 0x0003EE8C
 	public ZNetPeer GetServerPeer()
 	{
 		if (this.IsServer())
@@ -1409,7 +1409,7 @@ public class ZNet : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000861 RID: 2145 RVA: 0x00040C58 File Offset: 0x0003EE58
+	// Token: 0x06000862 RID: 2146 RVA: 0x00040D0C File Offset: 0x0003EF0C
 	public ZRpc GetServerRPC()
 	{
 		ZNetPeer serverPeer = this.GetServerPeer();
@@ -1420,13 +1420,13 @@ public class ZNet : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000862 RID: 2146 RVA: 0x00040C77 File Offset: 0x0003EE77
+	// Token: 0x06000863 RID: 2147 RVA: 0x00040D2B File Offset: 0x0003EF2B
 	public List<ZNetPeer> GetPeers()
 	{
 		return this.m_peers;
 	}
 
-	// Token: 0x06000863 RID: 2147 RVA: 0x00040C7F File Offset: 0x0003EE7F
+	// Token: 0x06000864 RID: 2148 RVA: 0x00040D33 File Offset: 0x0003EF33
 	public void RemotePrint(ZRpc rpc, string text)
 	{
 		if (rpc == null)
@@ -1446,7 +1446,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000864 RID: 2148 RVA: 0x00040CB1 File Offset: 0x0003EEB1
+	// Token: 0x06000865 RID: 2149 RVA: 0x00040D65 File Offset: 0x0003EF65
 	private void RPC_RemotePrint(ZRpc rpc, string text)
 	{
 		if (global::Console.instance)
@@ -1455,7 +1455,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000865 RID: 2149 RVA: 0x00040CCC File Offset: 0x0003EECC
+	// Token: 0x06000866 RID: 2150 RVA: 0x00040D80 File Offset: 0x0003EF80
 	public void Kick(string user)
 	{
 		if (this.IsServer())
@@ -1473,7 +1473,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000866 RID: 2150 RVA: 0x00040D08 File Offset: 0x0003EF08
+	// Token: 0x06000867 RID: 2151 RVA: 0x00040DBC File Offset: 0x0003EFBC
 	private void RPC_Kick(ZRpc rpc, string user)
 	{
 		if (!this.m_adminList.Contains(rpc.GetSocket().GetHostName()))
@@ -1485,7 +1485,7 @@ public class ZNet : MonoBehaviour
 		this.InternalKick(user);
 	}
 
-	// Token: 0x06000867 RID: 2151 RVA: 0x00040D48 File Offset: 0x0003EF48
+	// Token: 0x06000868 RID: 2152 RVA: 0x00040DFC File Offset: 0x0003EFFC
 	private void InternalKick(string user)
 	{
 		if (user == "")
@@ -1503,7 +1503,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000868 RID: 2152 RVA: 0x00040D80 File Offset: 0x0003EF80
+	// Token: 0x06000869 RID: 2153 RVA: 0x00040E34 File Offset: 0x0003F034
 	private void InternalKick(ZNetPeer peer)
 	{
 		if (!this.IsServer())
@@ -1518,13 +1518,13 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000869 RID: 2153 RVA: 0x00040DB1 File Offset: 0x0003EFB1
+	// Token: 0x0600086A RID: 2154 RVA: 0x00040E65 File Offset: 0x0003F065
 	public bool IsAllowed(string hostName, string playerName)
 	{
 		return !this.m_bannedList.Contains(hostName) && !this.m_bannedList.Contains(playerName) && (this.m_permittedList.Count() <= 0 || this.m_permittedList.Contains(hostName));
 	}
 
-	// Token: 0x0600086A RID: 2154 RVA: 0x00040DF0 File Offset: 0x0003EFF0
+	// Token: 0x0600086B RID: 2155 RVA: 0x00040EA4 File Offset: 0x0003F0A4
 	public void Ban(string user)
 	{
 		if (this.IsServer())
@@ -1542,7 +1542,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600086B RID: 2155 RVA: 0x00040E2D File Offset: 0x0003F02D
+	// Token: 0x0600086C RID: 2156 RVA: 0x00040EE1 File Offset: 0x0003F0E1
 	private void RPC_Ban(ZRpc rpc, string user)
 	{
 		if (!this.m_adminList.Contains(rpc.GetSocket().GetHostName()))
@@ -1553,7 +1553,7 @@ public class ZNet : MonoBehaviour
 		this.InternalBan(rpc, user);
 	}
 
-	// Token: 0x0600086C RID: 2156 RVA: 0x00040E5C File Offset: 0x0003F05C
+	// Token: 0x0600086D RID: 2157 RVA: 0x00040F10 File Offset: 0x0003F110
 	private void InternalBan(ZRpc rpc, string user)
 	{
 		if (!this.IsServer())
@@ -1573,7 +1573,7 @@ public class ZNet : MonoBehaviour
 		this.m_bannedList.Add(user);
 	}
 
-	// Token: 0x0600086D RID: 2157 RVA: 0x00040EB8 File Offset: 0x0003F0B8
+	// Token: 0x0600086E RID: 2158 RVA: 0x00040F6C File Offset: 0x0003F16C
 	public void Unban(string user)
 	{
 		if (this.IsServer())
@@ -1591,7 +1591,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600086E RID: 2158 RVA: 0x00040EF5 File Offset: 0x0003F0F5
+	// Token: 0x0600086F RID: 2159 RVA: 0x00040FA9 File Offset: 0x0003F1A9
 	private void RPC_Unban(ZRpc rpc, string user)
 	{
 		if (!this.m_adminList.Contains(rpc.GetSocket().GetHostName()))
@@ -1602,7 +1602,7 @@ public class ZNet : MonoBehaviour
 		this.InternalUnban(rpc, user);
 	}
 
-	// Token: 0x0600086F RID: 2159 RVA: 0x00040F24 File Offset: 0x0003F124
+	// Token: 0x06000870 RID: 2160 RVA: 0x00040FD8 File Offset: 0x0003F1D8
 	private void InternalUnban(ZRpc rpc, string user)
 	{
 		if (!this.IsServer())
@@ -1617,7 +1617,7 @@ public class ZNet : MonoBehaviour
 		this.m_bannedList.Remove(user);
 	}
 
-	// Token: 0x06000870 RID: 2160 RVA: 0x00040F5C File Offset: 0x0003F15C
+	// Token: 0x06000871 RID: 2161 RVA: 0x00041010 File Offset: 0x0003F210
 	public void PrintBanned()
 	{
 		if (this.IsServer())
@@ -1632,7 +1632,7 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000871 RID: 2161 RVA: 0x00040F93 File Offset: 0x0003F193
+	// Token: 0x06000872 RID: 2162 RVA: 0x00041047 File Offset: 0x0003F247
 	private void RPC_PrintBanned(ZRpc rpc)
 	{
 		if (!this.m_adminList.Contains(rpc.GetSocket().GetHostName()))
@@ -1643,7 +1643,7 @@ public class ZNet : MonoBehaviour
 		this.InternalPrintBanned(rpc);
 	}
 
-	// Token: 0x06000872 RID: 2162 RVA: 0x00040FC4 File Offset: 0x0003F1C4
+	// Token: 0x06000873 RID: 2163 RVA: 0x00041078 File Offset: 0x0003F278
 	private void InternalPrintBanned(ZRpc rpc)
 	{
 		this.RemotePrint(rpc, "Banned users");
@@ -1673,161 +1673,161 @@ public class ZNet : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0400080A RID: 2058
+	// Token: 0x0400080E RID: 2062
 	private float m_banlistTimer;
 
-	// Token: 0x0400080B RID: 2059
+	// Token: 0x0400080F RID: 2063
 	private static ZNet m_instance;
 
-	// Token: 0x0400080C RID: 2060
+	// Token: 0x04000810 RID: 2064
 	public int m_hostPort = 2456;
 
-	// Token: 0x0400080D RID: 2061
+	// Token: 0x04000811 RID: 2065
 	public RectTransform m_passwordDialog;
 
-	// Token: 0x0400080E RID: 2062
+	// Token: 0x04000812 RID: 2066
 	public RectTransform m_connectingDialog;
 
-	// Token: 0x0400080F RID: 2063
+	// Token: 0x04000813 RID: 2067
 	public float m_badConnectionPing = 5f;
 
-	// Token: 0x04000810 RID: 2064
+	// Token: 0x04000814 RID: 2068
 	public int m_zdoSectorsWidth = 512;
 
-	// Token: 0x04000811 RID: 2065
+	// Token: 0x04000815 RID: 2069
 	public int m_serverPlayerLimit = 10;
 
-	// Token: 0x04000812 RID: 2066
+	// Token: 0x04000816 RID: 2070
 	private ZConnector2 m_serverConnector;
 
-	// Token: 0x04000813 RID: 2067
+	// Token: 0x04000817 RID: 2071
 	private ISocket m_hostSocket;
 
-	// Token: 0x04000814 RID: 2068
+	// Token: 0x04000818 RID: 2072
 	private List<ZNetPeer> m_peers = new List<ZNetPeer>();
 
-	// Token: 0x04000815 RID: 2069
+	// Token: 0x04000819 RID: 2073
 	private Thread m_saveThread;
 
-	// Token: 0x04000816 RID: 2070
+	// Token: 0x0400081A RID: 2074
 	private float m_saveStartTime;
 
-	// Token: 0x04000817 RID: 2071
+	// Token: 0x0400081B RID: 2075
 	private float m_saveThreadStartTime;
 
-	// Token: 0x04000818 RID: 2072
+	// Token: 0x0400081C RID: 2076
 	private bool m_loadError;
 
-	// Token: 0x04000819 RID: 2073
+	// Token: 0x0400081D RID: 2077
 	private ZDOMan m_zdoMan;
 
-	// Token: 0x0400081A RID: 2074
+	// Token: 0x0400081E RID: 2078
 	private ZRoutedRpc m_routedRpc;
 
-	// Token: 0x0400081B RID: 2075
+	// Token: 0x0400081F RID: 2079
 	private ZNat m_nat;
 
-	// Token: 0x0400081C RID: 2076
+	// Token: 0x04000820 RID: 2080
 	private double m_netTime = 2040.0;
 
-	// Token: 0x0400081D RID: 2077
+	// Token: 0x04000821 RID: 2081
 	private ZDOID m_characterID = ZDOID.None;
 
-	// Token: 0x0400081E RID: 2078
+	// Token: 0x04000822 RID: 2082
 	private Vector3 m_referencePosition = Vector3.zero;
 
-	// Token: 0x0400081F RID: 2079
+	// Token: 0x04000823 RID: 2083
 	private bool m_publicReferencePosition;
 
-	// Token: 0x04000820 RID: 2080
+	// Token: 0x04000824 RID: 2084
 	private float m_periodicSendTimer;
 
-	// Token: 0x04000821 RID: 2081
+	// Token: 0x04000825 RID: 2085
 	private bool m_haveStoped;
 
-	// Token: 0x04000822 RID: 2082
+	// Token: 0x04000826 RID: 2086
 	private static bool m_isServer = true;
 
-	// Token: 0x04000823 RID: 2083
+	// Token: 0x04000827 RID: 2087
 	private static World m_world = null;
 
-	// Token: 0x04000824 RID: 2084
+	// Token: 0x04000828 RID: 2088
 	private static ulong m_serverSteamID = 0UL;
 
-	// Token: 0x04000825 RID: 2085
+	// Token: 0x04000829 RID: 2089
 	private static SteamNetworkingIPAddr m_serverIPAddr;
 
-	// Token: 0x04000826 RID: 2086
+	// Token: 0x0400082A RID: 2090
 	private static bool m_openServer = true;
 
-	// Token: 0x04000827 RID: 2087
+	// Token: 0x0400082B RID: 2091
 	private static bool m_publicServer = true;
 
-	// Token: 0x04000828 RID: 2088
+	// Token: 0x0400082C RID: 2092
 	private static string m_serverPassword = "";
 
-	// Token: 0x04000829 RID: 2089
+	// Token: 0x0400082D RID: 2093
 	private static string m_ServerName = "";
 
-	// Token: 0x0400082A RID: 2090
+	// Token: 0x0400082E RID: 2094
 	private static ZNet.ConnectionStatus m_connectionStatus = ZNet.ConnectionStatus.None;
 
-	// Token: 0x0400082B RID: 2091
+	// Token: 0x0400082F RID: 2095
 	private SyncedList m_adminList;
 
-	// Token: 0x0400082C RID: 2092
+	// Token: 0x04000830 RID: 2096
 	private SyncedList m_bannedList;
 
-	// Token: 0x0400082D RID: 2093
+	// Token: 0x04000831 RID: 2097
 	private SyncedList m_permittedList;
 
-	// Token: 0x0400082E RID: 2094
+	// Token: 0x04000832 RID: 2098
 	private List<ZNet.PlayerInfo> m_players = new List<ZNet.PlayerInfo>();
 
-	// Token: 0x0400082F RID: 2095
+	// Token: 0x04000833 RID: 2099
 	private ZRpc m_tempPasswordRPC;
 
 	// Token: 0x0200016C RID: 364
 	public enum ConnectionStatus
 	{
-		// Token: 0x0400116C RID: 4460
-		None,
-		// Token: 0x0400116D RID: 4461
-		Connecting,
-		// Token: 0x0400116E RID: 4462
-		Connected,
-		// Token: 0x0400116F RID: 4463
-		ErrorVersion,
-		// Token: 0x04001170 RID: 4464
-		ErrorDisconnected,
-		// Token: 0x04001171 RID: 4465
-		ErrorConnectFailed,
-		// Token: 0x04001172 RID: 4466
-		ErrorPassword,
 		// Token: 0x04001173 RID: 4467
-		ErrorAlreadyConnected,
+		None,
 		// Token: 0x04001174 RID: 4468
-		ErrorBanned,
+		Connecting,
 		// Token: 0x04001175 RID: 4469
+		Connected,
+		// Token: 0x04001176 RID: 4470
+		ErrorVersion,
+		// Token: 0x04001177 RID: 4471
+		ErrorDisconnected,
+		// Token: 0x04001178 RID: 4472
+		ErrorConnectFailed,
+		// Token: 0x04001179 RID: 4473
+		ErrorPassword,
+		// Token: 0x0400117A RID: 4474
+		ErrorAlreadyConnected,
+		// Token: 0x0400117B RID: 4475
+		ErrorBanned,
+		// Token: 0x0400117C RID: 4476
 		ErrorFull
 	}
 
 	// Token: 0x0200016D RID: 365
 	public struct PlayerInfo
 	{
-		// Token: 0x04001176 RID: 4470
+		// Token: 0x0400117D RID: 4477
 		public string m_name;
 
-		// Token: 0x04001177 RID: 4471
+		// Token: 0x0400117E RID: 4478
 		public string m_host;
 
-		// Token: 0x04001178 RID: 4472
+		// Token: 0x0400117F RID: 4479
 		public ZDOID m_characterID;
 
-		// Token: 0x04001179 RID: 4473
+		// Token: 0x04001180 RID: 4480
 		public bool m_publicPosition;
 
-		// Token: 0x0400117A RID: 4474
+		// Token: 0x04001181 RID: 4481
 		public Vector3 m_position;
 	}
 }

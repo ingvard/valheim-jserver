@@ -6,13 +6,13 @@ using UnityEngine.UI;
 // Token: 0x0200005E RID: 94
 public class SkillsDialog : MonoBehaviour
 {
-	// Token: 0x0600061F RID: 1567 RVA: 0x00034474 File Offset: 0x00032674
+	// Token: 0x06000620 RID: 1568 RVA: 0x00034528 File Offset: 0x00032728
 	private void Awake()
 	{
 		this.m_baseListSize = this.m_listRoot.rect.height;
 	}
 
-	// Token: 0x06000620 RID: 1568 RVA: 0x0003449C File Offset: 0x0003269C
+	// Token: 0x06000621 RID: 1569 RVA: 0x00034550 File Offset: 0x00032750
 	public void Setup(Player player)
 	{
 		base.gameObject.SetActive(true);
@@ -48,27 +48,27 @@ public class SkillsDialog : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06000621 RID: 1569 RVA: 0x00034714 File Offset: 0x00032914
+	// Token: 0x06000622 RID: 1570 RVA: 0x000347C8 File Offset: 0x000329C8
 	public void OnClose()
 	{
 		base.gameObject.SetActive(false);
 	}
 
-	// Token: 0x040006DE RID: 1758
+	// Token: 0x040006E2 RID: 1762
 	public RectTransform m_listRoot;
 
-	// Token: 0x040006DF RID: 1759
+	// Token: 0x040006E3 RID: 1763
 	public GameObject m_elementPrefab;
 
-	// Token: 0x040006E0 RID: 1760
+	// Token: 0x040006E4 RID: 1764
 	public Text m_totalSkillText;
 
-	// Token: 0x040006E1 RID: 1761
+	// Token: 0x040006E5 RID: 1765
 	public float m_spacing = 80f;
 
-	// Token: 0x040006E2 RID: 1762
+	// Token: 0x040006E6 RID: 1766
 	private float m_baseListSize;
 
-	// Token: 0x040006E3 RID: 1763
+	// Token: 0x040006E7 RID: 1767
 	private List<GameObject> m_elements = new List<GameObject>();
 }

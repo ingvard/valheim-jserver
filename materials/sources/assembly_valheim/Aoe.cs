@@ -6,7 +6,7 @@ using UnityEngine;
 // Token: 0x0200001A RID: 26
 public class Aoe : MonoBehaviour, IProjectile
 {
-	// Token: 0x060002D3 RID: 723 RVA: 0x00016DDC File Offset: 0x00014FDC
+	// Token: 0x060002D4 RID: 724 RVA: 0x00016E90 File Offset: 0x00015090
 	private void Awake()
 	{
 		this.m_nview = base.GetComponentInParent<ZNetView>();
@@ -35,13 +35,13 @@ public class Aoe : MonoBehaviour, IProjectile
 		}
 	}
 
-	// Token: 0x060002D4 RID: 724 RVA: 0x00016E8C File Offset: 0x0001508C
+	// Token: 0x060002D5 RID: 725 RVA: 0x00016F40 File Offset: 0x00015140
 	public HitData.DamageTypes GetDamage()
 	{
 		return this.GetDamage(this.m_level);
 	}
 
-	// Token: 0x060002D5 RID: 725 RVA: 0x00016E9C File Offset: 0x0001509C
+	// Token: 0x060002D6 RID: 726 RVA: 0x00016F50 File Offset: 0x00015150
 	public HitData.DamageTypes GetDamage(int itemQuality)
 	{
 		if (itemQuality <= 1)
@@ -53,7 +53,7 @@ public class Aoe : MonoBehaviour, IProjectile
 		return damage;
 	}
 
-	// Token: 0x060002D6 RID: 726 RVA: 0x00016ECC File Offset: 0x000150CC
+	// Token: 0x060002D7 RID: 727 RVA: 0x00016F80 File Offset: 0x00015180
 	public string GetTooltipString(int itemQuality)
 	{
 		StringBuilder stringBuilder = new StringBuilder(256);
@@ -64,7 +64,7 @@ public class Aoe : MonoBehaviour, IProjectile
 		return stringBuilder.ToString();
 	}
 
-	// Token: 0x060002D7 RID: 727 RVA: 0x00016F38 File Offset: 0x00015138
+	// Token: 0x060002D8 RID: 728 RVA: 0x00016FEC File Offset: 0x000151EC
 	private void Start()
 	{
 		if (this.m_nview != null && (!this.m_nview.IsValid() || !this.m_nview.IsOwner()))
@@ -77,7 +77,7 @@ public class Aoe : MonoBehaviour, IProjectile
 		}
 	}
 
-	// Token: 0x060002D8 RID: 728 RVA: 0x00016F8C File Offset: 0x0001518C
+	// Token: 0x060002D9 RID: 729 RVA: 0x00017040 File Offset: 0x00015240
 	private void FixedUpdate()
 	{
 		if (this.m_nview != null && (!this.m_nview.IsValid() || !this.m_nview.IsOwner()))
@@ -115,7 +115,7 @@ public class Aoe : MonoBehaviour, IProjectile
 		}
 	}
 
-	// Token: 0x060002D9 RID: 729 RVA: 0x000170B0 File Offset: 0x000152B0
+	// Token: 0x060002DA RID: 730 RVA: 0x00017164 File Offset: 0x00015364
 	private void CheckHits()
 	{
 		this.m_hitList.Clear();
@@ -134,7 +134,7 @@ public class Aoe : MonoBehaviour, IProjectile
 		}
 	}
 
-	// Token: 0x060002DA RID: 730 RVA: 0x0001714C File Offset: 0x0001534C
+	// Token: 0x060002DB RID: 731 RVA: 0x00017200 File Offset: 0x00015400
 	public void Setup(Character owner, Vector3 velocity, float hitNoise, HitData hitData, ItemDrop.ItemData item)
 	{
 		this.m_owner = owner;
@@ -159,7 +159,7 @@ public class Aoe : MonoBehaviour, IProjectile
 		}
 	}
 
-	// Token: 0x060002DB RID: 731 RVA: 0x0001722C File Offset: 0x0001542C
+	// Token: 0x060002DC RID: 732 RVA: 0x000172E0 File Offset: 0x000154E0
 	private void OnTriggerEnter(Collider collider)
 	{
 		if (!this.m_triggerEnterOnly)
@@ -178,7 +178,7 @@ public class Aoe : MonoBehaviour, IProjectile
 		this.OnHit(collider, collider.transform.position);
 	}
 
-	// Token: 0x060002DC RID: 732 RVA: 0x000172A4 File Offset: 0x000154A4
+	// Token: 0x060002DD RID: 733 RVA: 0x00017358 File Offset: 0x00015558
 	private void OnTriggerStay(Collider collider)
 	{
 		if (this.m_triggerEnterOnly)
@@ -197,7 +197,7 @@ public class Aoe : MonoBehaviour, IProjectile
 		this.OnHit(collider, collider.transform.position);
 	}
 
-	// Token: 0x060002DD RID: 733 RVA: 0x0001731C File Offset: 0x0001551C
+	// Token: 0x060002DE RID: 734 RVA: 0x000173D0 File Offset: 0x000155D0
 	private bool OnHit(Collider collider, Vector3 hitPoint)
 	{
 		GameObject gameObject = Projectile.FindHitObject(collider);
@@ -289,113 +289,113 @@ public class Aoe : MonoBehaviour, IProjectile
 		return result;
 	}
 
-	// Token: 0x060002DE RID: 734 RVA: 0x0001759E File Offset: 0x0001579E
+	// Token: 0x060002DF RID: 735 RVA: 0x00017652 File Offset: 0x00015852
 	private void OnDrawGizmos()
 	{
 		bool useTriggers = this.m_useTriggers;
 	}
 
-	// Token: 0x04000250 RID: 592
+	// Token: 0x04000254 RID: 596
 	[Header("Attack (overridden by item )")]
 	public bool m_useAttackSettings = true;
 
-	// Token: 0x04000251 RID: 593
+	// Token: 0x04000255 RID: 597
 	public HitData.DamageTypes m_damage;
 
-	// Token: 0x04000252 RID: 594
+	// Token: 0x04000256 RID: 598
 	public bool m_dodgeable;
 
-	// Token: 0x04000253 RID: 595
+	// Token: 0x04000257 RID: 599
 	public bool m_blockable;
 
-	// Token: 0x04000254 RID: 596
+	// Token: 0x04000258 RID: 600
 	public int m_toolTier;
 
-	// Token: 0x04000255 RID: 597
+	// Token: 0x04000259 RID: 601
 	public float m_attackForce;
 
-	// Token: 0x04000256 RID: 598
+	// Token: 0x0400025A RID: 602
 	public float m_backstabBonus = 4f;
 
-	// Token: 0x04000257 RID: 599
+	// Token: 0x0400025B RID: 603
 	public string m_statusEffect = "";
 
-	// Token: 0x04000258 RID: 600
+	// Token: 0x0400025C RID: 604
 	[Header("Attack (other)")]
 	public HitData.DamageTypes m_damagePerLevel;
 
-	// Token: 0x04000259 RID: 601
+	// Token: 0x0400025D RID: 605
 	public bool m_attackForceForward;
 
-	// Token: 0x0400025A RID: 602
+	// Token: 0x0400025E RID: 606
 	[Header("Damage self")]
 	public float m_damageSelf;
 
-	// Token: 0x0400025B RID: 603
+	// Token: 0x0400025F RID: 607
 	[Header("Ignore targets")]
 	public bool m_hitOwner;
 
-	// Token: 0x0400025C RID: 604
+	// Token: 0x04000260 RID: 608
 	public bool m_hitSame;
 
-	// Token: 0x0400025D RID: 605
+	// Token: 0x04000261 RID: 609
 	public bool m_hitFriendly = true;
 
-	// Token: 0x0400025E RID: 606
+	// Token: 0x04000262 RID: 610
 	public bool m_hitEnemy = true;
 
-	// Token: 0x0400025F RID: 607
+	// Token: 0x04000263 RID: 611
 	public bool m_hitCharacters = true;
 
-	// Token: 0x04000260 RID: 608
+	// Token: 0x04000264 RID: 612
 	public bool m_hitProps = true;
 
-	// Token: 0x04000261 RID: 609
+	// Token: 0x04000265 RID: 613
 	[Header("Other")]
 	public Skills.SkillType m_skill;
 
-	// Token: 0x04000262 RID: 610
+	// Token: 0x04000266 RID: 614
 	public bool m_useTriggers;
 
-	// Token: 0x04000263 RID: 611
+	// Token: 0x04000267 RID: 615
 	public bool m_triggerEnterOnly;
 
-	// Token: 0x04000264 RID: 612
+	// Token: 0x04000268 RID: 616
 	public float m_radius = 4f;
 
-	// Token: 0x04000265 RID: 613
+	// Token: 0x04000269 RID: 617
 	public float m_ttl = 4f;
 
-	// Token: 0x04000266 RID: 614
+	// Token: 0x0400026A RID: 618
 	public float m_hitInterval = 1f;
 
-	// Token: 0x04000267 RID: 615
+	// Token: 0x0400026B RID: 619
 	public EffectList m_hitEffects = new EffectList();
 
-	// Token: 0x04000268 RID: 616
+	// Token: 0x0400026C RID: 620
 	public bool m_attachToCaster;
 
-	// Token: 0x04000269 RID: 617
+	// Token: 0x0400026D RID: 621
 	private ZNetView m_nview;
 
-	// Token: 0x0400026A RID: 618
+	// Token: 0x0400026E RID: 622
 	private Character m_owner;
 
-	// Token: 0x0400026B RID: 619
+	// Token: 0x0400026F RID: 623
 	private List<GameObject> m_hitList = new List<GameObject>();
 
-	// Token: 0x0400026C RID: 620
+	// Token: 0x04000270 RID: 624
 	private float m_hitTimer;
 
-	// Token: 0x0400026D RID: 621
+	// Token: 0x04000271 RID: 625
 	private Vector3 m_offset = Vector3.zero;
 
-	// Token: 0x0400026E RID: 622
+	// Token: 0x04000272 RID: 626
 	private Quaternion m_localRot = Quaternion.identity;
 
-	// Token: 0x0400026F RID: 623
+	// Token: 0x04000273 RID: 627
 	private int m_level;
 
-	// Token: 0x04000270 RID: 624
+	// Token: 0x04000274 RID: 628
 	private int m_rayMask;
 }

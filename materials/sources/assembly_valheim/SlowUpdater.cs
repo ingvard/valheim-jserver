@@ -6,13 +6,13 @@ using UnityEngine;
 // Token: 0x020000AE RID: 174
 public class SlowUpdater : MonoBehaviour
 {
-	// Token: 0x06000BBF RID: 3007 RVA: 0x0005397F File Offset: 0x00051B7F
+	// Token: 0x06000BC0 RID: 3008 RVA: 0x00053B07 File Offset: 0x00051D07
 	private void Awake()
 	{
 		base.StartCoroutine("UpdateLoop");
 	}
 
-	// Token: 0x06000BC0 RID: 3008 RVA: 0x0005398D File Offset: 0x00051B8D
+	// Token: 0x06000BC1 RID: 3009 RVA: 0x00053B15 File Offset: 0x00051D15
 	private IEnumerator UpdateLoop()
 	{
 		for (;;)
@@ -37,6 +37,6 @@ public class SlowUpdater : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x04000AE9 RID: 2793
+	// Token: 0x04000AEF RID: 2799
 	private const int m_updatesPerFrame = 100;
 }

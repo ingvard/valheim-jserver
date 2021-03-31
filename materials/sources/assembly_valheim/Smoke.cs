@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000044 RID: 68
 public class Smoke : MonoBehaviour
 {
-	// Token: 0x0600047E RID: 1150 RVA: 0x0002445C File Offset: 0x0002265C
+	// Token: 0x0600047F RID: 1151 RVA: 0x00024510 File Offset: 0x00022710
 	private void Awake()
 	{
 		this.m_body = base.GetComponent<Rigidbody>();
@@ -15,7 +15,7 @@ public class Smoke : MonoBehaviour
 		this.m_vel += Quaternion.Euler(0f, (float)UnityEngine.Random.Range(0, 360), 0f) * Vector3.forward * this.m_randomVel;
 	}
 
-	// Token: 0x0600047F RID: 1151 RVA: 0x000244D4 File Offset: 0x000226D4
+	// Token: 0x06000480 RID: 1152 RVA: 0x00024588 File Offset: 0x00022788
 	private void OnDestroy()
 	{
 		if (this.m_added)
@@ -25,7 +25,7 @@ public class Smoke : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000480 RID: 1152 RVA: 0x000244F1 File Offset: 0x000226F1
+	// Token: 0x06000481 RID: 1153 RVA: 0x000245A5 File Offset: 0x000227A5
 	public void StartFadeOut()
 	{
 		if (this.m_fadeTimer >= 0f)
@@ -40,13 +40,13 @@ public class Smoke : MonoBehaviour
 		this.m_fadeTimer = 0f;
 	}
 
-	// Token: 0x06000481 RID: 1153 RVA: 0x00024527 File Offset: 0x00022727
+	// Token: 0x06000482 RID: 1154 RVA: 0x000245DB File Offset: 0x000227DB
 	public static int GetTotalSmoke()
 	{
 		return Smoke.m_smoke.Count;
 	}
 
-	// Token: 0x06000482 RID: 1154 RVA: 0x00024533 File Offset: 0x00022733
+	// Token: 0x06000483 RID: 1155 RVA: 0x000245E7 File Offset: 0x000227E7
 	public static void FadeOldest()
 	{
 		if (Smoke.m_smoke.Count == 0)
@@ -56,7 +56,7 @@ public class Smoke : MonoBehaviour
 		Smoke.m_smoke[0].StartFadeOut();
 	}
 
-	// Token: 0x06000483 RID: 1155 RVA: 0x00024554 File Offset: 0x00022754
+	// Token: 0x06000484 RID: 1156 RVA: 0x00024608 File Offset: 0x00022808
 	public static void FadeMostDistant()
 	{
 		if (Smoke.m_smoke.Count == 0)
@@ -86,7 +86,7 @@ public class Smoke : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000484 RID: 1156 RVA: 0x000245E8 File Offset: 0x000227E8
+	// Token: 0x06000485 RID: 1157 RVA: 0x0002469C File Offset: 0x0002289C
 	private void Update()
 	{
 		this.m_time += Time.deltaTime;
@@ -115,36 +115,36 @@ public class Smoke : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0400048F RID: 1167
+	// Token: 0x04000493 RID: 1171
 	public Vector3 m_vel = Vector3.up;
 
-	// Token: 0x04000490 RID: 1168
+	// Token: 0x04000494 RID: 1172
 	public float m_randomVel = 0.1f;
 
-	// Token: 0x04000491 RID: 1169
+	// Token: 0x04000495 RID: 1173
 	public float m_force = 0.1f;
 
-	// Token: 0x04000492 RID: 1170
+	// Token: 0x04000496 RID: 1174
 	public float m_ttl = 10f;
 
-	// Token: 0x04000493 RID: 1171
+	// Token: 0x04000497 RID: 1175
 	public float m_fadetime = 3f;
 
-	// Token: 0x04000494 RID: 1172
+	// Token: 0x04000498 RID: 1176
 	private Rigidbody m_body;
 
-	// Token: 0x04000495 RID: 1173
+	// Token: 0x04000499 RID: 1177
 	private float m_time;
 
-	// Token: 0x04000496 RID: 1174
+	// Token: 0x0400049A RID: 1178
 	private float m_fadeTimer = -1f;
 
-	// Token: 0x04000497 RID: 1175
+	// Token: 0x0400049B RID: 1179
 	private bool m_added;
 
-	// Token: 0x04000498 RID: 1176
+	// Token: 0x0400049C RID: 1180
 	private MeshRenderer m_mr;
 
-	// Token: 0x04000499 RID: 1177
+	// Token: 0x0400049D RID: 1181
 	private static List<Smoke> m_smoke = new List<Smoke>();
 }

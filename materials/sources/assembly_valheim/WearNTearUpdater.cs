@@ -6,13 +6,13 @@ using UnityEngine;
 // Token: 0x02000113 RID: 275
 public class WearNTearUpdater : MonoBehaviour
 {
-	// Token: 0x06001038 RID: 4152 RVA: 0x00072639 File Offset: 0x00070839
+	// Token: 0x06001039 RID: 4153 RVA: 0x000727C1 File Offset: 0x000709C1
 	private void Awake()
 	{
 		base.StartCoroutine("UpdateWear");
 	}
 
-	// Token: 0x06001039 RID: 4153 RVA: 0x00072647 File Offset: 0x00070847
+	// Token: 0x0600103A RID: 4154 RVA: 0x000727CF File Offset: 0x000709CF
 	private IEnumerator UpdateWear()
 	{
 		for (;;)
@@ -37,6 +37,6 @@ public class WearNTearUpdater : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x04000F1D RID: 3869
+	// Token: 0x04000F23 RID: 3875
 	private const int m_updatesPerFrame = 50;
 }

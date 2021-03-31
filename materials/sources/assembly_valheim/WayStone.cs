@@ -4,13 +4,13 @@ using UnityEngine;
 // Token: 0x02000111 RID: 273
 public class WayStone : MonoBehaviour, Hoverable, Interactable
 {
-	// Token: 0x0600100A RID: 4106 RVA: 0x00070E63 File Offset: 0x0006F063
+	// Token: 0x0600100B RID: 4107 RVA: 0x00070FEB File Offset: 0x0006F1EB
 	private void Awake()
 	{
 		this.m_activeObject.SetActive(false);
 	}
 
-	// Token: 0x0600100B RID: 4107 RVA: 0x00070E71 File Offset: 0x0006F071
+	// Token: 0x0600100C RID: 4108 RVA: 0x00070FF9 File Offset: 0x0006F1F9
 	public string GetHoverText()
 	{
 		if (this.m_activeObject.activeSelf)
@@ -20,13 +20,13 @@ public class WayStone : MonoBehaviour, Hoverable, Interactable
 		return Localization.instance.Localize("Waystone\n[<color=yellow><b>$KEY_Use</b></color>] Activate");
 	}
 
-	// Token: 0x0600100C RID: 4108 RVA: 0x00070E95 File Offset: 0x0006F095
+	// Token: 0x0600100D RID: 4109 RVA: 0x0007101D File Offset: 0x0006F21D
 	public string GetHoverName()
 	{
 		return "Waystone";
 	}
 
-	// Token: 0x0600100D RID: 4109 RVA: 0x00070E9C File Offset: 0x0006F09C
+	// Token: 0x0600100E RID: 4110 RVA: 0x00071024 File Offset: 0x0006F224
 	public bool Interact(Humanoid character, bool hold)
 	{
 		if (hold)
@@ -42,13 +42,13 @@ public class WayStone : MonoBehaviour, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x0600100E RID: 4110 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x0600100F RID: 4111 RVA: 0x000023E2 File Offset: 0x000005E2
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		return false;
 	}
 
-	// Token: 0x0600100F RID: 4111 RVA: 0x00070F0C File Offset: 0x0006F10C
+	// Token: 0x06001010 RID: 4112 RVA: 0x00071094 File Offset: 0x0006F294
 	private void FixedUpdate()
 	{
 		if (this.m_activeObject.activeSelf && Game.instance != null)
@@ -60,7 +60,7 @@ public class WayStone : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06001010 RID: 4112 RVA: 0x00070F74 File Offset: 0x0006F174
+	// Token: 0x06001011 RID: 4113 RVA: 0x000710FC File Offset: 0x0006F2FC
 	private Vector3 GetSpawnPoint()
 	{
 		PlayerProfile playerProfile = Game.instance.GetPlayerProfile();
@@ -71,13 +71,13 @@ public class WayStone : MonoBehaviour, Hoverable, Interactable
 		return playerProfile.GetHomePoint();
 	}
 
-	// Token: 0x04000EEC RID: 3820
+	// Token: 0x04000EF2 RID: 3826
 	[TextArea]
 	public string m_activateMessage = "You touch the cold stone surface and you think of home.";
 
-	// Token: 0x04000EED RID: 3821
+	// Token: 0x04000EF3 RID: 3827
 	public GameObject m_activeObject;
 
-	// Token: 0x04000EEE RID: 3822
+	// Token: 0x04000EF4 RID: 3828
 	public EffectList m_activeEffect;
 }

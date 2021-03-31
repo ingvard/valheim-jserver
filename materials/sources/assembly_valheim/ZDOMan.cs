@@ -9,7 +9,7 @@ using UnityEngine;
 public class ZDOMan
 {
 	// Token: 0x17000018 RID: 24
-	// (get) Token: 0x060007B2 RID: 1970 RVA: 0x0003C726 File Offset: 0x0003A926
+	// (get) Token: 0x060007B3 RID: 1971 RVA: 0x0003C7DA File Offset: 0x0003A9DA
 	public static ZDOMan instance
 	{
 		get
@@ -18,7 +18,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007B3 RID: 1971 RVA: 0x0003C730 File Offset: 0x0003A930
+	// Token: 0x060007B4 RID: 1972 RVA: 0x0003C7E4 File Offset: 0x0003A9E4
 	public ZDOMan(int width)
 	{
 		ZDOMan.m_instance = this;
@@ -30,14 +30,14 @@ public class ZDOMan
 		this.ResetSectorArray();
 	}
 
-	// Token: 0x060007B4 RID: 1972 RVA: 0x0003C81A File Offset: 0x0003AA1A
+	// Token: 0x060007B5 RID: 1973 RVA: 0x0003C8CE File Offset: 0x0003AACE
 	private void ResetSectorArray()
 	{
 		this.m_objectsBySector = new List<ZDO>[this.m_width * this.m_width];
 		this.m_objectsByOutsideSector.Clear();
 	}
 
-	// Token: 0x060007B5 RID: 1973 RVA: 0x0003C840 File Offset: 0x0003AA40
+	// Token: 0x060007B6 RID: 1974 RVA: 0x0003C8F4 File Offset: 0x0003AAF4
 	public void ShutDown()
 	{
 		if (!ZNet.instance.IsServer())
@@ -55,7 +55,7 @@ public class ZDOMan
 		GC.Collect();
 	}
 
-	// Token: 0x060007B6 RID: 1974 RVA: 0x0003C8B8 File Offset: 0x0003AAB8
+	// Token: 0x060007B7 RID: 1975 RVA: 0x0003C96C File Offset: 0x0003AB6C
 	public void PrepareSave()
 	{
 		this.m_saveData = new ZDOMan.SaveData();
@@ -67,7 +67,7 @@ public class ZDOMan
 		this.m_saveData.m_deadZDOs = new Dictionary<ZDOID, long>(this.m_deadZDOs);
 	}
 
-	// Token: 0x060007B7 RID: 1975 RVA: 0x0003C93C File Offset: 0x0003AB3C
+	// Token: 0x060007B8 RID: 1976 RVA: 0x0003C9F0 File Offset: 0x0003ABF0
 	public void SaveAsync(BinaryWriter writer)
 	{
 		writer.Write(this.m_saveData.m_myid);
@@ -95,7 +95,7 @@ public class ZDOMan
 		this.m_saveData = null;
 	}
 
-	// Token: 0x060007B8 RID: 1976 RVA: 0x0003CAD4 File Offset: 0x0003ACD4
+	// Token: 0x060007B9 RID: 1977 RVA: 0x0003CB88 File Offset: 0x0003AD88
 	public void Load(BinaryReader reader, int version)
 	{
 		reader.ReadInt64();
@@ -148,7 +148,7 @@ public class ZDOMan
 		this.m_nextUid = num;
 	}
 
-	// Token: 0x060007B9 RID: 1977 RVA: 0x0003CCB4 File Offset: 0x0003AEB4
+	// Token: 0x060007BA RID: 1978 RVA: 0x0003CD68 File Offset: 0x0003AF68
 	private void RemoveOldGeneratedZDOS()
 	{
 		List<ZDOID> list = new List<ZDOID>();
@@ -169,7 +169,7 @@ public class ZDOMan
 		ZLog.Log("Removed " + list.Count + " OLD generated ZDOS");
 	}
 
-	// Token: 0x060007BA RID: 1978 RVA: 0x0003CDBC File Offset: 0x0003AFBC
+	// Token: 0x060007BB RID: 1979 RVA: 0x0003CE70 File Offset: 0x0003B070
 	private void CapDeadZDOList()
 	{
 		if (this.m_deadZDOs.Count > 100000)
@@ -184,7 +184,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007BB RID: 1979 RVA: 0x0003CE40 File Offset: 0x0003B040
+	// Token: 0x060007BC RID: 1980 RVA: 0x0003CEF4 File Offset: 0x0003B0F4
 	public ZDO CreateNewZDO(Vector3 position)
 	{
 		long myid = this.m_myid;
@@ -201,7 +201,7 @@ public class ZDOMan
 		return this.CreateNewZDO(zdoid, position);
 	}
 
-	// Token: 0x060007BC RID: 1980 RVA: 0x0003CE9C File Offset: 0x0003B09C
+	// Token: 0x060007BD RID: 1981 RVA: 0x0003CF50 File Offset: 0x0003B150
 	public ZDO CreateNewZDO(ZDOID uid, Vector3 position)
 	{
 		ZDO zdo = ZDOPool.Create(this, uid, position);
@@ -211,7 +211,7 @@ public class ZDOMan
 		return zdo;
 	}
 
-	// Token: 0x060007BD RID: 1981 RVA: 0x0003CEE4 File Offset: 0x0003B0E4
+	// Token: 0x060007BE RID: 1982 RVA: 0x0003CF98 File Offset: 0x0003B198
 	public void AddToSector(ZDO zdo, Vector2i sector)
 	{
 		int num = this.SectorToIndex(sector);
@@ -242,7 +242,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007BE RID: 1982 RVA: 0x0003CF60 File Offset: 0x0003B160
+	// Token: 0x060007BF RID: 1983 RVA: 0x0003D014 File Offset: 0x0003B214
 	public void ZDOSectorInvalidated(ZDO zdo)
 	{
 		foreach (ZDOMan.ZDOPeer zdopeer in this.m_peers)
@@ -251,7 +251,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007BF RID: 1983 RVA: 0x0003CFB4 File Offset: 0x0003B1B4
+	// Token: 0x060007C0 RID: 1984 RVA: 0x0003D068 File Offset: 0x0003B268
 	public void RemoveFromSector(ZDO zdo, Vector2i sector)
 	{
 		int num = this.SectorToIndex(sector);
@@ -270,7 +270,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007C0 RID: 1984 RVA: 0x0003D000 File Offset: 0x0003B200
+	// Token: 0x060007C1 RID: 1985 RVA: 0x0003D0B4 File Offset: 0x0003B2B4
 	public ZDO GetZDO(ZDOID id)
 	{
 		if (id == ZDOID.None)
@@ -285,7 +285,7 @@ public class ZDOMan
 		return null;
 	}
 
-	// Token: 0x060007C1 RID: 1985 RVA: 0x0003D030 File Offset: 0x0003B230
+	// Token: 0x060007C2 RID: 1986 RVA: 0x0003D0E4 File Offset: 0x0003B2E4
 	public void AddPeer(ZNetPeer netPeer)
 	{
 		ZDOMan.ZDOPeer zdopeer = new ZDOMan.ZDOPeer();
@@ -294,7 +294,7 @@ public class ZDOMan
 		zdopeer.m_peer.m_rpc.Register<ZPackage>("ZDOData", new Action<ZRpc, ZPackage>(this.RPC_ZDOData));
 	}
 
-	// Token: 0x060007C2 RID: 1986 RVA: 0x0003D078 File Offset: 0x0003B278
+	// Token: 0x060007C3 RID: 1987 RVA: 0x0003D12C File Offset: 0x0003B32C
 	public void RemovePeer(ZNetPeer netPeer)
 	{
 		ZDOMan.ZDOPeer zdopeer = this.FindPeer(netPeer);
@@ -308,7 +308,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007C3 RID: 1987 RVA: 0x0003D0B0 File Offset: 0x0003B2B0
+	// Token: 0x060007C4 RID: 1988 RVA: 0x0003D164 File Offset: 0x0003B364
 	private ZDOMan.ZDOPeer FindPeer(ZNetPeer netPeer)
 	{
 		foreach (ZDOMan.ZDOPeer zdopeer in this.m_peers)
@@ -321,7 +321,7 @@ public class ZDOMan
 		return null;
 	}
 
-	// Token: 0x060007C4 RID: 1988 RVA: 0x0003D10C File Offset: 0x0003B30C
+	// Token: 0x060007C5 RID: 1989 RVA: 0x0003D1C0 File Offset: 0x0003B3C0
 	private ZDOMan.ZDOPeer FindPeer(ZRpc rpc)
 	{
 		foreach (ZDOMan.ZDOPeer zdopeer in this.m_peers)
@@ -334,7 +334,7 @@ public class ZDOMan
 		return null;
 	}
 
-	// Token: 0x060007C5 RID: 1989 RVA: 0x0003D170 File Offset: 0x0003B370
+	// Token: 0x060007C6 RID: 1990 RVA: 0x0003D224 File Offset: 0x0003B424
 	public void Update(float dt)
 	{
 		if (ZNet.instance.IsServer())
@@ -346,7 +346,7 @@ public class ZDOMan
 		this.UpdateStats(dt);
 	}
 
-	// Token: 0x060007C6 RID: 1990 RVA: 0x0003D19C File Offset: 0x0003B39C
+	// Token: 0x060007C7 RID: 1991 RVA: 0x0003D250 File Offset: 0x0003B450
 	private void UpdateStats(float dt)
 	{
 		this.m_statTimer += dt;
@@ -360,7 +360,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007C7 RID: 1991 RVA: 0x0003D1F8 File Offset: 0x0003B3F8
+	// Token: 0x060007C8 RID: 1992 RVA: 0x0003D2AC File Offset: 0x0003B4AC
 	private void SendZDOToPeers(float dt)
 	{
 		this.m_sendTimer += dt;
@@ -374,7 +374,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007C8 RID: 1992 RVA: 0x0003D274 File Offset: 0x0003B474
+	// Token: 0x060007C9 RID: 1993 RVA: 0x0003D328 File Offset: 0x0003B528
 	private void FlushClientObjects()
 	{
 		foreach (ZDOMan.ZDOPeer peer in this.m_peers)
@@ -383,7 +383,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007C9 RID: 1993 RVA: 0x0003D2C8 File Offset: 0x0003B4C8
+	// Token: 0x060007CA RID: 1994 RVA: 0x0003D37C File Offset: 0x0003B57C
 	private void ReleaseZDOS(float dt)
 	{
 		this.m_releaseZDOTimer += dt;
@@ -398,7 +398,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007CA RID: 1994 RVA: 0x0003D36C File Offset: 0x0003B56C
+	// Token: 0x060007CB RID: 1995 RVA: 0x0003D420 File Offset: 0x0003B620
 	private bool IsInPeerActiveArea(Vector2i sector, long uid)
 	{
 		if (uid == this.m_myid)
@@ -409,7 +409,7 @@ public class ZDOMan
 		return peer != null && ZNetScene.instance.InActiveArea(sector, peer.GetRefPos());
 	}
 
-	// Token: 0x060007CB RID: 1995 RVA: 0x0003D3BC File Offset: 0x0003B5BC
+	// Token: 0x060007CC RID: 1996 RVA: 0x0003D470 File Offset: 0x0003B670
 	private void ReleaseNearbyZDOS(Vector3 refPosition, long uid)
 	{
 		Vector2i zone = ZoneSystem.instance.GetZone(refPosition);
@@ -434,7 +434,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007CC RID: 1996 RVA: 0x0003D49C File Offset: 0x0003B69C
+	// Token: 0x060007CD RID: 1997 RVA: 0x0003D550 File Offset: 0x0003B750
 	public void DestroyZDO(ZDO zdo)
 	{
 		if (!zdo.IsOwner())
@@ -444,7 +444,7 @@ public class ZDOMan
 		this.m_destroySendList.Add(zdo.m_uid);
 	}
 
-	// Token: 0x060007CD RID: 1997 RVA: 0x0003D4B8 File Offset: 0x0003B6B8
+	// Token: 0x060007CE RID: 1998 RVA: 0x0003D56C File Offset: 0x0003B76C
 	private void SendDestroyed()
 	{
 		if (this.m_destroySendList.Count == 0)
@@ -464,7 +464,7 @@ public class ZDOMan
 		});
 	}
 
-	// Token: 0x060007CE RID: 1998 RVA: 0x0003D55C File Offset: 0x0003B75C
+	// Token: 0x060007CF RID: 1999 RVA: 0x0003D610 File Offset: 0x0003B810
 	private void RPC_DestroyZDO(long sender, ZPackage pkg)
 	{
 		int num = pkg.ReadInt();
@@ -475,7 +475,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007CF RID: 1999 RVA: 0x0003D58C File Offset: 0x0003B78C
+	// Token: 0x060007D0 RID: 2000 RVA: 0x0003D640 File Offset: 0x0003B840
 	private void HandleDestroyedZDO(ZDOID uid)
 	{
 		if (uid.userID == this.m_myid && uid.id >= this.m_nextUid)
@@ -505,7 +505,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007D0 RID: 2000 RVA: 0x0003D684 File Offset: 0x0003B884
+	// Token: 0x060007D1 RID: 2001 RVA: 0x0003D738 File Offset: 0x0003B938
 	private void SendAllZDOs(ZDOMan.ZDOPeer peer)
 	{
 		while (this.SendZDOs(peer, true))
@@ -513,7 +513,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007D1 RID: 2001 RVA: 0x0003D690 File Offset: 0x0003B890
+	// Token: 0x060007D2 RID: 2002 RVA: 0x0003D744 File Offset: 0x0003B944
 	private bool SendZDOs(ZDOMan.ZDOPeer peer, bool flush)
 	{
 		int sendQueueSize = peer.m_peer.m_socket.GetSendQueueSize();
@@ -587,7 +587,7 @@ public class ZDOMan
 		return flag2 || flag;
 	}
 
-	// Token: 0x060007D2 RID: 2002 RVA: 0x0003D8D8 File Offset: 0x0003BAD8
+	// Token: 0x060007D3 RID: 2003 RVA: 0x0003D98C File Offset: 0x0003BB8C
 	private void RPC_ZDOData(ZRpc rpc, ZPackage pkg)
 	{
 		ZDOMan.ZDOPeer zdopeer = this.FindPeer(rpc);
@@ -658,7 +658,7 @@ public class ZDOMan
 		this.m_zdosRecv += num;
 	}
 
-	// Token: 0x060007D3 RID: 2003 RVA: 0x0003DA80 File Offset: 0x0003BC80
+	// Token: 0x060007D4 RID: 2004 RVA: 0x0003DB34 File Offset: 0x0003BD34
 	public void FindSectorObjects(Vector2i sector, int area, int distantArea, List<ZDO> sectorObjects, List<ZDO> distantSectorObjects = null)
 	{
 		this.FindObjects(sector, sectorObjects);
@@ -691,7 +691,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007D4 RID: 2004 RVA: 0x0003DC00 File Offset: 0x0003BE00
+	// Token: 0x060007D5 RID: 2005 RVA: 0x0003DCB4 File Offset: 0x0003BEB4
 	public void FindSectorObjects(Vector2i sector, int area, List<ZDO> sectorObjects)
 	{
 		for (int i = sector.y - area; i <= sector.y + area; i++)
@@ -704,7 +704,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007D5 RID: 2005 RVA: 0x0003DC54 File Offset: 0x0003BE54
+	// Token: 0x060007D6 RID: 2006 RVA: 0x0003DD08 File Offset: 0x0003BF08
 	private void CreateSyncList(ZDOMan.ZDOPeer peer, List<ZDO> toSync)
 	{
 		if (ZNet.instance.IsServer())
@@ -739,7 +739,7 @@ public class ZDOMan
 		this.AddForceSendZdos(peer, toSync);
 	}
 
-	// Token: 0x060007D6 RID: 2006 RVA: 0x0003DD98 File Offset: 0x0003BF98
+	// Token: 0x060007D7 RID: 2007 RVA: 0x0003DE4C File Offset: 0x0003C04C
 	private void AddForceSendZdos(ZDOMan.ZDOPeer peer, List<ZDO> syncList)
 	{
 		if (peer.m_forceSend.Count > 0)
@@ -764,7 +764,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007D7 RID: 2007 RVA: 0x0003DE6C File Offset: 0x0003C06C
+	// Token: 0x060007D8 RID: 2008 RVA: 0x0003DF20 File Offset: 0x0003C120
 	private static int ServerSendCompare(ZDO x, ZDO y)
 	{
 		bool flag = x.m_owner != ZDOMan.compareReceiver;
@@ -822,7 +822,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007D8 RID: 2008 RVA: 0x0003DF68 File Offset: 0x0003C168
+	// Token: 0x060007D9 RID: 2009 RVA: 0x0003E01C File Offset: 0x0003C21C
 	private void ServerSortSendZDOS(List<ZDO> objects, Vector3 refPos, ZDOMan.ZDOPeer peer)
 	{
 		float time = Time.time;
@@ -848,7 +848,7 @@ public class ZDOMan
 		objects.Sort(new Comparison<ZDO>(ZDOMan.ServerSendCompare));
 	}
 
-	// Token: 0x060007D9 RID: 2009 RVA: 0x0003E02C File Offset: 0x0003C22C
+	// Token: 0x060007DA RID: 2010 RVA: 0x0003E0E0 File Offset: 0x0003C2E0
 	private static int ClientSendCompare(ZDO x, ZDO y)
 	{
 		if (x.m_type == y.m_type)
@@ -866,7 +866,7 @@ public class ZDOMan
 		return x.m_tempSortValue.CompareTo(y.m_tempSortValue);
 	}
 
-	// Token: 0x060007DA RID: 2010 RVA: 0x0003E080 File Offset: 0x0003C280
+	// Token: 0x060007DB RID: 2011 RVA: 0x0003E134 File Offset: 0x0003C334
 	private void ClientSortSendZDOS(List<ZDO> objects, ZDOMan.ZDOPeer peer)
 	{
 		float time = Time.time;
@@ -885,7 +885,7 @@ public class ZDOMan
 		objects.Sort(new Comparison<ZDO>(ZDOMan.ClientSendCompare));
 	}
 
-	// Token: 0x060007DB RID: 2011 RVA: 0x0003E114 File Offset: 0x0003C314
+	// Token: 0x060007DC RID: 2012 RVA: 0x0003E1C8 File Offset: 0x0003C3C8
 	private void PrintZdoList(List<ZDO> zdos)
 	{
 		ZLog.Log("Sync list " + zdos.Count);
@@ -913,7 +913,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007DC RID: 2012 RVA: 0x0003E1F8 File Offset: 0x0003C3F8
+	// Token: 0x060007DD RID: 2013 RVA: 0x0003E2AC File Offset: 0x0003C4AC
 	private void AddDistantObjects(ZDOMan.ZDOPeer peer, int maxItems, List<ZDO> toSync)
 	{
 		if (peer.m_sendIndex >= this.m_objectsByID.Count)
@@ -928,13 +928,13 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007DD RID: 2013 RVA: 0x0003E284 File Offset: 0x0003C484
+	// Token: 0x060007DE RID: 2014 RVA: 0x0003E338 File Offset: 0x0003C538
 	public long GetMyID()
 	{
 		return this.m_myid;
 	}
 
-	// Token: 0x060007DE RID: 2014 RVA: 0x0003E28C File Offset: 0x0003C48C
+	// Token: 0x060007DF RID: 2015 RVA: 0x0003E340 File Offset: 0x0003C540
 	private int SectorToIndex(Vector2i s)
 	{
 		int num = s.x + this.m_halfWidth;
@@ -946,7 +946,7 @@ public class ZDOMan
 		return num2 * this.m_width + num;
 	}
 
-	// Token: 0x060007DF RID: 2015 RVA: 0x0003E2DC File Offset: 0x0003C4DC
+	// Token: 0x060007E0 RID: 2016 RVA: 0x0003E390 File Offset: 0x0003C590
 	private void FindObjects(Vector2i sector, List<ZDO> objects)
 	{
 		int num = this.SectorToIndex(sector);
@@ -965,7 +965,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007E0 RID: 2016 RVA: 0x0003E328 File Offset: 0x0003C528
+	// Token: 0x060007E1 RID: 2017 RVA: 0x0003E3DC File Offset: 0x0003C5DC
 	private void FindDistantObjects(Vector2i sector, List<ZDO> objects)
 	{
 		int num = this.SectorToIndex(sector);
@@ -999,7 +999,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007E1 RID: 2017 RVA: 0x0003E3B8 File Offset: 0x0003C5B8
+	// Token: 0x060007E2 RID: 2018 RVA: 0x0003E46C File Offset: 0x0003C66C
 	private void RemoveOrphanNonPersistentZDOS()
 	{
 		foreach (KeyValuePair<ZDOID, ZDO> keyValuePair in this.m_objectsByID)
@@ -1020,7 +1020,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007E2 RID: 2018 RVA: 0x0003E47C File Offset: 0x0003C67C
+	// Token: 0x060007E3 RID: 2019 RVA: 0x0003E530 File Offset: 0x0003C730
 	private bool IsPeerConnected(long uid)
 	{
 		if (this.m_myid == uid)
@@ -1040,7 +1040,7 @@ public class ZDOMan
 		return false;
 	}
 
-	// Token: 0x060007E3 RID: 2019 RVA: 0x0003E4E8 File Offset: 0x0003C6E8
+	// Token: 0x060007E4 RID: 2020 RVA: 0x0003E59C File Offset: 0x0003C79C
 	public void GetAllZDOsWithPrefab(string prefab, List<ZDO> zdos)
 	{
 		int stableHashCode = prefab.GetStableHashCode();
@@ -1053,13 +1053,13 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007E4 RID: 2020 RVA: 0x0003E550 File Offset: 0x0003C750
+	// Token: 0x060007E5 RID: 2021 RVA: 0x0003E604 File Offset: 0x0003C804
 	private static bool InvalidZDO(ZDO zdo)
 	{
 		return !zdo.IsValid();
 	}
 
-	// Token: 0x060007E5 RID: 2021 RVA: 0x0003E55C File Offset: 0x0003C75C
+	// Token: 0x060007E6 RID: 2022 RVA: 0x0003E610 File Offset: 0x0003C810
 	public bool GetAllZDOsWithPrefabIterative(string prefab, List<ZDO> zdos, ref int index)
 	{
 		int stableHashCode = prefab.GetStableHashCode();
@@ -1102,7 +1102,7 @@ public class ZDOMan
 		return false;
 	}
 
-	// Token: 0x060007E6 RID: 2022 RVA: 0x0003E69C File Offset: 0x0003C89C
+	// Token: 0x060007E7 RID: 2023 RVA: 0x0003E750 File Offset: 0x0003C950
 	private List<ZDO> GetSaveClone()
 	{
 		List<ZDO> list = new List<ZDO>();
@@ -1132,38 +1132,38 @@ public class ZDOMan
 		return list;
 	}
 
-	// Token: 0x060007E7 RID: 2023 RVA: 0x0003E7B0 File Offset: 0x0003C9B0
+	// Token: 0x060007E8 RID: 2024 RVA: 0x0003E864 File Offset: 0x0003CA64
 	public int NrOfObjects()
 	{
 		return this.m_objectsByID.Count;
 	}
 
-	// Token: 0x060007E8 RID: 2024 RVA: 0x0003E7BD File Offset: 0x0003C9BD
+	// Token: 0x060007E9 RID: 2025 RVA: 0x0003E871 File Offset: 0x0003CA71
 	public int GetSentZDOs()
 	{
 		return this.m_zdosSentLastSec;
 	}
 
-	// Token: 0x060007E9 RID: 2025 RVA: 0x0003E7C5 File Offset: 0x0003C9C5
+	// Token: 0x060007EA RID: 2026 RVA: 0x0003E879 File Offset: 0x0003CA79
 	public int GetRecvZDOs()
 	{
 		return this.m_zdosRecvLastSec;
 	}
 
-	// Token: 0x060007EA RID: 2026 RVA: 0x0003E7CD File Offset: 0x0003C9CD
+	// Token: 0x060007EB RID: 2027 RVA: 0x0003E881 File Offset: 0x0003CA81
 	public void GetAverageStats(out float sentZdos, out float recvZdos)
 	{
 		sentZdos = (float)this.m_zdosSentLastSec / 20f;
 		recvZdos = (float)this.m_zdosRecvLastSec / 20f;
 	}
 
-	// Token: 0x060007EB RID: 2027 RVA: 0x0003E7ED File Offset: 0x0003C9ED
+	// Token: 0x060007EC RID: 2028 RVA: 0x0003E8A1 File Offset: 0x0003CAA1
 	public int GetClientChangeQueue()
 	{
 		return this.m_clientChangeQueue.Count;
 	}
 
-	// Token: 0x060007EC RID: 2028 RVA: 0x0003E7FA File Offset: 0x0003C9FA
+	// Token: 0x060007ED RID: 2029 RVA: 0x0003E8AE File Offset: 0x0003CAAE
 	public void RequestZDO(ZDOID id)
 	{
 		ZRoutedRpc.instance.InvokeRoutedRPC("RequestZDO", new object[]
@@ -1172,7 +1172,7 @@ public class ZDOMan
 		});
 	}
 
-	// Token: 0x060007ED RID: 2029 RVA: 0x0003E81C File Offset: 0x0003CA1C
+	// Token: 0x060007EE RID: 2030 RVA: 0x0003E8D0 File Offset: 0x0003CAD0
 	private void RPC_RequestZDO(long sender, ZDOID id)
 	{
 		ZDOMan.ZDOPeer peer = this.GetPeer(sender);
@@ -1182,7 +1182,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007EE RID: 2030 RVA: 0x0003E83C File Offset: 0x0003CA3C
+	// Token: 0x060007EF RID: 2031 RVA: 0x0003E8F0 File Offset: 0x0003CAF0
 	private ZDOMan.ZDOPeer GetPeer(long uid)
 	{
 		foreach (ZDOMan.ZDOPeer zdopeer in this.m_peers)
@@ -1195,7 +1195,7 @@ public class ZDOMan
 		return null;
 	}
 
-	// Token: 0x060007EF RID: 2031 RVA: 0x0003E8A0 File Offset: 0x0003CAA0
+	// Token: 0x060007F0 RID: 2032 RVA: 0x0003E954 File Offset: 0x0003CB54
 	public void ForceSendZDO(ZDOID id)
 	{
 		foreach (ZDOMan.ZDOPeer zdopeer in this.m_peers)
@@ -1204,7 +1204,7 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007F0 RID: 2032 RVA: 0x0003E8F4 File Offset: 0x0003CAF4
+	// Token: 0x060007F1 RID: 2033 RVA: 0x0003E9A8 File Offset: 0x0003CBA8
 	public void ForceSendZDO(long peerID, ZDOID id)
 	{
 		if (ZNet.instance.IsServer())
@@ -1225,100 +1225,100 @@ public class ZDOMan
 		}
 	}
 
-	// Token: 0x060007F1 RID: 2033 RVA: 0x0003E964 File Offset: 0x0003CB64
+	// Token: 0x060007F2 RID: 2034 RVA: 0x0003EA18 File Offset: 0x0003CC18
 	public void ClientChanged(ZDOID id)
 	{
 		this.m_clientChangeQueue.Add(id);
 	}
 
-	// Token: 0x040007D6 RID: 2006
+	// Token: 0x040007DA RID: 2010
 	private static long compareReceiver;
 
-	// Token: 0x040007D7 RID: 2007
+	// Token: 0x040007DB RID: 2011
 	public Action<ZDO> m_onZDODestroyed;
 
-	// Token: 0x040007D8 RID: 2008
+	// Token: 0x040007DC RID: 2012
 	private Dictionary<ZDOID, ZDO> m_objectsByID = new Dictionary<ZDOID, ZDO>();
 
-	// Token: 0x040007D9 RID: 2009
+	// Token: 0x040007DD RID: 2013
 	private List<ZDO>[] m_objectsBySector;
 
-	// Token: 0x040007DA RID: 2010
+	// Token: 0x040007DE RID: 2014
 	private Dictionary<Vector2i, List<ZDO>> m_objectsByOutsideSector = new Dictionary<Vector2i, List<ZDO>>();
 
-	// Token: 0x040007DB RID: 2011
+	// Token: 0x040007DF RID: 2015
 	private List<ZDOMan.ZDOPeer> m_peers = new List<ZDOMan.ZDOPeer>();
 
-	// Token: 0x040007DC RID: 2012
+	// Token: 0x040007E0 RID: 2016
 	private const int m_maxDeadZDOs = 100000;
 
-	// Token: 0x040007DD RID: 2013
+	// Token: 0x040007E1 RID: 2017
 	private Dictionary<ZDOID, long> m_deadZDOs = new Dictionary<ZDOID, long>();
 
-	// Token: 0x040007DE RID: 2014
+	// Token: 0x040007E2 RID: 2018
 	private List<ZDOID> m_destroySendList = new List<ZDOID>();
 
-	// Token: 0x040007DF RID: 2015
+	// Token: 0x040007E3 RID: 2019
 	private HashSet<ZDOID> m_clientChangeQueue = new HashSet<ZDOID>();
 
-	// Token: 0x040007E0 RID: 2016
+	// Token: 0x040007E4 RID: 2020
 	private long m_myid;
 
-	// Token: 0x040007E1 RID: 2017
+	// Token: 0x040007E5 RID: 2021
 	private uint m_nextUid = 1U;
 
-	// Token: 0x040007E2 RID: 2018
+	// Token: 0x040007E6 RID: 2022
 	private int m_width;
 
-	// Token: 0x040007E3 RID: 2019
+	// Token: 0x040007E7 RID: 2023
 	private int m_halfWidth;
 
-	// Token: 0x040007E4 RID: 2020
+	// Token: 0x040007E8 RID: 2024
 	private float m_sendTimer;
 
-	// Token: 0x040007E5 RID: 2021
+	// Token: 0x040007E9 RID: 2025
 	private const float m_sendFPS = 20f;
 
-	// Token: 0x040007E6 RID: 2022
+	// Token: 0x040007EA RID: 2026
 	private float m_releaseZDOTimer;
 
-	// Token: 0x040007E7 RID: 2023
+	// Token: 0x040007EB RID: 2027
 	private static ZDOMan m_instance;
 
-	// Token: 0x040007E8 RID: 2024
+	// Token: 0x040007EC RID: 2028
 	private int m_zdosSent;
 
-	// Token: 0x040007E9 RID: 2025
+	// Token: 0x040007ED RID: 2029
 	private int m_zdosRecv;
 
-	// Token: 0x040007EA RID: 2026
+	// Token: 0x040007EE RID: 2030
 	private int m_zdosSentLastSec;
 
-	// Token: 0x040007EB RID: 2027
+	// Token: 0x040007EF RID: 2031
 	private int m_zdosRecvLastSec;
 
-	// Token: 0x040007EC RID: 2028
+	// Token: 0x040007F0 RID: 2032
 	private float m_statTimer;
 
-	// Token: 0x040007ED RID: 2029
+	// Token: 0x040007F1 RID: 2033
 	private List<ZDO> m_tempToSync = new List<ZDO>();
 
-	// Token: 0x040007EE RID: 2030
+	// Token: 0x040007F2 RID: 2034
 	private List<ZDO> m_tempToSyncDistant = new List<ZDO>();
 
-	// Token: 0x040007EF RID: 2031
+	// Token: 0x040007F3 RID: 2035
 	private List<ZDO> m_tempNearObjects = new List<ZDO>();
 
-	// Token: 0x040007F0 RID: 2032
+	// Token: 0x040007F4 RID: 2036
 	private List<ZDOID> m_tempRemoveList = new List<ZDOID>();
 
-	// Token: 0x040007F1 RID: 2033
+	// Token: 0x040007F5 RID: 2037
 	private ZDOMan.SaveData m_saveData;
 
 	// Token: 0x02000169 RID: 361
 	private class ZDOPeer
 	{
-		// Token: 0x06001150 RID: 4432 RVA: 0x00078460 File Offset: 0x00076660
+		// Token: 0x06001151 RID: 4433 RVA: 0x000785E8 File Offset: 0x000767E8
 		public void ZDOSectorInvalidated(ZDO zdo)
 		{
 			if (zdo.m_owner == this.m_peer.m_uid)
@@ -1332,38 +1332,38 @@ public class ZDOMan
 			}
 		}
 
-		// Token: 0x06001151 RID: 4433 RVA: 0x000784D5 File Offset: 0x000766D5
+		// Token: 0x06001152 RID: 4434 RVA: 0x0007865D File Offset: 0x0007685D
 		public void ForceSendZDO(ZDOID id)
 		{
 			this.m_forceSend.Add(id);
 		}
 
-		// Token: 0x06001152 RID: 4434 RVA: 0x000784E4 File Offset: 0x000766E4
+		// Token: 0x06001153 RID: 4435 RVA: 0x0007866C File Offset: 0x0007686C
 		public bool ShouldSend(ZDO zdo)
 		{
 			ZDOMan.ZDOPeer.PeerZDOInfo peerZDOInfo;
 			return !this.m_zdos.TryGetValue(zdo.m_uid, out peerZDOInfo) || (ulong)zdo.m_ownerRevision > (ulong)peerZDOInfo.m_ownerRevision || zdo.m_dataRevision > peerZDOInfo.m_dataRevision;
 		}
 
-		// Token: 0x04001160 RID: 4448
+		// Token: 0x04001167 RID: 4455
 		public ZNetPeer m_peer;
 
-		// Token: 0x04001161 RID: 4449
+		// Token: 0x04001168 RID: 4456
 		public Dictionary<ZDOID, ZDOMan.ZDOPeer.PeerZDOInfo> m_zdos = new Dictionary<ZDOID, ZDOMan.ZDOPeer.PeerZDOInfo>();
 
-		// Token: 0x04001162 RID: 4450
+		// Token: 0x04001169 RID: 4457
 		public HashSet<ZDOID> m_forceSend = new HashSet<ZDOID>();
 
-		// Token: 0x04001163 RID: 4451
+		// Token: 0x0400116A RID: 4458
 		public HashSet<ZDOID> m_invalidSector = new HashSet<ZDOID>();
 
-		// Token: 0x04001164 RID: 4452
+		// Token: 0x0400116B RID: 4459
 		public int m_sendIndex;
 
 		// Token: 0x020001C4 RID: 452
 		public struct PeerZDOInfo
 		{
-			// Token: 0x060011E2 RID: 4578 RVA: 0x0007A6F2 File Offset: 0x000788F2
+			// Token: 0x060011E3 RID: 4579 RVA: 0x0007A87A File Offset: 0x00078A7A
 			public PeerZDOInfo(uint dataRevision, uint ownerRevision, float syncTime)
 			{
 				this.m_dataRevision = dataRevision;
@@ -1371,13 +1371,13 @@ public class ZDOMan
 				this.m_syncTime = syncTime;
 			}
 
-			// Token: 0x040013BF RID: 5055
+			// Token: 0x040013C6 RID: 5062
 			public uint m_dataRevision;
 
-			// Token: 0x040013C0 RID: 5056
+			// Token: 0x040013C7 RID: 5063
 			public long m_ownerRevision;
 
-			// Token: 0x040013C1 RID: 5057
+			// Token: 0x040013C8 RID: 5064
 			public float m_syncTime;
 		}
 	}
@@ -1385,16 +1385,16 @@ public class ZDOMan
 	// Token: 0x0200016A RID: 362
 	private class SaveData
 	{
-		// Token: 0x04001165 RID: 4453
+		// Token: 0x0400116C RID: 4460
 		public long m_myid;
 
-		// Token: 0x04001166 RID: 4454
+		// Token: 0x0400116D RID: 4461
 		public uint m_nextUid = 1U;
 
-		// Token: 0x04001167 RID: 4455
+		// Token: 0x0400116E RID: 4462
 		public List<ZDO> m_zdos;
 
-		// Token: 0x04001168 RID: 4456
+		// Token: 0x0400116F RID: 4463
 		public Dictionary<ZDOID, long> m_deadZDOs;
 	}
 }

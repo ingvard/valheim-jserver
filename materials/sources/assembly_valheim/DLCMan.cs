@@ -7,7 +7,7 @@ using UnityEngine;
 public class DLCMan : MonoBehaviour
 {
 	// Token: 0x17000023 RID: 35
-	// (get) Token: 0x06000A08 RID: 2568 RVA: 0x00048B1E File Offset: 0x00046D1E
+	// (get) Token: 0x06000A09 RID: 2569 RVA: 0x00048BCA File Offset: 0x00046DCA
 	public static DLCMan instance
 	{
 		get
@@ -16,14 +16,14 @@ public class DLCMan : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A09 RID: 2569 RVA: 0x00048B25 File Offset: 0x00046D25
+	// Token: 0x06000A0A RID: 2570 RVA: 0x00048BD1 File Offset: 0x00046DD1
 	private void Awake()
 	{
 		DLCMan.m_instance = this;
 		this.CheckDLCsSTEAM();
 	}
 
-	// Token: 0x06000A0A RID: 2570 RVA: 0x00048B33 File Offset: 0x00046D33
+	// Token: 0x06000A0B RID: 2571 RVA: 0x00048BDF File Offset: 0x00046DDF
 	private void OnDestroy()
 	{
 		if (DLCMan.m_instance == this)
@@ -32,7 +32,7 @@ public class DLCMan : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A0B RID: 2571 RVA: 0x00048B48 File Offset: 0x00046D48
+	// Token: 0x06000A0C RID: 2572 RVA: 0x00048BF4 File Offset: 0x00046DF4
 	public bool IsDLCInstalled(string name)
 	{
 		if (name.Length == 0)
@@ -50,7 +50,7 @@ public class DLCMan : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000A0C RID: 2572 RVA: 0x00048BD0 File Offset: 0x00046DD0
+	// Token: 0x06000A0D RID: 2573 RVA: 0x00048C7C File Offset: 0x00046E7C
 	private void CheckDLCsSTEAM()
 	{
 		if (!SteamManager.Initialized)
@@ -66,7 +66,7 @@ public class DLCMan : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A0D RID: 2573 RVA: 0x00048C6C File Offset: 0x00046E6C
+	// Token: 0x06000A0E RID: 2574 RVA: 0x00048D18 File Offset: 0x00046F18
 	private bool IsDLCInstalled(DLCMan.DLCInfo dlc)
 	{
 		foreach (uint id in dlc.m_steamAPPID)
@@ -79,7 +79,7 @@ public class DLCMan : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000A0E RID: 2574 RVA: 0x00048CA0 File Offset: 0x00046EA0
+	// Token: 0x06000A0F RID: 2575 RVA: 0x00048D4C File Offset: 0x00046F4C
 	private bool IsDLCInstalled(uint id)
 	{
 		AppId_t x = new AppId_t(id);
@@ -98,23 +98,23 @@ public class DLCMan : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x0400092D RID: 2349
+	// Token: 0x04000931 RID: 2353
 	private static DLCMan m_instance;
 
-	// Token: 0x0400092E RID: 2350
+	// Token: 0x04000932 RID: 2354
 	public List<DLCMan.DLCInfo> m_dlcs = new List<DLCMan.DLCInfo>();
 
 	// Token: 0x02000179 RID: 377
 	[Serializable]
 	public class DLCInfo
 	{
-		// Token: 0x04001191 RID: 4497
+		// Token: 0x04001198 RID: 4504
 		public string m_name = "DLC";
 
-		// Token: 0x04001192 RID: 4498
+		// Token: 0x04001199 RID: 4505
 		public uint[] m_steamAPPID = new uint[0];
 
-		// Token: 0x04001193 RID: 4499
+		// Token: 0x0400119A RID: 4506
 		[NonSerialized]
 		public bool m_installed;
 	}

@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x020000C6 RID: 198
 public class DropOnDestroyed : MonoBehaviour
 {
-	// Token: 0x06000CF1 RID: 3313 RVA: 0x0005C8EC File Offset: 0x0005AAEC
+	// Token: 0x06000CF2 RID: 3314 RVA: 0x0005CA74 File Offset: 0x0005AC74
 	private void Awake()
 	{
 		IDestructible component = base.GetComponent<IDestructible>();
@@ -23,7 +23,7 @@ public class DropOnDestroyed : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000CF2 RID: 3314 RVA: 0x0005C960 File Offset: 0x0005AB60
+	// Token: 0x06000CF3 RID: 3315 RVA: 0x0005CAE8 File Offset: 0x0005ACE8
 	private void OnDestroyed()
 	{
 		float groundHeight = ZoneSystem.instance.GetGroundHeight(base.transform.position);
@@ -42,13 +42,13 @@ public class DropOnDestroyed : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000BCE RID: 3022
+	// Token: 0x04000BD4 RID: 3028
 	[Header("Drops")]
 	public DropTable m_dropWhenDestroyed = new DropTable();
 
-	// Token: 0x04000BCF RID: 3023
+	// Token: 0x04000BD5 RID: 3029
 	public float m_spawnYOffset = 0.5f;
 
-	// Token: 0x04000BD0 RID: 3024
+	// Token: 0x04000BD6 RID: 3030
 	public float m_spawnYStep = 0.3f;
 }

@@ -4,14 +4,14 @@ using UnityEngine;
 // Token: 0x02000057 RID: 87
 public class KeyHints : MonoBehaviour
 {
-	// Token: 0x06000576 RID: 1398 RVA: 0x0002F25F File Offset: 0x0002D45F
+	// Token: 0x06000577 RID: 1399 RVA: 0x0002F313 File Offset: 0x0002D513
 	private void OnDestroy()
 	{
 		KeyHints.m_instance = null;
 	}
 
 	// Token: 0x1700000B RID: 11
-	// (get) Token: 0x06000577 RID: 1399 RVA: 0x0002F267 File Offset: 0x0002D467
+	// (get) Token: 0x06000578 RID: 1400 RVA: 0x0002F31B File Offset: 0x0002D51B
 	public static KeyHints instance
 	{
 		get
@@ -20,31 +20,31 @@ public class KeyHints : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000578 RID: 1400 RVA: 0x0002F26E File Offset: 0x0002D46E
+	// Token: 0x06000579 RID: 1401 RVA: 0x0002F322 File Offset: 0x0002D522
 	private void Awake()
 	{
 		KeyHints.m_instance = this;
 		this.ApplySettings();
 	}
 
-	// Token: 0x06000579 RID: 1401 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x0600057A RID: 1402 RVA: 0x000027E0 File Offset: 0x000009E0
 	private void Start()
 	{
 	}
 
-	// Token: 0x0600057A RID: 1402 RVA: 0x0002F27C File Offset: 0x0002D47C
+	// Token: 0x0600057B RID: 1403 RVA: 0x0002F330 File Offset: 0x0002D530
 	public void ApplySettings()
 	{
 		this.m_keyHintsEnabled = (PlayerPrefs.GetInt("KeyHints", 1) == 1);
 	}
 
-	// Token: 0x0600057B RID: 1403 RVA: 0x0002F296 File Offset: 0x0002D496
+	// Token: 0x0600057C RID: 1404 RVA: 0x0002F34A File Offset: 0x0002D54A
 	private void Update()
 	{
 		this.UpdateHints();
 	}
 
-	// Token: 0x0600057C RID: 1404 RVA: 0x0002F2A0 File Offset: 0x0002D4A0
+	// Token: 0x0600057D RID: 1405 RVA: 0x0002F354 File Offset: 0x0002D554
 	private void UpdateHints()
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -88,34 +88,34 @@ public class KeyHints : MonoBehaviour
 		this.m_combatHints.SetActive(false);
 	}
 
-	// Token: 0x0400061A RID: 1562
+	// Token: 0x0400061E RID: 1566
 	private static KeyHints m_instance;
 
-	// Token: 0x0400061B RID: 1563
+	// Token: 0x0400061F RID: 1567
 	[Header("Key hints")]
 	public GameObject m_buildHints;
 
-	// Token: 0x0400061C RID: 1564
+	// Token: 0x04000620 RID: 1568
 	public GameObject m_combatHints;
 
-	// Token: 0x0400061D RID: 1565
+	// Token: 0x04000621 RID: 1569
 	public GameObject m_primaryAttackGP;
 
-	// Token: 0x0400061E RID: 1566
+	// Token: 0x04000622 RID: 1570
 	public GameObject m_primaryAttackKB;
 
-	// Token: 0x0400061F RID: 1567
+	// Token: 0x04000623 RID: 1571
 	public GameObject m_secondaryAttackGP;
 
-	// Token: 0x04000620 RID: 1568
+	// Token: 0x04000624 RID: 1572
 	public GameObject m_secondaryAttackKB;
 
-	// Token: 0x04000621 RID: 1569
+	// Token: 0x04000625 RID: 1573
 	public GameObject m_bowDrawGP;
 
-	// Token: 0x04000622 RID: 1570
+	// Token: 0x04000626 RID: 1574
 	public GameObject m_bowDrawKB;
 
-	// Token: 0x04000623 RID: 1571
+	// Token: 0x04000627 RID: 1575
 	private bool m_keyHintsEnabled = true;
 }

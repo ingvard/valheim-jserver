@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x02000009 RID: 9
 public class Growup : MonoBehaviour
 {
-	// Token: 0x06000107 RID: 263 RVA: 0x00007D5E File Offset: 0x00005F5E
+	// Token: 0x06000108 RID: 264 RVA: 0x00007D9E File Offset: 0x00005F9E
 	private void Start()
 	{
 		this.m_baseAI = base.GetComponent<BaseAI>();
@@ -12,7 +12,7 @@ public class Growup : MonoBehaviour
 		base.InvokeRepeating("GrowUpdate", UnityEngine.Random.Range(10f, 15f), 10f);
 	}
 
-	// Token: 0x06000108 RID: 264 RVA: 0x00007D98 File Offset: 0x00005F98
+	// Token: 0x06000109 RID: 265 RVA: 0x00007DD8 File Offset: 0x00005FD8
 	private void GrowUpdate()
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -32,15 +32,15 @@ public class Growup : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040000E0 RID: 224
+	// Token: 0x040000E1 RID: 225
 	public float m_growTime = 60f;
 
-	// Token: 0x040000E1 RID: 225
+	// Token: 0x040000E2 RID: 226
 	public GameObject m_grownPrefab;
 
-	// Token: 0x040000E2 RID: 226
+	// Token: 0x040000E3 RID: 227
 	private BaseAI m_baseAI;
 
-	// Token: 0x040000E3 RID: 227
+	// Token: 0x040000E4 RID: 228
 	private ZNetView m_nview;
 }

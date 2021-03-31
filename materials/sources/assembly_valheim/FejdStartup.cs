@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class FejdStartup : MonoBehaviour
 {
 	// Token: 0x17000025 RID: 37
-	// (get) Token: 0x06000A50 RID: 2640 RVA: 0x0004AE5A File Offset: 0x0004905A
+	// (get) Token: 0x06000A51 RID: 2641 RVA: 0x0004AF06 File Offset: 0x00049106
 	public static FejdStartup instance
 	{
 		get
@@ -20,7 +20,7 @@ public class FejdStartup : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A51 RID: 2641 RVA: 0x0004AE64 File Offset: 0x00049064
+	// Token: 0x06000A52 RID: 2642 RVA: 0x0004AF10 File Offset: 0x00049110
 	private void Awake()
 	{
 		FejdStartup.m_instance = this;
@@ -43,13 +43,13 @@ public class FejdStartup : MonoBehaviour
 		this.InitializeSteam();
 	}
 
-	// Token: 0x06000A52 RID: 2642 RVA: 0x0004AF6A File Offset: 0x0004916A
+	// Token: 0x06000A53 RID: 2643 RVA: 0x0004B016 File Offset: 0x00049216
 	private void OnDestroy()
 	{
 		FejdStartup.m_instance = null;
 	}
 
-	// Token: 0x06000A53 RID: 2643 RVA: 0x0004AF74 File Offset: 0x00049174
+	// Token: 0x06000A54 RID: 2644 RVA: 0x0004B020 File Offset: 0x00049220
 	private void Start()
 	{
 		Application.targetFrameRate = 60;
@@ -82,7 +82,7 @@ public class FejdStartup : MonoBehaviour
 		this.UpdateCharacterList();
 	}
 
-	// Token: 0x06000A54 RID: 2644 RVA: 0x0004B050 File Offset: 0x00049250
+	// Token: 0x06000A55 RID: 2645 RVA: 0x0004B0FC File Offset: 0x000492FC
 	private void SetupGui()
 	{
 		this.HideAll();
@@ -103,7 +103,7 @@ public class FejdStartup : MonoBehaviour
 		Localization.instance.Localize(base.transform);
 	}
 
-	// Token: 0x06000A55 RID: 2645 RVA: 0x0004B11C File Offset: 0x0004931C
+	// Token: 0x06000A56 RID: 2646 RVA: 0x0004B1C8 File Offset: 0x000493C8
 	private void HideAll()
 	{
 		this.m_worldVersionPanel.SetActive(false);
@@ -120,7 +120,7 @@ public class FejdStartup : MonoBehaviour
 		this.m_betaText.SetActive(false);
 	}
 
-	// Token: 0x06000A56 RID: 2646 RVA: 0x0004B1BC File Offset: 0x000493BC
+	// Token: 0x06000A57 RID: 2647 RVA: 0x0004B268 File Offset: 0x00049468
 	private bool InitializeSteam()
 	{
 		if (SteamManager.Initialize())
@@ -134,7 +134,7 @@ public class FejdStartup : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000A57 RID: 2647 RVA: 0x0004B1F8 File Offset: 0x000493F8
+	// Token: 0x06000A58 RID: 2648 RVA: 0x0004B2A4 File Offset: 0x000494A4
 	private void HandleStartupJoin()
 	{
 		string[] commandLineArgs = Environment.GetCommandLineArgs();
@@ -156,7 +156,7 @@ public class FejdStartup : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A58 RID: 2648 RVA: 0x0004B28C File Offset: 0x0004948C
+	// Token: 0x06000A59 RID: 2649 RVA: 0x0004B338 File Offset: 0x00049538
 	private void ParseArguments()
 	{
 		string[] commandLineArgs = Environment.GetCommandLineArgs();
@@ -169,7 +169,7 @@ public class FejdStartup : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A59 RID: 2649 RVA: 0x0004B2C4 File Offset: 0x000494C4
+	// Token: 0x06000A5A RID: 2650 RVA: 0x0004B370 File Offset: 0x00049570
 	private bool ParseServerArguments()
 	{
 		string[] commandLineArgs = Environment.GetCommandLineArgs();
@@ -247,7 +247,7 @@ public class FejdStartup : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000A5A RID: 2650 RVA: 0x0004B48C File Offset: 0x0004968C
+	// Token: 0x06000A5B RID: 2651 RVA: 0x0004B538 File Offset: 0x00049738
 	private void SetupObjectDB()
 	{
 		ObjectDB objectDB = base.gameObject.AddComponent<ObjectDB>();
@@ -255,7 +255,7 @@ public class FejdStartup : MonoBehaviour
 		objectDB.CopyOtherDB(component);
 	}
 
-	// Token: 0x06000A5B RID: 2651 RVA: 0x0004B4B8 File Offset: 0x000496B8
+	// Token: 0x06000A5C RID: 2652 RVA: 0x0004B564 File Offset: 0x00049764
 	private void ShowConnectError()
 	{
 		ZNet.ConnectionStatus connectionStatus = ZNet.GetConnectionStatus();
@@ -291,20 +291,20 @@ public class FejdStartup : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A5C RID: 2652 RVA: 0x0004B5CC File Offset: 0x000497CC
+	// Token: 0x06000A5D RID: 2653 RVA: 0x0004B678 File Offset: 0x00049878
 	public void OnNewVersionButtonDownload()
 	{
 		Application.OpenURL(this.m_downloadUrl);
 		Application.Quit();
 	}
 
-	// Token: 0x06000A5D RID: 2653 RVA: 0x0004B5DE File Offset: 0x000497DE
+	// Token: 0x06000A5E RID: 2654 RVA: 0x0004B68A File Offset: 0x0004988A
 	public void OnNewVersionButtonContinue()
 	{
 		this.m_newGameVersionPanel.SetActive(false);
 	}
 
-	// Token: 0x06000A5E RID: 2654 RVA: 0x0004B5EC File Offset: 0x000497EC
+	// Token: 0x06000A5F RID: 2655 RVA: 0x0004B698 File Offset: 0x00049898
 	public void OnStartGame()
 	{
 		Gogan.LogEvent("Screen", "Enter", "StartGame", 0L);
@@ -312,7 +312,7 @@ public class FejdStartup : MonoBehaviour
 		this.ShowCharacterSelection();
 	}
 
-	// Token: 0x06000A5F RID: 2655 RVA: 0x0004B616 File Offset: 0x00049816
+	// Token: 0x06000A60 RID: 2656 RVA: 0x0004B6C2 File Offset: 0x000498C2
 	private void ShowStartGame()
 	{
 		this.m_mainMenu.SetActive(false);
@@ -320,7 +320,7 @@ public class FejdStartup : MonoBehaviour
 		this.m_createWorldPanel.SetActive(false);
 	}
 
-	// Token: 0x06000A60 RID: 2656 RVA: 0x0004B63C File Offset: 0x0004983C
+	// Token: 0x06000A61 RID: 2657 RVA: 0x0004B6E8 File Offset: 0x000498E8
 	public void OnSelectWorldTab()
 	{
 		this.UpdateWorldList(true);
@@ -342,7 +342,7 @@ public class FejdStartup : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A61 RID: 2657 RVA: 0x0004B6B4 File Offset: 0x000498B4
+	// Token: 0x06000A62 RID: 2658 RVA: 0x0004B760 File Offset: 0x00049960
 	private World FindWorld(string name)
 	{
 		foreach (World world in this.m_worlds)
@@ -355,7 +355,7 @@ public class FejdStartup : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000A62 RID: 2658 RVA: 0x0004B718 File Offset: 0x00049918
+	// Token: 0x06000A63 RID: 2659 RVA: 0x0004B7C4 File Offset: 0x000499C4
 	private void UpdateWorldList(bool centerSelection)
 	{
 		this.m_worlds = World.GetWorldList();
@@ -396,7 +396,7 @@ public class FejdStartup : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A63 RID: 2659 RVA: 0x0004B918 File Offset: 0x00049B18
+	// Token: 0x06000A64 RID: 2660 RVA: 0x0004B9C4 File Offset: 0x00049BC4
 	public void OnWorldRemove()
 	{
 		if (this.m_world == null)
@@ -407,7 +407,7 @@ public class FejdStartup : MonoBehaviour
 		this.m_removeWorldDialog.SetActive(true);
 	}
 
-	// Token: 0x06000A64 RID: 2660 RVA: 0x0004B945 File Offset: 0x00049B45
+	// Token: 0x06000A65 RID: 2661 RVA: 0x0004B9F1 File Offset: 0x00049BF1
 	public void OnButtonRemoveWorldYes()
 	{
 		World.RemoveWorld(this.m_world.m_name);
@@ -416,13 +416,13 @@ public class FejdStartup : MonoBehaviour
 		this.m_removeWorldDialog.SetActive(false);
 	}
 
-	// Token: 0x06000A65 RID: 2661 RVA: 0x0004B972 File Offset: 0x00049B72
+	// Token: 0x06000A66 RID: 2662 RVA: 0x0004BA1E File Offset: 0x00049C1E
 	public void OnButtonRemoveWorldNo()
 	{
 		this.m_removeWorldDialog.SetActive(false);
 	}
 
-	// Token: 0x06000A66 RID: 2662 RVA: 0x0004B980 File Offset: 0x00049B80
+	// Token: 0x06000A67 RID: 2663 RVA: 0x0004BA2C File Offset: 0x00049C2C
 	private void OnSelectWorld()
 	{
 		GameObject currentSelectedGameObject = EventSystem.current.currentSelectedGameObject;
@@ -430,7 +430,7 @@ public class FejdStartup : MonoBehaviour
 		this.SetSelectedWorld(index, false);
 	}
 
-	// Token: 0x06000A67 RID: 2663 RVA: 0x0004B9A8 File Offset: 0x00049BA8
+	// Token: 0x06000A68 RID: 2664 RVA: 0x0004BA54 File Offset: 0x00049C54
 	private void SetSelectedWorld(int index, bool centerSelection)
 	{
 		if (this.m_worlds.Count == 0)
@@ -442,7 +442,7 @@ public class FejdStartup : MonoBehaviour
 		this.UpdateWorldList(centerSelection);
 	}
 
-	// Token: 0x06000A68 RID: 2664 RVA: 0x0004B9E8 File Offset: 0x00049BE8
+	// Token: 0x06000A69 RID: 2665 RVA: 0x0004BA94 File Offset: 0x00049C94
 	private int GetSelectedWorld()
 	{
 		if (this.m_world == null)
@@ -459,7 +459,7 @@ public class FejdStartup : MonoBehaviour
 		return -1;
 	}
 
-	// Token: 0x06000A69 RID: 2665 RVA: 0x0004BA3C File Offset: 0x00049C3C
+	// Token: 0x06000A6A RID: 2666 RVA: 0x0004BAE8 File Offset: 0x00049CE8
 	private int FindSelectedWorld(GameObject button)
 	{
 		for (int i = 0; i < this.m_worldListElements.Count; i++)
@@ -472,7 +472,7 @@ public class FejdStartup : MonoBehaviour
 		return -1;
 	}
 
-	// Token: 0x06000A6A RID: 2666 RVA: 0x0004BA76 File Offset: 0x00049C76
+	// Token: 0x06000A6B RID: 2667 RVA: 0x0004BB22 File Offset: 0x00049D22
 	public void OnWorldNew()
 	{
 		this.m_createWorldPanel.SetActive(true);
@@ -480,7 +480,7 @@ public class FejdStartup : MonoBehaviour
 		this.m_newWorldSeed.text = World.GenerateSeed();
 	}
 
-	// Token: 0x06000A6B RID: 2667 RVA: 0x0004BAA4 File Offset: 0x00049CA4
+	// Token: 0x06000A6C RID: 2668 RVA: 0x0004BB50 File Offset: 0x00049D50
 	public void OnNewWorldDone()
 	{
 		string text = this.m_newWorldName.text;
@@ -496,13 +496,13 @@ public class FejdStartup : MonoBehaviour
 		Gogan.LogEvent("Menu", "NewWorld", text, 0L);
 	}
 
-	// Token: 0x06000A6C RID: 2668 RVA: 0x0004BB09 File Offset: 0x00049D09
+	// Token: 0x06000A6D RID: 2669 RVA: 0x0004BBB5 File Offset: 0x00049DB5
 	public void OnNewWorldBack()
 	{
 		this.ShowStartGame();
 	}
 
-	// Token: 0x06000A6D RID: 2669 RVA: 0x0004BB14 File Offset: 0x00049D14
+	// Token: 0x06000A6E RID: 2670 RVA: 0x0004BBC0 File Offset: 0x00049DC0
 	public void OnWorldStart()
 	{
 		if (this.m_world == null || this.m_world.m_versionError || this.m_world.m_loadError)
@@ -520,7 +520,7 @@ public class FejdStartup : MonoBehaviour
 		this.TransitionToMainScene();
 	}
 
-	// Token: 0x06000A6E RID: 2670 RVA: 0x0004BBD4 File Offset: 0x00049DD4
+	// Token: 0x06000A6F RID: 2671 RVA: 0x0004BC80 File Offset: 0x00049E80
 	private void ShowCharacterSelection()
 	{
 		Gogan.LogEvent("Screen", "Enter", "CharacterSelection", 0L);
@@ -530,7 +530,7 @@ public class FejdStartup : MonoBehaviour
 		this.m_newCharacterPanel.SetActive(false);
 	}
 
-	// Token: 0x06000A6F RID: 2671 RVA: 0x0004BC28 File Offset: 0x00049E28
+	// Token: 0x06000A70 RID: 2672 RVA: 0x0004BCD4 File Offset: 0x00049ED4
 	public void OnServerFilterChanged()
 	{
 		ZSteamMatchmaking.instance.SetNameFilter(this.m_filterInputField.text);
@@ -538,7 +538,7 @@ public class FejdStartup : MonoBehaviour
 		PlayerPrefs.SetInt("publicfilter", this.m_publicFilterSwitch.isOn ? 1 : 0);
 	}
 
-	// Token: 0x06000A70 RID: 2672 RVA: 0x0004BC7C File Offset: 0x00049E7C
+	// Token: 0x06000A71 RID: 2673 RVA: 0x0004BD28 File Offset: 0x00049F28
 	public void RequestServerList()
 	{
 		ZLog.DevLog("Request serverlist");
@@ -552,7 +552,7 @@ public class FejdStartup : MonoBehaviour
 		ZSteamMatchmaking.instance.RequestServerlist();
 	}
 
-	// Token: 0x06000A71 RID: 2673 RVA: 0x0004BCCC File Offset: 0x00049ECC
+	// Token: 0x06000A72 RID: 2674 RVA: 0x0004BD78 File Offset: 0x00049F78
 	private void UpdateServerList()
 	{
 		this.m_serverRefreshButton.interactable = (Time.time - this.m_lastServerListRequesTime > 1f);
@@ -580,7 +580,7 @@ public class FejdStartup : MonoBehaviour
 		this.UpdateServerListGui(false);
 	}
 
-	// Token: 0x06000A72 RID: 2674 RVA: 0x0004BDEC File Offset: 0x00049FEC
+	// Token: 0x06000A73 RID: 2675 RVA: 0x0004BE98 File Offset: 0x0004A098
 	private void UpdateServerListGui(bool centerSelection)
 	{
 		if (this.m_serverList.Count != this.m_serverListElements.Count)
@@ -627,7 +627,7 @@ public class FejdStartup : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A73 RID: 2675 RVA: 0x0004C06C File Offset: 0x0004A26C
+	// Token: 0x06000A74 RID: 2676 RVA: 0x0004C118 File Offset: 0x0004A318
 	private void OnSelectedServer()
 	{
 		GameObject currentSelectedGameObject = EventSystem.current.currentSelectedGameObject;
@@ -636,7 +636,7 @@ public class FejdStartup : MonoBehaviour
 		this.UpdateServerListGui(false);
 	}
 
-	// Token: 0x06000A74 RID: 2676 RVA: 0x0004C0A5 File Offset: 0x0004A2A5
+	// Token: 0x06000A75 RID: 2677 RVA: 0x0004C151 File Offset: 0x0004A351
 	private void SetSelectedServer(int index, bool centerSelection)
 	{
 		if (this.m_serverList.Count == 0)
@@ -648,7 +648,7 @@ public class FejdStartup : MonoBehaviour
 		this.UpdateServerListGui(centerSelection);
 	}
 
-	// Token: 0x06000A75 RID: 2677 RVA: 0x0004C0E4 File Offset: 0x0004A2E4
+	// Token: 0x06000A76 RID: 2678 RVA: 0x0004C190 File Offset: 0x0004A390
 	private int GetSelectedServer()
 	{
 		if (this.m_joinServer == null)
@@ -665,7 +665,7 @@ public class FejdStartup : MonoBehaviour
 		return -1;
 	}
 
-	// Token: 0x06000A76 RID: 2678 RVA: 0x0004C130 File Offset: 0x0004A330
+	// Token: 0x06000A77 RID: 2679 RVA: 0x0004C1DC File Offset: 0x0004A3DC
 	private int FindSelectedServer(GameObject button)
 	{
 		for (int i = 0; i < this.m_serverListElements.Count; i++)
@@ -678,13 +678,13 @@ public class FejdStartup : MonoBehaviour
 		return -1;
 	}
 
-	// Token: 0x06000A77 RID: 2679 RVA: 0x0004C16A File Offset: 0x0004A36A
+	// Token: 0x06000A78 RID: 2680 RVA: 0x0004C216 File Offset: 0x0004A416
 	public void OnJoinStart()
 	{
 		this.JoinServer();
 	}
 
-	// Token: 0x06000A78 RID: 2680 RVA: 0x0004C174 File Offset: 0x0004A374
+	// Token: 0x06000A79 RID: 2681 RVA: 0x0004C220 File Offset: 0x0004A420
 	private void JoinServer()
 	{
 		ZNet.SetServer(false, false, false, "", "", null);
@@ -700,14 +700,14 @@ public class FejdStartup : MonoBehaviour
 		this.TransitionToMainScene();
 	}
 
-	// Token: 0x06000A79 RID: 2681 RVA: 0x0004C1DF File Offset: 0x0004A3DF
+	// Token: 0x06000A7A RID: 2682 RVA: 0x0004C28B File Offset: 0x0004A48B
 	public void OnJoinIPOpen()
 	{
 		this.m_joinIPPanel.SetActive(true);
 		this.m_joinIPAddress.ActivateInputField();
 	}
 
-	// Token: 0x06000A7A RID: 2682 RVA: 0x0004C1F8 File Offset: 0x0004A3F8
+	// Token: 0x06000A7B RID: 2683 RVA: 0x0004C2A4 File Offset: 0x0004A4A4
 	public void OnJoinIPConnect()
 	{
 		this.m_joinIPPanel.SetActive(true);
@@ -733,13 +733,13 @@ public class FejdStartup : MonoBehaviour
 		ZSteamMatchmaking.instance.QueueServerJoin(text + ":" + num);
 	}
 
-	// Token: 0x06000A7B RID: 2683 RVA: 0x0004C275 File Offset: 0x0004A475
+	// Token: 0x06000A7C RID: 2684 RVA: 0x0004C321 File Offset: 0x0004A521
 	public void OnJoinIPBack()
 	{
 		this.m_joinIPPanel.SetActive(false);
 	}
 
-	// Token: 0x06000A7C RID: 2684 RVA: 0x0004C284 File Offset: 0x0004A484
+	// Token: 0x06000A7D RID: 2685 RVA: 0x0004C330 File Offset: 0x0004A530
 	public void OnServerListTab()
 	{
 		bool publicFilter = PlayerPrefs.GetInt("publicfilter", 0) == 1;
@@ -753,29 +753,30 @@ public class FejdStartup : MonoBehaviour
 		this.m_filterInputField.ActivateInputField();
 	}
 
-	// Token: 0x06000A7D RID: 2685 RVA: 0x0004C2CE File Offset: 0x0004A4CE
+	// Token: 0x06000A7E RID: 2686 RVA: 0x0004C37A File Offset: 0x0004A57A
 	private void SetPublicFilter(bool enabled)
 	{
 		this.m_friendFilterSwitch.isOn = !enabled;
 		this.m_publicFilterSwitch.isOn = enabled;
 	}
 
-	// Token: 0x06000A7E RID: 2686 RVA: 0x0004C2EB File Offset: 0x0004A4EB
+	// Token: 0x06000A7F RID: 2687 RVA: 0x0004C397 File Offset: 0x0004A597
 	public void OnStartGameBack()
 	{
 		this.m_startGamePanel.SetActive(false);
 		this.ShowCharacterSelection();
 	}
 
-	// Token: 0x06000A7F RID: 2687 RVA: 0x0004C2FF File Offset: 0x0004A4FF
+	// Token: 0x06000A80 RID: 2688 RVA: 0x0004C3AC File Offset: 0x0004A5AC
 	public void OnCredits()
 	{
 		this.m_creditsPanel.SetActive(true);
 		this.m_mainMenu.SetActive(false);
 		Gogan.LogEvent("Screen", "Enter", "Credits", 0L);
+		this.m_creditsList.anchoredPosition = new Vector2(0f, 0f);
 	}
 
-	// Token: 0x06000A80 RID: 2688 RVA: 0x0004C32F File Offset: 0x0004A52F
+	// Token: 0x06000A81 RID: 2689 RVA: 0x0004C401 File Offset: 0x0004A601
 	public void OnCreditsBack()
 	{
 		this.m_mainMenu.SetActive(true);
@@ -783,7 +784,7 @@ public class FejdStartup : MonoBehaviour
 		Gogan.LogEvent("Screen", "Enter", "StartMenu", 0L);
 	}
 
-	// Token: 0x06000A81 RID: 2689 RVA: 0x0004C35F File Offset: 0x0004A55F
+	// Token: 0x06000A82 RID: 2690 RVA: 0x0004C431 File Offset: 0x0004A631
 	public void OnSelelectCharacterBack()
 	{
 		this.m_characterSelectScreen.SetActive(false);
@@ -792,38 +793,38 @@ public class FejdStartup : MonoBehaviour
 		Gogan.LogEvent("Screen", "Enter", "StartMenu", 0L);
 	}
 
-	// Token: 0x06000A82 RID: 2690 RVA: 0x0004C396 File Offset: 0x0004A596
+	// Token: 0x06000A83 RID: 2691 RVA: 0x0004C468 File Offset: 0x0004A668
 	public void OnAbort()
 	{
 		Application.Quit();
 	}
 
-	// Token: 0x06000A83 RID: 2691 RVA: 0x0004C39D File Offset: 0x0004A59D
+	// Token: 0x06000A84 RID: 2692 RVA: 0x0004C46F File Offset: 0x0004A66F
 	public void OnWorldVersionYes()
 	{
 		this.m_worldVersionPanel.SetActive(false);
 	}
 
-	// Token: 0x06000A84 RID: 2692 RVA: 0x0004C3AB File Offset: 0x0004A5AB
+	// Token: 0x06000A85 RID: 2693 RVA: 0x0004C47D File Offset: 0x0004A67D
 	public void OnPlayerVersionOk()
 	{
 		this.m_playerVersionPanel.SetActive(false);
 	}
 
-	// Token: 0x06000A85 RID: 2693 RVA: 0x0004C3B9 File Offset: 0x0004A5B9
+	// Token: 0x06000A86 RID: 2694 RVA: 0x0004C48B File Offset: 0x0004A68B
 	private void FixedUpdate()
 	{
 		ZInput.FixedUpdate(Time.fixedDeltaTime);
 	}
 
-	// Token: 0x06000A86 RID: 2694 RVA: 0x0004C3C5 File Offset: 0x0004A5C5
+	// Token: 0x06000A87 RID: 2695 RVA: 0x0004C497 File Offset: 0x0004A697
 	private void UpdateCursor()
 	{
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = ZInput.IsMouseActive();
 	}
 
-	// Token: 0x06000A87 RID: 2695 RVA: 0x0004C3D8 File Offset: 0x0004A5D8
+	// Token: 0x06000A88 RID: 2696 RVA: 0x0004C4AC File Offset: 0x0004A6AC
 	private void Update()
 	{
 		ZInput.Update(Time.deltaTime);
@@ -867,9 +868,24 @@ public class FejdStartup : MonoBehaviour
 			this.m_publicServerToggle.interactable = this.m_openServerToggle.isOn;
 			this.m_serverPassword.interactable = this.m_openServerToggle.isOn;
 		}
+		if (this.m_creditsPanel.activeInHierarchy)
+		{
+			RectTransform rectTransform = this.m_creditsList.parent as RectTransform;
+			Vector3[] array = new Vector3[4];
+			this.m_creditsList.GetWorldCorners(array);
+			Vector3[] array2 = new Vector3[4];
+			rectTransform.GetWorldCorners(array2);
+			float num = array2[1].y - array2[0].y;
+			if ((double)array[3].y < (double)num * 0.5)
+			{
+				Vector3 position = this.m_creditsList.position;
+				position.y += Time.deltaTime * this.m_creditsSpeed * num;
+				this.m_creditsList.position = position;
+			}
+		}
 	}
 
-	// Token: 0x06000A88 RID: 2696 RVA: 0x0004C55C File Offset: 0x0004A75C
+	// Token: 0x06000A89 RID: 2697 RVA: 0x0004C6D6 File Offset: 0x0004A8D6
 	private void LateUpdate()
 	{
 		if (Input.GetKeyDown(KeyCode.F11))
@@ -878,7 +894,7 @@ public class FejdStartup : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A89 RID: 2697 RVA: 0x0004C570 File Offset: 0x0004A770
+	// Token: 0x06000A8A RID: 2698 RVA: 0x0004C6EC File Offset: 0x0004A8EC
 	private void UpdateGamepad()
 	{
 		if (!ZInput.IsGamepadActive())
@@ -910,7 +926,7 @@ public class FejdStartup : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A8A RID: 2698 RVA: 0x0004C60C File Offset: 0x0004A80C
+	// Token: 0x06000A8B RID: 2699 RVA: 0x0004C788 File Offset: 0x0004A988
 	private void CheckPendingSteamJoinRequest()
 	{
 		CSteamID that;
@@ -938,7 +954,7 @@ public class FejdStartup : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A8B RID: 2699 RVA: 0x0004C698 File Offset: 0x0004A898
+	// Token: 0x06000A8C RID: 2700 RVA: 0x0004C814 File Offset: 0x0004AA14
 	private void UpdateCharacterRotation(float dt)
 	{
 		if (this.m_playerInstance == null)
@@ -961,7 +977,7 @@ public class FejdStartup : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A8C RID: 2700 RVA: 0x0004C738 File Offset: 0x0004A938
+	// Token: 0x06000A8D RID: 2701 RVA: 0x0004C8B4 File Offset: 0x0004AAB4
 	private void UpdatePasswordError()
 	{
 		string text = "";
@@ -972,7 +988,7 @@ public class FejdStartup : MonoBehaviour
 		this.m_passwordError.text = text;
 	}
 
-	// Token: 0x06000A8D RID: 2701 RVA: 0x0004C77C File Offset: 0x0004A97C
+	// Token: 0x06000A8E RID: 2702 RVA: 0x0004C8F8 File Offset: 0x0004AAF8
 	private string GetPublicPasswordError(string password, World world)
 	{
 		if (password.Length < this.m_minimumPasswordLength)
@@ -986,19 +1002,19 @@ public class FejdStartup : MonoBehaviour
 		return "";
 	}
 
-	// Token: 0x06000A8E RID: 2702 RVA: 0x0004C7DB File Offset: 0x0004A9DB
+	// Token: 0x06000A8F RID: 2703 RVA: 0x0004C957 File Offset: 0x0004AB57
 	private bool IsPublicPasswordValid(string password, World world)
 	{
 		return password.Length >= this.m_minimumPasswordLength && !world.m_name.Contains(password) && !world.m_seedName.Contains(password);
 	}
 
-	// Token: 0x06000A8F RID: 2703 RVA: 0x0004C810 File Offset: 0x0004AA10
+	// Token: 0x06000A90 RID: 2704 RVA: 0x0004C98C File Offset: 0x0004AB8C
 	private bool CanStartServer()
 	{
 		return this.m_world != null && !this.m_world.m_loadError && !this.m_world.m_versionError && (!this.m_publicServerToggle.isOn || this.IsPublicPasswordValid(this.m_serverPassword.text, this.m_world));
 	}
 
-	// Token: 0x06000A90 RID: 2704 RVA: 0x0004C86C File Offset: 0x0004AA6C
+	// Token: 0x06000A91 RID: 2705 RVA: 0x0004C9E8 File Offset: 0x0004ABE8
 	private void UpdateCamera(float dt)
 	{
 		Transform transform = this.m_cameraMarkerMain;
@@ -1020,7 +1036,7 @@ public class FejdStartup : MonoBehaviour
 		this.m_mainCamera.transform.rotation = Quaternion.LookRotation(forward);
 	}
 
-	// Token: 0x06000A91 RID: 2705 RVA: 0x0004C954 File Offset: 0x0004AB54
+	// Token: 0x06000A92 RID: 2706 RVA: 0x0004CAD0 File Offset: 0x0004ACD0
 	private void UpdateCharacterList()
 	{
 		if (this.m_profiles == null)
@@ -1049,7 +1065,7 @@ public class FejdStartup : MonoBehaviour
 		this.ClearCharacterPreview();
 	}
 
-	// Token: 0x06000A92 RID: 2706 RVA: 0x0004CAB8 File Offset: 0x0004ACB8
+	// Token: 0x06000A93 RID: 2707 RVA: 0x0004CC34 File Offset: 0x0004AE34
 	private void SetSelectedProfile(string filename)
 	{
 		if (this.m_profiles == null)
@@ -1068,7 +1084,7 @@ public class FejdStartup : MonoBehaviour
 		this.UpdateCharacterList();
 	}
 
-	// Token: 0x06000A93 RID: 2707 RVA: 0x0004CB20 File Offset: 0x0004AD20
+	// Token: 0x06000A94 RID: 2708 RVA: 0x0004CC9C File Offset: 0x0004AE9C
 	public void OnNewCharacterDone()
 	{
 		string text = this.m_csNewCharacterName.text;
@@ -1091,7 +1107,7 @@ public class FejdStartup : MonoBehaviour
 		Gogan.LogEvent("Menu", "NewCharacter", text, 0L);
 	}
 
-	// Token: 0x06000A94 RID: 2708 RVA: 0x0004CBB9 File Offset: 0x0004ADB9
+	// Token: 0x06000A95 RID: 2709 RVA: 0x0004CD35 File Offset: 0x0004AF35
 	public void OnNewCharacterCancel()
 	{
 		this.m_selectCharacterPanel.SetActive(true);
@@ -1099,7 +1115,7 @@ public class FejdStartup : MonoBehaviour
 		this.UpdateCharacterList();
 	}
 
-	// Token: 0x06000A95 RID: 2709 RVA: 0x0004CBDC File Offset: 0x0004ADDC
+	// Token: 0x06000A96 RID: 2710 RVA: 0x0004CD58 File Offset: 0x0004AF58
 	public void OnCharacterNew()
 	{
 		this.m_newCharacterPanel.SetActive(true);
@@ -1110,7 +1126,7 @@ public class FejdStartup : MonoBehaviour
 		Gogan.LogEvent("Screen", "Enter", "CreateCharacter", 0L);
 	}
 
-	// Token: 0x06000A96 RID: 2710 RVA: 0x0004CC3C File Offset: 0x0004AE3C
+	// Token: 0x06000A97 RID: 2711 RVA: 0x0004CDB8 File Offset: 0x0004AFB8
 	public void OnCharacterRemove()
 	{
 		if (this.m_profileIndex < 0 || this.m_profileIndex >= this.m_profiles.Count)
@@ -1124,7 +1140,7 @@ public class FejdStartup : MonoBehaviour
 		this.m_removeCharacterDialog.SetActive(true);
 	}
 
-	// Token: 0x06000A97 RID: 2711 RVA: 0x0004CCAD File Offset: 0x0004AEAD
+	// Token: 0x06000A98 RID: 2712 RVA: 0x0004CE29 File Offset: 0x0004B029
 	public void OnButtonRemoveCharacterYes()
 	{
 		ZLog.Log("Remove character");
@@ -1134,13 +1150,13 @@ public class FejdStartup : MonoBehaviour
 		this.m_removeCharacterDialog.SetActive(false);
 	}
 
-	// Token: 0x06000A98 RID: 2712 RVA: 0x0004CCE7 File Offset: 0x0004AEE7
+	// Token: 0x06000A99 RID: 2713 RVA: 0x0004CE63 File Offset: 0x0004B063
 	public void OnButtonRemoveCharacterNo()
 	{
 		this.m_removeCharacterDialog.SetActive(false);
 	}
 
-	// Token: 0x06000A99 RID: 2713 RVA: 0x0004CCF5 File Offset: 0x0004AEF5
+	// Token: 0x06000A9A RID: 2714 RVA: 0x0004CE71 File Offset: 0x0004B071
 	public void OnCharacterLeft()
 	{
 		if (this.m_profileIndex > 0)
@@ -1150,7 +1166,7 @@ public class FejdStartup : MonoBehaviour
 		this.UpdateCharacterList();
 	}
 
-	// Token: 0x06000A9A RID: 2714 RVA: 0x0004CD14 File Offset: 0x0004AF14
+	// Token: 0x06000A9B RID: 2715 RVA: 0x0004CE90 File Offset: 0x0004B090
 	public void OnCharacterRight()
 	{
 		if (this.m_profileIndex < this.m_profiles.Count - 1)
@@ -1160,7 +1176,7 @@ public class FejdStartup : MonoBehaviour
 		this.UpdateCharacterList();
 	}
 
-	// Token: 0x06000A9B RID: 2715 RVA: 0x0004CD40 File Offset: 0x0004AF40
+	// Token: 0x06000A9C RID: 2716 RVA: 0x0004CEBC File Offset: 0x0004B0BC
 	public void OnCharacterStart()
 	{
 		ZLog.Log("OnCharacterStart");
@@ -1186,69 +1202,69 @@ public class FejdStartup : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000A9C RID: 2716 RVA: 0x0004CDE8 File Offset: 0x0004AFE8
+	// Token: 0x06000A9D RID: 2717 RVA: 0x0004CF64 File Offset: 0x0004B164
 	private void TransitionToMainScene()
 	{
 		this.m_menuAnimator.SetTrigger("FadeOut");
 		base.Invoke("LoadMainScene", 1.5f);
 	}
 
-	// Token: 0x06000A9D RID: 2717 RVA: 0x0004CE0A File Offset: 0x0004B00A
+	// Token: 0x06000A9E RID: 2718 RVA: 0x0004CF86 File Offset: 0x0004B186
 	private void LoadMainScene()
 	{
 		this.m_loading.SetActive(true);
 		SceneManager.LoadScene("main");
 	}
 
-	// Token: 0x06000A9E RID: 2718 RVA: 0x0004CE22 File Offset: 0x0004B022
+	// Token: 0x06000A9F RID: 2719 RVA: 0x0004CF9E File Offset: 0x0004B19E
 	public void OnButtonSettings()
 	{
 		UnityEngine.Object.Instantiate<GameObject>(this.m_settingsPrefab, base.transform);
 	}
 
-	// Token: 0x06000A9F RID: 2719 RVA: 0x0004CE36 File Offset: 0x0004B036
+	// Token: 0x06000AA0 RID: 2720 RVA: 0x0004CFB2 File Offset: 0x0004B1B2
 	public void OnButtonFeedback()
 	{
 		UnityEngine.Object.Instantiate<GameObject>(this.m_feedbackPrefab, base.transform);
 	}
 
-	// Token: 0x06000AA0 RID: 2720 RVA: 0x0004CE4A File Offset: 0x0004B04A
+	// Token: 0x06000AA1 RID: 2721 RVA: 0x0004CFC6 File Offset: 0x0004B1C6
 	public void OnButtonTwitter()
 	{
 		Application.OpenURL("https://twitter.com/valheimgame");
 	}
 
-	// Token: 0x06000AA1 RID: 2721 RVA: 0x0004CE56 File Offset: 0x0004B056
+	// Token: 0x06000AA2 RID: 2722 RVA: 0x0004CFD2 File Offset: 0x0004B1D2
 	public void OnButtonWebPage()
 	{
 		Application.OpenURL("http://valheimgame.com/");
 	}
 
-	// Token: 0x06000AA2 RID: 2722 RVA: 0x0004CE62 File Offset: 0x0004B062
+	// Token: 0x06000AA3 RID: 2723 RVA: 0x0004CFDE File Offset: 0x0004B1DE
 	public void OnButtonDiscord()
 	{
 		Application.OpenURL("https://discord.gg/44qXMJH");
 	}
 
-	// Token: 0x06000AA3 RID: 2723 RVA: 0x0004CE6E File Offset: 0x0004B06E
+	// Token: 0x06000AA4 RID: 2724 RVA: 0x0004CFEA File Offset: 0x0004B1EA
 	public void OnButtonFacebook()
 	{
 		Application.OpenURL("https://www.facebook.com/valheimgame/");
 	}
 
-	// Token: 0x06000AA4 RID: 2724 RVA: 0x0004CE7A File Offset: 0x0004B07A
+	// Token: 0x06000AA5 RID: 2725 RVA: 0x0004CFF6 File Offset: 0x0004B1F6
 	public void OnButtonShowLog()
 	{
 		Application.OpenURL(Application.persistentDataPath + "/");
 	}
 
-	// Token: 0x06000AA5 RID: 2725 RVA: 0x0004CE90 File Offset: 0x0004B090
+	// Token: 0x06000AA6 RID: 2726 RVA: 0x0004D00C File Offset: 0x0004B20C
 	private bool AcceptedNDA()
 	{
 		return PlayerPrefs.GetInt("accepted_nda", 0) == 1;
 	}
 
-	// Token: 0x06000AA6 RID: 2726 RVA: 0x0004CEA0 File Offset: 0x0004B0A0
+	// Token: 0x06000AA7 RID: 2727 RVA: 0x0004D01C File Offset: 0x0004B21C
 	public void OnButtonNDAAccept()
 	{
 		PlayerPrefs.SetInt("accepted_nda", 1);
@@ -1256,19 +1272,19 @@ public class FejdStartup : MonoBehaviour
 		this.m_mainMenu.SetActive(true);
 	}
 
-	// Token: 0x06000AA7 RID: 2727 RVA: 0x0004C396 File Offset: 0x0004A596
+	// Token: 0x06000AA8 RID: 2728 RVA: 0x0004C468 File Offset: 0x0004A668
 	public void OnButtonNDADecline()
 	{
 		Application.Quit();
 	}
 
-	// Token: 0x06000AA8 RID: 2728 RVA: 0x0004CEC5 File Offset: 0x0004B0C5
+	// Token: 0x06000AA9 RID: 2729 RVA: 0x0004D041 File Offset: 0x0004B241
 	public void OnConnectionFailedOk()
 	{
 		this.m_connectionFailedPanel.SetActive(false);
 	}
 
-	// Token: 0x06000AA9 RID: 2729 RVA: 0x0004CED3 File Offset: 0x0004B0D3
+	// Token: 0x06000AAA RID: 2730 RVA: 0x0004D04F File Offset: 0x0004B24F
 	public Player GetPreviewPlayer()
 	{
 		if (this.m_playerInstance != null)
@@ -1278,7 +1294,7 @@ public class FejdStartup : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000AAA RID: 2730 RVA: 0x0004CEF0 File Offset: 0x0004B0F0
+	// Token: 0x06000AAB RID: 2731 RVA: 0x0004D06C File Offset: 0x0004B26C
 	private void ClearCharacterPreview()
 	{
 		if (this.m_playerInstance)
@@ -1289,7 +1305,7 @@ public class FejdStartup : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000AAB RID: 2731 RVA: 0x0004CF40 File Offset: 0x0004B140
+	// Token: 0x06000AAC RID: 2732 RVA: 0x0004D0BC File Offset: 0x0004B2BC
 	private void SetupCharacterPreview(PlayerProfile profile)
 	{
 		this.ClearCharacterPreview();
@@ -1310,322 +1326,328 @@ public class FejdStartup : MonoBehaviour
 		this.m_playerInstance = gameObject;
 	}
 
-	// Token: 0x040009A8 RID: 2472
+	// Token: 0x040009AC RID: 2476
 	private float m_lastServerListRequesTime = -999f;
 
-	// Token: 0x040009A9 RID: 2473
+	// Token: 0x040009AD RID: 2477
 	private Vector3 camSpeed = Vector3.zero;
 
-	// Token: 0x040009AA RID: 2474
+	// Token: 0x040009AE RID: 2478
 	private Vector3 camRotSpeed = Vector3.zero;
 
-	// Token: 0x040009AB RID: 2475
+	// Token: 0x040009AF RID: 2479
 	private static FejdStartup m_instance;
 
-	// Token: 0x040009AC RID: 2476
+	// Token: 0x040009B0 RID: 2480
 	[Header("Start")]
 	public Animator m_menuAnimator;
 
-	// Token: 0x040009AD RID: 2477
+	// Token: 0x040009B1 RID: 2481
 	public GameObject m_worldVersionPanel;
 
-	// Token: 0x040009AE RID: 2478
+	// Token: 0x040009B2 RID: 2482
 	public GameObject m_playerVersionPanel;
 
-	// Token: 0x040009AF RID: 2479
+	// Token: 0x040009B3 RID: 2483
 	public GameObject m_newGameVersionPanel;
 
-	// Token: 0x040009B0 RID: 2480
+	// Token: 0x040009B4 RID: 2484
 	public GameObject m_connectionFailedPanel;
 
-	// Token: 0x040009B1 RID: 2481
+	// Token: 0x040009B5 RID: 2485
 	public Text m_connectionFailedError;
 
-	// Token: 0x040009B2 RID: 2482
+	// Token: 0x040009B6 RID: 2486
 	public Text m_newVersionName;
 
-	// Token: 0x040009B3 RID: 2483
+	// Token: 0x040009B7 RID: 2487
 	public GameObject m_loading;
 
-	// Token: 0x040009B4 RID: 2484
+	// Token: 0x040009B8 RID: 2488
 	public Text m_versionLabel;
 
-	// Token: 0x040009B5 RID: 2485
+	// Token: 0x040009B9 RID: 2489
 	public GameObject m_mainMenu;
 
-	// Token: 0x040009B6 RID: 2486
+	// Token: 0x040009BA RID: 2490
 	public GameObject m_ndaPanel;
 
-	// Token: 0x040009B7 RID: 2487
+	// Token: 0x040009BB RID: 2491
 	public GameObject m_betaText;
 
-	// Token: 0x040009B8 RID: 2488
+	// Token: 0x040009BC RID: 2492
 	public GameObject m_characterSelectScreen;
 
-	// Token: 0x040009B9 RID: 2489
+	// Token: 0x040009BD RID: 2493
 	public GameObject m_selectCharacterPanel;
 
-	// Token: 0x040009BA RID: 2490
+	// Token: 0x040009BE RID: 2494
 	public GameObject m_newCharacterPanel;
 
-	// Token: 0x040009BB RID: 2491
+	// Token: 0x040009BF RID: 2495
 	public GameObject m_creditsPanel;
 
-	// Token: 0x040009BC RID: 2492
+	// Token: 0x040009C0 RID: 2496
 	public GameObject m_startGamePanel;
 
-	// Token: 0x040009BD RID: 2493
+	// Token: 0x040009C1 RID: 2497
 	public GameObject m_createWorldPanel;
 
-	// Token: 0x040009BE RID: 2494
+	// Token: 0x040009C2 RID: 2498
+	public RectTransform m_creditsList;
+
+	// Token: 0x040009C3 RID: 2499
+	public float m_creditsSpeed = 100f;
+
+	// Token: 0x040009C4 RID: 2500
 	[Header("Camera")]
 	public GameObject m_mainCamera;
 
-	// Token: 0x040009BF RID: 2495
+	// Token: 0x040009C5 RID: 2501
 	public Transform m_cameraMarkerStart;
 
-	// Token: 0x040009C0 RID: 2496
+	// Token: 0x040009C6 RID: 2502
 	public Transform m_cameraMarkerMain;
 
-	// Token: 0x040009C1 RID: 2497
+	// Token: 0x040009C7 RID: 2503
 	public Transform m_cameraMarkerCharacter;
 
-	// Token: 0x040009C2 RID: 2498
+	// Token: 0x040009C8 RID: 2504
 	public Transform m_cameraMarkerCredits;
 
-	// Token: 0x040009C3 RID: 2499
+	// Token: 0x040009C9 RID: 2505
 	public Transform m_cameraMarkerGame;
 
-	// Token: 0x040009C4 RID: 2500
+	// Token: 0x040009CA RID: 2506
 	public float m_cameraMoveSpeed = 1.5f;
 
-	// Token: 0x040009C5 RID: 2501
+	// Token: 0x040009CB RID: 2507
 	public float m_cameraMoveSpeedStart = 1.5f;
 
-	// Token: 0x040009C6 RID: 2502
+	// Token: 0x040009CC RID: 2508
 	[Header("Join")]
 	public GameObject m_serverListPanel;
 
-	// Token: 0x040009C7 RID: 2503
+	// Token: 0x040009CD RID: 2509
 	public Toggle m_publicServerToggle;
 
-	// Token: 0x040009C8 RID: 2504
+	// Token: 0x040009CE RID: 2510
 	public Toggle m_openServerToggle;
 
-	// Token: 0x040009C9 RID: 2505
+	// Token: 0x040009CF RID: 2511
 	public InputField m_serverPassword;
 
-	// Token: 0x040009CA RID: 2506
+	// Token: 0x040009D0 RID: 2512
 	public RectTransform m_serverListRoot;
 
-	// Token: 0x040009CB RID: 2507
+	// Token: 0x040009D1 RID: 2513
 	public GameObject m_serverListElement;
 
-	// Token: 0x040009CC RID: 2508
+	// Token: 0x040009D2 RID: 2514
 	public ScrollRectEnsureVisible m_serverListEnsureVisible;
 
-	// Token: 0x040009CD RID: 2509
+	// Token: 0x040009D3 RID: 2515
 	public float m_serverListElementStep = 28f;
 
-	// Token: 0x040009CE RID: 2510
+	// Token: 0x040009D4 RID: 2516
 	public Text m_serverCount;
 
-	// Token: 0x040009CF RID: 2511
+	// Token: 0x040009D5 RID: 2517
 	public Button m_serverRefreshButton;
 
-	// Token: 0x040009D0 RID: 2512
+	// Token: 0x040009D6 RID: 2518
 	public InputField m_filterInputField;
 
-	// Token: 0x040009D1 RID: 2513
+	// Token: 0x040009D7 RID: 2519
 	public Text m_passwordError;
 
-	// Token: 0x040009D2 RID: 2514
+	// Token: 0x040009D8 RID: 2520
 	public Button m_manualIPButton;
 
-	// Token: 0x040009D3 RID: 2515
+	// Token: 0x040009D9 RID: 2521
 	public GameObject m_joinIPPanel;
 
-	// Token: 0x040009D4 RID: 2516
+	// Token: 0x040009DA RID: 2522
 	public Button m_joinIPJoinButton;
 
-	// Token: 0x040009D5 RID: 2517
+	// Token: 0x040009DB RID: 2523
 	public InputField m_joinIPAddress;
 
-	// Token: 0x040009D6 RID: 2518
+	// Token: 0x040009DC RID: 2524
 	public Button m_joinGameButton;
 
-	// Token: 0x040009D7 RID: 2519
+	// Token: 0x040009DD RID: 2525
 	public Toggle m_friendFilterSwitch;
 
-	// Token: 0x040009D8 RID: 2520
+	// Token: 0x040009DE RID: 2526
 	public Toggle m_publicFilterSwitch;
 
-	// Token: 0x040009D9 RID: 2521
+	// Token: 0x040009DF RID: 2527
 	public int m_minimumPasswordLength = 5;
 
-	// Token: 0x040009DA RID: 2522
+	// Token: 0x040009E0 RID: 2528
 	public float m_characterRotateSpeed = 4f;
 
-	// Token: 0x040009DB RID: 2523
+	// Token: 0x040009E1 RID: 2529
 	public float m_characterRotateSpeedGamepad = 200f;
 
-	// Token: 0x040009DC RID: 2524
+	// Token: 0x040009E2 RID: 2530
 	public int m_joinHostPort = 2456;
 
-	// Token: 0x040009DD RID: 2525
+	// Token: 0x040009E3 RID: 2531
 	public int m_serverPlayerLimit = 10;
 
-	// Token: 0x040009DE RID: 2526
+	// Token: 0x040009E4 RID: 2532
 	[Header("World")]
 	public GameObject m_worldListPanel;
 
-	// Token: 0x040009DF RID: 2527
+	// Token: 0x040009E5 RID: 2533
 	public RectTransform m_worldListRoot;
 
-	// Token: 0x040009E0 RID: 2528
+	// Token: 0x040009E6 RID: 2534
 	public GameObject m_worldListElement;
 
-	// Token: 0x040009E1 RID: 2529
+	// Token: 0x040009E7 RID: 2535
 	public ScrollRectEnsureVisible m_worldListEnsureVisible;
 
-	// Token: 0x040009E2 RID: 2530
+	// Token: 0x040009E8 RID: 2536
 	public float m_worldListElementStep = 28f;
 
-	// Token: 0x040009E3 RID: 2531
+	// Token: 0x040009E9 RID: 2537
 	public InputField m_newWorldName;
 
-	// Token: 0x040009E4 RID: 2532
+	// Token: 0x040009EA RID: 2538
 	public InputField m_newWorldSeed;
 
-	// Token: 0x040009E5 RID: 2533
+	// Token: 0x040009EB RID: 2539
 	public Button m_newWorldDone;
 
-	// Token: 0x040009E6 RID: 2534
+	// Token: 0x040009EC RID: 2540
 	public Button m_worldStart;
 
-	// Token: 0x040009E7 RID: 2535
+	// Token: 0x040009ED RID: 2541
 	public Button m_worldRemove;
 
-	// Token: 0x040009E8 RID: 2536
+	// Token: 0x040009EE RID: 2542
 	public GameObject m_removeWorldDialog;
 
-	// Token: 0x040009E9 RID: 2537
+	// Token: 0x040009EF RID: 2543
 	public Text m_removeWorldName;
 
-	// Token: 0x040009EA RID: 2538
+	// Token: 0x040009F0 RID: 2544
 	public GameObject m_removeCharacterDialog;
 
-	// Token: 0x040009EB RID: 2539
+	// Token: 0x040009F1 RID: 2545
 	public Text m_removeCharacterName;
 
-	// Token: 0x040009EC RID: 2540
+	// Token: 0x040009F2 RID: 2546
 	[Header("Character selectoin")]
 	public Button m_csStartButton;
 
-	// Token: 0x040009ED RID: 2541
+	// Token: 0x040009F3 RID: 2547
 	public Button m_csNewBigButton;
 
-	// Token: 0x040009EE RID: 2542
+	// Token: 0x040009F4 RID: 2548
 	public Button m_csNewButton;
 
-	// Token: 0x040009EF RID: 2543
+	// Token: 0x040009F5 RID: 2549
 	public Button m_csRemoveButton;
 
-	// Token: 0x040009F0 RID: 2544
+	// Token: 0x040009F6 RID: 2550
 	public Button m_csLeftButton;
 
-	// Token: 0x040009F1 RID: 2545
+	// Token: 0x040009F7 RID: 2551
 	public Button m_csRightButton;
 
-	// Token: 0x040009F2 RID: 2546
+	// Token: 0x040009F8 RID: 2552
 	public Button m_csNewCharacterDone;
 
-	// Token: 0x040009F3 RID: 2547
+	// Token: 0x040009F9 RID: 2553
 	public GameObject m_newCharacterError;
 
-	// Token: 0x040009F4 RID: 2548
+	// Token: 0x040009FA RID: 2554
 	public Text m_csName;
 
-	// Token: 0x040009F5 RID: 2549
+	// Token: 0x040009FB RID: 2555
 	public InputField m_csNewCharacterName;
 
-	// Token: 0x040009F6 RID: 2550
+	// Token: 0x040009FC RID: 2556
 	[Header("Misc")]
 	public Transform m_characterPreviewPoint;
 
-	// Token: 0x040009F7 RID: 2551
+	// Token: 0x040009FD RID: 2557
 	public GameObject m_playerPrefab;
 
-	// Token: 0x040009F8 RID: 2552
+	// Token: 0x040009FE RID: 2558
 	public GameObject m_gameMainPrefab;
 
-	// Token: 0x040009F9 RID: 2553
+	// Token: 0x040009FF RID: 2559
 	public GameObject m_settingsPrefab;
 
-	// Token: 0x040009FA RID: 2554
+	// Token: 0x04000A00 RID: 2560
 	public GameObject m_consolePrefab;
 
-	// Token: 0x040009FB RID: 2555
+	// Token: 0x04000A01 RID: 2561
 	public GameObject m_feedbackPrefab;
 
-	// Token: 0x040009FC RID: 2556
+	// Token: 0x04000A02 RID: 2562
 	public GameObject m_changeEffectPrefab;
 
-	// Token: 0x040009FD RID: 2557
+	// Token: 0x04000A03 RID: 2563
 	private string m_downloadUrl = "";
 
-	// Token: 0x040009FE RID: 2558
+	// Token: 0x04000A04 RID: 2564
 	[TextArea]
 	public string m_versionXmlUrl = "https://dl.dropboxusercontent.com/s/5ibm05oelbqt8zq/fejdversion.xml?dl=0";
 
-	// Token: 0x040009FF RID: 2559
+	// Token: 0x04000A05 RID: 2565
 	private World m_world;
 
-	// Token: 0x04000A00 RID: 2560
+	// Token: 0x04000A06 RID: 2566
 	private ServerData m_joinServer;
 
-	// Token: 0x04000A01 RID: 2561
+	// Token: 0x04000A07 RID: 2567
 	private ServerData m_queuedJoinServer;
 
-	// Token: 0x04000A02 RID: 2562
+	// Token: 0x04000A08 RID: 2568
 	private float m_serverListBaseSize;
 
-	// Token: 0x04000A03 RID: 2563
+	// Token: 0x04000A09 RID: 2569
 	private float m_worldListBaseSize;
 
-	// Token: 0x04000A04 RID: 2564
+	// Token: 0x04000A0A RID: 2570
 	private List<PlayerProfile> m_profiles;
 
-	// Token: 0x04000A05 RID: 2565
+	// Token: 0x04000A0B RID: 2571
 	private int m_profileIndex;
 
-	// Token: 0x04000A06 RID: 2566
+	// Token: 0x04000A0C RID: 2572
 	private string m_tempRemoveCharacterName = "";
 
-	// Token: 0x04000A07 RID: 2567
+	// Token: 0x04000A0D RID: 2573
 	private int m_tempRemoveCharacterIndex = -1;
 
-	// Token: 0x04000A08 RID: 2568
+	// Token: 0x04000A0E RID: 2574
 	private List<GameObject> m_serverListElements = new List<GameObject>();
 
-	// Token: 0x04000A09 RID: 2569
+	// Token: 0x04000A0F RID: 2575
 	private List<ServerData> m_serverList = new List<ServerData>();
 
-	// Token: 0x04000A0A RID: 2570
+	// Token: 0x04000A10 RID: 2576
 	private int m_serverListRevision = -1;
 
-	// Token: 0x04000A0B RID: 2571
+	// Token: 0x04000A11 RID: 2577
 	private List<GameObject> m_worldListElements = new List<GameObject>();
 
-	// Token: 0x04000A0C RID: 2572
+	// Token: 0x04000A12 RID: 2578
 	private List<World> m_worlds;
 
-	// Token: 0x04000A0D RID: 2573
+	// Token: 0x04000A13 RID: 2579
 	private GameObject m_playerInstance;
 
-	// Token: 0x04000A0E RID: 2574
+	// Token: 0x04000A14 RID: 2580
 	private bool m_doneInitialServerListRequest;
 
-	// Token: 0x04000A0F RID: 2575
+	// Token: 0x04000A15 RID: 2581
 	private static bool m_firstStartup = true;
 }

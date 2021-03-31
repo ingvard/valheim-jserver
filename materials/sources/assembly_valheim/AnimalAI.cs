@@ -4,21 +4,21 @@ using UnityEngine;
 // Token: 0x0200001F RID: 31
 public class AnimalAI : BaseAI
 {
-	// Token: 0x06000313 RID: 787 RVA: 0x0001A3F8 File Offset: 0x000185F8
+	// Token: 0x06000314 RID: 788 RVA: 0x0001A4AC File Offset: 0x000186AC
 	protected override void Awake()
 	{
 		base.Awake();
 		this.m_updateTargetTimer = UnityEngine.Random.Range(0f, 2f);
 	}
 
-	// Token: 0x06000314 RID: 788 RVA: 0x0001A415 File Offset: 0x00018615
+	// Token: 0x06000315 RID: 789 RVA: 0x0001A4C9 File Offset: 0x000186C9
 	protected override void OnDamaged(float damage, Character attacker)
 	{
 		base.OnDamaged(damage, attacker);
 		this.SetAlerted(true);
 	}
 
-	// Token: 0x06000315 RID: 789 RVA: 0x0001A428 File Offset: 0x00018628
+	// Token: 0x06000316 RID: 790 RVA: 0x0001A4DC File Offset: 0x000186DC
 	protected override void UpdateAI(float dt)
 	{
 		base.UpdateAI(dt);
@@ -75,7 +75,7 @@ public class AnimalAI : BaseAI
 		base.IdleMovement(dt);
 	}
 
-	// Token: 0x06000316 RID: 790 RVA: 0x0001A584 File Offset: 0x00018784
+	// Token: 0x06000317 RID: 791 RVA: 0x0001A638 File Offset: 0x00018838
 	protected override void SetAlerted(bool alert)
 	{
 		if (alert)
@@ -85,24 +85,24 @@ public class AnimalAI : BaseAI
 		base.SetAlerted(alert);
 	}
 
-	// Token: 0x040002E7 RID: 743
+	// Token: 0x040002EB RID: 747
 	private const float m_updateTargetFarRange = 32f;
 
-	// Token: 0x040002E8 RID: 744
+	// Token: 0x040002EC RID: 748
 	private const float m_updateTargetIntervalNear = 2f;
 
-	// Token: 0x040002E9 RID: 745
+	// Token: 0x040002ED RID: 749
 	private const float m_updateTargetIntervalFar = 10f;
 
-	// Token: 0x040002EA RID: 746
+	// Token: 0x040002EE RID: 750
 	public float m_timeToSafe = 4f;
 
-	// Token: 0x040002EB RID: 747
+	// Token: 0x040002EF RID: 751
 	private Character m_target;
 
-	// Token: 0x040002EC RID: 748
+	// Token: 0x040002F0 RID: 752
 	private float m_inDangerTimer;
 
-	// Token: 0x040002ED RID: 749
+	// Token: 0x040002F1 RID: 753
 	private float m_updateTargetTimer;
 }

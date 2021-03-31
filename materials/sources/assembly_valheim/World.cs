@@ -6,13 +6,13 @@ using UnityEngine;
 // Token: 0x020000B5 RID: 181
 public class World
 {
-	// Token: 0x06000BF9 RID: 3065 RVA: 0x000553E0 File Offset: 0x000535E0
+	// Token: 0x06000BFA RID: 3066 RVA: 0x00055568 File Offset: 0x00053768
 	public World()
 	{
 		this.m_worldSavePath = World.GetWorldSavePath();
 	}
 
-	// Token: 0x06000BFA RID: 3066 RVA: 0x00055414 File Offset: 0x00053614
+	// Token: 0x06000BFB RID: 3067 RVA: 0x0005559C File Offset: 0x0005379C
 	public World(string name, bool loadError, bool versionError)
 	{
 		this.m_name = name;
@@ -21,7 +21,7 @@ public class World
 		this.m_worldSavePath = World.GetWorldSavePath();
 	}
 
-	// Token: 0x06000BFB RID: 3067 RVA: 0x00055468 File Offset: 0x00053668
+	// Token: 0x06000BFC RID: 3068 RVA: 0x000555F0 File Offset: 0x000537F0
 	public World(string name, string seed)
 	{
 		this.m_name = name;
@@ -32,13 +32,13 @@ public class World
 		this.m_worldSavePath = World.GetWorldSavePath();
 	}
 
-	// Token: 0x06000BFC RID: 3068 RVA: 0x000554F9 File Offset: 0x000536F9
+	// Token: 0x06000BFD RID: 3069 RVA: 0x00055681 File Offset: 0x00053881
 	private static string GetWorldSavePath()
 	{
 		return Utils.GetSaveDataPath() + "/worlds";
 	}
 
-	// Token: 0x06000BFD RID: 3069 RVA: 0x0005550C File Offset: 0x0005370C
+	// Token: 0x06000BFE RID: 3070 RVA: 0x00055694 File Offset: 0x00053894
 	public static List<World> GetWorldList()
 	{
 		string[] array;
@@ -63,7 +63,7 @@ public class World
 		return list;
 	}
 
-	// Token: 0x06000BFE RID: 3070 RVA: 0x00055578 File Offset: 0x00053778
+	// Token: 0x06000BFF RID: 3071 RVA: 0x00055700 File Offset: 0x00053900
 	public static void RemoveWorld(string name)
 	{
 		try
@@ -77,31 +77,31 @@ public class World
 		}
 	}
 
-	// Token: 0x06000BFF RID: 3071 RVA: 0x000555CC File Offset: 0x000537CC
+	// Token: 0x06000C00 RID: 3072 RVA: 0x00055754 File Offset: 0x00053954
 	public string GetDBPath()
 	{
 		return this.m_worldSavePath + "/" + this.m_name + ".db";
 	}
 
-	// Token: 0x06000C00 RID: 3072 RVA: 0x000555E9 File Offset: 0x000537E9
+	// Token: 0x06000C01 RID: 3073 RVA: 0x00055771 File Offset: 0x00053971
 	public string GetMetaPath()
 	{
 		return this.m_worldSavePath + "/" + this.m_name + ".fwl";
 	}
 
-	// Token: 0x06000C01 RID: 3073 RVA: 0x00055606 File Offset: 0x00053806
+	// Token: 0x06000C02 RID: 3074 RVA: 0x0005578E File Offset: 0x0005398E
 	public static string GetMetaPath(string name)
 	{
 		return World.GetWorldSavePath() + "/" + name + ".fwl";
 	}
 
-	// Token: 0x06000C02 RID: 3074 RVA: 0x0005561D File Offset: 0x0005381D
+	// Token: 0x06000C03 RID: 3075 RVA: 0x000557A5 File Offset: 0x000539A5
 	public static bool HaveWorld(string name)
 	{
 		return File.Exists(World.GetWorldSavePath() + "/" + name + ".fwl");
 	}
 
-	// Token: 0x06000C03 RID: 3075 RVA: 0x0005563E File Offset: 0x0005383E
+	// Token: 0x06000C04 RID: 3076 RVA: 0x000557C6 File Offset: 0x000539C6
 	public static World GetMenuWorld()
 	{
 		return new World("menu", "")
@@ -110,13 +110,13 @@ public class World
 		};
 	}
 
-	// Token: 0x06000C04 RID: 3076 RVA: 0x00055656 File Offset: 0x00053856
+	// Token: 0x06000C05 RID: 3077 RVA: 0x000557DE File Offset: 0x000539DE
 	public static World GetEditorWorld()
 	{
 		return new World("editor", "");
 	}
 
-	// Token: 0x06000C05 RID: 3077 RVA: 0x00055668 File Offset: 0x00053868
+	// Token: 0x06000C06 RID: 3078 RVA: 0x000557F0 File Offset: 0x000539F0
 	public static string GenerateSeed()
 	{
 		string text = "";
@@ -127,7 +127,7 @@ public class World
 		return text;
 	}
 
-	// Token: 0x06000C06 RID: 3078 RVA: 0x000556B4 File Offset: 0x000538B4
+	// Token: 0x06000C07 RID: 3079 RVA: 0x0005583C File Offset: 0x00053A3C
 	public static World GetCreateWorld(string name)
 	{
 		ZLog.Log("Get create world " + name);
@@ -142,7 +142,7 @@ public class World
 		return world;
 	}
 
-	// Token: 0x06000C07 RID: 3079 RVA: 0x00055708 File Offset: 0x00053908
+	// Token: 0x06000C08 RID: 3080 RVA: 0x00055890 File Offset: 0x00053A90
 	public static World GetDevWorld()
 	{
 		World world = World.LoadWorld("DevWorld");
@@ -155,7 +155,7 @@ public class World
 		return world;
 	}
 
-	// Token: 0x06000C08 RID: 3080 RVA: 0x0005574C File Offset: 0x0005394C
+	// Token: 0x06000C09 RID: 3081 RVA: 0x000558D4 File Offset: 0x00053AD4
 	public void SaveWorldMetaData()
 	{
 		ZPackage zpackage = new ZPackage();
@@ -189,7 +189,7 @@ public class World
 		File.Move(text, metaPath);
 	}
 
-	// Token: 0x06000C09 RID: 3081 RVA: 0x00055830 File Offset: 0x00053A30
+	// Token: 0x06000C0A RID: 3082 RVA: 0x000559B8 File Offset: 0x00053BB8
 	public static World LoadWorld(string name)
 	{
 		FileStream fileStream = null;
@@ -247,30 +247,30 @@ public class World
 		return result;
 	}
 
-	// Token: 0x04000B1E RID: 2846
+	// Token: 0x04000B24 RID: 2852
 	public string m_name = "";
 
-	// Token: 0x04000B1F RID: 2847
+	// Token: 0x04000B25 RID: 2853
 	public string m_seedName = "";
 
-	// Token: 0x04000B20 RID: 2848
+	// Token: 0x04000B26 RID: 2854
 	public int m_seed;
 
-	// Token: 0x04000B21 RID: 2849
+	// Token: 0x04000B27 RID: 2855
 	public long m_uid;
 
-	// Token: 0x04000B22 RID: 2850
+	// Token: 0x04000B28 RID: 2856
 	public int m_worldGenVersion;
 
-	// Token: 0x04000B23 RID: 2851
+	// Token: 0x04000B29 RID: 2857
 	public bool m_menu;
 
-	// Token: 0x04000B24 RID: 2852
+	// Token: 0x04000B2A RID: 2858
 	public bool m_loadError;
 
-	// Token: 0x04000B25 RID: 2853
+	// Token: 0x04000B2B RID: 2859
 	public bool m_versionError;
 
-	// Token: 0x04000B26 RID: 2854
+	// Token: 0x04000B2C RID: 2860
 	private string m_worldSavePath = "";
 }

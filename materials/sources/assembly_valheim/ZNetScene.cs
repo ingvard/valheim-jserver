@@ -7,7 +7,7 @@ using UnityEngine;
 public class ZNetScene : MonoBehaviour
 {
 	// Token: 0x1700001A RID: 26
-	// (get) Token: 0x06000875 RID: 2165 RVA: 0x0004114A File Offset: 0x0003F34A
+	// (get) Token: 0x06000876 RID: 2166 RVA: 0x000411FE File Offset: 0x0003F3FE
 	public static ZNetScene instance
 	{
 		get
@@ -16,7 +16,7 @@ public class ZNetScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000876 RID: 2166 RVA: 0x00041154 File Offset: 0x0003F354
+	// Token: 0x06000877 RID: 2167 RVA: 0x00041208 File Offset: 0x0003F408
 	private void Awake()
 	{
 		ZNetScene.m_instance = this;
@@ -34,7 +34,7 @@ public class ZNetScene : MonoBehaviour
 		ZRoutedRpc.instance.Register<Vector3, Quaternion, int>("SpawnObject", new Action<long, Vector3, Quaternion, int>(this.RPC_SpawnObject));
 	}
 
-	// Token: 0x06000877 RID: 2167 RVA: 0x00041260 File Offset: 0x0003F460
+	// Token: 0x06000878 RID: 2168 RVA: 0x00041314 File Offset: 0x0003F514
 	private void OnDestroy()
 	{
 		ZLog.Log("Net scene destroyed");
@@ -44,7 +44,7 @@ public class ZNetScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000878 RID: 2168 RVA: 0x00041280 File Offset: 0x0003F480
+	// Token: 0x06000879 RID: 2169 RVA: 0x00041334 File Offset: 0x0003F534
 	public void Shutdown()
 	{
 		foreach (KeyValuePair<ZDO, ZNetView> keyValuePair in this.m_instances)
@@ -59,7 +59,7 @@ public class ZNetScene : MonoBehaviour
 		base.enabled = false;
 	}
 
-	// Token: 0x06000879 RID: 2169 RVA: 0x0004130C File Offset: 0x0003F50C
+	// Token: 0x0600087A RID: 2170 RVA: 0x000413C0 File Offset: 0x0003F5C0
 	public void AddInstance(ZDO zdo, ZNetView nview)
 	{
 		this.m_instances[zdo] = nview;
@@ -69,14 +69,14 @@ public class ZNetScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600087A RID: 2170 RVA: 0x00041344 File Offset: 0x0003F544
+	// Token: 0x0600087B RID: 2171 RVA: 0x000413F8 File Offset: 0x0003F5F8
 	private bool IsPrefabZDOValid(ZDO zdo)
 	{
 		int prefab = zdo.GetPrefab();
 		return prefab != 0 && !(this.GetPrefab(prefab) == null);
 	}
 
-	// Token: 0x0600087B RID: 2171 RVA: 0x00041370 File Offset: 0x0003F570
+	// Token: 0x0600087C RID: 2172 RVA: 0x00041424 File Offset: 0x0003F624
 	private GameObject CreateObject(ZDO zdo)
 	{
 		int prefab = zdo.GetPrefab();
@@ -109,7 +109,7 @@ public class ZNetScene : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x0600087C RID: 2172 RVA: 0x0004140C File Offset: 0x0003F60C
+	// Token: 0x0600087D RID: 2173 RVA: 0x000414C0 File Offset: 0x0003F6C0
 	public void Destroy(GameObject go)
 	{
 		ZNetView component = go.GetComponent<ZNetView>();
@@ -126,7 +126,7 @@ public class ZNetScene : MonoBehaviour
 		UnityEngine.Object.Destroy(go);
 	}
 
-	// Token: 0x0600087D RID: 2173 RVA: 0x00041464 File Offset: 0x0003F664
+	// Token: 0x0600087E RID: 2174 RVA: 0x00041518 File Offset: 0x0003F718
 	public GameObject GetPrefab(int hash)
 	{
 		GameObject result;
@@ -137,20 +137,20 @@ public class ZNetScene : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x0600087E RID: 2174 RVA: 0x00041484 File Offset: 0x0003F684
+	// Token: 0x0600087F RID: 2175 RVA: 0x00041538 File Offset: 0x0003F738
 	public GameObject GetPrefab(string name)
 	{
 		int stableHashCode = name.GetStableHashCode();
 		return this.GetPrefab(stableHashCode);
 	}
 
-	// Token: 0x0600087F RID: 2175 RVA: 0x0004149F File Offset: 0x0003F69F
+	// Token: 0x06000880 RID: 2176 RVA: 0x00041553 File Offset: 0x0003F753
 	public int GetPrefabHash(GameObject go)
 	{
 		return go.name.GetStableHashCode();
 	}
 
-	// Token: 0x06000880 RID: 2176 RVA: 0x000414AC File Offset: 0x0003F6AC
+	// Token: 0x06000881 RID: 2177 RVA: 0x00041560 File Offset: 0x0003F760
 	public bool IsAreaReady(Vector3 point)
 	{
 		Vector2i zone = ZoneSystem.instance.GetZone(point);
@@ -170,13 +170,13 @@ public class ZNetScene : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000881 RID: 2177 RVA: 0x00041550 File Offset: 0x0003F750
+	// Token: 0x06000882 RID: 2178 RVA: 0x00041604 File Offset: 0x0003F804
 	private bool InLoadingScreen()
 	{
 		return Player.m_localPlayer == null || Player.m_localPlayer.IsTeleporting();
 	}
 
-	// Token: 0x06000882 RID: 2178 RVA: 0x00041570 File Offset: 0x0003F770
+	// Token: 0x06000883 RID: 2179 RVA: 0x00041624 File Offset: 0x0003F824
 	private void CreateObjects(List<ZDO> currentNearObjects, List<ZDO> currentDistantObjects)
 	{
 		int maxCreatedPerFrame = 10;
@@ -194,7 +194,7 @@ public class ZNetScene : MonoBehaviour
 		this.CreateDistantObjects(currentDistantObjects, maxCreatedPerFrame, ref num);
 	}
 
-	// Token: 0x06000883 RID: 2179 RVA: 0x000415F0 File Offset: 0x0003F7F0
+	// Token: 0x06000884 RID: 2180 RVA: 0x000416A4 File Offset: 0x0003F8A4
 	private void CreateObjectsSorted(List<ZDO> currentNearObjects, int maxCreatedPerFrame, ref int created)
 	{
 		this.m_tempCurrentObjects2.Clear();
@@ -227,7 +227,7 @@ public class ZNetScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000884 RID: 2180 RVA: 0x00041734 File Offset: 0x0003F934
+	// Token: 0x06000885 RID: 2181 RVA: 0x000417E8 File Offset: 0x0003F9E8
 	private void CreateDistantObjects(List<ZDO> objects, int maxCreatedPerFrame, ref int created)
 	{
 		if (created > maxCreatedPerFrame)
@@ -263,7 +263,7 @@ public class ZNetScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000885 RID: 2181 RVA: 0x00041818 File Offset: 0x0003FA18
+	// Token: 0x06000886 RID: 2182 RVA: 0x000418CC File Offset: 0x0003FACC
 	private void OnZDODestroyed(ZDO zdo)
 	{
 		ZNetView znetView;
@@ -275,7 +275,7 @@ public class ZNetScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000886 RID: 2182 RVA: 0x00041854 File Offset: 0x0003FA54
+	// Token: 0x06000887 RID: 2183 RVA: 0x00041908 File Offset: 0x0003FB08
 	private void RemoveObjects(List<ZDO> currentNearObjects, List<ZDO> currentDistantObjects)
 	{
 		int frameCount = Time.frameCount;
@@ -309,7 +309,7 @@ public class ZNetScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000887 RID: 2183 RVA: 0x000419B4 File Offset: 0x0003FBB4
+	// Token: 0x06000888 RID: 2184 RVA: 0x00041A68 File Offset: 0x0003FC68
 	public ZNetView FindInstance(ZDO zdo)
 	{
 		ZNetView result;
@@ -320,13 +320,13 @@ public class ZNetScene : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000888 RID: 2184 RVA: 0x000419D4 File Offset: 0x0003FBD4
+	// Token: 0x06000889 RID: 2185 RVA: 0x00041A88 File Offset: 0x0003FC88
 	public bool HaveInstance(ZDO zdo)
 	{
 		return this.m_instances.ContainsKey(zdo);
 	}
 
-	// Token: 0x06000889 RID: 2185 RVA: 0x000419E4 File Offset: 0x0003FBE4
+	// Token: 0x0600088A RID: 2186 RVA: 0x00041A98 File Offset: 0x0003FC98
 	public GameObject FindInstance(ZDOID id)
 	{
 		ZDO zdo = ZDOMan.instance.GetZDO(id);
@@ -341,7 +341,7 @@ public class ZNetScene : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x0600088A RID: 2186 RVA: 0x00041A18 File Offset: 0x0003FC18
+	// Token: 0x0600088B RID: 2187 RVA: 0x00041ACC File Offset: 0x0003FCCC
 	private void Update()
 	{
 		float deltaTime = Time.deltaTime;
@@ -353,7 +353,7 @@ public class ZNetScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600088B RID: 2187 RVA: 0x00041A58 File Offset: 0x0003FC58
+	// Token: 0x0600088C RID: 2188 RVA: 0x00041B0C File Offset: 0x0003FD0C
 	private void CreateDestroyObjects()
 	{
 		Vector2i zone = ZoneSystem.instance.GetZone(ZNet.instance.GetReferencePosition());
@@ -364,27 +364,27 @@ public class ZNetScene : MonoBehaviour
 		this.RemoveObjects(this.m_tempCurrentObjects, this.m_tempCurrentDistantObjects);
 	}
 
-	// Token: 0x0600088C RID: 2188 RVA: 0x00041AE0 File Offset: 0x0003FCE0
+	// Token: 0x0600088D RID: 2189 RVA: 0x00041B94 File Offset: 0x0003FD94
 	public bool InActiveArea(Vector2i zone, Vector3 refPoint)
 	{
 		Vector2i zone2 = ZoneSystem.instance.GetZone(refPoint);
 		return this.InActiveArea(zone, zone2);
 	}
 
-	// Token: 0x0600088D RID: 2189 RVA: 0x00041B04 File Offset: 0x0003FD04
+	// Token: 0x0600088E RID: 2190 RVA: 0x00041BB8 File Offset: 0x0003FDB8
 	public bool InActiveArea(Vector2i zone, Vector2i refCenterZone)
 	{
 		int num = ZoneSystem.instance.m_activeArea - 1;
 		return zone.x >= refCenterZone.x - num && zone.x <= refCenterZone.x + num && zone.y <= refCenterZone.y + num && zone.y >= refCenterZone.y - num;
 	}
 
-	// Token: 0x0600088E RID: 2190 RVA: 0x00041B63 File Offset: 0x0003FD63
+	// Token: 0x0600088F RID: 2191 RVA: 0x00041C17 File Offset: 0x0003FE17
 	public bool OutsideActiveArea(Vector3 point)
 	{
 		return this.OutsideActiveArea(point, ZNet.instance.GetReferencePosition());
 	}
 
-	// Token: 0x0600088F RID: 2191 RVA: 0x00041B78 File Offset: 0x0003FD78
+	// Token: 0x06000890 RID: 2192 RVA: 0x00041C2C File Offset: 0x0003FE2C
 	public bool OutsideActiveArea(Vector3 point, Vector3 refPoint)
 	{
 		Vector2i zone = ZoneSystem.instance.GetZone(refPoint);
@@ -392,7 +392,7 @@ public class ZNetScene : MonoBehaviour
 		return zone2.x <= zone.x - ZoneSystem.instance.m_activeArea || zone2.x >= zone.x + ZoneSystem.instance.m_activeArea || zone2.y >= zone.y + ZoneSystem.instance.m_activeArea || zone2.y <= zone.y - ZoneSystem.instance.m_activeArea;
 	}
 
-	// Token: 0x06000890 RID: 2192 RVA: 0x00041C08 File Offset: 0x0003FE08
+	// Token: 0x06000891 RID: 2193 RVA: 0x00041CBC File Offset: 0x0003FEBC
 	public bool HaveInstanceInSector(Vector2i sector)
 	{
 		foreach (KeyValuePair<ZDO, ZNetView> keyValuePair in this.m_instances)
@@ -405,13 +405,13 @@ public class ZNetScene : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000891 RID: 2193 RVA: 0x00041C9C File Offset: 0x0003FE9C
+	// Token: 0x06000892 RID: 2194 RVA: 0x00041D50 File Offset: 0x0003FF50
 	public int NrOfInstances()
 	{
 		return this.m_instances.Count;
 	}
 
-	// Token: 0x06000892 RID: 2194 RVA: 0x00041CAC File Offset: 0x0003FEAC
+	// Token: 0x06000893 RID: 2195 RVA: 0x00041D60 File Offset: 0x0003FF60
 	public void SpawnObject(Vector3 pos, Quaternion rot, GameObject prefab)
 	{
 		int prefabHash = this.GetPrefabHash(prefab);
@@ -423,7 +423,7 @@ public class ZNetScene : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06000893 RID: 2195 RVA: 0x00041CF8 File Offset: 0x0003FEF8
+	// Token: 0x06000894 RID: 2196 RVA: 0x00041DAC File Offset: 0x0003FFAC
 	private void RPC_SpawnObject(long spawner, Vector3 pos, Quaternion rot, int prefabHash)
 	{
 		GameObject prefab = this.GetPrefab(prefabHash);
@@ -435,48 +435,48 @@ public class ZNetScene : MonoBehaviour
 		UnityEngine.Object.Instantiate<GameObject>(prefab, pos, rot);
 	}
 
-	// Token: 0x04000830 RID: 2096
+	// Token: 0x04000834 RID: 2100
 	private static ZNetScene m_instance;
 
-	// Token: 0x04000831 RID: 2097
+	// Token: 0x04000835 RID: 2101
 	private const int m_maxCreatedPerFrame = 10;
 
-	// Token: 0x04000832 RID: 2098
+	// Token: 0x04000836 RID: 2102
 	private const int m_maxDestroyedPerFrame = 20;
 
-	// Token: 0x04000833 RID: 2099
+	// Token: 0x04000837 RID: 2103
 	private const float m_createDestroyFps = 30f;
 
-	// Token: 0x04000834 RID: 2100
+	// Token: 0x04000838 RID: 2104
 	public List<GameObject> m_prefabs = new List<GameObject>();
 
-	// Token: 0x04000835 RID: 2101
+	// Token: 0x04000839 RID: 2105
 	public List<GameObject> m_nonNetViewPrefabs = new List<GameObject>();
 
-	// Token: 0x04000836 RID: 2102
+	// Token: 0x0400083A RID: 2106
 	private Dictionary<int, GameObject> m_namedPrefabs = new Dictionary<int, GameObject>();
 
-	// Token: 0x04000837 RID: 2103
+	// Token: 0x0400083B RID: 2107
 	private Dictionary<ZDO, ZNetView> m_instances = new Dictionary<ZDO, ZNetView>(new ZDOComparer());
 
-	// Token: 0x04000838 RID: 2104
+	// Token: 0x0400083C RID: 2108
 	private GameObject m_netSceneRoot;
 
-	// Token: 0x04000839 RID: 2105
+	// Token: 0x0400083D RID: 2109
 	private List<ZDO> m_tempCurrentObjects = new List<ZDO>();
 
-	// Token: 0x0400083A RID: 2106
+	// Token: 0x0400083E RID: 2110
 	private List<ZDO> m_tempCurrentObjects2 = new List<ZDO>();
 
-	// Token: 0x0400083B RID: 2107
+	// Token: 0x0400083F RID: 2111
 	private List<ZDO> m_tempCurrentDistantObjects = new List<ZDO>();
 
-	// Token: 0x0400083C RID: 2108
+	// Token: 0x04000840 RID: 2112
 	private List<ZNetView> m_tempRemoved = new List<ZNetView>();
 
-	// Token: 0x0400083D RID: 2109
+	// Token: 0x04000841 RID: 2113
 	private HashSet<ZDO> m_tempActiveZDOs = new HashSet<ZDO>(new ZDOComparer());
 
-	// Token: 0x0400083E RID: 2110
+	// Token: 0x04000842 RID: 2114
 	private float m_createDestroyTimer;
 }

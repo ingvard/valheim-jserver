@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x020000F9 RID: 249
 public class SpawnOnDamaged : MonoBehaviour
 {
-	// Token: 0x06000F4A RID: 3914 RVA: 0x0006CFAC File Offset: 0x0006B1AC
+	// Token: 0x06000F4B RID: 3915 RVA: 0x0006D134 File Offset: 0x0006B334
 	private void Start()
 	{
 		WearNTear component = base.GetComponent<WearNTear>();
@@ -21,7 +21,7 @@ public class SpawnOnDamaged : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000F4B RID: 3915 RVA: 0x0006D01B File Offset: 0x0006B21B
+	// Token: 0x06000F4C RID: 3916 RVA: 0x0006D1A3 File Offset: 0x0006B3A3
 	private void OnDamaged()
 	{
 		if (this.m_spawnOnDamage)
@@ -30,6 +30,6 @@ public class SpawnOnDamaged : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000E27 RID: 3623
+	// Token: 0x04000E2D RID: 3629
 	public GameObject m_spawnOnDamage;
 }

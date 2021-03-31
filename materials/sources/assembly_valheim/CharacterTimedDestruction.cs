@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x02000005 RID: 5
 public class CharacterTimedDestruction : MonoBehaviour
 {
-	// Token: 0x060000E3 RID: 227 RVA: 0x00006E41 File Offset: 0x00005041
+	// Token: 0x060000E4 RID: 228 RVA: 0x00006E65 File Offset: 0x00005065
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -14,19 +14,19 @@ public class CharacterTimedDestruction : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000E4 RID: 228 RVA: 0x00006E5D File Offset: 0x0000505D
+	// Token: 0x060000E5 RID: 229 RVA: 0x00006E81 File Offset: 0x00005081
 	public void Trigger()
 	{
 		base.InvokeRepeating("DestroyNow", UnityEngine.Random.Range(this.m_timeoutMin, this.m_timeoutMax), 1f);
 	}
 
-	// Token: 0x060000E5 RID: 229 RVA: 0x00006E80 File Offset: 0x00005080
+	// Token: 0x060000E6 RID: 230 RVA: 0x00006EA4 File Offset: 0x000050A4
 	public void Trigger(float timeout)
 	{
 		base.InvokeRepeating("DestroyNow", timeout, 1f);
 	}
 
-	// Token: 0x060000E6 RID: 230 RVA: 0x00006E94 File Offset: 0x00005094
+	// Token: 0x060000E7 RID: 231 RVA: 0x00006EB8 File Offset: 0x000050B8
 	private void DestroyNow()
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -40,18 +40,18 @@ public class CharacterTimedDestruction : MonoBehaviour
 		component.ApplyDamage(hitData, false, true, HitData.DamageModifier.Normal);
 	}
 
-	// Token: 0x040000B6 RID: 182
+	// Token: 0x040000B7 RID: 183
 	public float m_timeoutMin = 1f;
 
-	// Token: 0x040000B7 RID: 183
+	// Token: 0x040000B8 RID: 184
 	public float m_timeoutMax = 1f;
 
-	// Token: 0x040000B8 RID: 184
+	// Token: 0x040000B9 RID: 185
 	public bool m_triggerOnAwake;
 
-	// Token: 0x040000B9 RID: 185
+	// Token: 0x040000BA RID: 186
 	private ZNetView m_nview;
 
-	// Token: 0x040000BA RID: 186
+	// Token: 0x040000BB RID: 187
 	private Character m_character;
 }

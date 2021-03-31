@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x020000F4 RID: 244
 public class ShipEffects : MonoBehaviour
 {
-	// Token: 0x06000F0C RID: 3852 RVA: 0x0006B7B8 File Offset: 0x000699B8
+	// Token: 0x06000F0D RID: 3853 RVA: 0x0006B940 File Offset: 0x00069B40
 	private void Awake()
 	{
 		ZNetView componentInParent = base.GetComponentInParent<ZNetView>();
@@ -43,7 +43,7 @@ public class ShipEffects : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000F0D RID: 3853 RVA: 0x0006B904 File Offset: 0x00069B04
+	// Token: 0x06000F0E RID: 3854 RVA: 0x0006BA8C File Offset: 0x00069C8C
 	private void LateUpdate()
 	{
 		float waterLevel = WaterVolume.GetWaterLevel(base.transform.position, 1f);
@@ -71,7 +71,7 @@ public class ShipEffects : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000F0E RID: 3854 RVA: 0x0006BA10 File Offset: 0x00069C10
+	// Token: 0x06000F0F RID: 3855 RVA: 0x0006BB98 File Offset: 0x00069D98
 	private void SetWake(bool enabled, float dt)
 	{
 		ParticleSystem[] wakeParticles = this.m_wakeParticles;
@@ -82,7 +82,7 @@ public class ShipEffects : MonoBehaviour
 		this.FadeSounds(this.m_wakeSounds, enabled, dt);
 	}
 
-	// Token: 0x06000F0F RID: 3855 RVA: 0x0006BA54 File Offset: 0x00069C54
+	// Token: 0x06000F10 RID: 3856 RVA: 0x0006BBDC File Offset: 0x00069DDC
 	private void FadeSounds(List<KeyValuePair<AudioSource, float>> sources, bool enabled, float dt)
 	{
 		foreach (KeyValuePair<AudioSource, float> keyValuePair in sources)
@@ -98,7 +98,7 @@ public class ShipEffects : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000F10 RID: 3856 RVA: 0x0006BAD4 File Offset: 0x00069CD4
+	// Token: 0x06000F11 RID: 3857 RVA: 0x0006BC5C File Offset: 0x00069E5C
 	private void FadeSound(AudioSource source, float target, float fadeDuration, float dt)
 	{
 		float maxDelta = dt / fadeDuration;
@@ -121,51 +121,51 @@ public class ShipEffects : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000DF4 RID: 3572
+	// Token: 0x04000DFA RID: 3578
 	public Transform m_shadow;
 
-	// Token: 0x04000DF5 RID: 3573
+	// Token: 0x04000DFB RID: 3579
 	public float m_offset = 0.01f;
 
-	// Token: 0x04000DF6 RID: 3574
+	// Token: 0x04000DFC RID: 3580
 	public float m_minimumWakeVel = 5f;
 
-	// Token: 0x04000DF7 RID: 3575
+	// Token: 0x04000DFD RID: 3581
 	public GameObject m_speedWakeRoot;
 
-	// Token: 0x04000DF8 RID: 3576
+	// Token: 0x04000DFE RID: 3582
 	public GameObject m_wakeSoundRoot;
 
-	// Token: 0x04000DF9 RID: 3577
+	// Token: 0x04000DFF RID: 3583
 	public GameObject m_inWaterSoundRoot;
 
-	// Token: 0x04000DFA RID: 3578
+	// Token: 0x04000E00 RID: 3584
 	public float m_audioFadeDuration = 2f;
 
-	// Token: 0x04000DFB RID: 3579
+	// Token: 0x04000E01 RID: 3585
 	public AudioSource m_sailSound;
 
-	// Token: 0x04000DFC RID: 3580
+	// Token: 0x04000E02 RID: 3586
 	public float m_sailFadeDuration = 1f;
 
-	// Token: 0x04000DFD RID: 3581
+	// Token: 0x04000E03 RID: 3587
 	public GameObject m_splashEffects;
 
-	// Token: 0x04000DFE RID: 3582
+	// Token: 0x04000E04 RID: 3588
 	private float m_sailBaseVol = 1f;
 
-	// Token: 0x04000DFF RID: 3583
+	// Token: 0x04000E05 RID: 3589
 	private ParticleSystem[] m_wakeParticles;
 
-	// Token: 0x04000E00 RID: 3584
+	// Token: 0x04000E06 RID: 3590
 	private List<KeyValuePair<AudioSource, float>> m_wakeSounds = new List<KeyValuePair<AudioSource, float>>();
 
-	// Token: 0x04000E01 RID: 3585
+	// Token: 0x04000E07 RID: 3591
 	private List<KeyValuePair<AudioSource, float>> m_inWaterSounds = new List<KeyValuePair<AudioSource, float>>();
 
-	// Token: 0x04000E02 RID: 3586
+	// Token: 0x04000E08 RID: 3592
 	private Rigidbody m_body;
 
-	// Token: 0x04000E03 RID: 3587
+	// Token: 0x04000E09 RID: 3593
 	private Ship m_ship;
 }

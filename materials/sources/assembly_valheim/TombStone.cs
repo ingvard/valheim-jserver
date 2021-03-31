@@ -5,7 +5,7 @@ using UnityEngine.UI;
 // Token: 0x02000018 RID: 24
 public class TombStone : MonoBehaviour, Hoverable, Interactable
 {
-	// Token: 0x06000298 RID: 664 RVA: 0x00014D5C File Offset: 0x00012F5C
+	// Token: 0x06000299 RID: 665 RVA: 0x00014E10 File Offset: 0x00013010
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -23,7 +23,7 @@ public class TombStone : MonoBehaviour, Hoverable, Interactable
 		base.InvokeRepeating("UpdateDespawn", TombStone.m_updateDt, TombStone.m_updateDt);
 	}
 
-	// Token: 0x06000299 RID: 665 RVA: 0x00014E54 File Offset: 0x00013054
+	// Token: 0x0600029A RID: 666 RVA: 0x00014F08 File Offset: 0x00013108
 	private void Start()
 	{
 		string @string = this.m_nview.GetZDO().GetString("ownerName", "");
@@ -31,7 +31,7 @@ public class TombStone : MonoBehaviour, Hoverable, Interactable
 		this.m_worldText.text = @string;
 	}
 
-	// Token: 0x0600029A RID: 666 RVA: 0x00014E94 File Offset: 0x00013094
+	// Token: 0x0600029B RID: 667 RVA: 0x00014F48 File Offset: 0x00013148
 	public string GetHoverText()
 	{
 		if (!this.m_nview.IsValid())
@@ -47,13 +47,13 @@ public class TombStone : MonoBehaviour, Hoverable, Interactable
 		return Localization.instance.Localize(str + "\n[<color=yellow><b>$KEY_Use</b></color>] $piece_container_open");
 	}
 
-	// Token: 0x0600029B RID: 667 RVA: 0x0000AC4C File Offset: 0x00008E4C
+	// Token: 0x0600029C RID: 668 RVA: 0x0000AC8C File Offset: 0x00008E8C
 	public string GetHoverName()
 	{
 		return "";
 	}
 
-	// Token: 0x0600029C RID: 668 RVA: 0x00014F10 File Offset: 0x00013110
+	// Token: 0x0600029D RID: 669 RVA: 0x00014FC4 File Offset: 0x000131C4
 	public bool Interact(Humanoid character, bool hold)
 	{
 		if (hold)
@@ -77,7 +77,7 @@ public class TombStone : MonoBehaviour, Hoverable, Interactable
 		return this.m_container.Interact(character, false);
 	}
 
-	// Token: 0x0600029D RID: 669 RVA: 0x00014F74 File Offset: 0x00013174
+	// Token: 0x0600029E RID: 670 RVA: 0x00015028 File Offset: 0x00013228
 	private void OnTakeAllSuccess()
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -88,20 +88,20 @@ public class TombStone : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x0600029E RID: 670 RVA: 0x00014FC0 File Offset: 0x000131C0
+	// Token: 0x0600029F RID: 671 RVA: 0x00015074 File Offset: 0x00013274
 	private bool EasyFitInInventory(Player player)
 	{
 		int emptySlots = player.GetInventory().GetEmptySlots();
 		return this.m_container.GetInventory().NrOfItems() <= emptySlots && player.GetInventory().GetTotalWeight() + this.m_container.GetInventory().GetTotalWeight() <= player.GetMaxCarryWeight();
 	}
 
-	// Token: 0x0600029F RID: 671 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x060002A0 RID: 672 RVA: 0x000023E2 File Offset: 0x000005E2
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		return false;
 	}
 
-	// Token: 0x060002A0 RID: 672 RVA: 0x00015018 File Offset: 0x00013218
+	// Token: 0x060002A1 RID: 673 RVA: 0x000150CC File Offset: 0x000132CC
 	public void Setup(string ownerName, long ownerUID)
 	{
 		this.m_nview.GetZDO().Set("ownerName", ownerName);
@@ -112,7 +112,7 @@ public class TombStone : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x060002A1 RID: 673 RVA: 0x0001507E File Offset: 0x0001327E
+	// Token: 0x060002A2 RID: 674 RVA: 0x00015132 File Offset: 0x00013332
 	public long GetOwner()
 	{
 		if (!this.m_nview.IsValid())
@@ -122,7 +122,7 @@ public class TombStone : MonoBehaviour, Hoverable, Interactable
 		return this.m_nview.GetZDO().GetLong("owner", 0L);
 	}
 
-	// Token: 0x060002A2 RID: 674 RVA: 0x000150A8 File Offset: 0x000132A8
+	// Token: 0x060002A3 RID: 675 RVA: 0x0001515C File Offset: 0x0001335C
 	public bool IsOwner()
 	{
 		long owner = this.GetOwner();
@@ -130,7 +130,7 @@ public class TombStone : MonoBehaviour, Hoverable, Interactable
 		return owner == playerID;
 	}
 
-	// Token: 0x060002A3 RID: 675 RVA: 0x000150D0 File Offset: 0x000132D0
+	// Token: 0x060002A4 RID: 676 RVA: 0x00015184 File Offset: 0x00013384
 	private void UpdateDespawn()
 	{
 		if (!this.m_nview.IsValid())
@@ -153,7 +153,7 @@ public class TombStone : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x060002A4 RID: 676 RVA: 0x0001516C File Offset: 0x0001336C
+	// Token: 0x060002A5 RID: 677 RVA: 0x00015220 File Offset: 0x00013420
 	private void GiveBoost()
 	{
 		if (this.m_lootStatusEffect == null)
@@ -167,7 +167,7 @@ public class TombStone : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x060002A5 RID: 677 RVA: 0x000151B0 File Offset: 0x000133B0
+	// Token: 0x060002A6 RID: 678 RVA: 0x00015264 File Offset: 0x00013464
 	private Player FindOwner()
 	{
 		long owner = this.GetOwner();
@@ -178,7 +178,7 @@ public class TombStone : MonoBehaviour, Hoverable, Interactable
 		return Player.GetPlayer(owner);
 	}
 
-	// Token: 0x060002A6 RID: 678 RVA: 0x000151D0 File Offset: 0x000133D0
+	// Token: 0x060002A7 RID: 679 RVA: 0x00015284 File Offset: 0x00013484
 	private void PositionCheck()
 	{
 		Vector3 vec = this.m_nview.GetZDO().GetVec3("SpawnPoint", base.transform.position);
@@ -200,7 +200,7 @@ public class TombStone : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x060002A7 RID: 679 RVA: 0x000152BC File Offset: 0x000134BC
+	// Token: 0x060002A8 RID: 680 RVA: 0x00015370 File Offset: 0x00013570
 	private void UpdateFloater()
 	{
 		if (this.m_nview.IsOwner())
@@ -214,36 +214,36 @@ public class TombStone : MonoBehaviour, Hoverable, Interactable
 		this.m_floater.SetActive(@bool);
 	}
 
-	// Token: 0x04000207 RID: 519
+	// Token: 0x0400020B RID: 523
 	private static float m_updateDt = 2f;
 
-	// Token: 0x04000208 RID: 520
+	// Token: 0x0400020C RID: 524
 	public string m_text = "$piece_tombstone";
 
-	// Token: 0x04000209 RID: 521
+	// Token: 0x0400020D RID: 525
 	public GameObject m_floater;
 
-	// Token: 0x0400020A RID: 522
+	// Token: 0x0400020E RID: 526
 	public Text m_worldText;
 
-	// Token: 0x0400020B RID: 523
+	// Token: 0x0400020F RID: 527
 	public float m_spawnUpVel = 5f;
 
-	// Token: 0x0400020C RID: 524
+	// Token: 0x04000210 RID: 528
 	public StatusEffect m_lootStatusEffect;
 
-	// Token: 0x0400020D RID: 525
+	// Token: 0x04000211 RID: 529
 	public EffectList m_removeEffect = new EffectList();
 
-	// Token: 0x0400020E RID: 526
+	// Token: 0x04000212 RID: 530
 	private Container m_container;
 
-	// Token: 0x0400020F RID: 527
+	// Token: 0x04000213 RID: 531
 	private ZNetView m_nview;
 
-	// Token: 0x04000210 RID: 528
+	// Token: 0x04000214 RID: 532
 	private Floating m_floating;
 
-	// Token: 0x04000211 RID: 529
+	// Token: 0x04000215 RID: 533
 	private Rigidbody m_body;
 }

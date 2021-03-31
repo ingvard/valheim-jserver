@@ -5,13 +5,13 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class MenuScene : MonoBehaviour
 {
-	// Token: 0x06000E08 RID: 3592 RVA: 0x00063E95 File Offset: 0x00062095
+	// Token: 0x06000E09 RID: 3593 RVA: 0x0006401D File Offset: 0x0006221D
 	private void Awake()
 	{
 		Shader.SetGlobalFloat("_Wet", 0f);
 	}
 
-	// Token: 0x06000E09 RID: 3593 RVA: 0x00063EA8 File Offset: 0x000620A8
+	// Token: 0x06000E0A RID: 3594 RVA: 0x00064030 File Offset: 0x00062230
 	private void Update()
 	{
 		Shader.SetGlobalVector("_SkyboxSunDir", -this.m_dirLight.transform.forward);
@@ -29,24 +29,24 @@ public class MenuScene : MonoBehaviour
 		Shader.SetGlobalFloat("_GlobalWindAlpha", 0f);
 	}
 
-	// Token: 0x04000CB3 RID: 3251
+	// Token: 0x04000CB9 RID: 3257
 	public Light m_dirLight;
 
-	// Token: 0x04000CB4 RID: 3252
+	// Token: 0x04000CBA RID: 3258
 	public Color m_sunFogColor = Color.white;
 
-	// Token: 0x04000CB5 RID: 3253
+	// Token: 0x04000CBB RID: 3259
 	public Color m_fogColor = Color.white;
 
-	// Token: 0x04000CB6 RID: 3254
+	// Token: 0x04000CBC RID: 3260
 	public Color m_ambientLightColor = Color.white;
 
-	// Token: 0x04000CB7 RID: 3255
+	// Token: 0x04000CBD RID: 3261
 	public float m_fogDensity = 1f;
 
-	// Token: 0x04000CB8 RID: 3256
+	// Token: 0x04000CBE RID: 3262
 	public Vector3 m_windDir = Vector3.left;
 
-	// Token: 0x04000CB9 RID: 3257
+	// Token: 0x04000CBF RID: 3263
 	public float m_windIntensity = 0.5f;
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000021 RID: 33
 public class MonsterAI : BaseAI
 {
-	// Token: 0x06000365 RID: 869 RVA: 0x0001CF48 File Offset: 0x0001B148
+	// Token: 0x06000366 RID: 870 RVA: 0x0001CFFC File Offset: 0x0001B1FC
 	protected override void Awake()
 	{
 		base.Awake();
@@ -22,7 +22,7 @@ public class MonsterAI : BaseAI
 		}
 	}
 
-	// Token: 0x06000366 RID: 870 RVA: 0x0001D010 File Offset: 0x0001B210
+	// Token: 0x06000367 RID: 871 RVA: 0x0001D0C4 File Offset: 0x0001B2C4
 	private void Start()
 	{
 		if (this.m_nview && this.m_nview.IsValid() && this.m_nview.IsOwner())
@@ -35,7 +35,7 @@ public class MonsterAI : BaseAI
 		}
 	}
 
-	// Token: 0x06000367 RID: 871 RVA: 0x0001D062 File Offset: 0x0001B262
+	// Token: 0x06000368 RID: 872 RVA: 0x0001D116 File Offset: 0x0001B316
 	protected override void OnDamaged(float damage, Character attacker)
 	{
 		base.OnDamaged(damage, attacker);
@@ -43,7 +43,7 @@ public class MonsterAI : BaseAI
 		this.SetTarget(attacker);
 	}
 
-	// Token: 0x06000368 RID: 872 RVA: 0x0001D07C File Offset: 0x0001B27C
+	// Token: 0x06000369 RID: 873 RVA: 0x0001D130 File Offset: 0x0001B330
 	private void SetTarget(Character attacker)
 	{
 		if (attacker != null && this.m_targetCreature == null)
@@ -60,7 +60,7 @@ public class MonsterAI : BaseAI
 		}
 	}
 
-	// Token: 0x06000369 RID: 873 RVA: 0x0001D0F8 File Offset: 0x0001B2F8
+	// Token: 0x0600036A RID: 874 RVA: 0x0001D1AC File Offset: 0x0001B3AC
 	protected override void RPC_OnNearProjectileHit(long sender, Vector3 center, float range, ZDOID attackerID)
 	{
 		if (!this.m_nview.IsOwner())
@@ -83,7 +83,7 @@ public class MonsterAI : BaseAI
 		}
 	}
 
-	// Token: 0x0600036A RID: 874 RVA: 0x0001D14F File Offset: 0x0001B34F
+	// Token: 0x0600036B RID: 875 RVA: 0x0001D203 File Offset: 0x0001B403
 	public void MakeTame()
 	{
 		this.m_character.SetTamed(true);
@@ -92,7 +92,7 @@ public class MonsterAI : BaseAI
 		this.m_targetStatic = null;
 	}
 
-	// Token: 0x0600036B RID: 875 RVA: 0x0001D174 File Offset: 0x0001B374
+	// Token: 0x0600036C RID: 876 RVA: 0x0001D228 File Offset: 0x0001B428
 	private void UpdateTarget(Humanoid humanoid, float dt, out bool canHearTarget, out bool canSeeTarget)
 	{
 		this.m_updateTargetTimer -= dt;
@@ -190,7 +190,7 @@ public class MonsterAI : BaseAI
 		}
 	}
 
-	// Token: 0x0600036C RID: 876 RVA: 0x0001D540 File Offset: 0x0001B740
+	// Token: 0x0600036D RID: 877 RVA: 0x0001D5F4 File Offset: 0x0001B7F4
 	protected override void UpdateAI(float dt)
 	{
 		base.UpdateAI(dt);
@@ -436,7 +436,7 @@ public class MonsterAI : BaseAI
 		base.IdleMovement(dt);
 	}
 
-	// Token: 0x0600036D RID: 877 RVA: 0x0001DEA4 File Offset: 0x0001C0A4
+	// Token: 0x0600036E RID: 878 RVA: 0x0001DF58 File Offset: 0x0001C158
 	private bool UpdateConsumeItem(Humanoid humanoid, float dt)
 	{
 		if (this.m_consumeItems == null || this.m_consumeItems.Count == 0)
@@ -478,7 +478,7 @@ public class MonsterAI : BaseAI
 		return false;
 	}
 
-	// Token: 0x0600036E RID: 878 RVA: 0x0001E004 File Offset: 0x0001C204
+	// Token: 0x0600036F RID: 879 RVA: 0x0001E0B8 File Offset: 0x0001C2B8
 	private ItemDrop FindClosestConsumableItem(float maxRange)
 	{
 		if (MonsterAI.m_itemMask == 0)
@@ -514,7 +514,7 @@ public class MonsterAI : BaseAI
 		return null;
 	}
 
-	// Token: 0x0600036F RID: 879 RVA: 0x0001E0F8 File Offset: 0x0001C2F8
+	// Token: 0x06000370 RID: 880 RVA: 0x0001E1AC File Offset: 0x0001C3AC
 	private bool CanConsume(ItemDrop.ItemData item)
 	{
 		using (List<ItemDrop>.Enumerator enumerator = this.m_consumeItems.GetEnumerator())
@@ -530,7 +530,7 @@ public class MonsterAI : BaseAI
 		return false;
 	}
 
-	// Token: 0x06000370 RID: 880 RVA: 0x0001E16C File Offset: 0x0001C36C
+	// Token: 0x06000371 RID: 881 RVA: 0x0001E220 File Offset: 0x0001C420
 	private ItemDrop.ItemData SelectBestAttack(Humanoid humanoid, float dt)
 	{
 		if (this.m_targetCreature || this.m_targetStatic)
@@ -548,7 +548,7 @@ public class MonsterAI : BaseAI
 		return humanoid.GetCurrentWeapon();
 	}
 
-	// Token: 0x06000371 RID: 881 RVA: 0x0001E1F0 File Offset: 0x0001C3F0
+	// Token: 0x06000372 RID: 882 RVA: 0x0001E2A4 File Offset: 0x0001C4A4
 	private bool DoAttack(Character target, bool isFriend)
 	{
 		ItemDrop.ItemData currentWeapon = (this.m_character as Humanoid).GetCurrentWeapon();
@@ -569,14 +569,14 @@ public class MonsterAI : BaseAI
 		return flag;
 	}
 
-	// Token: 0x06000372 RID: 882 RVA: 0x0001E249 File Offset: 0x0001C449
+	// Token: 0x06000373 RID: 883 RVA: 0x0001E2FD File Offset: 0x0001C4FD
 	public void SetDespawnInDay(bool despawn)
 	{
 		this.m_despawnInDay = despawn;
 		this.m_nview.GetZDO().Set("DespawnInDay", despawn);
 	}
 
-	// Token: 0x06000373 RID: 883 RVA: 0x0001E268 File Offset: 0x0001C468
+	// Token: 0x06000374 RID: 884 RVA: 0x0001E31C File Offset: 0x0001C51C
 	public bool DespawnInDay()
 	{
 		if (Time.time - this.m_lastDespawnInDayCheck > 4f)
@@ -587,14 +587,14 @@ public class MonsterAI : BaseAI
 		return this.m_despawnInDay;
 	}
 
-	// Token: 0x06000374 RID: 884 RVA: 0x0001E2BA File Offset: 0x0001C4BA
+	// Token: 0x06000375 RID: 885 RVA: 0x0001E36E File Offset: 0x0001C56E
 	public void SetEventCreature(bool despawn)
 	{
 		this.m_eventCreature = despawn;
 		this.m_nview.GetZDO().Set("EventCreature", despawn);
 	}
 
-	// Token: 0x06000375 RID: 885 RVA: 0x0001E2DC File Offset: 0x0001C4DC
+	// Token: 0x06000376 RID: 886 RVA: 0x0001E390 File Offset: 0x0001C590
 	public bool IsEventCreature()
 	{
 		if (Time.time - this.m_lastEventCreatureCheck > 4f)
@@ -605,19 +605,19 @@ public class MonsterAI : BaseAI
 		return this.m_eventCreature;
 	}
 
-	// Token: 0x06000376 RID: 886 RVA: 0x0001E32E File Offset: 0x0001C52E
+	// Token: 0x06000377 RID: 887 RVA: 0x0001E3E2 File Offset: 0x0001C5E2
 	protected override void OnDrawGizmosSelected()
 	{
 		base.OnDrawGizmosSelected();
 	}
 
-	// Token: 0x06000377 RID: 887 RVA: 0x0001E336 File Offset: 0x0001C536
+	// Token: 0x06000378 RID: 888 RVA: 0x0001E3EA File Offset: 0x0001C5EA
 	public override Character GetTargetCreature()
 	{
 		return this.m_targetCreature;
 	}
 
-	// Token: 0x06000378 RID: 888 RVA: 0x0001E340 File Offset: 0x0001C540
+	// Token: 0x06000379 RID: 889 RVA: 0x0001E3F4 File Offset: 0x0001C5F4
 	private void UpdateSleep(float dt)
 	{
 		if (!this.IsSleeping())
@@ -654,7 +654,7 @@ public class MonsterAI : BaseAI
 		}
 	}
 
-	// Token: 0x06000379 RID: 889 RVA: 0x0001E404 File Offset: 0x0001C604
+	// Token: 0x0600037A RID: 890 RVA: 0x0001E4B8 File Offset: 0x0001C6B8
 	private void Wakeup()
 	{
 		if (!this.IsSleeping())
@@ -666,13 +666,13 @@ public class MonsterAI : BaseAI
 		this.m_wakeupEffects.Create(base.transform.position, base.transform.rotation, null, 1f);
 	}
 
-	// Token: 0x0600037A RID: 890 RVA: 0x0001E469 File Offset: 0x0001C669
+	// Token: 0x0600037B RID: 891 RVA: 0x0001E51D File Offset: 0x0001C71D
 	public override bool IsSleeping()
 	{
 		return this.m_nview.IsValid() && this.m_nview.GetZDO().GetBool("sleeping", this.m_sleeping);
 	}
 
-	// Token: 0x0600037B RID: 891 RVA: 0x0001E495 File Offset: 0x0001C695
+	// Token: 0x0600037C RID: 892 RVA: 0x0001E549 File Offset: 0x0001C749
 	protected override void SetAlerted(bool alert)
 	{
 		if (alert)
@@ -682,203 +682,203 @@ public class MonsterAI : BaseAI
 		base.SetAlerted(alert);
 	}
 
-	// Token: 0x0600037C RID: 892 RVA: 0x0001E4AC File Offset: 0x0001C6AC
+	// Token: 0x0600037D RID: 893 RVA: 0x0001E560 File Offset: 0x0001C760
 	public override bool HuntPlayer()
 	{
 		return base.HuntPlayer() && (!this.IsEventCreature() || RandEventSystem.InEvent()) && (!this.DespawnInDay() || !EnvMan.instance.IsDay());
 	}
 
-	// Token: 0x0600037D RID: 893 RVA: 0x0001E4E0 File Offset: 0x0001C6E0
+	// Token: 0x0600037E RID: 894 RVA: 0x0001E594 File Offset: 0x0001C794
 	public GameObject GetFollowTarget()
 	{
 		return this.m_follow;
 	}
 
-	// Token: 0x0600037E RID: 894 RVA: 0x0001E4E8 File Offset: 0x0001C6E8
+	// Token: 0x0600037F RID: 895 RVA: 0x0001E59C File Offset: 0x0001C79C
 	public void SetFollowTarget(GameObject go)
 	{
 		this.m_follow = go;
 	}
 
-	// Token: 0x0400033F RID: 831
+	// Token: 0x04000343 RID: 835
 	private float m_lastDespawnInDayCheck = -9999f;
 
-	// Token: 0x04000340 RID: 832
+	// Token: 0x04000344 RID: 836
 	private float m_lastEventCreatureCheck = -9999f;
 
-	// Token: 0x04000341 RID: 833
+	// Token: 0x04000345 RID: 837
 	public Action<ItemDrop> m_onConsumedItem;
 
-	// Token: 0x04000342 RID: 834
+	// Token: 0x04000346 RID: 838
 	private const float m_giveUpTime = 15f;
 
-	// Token: 0x04000343 RID: 835
+	// Token: 0x04000347 RID: 839
 	private const float m_bossGiveUpTime = 15f;
 
-	// Token: 0x04000344 RID: 836
+	// Token: 0x04000348 RID: 840
 	private const float m_updateTargetFarRange = 32f;
 
-	// Token: 0x04000345 RID: 837
+	// Token: 0x04000349 RID: 841
 	private const float m_updateTargetIntervalNear = 3f;
 
-	// Token: 0x04000346 RID: 838
+	// Token: 0x0400034A RID: 842
 	private const float m_updateTargetIntervalFar = 10f;
 
-	// Token: 0x04000347 RID: 839
+	// Token: 0x0400034B RID: 843
 	private const float m_updateWeaponInterval = 1f;
 
-	// Token: 0x04000348 RID: 840
+	// Token: 0x0400034C RID: 844
 	[Header("Monster AI")]
 	public float m_alertRange = 9999f;
 
-	// Token: 0x04000349 RID: 841
+	// Token: 0x0400034D RID: 845
 	private const float m_alertOthersRange = 10f;
 
-	// Token: 0x0400034A RID: 842
+	// Token: 0x0400034E RID: 846
 	public bool m_fleeIfHurtWhenTargetCantBeReached = true;
 
-	// Token: 0x0400034B RID: 843
+	// Token: 0x0400034F RID: 847
 	public bool m_fleeIfNotAlerted;
 
-	// Token: 0x0400034C RID: 844
+	// Token: 0x04000350 RID: 848
 	public float m_fleeIfLowHealth;
 
-	// Token: 0x0400034D RID: 845
+	// Token: 0x04000351 RID: 849
 	public bool m_circulateWhileCharging;
 
-	// Token: 0x0400034E RID: 846
+	// Token: 0x04000352 RID: 850
 	public bool m_circulateWhileChargingFlying;
 
-	// Token: 0x0400034F RID: 847
+	// Token: 0x04000353 RID: 851
 	public bool m_enableHuntPlayer;
 
-	// Token: 0x04000350 RID: 848
+	// Token: 0x04000354 RID: 852
 	public bool m_attackPlayerObjects = true;
 
-	// Token: 0x04000351 RID: 849
+	// Token: 0x04000355 RID: 853
 	public bool m_attackPlayerObjectsWhenAlerted = true;
 
-	// Token: 0x04000352 RID: 850
+	// Token: 0x04000356 RID: 854
 	public float m_interceptTimeMax;
 
-	// Token: 0x04000353 RID: 851
+	// Token: 0x04000357 RID: 855
 	public float m_interceptTimeMin;
 
-	// Token: 0x04000354 RID: 852
+	// Token: 0x04000358 RID: 856
 	public float m_maxChaseDistance;
 
-	// Token: 0x04000355 RID: 853
+	// Token: 0x04000359 RID: 857
 	public float m_minAttackInterval;
 
-	// Token: 0x04000356 RID: 854
+	// Token: 0x0400035A RID: 858
 	[Header("Circle target")]
 	public float m_circleTargetInterval;
 
-	// Token: 0x04000357 RID: 855
+	// Token: 0x0400035B RID: 859
 	public float m_circleTargetDuration = 5f;
 
-	// Token: 0x04000358 RID: 856
+	// Token: 0x0400035C RID: 860
 	public float m_circleTargetDistance = 10f;
 
-	// Token: 0x04000359 RID: 857
+	// Token: 0x0400035D RID: 861
 	[Header("Sleep")]
 	public bool m_sleeping;
 
-	// Token: 0x0400035A RID: 858
+	// Token: 0x0400035E RID: 862
 	public bool m_noiseWakeup;
 
-	// Token: 0x0400035B RID: 859
+	// Token: 0x0400035F RID: 863
 	public float m_noiseRangeScale = 1f;
 
-	// Token: 0x0400035C RID: 860
+	// Token: 0x04000360 RID: 864
 	public float m_wakeupRange = 5f;
 
-	// Token: 0x0400035D RID: 861
+	// Token: 0x04000361 RID: 865
 	public EffectList m_wakeupEffects = new EffectList();
 
-	// Token: 0x0400035E RID: 862
+	// Token: 0x04000362 RID: 866
 	[Header("Other")]
 	public bool m_avoidLand;
 
-	// Token: 0x0400035F RID: 863
+	// Token: 0x04000363 RID: 867
 	[Header("Consume items")]
 	public List<ItemDrop> m_consumeItems;
 
-	// Token: 0x04000360 RID: 864
+	// Token: 0x04000364 RID: 868
 	public float m_consumeRange = 2f;
 
-	// Token: 0x04000361 RID: 865
+	// Token: 0x04000365 RID: 869
 	public float m_consumeSearchRange = 5f;
 
-	// Token: 0x04000362 RID: 866
+	// Token: 0x04000366 RID: 870
 	public float m_consumeSearchInterval = 10f;
 
-	// Token: 0x04000363 RID: 867
+	// Token: 0x04000367 RID: 871
 	public float m_consumeHeal;
 
-	// Token: 0x04000364 RID: 868
+	// Token: 0x04000368 RID: 872
 	private ItemDrop m_consumeTarget;
 
-	// Token: 0x04000365 RID: 869
+	// Token: 0x04000369 RID: 873
 	private float m_consumeSearchTimer;
 
-	// Token: 0x04000366 RID: 870
+	// Token: 0x0400036A RID: 874
 	private static int m_itemMask;
 
-	// Token: 0x04000367 RID: 871
+	// Token: 0x0400036B RID: 875
 	private string m_aiStatus = "";
 
-	// Token: 0x04000368 RID: 872
+	// Token: 0x0400036C RID: 876
 	private bool m_despawnInDay;
 
-	// Token: 0x04000369 RID: 873
+	// Token: 0x0400036D RID: 877
 	private bool m_eventCreature;
 
-	// Token: 0x0400036A RID: 874
+	// Token: 0x0400036E RID: 878
 	private Character m_targetCreature;
 
-	// Token: 0x0400036B RID: 875
+	// Token: 0x0400036F RID: 879
 	private bool m_havePathToTarget;
 
-	// Token: 0x0400036C RID: 876
+	// Token: 0x04000370 RID: 880
 	private Vector3 m_lastKnownTargetPos = Vector3.zero;
 
-	// Token: 0x0400036D RID: 877
+	// Token: 0x04000371 RID: 881
 	private bool m_beenAtLastPos;
 
-	// Token: 0x0400036E RID: 878
+	// Token: 0x04000372 RID: 882
 	private StaticTarget m_targetStatic;
 
-	// Token: 0x0400036F RID: 879
+	// Token: 0x04000373 RID: 883
 	private float m_timeSinceAttacking;
 
-	// Token: 0x04000370 RID: 880
+	// Token: 0x04000374 RID: 884
 	private float m_timeSinceSensedTargetCreature;
 
-	// Token: 0x04000371 RID: 881
+	// Token: 0x04000375 RID: 885
 	private float m_updateTargetTimer;
 
-	// Token: 0x04000372 RID: 882
+	// Token: 0x04000376 RID: 886
 	private float m_updateWeaponTimer;
 
-	// Token: 0x04000373 RID: 883
+	// Token: 0x04000377 RID: 887
 	private float m_lastAttackTime = -1000f;
 
-	// Token: 0x04000374 RID: 884
+	// Token: 0x04000378 RID: 888
 	private float m_interceptTime;
 
-	// Token: 0x04000375 RID: 885
+	// Token: 0x04000379 RID: 889
 	private float m_pauseTimer;
 
-	// Token: 0x04000376 RID: 886
+	// Token: 0x0400037A RID: 890
 	private bool m_goingHome;
 
-	// Token: 0x04000377 RID: 887
+	// Token: 0x0400037B RID: 891
 	private float m_sleepTimer;
 
-	// Token: 0x04000378 RID: 888
+	// Token: 0x0400037C RID: 892
 	private GameObject m_follow;
 
-	// Token: 0x04000379 RID: 889
+	// Token: 0x0400037D RID: 893
 	private Tameable m_tamable;
 }

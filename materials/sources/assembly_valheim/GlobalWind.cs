@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x0200003B RID: 59
 public class GlobalWind : MonoBehaviour
 {
-	// Token: 0x0600042F RID: 1071 RVA: 0x00021D70 File Offset: 0x0001FF70
+	// Token: 0x06000430 RID: 1072 RVA: 0x00021E24 File Offset: 0x00020024
 	private void Start()
 	{
 		if (EnvMan.instance == null)
@@ -26,7 +26,7 @@ public class GlobalWind : MonoBehaviour
 		this.UpdateWind();
 	}
 
-	// Token: 0x06000430 RID: 1072 RVA: 0x00021DFC File Offset: 0x0001FFFC
+	// Token: 0x06000431 RID: 1073 RVA: 0x00021EB0 File Offset: 0x000200B0
 	private void UpdateWind()
 	{
 		if (this.m_alignToWindDirection)
@@ -72,44 +72,44 @@ public class GlobalWind : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000434 RID: 1076
+	// Token: 0x04000438 RID: 1080
 	public float m_multiplier = 1f;
 
-	// Token: 0x04000435 RID: 1077
+	// Token: 0x04000439 RID: 1081
 	public bool m_smoothUpdate;
 
-	// Token: 0x04000436 RID: 1078
+	// Token: 0x0400043A RID: 1082
 	public bool m_alignToWindDirection;
 
-	// Token: 0x04000437 RID: 1079
+	// Token: 0x0400043B RID: 1083
 	[Header("Particles")]
 	public bool m_particleVelocity = true;
 
-	// Token: 0x04000438 RID: 1080
+	// Token: 0x0400043C RID: 1084
 	public bool m_particleForce;
 
-	// Token: 0x04000439 RID: 1081
+	// Token: 0x0400043D RID: 1085
 	public bool m_particleEmission;
 
-	// Token: 0x0400043A RID: 1082
+	// Token: 0x0400043E RID: 1086
 	public int m_particleEmissionMin;
 
-	// Token: 0x0400043B RID: 1083
+	// Token: 0x0400043F RID: 1087
 	public int m_particleEmissionMax = 1;
 
-	// Token: 0x0400043C RID: 1084
+	// Token: 0x04000440 RID: 1088
 	[Header("Cloth")]
 	public float m_clothRandomAccelerationFactor = 0.5f;
 
-	// Token: 0x0400043D RID: 1085
+	// Token: 0x04000441 RID: 1089
 	public bool m_checkPlayerShelter;
 
-	// Token: 0x0400043E RID: 1086
+	// Token: 0x04000442 RID: 1090
 	private ParticleSystem m_ps;
 
-	// Token: 0x0400043F RID: 1087
+	// Token: 0x04000443 RID: 1091
 	private Cloth m_cloth;
 
-	// Token: 0x04000440 RID: 1088
+	// Token: 0x04000444 RID: 1092
 	private Player m_player;
 }

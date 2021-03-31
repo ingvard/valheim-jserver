@@ -6,14 +6,14 @@ using UnityEngine.UI;
 // Token: 0x02000053 RID: 83
 public class Hud : MonoBehaviour
 {
-	// Token: 0x060004F4 RID: 1268 RVA: 0x0002944D File Offset: 0x0002764D
+	// Token: 0x060004F5 RID: 1269 RVA: 0x00029501 File Offset: 0x00027701
 	private void OnDestroy()
 	{
 		Hud.m_instance = null;
 	}
 
 	// Token: 0x17000009 RID: 9
-	// (get) Token: 0x060004F5 RID: 1269 RVA: 0x00029455 File Offset: 0x00027655
+	// (get) Token: 0x060004F6 RID: 1270 RVA: 0x00029509 File Offset: 0x00027709
 	public static Hud instance
 	{
 		get
@@ -22,7 +22,7 @@ public class Hud : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004F6 RID: 1270 RVA: 0x0002945C File Offset: 0x0002765C
+	// Token: 0x060004F7 RID: 1271 RVA: 0x00029510 File Offset: 0x00027710
 	private void Awake()
 	{
 		Hud.m_instance = this;
@@ -48,7 +48,7 @@ public class Hud : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004F7 RID: 1271 RVA: 0x00029594 File Offset: 0x00027794
+	// Token: 0x060004F8 RID: 1272 RVA: 0x00029648 File Offset: 0x00027848
 	private void SetVisible(bool visible)
 	{
 		if (visible == this.IsVisible())
@@ -63,13 +63,13 @@ public class Hud : MonoBehaviour
 		this.m_rootObject.transform.localPosition = new Vector3(10000f, 0f, 0f);
 	}
 
-	// Token: 0x060004F8 RID: 1272 RVA: 0x000295F7 File Offset: 0x000277F7
+	// Token: 0x060004F9 RID: 1273 RVA: 0x000296AB File Offset: 0x000278AB
 	private bool IsVisible()
 	{
 		return this.m_rootObject.transform.localPosition.x < 1000f;
 	}
 
-	// Token: 0x060004F9 RID: 1273 RVA: 0x00029618 File Offset: 0x00027818
+	// Token: 0x060004FA RID: 1274 RVA: 0x000296CC File Offset: 0x000278CC
 	private void Update()
 	{
 		this.m_saveIcon.SetActive(ZNet.instance != null && ZNet.instance.IsSaving());
@@ -99,7 +99,7 @@ public class Hud : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004FA RID: 1274 RVA: 0x00029758 File Offset: 0x00027958
+	// Token: 0x060004FB RID: 1275 RVA: 0x0002980C File Offset: 0x00027A0C
 	private void LateUpdate()
 	{
 		this.UpdateBlackScreen(Player.m_localPlayer, Time.deltaTime);
@@ -110,7 +110,7 @@ public class Hud : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004FB RID: 1275 RVA: 0x0002978F File Offset: 0x0002798F
+	// Token: 0x060004FC RID: 1276 RVA: 0x00029843 File Offset: 0x00027A43
 	private float GetFadeDuration(Player player)
 	{
 		if (player != null)
@@ -127,7 +127,7 @@ public class Hud : MonoBehaviour
 		return 1f;
 	}
 
-	// Token: 0x060004FC RID: 1276 RVA: 0x000297BC File Offset: 0x000279BC
+	// Token: 0x060004FD RID: 1277 RVA: 0x00029870 File Offset: 0x00027A70
 	private void UpdateBlackScreen(Player player, float dt)
 	{
 		if (!(player == null) && !player.IsDead() && !player.IsTeleporting() && !Game.instance.IsShuttingDown() && !player.IsSleeping())
@@ -192,7 +192,7 @@ public class Hud : MonoBehaviour
 		this.m_teleportingProgress.SetActive(false);
 	}
 
-	// Token: 0x060004FD RID: 1277 RVA: 0x00029A24 File Offset: 0x00027C24
+	// Token: 0x060004FE RID: 1278 RVA: 0x00029AD8 File Offset: 0x00027CD8
 	private void UpdateShipHud(Player player, float dt)
 	{
 		Ship controlledShip = player.GetControlledShip();
@@ -250,7 +250,7 @@ public class Hud : MonoBehaviour
 		this.m_shipControlsRoot.transform.position = mainCamera.WorldToScreenPoint(controlledShip.m_controlGuiPos.position);
 	}
 
-	// Token: 0x060004FE RID: 1278 RVA: 0x00029C84 File Offset: 0x00027E84
+	// Token: 0x060004FF RID: 1279 RVA: 0x00029D38 File Offset: 0x00027F38
 	private void UpdateActionProgress(Player player)
 	{
 		string text;
@@ -266,7 +266,7 @@ public class Hud : MonoBehaviour
 		this.m_actionBarRoot.SetActive(false);
 	}
 
-	// Token: 0x060004FF RID: 1279 RVA: 0x00029CE0 File Offset: 0x00027EE0
+	// Token: 0x06000500 RID: 1280 RVA: 0x00029D94 File Offset: 0x00027F94
 	private void UpdateCrosshair(Player player, float bowDrawPercentage)
 	{
 		GameObject hoverObject = player.GetHoverObject();
@@ -310,13 +310,13 @@ public class Hud : MonoBehaviour
 		this.m_crosshairBow.gameObject.SetActive(false);
 	}
 
-	// Token: 0x06000500 RID: 1280 RVA: 0x00029E87 File Offset: 0x00028087
+	// Token: 0x06000501 RID: 1281 RVA: 0x00029F3B File Offset: 0x0002813B
 	private void FixedUpdate()
 	{
 		this.UpdatePieceBar(Time.fixedDeltaTime);
 	}
 
-	// Token: 0x06000501 RID: 1281 RVA: 0x00029E94 File Offset: 0x00028094
+	// Token: 0x06000502 RID: 1282 RVA: 0x00029F48 File Offset: 0x00028148
 	private void UpdateStealth(Player player, float bowDrawPercentage)
 	{
 		float stealthFactor = player.GetStealthFactor();
@@ -350,7 +350,7 @@ public class Hud : MonoBehaviour
 		this.m_stealthBar.gameObject.SetActive(false);
 	}
 
-	// Token: 0x06000502 RID: 1282 RVA: 0x00029F9C File Offset: 0x0002819C
+	// Token: 0x06000503 RID: 1283 RVA: 0x0002A050 File Offset: 0x00028250
 	private void SetHealthBarSize(float size)
 	{
 		size = Mathf.Ceil(size);
@@ -361,7 +361,7 @@ public class Hud : MonoBehaviour
 		this.m_healthBarFast.SetWidth(size);
 	}
 
-	// Token: 0x06000503 RID: 1283 RVA: 0x00029FF5 File Offset: 0x000281F5
+	// Token: 0x06000504 RID: 1284 RVA: 0x0002A0A9 File Offset: 0x000282A9
 	private void SetStaminaBarSize(float size)
 	{
 		this.m_staminaBar2Root.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size + this.m_staminaBarBorderBuffer);
@@ -369,7 +369,7 @@ public class Hud : MonoBehaviour
 		this.m_staminaBar2Fast.SetWidth(size);
 	}
 
-	// Token: 0x06000504 RID: 1284 RVA: 0x0002A024 File Offset: 0x00028224
+	// Token: 0x06000505 RID: 1285 RVA: 0x0002A0D8 File Offset: 0x000282D8
 	private void UpdateFood(Player player)
 	{
 		List<Player.Food> foods = player.GetFoods();
@@ -410,7 +410,7 @@ public class Hud : MonoBehaviour
 		this.m_foodBarRoot.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size);
 	}
 
-	// Token: 0x06000505 RID: 1285 RVA: 0x0002A1C0 File Offset: 0x000283C0
+	// Token: 0x06000506 RID: 1286 RVA: 0x0002A274 File Offset: 0x00028474
 	private void UpdateHealth(Player player)
 	{
 		float maxHealth = player.GetMaxHealth();
@@ -426,7 +426,7 @@ public class Hud : MonoBehaviour
 		this.m_healthMaxText.text = text2.ToString();
 	}
 
-	// Token: 0x06000506 RID: 1286 RVA: 0x0002A26C File Offset: 0x0002846C
+	// Token: 0x06000507 RID: 1287 RVA: 0x0002A320 File Offset: 0x00028520
 	private void UpdateStamina(Player player)
 	{
 		float stamina = player.GetStamina();
@@ -447,7 +447,7 @@ public class Hud : MonoBehaviour
 		this.m_staminaBar2Fast.SetValue(stamina / maxStamina);
 	}
 
-	// Token: 0x06000507 RID: 1287 RVA: 0x0002A334 File Offset: 0x00028534
+	// Token: 0x06000508 RID: 1288 RVA: 0x0002A3E8 File Offset: 0x000285E8
 	public void DamageFlash()
 	{
 		Color color = this.m_damageScreen.color;
@@ -456,7 +456,7 @@ public class Hud : MonoBehaviour
 		this.m_damageScreen.gameObject.SetActive(true);
 	}
 
-	// Token: 0x06000508 RID: 1288 RVA: 0x0002A378 File Offset: 0x00028578
+	// Token: 0x06000509 RID: 1289 RVA: 0x0002A42C File Offset: 0x0002862C
 	private void UpdateDamageFlash(float dt)
 	{
 		Color color = this.m_damageScreen.color;
@@ -468,7 +468,7 @@ public class Hud : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000509 RID: 1289 RVA: 0x0002A3DC File Offset: 0x000285DC
+	// Token: 0x0600050A RID: 1290 RVA: 0x0002A490 File Offset: 0x00028690
 	private void UpdatePieceList(Player player, Vector2Int selectedNr, Piece.PieceCategory category, bool updateAllBuildStatuses)
 	{
 		List<Piece> buildPieces = player.GetBuildPieces();
@@ -544,7 +544,7 @@ public class Hud : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600050A RID: 1290 RVA: 0x0002A728 File Offset: 0x00028928
+	// Token: 0x0600050B RID: 1291 RVA: 0x0002A7DC File Offset: 0x000289DC
 	private void OnLeftClickCategory(UIInputHandler ih)
 	{
 		for (int i = 0; i < this.m_pieceCategoryTabs.Length; i++)
@@ -557,14 +557,14 @@ public class Hud : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600050B RID: 1291 RVA: 0x0002A769 File Offset: 0x00028969
+	// Token: 0x0600050C RID: 1292 RVA: 0x0002A81D File Offset: 0x00028A1D
 	private void OnLeftClickPiece(UIInputHandler ih)
 	{
 		this.SelectPiece(ih);
 		Hud.HidePieceSelection();
 	}
 
-	// Token: 0x0600050C RID: 1292 RVA: 0x0002A777 File Offset: 0x00028977
+	// Token: 0x0600050D RID: 1293 RVA: 0x0002A82B File Offset: 0x00028A2B
 	private void OnRightClickPiece(UIInputHandler ih)
 	{
 		if (this.IsQuickPieceSelectEnabled())
@@ -574,7 +574,7 @@ public class Hud : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600050D RID: 1293 RVA: 0x0002A790 File Offset: 0x00028990
+	// Token: 0x0600050E RID: 1294 RVA: 0x0002A844 File Offset: 0x00028A44
 	private void OnHoverPiece(UIInputHandler ih)
 	{
 		Vector2Int selectedGrid = this.GetSelectedGrid(ih);
@@ -584,19 +584,19 @@ public class Hud : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600050E RID: 1294 RVA: 0x0002A7C0 File Offset: 0x000289C0
+	// Token: 0x0600050F RID: 1295 RVA: 0x0002A874 File Offset: 0x00028A74
 	private void OnHoverPieceExit(UIInputHandler ih)
 	{
 		this.m_hoveredPiece = null;
 	}
 
-	// Token: 0x0600050F RID: 1295 RVA: 0x0002A7C9 File Offset: 0x000289C9
+	// Token: 0x06000510 RID: 1296 RVA: 0x0002A87D File Offset: 0x00028A7D
 	public bool IsQuickPieceSelectEnabled()
 	{
 		return PlayerPrefs.GetInt("QuickPieceSelect", 0) == 1;
 	}
 
-	// Token: 0x06000510 RID: 1296 RVA: 0x0002A7DC File Offset: 0x000289DC
+	// Token: 0x06000511 RID: 1297 RVA: 0x0002A890 File Offset: 0x00028A90
 	private Vector2Int GetSelectedGrid(UIInputHandler ih)
 	{
 		int num = 10;
@@ -615,7 +615,7 @@ public class Hud : MonoBehaviour
 		return new Vector2Int(-1, -1);
 	}
 
-	// Token: 0x06000511 RID: 1297 RVA: 0x0002A83C File Offset: 0x00028A3C
+	// Token: 0x06000512 RID: 1298 RVA: 0x0002A8F0 File Offset: 0x00028AF0
 	private void SelectPiece(UIInputHandler ih)
 	{
 		Vector2Int selectedGrid = this.GetSelectedGrid(ih);
@@ -626,7 +626,7 @@ public class Hud : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000512 RID: 1298 RVA: 0x0002A888 File Offset: 0x00028A88
+	// Token: 0x06000513 RID: 1299 RVA: 0x0002A93C File Offset: 0x00028B3C
 	private void UpdatePieceBuildStatus(List<Piece> pieces, Player player)
 	{
 		if (this.m_pieceIcons.Count == 0)
@@ -647,7 +647,7 @@ public class Hud : MonoBehaviour
 		this.m_pieceIconUpdateIndex++;
 	}
 
-	// Token: 0x06000513 RID: 1299 RVA: 0x0002A944 File Offset: 0x00028B44
+	// Token: 0x06000514 RID: 1300 RVA: 0x0002A9F8 File Offset: 0x00028BF8
 	private void UpdatePieceBuildStatusAll(List<Piece> pieces, Player player)
 	{
 		for (int i = 0; i < this.m_pieceIcons.Count; i++)
@@ -667,14 +667,14 @@ public class Hud : MonoBehaviour
 		this.m_pieceIconUpdateIndex = 0;
 	}
 
-	// Token: 0x06000514 RID: 1300 RVA: 0x0002A9EC File Offset: 0x00028BEC
+	// Token: 0x06000515 RID: 1301 RVA: 0x0002AAA0 File Offset: 0x00028CA0
 	private void UpdatePieceBar(float dt)
 	{
 		this.m_pieceBarPosX = Mathf.Lerp(this.m_pieceBarPosX, this.m_pieceBarTargetPosX, 0.1f);
 		this.m_pieceListRoot.anchoredPosition.x = Mathf.Round(this.m_pieceBarPosX);
 	}
 
-	// Token: 0x06000515 RID: 1301 RVA: 0x0002AA38 File Offset: 0x00028C38
+	// Token: 0x06000516 RID: 1302 RVA: 0x0002AAEC File Offset: 0x00028CEC
 	public void TogglePieceSelection()
 	{
 		this.m_hoveredPiece = null;
@@ -687,13 +687,13 @@ public class Hud : MonoBehaviour
 		this.UpdateBuild(Player.m_localPlayer, true);
 	}
 
-	// Token: 0x06000516 RID: 1302 RVA: 0x0002AA73 File Offset: 0x00028C73
+	// Token: 0x06000517 RID: 1303 RVA: 0x0002AB27 File Offset: 0x00028D27
 	private void OnClosePieceSelection(UIInputHandler ih)
 	{
 		Hud.HidePieceSelection();
 	}
 
-	// Token: 0x06000517 RID: 1303 RVA: 0x0002AA7A File Offset: 0x00028C7A
+	// Token: 0x06000518 RID: 1304 RVA: 0x0002AB2E File Offset: 0x00028D2E
 	public static void HidePieceSelection()
 	{
 		if (Hud.m_instance == null)
@@ -703,13 +703,13 @@ public class Hud : MonoBehaviour
 		Hud.m_instance.m_closePieceSelection = 2;
 	}
 
-	// Token: 0x06000518 RID: 1304 RVA: 0x0002AA95 File Offset: 0x00028C95
+	// Token: 0x06000519 RID: 1305 RVA: 0x0002AB49 File Offset: 0x00028D49
 	public static bool IsPieceSelectionVisible()
 	{
 		return !(Hud.m_instance == null) && Hud.m_instance.m_buildHud.activeSelf && Hud.m_instance.m_pieceSelectionWindow.activeSelf;
 	}
 
-	// Token: 0x06000519 RID: 1305 RVA: 0x0002AAC8 File Offset: 0x00028CC8
+	// Token: 0x0600051A RID: 1306 RVA: 0x0002AB7C File Offset: 0x00028D7C
 	private void UpdateBuild(Player player, bool forceUpdateAllBuildStatuses)
 	{
 		if (!player.InPlaceMode())
@@ -775,7 +775,7 @@ public class Hud : MonoBehaviour
 		this.SetupPieceInfo(piece);
 	}
 
-	// Token: 0x0600051A RID: 1306 RVA: 0x0002AC7C File Offset: 0x00028E7C
+	// Token: 0x0600051B RID: 1307 RVA: 0x0002AD30 File Offset: 0x00028F30
 	private void SetupPieceInfo(Piece piece)
 	{
 		if (piece == null)
@@ -833,7 +833,7 @@ public class Hud : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600051B RID: 1307 RVA: 0x0002AEE4 File Offset: 0x000290E4
+	// Token: 0x0600051C RID: 1308 RVA: 0x0002AF98 File Offset: 0x00029198
 	private void UpdateGuardianPower(Player player)
 	{
 		StatusEffect statusEffect;
@@ -856,7 +856,7 @@ public class Hud : MonoBehaviour
 		this.m_gpCooldown.text = Localization.instance.Localize("$hud_ready");
 	}
 
-	// Token: 0x0600051C RID: 1308 RVA: 0x0002AFC0 File Offset: 0x000291C0
+	// Token: 0x0600051D RID: 1309 RVA: 0x0002B074 File Offset: 0x00029274
 	private void UpdateStatusEffects(List<StatusEffect> statusEffects)
 	{
 		if (this.m_statusEffects.Count != statusEffects.Count)
@@ -909,7 +909,7 @@ public class Hud : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600051D RID: 1309 RVA: 0x0002B1E4 File Offset: 0x000293E4
+	// Token: 0x0600051E RID: 1310 RVA: 0x0002B298 File Offset: 0x00029498
 	private void UpdateEvent(Player player)
 	{
 		RandomEvent activeEvent = RandEventSystem.instance.GetActiveEvent();
@@ -922,26 +922,26 @@ public class Hud : MonoBehaviour
 		this.m_eventBar.SetActive(false);
 	}
 
-	// Token: 0x0600051E RID: 1310 RVA: 0x0002B24C File Offset: 0x0002944C
+	// Token: 0x0600051F RID: 1311 RVA: 0x0002B300 File Offset: 0x00029500
 	public void ToggleBetaTextVisible()
 	{
 		this.m_betaText.SetActive(!this.m_betaText.activeSelf);
 	}
 
-	// Token: 0x0600051F RID: 1311 RVA: 0x0002B267 File Offset: 0x00029467
+	// Token: 0x06000520 RID: 1312 RVA: 0x0002B31B File Offset: 0x0002951B
 	public void FlashHealthBar()
 	{
 		this.m_healthAnimator.SetTrigger("Flash");
 	}
 
-	// Token: 0x06000520 RID: 1312 RVA: 0x0002B279 File Offset: 0x00029479
+	// Token: 0x06000521 RID: 1313 RVA: 0x0002B32D File Offset: 0x0002952D
 	public void StaminaBarUppgradeFlash()
 	{
 		this.m_staminaAnimator.SetBool("Visible", true);
 		this.m_staminaAnimator.SetTrigger("Flash");
 	}
 
-	// Token: 0x06000521 RID: 1313 RVA: 0x0002B29C File Offset: 0x0002949C
+	// Token: 0x06000522 RID: 1314 RVA: 0x0002B350 File Offset: 0x00029550
 	public void StaminaBarNoStaminaFlash()
 	{
 		if (this.m_staminaAnimator.GetCurrentAnimatorStateInfo(0).IsTag("nostamina"))
@@ -952,355 +952,355 @@ public class Hud : MonoBehaviour
 		this.m_staminaAnimator.SetTrigger("NoStamina");
 	}
 
-	// Token: 0x06000522 RID: 1314 RVA: 0x0002B2E6 File Offset: 0x000294E6
+	// Token: 0x06000523 RID: 1315 RVA: 0x0002B39A File Offset: 0x0002959A
 	public static bool IsUserHidden()
 	{
 		return Hud.m_instance && Hud.m_instance.m_userHidden;
 	}
 
-	// Token: 0x0400053B RID: 1339
+	// Token: 0x0400053F RID: 1343
 	private static Hud m_instance;
 
-	// Token: 0x0400053C RID: 1340
+	// Token: 0x04000540 RID: 1344
 	public GameObject m_rootObject;
 
-	// Token: 0x0400053D RID: 1341
+	// Token: 0x04000541 RID: 1345
 	public Text m_buildSelection;
 
-	// Token: 0x0400053E RID: 1342
+	// Token: 0x04000542 RID: 1346
 	public Text m_pieceDescription;
 
-	// Token: 0x0400053F RID: 1343
+	// Token: 0x04000543 RID: 1347
 	public Image m_buildIcon;
 
-	// Token: 0x04000540 RID: 1344
+	// Token: 0x04000544 RID: 1348
 	public GameObject m_buildHud;
 
-	// Token: 0x04000541 RID: 1345
+	// Token: 0x04000545 RID: 1349
 	public GameObject m_saveIcon;
 
-	// Token: 0x04000542 RID: 1346
+	// Token: 0x04000546 RID: 1350
 	public GameObject m_badConnectionIcon;
 
-	// Token: 0x04000543 RID: 1347
+	// Token: 0x04000547 RID: 1351
 	public GameObject m_betaText;
 
-	// Token: 0x04000544 RID: 1348
+	// Token: 0x04000548 RID: 1352
 	[Header("Piece")]
 	public GameObject[] m_requirementItems = new GameObject[0];
 
-	// Token: 0x04000545 RID: 1349
+	// Token: 0x04000549 RID: 1353
 	public GameObject[] m_pieceCategoryTabs = new GameObject[0];
 
-	// Token: 0x04000546 RID: 1350
+	// Token: 0x0400054A RID: 1354
 	public GameObject m_pieceSelectionWindow;
 
-	// Token: 0x04000547 RID: 1351
+	// Token: 0x0400054B RID: 1355
 	public GameObject m_pieceCategoryRoot;
 
-	// Token: 0x04000548 RID: 1352
+	// Token: 0x0400054C RID: 1356
 	public RectTransform m_pieceListRoot;
 
-	// Token: 0x04000549 RID: 1353
+	// Token: 0x0400054D RID: 1357
 	public RectTransform m_pieceListMask;
 
-	// Token: 0x0400054A RID: 1354
+	// Token: 0x0400054E RID: 1358
 	public GameObject m_pieceIconPrefab;
 
-	// Token: 0x0400054B RID: 1355
+	// Token: 0x0400054F RID: 1359
 	public UIInputHandler m_closePieceSelectionButton;
 
-	// Token: 0x0400054C RID: 1356
+	// Token: 0x04000550 RID: 1360
 	public EffectList m_selectItemEffect = new EffectList();
 
-	// Token: 0x0400054D RID: 1357
+	// Token: 0x04000551 RID: 1361
 	public float m_pieceIconSpacing = 64f;
 
-	// Token: 0x0400054E RID: 1358
+	// Token: 0x04000552 RID: 1362
 	private float m_pieceBarPosX;
 
-	// Token: 0x0400054F RID: 1359
+	// Token: 0x04000553 RID: 1363
 	private float m_pieceBarTargetPosX;
 
-	// Token: 0x04000550 RID: 1360
+	// Token: 0x04000554 RID: 1364
 	private Piece.PieceCategory m_lastPieceCategory = Piece.PieceCategory.Max;
 
-	// Token: 0x04000551 RID: 1361
+	// Token: 0x04000555 RID: 1365
 	[Header("Health")]
 	public RectTransform m_healthBarRoot;
 
-	// Token: 0x04000552 RID: 1362
+	// Token: 0x04000556 RID: 1366
 	public RectTransform m_healthPanel;
 
-	// Token: 0x04000553 RID: 1363
+	// Token: 0x04000557 RID: 1367
 	private const float m_healthPanelBuffer = 56f;
 
-	// Token: 0x04000554 RID: 1364
+	// Token: 0x04000558 RID: 1368
 	private const float m_healthPanelMinSize = 138f;
 
-	// Token: 0x04000555 RID: 1365
+	// Token: 0x04000559 RID: 1369
 	public Animator m_healthAnimator;
 
-	// Token: 0x04000556 RID: 1366
+	// Token: 0x0400055A RID: 1370
 	public GuiBar m_healthBarFast;
 
-	// Token: 0x04000557 RID: 1367
+	// Token: 0x0400055B RID: 1371
 	public GuiBar m_healthBarSlow;
 
-	// Token: 0x04000558 RID: 1368
+	// Token: 0x0400055C RID: 1372
 	public Text m_healthText;
 
-	// Token: 0x04000559 RID: 1369
+	// Token: 0x0400055D RID: 1373
 	public Text m_healthMaxText;
 
-	// Token: 0x0400055A RID: 1370
+	// Token: 0x0400055E RID: 1374
 	[Header("Food")]
 	public Image[] m_foodBars;
 
-	// Token: 0x0400055B RID: 1371
+	// Token: 0x0400055F RID: 1375
 	public Image[] m_foodIcons;
 
-	// Token: 0x0400055C RID: 1372
+	// Token: 0x04000560 RID: 1376
 	public RectTransform m_foodBarRoot;
 
-	// Token: 0x0400055D RID: 1373
+	// Token: 0x04000561 RID: 1377
 	public RectTransform m_foodBaseBar;
 
-	// Token: 0x0400055E RID: 1374
+	// Token: 0x04000562 RID: 1378
 	public Image m_foodIcon;
 
-	// Token: 0x0400055F RID: 1375
+	// Token: 0x04000563 RID: 1379
 	public Color m_foodColorHungry = Color.white;
 
-	// Token: 0x04000560 RID: 1376
+	// Token: 0x04000564 RID: 1380
 	public Color m_foodColorFull = Color.white;
 
-	// Token: 0x04000561 RID: 1377
+	// Token: 0x04000565 RID: 1381
 	public Text m_foodText;
 
-	// Token: 0x04000562 RID: 1378
+	// Token: 0x04000566 RID: 1382
 	[Header("Action bar")]
 	public GameObject m_actionBarRoot;
 
-	// Token: 0x04000563 RID: 1379
+	// Token: 0x04000567 RID: 1383
 	public GuiBar m_actionProgress;
 
-	// Token: 0x04000564 RID: 1380
+	// Token: 0x04000568 RID: 1384
 	public Text m_actionName;
 
-	// Token: 0x04000565 RID: 1381
+	// Token: 0x04000569 RID: 1385
 	[Header("Guardian power")]
 	public RectTransform m_gpRoot;
 
-	// Token: 0x04000566 RID: 1382
+	// Token: 0x0400056A RID: 1386
 	public Text m_gpName;
 
-	// Token: 0x04000567 RID: 1383
+	// Token: 0x0400056B RID: 1387
 	public Text m_gpCooldown;
 
-	// Token: 0x04000568 RID: 1384
+	// Token: 0x0400056C RID: 1388
 	public Image m_gpIcon;
 
-	// Token: 0x04000569 RID: 1385
+	// Token: 0x0400056D RID: 1389
 	[Header("Stamina")]
 	public GameObject m_staminaBar;
 
-	// Token: 0x0400056A RID: 1386
+	// Token: 0x0400056E RID: 1390
 	public GuiBar m_staminaBarFast;
 
-	// Token: 0x0400056B RID: 1387
+	// Token: 0x0400056F RID: 1391
 	public GuiBar m_staminaBarSlow;
 
-	// Token: 0x0400056C RID: 1388
+	// Token: 0x04000570 RID: 1392
 	public Animator m_staminaAnimator;
 
-	// Token: 0x0400056D RID: 1389
+	// Token: 0x04000571 RID: 1393
 	private float m_staminaBarBorderBuffer = 16f;
 
-	// Token: 0x0400056E RID: 1390
+	// Token: 0x04000572 RID: 1394
 	public RectTransform m_staminaBar2Root;
 
-	// Token: 0x0400056F RID: 1391
+	// Token: 0x04000573 RID: 1395
 	public GuiBar m_staminaBar2Fast;
 
-	// Token: 0x04000570 RID: 1392
+	// Token: 0x04000574 RID: 1396
 	public GuiBar m_staminaBar2Slow;
 
-	// Token: 0x04000571 RID: 1393
+	// Token: 0x04000575 RID: 1397
 	[Header("Loading")]
 	public CanvasGroup m_loadingScreen;
 
-	// Token: 0x04000572 RID: 1394
+	// Token: 0x04000576 RID: 1398
 	public GameObject m_loadingProgress;
 
-	// Token: 0x04000573 RID: 1395
+	// Token: 0x04000577 RID: 1399
 	public GameObject m_sleepingProgress;
 
-	// Token: 0x04000574 RID: 1396
+	// Token: 0x04000578 RID: 1400
 	public GameObject m_teleportingProgress;
 
-	// Token: 0x04000575 RID: 1397
+	// Token: 0x04000579 RID: 1401
 	public Image m_loadingImage;
 
-	// Token: 0x04000576 RID: 1398
+	// Token: 0x0400057A RID: 1402
 	public Text m_loadingTip;
 
-	// Token: 0x04000577 RID: 1399
+	// Token: 0x0400057B RID: 1403
 	public bool m_useRandomImages = true;
 
-	// Token: 0x04000578 RID: 1400
+	// Token: 0x0400057C RID: 1404
 	public string m_loadingImagePath = "/loadingscreens/";
 
-	// Token: 0x04000579 RID: 1401
+	// Token: 0x0400057D RID: 1405
 	public int m_loadingImages = 2;
 
-	// Token: 0x0400057A RID: 1402
+	// Token: 0x0400057E RID: 1406
 	public List<string> m_loadingTips = new List<string>();
 
-	// Token: 0x0400057B RID: 1403
+	// Token: 0x0400057F RID: 1407
 	[Header("Crosshair")]
 	public Image m_crosshair;
 
-	// Token: 0x0400057C RID: 1404
+	// Token: 0x04000580 RID: 1408
 	public Image m_crosshairBow;
 
-	// Token: 0x0400057D RID: 1405
+	// Token: 0x04000581 RID: 1409
 	public Text m_hoverName;
 
-	// Token: 0x0400057E RID: 1406
+	// Token: 0x04000582 RID: 1410
 	public RectTransform m_pieceHealthRoot;
 
-	// Token: 0x0400057F RID: 1407
+	// Token: 0x04000583 RID: 1411
 	public GuiBar m_pieceHealthBar;
 
-	// Token: 0x04000580 RID: 1408
+	// Token: 0x04000584 RID: 1412
 	public Image m_damageScreen;
 
-	// Token: 0x04000581 RID: 1409
+	// Token: 0x04000585 RID: 1413
 	[Header("Target")]
 	public GameObject m_targetedAlert;
 
-	// Token: 0x04000582 RID: 1410
+	// Token: 0x04000586 RID: 1414
 	public GameObject m_targeted;
 
-	// Token: 0x04000583 RID: 1411
+	// Token: 0x04000587 RID: 1415
 	public GameObject m_hidden;
 
-	// Token: 0x04000584 RID: 1412
+	// Token: 0x04000588 RID: 1416
 	public GuiBar m_stealthBar;
 
-	// Token: 0x04000585 RID: 1413
+	// Token: 0x04000589 RID: 1417
 	[Header("Status effect")]
 	public RectTransform m_statusEffectListRoot;
 
-	// Token: 0x04000586 RID: 1414
+	// Token: 0x0400058A RID: 1418
 	public RectTransform m_statusEffectTemplate;
 
-	// Token: 0x04000587 RID: 1415
+	// Token: 0x0400058B RID: 1419
 	public float m_statusEffectSpacing = 55f;
 
-	// Token: 0x04000588 RID: 1416
+	// Token: 0x0400058C RID: 1420
 	private List<RectTransform> m_statusEffects = new List<RectTransform>();
 
-	// Token: 0x04000589 RID: 1417
+	// Token: 0x0400058D RID: 1421
 	[Header("Ship hud")]
 	public GameObject m_shipHudRoot;
 
-	// Token: 0x0400058A RID: 1418
+	// Token: 0x0400058E RID: 1422
 	public GameObject m_shipControlsRoot;
 
-	// Token: 0x0400058B RID: 1419
+	// Token: 0x0400058F RID: 1423
 	public GameObject m_rudderLeft;
 
-	// Token: 0x0400058C RID: 1420
+	// Token: 0x04000590 RID: 1424
 	public GameObject m_rudderRight;
 
-	// Token: 0x0400058D RID: 1421
+	// Token: 0x04000591 RID: 1425
 	public GameObject m_rudderSlow;
 
-	// Token: 0x0400058E RID: 1422
+	// Token: 0x04000592 RID: 1426
 	public GameObject m_rudderForward;
 
-	// Token: 0x0400058F RID: 1423
+	// Token: 0x04000593 RID: 1427
 	public GameObject m_rudderFastForward;
 
-	// Token: 0x04000590 RID: 1424
+	// Token: 0x04000594 RID: 1428
 	public GameObject m_rudderBackward;
 
-	// Token: 0x04000591 RID: 1425
+	// Token: 0x04000595 RID: 1429
 	public GameObject m_halfSail;
 
-	// Token: 0x04000592 RID: 1426
+	// Token: 0x04000596 RID: 1430
 	public GameObject m_fullSail;
 
-	// Token: 0x04000593 RID: 1427
+	// Token: 0x04000597 RID: 1431
 	public GameObject m_rudder;
 
-	// Token: 0x04000594 RID: 1428
+	// Token: 0x04000598 RID: 1432
 	public RectTransform m_shipWindIndicatorRoot;
 
-	// Token: 0x04000595 RID: 1429
+	// Token: 0x04000599 RID: 1433
 	public Image m_shipWindIcon;
 
-	// Token: 0x04000596 RID: 1430
+	// Token: 0x0400059A RID: 1434
 	public RectTransform m_shipWindIconRoot;
 
-	// Token: 0x04000597 RID: 1431
+	// Token: 0x0400059B RID: 1435
 	public Image m_shipRudderIndicator;
 
-	// Token: 0x04000598 RID: 1432
+	// Token: 0x0400059C RID: 1436
 	public Image m_shipRudderIcon;
 
-	// Token: 0x04000599 RID: 1433
+	// Token: 0x0400059D RID: 1437
 	[Header("Event")]
 	public GameObject m_eventBar;
 
-	// Token: 0x0400059A RID: 1434
+	// Token: 0x0400059E RID: 1438
 	public Text m_eventName;
 
-	// Token: 0x0400059B RID: 1435
+	// Token: 0x0400059F RID: 1439
 	private bool m_userHidden;
 
-	// Token: 0x0400059C RID: 1436
+	// Token: 0x040005A0 RID: 1440
 	private CraftingStation m_currentCraftingStation;
 
-	// Token: 0x0400059D RID: 1437
+	// Token: 0x040005A1 RID: 1441
 	private List<string> m_buildCategoryNames = new List<string>();
 
-	// Token: 0x0400059E RID: 1438
+	// Token: 0x040005A2 RID: 1442
 	private List<StatusEffect> m_tempStatusEffects = new List<StatusEffect>();
 
-	// Token: 0x0400059F RID: 1439
+	// Token: 0x040005A3 RID: 1443
 	private List<Hud.PieceIconData> m_pieceIcons = new List<Hud.PieceIconData>();
 
-	// Token: 0x040005A0 RID: 1440
+	// Token: 0x040005A4 RID: 1444
 	private int m_pieceIconUpdateIndex;
 
-	// Token: 0x040005A1 RID: 1441
+	// Token: 0x040005A5 RID: 1445
 	private bool m_haveSetupLoadScreen;
 
-	// Token: 0x040005A2 RID: 1442
+	// Token: 0x040005A6 RID: 1446
 	private int m_closePieceSelection;
 
-	// Token: 0x040005A3 RID: 1443
+	// Token: 0x040005A7 RID: 1447
 	private Piece m_hoveredPiece;
 
 	// Token: 0x0200014B RID: 331
 	private class PieceIconData
 	{
-		// Token: 0x040010E3 RID: 4323
+		// Token: 0x040010EA RID: 4330
 		public GameObject m_go;
 
-		// Token: 0x040010E4 RID: 4324
+		// Token: 0x040010EB RID: 4331
 		public Image m_icon;
 
-		// Token: 0x040010E5 RID: 4325
+		// Token: 0x040010EC RID: 4332
 		public GameObject m_marker;
 
-		// Token: 0x040010E6 RID: 4326
+		// Token: 0x040010ED RID: 4333
 		public GameObject m_upgrade;
 
-		// Token: 0x040010E7 RID: 4327
+		// Token: 0x040010EE RID: 4334
 		public UITooltip m_tooltip;
 	}
 }

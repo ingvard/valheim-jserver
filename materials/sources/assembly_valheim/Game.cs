@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class Game : MonoBehaviour
 {
 	// Token: 0x17000026 RID: 38
-	// (get) Token: 0x06000AAE RID: 2734 RVA: 0x0004D0AC File Offset: 0x0004B2AC
+	// (get) Token: 0x06000AAF RID: 2735 RVA: 0x0004D233 File Offset: 0x0004B433
 	public static Game instance
 	{
 		get
@@ -18,7 +18,7 @@ public class Game : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000AAF RID: 2735 RVA: 0x0004D0B4 File Offset: 0x0004B2B4
+	// Token: 0x06000AB0 RID: 2736 RVA: 0x0004D23C File Offset: 0x0004B43C
 	private void Awake()
 	{
 		Game.m_instance = this;
@@ -44,13 +44,13 @@ public class Game : MonoBehaviour
 		Gogan.LogEvent("Game", "InputMode", ZInput.IsGamepadActive() ? "Gamepad" : "MK", 0L);
 	}
 
-	// Token: 0x06000AB0 RID: 2736 RVA: 0x0004D19D File Offset: 0x0004B39D
+	// Token: 0x06000AB1 RID: 2737 RVA: 0x0004D325 File Offset: 0x0004B525
 	private void OnDestroy()
 	{
 		Game.m_instance = null;
 	}
 
-	// Token: 0x06000AB1 RID: 2737 RVA: 0x0004D1A8 File Offset: 0x0004B3A8
+	// Token: 0x06000AB2 RID: 2738 RVA: 0x0004D330 File Offset: 0x0004B530
 	private void Start()
 	{
 		Application.targetFrameRate = -1;
@@ -67,7 +67,7 @@ public class Game : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000AB2 RID: 2738 RVA: 0x0004D28C File Offset: 0x0004B48C
+	// Token: 0x06000AB3 RID: 2739 RVA: 0x0004D414 File Offset: 0x0004B614
 	private void ServerLog()
 	{
 		int peerConnections = ZNet.instance.GetPeerConnections();
@@ -87,13 +87,13 @@ public class Game : MonoBehaviour
 		}));
 	}
 
-	// Token: 0x06000AB3 RID: 2739 RVA: 0x0004D319 File Offset: 0x0004B519
+	// Token: 0x06000AB4 RID: 2740 RVA: 0x0004D4A1 File Offset: 0x0004B6A1
 	private void CollectResources()
 	{
 		Resources.UnloadUnusedAssets();
 	}
 
-	// Token: 0x06000AB4 RID: 2740 RVA: 0x0004D321 File Offset: 0x0004B521
+	// Token: 0x06000AB5 RID: 2741 RVA: 0x0004D4A9 File Offset: 0x0004B6A9
 	public void Logout()
 	{
 		if (this.m_shuttingDown)
@@ -104,13 +104,13 @@ public class Game : MonoBehaviour
 		SceneManager.LoadScene("start");
 	}
 
-	// Token: 0x06000AB5 RID: 2741 RVA: 0x0004D33C File Offset: 0x0004B53C
+	// Token: 0x06000AB6 RID: 2742 RVA: 0x0004D4C4 File Offset: 0x0004B6C4
 	public bool IsShuttingDown()
 	{
 		return this.m_shuttingDown;
 	}
 
-	// Token: 0x06000AB6 RID: 2742 RVA: 0x0004D344 File Offset: 0x0004B544
+	// Token: 0x06000AB7 RID: 2743 RVA: 0x0004D4CC File Offset: 0x0004B6CC
 	private void OnApplicationQuit()
 	{
 		if (this.m_shuttingDown)
@@ -122,7 +122,7 @@ public class Game : MonoBehaviour
 		Thread.Sleep(2000);
 	}
 
-	// Token: 0x06000AB7 RID: 2743 RVA: 0x0004D369 File Offset: 0x0004B569
+	// Token: 0x06000AB8 RID: 2744 RVA: 0x0004D4F1 File Offset: 0x0004B6F1
 	private void Shutdown()
 	{
 		if (this.m_shuttingDown)
@@ -135,7 +135,7 @@ public class Game : MonoBehaviour
 		ZNet.instance.Shutdown();
 	}
 
-	// Token: 0x06000AB8 RID: 2744 RVA: 0x0004D398 File Offset: 0x0004B598
+	// Token: 0x06000AB9 RID: 2745 RVA: 0x0004D520 File Offset: 0x0004B720
 	private void SavePlayerProfile(bool setLogoutPoint)
 	{
 		if (Player.m_localPlayer)
@@ -150,7 +150,7 @@ public class Game : MonoBehaviour
 		this.m_playerProfile.Save();
 	}
 
-	// Token: 0x06000AB9 RID: 2745 RVA: 0x0004D3E8 File Offset: 0x0004B5E8
+	// Token: 0x06000ABA RID: 2746 RVA: 0x0004D570 File Offset: 0x0004B770
 	private Player SpawnPlayer(Vector3 spawnPoint)
 	{
 		ZLog.DevLog("Spawning player:" + Time.frameCount);
@@ -162,7 +162,7 @@ public class Game : MonoBehaviour
 		return component;
 	}
 
-	// Token: 0x06000ABA RID: 2746 RVA: 0x0004D450 File Offset: 0x0004B650
+	// Token: 0x06000ABB RID: 2747 RVA: 0x0004D5D8 File Offset: 0x0004B7D8
 	private Bed FindBedNearby(Vector3 point, float maxDistance)
 	{
 		foreach (Bed bed in UnityEngine.Object.FindObjectsOfType<Bed>())
@@ -175,7 +175,7 @@ public class Game : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000ABB RID: 2747 RVA: 0x0004D480 File Offset: 0x0004B680
+	// Token: 0x06000ABC RID: 2748 RVA: 0x0004D608 File Offset: 0x0004B808
 	private bool FindSpawnPoint(out Vector3 point, out bool usedLogoutPoint, float dt)
 	{
 		this.m_respawnWait += dt;
@@ -246,20 +246,20 @@ public class Game : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000ABC RID: 2748 RVA: 0x0004D69E File Offset: 0x0004B89E
+	// Token: 0x06000ABD RID: 2749 RVA: 0x0004D826 File Offset: 0x0004BA26
 	private static Vector3 GetPointOnCircle(float distance, float angle)
 	{
 		return new Vector3(Mathf.Sin(angle) * distance, 0f, Mathf.Cos(angle) * distance);
 	}
 
-	// Token: 0x06000ABD RID: 2749 RVA: 0x0004D6BA File Offset: 0x0004B8BA
+	// Token: 0x06000ABE RID: 2750 RVA: 0x0004D842 File Offset: 0x0004BA42
 	public void RequestRespawn(float delay)
 	{
 		base.CancelInvoke("_RequestRespawn");
 		base.Invoke("_RequestRespawn", delay);
 	}
 
-	// Token: 0x06000ABE RID: 2750 RVA: 0x0004D6D4 File Offset: 0x0004B8D4
+	// Token: 0x06000ABF RID: 2751 RVA: 0x0004D85C File Offset: 0x0004BA5C
 	private void _RequestRespawn()
 	{
 		ZLog.Log("Starting respawn");
@@ -277,14 +277,14 @@ public class Game : MonoBehaviour
 		MusicMan.instance.TriggerMusic("respawn");
 	}
 
-	// Token: 0x06000ABF RID: 2751 RVA: 0x0004D757 File Offset: 0x0004B957
+	// Token: 0x06000AC0 RID: 2752 RVA: 0x0004D8DF File Offset: 0x0004BADF
 	private void Update()
 	{
 		ZInput.Update(Time.deltaTime);
 		this.UpdateSaving(Time.deltaTime);
 	}
 
-	// Token: 0x06000AC0 RID: 2752 RVA: 0x0004D770 File Offset: 0x0004B970
+	// Token: 0x06000AC1 RID: 2753 RVA: 0x0004D8F8 File Offset: 0x0004BAF8
 	private void FixedUpdate()
 	{
 		if (!this.m_haveSpawned && ZNet.GetConnectionStatus() == ZNet.ConnectionStatus.Connected)
@@ -302,7 +302,7 @@ public class Game : MonoBehaviour
 		this.UpdateRespawn(Time.fixedDeltaTime);
 	}
 
-	// Token: 0x06000AC1 RID: 2753 RVA: 0x0004D7E4 File Offset: 0x0004B9E4
+	// Token: 0x06000AC2 RID: 2754 RVA: 0x0004D96C File Offset: 0x0004BB6C
 	private void UpdateSaving(float dt)
 	{
 		this.m_saveTimer += dt;
@@ -317,7 +317,7 @@ public class Game : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000AC2 RID: 2754 RVA: 0x0004D838 File Offset: 0x0004BA38
+	// Token: 0x06000AC3 RID: 2755 RVA: 0x0004D9C0 File Offset: 0x0004BBC0
 	private void UpdateRespawn(float dt)
 	{
 		Vector3 vector;
@@ -339,25 +339,25 @@ public class Game : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000AC3 RID: 2755 RVA: 0x0004D89C File Offset: 0x0004BA9C
+	// Token: 0x06000AC4 RID: 2756 RVA: 0x0004DA24 File Offset: 0x0004BC24
 	public bool WaitingForRespawn()
 	{
 		return this.m_requestRespawn;
 	}
 
-	// Token: 0x06000AC4 RID: 2756 RVA: 0x0004D8A4 File Offset: 0x0004BAA4
+	// Token: 0x06000AC5 RID: 2757 RVA: 0x0004DA2C File Offset: 0x0004BC2C
 	public PlayerProfile GetPlayerProfile()
 	{
 		return this.m_playerProfile;
 	}
 
-	// Token: 0x06000AC5 RID: 2757 RVA: 0x0004D8AC File Offset: 0x0004BAAC
+	// Token: 0x06000AC6 RID: 2758 RVA: 0x0004DA34 File Offset: 0x0004BC34
 	public static void SetProfile(string filename)
 	{
 		Game.m_profileFilename = filename;
 	}
 
-	// Token: 0x06000AC6 RID: 2758 RVA: 0x0004D8B4 File Offset: 0x0004BAB4
+	// Token: 0x06000AC7 RID: 2759 RVA: 0x0004DA3C File Offset: 0x0004BC3C
 	private IEnumerator ConnectPortals()
 	{
 		for (;;)
@@ -408,7 +408,7 @@ public class Game : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000AC7 RID: 2759 RVA: 0x0004D8C4 File Offset: 0x0004BAC4
+	// Token: 0x06000AC8 RID: 2760 RVA: 0x0004DA4C File Offset: 0x0004BC4C
 	private ZDO FindRandomUnconnectedPortal(List<ZDO> portals, ZDO skip, string tag)
 	{
 		List<ZDO> list = new List<ZDO>();
@@ -426,7 +426,7 @@ public class Game : MonoBehaviour
 		return list[UnityEngine.Random.Range(0, list.Count)];
 	}
 
-	// Token: 0x06000AC8 RID: 2760 RVA: 0x0004D968 File Offset: 0x0004BB68
+	// Token: 0x06000AC9 RID: 2761 RVA: 0x0004DAF0 File Offset: 0x0004BCF0
 	private ZDO FindClosestUnconnectedPortal(List<ZDO> portals, ZDO skip, Vector3 refPos)
 	{
 		ZDO zdo = null;
@@ -446,7 +446,7 @@ public class Game : MonoBehaviour
 		return zdo;
 	}
 
-	// Token: 0x06000AC9 RID: 2761 RVA: 0x0004D9F0 File Offset: 0x0004BBF0
+	// Token: 0x06000ACA RID: 2762 RVA: 0x0004DB78 File Offset: 0x0004BD78
 	private void UpdateSleeping()
 	{
 		if (!ZNet.instance.IsServer())
@@ -478,7 +478,7 @@ public class Game : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000ACA RID: 2762 RVA: 0x0004DA98 File Offset: 0x0004BC98
+	// Token: 0x06000ACB RID: 2763 RVA: 0x0004DC20 File Offset: 0x0004BE20
 	private bool EverybodyIsTryingToSleep()
 	{
 		List<ZDO> allCharacterZDOS = ZNet.instance.GetAllCharacterZDOS();
@@ -499,7 +499,7 @@ public class Game : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000ACB RID: 2763 RVA: 0x0004DB08 File Offset: 0x0004BD08
+	// Token: 0x06000ACC RID: 2764 RVA: 0x0004DC90 File Offset: 0x0004BE90
 	private void SleepStart(long sender)
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -509,7 +509,7 @@ public class Game : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000ACC RID: 2764 RVA: 0x0004DB2C File Offset: 0x0004BD2C
+	// Token: 0x06000ACD RID: 2765 RVA: 0x0004DCB4 File Offset: 0x0004BEB4
 	private void SleepStop(long sender)
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -520,7 +520,7 @@ public class Game : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000ACD RID: 2765 RVA: 0x0004DB54 File Offset: 0x0004BD54
+	// Token: 0x06000ACE RID: 2766 RVA: 0x0004DCDC File Offset: 0x0004BEDC
 	public void DiscoverClosestLocation(string name, Vector3 point, string pinName, int pinType)
 	{
 		ZLog.Log("DiscoverClosestLocation");
@@ -533,7 +533,7 @@ public class Game : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06000ACE RID: 2766 RVA: 0x0004DB90 File Offset: 0x0004BD90
+	// Token: 0x06000ACF RID: 2767 RVA: 0x0004DD18 File Offset: 0x0004BF18
 	private void RPC_DiscoverClosestLocation(long sender, string name, Vector3 point, string pinName, int pinType)
 	{
 		ZoneSystem.LocationInstance locationInstance;
@@ -551,13 +551,13 @@ public class Game : MonoBehaviour
 		ZLog.LogWarning("Failed to find location of type " + name);
 	}
 
-	// Token: 0x06000ACF RID: 2767 RVA: 0x0004DC01 File Offset: 0x0004BE01
+	// Token: 0x06000AD0 RID: 2768 RVA: 0x0004DD89 File Offset: 0x0004BF89
 	private void RPC_DiscoverLocationRespons(long sender, string pinName, int pinType, Vector3 pos)
 	{
 		Minimap.instance.DiscoverLocation(pos, (Minimap.PinType)pinType, pinName);
 	}
 
-	// Token: 0x06000AD0 RID: 2768 RVA: 0x0004DC12 File Offset: 0x0004BE12
+	// Token: 0x06000AD1 RID: 2769 RVA: 0x0004DD9A File Offset: 0x0004BF9A
 	public void Ping()
 	{
 		if (global::Console.instance)
@@ -570,7 +570,7 @@ public class Game : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06000AD1 RID: 2769 RVA: 0x0004DC51 File Offset: 0x0004BE51
+	// Token: 0x06000AD2 RID: 2770 RVA: 0x0004DDD9 File Offset: 0x0004BFD9
 	private void RPC_Ping(long sender, float time)
 	{
 		ZRoutedRpc.instance.InvokeRoutedRPC(sender, "Pong", new object[]
@@ -579,7 +579,7 @@ public class Game : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06000AD2 RID: 2770 RVA: 0x0004DC74 File Offset: 0x0004BE74
+	// Token: 0x06000AD3 RID: 2771 RVA: 0x0004DDFC File Offset: 0x0004BFFC
 	private void RPC_Pong(long sender, float time)
 	{
 		float num = Time.time - time;
@@ -591,13 +591,13 @@ public class Game : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000AD3 RID: 2771 RVA: 0x0004DCC3 File Offset: 0x0004BEC3
+	// Token: 0x06000AD4 RID: 2772 RVA: 0x0004DE4B File Offset: 0x0004C04B
 	public void SetForcePlayerDifficulty(int players)
 	{
 		this.m_forcePlayers = players;
 	}
 
-	// Token: 0x06000AD4 RID: 2772 RVA: 0x0004DCCC File Offset: 0x0004BECC
+	// Token: 0x06000AD5 RID: 2773 RVA: 0x0004DE54 File Offset: 0x0004C054
 	private int GetPlayerDifficulty(Vector3 pos)
 	{
 		if (this.m_forcePlayers > 0)
@@ -612,89 +612,89 @@ public class Game : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x06000AD5 RID: 2773 RVA: 0x0004DCFC File Offset: 0x0004BEFC
+	// Token: 0x06000AD6 RID: 2774 RVA: 0x0004DE84 File Offset: 0x0004C084
 	public float GetDifficultyDamageScale(Vector3 pos)
 	{
 		int playerDifficulty = this.GetPlayerDifficulty(pos);
 		return 1f + (float)(playerDifficulty - 1) * 0.04f;
 	}
 
-	// Token: 0x06000AD6 RID: 2774 RVA: 0x0004DD24 File Offset: 0x0004BF24
+	// Token: 0x06000AD7 RID: 2775 RVA: 0x0004DEAC File Offset: 0x0004C0AC
 	public float GetDifficultyHealthScale(Vector3 pos)
 	{
 		int playerDifficulty = this.GetPlayerDifficulty(pos);
 		return 1f + (float)(playerDifficulty - 1) * 0.4f;
 	}
 
-	// Token: 0x04000A10 RID: 2576
+	// Token: 0x04000A16 RID: 2582
 	private List<ZDO> m_tempPortalList = new List<ZDO>();
 
-	// Token: 0x04000A11 RID: 2577
+	// Token: 0x04000A17 RID: 2583
 	private static Game m_instance;
 
-	// Token: 0x04000A12 RID: 2578
+	// Token: 0x04000A18 RID: 2584
 	public GameObject m_playerPrefab;
 
-	// Token: 0x04000A13 RID: 2579
+	// Token: 0x04000A19 RID: 2585
 	public GameObject m_portalPrefab;
 
-	// Token: 0x04000A14 RID: 2580
+	// Token: 0x04000A1A RID: 2586
 	public GameObject m_consolePrefab;
 
-	// Token: 0x04000A15 RID: 2581
+	// Token: 0x04000A1B RID: 2587
 	public string m_StartLocation = "StartTemple";
 
-	// Token: 0x04000A16 RID: 2582
+	// Token: 0x04000A1C RID: 2588
 	private static string m_profileFilename;
 
-	// Token: 0x04000A17 RID: 2583
+	// Token: 0x04000A1D RID: 2589
 	private PlayerProfile m_playerProfile;
 
-	// Token: 0x04000A18 RID: 2584
+	// Token: 0x04000A1E RID: 2590
 	private bool m_requestRespawn;
 
-	// Token: 0x04000A19 RID: 2585
+	// Token: 0x04000A1F RID: 2591
 	private float m_respawnWait;
 
-	// Token: 0x04000A1A RID: 2586
+	// Token: 0x04000A20 RID: 2592
 	private const float m_respawnLoadDuration = 8f;
 
-	// Token: 0x04000A1B RID: 2587
+	// Token: 0x04000A21 RID: 2593
 	private bool m_haveSpawned;
 
-	// Token: 0x04000A1C RID: 2588
+	// Token: 0x04000A22 RID: 2594
 	private bool m_firstSpawn = true;
 
-	// Token: 0x04000A1D RID: 2589
+	// Token: 0x04000A23 RID: 2595
 	private bool m_shuttingDown;
 
-	// Token: 0x04000A1E RID: 2590
+	// Token: 0x04000A24 RID: 2596
 	private Vector3 m_randomStartPoint = Vector3.zero;
 
-	// Token: 0x04000A1F RID: 2591
+	// Token: 0x04000A25 RID: 2597
 	private UnityEngine.Random.State m_spawnRandomState;
 
-	// Token: 0x04000A20 RID: 2592
+	// Token: 0x04000A26 RID: 2598
 	private bool m_sleeping;
 
-	// Token: 0x04000A21 RID: 2593
+	// Token: 0x04000A27 RID: 2599
 	private const float m_collectResourcesInterval = 600f;
 
-	// Token: 0x04000A22 RID: 2594
+	// Token: 0x04000A28 RID: 2600
 	private float m_saveTimer;
 
-	// Token: 0x04000A23 RID: 2595
+	// Token: 0x04000A29 RID: 2601
 	private const float m_saveInterval = 1200f;
 
-	// Token: 0x04000A24 RID: 2596
+	// Token: 0x04000A2A RID: 2602
 	private const float m_difficultyScaleRange = 200f;
 
-	// Token: 0x04000A25 RID: 2597
+	// Token: 0x04000A2B RID: 2603
 	private const float m_damageScalePerPlayer = 0.04f;
 
-	// Token: 0x04000A26 RID: 2598
+	// Token: 0x04000A2C RID: 2604
 	private const float m_healthScalePerPlayer = 0.4f;
 
-	// Token: 0x04000A27 RID: 2599
+	// Token: 0x04000A2D RID: 2605
 	private int m_forcePlayers;
 }

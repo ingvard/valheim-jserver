@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x020000E2 RID: 226
 public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 {
-	// Token: 0x06000E1A RID: 3610 RVA: 0x000646EC File Offset: 0x000628EC
+	// Token: 0x06000E1B RID: 3611 RVA: 0x00064874 File Offset: 0x00062A74
 	private void Start()
 	{
 		Collider[] componentsInChildren = base.gameObject.GetComponentsInChildren<Collider>();
@@ -64,7 +64,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		base.InvokeRepeating("CheckForUpdate", UnityEngine.Random.Range(5f, 10f), 10f);
 	}
 
-	// Token: 0x06000E1B RID: 3611 RVA: 0x0006495C File Offset: 0x00062B5C
+	// Token: 0x06000E1C RID: 3612 RVA: 0x00064AE4 File Offset: 0x00062CE4
 	private void CheckSupport()
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -85,7 +85,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		}
 	}
 
-	// Token: 0x06000E1C RID: 3612 RVA: 0x000649FB File Offset: 0x00062BFB
+	// Token: 0x06000E1D RID: 3613 RVA: 0x00064B83 File Offset: 0x00062D83
 	private void CheckForUpdate()
 	{
 		if (!this.m_nview.IsValid())
@@ -99,7 +99,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		}
 	}
 
-	// Token: 0x06000E1D RID: 3613 RVA: 0x00064A30 File Offset: 0x00062C30
+	// Token: 0x06000E1E RID: 3614 RVA: 0x00064BB8 File Offset: 0x00062DB8
 	private void LoadHealth()
 	{
 		byte[] byteArray = this.m_nview.GetZDO().GetByteArray("health");
@@ -120,7 +120,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		this.m_lastDataRevision = this.m_nview.GetZDO().m_dataRevision;
 	}
 
-	// Token: 0x06000E1E RID: 3614 RVA: 0x00064AA4 File Offset: 0x00062CA4
+	// Token: 0x06000E1F RID: 3615 RVA: 0x00064C2C File Offset: 0x00062E2C
 	private void SaveHealth()
 	{
 		ZPackage zpackage = new ZPackage();
@@ -133,7 +133,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		this.m_lastDataRevision = this.m_nview.GetZDO().m_dataRevision;
 	}
 
-	// Token: 0x06000E1F RID: 3615 RVA: 0x00064B44 File Offset: 0x00062D44
+	// Token: 0x06000E20 RID: 3616 RVA: 0x00064CCC File Offset: 0x00062ECC
 	private void UpdateMesh()
 	{
 		MineRock5.m_tempInstancesA.Clear();
@@ -194,25 +194,25 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		component.SetLODs(lods);
 	}
 
-	// Token: 0x06000E20 RID: 3616 RVA: 0x00064D99 File Offset: 0x00062F99
+	// Token: 0x06000E21 RID: 3617 RVA: 0x00064F21 File Offset: 0x00063121
 	public string GetHoverText()
 	{
 		return Localization.instance.Localize(this.m_name);
 	}
 
-	// Token: 0x06000E21 RID: 3617 RVA: 0x00064DAB File Offset: 0x00062FAB
+	// Token: 0x06000E22 RID: 3618 RVA: 0x00064F33 File Offset: 0x00063133
 	public string GetHoverName()
 	{
 		return this.m_name;
 	}
 
-	// Token: 0x06000E22 RID: 3618 RVA: 0x000027E2 File Offset: 0x000009E2
+	// Token: 0x06000E23 RID: 3619 RVA: 0x000027E2 File Offset: 0x000009E2
 	public DestructibleType GetDestructibleType()
 	{
 		return DestructibleType.Default;
 	}
 
-	// Token: 0x06000E23 RID: 3619 RVA: 0x00064DB4 File Offset: 0x00062FB4
+	// Token: 0x06000E24 RID: 3620 RVA: 0x00064F3C File Offset: 0x0006313C
 	public void Damage(HitData hit)
 	{
 		if (this.m_nview == null || !this.m_nview.IsValid())
@@ -241,7 +241,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		});
 	}
 
-	// Token: 0x06000E24 RID: 3620 RVA: 0x00064E4E File Offset: 0x0006304E
+	// Token: 0x06000E25 RID: 3621 RVA: 0x00064FD6 File Offset: 0x000631D6
 	private void RPC_Damage(long sender, HitData hit, int hitAreaIndex)
 	{
 		if (!this.m_nview.IsValid())
@@ -258,7 +258,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		}
 	}
 
-	// Token: 0x06000E25 RID: 3621 RVA: 0x00064E84 File Offset: 0x00063084
+	// Token: 0x06000E26 RID: 3622 RVA: 0x0006500C File Offset: 0x0006320C
 	private bool DamageArea(int hitAreaIndex, HitData hit)
 	{
 		ZLog.Log("hit mine rock " + hitAreaIndex);
@@ -317,7 +317,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		return false;
 	}
 
-	// Token: 0x06000E26 RID: 3622 RVA: 0x00065078 File Offset: 0x00063278
+	// Token: 0x06000E27 RID: 3623 RVA: 0x00065200 File Offset: 0x00063400
 	private bool AllDestroyed()
 	{
 		for (int i = 0; i < this.m_hitAreas.Count; i++)
@@ -330,7 +330,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		return true;
 	}
 
-	// Token: 0x06000E27 RID: 3623 RVA: 0x000650B8 File Offset: 0x000632B8
+	// Token: 0x06000E28 RID: 3624 RVA: 0x00065240 File Offset: 0x00063440
 	private bool NonDestroyed()
 	{
 		for (int i = 0; i < this.m_hitAreas.Count; i++)
@@ -343,7 +343,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		return true;
 	}
 
-	// Token: 0x06000E28 RID: 3624 RVA: 0x000650F8 File Offset: 0x000632F8
+	// Token: 0x06000E29 RID: 3625 RVA: 0x00065280 File Offset: 0x00063480
 	private void RPC_SetAreaHealth(long sender, int index, float health)
 	{
 		MineRock5.HitArea hitArea = this.GetHitArea(index);
@@ -354,7 +354,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		this.UpdateMesh();
 	}
 
-	// Token: 0x06000E29 RID: 3625 RVA: 0x00065120 File Offset: 0x00063320
+	// Token: 0x06000E2A RID: 3626 RVA: 0x000652A8 File Offset: 0x000634A8
 	private int GetAreaIndex(Collider area)
 	{
 		for (int i = 0; i < this.m_hitAreas.Count; i++)
@@ -367,7 +367,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		return -1;
 	}
 
-	// Token: 0x06000E2A RID: 3626 RVA: 0x0006515F File Offset: 0x0006335F
+	// Token: 0x06000E2B RID: 3627 RVA: 0x000652E7 File Offset: 0x000634E7
 	private MineRock5.HitArea GetHitArea(int index)
 	{
 		if (index < 0 || index >= this.m_hitAreas.Count)
@@ -377,7 +377,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		return this.m_hitAreas[index];
 	}
 
-	// Token: 0x06000E2B RID: 3627 RVA: 0x00065184 File Offset: 0x00063384
+	// Token: 0x06000E2C RID: 3628 RVA: 0x0006530C File Offset: 0x0006350C
 	private void UpdateSupport()
 	{
 		float realtimeSinceStartup = Time.realtimeSinceStartup;
@@ -416,7 +416,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		ZLog.Log("Suport time " + (Time.realtimeSinceStartup - realtimeSinceStartup) * 1000f);
 	}
 
-	// Token: 0x06000E2C RID: 3628 RVA: 0x00065320 File Offset: 0x00063520
+	// Token: 0x06000E2D RID: 3629 RVA: 0x000654A8 File Offset: 0x000636A8
 	private bool GetSupport(Collider c)
 	{
 		if (c.gameObject.layer == MineRock5.m_groundLayer)
@@ -441,7 +441,7 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		return true;
 	}
 
-	// Token: 0x06000E2D RID: 3629 RVA: 0x000653D0 File Offset: 0x000635D0
+	// Token: 0x06000E2E RID: 3630 RVA: 0x00065558 File Offset: 0x00063758
 	private void SetupColliders()
 	{
 		Vector3 position = base.transform.position;
@@ -453,113 +453,113 @@ public class MineRock5 : MonoBehaviour, IDestructible, Hoverable
 		}
 	}
 
-	// Token: 0x04000CCC RID: 3276
+	// Token: 0x04000CD2 RID: 3282
 	private static Mesh m_tempMeshA;
 
-	// Token: 0x04000CCD RID: 3277
+	// Token: 0x04000CD3 RID: 3283
 	private static Mesh m_tempMeshB;
 
-	// Token: 0x04000CCE RID: 3278
+	// Token: 0x04000CD4 RID: 3284
 	private static List<CombineInstance> m_tempInstancesA = new List<CombineInstance>();
 
-	// Token: 0x04000CCF RID: 3279
+	// Token: 0x04000CD5 RID: 3285
 	private static List<CombineInstance> m_tempInstancesB = new List<CombineInstance>();
 
-	// Token: 0x04000CD0 RID: 3280
+	// Token: 0x04000CD6 RID: 3286
 	public string m_name = "";
 
-	// Token: 0x04000CD1 RID: 3281
+	// Token: 0x04000CD7 RID: 3287
 	public float m_health = 2f;
 
-	// Token: 0x04000CD2 RID: 3282
+	// Token: 0x04000CD8 RID: 3288
 	public HitData.DamageModifiers m_damageModifiers;
 
-	// Token: 0x04000CD3 RID: 3283
+	// Token: 0x04000CD9 RID: 3289
 	public int m_minToolTier;
 
-	// Token: 0x04000CD4 RID: 3284
+	// Token: 0x04000CDA RID: 3290
 	public bool m_supportCheck = true;
 
-	// Token: 0x04000CD5 RID: 3285
+	// Token: 0x04000CDB RID: 3291
 	public EffectList m_destroyedEffect = new EffectList();
 
-	// Token: 0x04000CD6 RID: 3286
+	// Token: 0x04000CDC RID: 3292
 	public EffectList m_hitEffect = new EffectList();
 
-	// Token: 0x04000CD7 RID: 3287
+	// Token: 0x04000CDD RID: 3293
 	public DropTable m_dropItems;
 
-	// Token: 0x04000CD8 RID: 3288
+	// Token: 0x04000CDE RID: 3294
 	private List<MineRock5.HitArea> m_hitAreas;
 
-	// Token: 0x04000CD9 RID: 3289
+	// Token: 0x04000CDF RID: 3295
 	private List<Renderer> m_extraRenderers;
 
-	// Token: 0x04000CDA RID: 3290
+	// Token: 0x04000CE0 RID: 3296
 	private bool m_haveSetupBounds;
 
-	// Token: 0x04000CDB RID: 3291
+	// Token: 0x04000CE1 RID: 3297
 	private ZNetView m_nview;
 
-	// Token: 0x04000CDC RID: 3292
+	// Token: 0x04000CE2 RID: 3298
 	private MeshFilter m_meshFilter;
 
-	// Token: 0x04000CDD RID: 3293
+	// Token: 0x04000CE3 RID: 3299
 	private MeshRenderer m_meshRenderer;
 
-	// Token: 0x04000CDE RID: 3294
+	// Token: 0x04000CE4 RID: 3300
 	private uint m_lastDataRevision;
 
-	// Token: 0x04000CDF RID: 3295
+	// Token: 0x04000CE5 RID: 3301
 	private const int m_supportIterations = 3;
 
-	// Token: 0x04000CE0 RID: 3296
+	// Token: 0x04000CE6 RID: 3302
 	private static int m_rayMask = 0;
 
-	// Token: 0x04000CE1 RID: 3297
+	// Token: 0x04000CE7 RID: 3303
 	private static int m_groundLayer = 0;
 
-	// Token: 0x04000CE2 RID: 3298
+	// Token: 0x04000CE8 RID: 3304
 	private static Collider[] m_tempColliders = new Collider[128];
 
 	// Token: 0x020001A1 RID: 417
 	private struct BoundData
 	{
-		// Token: 0x040012D5 RID: 4821
+		// Token: 0x040012DC RID: 4828
 		public Vector3 m_pos;
 
-		// Token: 0x040012D6 RID: 4822
+		// Token: 0x040012DD RID: 4829
 		public Quaternion m_rot;
 
-		// Token: 0x040012D7 RID: 4823
+		// Token: 0x040012DE RID: 4830
 		public Vector3 m_size;
 	}
 
 	// Token: 0x020001A2 RID: 418
 	private class HitArea
 	{
-		// Token: 0x040012D8 RID: 4824
+		// Token: 0x040012DF RID: 4831
 		public Collider m_collider;
 
-		// Token: 0x040012D9 RID: 4825
+		// Token: 0x040012E0 RID: 4832
 		public MeshRenderer m_meshRenderer;
 
-		// Token: 0x040012DA RID: 4826
+		// Token: 0x040012E1 RID: 4833
 		public MeshFilter m_meshFilter;
 
-		// Token: 0x040012DB RID: 4827
+		// Token: 0x040012E2 RID: 4834
 		public StaticPhysics m_physics;
 
-		// Token: 0x040012DC RID: 4828
+		// Token: 0x040012E3 RID: 4835
 		public float m_health;
 
-		// Token: 0x040012DD RID: 4829
+		// Token: 0x040012E4 RID: 4836
 		public MineRock5.BoundData m_bound;
 
-		// Token: 0x040012DE RID: 4830
+		// Token: 0x040012E5 RID: 4837
 		public bool m_supported;
 
-		// Token: 0x040012DF RID: 4831
+		// Token: 0x040012E6 RID: 4838
 		public float m_baseScale;
 	}
 }

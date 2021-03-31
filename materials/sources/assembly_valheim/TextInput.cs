@@ -6,7 +6,7 @@ using UnityEngine.UI;
 // Token: 0x02000061 RID: 97
 public class TextInput : MonoBehaviour
 {
-	// Token: 0x0600063D RID: 1597 RVA: 0x00035299 File Offset: 0x00033499
+	// Token: 0x0600063E RID: 1598 RVA: 0x0003534D File Offset: 0x0003354D
 	private void Awake()
 	{
 		TextInput.m_instance = this;
@@ -14,7 +14,7 @@ public class TextInput : MonoBehaviour
 	}
 
 	// Token: 0x17000011 RID: 17
-	// (get) Token: 0x0600063E RID: 1598 RVA: 0x000352AD File Offset: 0x000334AD
+	// (get) Token: 0x0600063F RID: 1599 RVA: 0x00035361 File Offset: 0x00033561
 	public static TextInput instance
 	{
 		get
@@ -23,19 +23,19 @@ public class TextInput : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600063F RID: 1599 RVA: 0x000352B4 File Offset: 0x000334B4
+	// Token: 0x06000640 RID: 1600 RVA: 0x00035368 File Offset: 0x00033568
 	private void OnDestroy()
 	{
 		TextInput.m_instance = null;
 	}
 
-	// Token: 0x06000640 RID: 1600 RVA: 0x000352BC File Offset: 0x000334BC
+	// Token: 0x06000641 RID: 1601 RVA: 0x00035370 File Offset: 0x00033570
 	public static bool IsVisible()
 	{
 		return TextInput.m_instance && TextInput.m_instance.m_visibleFrame;
 	}
 
-	// Token: 0x06000641 RID: 1601 RVA: 0x000352D8 File Offset: 0x000334D8
+	// Token: 0x06000642 RID: 1602 RVA: 0x0003538C File Offset: 0x0003358C
 	private void Update()
 	{
 		this.m_visibleFrame = TextInput.m_instance.m_panel.gameObject.activeSelf;
@@ -64,7 +64,7 @@ public class TextInput : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000642 RID: 1602 RVA: 0x0003537C File Offset: 0x0003357C
+	// Token: 0x06000643 RID: 1603 RVA: 0x00035430 File Offset: 0x00033630
 	private void OnEnter(string text)
 	{
 		if (this.m_queuedSign != null)
@@ -74,14 +74,14 @@ public class TextInput : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000643 RID: 1603 RVA: 0x00035399 File Offset: 0x00033599
+	// Token: 0x06000644 RID: 1604 RVA: 0x0003544D File Offset: 0x0003364D
 	public void RequestText(TextReceiver sign, string topic, int charLimit)
 	{
 		this.m_queuedSign = sign;
 		this.Show(topic, sign.GetText(), charLimit);
 	}
 
-	// Token: 0x06000644 RID: 1604 RVA: 0x000353B0 File Offset: 0x000335B0
+	// Token: 0x06000645 RID: 1605 RVA: 0x00035464 File Offset: 0x00033664
 	private void Show(string topic, string text, int charLimit)
 	{
 		this.m_panel.SetActive(true);
@@ -91,27 +91,27 @@ public class TextInput : MonoBehaviour
 		this.m_textField.characterLimit = charLimit;
 	}
 
-	// Token: 0x06000645 RID: 1605 RVA: 0x00035402 File Offset: 0x00033602
+	// Token: 0x06000646 RID: 1606 RVA: 0x000354B6 File Offset: 0x000336B6
 	public void Hide()
 	{
 		this.m_panel.SetActive(false);
 	}
 
-	// Token: 0x040006F8 RID: 1784
+	// Token: 0x040006FC RID: 1788
 	private static TextInput m_instance;
 
-	// Token: 0x040006F9 RID: 1785
+	// Token: 0x040006FD RID: 1789
 	public GameObject m_panel;
 
-	// Token: 0x040006FA RID: 1786
+	// Token: 0x040006FE RID: 1790
 	public InputField m_textField;
 
-	// Token: 0x040006FB RID: 1787
+	// Token: 0x040006FF RID: 1791
 	public Text m_topic;
 
-	// Token: 0x040006FC RID: 1788
+	// Token: 0x04000700 RID: 1792
 	private TextReceiver m_queuedSign;
 
-	// Token: 0x040006FD RID: 1789
+	// Token: 0x04000701 RID: 1793
 	private bool m_visibleFrame;
 }

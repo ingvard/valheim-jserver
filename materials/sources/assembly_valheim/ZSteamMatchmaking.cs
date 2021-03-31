@@ -8,7 +8,7 @@ using Steamworks;
 public class ZSteamMatchmaking
 {
 	// Token: 0x1700001D RID: 29
-	// (get) Token: 0x06000955 RID: 2389 RVA: 0x00044C9C File Offset: 0x00042E9C
+	// (get) Token: 0x06000956 RID: 2390 RVA: 0x00044D50 File Offset: 0x00042F50
 	public static ZSteamMatchmaking instance
 	{
 		get
@@ -17,7 +17,7 @@ public class ZSteamMatchmaking
 		}
 	}
 
-	// Token: 0x06000956 RID: 2390 RVA: 0x00044CA3 File Offset: 0x00042EA3
+	// Token: 0x06000957 RID: 2391 RVA: 0x00044D57 File Offset: 0x00042F57
 	public static void Initialize()
 	{
 		if (ZSteamMatchmaking.m_instance == null)
@@ -26,7 +26,7 @@ public class ZSteamMatchmaking
 		}
 	}
 
-	// Token: 0x06000957 RID: 2391 RVA: 0x00044CB8 File Offset: 0x00042EB8
+	// Token: 0x06000958 RID: 2392 RVA: 0x00044D6C File Offset: 0x00042F6C
 	private ZSteamMatchmaking()
 	{
 		this.m_steamServerCallbackHandler = new ISteamMatchmakingServerListResponse(new ISteamMatchmakingServerListResponse.ServerResponded(this.OnServerResponded), new ISteamMatchmakingServerListResponse.ServerFailedToRespond(this.OnServerFailedToRespond), new ISteamMatchmakingServerListResponse.RefreshComplete(this.OnRefreshComplete));
@@ -39,7 +39,7 @@ public class ZSteamMatchmaking
 		this.m_authSessionTicketResponse = Callback<GetAuthSessionTicketResponse_t>.Create(new Callback<GetAuthSessionTicketResponse_t>.DispatchDelegate(this.OnAuthSessionTicketResponse));
 	}
 
-	// Token: 0x06000958 RID: 2392 RVA: 0x00044E28 File Offset: 0x00043028
+	// Token: 0x06000959 RID: 2393 RVA: 0x00044EDC File Offset: 0x000430DC
 	public byte[] RequestSessionTicket()
 	{
 		this.ReleaseSessionTicket();
@@ -55,7 +55,7 @@ public class ZSteamMatchmaking
 		return array2;
 	}
 
-	// Token: 0x06000959 RID: 2393 RVA: 0x00044E81 File Offset: 0x00043081
+	// Token: 0x0600095A RID: 2394 RVA: 0x00044F35 File Offset: 0x00043135
 	public void ReleaseSessionTicket()
 	{
 		if (this.m_authTicket == HAuthTicket.Invalid)
@@ -67,44 +67,44 @@ public class ZSteamMatchmaking
 		ZLog.Log("Released session ticket");
 	}
 
-	// Token: 0x0600095A RID: 2394 RVA: 0x00044EB6 File Offset: 0x000430B6
+	// Token: 0x0600095B RID: 2395 RVA: 0x00044F6A File Offset: 0x0004316A
 	public bool VerifySessionTicket(byte[] ticket, CSteamID steamID)
 	{
 		return SteamUser.BeginAuthSession(ticket, ticket.Length, steamID) == EBeginAuthSessionResult.k_EBeginAuthSessionResultOK;
 	}
 
-	// Token: 0x0600095B RID: 2395 RVA: 0x00044EC5 File Offset: 0x000430C5
+	// Token: 0x0600095C RID: 2396 RVA: 0x00044F79 File Offset: 0x00043179
 	private void OnAuthSessionTicketResponse(GetAuthSessionTicketResponse_t data)
 	{
 		ZLog.Log("Session auth respons callback");
 	}
 
-	// Token: 0x0600095C RID: 2396 RVA: 0x00044ED1 File Offset: 0x000430D1
+	// Token: 0x0600095D RID: 2397 RVA: 0x00044F85 File Offset: 0x00043185
 	private void OnSteamServersConnected(SteamServersConnected_t data)
 	{
 		ZLog.Log("Game server connected");
 	}
 
-	// Token: 0x0600095D RID: 2397 RVA: 0x00044EDD File Offset: 0x000430DD
+	// Token: 0x0600095E RID: 2398 RVA: 0x00044F91 File Offset: 0x00043191
 	private void OnSteamServersDisconnected(SteamServersDisconnected_t data)
 	{
 		ZLog.LogWarning("Game server disconnected");
 	}
 
-	// Token: 0x0600095E RID: 2398 RVA: 0x00044EE9 File Offset: 0x000430E9
+	// Token: 0x0600095F RID: 2399 RVA: 0x00044F9D File Offset: 0x0004319D
 	private void OnSteamServersConnectFail(SteamServerConnectFailure_t data)
 	{
 		ZLog.LogWarning("Game server connected failed");
 	}
 
-	// Token: 0x0600095F RID: 2399 RVA: 0x00044EF5 File Offset: 0x000430F5
+	// Token: 0x06000960 RID: 2400 RVA: 0x00044FA9 File Offset: 0x000431A9
 	private void OnChangeServerRequest(GameServerChangeRequested_t data)
 	{
 		ZLog.Log("ZSteamMatchmaking got change server request to:" + data.m_rgchServer);
 		this.QueueServerJoin(data.m_rgchServer);
 	}
 
-	// Token: 0x06000960 RID: 2400 RVA: 0x00044F18 File Offset: 0x00043118
+	// Token: 0x06000961 RID: 2401 RVA: 0x00044FCC File Offset: 0x000431CC
 	private void OnJoinRequest(GameLobbyJoinRequested_t data)
 	{
 		ZLog.Log(string.Concat(new object[]
@@ -121,7 +121,7 @@ public class ZSteamMatchmaking
 		this.QueueLobbyJoin(data.m_steamIDLobby);
 	}
 
-	// Token: 0x06000961 RID: 2401 RVA: 0x00044F7C File Offset: 0x0004317C
+	// Token: 0x06000962 RID: 2402 RVA: 0x00045030 File Offset: 0x00043230
 	private IPAddress FindIP(string host)
 	{
 		IPAddress result;
@@ -163,7 +163,7 @@ public class ZSteamMatchmaking
 		return result;
 	}
 
-	// Token: 0x06000962 RID: 2402 RVA: 0x00045048 File Offset: 0x00043248
+	// Token: 0x06000963 RID: 2403 RVA: 0x000450FC File Offset: 0x000432FC
 	public void QueueServerJoin(string addr)
 	{
 		try
@@ -201,7 +201,7 @@ public class ZSteamMatchmaking
 		}
 	}
 
-	// Token: 0x06000963 RID: 2403 RVA: 0x0004511C File Offset: 0x0004331C
+	// Token: 0x06000964 RID: 2404 RVA: 0x000451D0 File Offset: 0x000433D0
 	private void OnJoinServerRespond(gameserveritem_t serverData)
 	{
 		ZLog.Log(string.Concat(new object[]
@@ -215,13 +215,13 @@ public class ZSteamMatchmaking
 		this.m_haveJoinAddr = true;
 	}
 
-	// Token: 0x06000964 RID: 2404 RVA: 0x00045188 File Offset: 0x00043388
+	// Token: 0x06000965 RID: 2405 RVA: 0x0004523C File Offset: 0x0004343C
 	private void OnJoinServerFailed()
 	{
 		ZLog.Log("Failed to get join server data");
 	}
 
-	// Token: 0x06000965 RID: 2405 RVA: 0x00045194 File Offset: 0x00043394
+	// Token: 0x06000966 RID: 2406 RVA: 0x00045248 File Offset: 0x00043448
 	public void QueueLobbyJoin(CSteamID lobbyID)
 	{
 		uint num;
@@ -239,7 +239,7 @@ public class ZSteamMatchmaking
 		SteamMatchmaking.RequestLobbyData(lobbyID);
 	}
 
-	// Token: 0x06000966 RID: 2406 RVA: 0x00045200 File Offset: 0x00043400
+	// Token: 0x06000967 RID: 2407 RVA: 0x000452B4 File Offset: 0x000434B4
 	private void OnLobbyDataUpdate(LobbyDataUpdate_t data)
 	{
 		CSteamID csteamID = new CSteamID(data.m_ulSteamIDLobby);
@@ -272,7 +272,7 @@ public class ZSteamMatchmaking
 		}
 	}
 
-	// Token: 0x06000967 RID: 2407 RVA: 0x000452FC File Offset: 0x000434FC
+	// Token: 0x06000968 RID: 2408 RVA: 0x000453B0 File Offset: 0x000435B0
 	public void RegisterServer(string name, bool password, string version, bool publicServer, string worldName)
 	{
 		this.UnregisterServer();
@@ -284,7 +284,7 @@ public class ZSteamMatchmaking
 		ZLog.Log("Registering lobby");
 	}
 
-	// Token: 0x06000968 RID: 2408 RVA: 0x0004534C File Offset: 0x0004354C
+	// Token: 0x06000969 RID: 2409 RVA: 0x00045400 File Offset: 0x00043600
 	private void OnLobbyCreated(LobbyCreated_t data, bool ioError)
 	{
 		ZLog.Log(string.Concat(new object[]
@@ -307,13 +307,13 @@ public class ZSteamMatchmaking
 		SteamMatchmaking.SetLobbyGameServer(this.m_myLobby, 0U, 0, SteamUser.GetSteamID());
 	}
 
-	// Token: 0x06000969 RID: 2409 RVA: 0x00045421 File Offset: 0x00043621
+	// Token: 0x0600096A RID: 2410 RVA: 0x000454D5 File Offset: 0x000436D5
 	private void OnLobbyEnter(LobbyEnter_t data, bool ioError)
 	{
 		ZLog.LogWarning("Entering lobby " + data.m_ulSteamIDLobby);
 	}
 
-	// Token: 0x0600096A RID: 2410 RVA: 0x0004543D File Offset: 0x0004363D
+	// Token: 0x0600096B RID: 2411 RVA: 0x000454F1 File Offset: 0x000436F1
 	public void UnregisterServer()
 	{
 		if (this.m_myLobby != CSteamID.Nil)
@@ -324,7 +324,7 @@ public class ZSteamMatchmaking
 		}
 	}
 
-	// Token: 0x0600096B RID: 2411 RVA: 0x00045474 File Offset: 0x00043674
+	// Token: 0x0600096C RID: 2412 RVA: 0x00045528 File Offset: 0x00043728
 	public void RequestServerlist()
 	{
 		this.RequestFriendGames();
@@ -332,7 +332,7 @@ public class ZSteamMatchmaking
 		this.RequestDedicatedServers();
 	}
 
-	// Token: 0x0600096C RID: 2412 RVA: 0x00045488 File Offset: 0x00043688
+	// Token: 0x0600096D RID: 2413 RVA: 0x0004553C File Offset: 0x0004373C
 	private void RequestFriendGames()
 	{
 		this.m_friendServers.Clear();
@@ -358,7 +358,7 @@ public class ZSteamMatchmaking
 		this.m_serverListRevision++;
 	}
 
-	// Token: 0x0600096D RID: 2413 RVA: 0x0004554C File Offset: 0x0004374C
+	// Token: 0x0600096E RID: 2414 RVA: 0x00045600 File Offset: 0x00043800
 	private void RequestPublicLobbies()
 	{
 		SteamAPICall_t hAPICall = SteamMatchmaking.RequestLobbyList();
@@ -366,7 +366,7 @@ public class ZSteamMatchmaking
 		this.m_refreshingPublicGames = true;
 	}
 
-	// Token: 0x0600096E RID: 2414 RVA: 0x00045574 File Offset: 0x00043774
+	// Token: 0x0600096F RID: 2415 RVA: 0x00045628 File Offset: 0x00043828
 	private void RequestDedicatedServers()
 	{
 		if (this.m_haveListRequest)
@@ -380,7 +380,7 @@ public class ZSteamMatchmaking
 		this.m_haveListRequest = true;
 	}
 
-	// Token: 0x0600096F RID: 2415 RVA: 0x000455D4 File Offset: 0x000437D4
+	// Token: 0x06000970 RID: 2416 RVA: 0x00045688 File Offset: 0x00043888
 	private void OnLobbyMatchList(LobbyMatchList_t data, bool ioError)
 	{
 		this.m_refreshingPublicGames = false;
@@ -399,7 +399,7 @@ public class ZSteamMatchmaking
 		this.m_serverListRevision++;
 	}
 
-	// Token: 0x06000970 RID: 2416 RVA: 0x00045634 File Offset: 0x00043834
+	// Token: 0x06000971 RID: 2417 RVA: 0x000456E8 File Offset: 0x000438E8
 	private ServerData GetLobbyServerData(CSteamID lobbyID)
 	{
 		string lobbyData = SteamMatchmaking.GetLobbyData(lobbyID, "name");
@@ -424,7 +424,7 @@ public class ZSteamMatchmaking
 		return null;
 	}
 
-	// Token: 0x06000971 RID: 2417 RVA: 0x000456BE File Offset: 0x000438BE
+	// Token: 0x06000972 RID: 2418 RVA: 0x00045772 File Offset: 0x00043972
 	public void GetServers(List<ServerData> allServers)
 	{
 		if (this.m_friendsFilter)
@@ -436,7 +436,7 @@ public class ZSteamMatchmaking
 		this.FilterServers(this.m_dedicatedServers, allServers);
 	}
 
-	// Token: 0x06000972 RID: 2418 RVA: 0x000456F0 File Offset: 0x000438F0
+	// Token: 0x06000973 RID: 2419 RVA: 0x000457A4 File Offset: 0x000439A4
 	private void FilterServers(List<ServerData> input, List<ServerData> allServers)
 	{
 		string text = this.m_nameFilter.ToLowerInvariant();
@@ -453,7 +453,7 @@ public class ZSteamMatchmaking
 		}
 	}
 
-	// Token: 0x06000973 RID: 2419 RVA: 0x00045774 File Offset: 0x00043974
+	// Token: 0x06000974 RID: 2420 RVA: 0x00045828 File Offset: 0x00043A28
 	public bool GetJoinHost(out CSteamID steamID, out SteamNetworkingIPAddr addr)
 	{
 		steamID = this.m_joinUserID;
@@ -468,7 +468,7 @@ public class ZSteamMatchmaking
 		return false;
 	}
 
-	// Token: 0x06000974 RID: 2420 RVA: 0x000457D0 File Offset: 0x000439D0
+	// Token: 0x06000975 RID: 2421 RVA: 0x00045884 File Offset: 0x00043A84
 	private void OnServerResponded(HServerListRequest request, int iServer)
 	{
 		gameserveritem_t serverDetails = SteamMatchmakingServers.GetServerDetails(request, iServer);
@@ -488,12 +488,12 @@ public class ZSteamMatchmaking
 		}
 	}
 
-	// Token: 0x06000975 RID: 2421 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x06000976 RID: 2422 RVA: 0x000027E0 File Offset: 0x000009E0
 	private void OnServerFailedToRespond(HServerListRequest request, int iServer)
 	{
 	}
 
-	// Token: 0x06000976 RID: 2422 RVA: 0x00045878 File Offset: 0x00043A78
+	// Token: 0x06000977 RID: 2423 RVA: 0x0004592C File Offset: 0x00043B2C
 	private void OnRefreshComplete(HServerListRequest request, EMatchMakingServerResponse response)
 	{
 		ZLog.Log(string.Concat(new object[]
@@ -507,7 +507,7 @@ public class ZSteamMatchmaking
 		this.m_serverListRevision++;
 	}
 
-	// Token: 0x06000977 RID: 2423 RVA: 0x000458D6 File Offset: 0x00043AD6
+	// Token: 0x06000978 RID: 2424 RVA: 0x0004598A File Offset: 0x00043B8A
 	public void SetNameFilter(string filter)
 	{
 		if (this.m_nameFilter == filter)
@@ -518,7 +518,7 @@ public class ZSteamMatchmaking
 		this.m_serverListRevision++;
 	}
 
-	// Token: 0x06000978 RID: 2424 RVA: 0x000458FC File Offset: 0x00043AFC
+	// Token: 0x06000979 RID: 2425 RVA: 0x000459B0 File Offset: 0x00043BB0
 	public void SetFriendFilter(bool enabled)
 	{
 		if (this.m_friendsFilter == enabled)
@@ -529,129 +529,129 @@ public class ZSteamMatchmaking
 		this.m_serverListRevision++;
 	}
 
-	// Token: 0x06000979 RID: 2425 RVA: 0x0004591D File Offset: 0x00043B1D
+	// Token: 0x0600097A RID: 2426 RVA: 0x000459D1 File Offset: 0x00043BD1
 	public int GetServerListRevision()
 	{
 		return this.m_serverListRevision;
 	}
 
-	// Token: 0x0600097A RID: 2426 RVA: 0x00045925 File Offset: 0x00043B25
+	// Token: 0x0600097B RID: 2427 RVA: 0x000459D9 File Offset: 0x00043BD9
 	public bool IsUpdating()
 	{
 		return this.m_refreshingDedicatedServers || this.m_refreshingPublicGames;
 	}
 
-	// Token: 0x0600097B RID: 2427 RVA: 0x00045937 File Offset: 0x00043B37
+	// Token: 0x0600097C RID: 2428 RVA: 0x000459EB File Offset: 0x00043BEB
 	public int GetTotalNrOfServers()
 	{
 		return this.m_matchmakingServers.Count + this.m_dedicatedServers.Count + this.m_friendServers.Count;
 	}
 
-	// Token: 0x04000892 RID: 2194
+	// Token: 0x04000896 RID: 2198
 	private static ZSteamMatchmaking m_instance;
 
-	// Token: 0x04000893 RID: 2195
+	// Token: 0x04000897 RID: 2199
 	private const int maxServers = 200;
 
-	// Token: 0x04000894 RID: 2196
+	// Token: 0x04000898 RID: 2200
 	private List<ServerData> m_matchmakingServers = new List<ServerData>();
 
-	// Token: 0x04000895 RID: 2197
+	// Token: 0x04000899 RID: 2201
 	private List<ServerData> m_dedicatedServers = new List<ServerData>();
 
-	// Token: 0x04000896 RID: 2198
+	// Token: 0x0400089A RID: 2202
 	private List<ServerData> m_friendServers = new List<ServerData>();
 
-	// Token: 0x04000897 RID: 2199
+	// Token: 0x0400089B RID: 2203
 	private int m_serverListRevision;
 
-	// Token: 0x04000898 RID: 2200
+	// Token: 0x0400089C RID: 2204
 	private int m_updateTriggerAccumulator;
 
-	// Token: 0x04000899 RID: 2201
+	// Token: 0x0400089D RID: 2205
 	private CallResult<LobbyCreated_t> m_lobbyCreated;
 
-	// Token: 0x0400089A RID: 2202
+	// Token: 0x0400089E RID: 2206
 	private CallResult<LobbyMatchList_t> m_lobbyMatchList;
 
-	// Token: 0x0400089B RID: 2203
+	// Token: 0x0400089F RID: 2207
 	private CallResult<LobbyEnter_t> m_lobbyEntered;
 
-	// Token: 0x0400089C RID: 2204
+	// Token: 0x040008A0 RID: 2208
 	private Callback<GameServerChangeRequested_t> m_changeServer;
 
-	// Token: 0x0400089D RID: 2205
+	// Token: 0x040008A1 RID: 2209
 	private Callback<GameLobbyJoinRequested_t> m_joinRequest;
 
-	// Token: 0x0400089E RID: 2206
+	// Token: 0x040008A2 RID: 2210
 	private Callback<LobbyDataUpdate_t> m_lobbyDataUpdate;
 
-	// Token: 0x0400089F RID: 2207
+	// Token: 0x040008A3 RID: 2211
 	private Callback<GetAuthSessionTicketResponse_t> m_authSessionTicketResponse;
 
-	// Token: 0x040008A0 RID: 2208
+	// Token: 0x040008A4 RID: 2212
 	private Callback<SteamServerConnectFailure_t> m_steamServerConnectFailure;
 
-	// Token: 0x040008A1 RID: 2209
+	// Token: 0x040008A5 RID: 2213
 	private Callback<SteamServersConnected_t> m_steamServersConnected;
 
-	// Token: 0x040008A2 RID: 2210
+	// Token: 0x040008A6 RID: 2214
 	private Callback<SteamServersDisconnected_t> m_steamServersDisconnected;
 
-	// Token: 0x040008A3 RID: 2211
+	// Token: 0x040008A7 RID: 2215
 	private CSteamID m_myLobby = CSteamID.Nil;
 
-	// Token: 0x040008A4 RID: 2212
+	// Token: 0x040008A8 RID: 2216
 	private CSteamID m_joinUserID = CSteamID.Nil;
 
-	// Token: 0x040008A5 RID: 2213
+	// Token: 0x040008A9 RID: 2217
 	private CSteamID m_queuedJoinLobby = CSteamID.Nil;
 
-	// Token: 0x040008A6 RID: 2214
+	// Token: 0x040008AA RID: 2218
 	private bool m_haveJoinAddr;
 
-	// Token: 0x040008A7 RID: 2215
+	// Token: 0x040008AB RID: 2219
 	private SteamNetworkingIPAddr m_joinAddr;
 
-	// Token: 0x040008A8 RID: 2216
+	// Token: 0x040008AC RID: 2220
 	private List<KeyValuePair<CSteamID, string>> m_requestedFriendGames = new List<KeyValuePair<CSteamID, string>>();
 
-	// Token: 0x040008A9 RID: 2217
+	// Token: 0x040008AD RID: 2221
 	private ISteamMatchmakingServerListResponse m_steamServerCallbackHandler;
 
-	// Token: 0x040008AA RID: 2218
+	// Token: 0x040008AE RID: 2222
 	private ISteamMatchmakingPingResponse m_joinServerCallbackHandler;
 
-	// Token: 0x040008AB RID: 2219
+	// Token: 0x040008AF RID: 2223
 	private HServerQuery m_joinQuery;
 
-	// Token: 0x040008AC RID: 2220
+	// Token: 0x040008B0 RID: 2224
 	private HServerListRequest m_serverListRequest;
 
-	// Token: 0x040008AD RID: 2221
+	// Token: 0x040008B1 RID: 2225
 	private bool m_haveListRequest;
 
-	// Token: 0x040008AE RID: 2222
+	// Token: 0x040008B2 RID: 2226
 	private bool m_refreshingDedicatedServers;
 
-	// Token: 0x040008AF RID: 2223
+	// Token: 0x040008B3 RID: 2227
 	private bool m_refreshingPublicGames;
 
-	// Token: 0x040008B0 RID: 2224
+	// Token: 0x040008B4 RID: 2228
 	private string m_registerServerName = "";
 
-	// Token: 0x040008B1 RID: 2225
+	// Token: 0x040008B5 RID: 2229
 	private bool m_registerPassword;
 
-	// Token: 0x040008B2 RID: 2226
+	// Token: 0x040008B6 RID: 2230
 	private string m_registerVerson = "";
 
-	// Token: 0x040008B3 RID: 2227
+	// Token: 0x040008B7 RID: 2231
 	private string m_nameFilter = "";
 
-	// Token: 0x040008B4 RID: 2228
+	// Token: 0x040008B8 RID: 2232
 	private bool m_friendsFilter = true;
 
-	// Token: 0x040008B5 RID: 2229
+	// Token: 0x040008B9 RID: 2233
 	private HAuthTicket m_authTicket = HAuthTicket.Invalid;
 }

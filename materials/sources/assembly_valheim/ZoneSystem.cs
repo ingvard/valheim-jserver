@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class ZoneSystem : MonoBehaviour
 {
 	// Token: 0x1700002F RID: 47
-	// (get) Token: 0x06000C0A RID: 3082 RVA: 0x00055964 File Offset: 0x00053B64
+	// (get) Token: 0x06000C0B RID: 3083 RVA: 0x00055AEC File Offset: 0x00053CEC
 	public static ZoneSystem instance
 	{
 		get
@@ -18,7 +18,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C0B RID: 3083 RVA: 0x0005596C File Offset: 0x00053B6C
+	// Token: 0x06000C0C RID: 3084 RVA: 0x00055AF4 File Offset: 0x00053CF4
 	private void Awake()
 	{
 		ZoneSystem.m_instance = this;
@@ -45,7 +45,7 @@ public class ZoneSystem : MonoBehaviour
 		ZLog.Log("Zonesystem Awake " + Time.frameCount);
 	}
 
-	// Token: 0x06000C0C RID: 3084 RVA: 0x00055A28 File Offset: 0x00053C28
+	// Token: 0x06000C0D RID: 3085 RVA: 0x00055BB0 File Offset: 0x00053DB0
 	private void Start()
 	{
 		ZLog.Log("Zonesystem Start " + Time.frameCount);
@@ -66,7 +66,7 @@ public class ZoneSystem : MonoBehaviour
 		ZRoutedRpc.instance.Register<ZPackage>("LocationIcons", new Action<long, ZPackage>(this.RPC_LocationIcons));
 	}
 
-	// Token: 0x06000C0D RID: 3085 RVA: 0x00055AF8 File Offset: 0x00053CF8
+	// Token: 0x06000C0E RID: 3086 RVA: 0x00055C80 File Offset: 0x00053E80
 	private void SendGlobalKeys(long peer)
 	{
 		List<string> list = new List<string>(this.m_globalKeys);
@@ -76,7 +76,7 @@ public class ZoneSystem : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06000C0E RID: 3086 RVA: 0x00055B2C File Offset: 0x00053D2C
+	// Token: 0x06000C0F RID: 3087 RVA: 0x00055CB4 File Offset: 0x00053EB4
 	private void RPC_GlobalKeys(long sender, List<string> keys)
 	{
 		ZLog.Log("client got keys " + keys.Count);
@@ -87,7 +87,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C0F RID: 3087 RVA: 0x00055BA8 File Offset: 0x00053DA8
+	// Token: 0x06000C10 RID: 3088 RVA: 0x00055D30 File Offset: 0x00053F30
 	private void SendLocationIcons(long peer)
 	{
 		ZPackage zpackage = new ZPackage();
@@ -105,7 +105,7 @@ public class ZoneSystem : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06000C10 RID: 3088 RVA: 0x00055C58 File Offset: 0x00053E58
+	// Token: 0x06000C11 RID: 3089 RVA: 0x00055DE0 File Offset: 0x00053FE0
 	private void RPC_LocationIcons(long sender, ZPackage pkg)
 	{
 		ZLog.Log("client got location icons");
@@ -120,7 +120,7 @@ public class ZoneSystem : MonoBehaviour
 		ZLog.Log("Icons:" + num);
 	}
 
-	// Token: 0x06000C11 RID: 3089 RVA: 0x00055CBD File Offset: 0x00053EBD
+	// Token: 0x06000C12 RID: 3090 RVA: 0x00055E45 File Offset: 0x00054045
 	private void OnNewPeer(long peerID)
 	{
 		if (ZNet.instance.IsServer())
@@ -131,7 +131,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C12 RID: 3090 RVA: 0x00055CE4 File Offset: 0x00053EE4
+	// Token: 0x06000C13 RID: 3091 RVA: 0x00055E6C File Offset: 0x0005406C
 	private void SetupLocations()
 	{
 		GameObject[] array = Resources.FindObjectsOfTypeAll<GameObject>();
@@ -185,7 +185,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C13 RID: 3091 RVA: 0x00055EC4 File Offset: 0x000540C4
+	// Token: 0x06000C14 RID: 3092 RVA: 0x0005604C File Offset: 0x0005424C
 	public static void PrepareNetViews(GameObject root, List<ZNetView> views)
 	{
 		views.Clear();
@@ -198,7 +198,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C14 RID: 3092 RVA: 0x00055F08 File Offset: 0x00054108
+	// Token: 0x06000C15 RID: 3093 RVA: 0x00056090 File Offset: 0x00054290
 	public static void PrepareRandomSpawns(GameObject root, List<RandomSpawn> randomSpawns)
 	{
 		randomSpawns.Clear();
@@ -212,13 +212,13 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C15 RID: 3093 RVA: 0x00055F50 File Offset: 0x00054150
+	// Token: 0x06000C16 RID: 3094 RVA: 0x000560D8 File Offset: 0x000542D8
 	private void OnDestroy()
 	{
 		ZoneSystem.m_instance = null;
 	}
 
-	// Token: 0x06000C16 RID: 3094 RVA: 0x00055F58 File Offset: 0x00054158
+	// Token: 0x06000C17 RID: 3095 RVA: 0x000560E0 File Offset: 0x000542E0
 	private void ValidateVegetation()
 	{
 		foreach (ZoneSystem.ZoneVegetation zoneVegetation in this.m_vegetation)
@@ -237,7 +237,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C17 RID: 3095 RVA: 0x0005600C File Offset: 0x0005420C
+	// Token: 0x06000C18 RID: 3096 RVA: 0x00056194 File Offset: 0x00054394
 	public void PrepareSave()
 	{
 		this.m_tempGeneratedZonesSaveClone = new HashSet<Vector2i>(this.m_generatedZones);
@@ -246,7 +246,7 @@ public class ZoneSystem : MonoBehaviour
 		this.m_tempLocationsGeneratedSaveClone = this.m_locationsGenerated;
 	}
 
-	// Token: 0x06000C18 RID: 3096 RVA: 0x00056060 File Offset: 0x00054260
+	// Token: 0x06000C19 RID: 3097 RVA: 0x000561E8 File Offset: 0x000543E8
 	public void SaveASync(BinaryWriter writer)
 	{
 		writer.Write(this.m_tempGeneratedZonesSaveClone.Count);
@@ -280,7 +280,7 @@ public class ZoneSystem : MonoBehaviour
 		this.m_tempLocationsSaveClone = null;
 	}
 
-	// Token: 0x06000C19 RID: 3097 RVA: 0x00056228 File Offset: 0x00054428
+	// Token: 0x06000C1A RID: 3098 RVA: 0x000563B0 File Offset: 0x000545B0
 	public void Load(BinaryReader reader, int version)
 	{
 		this.m_generatedZones.Clear();
@@ -354,7 +354,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C1A RID: 3098 RVA: 0x000563EC File Offset: 0x000545EC
+	// Token: 0x06000C1B RID: 3099 RVA: 0x00056574 File Offset: 0x00054774
 	private void Update()
 	{
 		if (ZNet.GetConnectionStatus() != ZNet.ConnectionStatus.Connected)
@@ -378,7 +378,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C1B RID: 3099 RVA: 0x000564BC File Offset: 0x000546BC
+	// Token: 0x06000C1C RID: 3100 RVA: 0x00056644 File Offset: 0x00054844
 	private bool CreateGhostZones(Vector3 refPoint)
 	{
 		Vector2i zone = this.GetZone(refPoint);
@@ -403,7 +403,7 @@ public class ZoneSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000C1C RID: 3100 RVA: 0x00056554 File Offset: 0x00054754
+	// Token: 0x06000C1D RID: 3101 RVA: 0x000566DC File Offset: 0x000548DC
 	private bool CreateLocalZones(Vector3 refPoint)
 	{
 		Vector2i zone = this.GetZone(refPoint);
@@ -425,7 +425,7 @@ public class ZoneSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000C1D RID: 3101 RVA: 0x000565DC File Offset: 0x000547DC
+	// Token: 0x06000C1E RID: 3102 RVA: 0x00056764 File Offset: 0x00054964
 	private bool PokeLocalZone(Vector2i zoneID)
 	{
 		ZoneSystem.ZoneData zoneData;
@@ -446,20 +446,20 @@ public class ZoneSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000C1E RID: 3102 RVA: 0x0005664C File Offset: 0x0005484C
+	// Token: 0x06000C1F RID: 3103 RVA: 0x000567D4 File Offset: 0x000549D4
 	public bool IsZoneLoaded(Vector3 point)
 	{
 		Vector2i zone = this.GetZone(point);
 		return this.IsZoneLoaded(zone);
 	}
 
-	// Token: 0x06000C1F RID: 3103 RVA: 0x00056668 File Offset: 0x00054868
+	// Token: 0x06000C20 RID: 3104 RVA: 0x000567F0 File Offset: 0x000549F0
 	public bool IsZoneLoaded(Vector2i zoneID)
 	{
 		return this.m_zones.ContainsKey(zoneID);
 	}
 
-	// Token: 0x06000C20 RID: 3104 RVA: 0x00056678 File Offset: 0x00054878
+	// Token: 0x06000C21 RID: 3105 RVA: 0x00056800 File Offset: 0x00054A00
 	private bool SpawnZone(Vector2i zoneID, ZoneSystem.SpawnMode mode, out GameObject root)
 	{
 		Vector3 zonePos = this.GetZonePos(zoneID);
@@ -493,7 +493,7 @@ public class ZoneSystem : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000C21 RID: 3105 RVA: 0x000567B8 File Offset: 0x000549B8
+	// Token: 0x06000C22 RID: 3106 RVA: 0x00056940 File Offset: 0x00054B40
 	private void PlaceZoneCtrl(Vector2i zoneID, Vector3 zoneCenterPos, ZoneSystem.SpawnMode mode, List<GameObject> spawnedObjects)
 	{
 		if (mode == ZoneSystem.SpawnMode.Full || mode == ZoneSystem.SpawnMode.Ghost)
@@ -512,7 +512,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C22 RID: 3106 RVA: 0x00056810 File Offset: 0x00054A10
+	// Token: 0x06000C23 RID: 3107 RVA: 0x00056998 File Offset: 0x00054B98
 	private Vector3 GetRandomPointInRadius(Vector3 center, float radius)
 	{
 		float f = UnityEngine.Random.value * 3.1415927f * 2f;
@@ -520,7 +520,7 @@ public class ZoneSystem : MonoBehaviour
 		return center + new Vector3(Mathf.Sin(f) * num, 0f, Mathf.Cos(f) * num);
 	}
 
-	// Token: 0x06000C23 RID: 3107 RVA: 0x0005685C File Offset: 0x00054A5C
+	// Token: 0x06000C24 RID: 3108 RVA: 0x000569E4 File Offset: 0x00054BE4
 	private void PlaceVegetation(Vector2i zoneID, Vector3 zoneCenterPos, Transform parent, Heightmap hmap, List<ZoneSystem.ClearArea> clearAreas, ZoneSystem.SpawnMode mode, List<GameObject> spawnedObjects)
 	{
 		UnityEngine.Random.State state = UnityEngine.Random.state;
@@ -666,7 +666,7 @@ public class ZoneSystem : MonoBehaviour
 		UnityEngine.Random.state = state;
 	}
 
-	// Token: 0x06000C24 RID: 3108 RVA: 0x00056D0C File Offset: 0x00054F0C
+	// Token: 0x06000C25 RID: 3109 RVA: 0x00056E94 File Offset: 0x00055094
 	private bool InsideClearArea(List<ZoneSystem.ClearArea> areas, Vector3 point)
 	{
 		foreach (ZoneSystem.ClearArea clearArea in areas)
@@ -679,7 +679,7 @@ public class ZoneSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000C25 RID: 3109 RVA: 0x00056DC4 File Offset: 0x00054FC4
+	// Token: 0x06000C26 RID: 3110 RVA: 0x00056F4C File Offset: 0x0005514C
 	private ZoneSystem.ZoneLocation GetLocation(int hash)
 	{
 		ZoneSystem.ZoneLocation result;
@@ -690,7 +690,7 @@ public class ZoneSystem : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000C26 RID: 3110 RVA: 0x00056DE4 File Offset: 0x00054FE4
+	// Token: 0x06000C27 RID: 3111 RVA: 0x00056F6C File Offset: 0x0005516C
 	private ZoneSystem.ZoneLocation GetLocation(string name)
 	{
 		foreach (ZoneSystem.ZoneLocation zoneLocation in this.m_locations)
@@ -703,7 +703,7 @@ public class ZoneSystem : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000C27 RID: 3111 RVA: 0x00056E48 File Offset: 0x00055048
+	// Token: 0x06000C28 RID: 3112 RVA: 0x00056FD0 File Offset: 0x000551D0
 	private void ClearNonPlacedLocations()
 	{
 		Dictionary<Vector2i, ZoneSystem.LocationInstance> dictionary = new Dictionary<Vector2i, ZoneSystem.LocationInstance>();
@@ -717,7 +717,7 @@ public class ZoneSystem : MonoBehaviour
 		this.m_locationInstances = dictionary;
 	}
 
-	// Token: 0x06000C28 RID: 3112 RVA: 0x00056EC4 File Offset: 0x000550C4
+	// Token: 0x06000C29 RID: 3113 RVA: 0x0005704C File Offset: 0x0005524C
 	private void CheckLocationDuplicates()
 	{
 		ZLog.Log("Checking for location duplicates");
@@ -738,7 +738,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C29 RID: 3113 RVA: 0x00056F5C File Offset: 0x0005515C
+	// Token: 0x06000C2A RID: 3114 RVA: 0x000570E4 File Offset: 0x000552E4
 	public void GenerateLocations()
 	{
 		if (!Application.isPlaying)
@@ -765,7 +765,7 @@ public class ZoneSystem : MonoBehaviour
 		ZLog.Log(" Done generating locations, duration:" + (DateTime.Now - now).TotalMilliseconds + " ms");
 	}
 
-	// Token: 0x06000C2A RID: 3114 RVA: 0x00057050 File Offset: 0x00055250
+	// Token: 0x06000C2B RID: 3115 RVA: 0x000571D8 File Offset: 0x000553D8
 	private int CountNrOfLocation(ZoneSystem.ZoneLocation location)
 	{
 		int num = 0;
@@ -792,7 +792,7 @@ public class ZoneSystem : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x06000C2B RID: 3115 RVA: 0x000570F4 File Offset: 0x000552F4
+	// Token: 0x06000C2C RID: 3116 RVA: 0x0005727C File Offset: 0x0005547C
 	private void GenerateLocations(ZoneSystem.ZoneLocation location)
 	{
 		DateTime now = DateTime.Now;
@@ -928,7 +928,7 @@ public class ZoneSystem : MonoBehaviour
 		DateTime.Now - now;
 	}
 
-	// Token: 0x06000C2C RID: 3116 RVA: 0x000574B4 File Offset: 0x000556B4
+	// Token: 0x06000C2D RID: 3117 RVA: 0x0005763C File Offset: 0x0005583C
 	private Vector2i GetRandomZone(float range)
 	{
 		int num = (int)range / (int)this.m_zoneSize;
@@ -941,7 +941,7 @@ public class ZoneSystem : MonoBehaviour
 		return vector2i;
 	}
 
-	// Token: 0x06000C2D RID: 3117 RVA: 0x000574FC File Offset: 0x000556FC
+	// Token: 0x06000C2E RID: 3118 RVA: 0x00057684 File Offset: 0x00055884
 	private Vector3 GetRandomPointInZone(Vector2i zone, float locationRadius)
 	{
 		Vector3 zonePos = this.GetZonePos(zone);
@@ -951,7 +951,7 @@ public class ZoneSystem : MonoBehaviour
 		return zonePos + new Vector3(x, 0f, z);
 	}
 
-	// Token: 0x06000C2E RID: 3118 RVA: 0x00057548 File Offset: 0x00055748
+	// Token: 0x06000C2F RID: 3119 RVA: 0x000576D0 File Offset: 0x000558D0
 	private Vector3 GetRandomPointInZone(float locationRadius)
 	{
 		Vector3 point = new Vector3(UnityEngine.Random.Range(-10000f, 10000f), 0f, UnityEngine.Random.Range(-10000f, 10000f));
@@ -961,7 +961,7 @@ public class ZoneSystem : MonoBehaviour
 		return new Vector3(UnityEngine.Random.Range(zonePos.x - num + locationRadius, zonePos.x + num - locationRadius), 0f, UnityEngine.Random.Range(zonePos.z - num + locationRadius, zonePos.z + num - locationRadius));
 	}
 
-	// Token: 0x06000C2F RID: 3119 RVA: 0x000575D8 File Offset: 0x000557D8
+	// Token: 0x06000C30 RID: 3120 RVA: 0x00057760 File Offset: 0x00055960
 	private void PlaceLocations(Vector2i zoneID, Vector3 zoneCenterPos, Transform parent, Heightmap hmap, List<ZoneSystem.ClearArea> clearAreas, ZoneSystem.SpawnMode mode, List<GameObject> spawnedObjects)
 	{
 		if (!this.m_locationsGenerated)
@@ -1032,7 +1032,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C30 RID: 3120 RVA: 0x000577F8 File Offset: 0x000559F8
+	// Token: 0x06000C31 RID: 3121 RVA: 0x00057980 File Offset: 0x00055B80
 	private void RemoveUnplacedLocations(ZoneSystem.ZoneLocation location)
 	{
 		List<Vector2i> list = new List<Vector2i>();
@@ -1050,7 +1050,7 @@ public class ZoneSystem : MonoBehaviour
 		ZLog.DevLog("Removed " + list.Count.ToString() + " unplaced locations of type " + location.m_prefabName);
 	}
 
-	// Token: 0x06000C31 RID: 3121 RVA: 0x000578E4 File Offset: 0x00055AE4
+	// Token: 0x06000C32 RID: 3122 RVA: 0x00057A6C File Offset: 0x00055C6C
 	public bool TestSpawnLocation(string name, Vector3 pos)
 	{
 		if (!ZNet.instance.IsServer())
@@ -1092,7 +1092,7 @@ public class ZoneSystem : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000C32 RID: 3122 RVA: 0x00057AA0 File Offset: 0x00055CA0
+	// Token: 0x06000C33 RID: 3123 RVA: 0x00057C28 File Offset: 0x00055E28
 	public GameObject SpawnProxyLocation(int hash, int seed, Vector3 pos, Quaternion rot)
 	{
 		ZoneSystem.ZoneLocation location = this.GetLocation(hash);
@@ -1105,7 +1105,7 @@ public class ZoneSystem : MonoBehaviour
 		return this.SpawnLocation(location, seed, pos, rot, ZoneSystem.SpawnMode.Client, spawnedGhostObjects);
 	}
 
-	// Token: 0x06000C33 RID: 3123 RVA: 0x00057AE4 File Offset: 0x00055CE4
+	// Token: 0x06000C34 RID: 3124 RVA: 0x00057C6C File Offset: 0x00055E6C
 	private GameObject SpawnLocation(ZoneSystem.ZoneLocation location, int seed, Vector3 pos, Quaternion rot, ZoneSystem.SpawnMode mode, List<GameObject> spawnedGhostObjects)
 	{
 		Vector3 position = location.m_prefab.transform.position;
@@ -1167,7 +1167,7 @@ public class ZoneSystem : MonoBehaviour
 		return gameObject2;
 	}
 
-	// Token: 0x06000C34 RID: 3124 RVA: 0x00057D80 File Offset: 0x00055F80
+	// Token: 0x06000C35 RID: 3125 RVA: 0x00057F08 File Offset: 0x00056108
 	private void CreateLocationProxy(ZoneSystem.ZoneLocation location, int seed, Vector3 pos, Quaternion rotation, ZoneSystem.SpawnMode mode, List<GameObject> spawnedGhostObjects)
 	{
 		if (mode == ZoneSystem.SpawnMode.Ghost)
@@ -1185,7 +1185,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C35 RID: 3125 RVA: 0x00057DDC File Offset: 0x00055FDC
+	// Token: 0x06000C36 RID: 3126 RVA: 0x00057F64 File Offset: 0x00056164
 	private void RegisterLocation(ZoneSystem.ZoneLocation location, Vector3 pos, bool generated)
 	{
 		ZoneSystem.LocationInstance value = default(ZoneSystem.LocationInstance);
@@ -1201,7 +1201,7 @@ public class ZoneSystem : MonoBehaviour
 		this.m_locationInstances.Add(zone, value);
 	}
 
-	// Token: 0x06000C36 RID: 3126 RVA: 0x00057E44 File Offset: 0x00056044
+	// Token: 0x06000C37 RID: 3127 RVA: 0x00057FCC File Offset: 0x000561CC
 	private bool HaveLocationInRange(string prefabName, string group, Vector3 p, float radius)
 	{
 		foreach (ZoneSystem.LocationInstance locationInstance in this.m_locationInstances.Values)
@@ -1214,7 +1214,7 @@ public class ZoneSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000C37 RID: 3127 RVA: 0x00057EDC File Offset: 0x000560DC
+	// Token: 0x06000C38 RID: 3128 RVA: 0x00058064 File Offset: 0x00056264
 	public bool GetLocationIcon(string name, out Vector3 pos)
 	{
 		if (ZNet.instance.IsServer())
@@ -1246,7 +1246,7 @@ public class ZoneSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000C38 RID: 3128 RVA: 0x00058004 File Offset: 0x00056204
+	// Token: 0x06000C39 RID: 3129 RVA: 0x0005818C File Offset: 0x0005638C
 	public void GetLocationIcons(Dictionary<Vector3, string> icons)
 	{
 		if (ZNet.instance.IsServer())
@@ -1270,7 +1270,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C39 RID: 3129 RVA: 0x000580EC File Offset: 0x000562EC
+	// Token: 0x06000C3A RID: 3130 RVA: 0x00058274 File Offset: 0x00056474
 	private void GetTerrainDelta(Vector3 center, float radius, out float delta, out Vector3 slopeDirection)
 	{
 		int num = 10;
@@ -1298,14 +1298,14 @@ public class ZoneSystem : MonoBehaviour
 		slopeDirection = Vector3.Normalize(a - b);
 	}
 
-	// Token: 0x06000C3A RID: 3130 RVA: 0x00058184 File Offset: 0x00056384
+	// Token: 0x06000C3B RID: 3131 RVA: 0x0005830C File Offset: 0x0005650C
 	public bool IsBlocked(Vector3 p)
 	{
 		p.y += 2000f;
 		return Physics.Raycast(p, Vector3.down, 10000f, this.m_blockRayMask);
 	}
 
-	// Token: 0x06000C3B RID: 3131 RVA: 0x000581B4 File Offset: 0x000563B4
+	// Token: 0x06000C3C RID: 3132 RVA: 0x0005833C File Offset: 0x0005653C
 	public float GetAverageGroundHeight(Vector3 p, float radius)
 	{
 		Vector3 origin = p;
@@ -1318,7 +1318,7 @@ public class ZoneSystem : MonoBehaviour
 		return p.y;
 	}
 
-	// Token: 0x06000C3C RID: 3132 RVA: 0x000581FC File Offset: 0x000563FC
+	// Token: 0x06000C3D RID: 3133 RVA: 0x00058384 File Offset: 0x00056584
 	public float GetGroundHeight(Vector3 p)
 	{
 		Vector3 origin = p;
@@ -1331,7 +1331,7 @@ public class ZoneSystem : MonoBehaviour
 		return p.y;
 	}
 
-	// Token: 0x06000C3D RID: 3133 RVA: 0x00058244 File Offset: 0x00056444
+	// Token: 0x06000C3E RID: 3134 RVA: 0x000583CC File Offset: 0x000565CC
 	public bool GetGroundHeight(Vector3 p, out float height)
 	{
 		p.y = 6000f;
@@ -1345,7 +1345,7 @@ public class ZoneSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000C3E RID: 3134 RVA: 0x00058290 File Offset: 0x00056490
+	// Token: 0x06000C3F RID: 3135 RVA: 0x00058418 File Offset: 0x00056618
 	public float GetSolidHeight(Vector3 p)
 	{
 		Vector3 origin = p;
@@ -1358,7 +1358,7 @@ public class ZoneSystem : MonoBehaviour
 		return p.y;
 	}
 
-	// Token: 0x06000C3F RID: 3135 RVA: 0x000582DC File Offset: 0x000564DC
+	// Token: 0x06000C40 RID: 3136 RVA: 0x00058464 File Offset: 0x00056664
 	public bool GetSolidHeight(Vector3 p, out float height)
 	{
 		p.y += 1000f;
@@ -1372,7 +1372,7 @@ public class ZoneSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000C40 RID: 3136 RVA: 0x00058340 File Offset: 0x00056540
+	// Token: 0x06000C41 RID: 3137 RVA: 0x000584C8 File Offset: 0x000566C8
 	public bool GetSolidHeight(Vector3 p, float radius, out float height, Transform ignore)
 	{
 		height = p.y - 1000f;
@@ -1403,14 +1403,14 @@ public class ZoneSystem : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x06000C41 RID: 3137 RVA: 0x00058420 File Offset: 0x00056620
+	// Token: 0x06000C42 RID: 3138 RVA: 0x000585A8 File Offset: 0x000567A8
 	public bool GetSolidHeight(Vector3 p, out float height, out Vector3 normal)
 	{
 		GameObject gameObject;
 		return this.GetSolidHeight(p, out height, out normal, out gameObject);
 	}
 
-	// Token: 0x06000C42 RID: 3138 RVA: 0x00058438 File Offset: 0x00056638
+	// Token: 0x06000C43 RID: 3139 RVA: 0x000585C0 File Offset: 0x000567C0
 	public bool GetSolidHeight(Vector3 p, out float height, out Vector3 normal, out GameObject go)
 	{
 		p.y += 1000f;
@@ -1428,7 +1428,7 @@ public class ZoneSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000C43 RID: 3139 RVA: 0x000584C8 File Offset: 0x000566C8
+	// Token: 0x06000C44 RID: 3140 RVA: 0x00058650 File Offset: 0x00056850
 	public bool FindFloor(Vector3 p, out float height)
 	{
 		RaycastHit raycastHit;
@@ -1441,7 +1441,7 @@ public class ZoneSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000C44 RID: 3140 RVA: 0x0005851C File Offset: 0x0005671C
+	// Token: 0x06000C45 RID: 3141 RVA: 0x000586A4 File Offset: 0x000568A4
 	public void GetGroundData(ref Vector3 p, out Vector3 normal, out Heightmap.Biome biome, out Heightmap.BiomeArea biomeArea, out Heightmap hmap)
 	{
 		biome = Heightmap.Biome.None;
@@ -1464,7 +1464,7 @@ public class ZoneSystem : MonoBehaviour
 		normal = Vector3.up;
 	}
 
-	// Token: 0x06000C45 RID: 3141 RVA: 0x000585C4 File Offset: 0x000567C4
+	// Token: 0x06000C46 RID: 3142 RVA: 0x0005874C File Offset: 0x0005694C
 	private void UpdateTTL(float dt)
 	{
 		foreach (KeyValuePair<Vector2i, ZoneSystem.ZoneData> keyValuePair in this.m_zones)
@@ -1482,7 +1482,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C46 RID: 3142 RVA: 0x000586AC File Offset: 0x000568AC
+	// Token: 0x06000C47 RID: 3143 RVA: 0x00058834 File Offset: 0x00056A34
 	public void GetVegetation(Heightmap.Biome biome, List<ZoneSystem.ZoneVegetation> vegetation)
 	{
 		foreach (ZoneSystem.ZoneVegetation zoneVegetation in this.m_vegetation)
@@ -1494,7 +1494,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C47 RID: 3143 RVA: 0x00058714 File Offset: 0x00056914
+	// Token: 0x06000C48 RID: 3144 RVA: 0x0005889C File Offset: 0x00056A9C
 	public void GetLocations(Heightmap.Biome biome, List<ZoneSystem.ZoneLocation> locations, bool skipDisabled)
 	{
 		foreach (ZoneSystem.ZoneLocation zoneLocation in this.m_locations)
@@ -1506,7 +1506,7 @@ public class ZoneSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C48 RID: 3144 RVA: 0x00058788 File Offset: 0x00056988
+	// Token: 0x06000C49 RID: 3145 RVA: 0x00058910 File Offset: 0x00056B10
 	public bool FindClosestLocation(string name, Vector3 point, out ZoneSystem.LocationInstance closest)
 	{
 		float num = 999999f;
@@ -1525,7 +1525,7 @@ public class ZoneSystem : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x06000C49 RID: 3145 RVA: 0x0005881C File Offset: 0x00056A1C
+	// Token: 0x06000C4A RID: 3146 RVA: 0x000589A4 File Offset: 0x00056BA4
 	public Vector2i GetZone(Vector3 point)
 	{
 		int x = Mathf.FloorToInt((point.x + this.m_zoneSize / 2f) / this.m_zoneSize);
@@ -1533,38 +1533,38 @@ public class ZoneSystem : MonoBehaviour
 		return new Vector2i(x, y);
 	}
 
-	// Token: 0x06000C4A RID: 3146 RVA: 0x0005886E File Offset: 0x00056A6E
+	// Token: 0x06000C4B RID: 3147 RVA: 0x000589F6 File Offset: 0x00056BF6
 	public Vector3 GetZonePos(Vector2i id)
 	{
 		return new Vector3((float)id.x * this.m_zoneSize, 0f, (float)id.y * this.m_zoneSize);
 	}
 
-	// Token: 0x06000C4B RID: 3147 RVA: 0x00058896 File Offset: 0x00056A96
+	// Token: 0x06000C4C RID: 3148 RVA: 0x00058A1E File Offset: 0x00056C1E
 	private void SetZoneGenerated(Vector2i zoneID)
 	{
 		this.m_generatedZones.Add(zoneID);
 	}
 
-	// Token: 0x06000C4C RID: 3148 RVA: 0x000588A5 File Offset: 0x00056AA5
+	// Token: 0x06000C4D RID: 3149 RVA: 0x00058A2D File Offset: 0x00056C2D
 	private bool IsZoneGenerated(Vector2i zoneID)
 	{
 		return this.m_generatedZones.Contains(zoneID);
 	}
 
-	// Token: 0x06000C4D RID: 3149 RVA: 0x000588B3 File Offset: 0x00056AB3
+	// Token: 0x06000C4E RID: 3150 RVA: 0x00058A3B File Offset: 0x00056C3B
 	public bool SkipSaving()
 	{
 		return this.m_error || this.m_didZoneTest;
 	}
 
-	// Token: 0x06000C4E RID: 3150 RVA: 0x000588C5 File Offset: 0x00056AC5
+	// Token: 0x06000C4F RID: 3151 RVA: 0x00058A4D File Offset: 0x00056C4D
 	public void ResetGlobalKeys()
 	{
 		this.m_globalKeys.Clear();
 		this.SendGlobalKeys(ZRoutedRpc.Everybody);
 	}
 
-	// Token: 0x06000C4F RID: 3151 RVA: 0x000588DD File Offset: 0x00056ADD
+	// Token: 0x06000C50 RID: 3152 RVA: 0x00058A65 File Offset: 0x00056C65
 	public void SetGlobalKey(string name)
 	{
 		ZRoutedRpc.instance.InvokeRoutedRPC("SetGlobalKey", new object[]
@@ -1573,13 +1573,13 @@ public class ZoneSystem : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06000C50 RID: 3152 RVA: 0x000588F8 File Offset: 0x00056AF8
+	// Token: 0x06000C51 RID: 3153 RVA: 0x00058A80 File Offset: 0x00056C80
 	public bool GetGlobalKey(string name)
 	{
 		return this.m_globalKeys.Contains(name);
 	}
 
-	// Token: 0x06000C51 RID: 3153 RVA: 0x00058906 File Offset: 0x00056B06
+	// Token: 0x06000C52 RID: 3154 RVA: 0x00058A8E File Offset: 0x00056C8E
 	private void RPC_SetGlobalKey(long sender, string name)
 	{
 		if (this.m_globalKeys.Contains(name))
@@ -1590,173 +1590,173 @@ public class ZoneSystem : MonoBehaviour
 		this.SendGlobalKeys(ZRoutedRpc.Everybody);
 	}
 
-	// Token: 0x06000C52 RID: 3154 RVA: 0x0005892F File Offset: 0x00056B2F
+	// Token: 0x06000C53 RID: 3155 RVA: 0x00058AB7 File Offset: 0x00056CB7
 	public List<string> GetGlobalKeys()
 	{
 		return new List<string>(this.m_globalKeys);
 	}
 
-	// Token: 0x06000C53 RID: 3155 RVA: 0x0005893C File Offset: 0x00056B3C
+	// Token: 0x06000C54 RID: 3156 RVA: 0x00058AC4 File Offset: 0x00056CC4
 	public Dictionary<Vector2i, ZoneSystem.LocationInstance>.ValueCollection GetLocationList()
 	{
 		return this.m_locationInstances.Values;
 	}
 
-	// Token: 0x04000B27 RID: 2855
+	// Token: 0x04000B2D RID: 2861
 	private Dictionary<Vector3, string> tempIconList = new Dictionary<Vector3, string>();
 
-	// Token: 0x04000B28 RID: 2856
+	// Token: 0x04000B2E RID: 2862
 	private RaycastHit[] rayHits = new RaycastHit[200];
 
-	// Token: 0x04000B29 RID: 2857
+	// Token: 0x04000B2F RID: 2863
 	private static ZoneSystem m_instance;
 
-	// Token: 0x04000B2A RID: 2858
+	// Token: 0x04000B30 RID: 2864
 	[HideInInspector]
 	public List<Heightmap.Biome> m_biomeFolded = new List<Heightmap.Biome>();
 
-	// Token: 0x04000B2B RID: 2859
+	// Token: 0x04000B31 RID: 2865
 	[HideInInspector]
 	public List<Heightmap.Biome> m_vegetationFolded = new List<Heightmap.Biome>();
 
-	// Token: 0x04000B2C RID: 2860
+	// Token: 0x04000B32 RID: 2866
 	[HideInInspector]
 	public List<Heightmap.Biome> m_locationFolded = new List<Heightmap.Biome>();
 
-	// Token: 0x04000B2D RID: 2861
+	// Token: 0x04000B33 RID: 2867
 	[NonSerialized]
 	public bool m_drawLocations;
 
-	// Token: 0x04000B2E RID: 2862
+	// Token: 0x04000B34 RID: 2868
 	[NonSerialized]
 	public string m_drawLocationsFilter = "";
 
-	// Token: 0x04000B2F RID: 2863
+	// Token: 0x04000B35 RID: 2869
 	[global::Tooltip("Zones to load around center sector")]
 	public int m_activeArea = 1;
 
-	// Token: 0x04000B30 RID: 2864
+	// Token: 0x04000B36 RID: 2870
 	public int m_activeDistantArea = 1;
 
-	// Token: 0x04000B31 RID: 2865
+	// Token: 0x04000B37 RID: 2871
 	[global::Tooltip("Zone size, should match netscene sector size")]
 	public float m_zoneSize = 64f;
 
-	// Token: 0x04000B32 RID: 2866
+	// Token: 0x04000B38 RID: 2872
 	[global::Tooltip("Time before destroying inactive zone")]
 	public float m_zoneTTL = 4f;
 
-	// Token: 0x04000B33 RID: 2867
+	// Token: 0x04000B39 RID: 2873
 	[global::Tooltip("Time before spawning active zone")]
 	public float m_zoneTTS = 4f;
 
-	// Token: 0x04000B34 RID: 2868
+	// Token: 0x04000B3A RID: 2874
 	public GameObject m_zonePrefab;
 
-	// Token: 0x04000B35 RID: 2869
+	// Token: 0x04000B3B RID: 2875
 	public GameObject m_zoneCtrlPrefab;
 
-	// Token: 0x04000B36 RID: 2870
+	// Token: 0x04000B3C RID: 2876
 	public GameObject m_locationProxyPrefab;
 
-	// Token: 0x04000B37 RID: 2871
+	// Token: 0x04000B3D RID: 2877
 	public float m_waterLevel = 30f;
 
-	// Token: 0x04000B38 RID: 2872
+	// Token: 0x04000B3E RID: 2878
 	[Header("Versions")]
 	public int m_pgwVersion = 53;
 
-	// Token: 0x04000B39 RID: 2873
+	// Token: 0x04000B3F RID: 2879
 	public int m_locationVersion = 1;
 
-	// Token: 0x04000B3A RID: 2874
+	// Token: 0x04000B40 RID: 2880
 	[Header("Generation data")]
 	public List<ZoneSystem.ZoneVegetation> m_vegetation = new List<ZoneSystem.ZoneVegetation>();
 
-	// Token: 0x04000B3B RID: 2875
+	// Token: 0x04000B41 RID: 2881
 	public List<ZoneSystem.ZoneLocation> m_locations = new List<ZoneSystem.ZoneLocation>();
 
-	// Token: 0x04000B3C RID: 2876
+	// Token: 0x04000B42 RID: 2882
 	private Dictionary<int, ZoneSystem.ZoneLocation> m_locationsByHash = new Dictionary<int, ZoneSystem.ZoneLocation>();
 
-	// Token: 0x04000B3D RID: 2877
+	// Token: 0x04000B43 RID: 2883
 	private bool m_error;
 
-	// Token: 0x04000B3E RID: 2878
+	// Token: 0x04000B44 RID: 2884
 	private bool m_didZoneTest;
 
-	// Token: 0x04000B3F RID: 2879
+	// Token: 0x04000B45 RID: 2885
 	private int m_terrainRayMask;
 
-	// Token: 0x04000B40 RID: 2880
+	// Token: 0x04000B46 RID: 2886
 	private int m_blockRayMask;
 
-	// Token: 0x04000B41 RID: 2881
+	// Token: 0x04000B47 RID: 2887
 	private int m_solidRayMask;
 
-	// Token: 0x04000B42 RID: 2882
+	// Token: 0x04000B48 RID: 2888
 	private float m_updateTimer;
 
-	// Token: 0x04000B43 RID: 2883
+	// Token: 0x04000B49 RID: 2889
 	private Dictionary<Vector2i, ZoneSystem.ZoneData> m_zones = new Dictionary<Vector2i, ZoneSystem.ZoneData>();
 
-	// Token: 0x04000B44 RID: 2884
+	// Token: 0x04000B4A RID: 2890
 	private HashSet<Vector2i> m_generatedZones = new HashSet<Vector2i>();
 
-	// Token: 0x04000B45 RID: 2885
+	// Token: 0x04000B4B RID: 2891
 	private bool m_locationsGenerated;
 
-	// Token: 0x04000B46 RID: 2886
+	// Token: 0x04000B4C RID: 2892
 	private Dictionary<Vector2i, ZoneSystem.LocationInstance> m_locationInstances = new Dictionary<Vector2i, ZoneSystem.LocationInstance>();
 
-	// Token: 0x04000B47 RID: 2887
+	// Token: 0x04000B4D RID: 2893
 	private Dictionary<Vector3, string> m_locationIcons = new Dictionary<Vector3, string>();
 
-	// Token: 0x04000B48 RID: 2888
+	// Token: 0x04000B4E RID: 2894
 	private HashSet<string> m_globalKeys = new HashSet<string>();
 
-	// Token: 0x04000B49 RID: 2889
+	// Token: 0x04000B4F RID: 2895
 	private HashSet<Vector2i> m_tempGeneratedZonesSaveClone;
 
-	// Token: 0x04000B4A RID: 2890
+	// Token: 0x04000B50 RID: 2896
 	private HashSet<string> m_tempGlobalKeysSaveClone;
 
-	// Token: 0x04000B4B RID: 2891
+	// Token: 0x04000B51 RID: 2897
 	private List<ZoneSystem.LocationInstance> m_tempLocationsSaveClone;
 
-	// Token: 0x04000B4C RID: 2892
+	// Token: 0x04000B52 RID: 2898
 	private bool m_tempLocationsGeneratedSaveClone;
 
-	// Token: 0x04000B4D RID: 2893
+	// Token: 0x04000B53 RID: 2899
 	private List<ZoneSystem.ClearArea> m_tempClearAreas = new List<ZoneSystem.ClearArea>();
 
-	// Token: 0x04000B4E RID: 2894
+	// Token: 0x04000B54 RID: 2900
 	private List<GameObject> m_tempSpawnedObjects = new List<GameObject>();
 
 	// Token: 0x02000187 RID: 391
 	private class ZoneData
 	{
-		// Token: 0x040011FE RID: 4606
+		// Token: 0x04001205 RID: 4613
 		public GameObject m_root;
 
-		// Token: 0x040011FF RID: 4607
+		// Token: 0x04001206 RID: 4614
 		public float m_ttl;
 	}
 
 	// Token: 0x02000188 RID: 392
 	private class ClearArea
 	{
-		// Token: 0x0600118D RID: 4493 RVA: 0x00078DB9 File Offset: 0x00076FB9
+		// Token: 0x0600118E RID: 4494 RVA: 0x00078F41 File Offset: 0x00077141
 		public ClearArea(Vector3 p, float r)
 		{
 			this.m_center = p;
 			this.m_radius = r;
 		}
 
-		// Token: 0x04001200 RID: 4608
+		// Token: 0x04001207 RID: 4615
 		public Vector3 m_center;
 
-		// Token: 0x04001201 RID: 4609
+		// Token: 0x04001208 RID: 4616
 		public float m_radius;
 	}
 
@@ -1764,106 +1764,106 @@ public class ZoneSystem : MonoBehaviour
 	[Serializable]
 	public class ZoneVegetation
 	{
-		// Token: 0x0600118E RID: 4494 RVA: 0x00078DCF File Offset: 0x00076FCF
+		// Token: 0x0600118F RID: 4495 RVA: 0x00078F57 File Offset: 0x00077157
 		public ZoneSystem.ZoneVegetation Clone()
 		{
 			return base.MemberwiseClone() as ZoneSystem.ZoneVegetation;
 		}
 
-		// Token: 0x04001202 RID: 4610
+		// Token: 0x04001209 RID: 4617
 		public string m_name = "veg";
 
-		// Token: 0x04001203 RID: 4611
+		// Token: 0x0400120A RID: 4618
 		public GameObject m_prefab;
 
-		// Token: 0x04001204 RID: 4612
+		// Token: 0x0400120B RID: 4619
 		public bool m_enable = true;
 
-		// Token: 0x04001205 RID: 4613
+		// Token: 0x0400120C RID: 4620
 		public float m_min;
 
-		// Token: 0x04001206 RID: 4614
+		// Token: 0x0400120D RID: 4621
 		public float m_max = 10f;
 
-		// Token: 0x04001207 RID: 4615
+		// Token: 0x0400120E RID: 4622
 		public bool m_forcePlacement;
 
-		// Token: 0x04001208 RID: 4616
+		// Token: 0x0400120F RID: 4623
 		public float m_scaleMin = 1f;
 
-		// Token: 0x04001209 RID: 4617
+		// Token: 0x04001210 RID: 4624
 		public float m_scaleMax = 1f;
 
-		// Token: 0x0400120A RID: 4618
+		// Token: 0x04001211 RID: 4625
 		public float m_randTilt;
 
-		// Token: 0x0400120B RID: 4619
+		// Token: 0x04001212 RID: 4626
 		public float m_chanceToUseGroundTilt;
 
-		// Token: 0x0400120C RID: 4620
+		// Token: 0x04001213 RID: 4627
 		[BitMask(typeof(Heightmap.Biome))]
 		public Heightmap.Biome m_biome;
 
-		// Token: 0x0400120D RID: 4621
+		// Token: 0x04001214 RID: 4628
 		[BitMask(typeof(Heightmap.BiomeArea))]
 		public Heightmap.BiomeArea m_biomeArea = Heightmap.BiomeArea.Everything;
 
-		// Token: 0x0400120E RID: 4622
+		// Token: 0x04001215 RID: 4629
 		public bool m_blockCheck = true;
 
-		// Token: 0x0400120F RID: 4623
+		// Token: 0x04001216 RID: 4630
 		public float m_minAltitude = -1000f;
 
-		// Token: 0x04001210 RID: 4624
+		// Token: 0x04001217 RID: 4631
 		public float m_maxAltitude = 1000f;
 
-		// Token: 0x04001211 RID: 4625
+		// Token: 0x04001218 RID: 4632
 		public float m_minOceanDepth;
 
-		// Token: 0x04001212 RID: 4626
+		// Token: 0x04001219 RID: 4633
 		public float m_maxOceanDepth;
 
-		// Token: 0x04001213 RID: 4627
+		// Token: 0x0400121A RID: 4634
 		public float m_minTilt;
 
-		// Token: 0x04001214 RID: 4628
+		// Token: 0x0400121B RID: 4635
 		public float m_maxTilt = 90f;
 
-		// Token: 0x04001215 RID: 4629
+		// Token: 0x0400121C RID: 4636
 		public float m_terrainDeltaRadius;
 
-		// Token: 0x04001216 RID: 4630
+		// Token: 0x0400121D RID: 4637
 		public float m_maxTerrainDelta = 2f;
 
-		// Token: 0x04001217 RID: 4631
+		// Token: 0x0400121E RID: 4638
 		public float m_minTerrainDelta;
 
-		// Token: 0x04001218 RID: 4632
+		// Token: 0x0400121F RID: 4639
 		public bool m_snapToWater;
 
-		// Token: 0x04001219 RID: 4633
+		// Token: 0x04001220 RID: 4640
 		public float m_groundOffset;
 
-		// Token: 0x0400121A RID: 4634
+		// Token: 0x04001221 RID: 4641
 		public int m_groupSizeMin = 1;
 
-		// Token: 0x0400121B RID: 4635
+		// Token: 0x04001222 RID: 4642
 		public int m_groupSizeMax = 1;
 
-		// Token: 0x0400121C RID: 4636
+		// Token: 0x04001223 RID: 4643
 		public float m_groupRadius;
 
-		// Token: 0x0400121D RID: 4637
+		// Token: 0x04001224 RID: 4644
 		[Header("Forest fractal 0-1 inside forest")]
 		public bool m_inForest;
 
-		// Token: 0x0400121E RID: 4638
+		// Token: 0x04001225 RID: 4645
 		public float m_forestTresholdMin;
 
-		// Token: 0x0400121F RID: 4639
+		// Token: 0x04001226 RID: 4646
 		public float m_forestTresholdMax = 1f;
 
-		// Token: 0x04001220 RID: 4640
+		// Token: 0x04001227 RID: 4647
 		[HideInInspector]
 		public bool m_foldout;
 	}
@@ -1872,120 +1872,120 @@ public class ZoneSystem : MonoBehaviour
 	[Serializable]
 	public class ZoneLocation
 	{
-		// Token: 0x06001190 RID: 4496 RVA: 0x00078E75 File Offset: 0x00077075
+		// Token: 0x06001191 RID: 4497 RVA: 0x00078FFD File Offset: 0x000771FD
 		public ZoneSystem.ZoneLocation Clone()
 		{
 			return base.MemberwiseClone() as ZoneSystem.ZoneLocation;
 		}
 
-		// Token: 0x04001221 RID: 4641
+		// Token: 0x04001228 RID: 4648
 		public bool m_enable = true;
 
-		// Token: 0x04001222 RID: 4642
+		// Token: 0x04001229 RID: 4649
 		public string m_prefabName;
 
-		// Token: 0x04001223 RID: 4643
+		// Token: 0x0400122A RID: 4650
 		[BitMask(typeof(Heightmap.Biome))]
 		public Heightmap.Biome m_biome;
 
-		// Token: 0x04001224 RID: 4644
+		// Token: 0x0400122B RID: 4651
 		[BitMask(typeof(Heightmap.BiomeArea))]
 		public Heightmap.BiomeArea m_biomeArea = Heightmap.BiomeArea.Everything;
 
-		// Token: 0x04001225 RID: 4645
+		// Token: 0x0400122C RID: 4652
 		public int m_quantity;
 
-		// Token: 0x04001226 RID: 4646
+		// Token: 0x0400122D RID: 4653
 		public float m_chanceToSpawn = 10f;
 
-		// Token: 0x04001227 RID: 4647
+		// Token: 0x0400122E RID: 4654
 		public bool m_prioritized;
 
-		// Token: 0x04001228 RID: 4648
+		// Token: 0x0400122F RID: 4655
 		public bool m_centerFirst;
 
-		// Token: 0x04001229 RID: 4649
+		// Token: 0x04001230 RID: 4656
 		public bool m_unique;
 
-		// Token: 0x0400122A RID: 4650
+		// Token: 0x04001231 RID: 4657
 		public string m_group = "";
 
-		// Token: 0x0400122B RID: 4651
+		// Token: 0x04001232 RID: 4658
 		public float m_minDistanceFromSimilar;
 
-		// Token: 0x0400122C RID: 4652
+		// Token: 0x04001233 RID: 4659
 		public bool m_iconAlways;
 
-		// Token: 0x0400122D RID: 4653
+		// Token: 0x04001234 RID: 4660
 		public bool m_iconPlaced;
 
-		// Token: 0x0400122E RID: 4654
+		// Token: 0x04001235 RID: 4661
 		public bool m_randomRotation = true;
 
-		// Token: 0x0400122F RID: 4655
+		// Token: 0x04001236 RID: 4662
 		public bool m_slopeRotation;
 
-		// Token: 0x04001230 RID: 4656
+		// Token: 0x04001237 RID: 4663
 		public bool m_snapToWater;
 
-		// Token: 0x04001231 RID: 4657
+		// Token: 0x04001238 RID: 4664
 		public float m_maxTerrainDelta = 2f;
 
-		// Token: 0x04001232 RID: 4658
+		// Token: 0x04001239 RID: 4665
 		public float m_minTerrainDelta;
 
-		// Token: 0x04001233 RID: 4659
+		// Token: 0x0400123A RID: 4666
 		[Header("Forest fractal 0-1 inside forest")]
 		public bool m_inForest;
 
-		// Token: 0x04001234 RID: 4660
+		// Token: 0x0400123B RID: 4667
 		public float m_forestTresholdMin;
 
-		// Token: 0x04001235 RID: 4661
+		// Token: 0x0400123C RID: 4668
 		public float m_forestTresholdMax = 1f;
 
-		// Token: 0x04001236 RID: 4662
+		// Token: 0x0400123D RID: 4669
 		[Space(10f)]
 		public float m_minDistance;
 
-		// Token: 0x04001237 RID: 4663
+		// Token: 0x0400123E RID: 4670
 		public float m_maxDistance;
 
-		// Token: 0x04001238 RID: 4664
+		// Token: 0x0400123F RID: 4671
 		public float m_minAltitude = -1000f;
 
-		// Token: 0x04001239 RID: 4665
+		// Token: 0x04001240 RID: 4672
 		public float m_maxAltitude = 1000f;
 
-		// Token: 0x0400123A RID: 4666
+		// Token: 0x04001241 RID: 4673
 		[NonSerialized]
 		public GameObject m_prefab;
 
-		// Token: 0x0400123B RID: 4667
+		// Token: 0x04001242 RID: 4674
 		[NonSerialized]
 		public int m_hash;
 
-		// Token: 0x0400123C RID: 4668
+		// Token: 0x04001243 RID: 4675
 		[NonSerialized]
 		public Location m_location;
 
-		// Token: 0x0400123D RID: 4669
+		// Token: 0x04001244 RID: 4676
 		[NonSerialized]
 		public float m_interiorRadius = 10f;
 
-		// Token: 0x0400123E RID: 4670
+		// Token: 0x04001245 RID: 4677
 		[NonSerialized]
 		public float m_exteriorRadius = 10f;
 
-		// Token: 0x0400123F RID: 4671
+		// Token: 0x04001246 RID: 4678
 		[NonSerialized]
 		public List<ZNetView> m_netViews = new List<ZNetView>();
 
-		// Token: 0x04001240 RID: 4672
+		// Token: 0x04001247 RID: 4679
 		[NonSerialized]
 		public List<RandomSpawn> m_randomSpawns = new List<RandomSpawn>();
 
-		// Token: 0x04001241 RID: 4673
+		// Token: 0x04001248 RID: 4680
 		[HideInInspector]
 		public bool m_foldout;
 	}
@@ -1993,24 +1993,24 @@ public class ZoneSystem : MonoBehaviour
 	// Token: 0x0200018B RID: 395
 	public struct LocationInstance
 	{
-		// Token: 0x04001242 RID: 4674
+		// Token: 0x04001249 RID: 4681
 		public ZoneSystem.ZoneLocation m_location;
 
-		// Token: 0x04001243 RID: 4675
+		// Token: 0x0400124A RID: 4682
 		public Vector3 m_position;
 
-		// Token: 0x04001244 RID: 4676
+		// Token: 0x0400124B RID: 4683
 		public bool m_placed;
 	}
 
 	// Token: 0x0200018C RID: 396
 	public enum SpawnMode
 	{
-		// Token: 0x04001246 RID: 4678
+		// Token: 0x0400124D RID: 4685
 		Full,
-		// Token: 0x04001247 RID: 4679
+		// Token: 0x0400124E RID: 4686
 		Client,
-		// Token: 0x04001248 RID: 4680
+		// Token: 0x0400124F RID: 4687
 		Ghost
 	}
 }

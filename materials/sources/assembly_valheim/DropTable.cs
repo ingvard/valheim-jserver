@@ -6,13 +6,13 @@ using UnityEngine;
 [Serializable]
 public class DropTable
 {
-	// Token: 0x06000686 RID: 1670 RVA: 0x00036772 File Offset: 0x00034972
+	// Token: 0x06000687 RID: 1671 RVA: 0x00036826 File Offset: 0x00034A26
 	public DropTable Clone()
 	{
 		return base.MemberwiseClone() as DropTable;
 	}
 
-	// Token: 0x06000687 RID: 1671 RVA: 0x00036780 File Offset: 0x00034980
+	// Token: 0x06000688 RID: 1672 RVA: 0x00036834 File Offset: 0x00034A34
 	public List<ItemDrop.ItemData> GetDropListItems()
 	{
 		List<ItemDrop.ItemData> list = new List<ItemDrop.ItemData>();
@@ -60,7 +60,7 @@ public class DropTable
 		return list;
 	}
 
-	// Token: 0x06000688 RID: 1672 RVA: 0x000368DC File Offset: 0x00034ADC
+	// Token: 0x06000689 RID: 1673 RVA: 0x00036990 File Offset: 0x00034B90
 	private void AddItemToList(List<ItemDrop.ItemData> toDrop, DropTable.DropData data)
 	{
 		ItemDrop.ItemData itemData = data.m_item.GetComponent<ItemDrop>().m_itemData;
@@ -72,14 +72,14 @@ public class DropTable
 		toDrop.Add(itemData2);
 	}
 
-	// Token: 0x06000689 RID: 1673 RVA: 0x00036948 File Offset: 0x00034B48
+	// Token: 0x0600068A RID: 1674 RVA: 0x000369FC File Offset: 0x00034BFC
 	public List<GameObject> GetDropList()
 	{
 		int amount = UnityEngine.Random.Range(this.m_dropMin, this.m_dropMax + 1);
 		return this.GetDropList(amount);
 	}
 
-	// Token: 0x0600068A RID: 1674 RVA: 0x00036970 File Offset: 0x00034B70
+	// Token: 0x0600068B RID: 1675 RVA: 0x00036A24 File Offset: 0x00034C24
 	private List<GameObject> GetDropList(int amount)
 	{
 		List<GameObject> list = new List<GameObject>();
@@ -130,42 +130,42 @@ public class DropTable
 		return list;
 	}
 
-	// Token: 0x0600068B RID: 1675 RVA: 0x00036AE4 File Offset: 0x00034CE4
+	// Token: 0x0600068C RID: 1676 RVA: 0x00036B98 File Offset: 0x00034D98
 	public bool IsEmpty()
 	{
 		return this.m_drops.Count == 0;
 	}
 
-	// Token: 0x04000746 RID: 1862
+	// Token: 0x0400074A RID: 1866
 	public List<DropTable.DropData> m_drops = new List<DropTable.DropData>();
 
-	// Token: 0x04000747 RID: 1863
+	// Token: 0x0400074B RID: 1867
 	public int m_dropMin = 1;
 
-	// Token: 0x04000748 RID: 1864
+	// Token: 0x0400074C RID: 1868
 	public int m_dropMax = 1;
 
-	// Token: 0x04000749 RID: 1865
+	// Token: 0x0400074D RID: 1869
 	[Range(0f, 1f)]
 	public float m_dropChance = 1f;
 
-	// Token: 0x0400074A RID: 1866
+	// Token: 0x0400074E RID: 1870
 	public bool m_oneOfEach;
 
 	// Token: 0x02000163 RID: 355
 	[Serializable]
 	public struct DropData
 	{
-		// Token: 0x04001143 RID: 4419
+		// Token: 0x0400114A RID: 4426
 		public GameObject m_item;
 
-		// Token: 0x04001144 RID: 4420
+		// Token: 0x0400114B RID: 4427
 		public int m_stackMin;
 
-		// Token: 0x04001145 RID: 4421
+		// Token: 0x0400114C RID: 4428
 		public int m_stackMax;
 
-		// Token: 0x04001146 RID: 4422
+		// Token: 0x0400114D RID: 4429
 		public float m_weight;
 	}
 }

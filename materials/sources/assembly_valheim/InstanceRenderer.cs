@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 // Token: 0x020000A0 RID: 160
 public class InstanceRenderer : MonoBehaviour
 {
-	// Token: 0x06000AF8 RID: 2808 RVA: 0x0004F230 File Offset: 0x0004D430
+	// Token: 0x06000AF9 RID: 2809 RVA: 0x0004F3B8 File Offset: 0x0004D5B8
 	private void Update()
 	{
 		Camera mainCamera = Utils.GetMainCamera();
@@ -53,7 +53,7 @@ public class InstanceRenderer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000AF9 RID: 2809 RVA: 0x0004F398 File Offset: 0x0004D598
+	// Token: 0x06000AFA RID: 2810 RVA: 0x0004F520 File Offset: 0x0004D720
 	private void UpdateBounds()
 	{
 		this.m_dirtyBounds = false;
@@ -74,21 +74,21 @@ public class InstanceRenderer : MonoBehaviour
 		this.m_bounds.radius = Vector3.Distance(vector2, this.m_bounds.position);
 	}
 
-	// Token: 0x06000AFA RID: 2810 RVA: 0x0004F4D8 File Offset: 0x0004D6D8
+	// Token: 0x06000AFB RID: 2811 RVA: 0x0004F660 File Offset: 0x0004D860
 	public void AddInstance(Vector3 pos, Quaternion rot, float scale)
 	{
 		Matrix4x4 m = Matrix4x4.TRS(pos, rot, this.m_scale * scale);
 		this.AddInstance(m);
 	}
 
-	// Token: 0x06000AFB RID: 2811 RVA: 0x0004F500 File Offset: 0x0004D700
+	// Token: 0x06000AFC RID: 2812 RVA: 0x0004F688 File Offset: 0x0004D888
 	public void AddInstance(Vector3 pos, Quaternion rot)
 	{
 		Matrix4x4 m = Matrix4x4.TRS(pos, rot, this.m_scale);
 		this.AddInstance(m);
 	}
 
-	// Token: 0x06000AFC RID: 2812 RVA: 0x0004F522 File Offset: 0x0004D722
+	// Token: 0x06000AFD RID: 2813 RVA: 0x0004F6AA File Offset: 0x0004D8AA
 	public void AddInstance(Matrix4x4 m)
 	{
 		if (this.m_instanceCount >= 1023)
@@ -100,14 +100,14 @@ public class InstanceRenderer : MonoBehaviour
 		this.m_dirtyBounds = true;
 	}
 
-	// Token: 0x06000AFD RID: 2813 RVA: 0x0004F559 File Offset: 0x0004D759
+	// Token: 0x06000AFE RID: 2814 RVA: 0x0004F6E1 File Offset: 0x0004D8E1
 	public void Clear()
 	{
 		this.m_instanceCount = 0;
 		this.m_dirtyBounds = true;
 	}
 
-	// Token: 0x06000AFE RID: 2814 RVA: 0x0004F56C File Offset: 0x0004D76C
+	// Token: 0x06000AFF RID: 2815 RVA: 0x0004F6F4 File Offset: 0x0004D8F4
 	public void SetInstance(int index, Vector3 pos, Quaternion rot, float scale)
 	{
 		Matrix4x4 matrix4x = Matrix4x4.TRS(pos, rot, this.m_scale * scale);
@@ -115,14 +115,14 @@ public class InstanceRenderer : MonoBehaviour
 		this.m_dirtyBounds = true;
 	}
 
-	// Token: 0x06000AFF RID: 2815 RVA: 0x0004F5A2 File Offset: 0x0004D7A2
+	// Token: 0x06000B00 RID: 2816 RVA: 0x0004F72A File Offset: 0x0004D92A
 	private void Resize(int instances)
 	{
 		this.m_instanceCount = instances;
 		this.m_dirtyBounds = true;
 	}
 
-	// Token: 0x06000B00 RID: 2816 RVA: 0x0004F5B4 File Offset: 0x0004D7B4
+	// Token: 0x06000B01 RID: 2817 RVA: 0x0004F73C File Offset: 0x0004D93C
 	public void SetInstances(List<Transform> transforms, bool faceCamera = false)
 	{
 		this.Resize(transforms.Count);
@@ -134,7 +134,7 @@ public class InstanceRenderer : MonoBehaviour
 		this.m_dirtyBounds = true;
 	}
 
-	// Token: 0x06000B01 RID: 2817 RVA: 0x0004F610 File Offset: 0x0004D810
+	// Token: 0x06000B02 RID: 2818 RVA: 0x0004F798 File Offset: 0x0004D998
 	public void SetInstancesBillboard(List<Vector4> points)
 	{
 		Camera mainCamera = Utils.GetMainCamera();
@@ -155,53 +155,53 @@ public class InstanceRenderer : MonoBehaviour
 		this.m_dirtyBounds = true;
 	}
 
-	// Token: 0x06000B02 RID: 2818 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x06000B03 RID: 2819 RVA: 0x000027E0 File Offset: 0x000009E0
 	private void OnDrawGizmosSelected()
 	{
 	}
 
-	// Token: 0x04000A5E RID: 2654
+	// Token: 0x04000A64 RID: 2660
 	public Mesh m_mesh;
 
-	// Token: 0x04000A5F RID: 2655
+	// Token: 0x04000A65 RID: 2661
 	public Material m_material;
 
-	// Token: 0x04000A60 RID: 2656
+	// Token: 0x04000A66 RID: 2662
 	public Vector3 m_scale = Vector3.one;
 
-	// Token: 0x04000A61 RID: 2657
+	// Token: 0x04000A67 RID: 2663
 	public bool m_frustumCull = true;
 
-	// Token: 0x04000A62 RID: 2658
+	// Token: 0x04000A68 RID: 2664
 	private bool m_dirtyBounds = true;
 
-	// Token: 0x04000A63 RID: 2659
+	// Token: 0x04000A69 RID: 2665
 	private BoundingSphere m_bounds;
 
-	// Token: 0x04000A64 RID: 2660
+	// Token: 0x04000A6A RID: 2666
 	public bool m_useLod;
 
-	// Token: 0x04000A65 RID: 2661
+	// Token: 0x04000A6B RID: 2667
 	public bool m_useXZLodDistance = true;
 
-	// Token: 0x04000A66 RID: 2662
+	// Token: 0x04000A6C RID: 2668
 	public float m_lodMinDistance = 5f;
 
-	// Token: 0x04000A67 RID: 2663
+	// Token: 0x04000A6D RID: 2669
 	public float m_lodMaxDistance = 20f;
 
-	// Token: 0x04000A68 RID: 2664
+	// Token: 0x04000A6E RID: 2670
 	public ShadowCastingMode m_shadowCasting;
 
-	// Token: 0x04000A69 RID: 2665
+	// Token: 0x04000A6F RID: 2671
 	private float m_lodCount;
 
-	// Token: 0x04000A6A RID: 2666
+	// Token: 0x04000A70 RID: 2672
 	private Matrix4x4[] m_instances = new Matrix4x4[1024];
 
-	// Token: 0x04000A6B RID: 2667
+	// Token: 0x04000A71 RID: 2673
 	private int m_instanceCount;
 
-	// Token: 0x04000A6C RID: 2668
+	// Token: 0x04000A72 RID: 2674
 	private bool m_firstFrame = true;
 }

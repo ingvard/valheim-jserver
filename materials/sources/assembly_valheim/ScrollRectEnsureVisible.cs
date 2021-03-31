@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(ScrollRect))]
 public class ScrollRectEnsureVisible : MonoBehaviour
 {
-	// Token: 0x060005F7 RID: 1527 RVA: 0x00032EE1 File Offset: 0x000310E1
+	// Token: 0x060005F8 RID: 1528 RVA: 0x00032F95 File Offset: 0x00031195
 	private void Awake()
 	{
 		if (!this.mInitialized)
@@ -15,7 +15,7 @@ public class ScrollRectEnsureVisible : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060005F8 RID: 1528 RVA: 0x00032EF4 File Offset: 0x000310F4
+	// Token: 0x060005F9 RID: 1529 RVA: 0x00032FA8 File Offset: 0x000311A8
 	private void Initialize()
 	{
 		this.mScrollRect = base.GetComponent<ScrollRect>();
@@ -25,7 +25,7 @@ public class ScrollRectEnsureVisible : MonoBehaviour
 		this.mInitialized = true;
 	}
 
-	// Token: 0x060005F9 RID: 1529 RVA: 0x00032F44 File Offset: 0x00031144
+	// Token: 0x060005FA RID: 1530 RVA: 0x00032FF8 File Offset: 0x000311F8
 	public void CenterOnItem(RectTransform target)
 	{
 		if (!this.mInitialized)
@@ -53,7 +53,7 @@ public class ScrollRectEnsureVisible : MonoBehaviour
 		this.mScrollRect.normalizedPosition = vector2;
 	}
 
-	// Token: 0x060005FA RID: 1530 RVA: 0x0003309C File Offset: 0x0003129C
+	// Token: 0x060005FB RID: 1531 RVA: 0x00033150 File Offset: 0x00031350
 	private void Reset()
 	{
 		if (this.maskTransform == null)
@@ -74,7 +74,7 @@ public class ScrollRectEnsureVisible : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060005FB RID: 1531 RVA: 0x00033100 File Offset: 0x00031300
+	// Token: 0x060005FC RID: 1532 RVA: 0x000331B4 File Offset: 0x000313B4
 	private Vector3 GetWidgetWorldPoint(RectTransform target)
 	{
 		Vector3 b = new Vector3((0.5f - target.pivot.x) * target.rect.size.x, (0.5f - target.pivot.y) * target.rect.size.y, 0f);
@@ -82,24 +82,24 @@ public class ScrollRectEnsureVisible : MonoBehaviour
 		return target.parent.TransformPoint(position);
 	}
 
-	// Token: 0x060005FC RID: 1532 RVA: 0x0003317C File Offset: 0x0003137C
+	// Token: 0x060005FD RID: 1533 RVA: 0x00033230 File Offset: 0x00031430
 	private Vector3 GetWorldPointInWidget(RectTransform target, Vector3 worldPoint)
 	{
 		return target.InverseTransformPoint(worldPoint);
 	}
 
-	// Token: 0x040006A0 RID: 1696
+	// Token: 0x040006A4 RID: 1700
 	private RectTransform maskTransform;
 
-	// Token: 0x040006A1 RID: 1697
+	// Token: 0x040006A5 RID: 1701
 	private ScrollRect mScrollRect;
 
-	// Token: 0x040006A2 RID: 1698
+	// Token: 0x040006A6 RID: 1702
 	private RectTransform mScrollTransform;
 
-	// Token: 0x040006A3 RID: 1699
+	// Token: 0x040006A7 RID: 1703
 	private RectTransform mContent;
 
-	// Token: 0x040006A4 RID: 1700
+	// Token: 0x040006A8 RID: 1704
 	private bool mInitialized;
 }

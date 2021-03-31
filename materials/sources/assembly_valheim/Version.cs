@@ -4,13 +4,13 @@ using UnityEngine;
 // Token: 0x020000B4 RID: 180
 internal class Version
 {
-	// Token: 0x06000BF2 RID: 3058 RVA: 0x000551F2 File Offset: 0x000533F2
+	// Token: 0x06000BF3 RID: 3059 RVA: 0x0005537A File Offset: 0x0005357A
 	public static string GetVersionString()
 	{
 		return global::Version.CombineVersion(global::Version.m_major, global::Version.m_minor, global::Version.m_patch);
 	}
 
-	// Token: 0x06000BF3 RID: 3059 RVA: 0x00055208 File Offset: 0x00053408
+	// Token: 0x06000BF4 RID: 3060 RVA: 0x00055390 File Offset: 0x00053590
 	public static bool IsVersionNewer(int major, int minor, int patch)
 	{
 		if (major > global::Version.m_major)
@@ -32,7 +32,7 @@ internal class Version
 		return patch >= 0 || patch < global::Version.m_patch;
 	}
 
-	// Token: 0x06000BF4 RID: 3060 RVA: 0x00055264 File Offset: 0x00053464
+	// Token: 0x06000BF5 RID: 3061 RVA: 0x000553EC File Offset: 0x000535EC
 	public static string CombineVersion(int major, int minor, int patch)
 	{
 		if (patch == 0)
@@ -60,7 +60,7 @@ internal class Version
 		});
 	}
 
-	// Token: 0x06000BF5 RID: 3061 RVA: 0x0005530C File Offset: 0x0005350C
+	// Token: 0x06000BF6 RID: 3062 RVA: 0x00055494 File Offset: 0x00053694
 	public static bool IsWorldVersionCompatible(int version)
 	{
 		if (version == global::Version.m_worldVersion)
@@ -77,7 +77,7 @@ internal class Version
 		return false;
 	}
 
-	// Token: 0x06000BF6 RID: 3062 RVA: 0x00055344 File Offset: 0x00053544
+	// Token: 0x06000BF7 RID: 3063 RVA: 0x000554CC File Offset: 0x000536CC
 	public static bool IsPlayerVersionCompatible(int version)
 	{
 		if (version == global::Version.m_playerVersion)
@@ -94,19 +94,19 @@ internal class Version
 		return false;
 	}
 
-	// Token: 0x04000B16 RID: 2838
+	// Token: 0x04000B1C RID: 2844
 	public static int m_major = 0;
 
-	// Token: 0x04000B17 RID: 2839
+	// Token: 0x04000B1D RID: 2845
 	public static int m_minor = 148;
 
-	// Token: 0x04000B18 RID: 2840
-	public static int m_patch = 6;
+	// Token: 0x04000B1E RID: 2846
+	public static int m_patch = 7;
 
-	// Token: 0x04000B19 RID: 2841
+	// Token: 0x04000B1F RID: 2847
 	public static int m_playerVersion = 33;
 
-	// Token: 0x04000B1A RID: 2842
+	// Token: 0x04000B20 RID: 2848
 	public static int[] m_compatiblePlayerVersions = new int[]
 	{
 		32,
@@ -117,10 +117,10 @@ internal class Version
 		27
 	};
 
-	// Token: 0x04000B1B RID: 2843
+	// Token: 0x04000B21 RID: 2849
 	public static int m_worldVersion = 26;
 
-	// Token: 0x04000B1C RID: 2844
+	// Token: 0x04000B22 RID: 2850
 	public static int[] m_compatibleWorldVersions = new int[]
 	{
 		25,
@@ -141,6 +141,6 @@ internal class Version
 		9
 	};
 
-	// Token: 0x04000B1D RID: 2845
+	// Token: 0x04000B23 RID: 2851
 	public static int m_worldGenVersion = 1;
 }

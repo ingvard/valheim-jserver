@@ -4,13 +4,13 @@ using UnityEngine;
 // Token: 0x020000ED RID: 237
 public class RandomSpeak : MonoBehaviour
 {
-	// Token: 0x06000E9A RID: 3738 RVA: 0x000686B9 File Offset: 0x000668B9
+	// Token: 0x06000E9B RID: 3739 RVA: 0x00068841 File Offset: 0x00066A41
 	private void Start()
 	{
 		base.InvokeRepeating("Speak", UnityEngine.Random.Range(0f, this.m_interval), this.m_interval);
 	}
 
-	// Token: 0x06000E9B RID: 3739 RVA: 0x000686DC File Offset: 0x000668DC
+	// Token: 0x06000E9C RID: 3740 RVA: 0x00068864 File Offset: 0x00066A64
 	private void Speak()
 	{
 		if (UnityEngine.Random.value > this.m_chance)
@@ -34,36 +34,36 @@ public class RandomSpeak : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000D80 RID: 3456
+	// Token: 0x04000D86 RID: 3462
 	public float m_interval = 5f;
 
-	// Token: 0x04000D81 RID: 3457
+	// Token: 0x04000D87 RID: 3463
 	public float m_chance = 0.5f;
 
-	// Token: 0x04000D82 RID: 3458
+	// Token: 0x04000D88 RID: 3464
 	public float m_triggerDistance = 5f;
 
-	// Token: 0x04000D83 RID: 3459
+	// Token: 0x04000D89 RID: 3465
 	public float m_cullDistance = 10f;
 
-	// Token: 0x04000D84 RID: 3460
+	// Token: 0x04000D8A RID: 3466
 	public float m_ttl = 10f;
 
-	// Token: 0x04000D85 RID: 3461
+	// Token: 0x04000D8B RID: 3467
 	public Vector3 m_offset = new Vector3(0f, 0f, 0f);
 
-	// Token: 0x04000D86 RID: 3462
+	// Token: 0x04000D8C RID: 3468
 	public EffectList m_speakEffects = new EffectList();
 
-	// Token: 0x04000D87 RID: 3463
+	// Token: 0x04000D8D RID: 3469
 	public bool m_useLargeDialog;
 
-	// Token: 0x04000D88 RID: 3464
+	// Token: 0x04000D8E RID: 3470
 	public bool m_onlyOnce;
 
-	// Token: 0x04000D89 RID: 3465
+	// Token: 0x04000D8F RID: 3471
 	public string m_topic = "";
 
-	// Token: 0x04000D8A RID: 3466
+	// Token: 0x04000D90 RID: 3472
 	public string[] m_texts = new string[0];
 }

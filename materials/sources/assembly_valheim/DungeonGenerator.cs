@@ -6,14 +6,14 @@ using UnityEngine;
 // Token: 0x02000117 RID: 279
 public class DungeonGenerator : MonoBehaviour
 {
-	// Token: 0x06001081 RID: 4225 RVA: 0x00074C92 File Offset: 0x00072E92
+	// Token: 0x06001082 RID: 4226 RVA: 0x00074E1A File Offset: 0x0007301A
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
 		this.Load();
 	}
 
-	// Token: 0x06001082 RID: 4226 RVA: 0x00074CA6 File Offset: 0x00072EA6
+	// Token: 0x06001083 RID: 4227 RVA: 0x00074E2E File Offset: 0x0007302E
 	public void Clear()
 	{
 		while (base.transform.childCount > 0)
@@ -22,7 +22,7 @@ public class DungeonGenerator : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001083 RID: 4227 RVA: 0x00074CD0 File Offset: 0x00072ED0
+	// Token: 0x06001084 RID: 4228 RVA: 0x00074E58 File Offset: 0x00073058
 	public void Generate(ZoneSystem.SpawnMode mode)
 	{
 		int seed = WorldGenerator.instance.GetSeed();
@@ -31,7 +31,7 @@ public class DungeonGenerator : MonoBehaviour
 		this.Generate(seed2, mode);
 	}
 
-	// Token: 0x06001084 RID: 4228 RVA: 0x00074D20 File Offset: 0x00072F20
+	// Token: 0x06001085 RID: 4229 RVA: 0x00074EA8 File Offset: 0x000730A8
 	public void Generate(int seed, ZoneSystem.SpawnMode mode)
 	{
 		DateTime now = DateTime.Now;
@@ -71,7 +71,7 @@ public class DungeonGenerator : MonoBehaviour
 		DateTime.Now - now;
 	}
 
-	// Token: 0x06001085 RID: 4229 RVA: 0x00074EBC File Offset: 0x000730BC
+	// Token: 0x06001086 RID: 4230 RVA: 0x00075044 File Offset: 0x00073244
 	private void GenerateRooms(ZoneSystem.SpawnMode mode)
 	{
 		switch (this.m_algorithm)
@@ -90,7 +90,7 @@ public class DungeonGenerator : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001086 RID: 4230 RVA: 0x00074EFA File Offset: 0x000730FA
+	// Token: 0x06001087 RID: 4231 RVA: 0x00075082 File Offset: 0x00073282
 	private void GenerateDungeon(ZoneSystem.SpawnMode mode)
 	{
 		this.PlaceStartRoom(mode);
@@ -99,7 +99,7 @@ public class DungeonGenerator : MonoBehaviour
 		this.PlaceDoors(mode);
 	}
 
-	// Token: 0x06001087 RID: 4231 RVA: 0x00074F18 File Offset: 0x00073118
+	// Token: 0x06001088 RID: 4232 RVA: 0x000750A0 File Offset: 0x000732A0
 	private void GenerateCampGrid(ZoneSystem.SpawnMode mode)
 	{
 		float num = Mathf.Cos(0.017453292f * this.m_maxTilt);
@@ -135,7 +135,7 @@ public class DungeonGenerator : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001088 RID: 4232 RVA: 0x00075044 File Offset: 0x00073244
+	// Token: 0x06001089 RID: 4233 RVA: 0x000751CC File Offset: 0x000733CC
 	private void GenerateCampRadial(ZoneSystem.SpawnMode mode)
 	{
 		float num = UnityEngine.Random.Range(this.m_campRadiusMin, this.m_campRadiusMax);
@@ -180,7 +180,7 @@ public class DungeonGenerator : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001089 RID: 4233 RVA: 0x00075194 File Offset: 0x00073394
+	// Token: 0x0600108A RID: 4234 RVA: 0x0007531C File Offset: 0x0007351C
 	private Quaternion GetCampRoomRotation(DungeonDB.RoomData room, Vector3 pos)
 	{
 		if (room.m_room.m_faceCenter)
@@ -198,7 +198,7 @@ public class DungeonGenerator : MonoBehaviour
 		return Quaternion.Euler(0f, (float)UnityEngine.Random.Range(0, 16) * 22.5f, 0f);
 	}
 
-	// Token: 0x0600108A RID: 4234 RVA: 0x00075230 File Offset: 0x00073430
+	// Token: 0x0600108B RID: 4235 RVA: 0x000753B8 File Offset: 0x000735B8
 	private void PlaceWall(float radius, int sections, ZoneSystem.SpawnMode mode)
 	{
 		float num = Mathf.Cos(0.017453292f * this.m_maxTilt);
@@ -237,7 +237,7 @@ public class DungeonGenerator : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600108B RID: 4235 RVA: 0x00075330 File Offset: 0x00073530
+	// Token: 0x0600108C RID: 4236 RVA: 0x000754B8 File Offset: 0x000736B8
 	private void Save()
 	{
 		if (this.m_nview == null)
@@ -256,7 +256,7 @@ public class DungeonGenerator : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600108C RID: 4236 RVA: 0x000753E8 File Offset: 0x000735E8
+	// Token: 0x0600108D RID: 4237 RVA: 0x00075570 File Offset: 0x00073770
 	private void Load()
 	{
 		if (this.m_nview == null)
@@ -287,7 +287,7 @@ public class DungeonGenerator : MonoBehaviour
 		ZLog.Log("Dungeon load time " + (DateTime.Now - now).TotalMilliseconds + " ms");
 	}
 
-	// Token: 0x0600108D RID: 4237 RVA: 0x0007550C File Offset: 0x0007370C
+	// Token: 0x0600108E RID: 4238 RVA: 0x00075694 File Offset: 0x00073894
 	private void SetupAvailableRooms()
 	{
 		DungeonGenerator.m_availableRooms.Clear();
@@ -300,7 +300,7 @@ public class DungeonGenerator : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600108E RID: 4238 RVA: 0x00075590 File Offset: 0x00073790
+	// Token: 0x0600108F RID: 4239 RVA: 0x00075718 File Offset: 0x00073918
 	private DungeonGenerator.DoorDef FindDoorType(string type)
 	{
 		List<DungeonGenerator.DoorDef> list = new List<DungeonGenerator.DoorDef>();
@@ -318,7 +318,7 @@ public class DungeonGenerator : MonoBehaviour
 		return list[UnityEngine.Random.Range(0, list.Count)];
 	}
 
-	// Token: 0x0600108F RID: 4239 RVA: 0x00075614 File Offset: 0x00073814
+	// Token: 0x06001090 RID: 4240 RVA: 0x0007579C File Offset: 0x0007399C
 	private void PlaceDoors(ZoneSystem.SpawnMode mode)
 	{
 		int num = 0;
@@ -345,7 +345,7 @@ public class DungeonGenerator : MonoBehaviour
 		ZLog.Log("placed " + num + " doors");
 	}
 
-	// Token: 0x06001090 RID: 4240 RVA: 0x000756E4 File Offset: 0x000738E4
+	// Token: 0x06001091 RID: 4241 RVA: 0x0007586C File Offset: 0x00073A6C
 	private void PlaceEndCaps(ZoneSystem.SpawnMode mode)
 	{
 		for (int i = 0; i < DungeonGenerator.m_openConnections.Count; i++)
@@ -387,7 +387,7 @@ public class DungeonGenerator : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001091 RID: 4241 RVA: 0x00075814 File Offset: 0x00073A14
+	// Token: 0x06001092 RID: 4242 RVA: 0x0007599C File Offset: 0x00073B9C
 	private void FindEndCaps(RoomConnection connection, List<DungeonDB.RoomData> rooms)
 	{
 		rooms.Clear();
@@ -401,7 +401,7 @@ public class DungeonGenerator : MonoBehaviour
 		rooms.Shuffle<DungeonDB.RoomData>();
 	}
 
-	// Token: 0x06001092 RID: 4242 RVA: 0x00075890 File Offset: 0x00073A90
+	// Token: 0x06001093 RID: 4243 RVA: 0x00075A18 File Offset: 0x00073C18
 	private DungeonDB.RoomData FindEndCap(RoomConnection connection)
 	{
 		DungeonGenerator.m_tempRooms.Clear();
@@ -419,7 +419,7 @@ public class DungeonGenerator : MonoBehaviour
 		return DungeonGenerator.m_tempRooms[UnityEngine.Random.Range(0, DungeonGenerator.m_tempRooms.Count)];
 	}
 
-	// Token: 0x06001093 RID: 4243 RVA: 0x00075934 File Offset: 0x00073B34
+	// Token: 0x06001094 RID: 4244 RVA: 0x00075ABC File Offset: 0x00073CBC
 	private void PlaceRooms(ZoneSystem.SpawnMode mode)
 	{
 		for (int i = 0; i < this.m_maxRooms; i++)
@@ -433,7 +433,7 @@ public class DungeonGenerator : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001094 RID: 4244 RVA: 0x00075980 File Offset: 0x00073B80
+	// Token: 0x06001095 RID: 4245 RVA: 0x00075B08 File Offset: 0x00073D08
 	private void PlaceStartRoom(ZoneSystem.SpawnMode mode)
 	{
 		DungeonDB.RoomData roomData = this.FindStartRoom();
@@ -445,7 +445,7 @@ public class DungeonGenerator : MonoBehaviour
 		this.PlaceRoom(roomData, pos, rot, entrance, mode);
 	}
 
-	// Token: 0x06001095 RID: 4245 RVA: 0x000759D0 File Offset: 0x00073BD0
+	// Token: 0x06001096 RID: 4246 RVA: 0x00075B58 File Offset: 0x00073D58
 	private bool PlaceOneRoom(ZoneSystem.SpawnMode mode)
 	{
 		RoomConnection openConnection = this.GetOpenConnection();
@@ -468,7 +468,7 @@ public class DungeonGenerator : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001096 RID: 4246 RVA: 0x00075A18 File Offset: 0x00073C18
+	// Token: 0x06001097 RID: 4247 RVA: 0x00075BA0 File Offset: 0x00073DA0
 	private void CalculateRoomPosRot(RoomConnection roomCon, Vector3 exitPos, Quaternion exitRot, out Vector3 pos, out Quaternion rot)
 	{
 		Quaternion rhs = Quaternion.Inverse(roomCon.transform.localRotation);
@@ -477,7 +477,7 @@ public class DungeonGenerator : MonoBehaviour
 		pos = exitPos - rot * localPosition;
 	}
 
-	// Token: 0x06001097 RID: 4247 RVA: 0x00075A6C File Offset: 0x00073C6C
+	// Token: 0x06001098 RID: 4248 RVA: 0x00075BF4 File Offset: 0x00073DF4
 	private bool PlaceRoom(RoomConnection connection, DungeonDB.RoomData roomData, ZoneSystem.SpawnMode mode)
 	{
 		Room room = roomData.m_room;
@@ -503,7 +503,7 @@ public class DungeonGenerator : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001098 RID: 4248 RVA: 0x00075B24 File Offset: 0x00073D24
+	// Token: 0x06001099 RID: 4249 RVA: 0x00075CAC File Offset: 0x00073EAC
 	private void PlaceRoom(DungeonDB.RoomData room, Vector3 pos, Quaternion rot, RoomConnection fromConnection, ZoneSystem.SpawnMode mode)
 	{
 		int seed = (int)pos.x * 4271 + (int)pos.y * 9187 + (int)pos.z * 2134;
@@ -567,7 +567,7 @@ public class DungeonGenerator : MonoBehaviour
 		UnityEngine.Random.state = state;
 	}
 
-	// Token: 0x06001099 RID: 4249 RVA: 0x00075E08 File Offset: 0x00074008
+	// Token: 0x0600109A RID: 4250 RVA: 0x00075F90 File Offset: 0x00074190
 	private void AddOpenConnections(Room newRoom, RoomConnection skipConnection)
 	{
 		RoomConnection[] connections = newRoom.GetConnections();
@@ -591,7 +591,7 @@ public class DungeonGenerator : MonoBehaviour
 		DungeonGenerator.m_openConnections.AddRange(connections);
 	}
 
-	// Token: 0x0600109A RID: 4250 RVA: 0x00075EA4 File Offset: 0x000740A4
+	// Token: 0x0600109B RID: 4251 RVA: 0x0007602C File Offset: 0x0007422C
 	private void SetupColliders()
 	{
 		if (this.m_colliderA != null)
@@ -607,12 +607,12 @@ public class DungeonGenerator : MonoBehaviour
 		this.m_colliderB = base.gameObject.AddComponent<BoxCollider>();
 	}
 
-	// Token: 0x0600109B RID: 4251 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x0600109C RID: 4252 RVA: 0x000027E0 File Offset: 0x000009E0
 	public void Derp()
 	{
 	}
 
-	// Token: 0x0600109C RID: 4252 RVA: 0x00075F04 File Offset: 0x00074104
+	// Token: 0x0600109D RID: 4253 RVA: 0x0007608C File Offset: 0x0007428C
 	private bool IsInsideDungeon(Room room, Vector3 pos, Quaternion rot)
 	{
 		Bounds bounds = new Bounds(this.m_zoneCenter, this.m_zoneSize);
@@ -621,7 +621,7 @@ public class DungeonGenerator : MonoBehaviour
 		return bounds.Contains(pos + rot * new Vector3(vector.x, vector.y, -vector.z)) && bounds.Contains(pos + rot * new Vector3(-vector.x, vector.y, -vector.z)) && bounds.Contains(pos + rot * new Vector3(vector.x, vector.y, vector.z)) && bounds.Contains(pos + rot * new Vector3(-vector.x, vector.y, vector.z)) && bounds.Contains(pos + rot * new Vector3(vector.x, -vector.y, -vector.z)) && bounds.Contains(pos + rot * new Vector3(-vector.x, -vector.y, -vector.z)) && bounds.Contains(pos + rot * new Vector3(vector.x, -vector.y, vector.z)) && bounds.Contains(pos + rot * new Vector3(-vector.x, -vector.y, vector.z));
 	}
 
-	// Token: 0x0600109D RID: 4253 RVA: 0x000760BC File Offset: 0x000742BC
+	// Token: 0x0600109E RID: 4254 RVA: 0x00076244 File Offset: 0x00074444
 	private bool TestCollision(Room room, Vector3 pos, Quaternion rot)
 	{
 		if (!this.IsInsideDungeon(room, pos, rot))
@@ -642,7 +642,7 @@ public class DungeonGenerator : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x0600109E RID: 4254 RVA: 0x000761A8 File Offset: 0x000743A8
+	// Token: 0x0600109F RID: 4255 RVA: 0x00076330 File Offset: 0x00074530
 	private DungeonDB.RoomData GetRandomWeightedRoom(bool perimeterRoom)
 	{
 		DungeonGenerator.m_tempRooms.Clear();
@@ -672,7 +672,7 @@ public class DungeonGenerator : MonoBehaviour
 		return DungeonGenerator.m_tempRooms[0];
 	}
 
-	// Token: 0x0600109F RID: 4255 RVA: 0x000762CC File Offset: 0x000744CC
+	// Token: 0x060010A0 RID: 4256 RVA: 0x00076454 File Offset: 0x00074654
 	private DungeonDB.RoomData GetRandomRoom(RoomConnection connection)
 	{
 		DungeonGenerator.m_tempRooms.Clear();
@@ -690,7 +690,7 @@ public class DungeonGenerator : MonoBehaviour
 		return DungeonGenerator.m_tempRooms[UnityEngine.Random.Range(0, DungeonGenerator.m_tempRooms.Count)];
 	}
 
-	// Token: 0x060010A0 RID: 4256 RVA: 0x00076398 File Offset: 0x00074598
+	// Token: 0x060010A1 RID: 4257 RVA: 0x00076520 File Offset: 0x00074720
 	private RoomConnection GetOpenConnection()
 	{
 		if (DungeonGenerator.m_openConnections.Count == 0)
@@ -700,7 +700,7 @@ public class DungeonGenerator : MonoBehaviour
 		return DungeonGenerator.m_openConnections[UnityEngine.Random.Range(0, DungeonGenerator.m_openConnections.Count)];
 	}
 
-	// Token: 0x060010A1 RID: 4257 RVA: 0x000763C4 File Offset: 0x000745C4
+	// Token: 0x060010A2 RID: 4258 RVA: 0x0007654C File Offset: 0x0007474C
 	private DungeonDB.RoomData FindStartRoom()
 	{
 		DungeonGenerator.m_tempRooms.Clear();
@@ -714,7 +714,7 @@ public class DungeonGenerator : MonoBehaviour
 		return DungeonGenerator.m_tempRooms[UnityEngine.Random.Range(0, DungeonGenerator.m_tempRooms.Count)];
 	}
 
-	// Token: 0x060010A2 RID: 4258 RVA: 0x0007644C File Offset: 0x0007464C
+	// Token: 0x060010A3 RID: 4259 RVA: 0x000765D4 File Offset: 0x000747D4
 	private bool CheckRequiredRooms()
 	{
 		if (this.m_minRequiredRooms == 0 || this.m_requiredRooms.Count == 0)
@@ -732,7 +732,7 @@ public class DungeonGenerator : MonoBehaviour
 		return num >= this.m_minRequiredRooms;
 	}
 
-	// Token: 0x060010A3 RID: 4259 RVA: 0x000764D8 File Offset: 0x000746D8
+	// Token: 0x060010A4 RID: 4260 RVA: 0x00076660 File Offset: 0x00074860
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = new Color(0f, 1.5f, 0f, 0.5f);
@@ -740,112 +740,112 @@ public class DungeonGenerator : MonoBehaviour
 		Gizmos.matrix = Matrix4x4.identity;
 	}
 
-	// Token: 0x04000F73 RID: 3955
+	// Token: 0x04000F79 RID: 3961
 	public DungeonGenerator.Algorithm m_algorithm;
 
-	// Token: 0x04000F74 RID: 3956
+	// Token: 0x04000F7A RID: 3962
 	public int m_maxRooms = 3;
 
-	// Token: 0x04000F75 RID: 3957
+	// Token: 0x04000F7B RID: 3963
 	public int m_minRooms = 20;
 
-	// Token: 0x04000F76 RID: 3958
+	// Token: 0x04000F7C RID: 3964
 	public int m_minRequiredRooms;
 
-	// Token: 0x04000F77 RID: 3959
+	// Token: 0x04000F7D RID: 3965
 	public List<string> m_requiredRooms = new List<string>();
 
-	// Token: 0x04000F78 RID: 3960
+	// Token: 0x04000F7E RID: 3966
 	[BitMask(typeof(Room.Theme))]
 	public Room.Theme m_themes = Room.Theme.Crypt;
 
-	// Token: 0x04000F79 RID: 3961
+	// Token: 0x04000F7F RID: 3967
 	[Header("Dungeon")]
 	public List<DungeonGenerator.DoorDef> m_doorTypes = new List<DungeonGenerator.DoorDef>();
 
-	// Token: 0x04000F7A RID: 3962
+	// Token: 0x04000F80 RID: 3968
 	[Range(0f, 1f)]
 	public float m_doorChance = 0.5f;
 
-	// Token: 0x04000F7B RID: 3963
+	// Token: 0x04000F81 RID: 3969
 	[Header("Camp")]
 	public float m_maxTilt = 10f;
 
-	// Token: 0x04000F7C RID: 3964
+	// Token: 0x04000F82 RID: 3970
 	public float m_tileWidth = 8f;
 
-	// Token: 0x04000F7D RID: 3965
+	// Token: 0x04000F83 RID: 3971
 	public int m_gridSize = 4;
 
-	// Token: 0x04000F7E RID: 3966
+	// Token: 0x04000F84 RID: 3972
 	public float m_spawnChance = 1f;
 
-	// Token: 0x04000F7F RID: 3967
+	// Token: 0x04000F85 RID: 3973
 	[Header("Camp radial")]
 	public float m_campRadiusMin = 15f;
 
-	// Token: 0x04000F80 RID: 3968
+	// Token: 0x04000F86 RID: 3974
 	public float m_campRadiusMax = 30f;
 
-	// Token: 0x04000F81 RID: 3969
+	// Token: 0x04000F87 RID: 3975
 	public float m_minAltitude = 1f;
 
-	// Token: 0x04000F82 RID: 3970
+	// Token: 0x04000F88 RID: 3976
 	public int m_perimeterSections;
 
-	// Token: 0x04000F83 RID: 3971
+	// Token: 0x04000F89 RID: 3977
 	public float m_perimeterBuffer = 2f;
 
-	// Token: 0x04000F84 RID: 3972
+	// Token: 0x04000F8A RID: 3978
 	[Header("Misc")]
 	public Vector3 m_zoneCenter = new Vector3(0f, 0f, 0f);
 
-	// Token: 0x04000F85 RID: 3973
+	// Token: 0x04000F8B RID: 3979
 	public Vector3 m_zoneSize = new Vector3(64f, 64f, 64f);
 
-	// Token: 0x04000F86 RID: 3974
+	// Token: 0x04000F8C RID: 3980
 	private static List<Room> m_placedRooms = new List<Room>();
 
-	// Token: 0x04000F87 RID: 3975
+	// Token: 0x04000F8D RID: 3981
 	private static List<RoomConnection> m_openConnections = new List<RoomConnection>();
 
-	// Token: 0x04000F88 RID: 3976
+	// Token: 0x04000F8E RID: 3982
 	private static List<RoomConnection> m_doorConnections = new List<RoomConnection>();
 
-	// Token: 0x04000F89 RID: 3977
+	// Token: 0x04000F8F RID: 3983
 	private static List<DungeonDB.RoomData> m_availableRooms = new List<DungeonDB.RoomData>();
 
-	// Token: 0x04000F8A RID: 3978
+	// Token: 0x04000F90 RID: 3984
 	private static List<DungeonDB.RoomData> m_tempRooms = new List<DungeonDB.RoomData>();
 
-	// Token: 0x04000F8B RID: 3979
+	// Token: 0x04000F91 RID: 3985
 	private BoxCollider m_colliderA;
 
-	// Token: 0x04000F8C RID: 3980
+	// Token: 0x04000F92 RID: 3986
 	private BoxCollider m_colliderB;
 
-	// Token: 0x04000F8D RID: 3981
+	// Token: 0x04000F93 RID: 3987
 	private ZNetView m_nview;
 
 	// Token: 0x020001B9 RID: 441
 	[Serializable]
 	public class DoorDef
 	{
-		// Token: 0x0400133C RID: 4924
+		// Token: 0x04001343 RID: 4931
 		public GameObject m_prefab;
 
-		// Token: 0x0400133D RID: 4925
+		// Token: 0x04001344 RID: 4932
 		public string m_connectionType = "";
 	}
 
 	// Token: 0x020001BA RID: 442
 	public enum Algorithm
 	{
-		// Token: 0x0400133F RID: 4927
+		// Token: 0x04001346 RID: 4934
 		Dungeon,
-		// Token: 0x04001340 RID: 4928
+		// Token: 0x04001347 RID: 4935
 		CampGrid,
-		// Token: 0x04001341 RID: 4929
+		// Token: 0x04001348 RID: 4936
 		CampRadial
 	}
 }

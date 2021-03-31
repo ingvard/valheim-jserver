@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000008 RID: 8
 public class FootStep : MonoBehaviour
 {
-	// Token: 0x060000F5 RID: 245 RVA: 0x00007500 File Offset: 0x00005700
+	// Token: 0x060000F6 RID: 246 RVA: 0x00007524 File Offset: 0x00005724
 	private void Start()
 	{
 		this.m_animator = base.GetComponentInChildren<Animator>();
@@ -30,7 +30,7 @@ public class FootStep : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000F6 RID: 246 RVA: 0x000075E3 File Offset: 0x000057E3
+	// Token: 0x060000F7 RID: 247 RVA: 0x00007607 File Offset: 0x00005807
 	private void Update()
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -40,7 +40,7 @@ public class FootStep : MonoBehaviour
 		this.UpdateFootstep(Time.deltaTime);
 	}
 
-	// Token: 0x060000F7 RID: 247 RVA: 0x0000760C File Offset: 0x0000580C
+	// Token: 0x060000F8 RID: 248 RVA: 0x00007630 File Offset: 0x00005830
 	private void UpdateFootstep(float dt)
 	{
 		if (this.m_feet.Length == 0)
@@ -66,7 +66,7 @@ public class FootStep : MonoBehaviour
 		this.m_footstep = @float;
 	}
 
-	// Token: 0x060000F8 RID: 248 RVA: 0x000076E4 File Offset: 0x000058E4
+	// Token: 0x060000F9 RID: 249 RVA: 0x00007708 File Offset: 0x00005908
 	private Transform FindActiveFoot()
 	{
 		Transform transform = null;
@@ -85,7 +85,7 @@ public class FootStep : MonoBehaviour
 		return transform;
 	}
 
-	// Token: 0x060000F9 RID: 249 RVA: 0x0000775C File Offset: 0x0000595C
+	// Token: 0x060000FA RID: 250 RVA: 0x00007780 File Offset: 0x00005980
 	private Transform FindFoot(string name)
 	{
 		foreach (Transform transform in this.m_feet)
@@ -98,7 +98,7 @@ public class FootStep : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x060000FA RID: 250 RVA: 0x00007798 File Offset: 0x00005998
+	// Token: 0x060000FB RID: 251 RVA: 0x000077BC File Offset: 0x000059BC
 	public void OnFoot()
 	{
 		Transform transform = this.FindActiveFoot();
@@ -109,7 +109,7 @@ public class FootStep : MonoBehaviour
 		this.OnFoot(transform);
 	}
 
-	// Token: 0x060000FB RID: 251 RVA: 0x000077C0 File Offset: 0x000059C0
+	// Token: 0x060000FC RID: 252 RVA: 0x000077E4 File Offset: 0x000059E4
 	public void OnFoot(string name)
 	{
 		Transform transform = this.FindFoot(name);
@@ -121,7 +121,7 @@ public class FootStep : MonoBehaviour
 		this.OnFoot(transform);
 	}
 
-	// Token: 0x060000FC RID: 252 RVA: 0x000077F8 File Offset: 0x000059F8
+	// Token: 0x060000FD RID: 253 RVA: 0x0000781C File Offset: 0x00005A1C
 	private void OnLand(Vector3 point)
 	{
 		if (!this.m_nview.IsValid())
@@ -140,7 +140,7 @@ public class FootStep : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000FD RID: 253 RVA: 0x0000785C File Offset: 0x00005A5C
+	// Token: 0x060000FE RID: 254 RVA: 0x00007880 File Offset: 0x00005A80
 	private void OnFoot(Transform foot)
 	{
 		if (!this.m_nview.IsValid())
@@ -161,7 +161,7 @@ public class FootStep : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000FE RID: 254 RVA: 0x000078EC File Offset: 0x00005AEC
+	// Token: 0x060000FF RID: 255 RVA: 0x00007910 File Offset: 0x00005B10
 	private static void PurgeOldEffects()
 	{
 		while (FootStep.m_stepInstances.Count > 30)
@@ -174,7 +174,7 @@ public class FootStep : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000FF RID: 255 RVA: 0x00007924 File Offset: 0x00005B24
+	// Token: 0x06000100 RID: 256 RVA: 0x00007948 File Offset: 0x00005B48
 	private void DoEffect(FootStep.StepEffect effect, Vector3 point)
 	{
 		foreach (GameObject gameObject in effect.m_effectPrefabs)
@@ -198,14 +198,14 @@ public class FootStep : MonoBehaviour
 		FootStep.PurgeOldEffects();
 	}
 
-	// Token: 0x06000100 RID: 256 RVA: 0x000079D8 File Offset: 0x00005BD8
+	// Token: 0x06000101 RID: 257 RVA: 0x000079FC File Offset: 0x00005BFC
 	private void RPC_Step(long sender, int effectIndex, Vector3 point)
 	{
 		FootStep.StepEffect effect = this.m_effects[effectIndex];
 		this.DoEffect(effect, point);
 	}
 
-	// Token: 0x06000101 RID: 257 RVA: 0x000079FA File Offset: 0x00005BFA
+	// Token: 0x06000102 RID: 258 RVA: 0x00007A20 File Offset: 0x00005C20
 	private FootStep.MotionType GetMotionType(Character character)
 	{
 		if (this.m_character.IsSwiming())
@@ -224,10 +224,14 @@ public class FootStep : MonoBehaviour
 		{
 			return FootStep.MotionType.Sneak;
 		}
-		return FootStep.MotionType.Walk;
+		if (this.m_character.IsWalking())
+		{
+			return FootStep.MotionType.Walk;
+		}
+		return FootStep.MotionType.Jog;
 	}
 
-	// Token: 0x06000102 RID: 258 RVA: 0x00007A3C File Offset: 0x00005C3C
+	// Token: 0x06000103 RID: 259 RVA: 0x00007A7C File Offset: 0x00005C7C
 	private FootStep.GroundMaterial GetGroundMaterial(Character character, Vector3 point)
 	{
 		if (character.InWater())
@@ -288,7 +292,7 @@ public class FootStep : MonoBehaviour
 		return FootStep.GroundMaterial.Default;
 	}
 
-	// Token: 0x06000103 RID: 259 RVA: 0x00007B3C File Offset: 0x00005D3C
+	// Token: 0x06000104 RID: 260 RVA: 0x00007B7C File Offset: 0x00005D7C
 	public void FindJoints()
 	{
 		ZLog.Log("Finding joints");
@@ -348,7 +352,7 @@ public class FootStep : MonoBehaviour
 		this.m_feet = list.ToArray();
 	}
 
-	// Token: 0x06000104 RID: 260 RVA: 0x00007CBC File Offset: 0x00005EBC
+	// Token: 0x06000105 RID: 261 RVA: 0x00007CFC File Offset: 0x00005EFC
 	private int FindBestStepEffect(FootStep.GroundMaterial material, FootStep.MotionType motion)
 	{
 		FootStep.StepEffect stepEffect = null;
@@ -365,90 +369,92 @@ public class FootStep : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x040000D1 RID: 209
+	// Token: 0x040000D2 RID: 210
 	private static Queue<GameObject> m_stepInstances = new Queue<GameObject>();
 
-	// Token: 0x040000D2 RID: 210
+	// Token: 0x040000D3 RID: 211
 	private const int m_maxFootstepInstances = 30;
 
-	// Token: 0x040000D3 RID: 211
+	// Token: 0x040000D4 RID: 212
 	public float m_footstepCullDistance = 20f;
 
-	// Token: 0x040000D4 RID: 212
+	// Token: 0x040000D5 RID: 213
 	public List<FootStep.StepEffect> m_effects = new List<FootStep.StepEffect>();
 
-	// Token: 0x040000D5 RID: 213
+	// Token: 0x040000D6 RID: 214
 	public Transform[] m_feet = new Transform[0];
 
-	// Token: 0x040000D6 RID: 214
+	// Token: 0x040000D7 RID: 215
 	private static int m_footstepID = 0;
 
-	// Token: 0x040000D7 RID: 215
+	// Token: 0x040000D8 RID: 216
 	private static int m_forwardSpeedID = 0;
 
-	// Token: 0x040000D8 RID: 216
+	// Token: 0x040000D9 RID: 217
 	private static int m_sidewaySpeedID = 0;
 
-	// Token: 0x040000D9 RID: 217
+	// Token: 0x040000DA RID: 218
 	private float m_footstep;
 
-	// Token: 0x040000DA RID: 218
+	// Token: 0x040000DB RID: 219
 	private float m_footstepTimer;
 
-	// Token: 0x040000DB RID: 219
+	// Token: 0x040000DC RID: 220
 	private const float m_minFootstepInterval = 0.2f;
 
-	// Token: 0x040000DC RID: 220
+	// Token: 0x040000DD RID: 221
 	private int m_pieceLayer;
 
-	// Token: 0x040000DD RID: 221
+	// Token: 0x040000DE RID: 222
 	private Animator m_animator;
 
-	// Token: 0x040000DE RID: 222
+	// Token: 0x040000DF RID: 223
 	private Character m_character;
 
-	// Token: 0x040000DF RID: 223
+	// Token: 0x040000E0 RID: 224
 	private ZNetView m_nview;
 
 	// Token: 0x0200011F RID: 287
 	public enum MotionType
 	{
-		// Token: 0x04000FC3 RID: 4035
-		Walk = 1,
-		// Token: 0x04000FC4 RID: 4036
+		// Token: 0x04000FC9 RID: 4041
+		Jog = 1,
+		// Token: 0x04000FCA RID: 4042
 		Run,
-		// Token: 0x04000FC5 RID: 4037
+		// Token: 0x04000FCB RID: 4043
 		Sneak = 4,
-		// Token: 0x04000FC6 RID: 4038
+		// Token: 0x04000FCC RID: 4044
 		Climbing = 8,
-		// Token: 0x04000FC7 RID: 4039
+		// Token: 0x04000FCD RID: 4045
 		Swiming = 16,
-		// Token: 0x04000FC8 RID: 4040
-		Land = 32
+		// Token: 0x04000FCE RID: 4046
+		Land = 32,
+		// Token: 0x04000FCF RID: 4047
+		Walk = 64
 	}
 
 	// Token: 0x02000120 RID: 288
 	public enum GroundMaterial
 	{
-		// Token: 0x04000FCA RID: 4042
-		None,
-		// Token: 0x04000FCB RID: 4043
-		Default,
-		// Token: 0x04000FCC RID: 4044
-		Water,
-		// Token: 0x04000FCD RID: 4045
-		Stone = 4,
-		// Token: 0x04000FCE RID: 4046
-		Wood = 8,
-		// Token: 0x04000FCF RID: 4047
-		Snow = 16,
-		// Token: 0x04000FD0 RID: 4048
-		Mud = 32,
 		// Token: 0x04000FD1 RID: 4049
-		Grass = 64,
+		None,
 		// Token: 0x04000FD2 RID: 4050
-		GenericGround = 128,
+		Default,
 		// Token: 0x04000FD3 RID: 4051
+		Water,
+		// Token: 0x04000FD4 RID: 4052
+		Stone = 4,
+		// Token: 0x04000FD5 RID: 4053
+		Wood = 8,
+		// Token: 0x04000FD6 RID: 4054
+		Snow = 16,
+		// Token: 0x04000FD7 RID: 4055
+		Mud = 32,
+		// Token: 0x04000FD8 RID: 4056
+		Grass = 64,
+		// Token: 0x04000FD9 RID: 4057
+		GenericGround = 128,
+		// Token: 0x04000FDA RID: 4058
 		Metal = 256
 	}
 
@@ -456,18 +462,18 @@ public class FootStep : MonoBehaviour
 	[Serializable]
 	public class StepEffect
 	{
-		// Token: 0x04000FD4 RID: 4052
+		// Token: 0x04000FDB RID: 4059
 		public string m_name = "";
 
-		// Token: 0x04000FD5 RID: 4053
+		// Token: 0x04000FDC RID: 4060
 		[BitMask(typeof(FootStep.MotionType))]
-		public FootStep.MotionType m_motionType = FootStep.MotionType.Walk;
+		public FootStep.MotionType m_motionType = FootStep.MotionType.Jog;
 
-		// Token: 0x04000FD6 RID: 4054
+		// Token: 0x04000FDD RID: 4061
 		[BitMask(typeof(FootStep.GroundMaterial))]
 		public FootStep.GroundMaterial m_material = FootStep.GroundMaterial.Default;
 
-		// Token: 0x04000FD7 RID: 4055
+		// Token: 0x04000FDE RID: 4062
 		public GameObject[] m_effectPrefabs = new GameObject[0];
 	}
 }

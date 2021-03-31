@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ConnectPanel : MonoBehaviour
 {
 	// Token: 0x17000005 RID: 5
-	// (get) Token: 0x060004C1 RID: 1217 RVA: 0x0002647D File Offset: 0x0002467D
+	// (get) Token: 0x060004C2 RID: 1218 RVA: 0x00026531 File Offset: 0x00024731
 	public static ConnectPanel instance
 	{
 		get
@@ -16,7 +16,7 @@ public class ConnectPanel : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004C2 RID: 1218 RVA: 0x00026484 File Offset: 0x00024684
+	// Token: 0x060004C3 RID: 1219 RVA: 0x00026538 File Offset: 0x00024738
 	private void Start()
 	{
 		ConnectPanel.m_instance = this;
@@ -24,13 +24,13 @@ public class ConnectPanel : MonoBehaviour
 		this.m_playerListBaseSize = this.m_playerList.rect.height;
 	}
 
-	// Token: 0x060004C3 RID: 1219 RVA: 0x000264C1 File Offset: 0x000246C1
+	// Token: 0x060004C4 RID: 1220 RVA: 0x00026575 File Offset: 0x00024775
 	public static bool IsVisible()
 	{
 		return ConnectPanel.m_instance && ConnectPanel.m_instance.m_root.gameObject.activeSelf;
 	}
 
-	// Token: 0x060004C4 RID: 1220 RVA: 0x000264E8 File Offset: 0x000246E8
+	// Token: 0x060004C5 RID: 1221 RVA: 0x0002659C File Offset: 0x0002479C
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.F2))
@@ -141,7 +141,7 @@ public class ConnectPanel : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004C5 RID: 1221 RVA: 0x00026A74 File Offset: 0x00024C74
+	// Token: 0x060004C6 RID: 1222 RVA: 0x00026B28 File Offset: 0x00024D28
 	private void UpdateFps()
 	{
 		this.m_frameTimer += Time.deltaTime;
@@ -156,7 +156,7 @@ public class ConnectPanel : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004C6 RID: 1222 RVA: 0x00026B1C File Offset: 0x00024D1C
+	// Token: 0x060004C7 RID: 1223 RVA: 0x00026BD0 File Offset: 0x00024DD0
 	private bool ValidHost()
 	{
 		int num = 0;
@@ -171,114 +171,114 @@ public class ConnectPanel : MonoBehaviour
 		return !string.IsNullOrEmpty(this.m_hostName.text) && num != 0;
 	}
 
-	// Token: 0x040004EF RID: 1263
+	// Token: 0x040004F3 RID: 1267
 	private static ConnectPanel m_instance;
 
-	// Token: 0x040004F0 RID: 1264
+	// Token: 0x040004F4 RID: 1268
 	public Transform m_root;
 
-	// Token: 0x040004F1 RID: 1265
+	// Token: 0x040004F5 RID: 1269
 	public Text m_serverField;
 
-	// Token: 0x040004F2 RID: 1266
+	// Token: 0x040004F6 RID: 1270
 	public Text m_worldField;
 
-	// Token: 0x040004F3 RID: 1267
+	// Token: 0x040004F7 RID: 1271
 	public Text m_statusField;
 
-	// Token: 0x040004F4 RID: 1268
+	// Token: 0x040004F8 RID: 1272
 	public Text m_connections;
 
-	// Token: 0x040004F5 RID: 1269
+	// Token: 0x040004F9 RID: 1273
 	public RectTransform m_playerList;
 
-	// Token: 0x040004F6 RID: 1270
+	// Token: 0x040004FA RID: 1274
 	public Scrollbar m_playerListScroll;
 
-	// Token: 0x040004F7 RID: 1271
+	// Token: 0x040004FB RID: 1275
 	public GameObject m_playerElement;
 
-	// Token: 0x040004F8 RID: 1272
+	// Token: 0x040004FC RID: 1276
 	public InputField m_hostName;
 
-	// Token: 0x040004F9 RID: 1273
+	// Token: 0x040004FD RID: 1277
 	public InputField m_hostPort;
 
-	// Token: 0x040004FA RID: 1274
+	// Token: 0x040004FE RID: 1278
 	public Button m_connectButton;
 
-	// Token: 0x040004FB RID: 1275
+	// Token: 0x040004FF RID: 1279
 	public Text m_myPort;
 
-	// Token: 0x040004FC RID: 1276
+	// Token: 0x04000500 RID: 1280
 	public Text m_myUID;
 
-	// Token: 0x040004FD RID: 1277
+	// Token: 0x04000501 RID: 1281
 	public Text m_knownHosts;
 
-	// Token: 0x040004FE RID: 1278
+	// Token: 0x04000502 RID: 1282
 	public Text m_nrOfConnections;
 
-	// Token: 0x040004FF RID: 1279
+	// Token: 0x04000503 RID: 1283
 	public Text m_pendingConnections;
 
-	// Token: 0x04000500 RID: 1280
+	// Token: 0x04000504 RID: 1284
 	public Toggle m_autoConnect;
 
-	// Token: 0x04000501 RID: 1281
+	// Token: 0x04000505 RID: 1285
 	public Text m_zdos;
 
-	// Token: 0x04000502 RID: 1282
+	// Token: 0x04000506 RID: 1286
 	public Text m_zdosPool;
 
-	// Token: 0x04000503 RID: 1283
+	// Token: 0x04000507 RID: 1287
 	public Text m_zdosSent;
 
-	// Token: 0x04000504 RID: 1284
+	// Token: 0x04000508 RID: 1288
 	public Text m_zdosRecv;
 
-	// Token: 0x04000505 RID: 1285
+	// Token: 0x04000509 RID: 1289
 	public Text m_zdosInstances;
 
-	// Token: 0x04000506 RID: 1286
+	// Token: 0x0400050A RID: 1290
 	public Text m_activePeers;
 
-	// Token: 0x04000507 RID: 1287
+	// Token: 0x0400050B RID: 1291
 	public Text m_ntp;
 
-	// Token: 0x04000508 RID: 1288
+	// Token: 0x0400050C RID: 1292
 	public Text m_upnp;
 
-	// Token: 0x04000509 RID: 1289
+	// Token: 0x0400050D RID: 1293
 	public Text m_dataSent;
 
-	// Token: 0x0400050A RID: 1290
+	// Token: 0x0400050E RID: 1294
 	public Text m_dataRecv;
 
-	// Token: 0x0400050B RID: 1291
+	// Token: 0x0400050F RID: 1295
 	public Text m_clientSendQueue;
 
-	// Token: 0x0400050C RID: 1292
+	// Token: 0x04000510 RID: 1296
 	public Text m_fps;
 
-	// Token: 0x0400050D RID: 1293
+	// Token: 0x04000511 RID: 1297
 	public Text m_frameTime;
 
-	// Token: 0x0400050E RID: 1294
+	// Token: 0x04000512 RID: 1298
 	public Text m_ping;
 
-	// Token: 0x0400050F RID: 1295
+	// Token: 0x04000513 RID: 1299
 	public Text m_quality;
 
-	// Token: 0x04000510 RID: 1296
+	// Token: 0x04000514 RID: 1300
 	private float m_playerListBaseSize;
 
-	// Token: 0x04000511 RID: 1297
+	// Token: 0x04000515 RID: 1301
 	private List<GameObject> m_playerListElements = new List<GameObject>();
 
-	// Token: 0x04000512 RID: 1298
+	// Token: 0x04000516 RID: 1302
 	private int m_frameSamples;
 
-	// Token: 0x04000513 RID: 1299
+	// Token: 0x04000517 RID: 1303
 	private float m_frameTimer;
 }

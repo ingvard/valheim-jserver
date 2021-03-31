@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x020000E7 RID: 231
 public class Plant : SlowUpdate, Hoverable
 {
-	// Token: 0x06000E50 RID: 3664 RVA: 0x00066448 File Offset: 0x00064648
+	// Token: 0x06000E51 RID: 3665 RVA: 0x000665D0 File Offset: 0x000647D0
 	public override void Awake()
 	{
 		base.Awake();
@@ -20,7 +20,7 @@ public class Plant : SlowUpdate, Hoverable
 		this.m_spawnTime = Time.time;
 	}
 
-	// Token: 0x06000E51 RID: 3665 RVA: 0x000664D4 File Offset: 0x000646D4
+	// Token: 0x06000E52 RID: 3666 RVA: 0x0006665C File Offset: 0x0006485C
 	public string GetHoverText()
 	{
 		switch (this.m_status)
@@ -40,20 +40,20 @@ public class Plant : SlowUpdate, Hoverable
 		}
 	}
 
-	// Token: 0x06000E52 RID: 3666 RVA: 0x00066593 File Offset: 0x00064793
+	// Token: 0x06000E53 RID: 3667 RVA: 0x0006671B File Offset: 0x0006491B
 	public string GetHoverName()
 	{
 		return Localization.instance.Localize(this.m_name);
 	}
 
-	// Token: 0x06000E53 RID: 3667 RVA: 0x000665A8 File Offset: 0x000647A8
+	// Token: 0x06000E54 RID: 3668 RVA: 0x00066730 File Offset: 0x00064930
 	private double TimeSincePlanted()
 	{
 		DateTime d = new DateTime(this.m_nview.GetZDO().GetLong("plantTime", ZNet.instance.GetTime().Ticks));
 		return (ZNet.instance.GetTime() - d).TotalSeconds;
 	}
 
-	// Token: 0x06000E54 RID: 3668 RVA: 0x000665FC File Offset: 0x000647FC
+	// Token: 0x06000E55 RID: 3669 RVA: 0x00066784 File Offset: 0x00064984
 	public override void SUpdate()
 	{
 		if (!this.m_nview.IsValid())
@@ -87,7 +87,7 @@ public class Plant : SlowUpdate, Hoverable
 		}
 	}
 
-	// Token: 0x06000E55 RID: 3669 RVA: 0x00066724 File Offset: 0x00064924
+	// Token: 0x06000E56 RID: 3670 RVA: 0x000668AC File Offset: 0x00064AAC
 	private float GetGrowTime()
 	{
 		UnityEngine.Random.State state = UnityEngine.Random.state;
@@ -97,7 +97,7 @@ public class Plant : SlowUpdate, Hoverable
 		return Mathf.Lerp(this.m_growTime, this.m_growTimeMax, value);
 	}
 
-	// Token: 0x06000E56 RID: 3670 RVA: 0x00066788 File Offset: 0x00064988
+	// Token: 0x06000E57 RID: 3671 RVA: 0x00066910 File Offset: 0x00064B10
 	private void Grow()
 	{
 		if (this.m_status != Plant.Status.Healthy)
@@ -123,7 +123,7 @@ public class Plant : SlowUpdate, Hoverable
 		this.m_growEffect.Create(base.transform.position, quaternion, null, num);
 	}
 
-	// Token: 0x06000E57 RID: 3671 RVA: 0x00066850 File Offset: 0x00064A50
+	// Token: 0x06000E58 RID: 3672 RVA: 0x000669D8 File Offset: 0x00064BD8
 	private void UpdateHealth(double timeSincePlanted)
 	{
 		if (timeSincePlanted < 10.0)
@@ -158,7 +158,7 @@ public class Plant : SlowUpdate, Hoverable
 		this.m_status = Plant.Status.Healthy;
 	}
 
-	// Token: 0x06000E58 RID: 3672 RVA: 0x000668F8 File Offset: 0x00064AF8
+	// Token: 0x06000E59 RID: 3673 RVA: 0x00066A80 File Offset: 0x00064C80
 	private void Destroy()
 	{
 		IDestructible component = base.GetComponent<IDestructible>();
@@ -170,7 +170,7 @@ public class Plant : SlowUpdate, Hoverable
 		}
 	}
 
-	// Token: 0x06000E59 RID: 3673 RVA: 0x0006692C File Offset: 0x00064B2C
+	// Token: 0x06000E5A RID: 3674 RVA: 0x00066AB4 File Offset: 0x00064CB4
 	private bool HaveRoof()
 	{
 		if (Plant.m_roofMask == 0)
@@ -185,7 +185,7 @@ public class Plant : SlowUpdate, Hoverable
 		return Physics.Raycast(base.transform.position, Vector3.up, 100f, Plant.m_roofMask);
 	}
 
-	// Token: 0x06000E5A RID: 3674 RVA: 0x0006698C File Offset: 0x00064B8C
+	// Token: 0x06000E5B RID: 3675 RVA: 0x00066B14 File Offset: 0x00064D14
 	private bool HaveGrowSpace()
 	{
 		if (Plant.m_spaceMask == 0)
@@ -211,92 +211,92 @@ public class Plant : SlowUpdate, Hoverable
 		return true;
 	}
 
-	// Token: 0x06000E5B RID: 3675 RVA: 0x00066A27 File Offset: 0x00064C27
+	// Token: 0x06000E5C RID: 3676 RVA: 0x00066BAF File Offset: 0x00064DAF
 	private Plant.Status GetStatus()
 	{
 		return this.m_status;
 	}
 
-	// Token: 0x04000D2A RID: 3370
+	// Token: 0x04000D30 RID: 3376
 	public string m_name = "Plant";
 
-	// Token: 0x04000D2B RID: 3371
+	// Token: 0x04000D31 RID: 3377
 	public float m_growTime = 10f;
 
-	// Token: 0x04000D2C RID: 3372
+	// Token: 0x04000D32 RID: 3378
 	public float m_growTimeMax = 2000f;
 
-	// Token: 0x04000D2D RID: 3373
+	// Token: 0x04000D33 RID: 3379
 	public GameObject[] m_grownPrefabs = new GameObject[0];
 
-	// Token: 0x04000D2E RID: 3374
+	// Token: 0x04000D34 RID: 3380
 	public float m_minScale = 1f;
 
-	// Token: 0x04000D2F RID: 3375
+	// Token: 0x04000D35 RID: 3381
 	public float m_maxScale = 1f;
 
-	// Token: 0x04000D30 RID: 3376
+	// Token: 0x04000D36 RID: 3382
 	public float m_growRadius = 1f;
 
-	// Token: 0x04000D31 RID: 3377
+	// Token: 0x04000D37 RID: 3383
 	public bool m_needCultivatedGround;
 
-	// Token: 0x04000D32 RID: 3378
+	// Token: 0x04000D38 RID: 3384
 	public bool m_destroyIfCantGrow;
 
-	// Token: 0x04000D33 RID: 3379
+	// Token: 0x04000D39 RID: 3385
 	[SerializeField]
 	private GameObject m_healthy;
 
-	// Token: 0x04000D34 RID: 3380
+	// Token: 0x04000D3A RID: 3386
 	[SerializeField]
 	private GameObject m_unhealthy;
 
-	// Token: 0x04000D35 RID: 3381
+	// Token: 0x04000D3B RID: 3387
 	[SerializeField]
 	private GameObject m_healthyGrown;
 
-	// Token: 0x04000D36 RID: 3382
+	// Token: 0x04000D3C RID: 3388
 	[SerializeField]
 	private GameObject m_unhealthyGrown;
 
-	// Token: 0x04000D37 RID: 3383
+	// Token: 0x04000D3D RID: 3389
 	[BitMask(typeof(Heightmap.Biome))]
 	public Heightmap.Biome m_biome;
 
-	// Token: 0x04000D38 RID: 3384
+	// Token: 0x04000D3E RID: 3390
 	public EffectList m_growEffect = new EffectList();
 
-	// Token: 0x04000D39 RID: 3385
+	// Token: 0x04000D3F RID: 3391
 	private Plant.Status m_status;
 
-	// Token: 0x04000D3A RID: 3386
+	// Token: 0x04000D40 RID: 3392
 	private ZNetView m_nview;
 
-	// Token: 0x04000D3B RID: 3387
+	// Token: 0x04000D41 RID: 3393
 	private float m_updateTime;
 
-	// Token: 0x04000D3C RID: 3388
+	// Token: 0x04000D42 RID: 3394
 	private float m_spawnTime;
 
-	// Token: 0x04000D3D RID: 3389
+	// Token: 0x04000D43 RID: 3395
 	private static int m_spaceMask;
 
-	// Token: 0x04000D3E RID: 3390
+	// Token: 0x04000D44 RID: 3396
 	private static int m_roofMask;
 
 	// Token: 0x020001A6 RID: 422
 	private enum Status
 	{
-		// Token: 0x040012F2 RID: 4850
+		// Token: 0x040012F9 RID: 4857
 		Healthy,
-		// Token: 0x040012F3 RID: 4851
+		// Token: 0x040012FA RID: 4858
 		NoSun,
-		// Token: 0x040012F4 RID: 4852
+		// Token: 0x040012FB RID: 4859
 		NoSpace,
-		// Token: 0x040012F5 RID: 4853
+		// Token: 0x040012FC RID: 4860
 		WrongBiome,
-		// Token: 0x040012F6 RID: 4854
+		// Token: 0x040012FD RID: 4861
 		NotCultivated
 	}
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x0200010C RID: 268
 public class Vagon : MonoBehaviour, Hoverable, Interactable
 {
-	// Token: 0x06000FD0 RID: 4048 RVA: 0x0006F558 File Offset: 0x0006D758
+	// Token: 0x06000FD1 RID: 4049 RVA: 0x0006F6E0 File Offset: 0x0006D8E0
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -30,25 +30,25 @@ public class Vagon : MonoBehaviour, Hoverable, Interactable
 		base.InvokeRepeating("UpdateLoadVisualization", 0f, 3f);
 	}
 
-	// Token: 0x06000FD1 RID: 4049 RVA: 0x0006F63E File Offset: 0x0006D83E
+	// Token: 0x06000FD2 RID: 4050 RVA: 0x0006F7C6 File Offset: 0x0006D9C6
 	private void OnDestroy()
 	{
 		Vagon.m_instances.Remove(this);
 	}
 
-	// Token: 0x06000FD2 RID: 4050 RVA: 0x0006F64C File Offset: 0x0006D84C
+	// Token: 0x06000FD3 RID: 4051 RVA: 0x0006F7D4 File Offset: 0x0006D9D4
 	public string GetHoverName()
 	{
 		return this.m_name;
 	}
 
-	// Token: 0x06000FD3 RID: 4051 RVA: 0x0006F654 File Offset: 0x0006D854
+	// Token: 0x06000FD4 RID: 4052 RVA: 0x0006F7DC File Offset: 0x0006D9DC
 	public string GetHoverText()
 	{
 		return Localization.instance.Localize(this.m_name + "\n[<color=yellow><b>$KEY_Use</b></color>] Use");
 	}
 
-	// Token: 0x06000FD4 RID: 4052 RVA: 0x0006F670 File Offset: 0x0006D870
+	// Token: 0x06000FD5 RID: 4053 RVA: 0x0006F7F8 File Offset: 0x0006D9F8
 	public bool Interact(Humanoid character, bool hold)
 	{
 		if (hold)
@@ -63,7 +63,7 @@ public class Vagon : MonoBehaviour, Hoverable, Interactable
 		return false;
 	}
 
-	// Token: 0x06000FD5 RID: 4053 RVA: 0x0006F6A4 File Offset: 0x0006D8A4
+	// Token: 0x06000FD6 RID: 4054 RVA: 0x0006F82C File Offset: 0x0006DA2C
 	public void RPC_RequestOwn(long sender)
 	{
 		if (!this.m_nview.IsOwner())
@@ -79,7 +79,7 @@ public class Vagon : MonoBehaviour, Hoverable, Interactable
 		this.m_nview.GetZDO().SetOwner(sender);
 	}
 
-	// Token: 0x06000FD6 RID: 4054 RVA: 0x0006F6F9 File Offset: 0x0006D8F9
+	// Token: 0x06000FD7 RID: 4055 RVA: 0x0006F881 File Offset: 0x0006DA81
 	private void RPC_RequestDenied(long sender)
 	{
 		ZLog.Log("Got request denied");
@@ -90,7 +90,7 @@ public class Vagon : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000FD7 RID: 4055 RVA: 0x0006F738 File Offset: 0x0006D938
+	// Token: 0x06000FD8 RID: 4056 RVA: 0x0006F8C0 File Offset: 0x0006DAC0
 	private void FixedUpdate()
 	{
 		if (!this.m_nview.IsValid())
@@ -128,7 +128,7 @@ public class Vagon : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000FD8 RID: 4056 RVA: 0x0006F800 File Offset: 0x0006DA00
+	// Token: 0x06000FD9 RID: 4057 RVA: 0x0006F988 File Offset: 0x0006DB88
 	private void LateUpdate()
 	{
 		if (this.IsAttached())
@@ -142,25 +142,25 @@ public class Vagon : MonoBehaviour, Hoverable, Interactable
 		this.m_lineRenderer.enabled = false;
 	}
 
-	// Token: 0x06000FD9 RID: 4057 RVA: 0x0006F888 File Offset: 0x0006DA88
+	// Token: 0x06000FDA RID: 4058 RVA: 0x0006FA10 File Offset: 0x0006DC10
 	public bool IsAttached(Character character)
 	{
 		return this.m_attachJoin && this.m_attachJoin.connectedBody.gameObject == character.gameObject;
 	}
 
-	// Token: 0x06000FDA RID: 4058 RVA: 0x0006F8B7 File Offset: 0x0006DAB7
+	// Token: 0x06000FDB RID: 4059 RVA: 0x0006FA3F File Offset: 0x0006DC3F
 	public bool InUse()
 	{
 		return (this.m_container && this.m_container.IsInUse()) || this.IsAttached();
 	}
 
-	// Token: 0x06000FDB RID: 4059 RVA: 0x0006F8DB File Offset: 0x0006DADB
+	// Token: 0x06000FDC RID: 4060 RVA: 0x0006FA63 File Offset: 0x0006DC63
 	private bool IsAttached()
 	{
 		return this.m_attachJoin != null;
 	}
 
-	// Token: 0x06000FDC RID: 4060 RVA: 0x0006F8EC File Offset: 0x0006DAEC
+	// Token: 0x06000FDD RID: 4061 RVA: 0x0006FA74 File Offset: 0x0006DC74
 	private bool CanAttach(GameObject go)
 	{
 		if (base.transform.up.y < 0.1f)
@@ -171,7 +171,7 @@ public class Vagon : MonoBehaviour, Hoverable, Interactable
 		return (!component || (!component.InDodge() && !component.IsTeleporting())) && Vector3.Distance(go.transform.position + this.m_attachOffset, this.m_attachPoint.position) < this.m_detachDistance;
 	}
 
-	// Token: 0x06000FDD RID: 4061 RVA: 0x0006F964 File Offset: 0x0006DB64
+	// Token: 0x06000FDE RID: 4062 RVA: 0x0006FAEC File Offset: 0x0006DCEC
 	private void AttachTo(GameObject go)
 	{
 		Vagon.DetachAll();
@@ -194,7 +194,7 @@ public class Vagon : MonoBehaviour, Hoverable, Interactable
 		this.m_attachJoin.connectedBody = go.GetComponent<Rigidbody>();
 	}
 
-	// Token: 0x06000FDE RID: 4062 RVA: 0x0006FA5C File Offset: 0x0006DC5C
+	// Token: 0x06000FDF RID: 4063 RVA: 0x0006FBE4 File Offset: 0x0006DDE4
 	private static void DetachAll()
 	{
 		foreach (Vagon vagon in Vagon.m_instances)
@@ -203,7 +203,7 @@ public class Vagon : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000FDF RID: 4063 RVA: 0x0006FAAC File Offset: 0x0006DCAC
+	// Token: 0x06000FE0 RID: 4064 RVA: 0x0006FC34 File Offset: 0x0006DE34
 	private void Detach()
 	{
 		if (this.m_attachJoin)
@@ -215,13 +215,13 @@ public class Vagon : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000FE0 RID: 4064 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000FE1 RID: 4065 RVA: 0x000023E2 File Offset: 0x000005E2
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		return false;
 	}
 
-	// Token: 0x06000FE1 RID: 4065 RVA: 0x0006FB00 File Offset: 0x0006DD00
+	// Token: 0x06000FE2 RID: 4066 RVA: 0x0006FC88 File Offset: 0x0006DE88
 	private void UpdateMass()
 	{
 		if (!this.m_nview.IsOwner())
@@ -237,7 +237,7 @@ public class Vagon : MonoBehaviour, Hoverable, Interactable
 		this.SetMass(mass);
 	}
 
-	// Token: 0x06000FE2 RID: 4066 RVA: 0x0006FB54 File Offset: 0x0006DD54
+	// Token: 0x06000FE3 RID: 4067 RVA: 0x0006FCDC File Offset: 0x0006DEDC
 	private void SetMass(float mass)
 	{
 		float mass2 = mass / (float)this.m_bodies.Length;
@@ -248,7 +248,7 @@ public class Vagon : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000FE3 RID: 4067 RVA: 0x0006FB8C File Offset: 0x0006DD8C
+	// Token: 0x06000FE4 RID: 4068 RVA: 0x0006FD14 File Offset: 0x0006DF14
 	private void UpdateLoadVisualization()
 	{
 		if (this.m_container == null)
@@ -262,7 +262,7 @@ public class Vagon : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000FE4 RID: 4068 RVA: 0x0006FC10 File Offset: 0x0006DE10
+	// Token: 0x06000FE5 RID: 4069 RVA: 0x0006FD98 File Offset: 0x0006DF98
 	private void UpdateAudio(float dt)
 	{
 		float num = 0f;
@@ -280,101 +280,101 @@ public class Vagon : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x04000EA4 RID: 3748
+	// Token: 0x04000EAA RID: 3754
 	private static List<Vagon> m_instances = new List<Vagon>();
 
-	// Token: 0x04000EA5 RID: 3749
+	// Token: 0x04000EAB RID: 3755
 	public Transform m_attachPoint;
 
-	// Token: 0x04000EA6 RID: 3750
+	// Token: 0x04000EAC RID: 3756
 	public string m_name = "Wagon";
 
-	// Token: 0x04000EA7 RID: 3751
+	// Token: 0x04000EAD RID: 3757
 	public float m_detachDistance = 2f;
 
-	// Token: 0x04000EA8 RID: 3752
+	// Token: 0x04000EAE RID: 3758
 	public Vector3 m_attachOffset = new Vector3(0f, 0.8f, 0f);
 
-	// Token: 0x04000EA9 RID: 3753
+	// Token: 0x04000EAF RID: 3759
 	public Container m_container;
 
-	// Token: 0x04000EAA RID: 3754
+	// Token: 0x04000EB0 RID: 3760
 	public Transform m_lineAttachPoints0;
 
-	// Token: 0x04000EAB RID: 3755
+	// Token: 0x04000EB1 RID: 3761
 	public Transform m_lineAttachPoints1;
 
-	// Token: 0x04000EAC RID: 3756
+	// Token: 0x04000EB2 RID: 3762
 	public Vector3 m_lineAttachOffset = new Vector3(0f, 1f, 0f);
 
-	// Token: 0x04000EAD RID: 3757
+	// Token: 0x04000EB3 RID: 3763
 	public float m_breakForce = 10000f;
 
-	// Token: 0x04000EAE RID: 3758
+	// Token: 0x04000EB4 RID: 3764
 	public float m_spring = 5000f;
 
-	// Token: 0x04000EAF RID: 3759
+	// Token: 0x04000EB5 RID: 3765
 	public float m_springDamping = 1000f;
 
-	// Token: 0x04000EB0 RID: 3760
+	// Token: 0x04000EB6 RID: 3766
 	public float m_baseMass = 20f;
 
-	// Token: 0x04000EB1 RID: 3761
+	// Token: 0x04000EB7 RID: 3767
 	public float m_itemWeightMassFactor = 1f;
 
-	// Token: 0x04000EB2 RID: 3762
+	// Token: 0x04000EB8 RID: 3768
 	public AudioSource[] m_wheelLoops;
 
-	// Token: 0x04000EB3 RID: 3763
+	// Token: 0x04000EB9 RID: 3769
 	public float m_minPitch = 1f;
 
-	// Token: 0x04000EB4 RID: 3764
+	// Token: 0x04000EBA RID: 3770
 	public float m_maxPitch = 1.5f;
 
-	// Token: 0x04000EB5 RID: 3765
+	// Token: 0x04000EBB RID: 3771
 	public float m_maxPitchVel = 10f;
 
-	// Token: 0x04000EB6 RID: 3766
+	// Token: 0x04000EBC RID: 3772
 	public float m_maxVol = 1f;
 
-	// Token: 0x04000EB7 RID: 3767
+	// Token: 0x04000EBD RID: 3773
 	public float m_maxVolVel = 10f;
 
-	// Token: 0x04000EB8 RID: 3768
+	// Token: 0x04000EBE RID: 3774
 	public float m_audioChangeSpeed = 2f;
 
-	// Token: 0x04000EB9 RID: 3769
+	// Token: 0x04000EBF RID: 3775
 	public Rigidbody[] m_wheels = new Rigidbody[0];
 
-	// Token: 0x04000EBA RID: 3770
+	// Token: 0x04000EC0 RID: 3776
 	public List<Vagon.LoadData> m_loadVis = new List<Vagon.LoadData>();
 
-	// Token: 0x04000EBB RID: 3771
+	// Token: 0x04000EC1 RID: 3777
 	private ZNetView m_nview;
 
-	// Token: 0x04000EBC RID: 3772
+	// Token: 0x04000EC2 RID: 3778
 	private ConfigurableJoint m_attachJoin;
 
-	// Token: 0x04000EBD RID: 3773
+	// Token: 0x04000EC3 RID: 3779
 	private Rigidbody m_body;
 
-	// Token: 0x04000EBE RID: 3774
+	// Token: 0x04000EC4 RID: 3780
 	private LineRenderer m_lineRenderer;
 
-	// Token: 0x04000EBF RID: 3775
+	// Token: 0x04000EC5 RID: 3781
 	private Rigidbody[] m_bodies;
 
-	// Token: 0x04000EC0 RID: 3776
+	// Token: 0x04000EC6 RID: 3782
 	private Humanoid m_useRequester;
 
 	// Token: 0x020001B1 RID: 433
 	[Serializable]
 	public class LoadData
 	{
-		// Token: 0x0400131D RID: 4893
+		// Token: 0x04001324 RID: 4900
 		public GameObject m_gameobject;
 
-		// Token: 0x0400131E RID: 4894
+		// Token: 0x04001325 RID: 4901
 		public float m_minPercentage;
 	}
 }

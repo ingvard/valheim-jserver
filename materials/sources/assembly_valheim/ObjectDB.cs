@@ -6,7 +6,7 @@ using UnityEngine;
 public class ObjectDB : MonoBehaviour
 {
 	// Token: 0x17000029 RID: 41
-	// (get) Token: 0x06000B29 RID: 2857 RVA: 0x000505B9 File Offset: 0x0004E7B9
+	// (get) Token: 0x06000B2A RID: 2858 RVA: 0x00050741 File Offset: 0x0004E941
 	public static ObjectDB instance
 	{
 		get
@@ -15,14 +15,14 @@ public class ObjectDB : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B2A RID: 2858 RVA: 0x000505C0 File Offset: 0x0004E7C0
+	// Token: 0x06000B2B RID: 2859 RVA: 0x00050748 File Offset: 0x0004E948
 	private void Awake()
 	{
 		ObjectDB.m_instance = this;
 		this.UpdateItemHashes();
 	}
 
-	// Token: 0x06000B2B RID: 2859 RVA: 0x000505CE File Offset: 0x0004E7CE
+	// Token: 0x06000B2C RID: 2860 RVA: 0x00050756 File Offset: 0x0004E956
 	public void CopyOtherDB(ObjectDB other)
 	{
 		this.m_items = other.m_items;
@@ -31,7 +31,7 @@ public class ObjectDB : MonoBehaviour
 		this.UpdateItemHashes();
 	}
 
-	// Token: 0x06000B2C RID: 2860 RVA: 0x000505FC File Offset: 0x0004E7FC
+	// Token: 0x06000B2D RID: 2861 RVA: 0x00050784 File Offset: 0x0004E984
 	private void UpdateItemHashes()
 	{
 		this.m_itemByHash.Clear();
@@ -41,7 +41,7 @@ public class ObjectDB : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B2D RID: 2861 RVA: 0x0005066C File Offset: 0x0004E86C
+	// Token: 0x06000B2E RID: 2862 RVA: 0x000507F4 File Offset: 0x0004E9F4
 	public StatusEffect GetStatusEffect(string name)
 	{
 		foreach (StatusEffect statusEffect in this.m_StatusEffects)
@@ -54,7 +54,7 @@ public class ObjectDB : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000B2E RID: 2862 RVA: 0x000506D0 File Offset: 0x0004E8D0
+	// Token: 0x06000B2F RID: 2863 RVA: 0x00050858 File Offset: 0x0004EA58
 	public GameObject GetItemPrefab(string name)
 	{
 		foreach (GameObject gameObject in this.m_items)
@@ -67,7 +67,7 @@ public class ObjectDB : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000B2F RID: 2863 RVA: 0x00050734 File Offset: 0x0004E934
+	// Token: 0x06000B30 RID: 2864 RVA: 0x000508BC File Offset: 0x0004EABC
 	public GameObject GetItemPrefab(int hash)
 	{
 		GameObject result;
@@ -78,13 +78,13 @@ public class ObjectDB : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000B30 RID: 2864 RVA: 0x0004149F File Offset: 0x0003F69F
+	// Token: 0x06000B31 RID: 2865 RVA: 0x00041553 File Offset: 0x0003F753
 	public int GetPrefabHash(GameObject prefab)
 	{
 		return prefab.name.GetStableHashCode();
 	}
 
-	// Token: 0x06000B31 RID: 2865 RVA: 0x00050754 File Offset: 0x0004E954
+	// Token: 0x06000B32 RID: 2866 RVA: 0x000508DC File Offset: 0x0004EADC
 	public List<ItemDrop> GetAllItems(ItemDrop.ItemData.ItemType type, string startWith)
 	{
 		List<ItemDrop> list = new List<ItemDrop>();
@@ -99,7 +99,7 @@ public class ObjectDB : MonoBehaviour
 		return list;
 	}
 
-	// Token: 0x06000B32 RID: 2866 RVA: 0x000507DC File Offset: 0x0004E9DC
+	// Token: 0x06000B33 RID: 2867 RVA: 0x00050964 File Offset: 0x0004EB64
 	public Recipe GetRecipe(ItemDrop.ItemData item)
 	{
 		foreach (Recipe recipe in this.m_recipes)
@@ -112,18 +112,18 @@ public class ObjectDB : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x04000A90 RID: 2704
+	// Token: 0x04000A96 RID: 2710
 	private static ObjectDB m_instance;
 
-	// Token: 0x04000A91 RID: 2705
+	// Token: 0x04000A97 RID: 2711
 	public List<StatusEffect> m_StatusEffects = new List<StatusEffect>();
 
-	// Token: 0x04000A92 RID: 2706
+	// Token: 0x04000A98 RID: 2712
 	public List<GameObject> m_items = new List<GameObject>();
 
-	// Token: 0x04000A93 RID: 2707
+	// Token: 0x04000A99 RID: 2713
 	public List<Recipe> m_recipes = new List<Recipe>();
 
-	// Token: 0x04000A94 RID: 2708
+	// Token: 0x04000A9A RID: 2714
 	private Dictionary<int, GameObject> m_itemByHash = new Dictionary<int, GameObject>();
 }

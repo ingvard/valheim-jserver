@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x020000F3 RID: 243
 public class ShipControlls : MonoBehaviour, Interactable, Hoverable
 {
-	// Token: 0x06000EFD RID: 3837 RVA: 0x0006B3D8 File Offset: 0x000695D8
+	// Token: 0x06000EFE RID: 3838 RVA: 0x0006B560 File Offset: 0x00069760
 	private void Awake()
 	{
 		this.m_nview = this.m_ship.GetComponent<ZNetView>();
@@ -13,13 +13,13 @@ public class ShipControlls : MonoBehaviour, Interactable, Hoverable
 		this.m_nview.Register<bool>("RequestRespons", new Action<long, bool>(this.RPC_RequestRespons));
 	}
 
-	// Token: 0x06000EFE RID: 3838 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000EFF RID: 3839 RVA: 0x000023E2 File Offset: 0x000005E2
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		return false;
 	}
 
-	// Token: 0x06000EFF RID: 3839 RVA: 0x0006B44C File Offset: 0x0006964C
+	// Token: 0x06000F00 RID: 3840 RVA: 0x0006B5D4 File Offset: 0x000697D4
 	public bool Interact(Humanoid character, bool repeat)
 	{
 		if (repeat)
@@ -54,13 +54,13 @@ public class ShipControlls : MonoBehaviour, Interactable, Hoverable
 		return false;
 	}
 
-	// Token: 0x06000F00 RID: 3840 RVA: 0x0006B4CE File Offset: 0x000696CE
+	// Token: 0x06000F01 RID: 3841 RVA: 0x0006B656 File Offset: 0x00069856
 	public Ship GetShip()
 	{
 		return this.m_ship;
 	}
 
-	// Token: 0x06000F01 RID: 3841 RVA: 0x0006B4D6 File Offset: 0x000696D6
+	// Token: 0x06000F02 RID: 3842 RVA: 0x0006B65E File Offset: 0x0006985E
 	public string GetHoverText()
 	{
 		if (!this.InUseDistance(Player.m_localPlayer))
@@ -70,13 +70,13 @@ public class ShipControlls : MonoBehaviour, Interactable, Hoverable
 		return Localization.instance.Localize("[<color=yellow><b>$KEY_Use</b></color>] " + this.m_hoverText);
 	}
 
-	// Token: 0x06000F02 RID: 3842 RVA: 0x0006B50F File Offset: 0x0006970F
+	// Token: 0x06000F03 RID: 3843 RVA: 0x0006B697 File Offset: 0x00069897
 	public string GetHoverName()
 	{
 		return Localization.instance.Localize(this.m_hoverText);
 	}
 
-	// Token: 0x06000F03 RID: 3843 RVA: 0x0006B524 File Offset: 0x00069724
+	// Token: 0x06000F04 RID: 3844 RVA: 0x0006B6AC File Offset: 0x000698AC
 	private void RPC_RequestControl(long sender, ZDOID playerID)
 	{
 		if (!this.m_nview.IsOwner())
@@ -102,7 +102,7 @@ public class ShipControlls : MonoBehaviour, Interactable, Hoverable
 		});
 	}
 
-	// Token: 0x06000F04 RID: 3844 RVA: 0x0006B5BB File Offset: 0x000697BB
+	// Token: 0x06000F05 RID: 3845 RVA: 0x0006B743 File Offset: 0x00069943
 	private void RPC_ReleaseControl(long sender, ZDOID playerID)
 	{
 		if (!this.m_nview.IsOwner())
@@ -115,7 +115,7 @@ public class ShipControlls : MonoBehaviour, Interactable, Hoverable
 		}
 	}
 
-	// Token: 0x06000F05 RID: 3845 RVA: 0x0006B5F4 File Offset: 0x000697F4
+	// Token: 0x06000F06 RID: 3846 RVA: 0x0006B77C File Offset: 0x0006997C
 	private void RPC_RequestRespons(long sender, bool granted)
 	{
 		if (!Player.m_localPlayer)
@@ -137,7 +137,7 @@ public class ShipControlls : MonoBehaviour, Interactable, Hoverable
 		}
 	}
 
-	// Token: 0x06000F06 RID: 3846 RVA: 0x0006B65C File Offset: 0x0006985C
+	// Token: 0x06000F07 RID: 3847 RVA: 0x0006B7E4 File Offset: 0x000699E4
 	public void OnUseStop(Player player)
 	{
 		if (!this.m_nview.IsValid())
@@ -154,14 +154,14 @@ public class ShipControlls : MonoBehaviour, Interactable, Hoverable
 		}
 	}
 
-	// Token: 0x06000F07 RID: 3847 RVA: 0x0006B6B0 File Offset: 0x000698B0
+	// Token: 0x06000F08 RID: 3848 RVA: 0x0006B838 File Offset: 0x00069A38
 	public bool HaveValidUser()
 	{
 		ZDOID user = this.GetUser();
 		return !user.IsNone() && this.m_ship.IsPlayerInBoat(user);
 	}
 
-	// Token: 0x06000F08 RID: 3848 RVA: 0x0006B6DC File Offset: 0x000698DC
+	// Token: 0x06000F09 RID: 3849 RVA: 0x0006B864 File Offset: 0x00069A64
 	public bool IsLocalUser()
 	{
 		if (!Player.m_localPlayer)
@@ -172,7 +172,7 @@ public class ShipControlls : MonoBehaviour, Interactable, Hoverable
 		return !user.IsNone() && user == Player.m_localPlayer.GetZDOID();
 	}
 
-	// Token: 0x06000F09 RID: 3849 RVA: 0x0006B719 File Offset: 0x00069919
+	// Token: 0x06000F0A RID: 3850 RVA: 0x0006B8A1 File Offset: 0x00069AA1
 	private ZDOID GetUser()
 	{
 		if (!this.m_nview.IsValid())
@@ -182,30 +182,30 @@ public class ShipControlls : MonoBehaviour, Interactable, Hoverable
 		return this.m_nview.GetZDO().GetZDOID("user");
 	}
 
-	// Token: 0x06000F0A RID: 3850 RVA: 0x0006B743 File Offset: 0x00069943
+	// Token: 0x06000F0B RID: 3851 RVA: 0x0006B8CB File Offset: 0x00069ACB
 	private bool InUseDistance(Humanoid human)
 	{
 		return Vector3.Distance(human.transform.position, this.m_attachPoint.position) < this.m_maxUseRange;
 	}
 
-	// Token: 0x04000DED RID: 3565
+	// Token: 0x04000DF3 RID: 3571
 	public string m_hoverText = "";
 
-	// Token: 0x04000DEE RID: 3566
+	// Token: 0x04000DF4 RID: 3572
 	public Ship m_ship;
 
-	// Token: 0x04000DEF RID: 3567
+	// Token: 0x04000DF5 RID: 3573
 	public float m_maxUseRange = 10f;
 
-	// Token: 0x04000DF0 RID: 3568
+	// Token: 0x04000DF6 RID: 3574
 	public Transform m_attachPoint;
 
-	// Token: 0x04000DF1 RID: 3569
+	// Token: 0x04000DF7 RID: 3575
 	public Vector3 m_detachOffset = new Vector3(0f, 0.5f, 0f);
 
-	// Token: 0x04000DF2 RID: 3570
+	// Token: 0x04000DF8 RID: 3576
 	public string m_attachAnimation = "attach_chair";
 
-	// Token: 0x04000DF3 RID: 3571
+	// Token: 0x04000DF9 RID: 3577
 	private ZNetView m_nview;
 }

@@ -6,13 +6,13 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class LineAttach : MonoBehaviour
 {
-	// Token: 0x0600043B RID: 1083 RVA: 0x0002267D File Offset: 0x0002087D
+	// Token: 0x0600043C RID: 1084 RVA: 0x00022731 File Offset: 0x00020931
 	private void Start()
 	{
 		this.m_lineRenderer = base.GetComponent<LineRenderer>();
 	}
 
-	// Token: 0x0600043C RID: 1084 RVA: 0x0002268C File Offset: 0x0002088C
+	// Token: 0x0600043D RID: 1085 RVA: 0x00022740 File Offset: 0x00020940
 	private void LateUpdate()
 	{
 		for (int i = 0; i < this.m_attachments.Count; i++)
@@ -25,9 +25,9 @@ public class LineAttach : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0400045C RID: 1116
+	// Token: 0x04000460 RID: 1120
 	public List<Transform> m_attachments = new List<Transform>();
 
-	// Token: 0x0400045D RID: 1117
+	// Token: 0x04000461 RID: 1121
 	private LineRenderer m_lineRenderer;
 }

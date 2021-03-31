@@ -4,13 +4,13 @@ using UnityEngine;
 // Token: 0x02000035 RID: 53
 public class DistantFogEmitter : MonoBehaviour
 {
-	// Token: 0x06000417 RID: 1047 RVA: 0x00021336 File Offset: 0x0001F536
+	// Token: 0x06000418 RID: 1048 RVA: 0x000213EA File Offset: 0x0001F5EA
 	public void SetEmit(bool emit)
 	{
 		this.m_emit = emit;
 	}
 
-	// Token: 0x06000418 RID: 1048 RVA: 0x00021340 File Offset: 0x0001F540
+	// Token: 0x06000419 RID: 1049 RVA: 0x000213F4 File Offset: 0x0001F5F4
 	private void Update()
 	{
 		if (!this.m_emit)
@@ -34,7 +34,7 @@ public class DistantFogEmitter : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000419 RID: 1049 RVA: 0x000213B4 File Offset: 0x0001F5B4
+	// Token: 0x0600041A RID: 1050 RVA: 0x00021468 File Offset: 0x0001F668
 	private int TotalNrOfParticles()
 	{
 		int num = 0;
@@ -45,7 +45,7 @@ public class DistantFogEmitter : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x0600041A RID: 1050 RVA: 0x000213E8 File Offset: 0x0001F5E8
+	// Token: 0x0600041B RID: 1051 RVA: 0x0002149C File Offset: 0x0001F69C
 	private void PlaceOne()
 	{
 		Vector3 a;
@@ -57,7 +57,7 @@ public class DistantFogEmitter : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600041B RID: 1051 RVA: 0x0002144C File Offset: 0x0001F64C
+	// Token: 0x0600041C RID: 1052 RVA: 0x00021500 File Offset: 0x0001F700
 	private bool GetRandomPoint(Vector3 center, out Vector3 p)
 	{
 		float f = UnityEngine.Random.value * 3.1415927f * 2f;
@@ -90,51 +90,51 @@ public class DistantFogEmitter : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x04000407 RID: 1031
+	// Token: 0x0400040B RID: 1035
 	public float m_interval = 1f;
 
-	// Token: 0x04000408 RID: 1032
+	// Token: 0x0400040C RID: 1036
 	public float m_minRadius = 100f;
 
-	// Token: 0x04000409 RID: 1033
+	// Token: 0x0400040D RID: 1037
 	public float m_maxRadius = 500f;
 
-	// Token: 0x0400040A RID: 1034
+	// Token: 0x0400040E RID: 1038
 	public float m_mountainSpawnChance = 1f;
 
-	// Token: 0x0400040B RID: 1035
+	// Token: 0x0400040F RID: 1039
 	public float m_landSpawnChance = 0.5f;
 
-	// Token: 0x0400040C RID: 1036
+	// Token: 0x04000410 RID: 1040
 	public float m_waterSpawnChance = 0.25f;
 
-	// Token: 0x0400040D RID: 1037
+	// Token: 0x04000411 RID: 1041
 	public float m_mountainLimit = 120f;
 
-	// Token: 0x0400040E RID: 1038
+	// Token: 0x04000412 RID: 1042
 	public float m_emitStep = 10f;
 
-	// Token: 0x0400040F RID: 1039
+	// Token: 0x04000413 RID: 1043
 	public int m_emitPerStep = 10;
 
-	// Token: 0x04000410 RID: 1040
+	// Token: 0x04000414 RID: 1044
 	public int m_particles = 100;
 
-	// Token: 0x04000411 RID: 1041
+	// Token: 0x04000415 RID: 1045
 	public float m_placeOffset = 1f;
 
-	// Token: 0x04000412 RID: 1042
+	// Token: 0x04000416 RID: 1046
 	public ParticleSystem[] m_psystems;
 
-	// Token: 0x04000413 RID: 1043
+	// Token: 0x04000417 RID: 1047
 	public bool m_skipWater;
 
-	// Token: 0x04000414 RID: 1044
+	// Token: 0x04000418 RID: 1048
 	private float m_placeTimer;
 
-	// Token: 0x04000415 RID: 1045
+	// Token: 0x04000419 RID: 1049
 	private bool m_emit = true;
 
-	// Token: 0x04000416 RID: 1046
+	// Token: 0x0400041A RID: 1050
 	private Vector3 m_lastPosition = Vector3.zero;
 }

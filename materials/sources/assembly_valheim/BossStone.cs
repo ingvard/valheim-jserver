@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x020000BC RID: 188
 public class BossStone : MonoBehaviour
 {
-	// Token: 0x06000C80 RID: 3200 RVA: 0x000595AC File Offset: 0x000577AC
+	// Token: 0x06000C81 RID: 3201 RVA: 0x00059734 File Offset: 0x00057934
 	private void Start()
 	{
 		if (this.m_mesh.material.HasProperty("_EmissionColor"))
@@ -20,13 +20,13 @@ public class BossStone : MonoBehaviour
 		base.InvokeRepeating("UpdateVisual", 1f, 1f);
 	}
 
-	// Token: 0x06000C81 RID: 3201 RVA: 0x00059631 File Offset: 0x00057831
+	// Token: 0x06000C82 RID: 3202 RVA: 0x000597B9 File Offset: 0x000579B9
 	private void UpdateVisual()
 	{
 		this.SetActivated(this.m_itemStand.HaveAttachment(), true);
 	}
 
-	// Token: 0x06000C82 RID: 3202 RVA: 0x00059648 File Offset: 0x00057848
+	// Token: 0x06000C83 RID: 3203 RVA: 0x000597D0 File Offset: 0x000579D0
 	private void SetActivated(bool active, bool triggerEffect)
 	{
 		if (active == this.m_active)
@@ -49,19 +49,19 @@ public class BossStone : MonoBehaviour
 		base.StartCoroutine("FadeEmission");
 	}
 
-	// Token: 0x06000C83 RID: 3203 RVA: 0x000596CC File Offset: 0x000578CC
+	// Token: 0x06000C84 RID: 3204 RVA: 0x00059854 File Offset: 0x00057A54
 	private void DelayedAttachEffects_Step1()
 	{
 		this.m_activateStep1.Create(this.m_itemStand.transform.position, base.transform.rotation, null, 1f);
 	}
 
-	// Token: 0x06000C84 RID: 3204 RVA: 0x000596FB File Offset: 0x000578FB
+	// Token: 0x06000C85 RID: 3205 RVA: 0x00059883 File Offset: 0x00057A83
 	private void DelayedAttachEffects_Step2()
 	{
 		this.m_activateStep2.Create(base.transform.position, base.transform.rotation, null, 1f);
 	}
 
-	// Token: 0x06000C85 RID: 3205 RVA: 0x00059728 File Offset: 0x00057928
+	// Token: 0x06000C86 RID: 3206 RVA: 0x000598B0 File Offset: 0x00057AB0
 	private void DelayedAttachEffects_Step3()
 	{
 		if (this.m_activeEffect)
@@ -74,7 +74,7 @@ public class BossStone : MonoBehaviour
 		Player.MessageAllInRange(base.transform.position, 20f, MessageHud.MessageType.Center, this.m_completedMessage, null);
 	}
 
-	// Token: 0x06000C86 RID: 3206 RVA: 0x000597AA File Offset: 0x000579AA
+	// Token: 0x06000C87 RID: 3207 RVA: 0x00059932 File Offset: 0x00057B32
 	private IEnumerator FadeEmission()
 	{
 		if (this.m_mesh && this.m_mesh.materials[this.m_emissiveMaterialIndex].HasProperty("_EmissionColor"))
@@ -94,42 +94,42 @@ public class BossStone : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000C87 RID: 3207 RVA: 0x000597B9 File Offset: 0x000579B9
+	// Token: 0x06000C88 RID: 3208 RVA: 0x00059941 File Offset: 0x00057B41
 	public bool IsActivated()
 	{
 		return this.m_active;
 	}
 
-	// Token: 0x04000B65 RID: 2917
+	// Token: 0x04000B6B RID: 2923
 	public ItemStand m_itemStand;
 
-	// Token: 0x04000B66 RID: 2918
+	// Token: 0x04000B6C RID: 2924
 	public GameObject m_activeEffect;
 
-	// Token: 0x04000B67 RID: 2919
+	// Token: 0x04000B6D RID: 2925
 	public EffectList m_activateStep1 = new EffectList();
 
-	// Token: 0x04000B68 RID: 2920
+	// Token: 0x04000B6E RID: 2926
 	public EffectList m_activateStep2 = new EffectList();
 
-	// Token: 0x04000B69 RID: 2921
+	// Token: 0x04000B6F RID: 2927
 	public EffectList m_activateStep3 = new EffectList();
 
-	// Token: 0x04000B6A RID: 2922
+	// Token: 0x04000B70 RID: 2928
 	public string m_completedMessage = "";
 
-	// Token: 0x04000B6B RID: 2923
+	// Token: 0x04000B71 RID: 2929
 	public MeshRenderer m_mesh;
 
-	// Token: 0x04000B6C RID: 2924
+	// Token: 0x04000B72 RID: 2930
 	public int m_emissiveMaterialIndex;
 
-	// Token: 0x04000B6D RID: 2925
+	// Token: 0x04000B73 RID: 2931
 	public Color m_activeEmissiveColor = Color.white;
 
-	// Token: 0x04000B6E RID: 2926
+	// Token: 0x04000B74 RID: 2932
 	private bool m_active;
 
-	// Token: 0x04000B6F RID: 2927
+	// Token: 0x04000B75 RID: 2933
 	private ZNetView m_nview;
 }

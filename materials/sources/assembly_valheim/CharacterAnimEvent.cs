@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000003 RID: 3
 public class CharacterAnimEvent : MonoBehaviour
 {
-	// Token: 0x060000C4 RID: 196 RVA: 0x00005EC0 File Offset: 0x000040C0
+	// Token: 0x060000C5 RID: 197 RVA: 0x00005EE4 File Offset: 0x000040E4
 	private void Awake()
 	{
 		this.m_character = base.GetComponentInParent<Character>();
@@ -31,7 +31,7 @@ public class CharacterAnimEvent : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000C5 RID: 197 RVA: 0x00005FA9 File Offset: 0x000041A9
+	// Token: 0x060000C6 RID: 198 RVA: 0x00005FCD File Offset: 0x000041CD
 	private void OnAnimatorMove()
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -41,7 +41,7 @@ public class CharacterAnimEvent : MonoBehaviour
 		this.m_character.AddRootMotion(this.m_animator.deltaPosition);
 	}
 
-	// Token: 0x060000C6 RID: 198 RVA: 0x00005FDC File Offset: 0x000041DC
+	// Token: 0x060000C7 RID: 199 RVA: 0x00006000 File Offset: 0x00004200
 	private void FixedUpdate()
 	{
 		if (this.m_character == null)
@@ -66,13 +66,13 @@ public class CharacterAnimEvent : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000C7 RID: 199 RVA: 0x00006087 File Offset: 0x00004287
+	// Token: 0x060000C8 RID: 200 RVA: 0x000060AB File Offset: 0x000042AB
 	public bool CanChain()
 	{
 		return this.m_chain;
 	}
 
-	// Token: 0x060000C8 RID: 200 RVA: 0x00006090 File Offset: 0x00004290
+	// Token: 0x060000C9 RID: 201 RVA: 0x000060B4 File Offset: 0x000042B4
 	public void FreezeFrame(float delay)
 	{
 		if (delay <= 0f)
@@ -93,25 +93,25 @@ public class CharacterAnimEvent : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000C9 RID: 201 RVA: 0x000060FB File Offset: 0x000042FB
+	// Token: 0x060000CA RID: 202 RVA: 0x0000611F File Offset: 0x0000431F
 	public void Speed(float speedScale)
 	{
 		this.m_animator.speed = speedScale;
 	}
 
-	// Token: 0x060000CA RID: 202 RVA: 0x00006109 File Offset: 0x00004309
+	// Token: 0x060000CB RID: 203 RVA: 0x0000612D File Offset: 0x0000432D
 	public void Chain()
 	{
 		this.m_chain = true;
 	}
 
-	// Token: 0x060000CB RID: 203 RVA: 0x00006112 File Offset: 0x00004312
+	// Token: 0x060000CC RID: 204 RVA: 0x00006136 File Offset: 0x00004336
 	public void ResetChain()
 	{
 		this.m_chain = false;
 	}
 
-	// Token: 0x060000CC RID: 204 RVA: 0x0000611C File Offset: 0x0000431C
+	// Token: 0x060000CD RID: 205 RVA: 0x00006140 File Offset: 0x00004340
 	public void FootStep(AnimationEvent e)
 	{
 		if ((double)e.animatorClipInfo.weight < 0.33)
@@ -129,25 +129,25 @@ public class CharacterAnimEvent : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000CD RID: 205 RVA: 0x0000617C File Offset: 0x0000437C
+	// Token: 0x060000CE RID: 206 RVA: 0x000061A0 File Offset: 0x000043A0
 	public void Hit()
 	{
 		this.m_character.OnAttackTrigger();
 	}
 
-	// Token: 0x060000CE RID: 206 RVA: 0x0000617C File Offset: 0x0000437C
+	// Token: 0x060000CF RID: 207 RVA: 0x000061A0 File Offset: 0x000043A0
 	public void OnAttackTrigger()
 	{
 		this.m_character.OnAttackTrigger();
 	}
 
-	// Token: 0x060000CF RID: 207 RVA: 0x00006189 File Offset: 0x00004389
+	// Token: 0x060000D0 RID: 208 RVA: 0x000061AD File Offset: 0x000043AD
 	public void Stop(AnimationEvent e)
 	{
 		this.m_character.OnStopMoving();
 	}
 
-	// Token: 0x060000D0 RID: 208 RVA: 0x00006198 File Offset: 0x00004398
+	// Token: 0x060000D1 RID: 209 RVA: 0x000061BC File Offset: 0x000043BC
 	public void DodgeMortal()
 	{
 		Player player = this.m_character as Player;
@@ -157,7 +157,7 @@ public class CharacterAnimEvent : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000D1 RID: 209 RVA: 0x000061BF File Offset: 0x000043BF
+	// Token: 0x060000D2 RID: 210 RVA: 0x000061E3 File Offset: 0x000043E3
 	public void TrailOn()
 	{
 		if (this.m_visEquipment)
@@ -167,7 +167,7 @@ public class CharacterAnimEvent : MonoBehaviour
 		this.m_character.OnWeaponTrailStart();
 	}
 
-	// Token: 0x060000D2 RID: 210 RVA: 0x000061E5 File Offset: 0x000043E5
+	// Token: 0x060000D3 RID: 211 RVA: 0x00006209 File Offset: 0x00004409
 	public void TrailOff()
 	{
 		if (this.m_visEquipment)
@@ -176,7 +176,7 @@ public class CharacterAnimEvent : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000D3 RID: 211 RVA: 0x00006200 File Offset: 0x00004400
+	// Token: 0x060000D4 RID: 212 RVA: 0x00006224 File Offset: 0x00004424
 	public void GPower()
 	{
 		Player player = this.m_character as Player;
@@ -186,7 +186,7 @@ public class CharacterAnimEvent : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000D4 RID: 212 RVA: 0x00006228 File Offset: 0x00004428
+	// Token: 0x060000D5 RID: 213 RVA: 0x0000624C File Offset: 0x0000444C
 	private void OnAnimatorIK(int layerIndex)
 	{
 		if (!this.m_nview.IsValid())
@@ -197,7 +197,7 @@ public class CharacterAnimEvent : MonoBehaviour
 		this.UpdateFootIK();
 	}
 
-	// Token: 0x060000D5 RID: 213 RVA: 0x00006244 File Offset: 0x00004444
+	// Token: 0x060000D6 RID: 214 RVA: 0x00006268 File Offset: 0x00004468
 	private void LateUpdate()
 	{
 		this.UpdateHeadRotation(Time.deltaTime);
@@ -214,7 +214,7 @@ public class CharacterAnimEvent : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000D6 RID: 214 RVA: 0x000062CC File Offset: 0x000044CC
+	// Token: 0x060000D7 RID: 215 RVA: 0x000062F0 File Offset: 0x000044F0
 	private void UpdateLookat()
 	{
 		if (this.m_headRotation && this.m_head)
@@ -234,7 +234,7 @@ public class CharacterAnimEvent : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000D7 RID: 215 RVA: 0x000063BC File Offset: 0x000045BC
+	// Token: 0x060000D8 RID: 216 RVA: 0x000063E0 File Offset: 0x000045E0
 	private void UpdateFootIK()
 	{
 		if (!this.m_footIK)
@@ -321,7 +321,7 @@ public class CharacterAnimEvent : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000D8 RID: 216 RVA: 0x0000672C File Offset: 0x0000492C
+	// Token: 0x060000D9 RID: 217 RVA: 0x00006750 File Offset: 0x00004950
 	private void UpdateHeadRotation(float dt)
 	{
 		if (this.m_nview == null || !this.m_nview.IsValid())
@@ -371,7 +371,7 @@ public class CharacterAnimEvent : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000D9 RID: 217 RVA: 0x00006894 File Offset: 0x00004A94
+	// Token: 0x060000DA RID: 218 RVA: 0x000068B8 File Offset: 0x00004AB8
 	private Vector3 GetLookFromPos()
 	{
 		if (this.m_eyes != null && this.m_eyes.Length != 0)
@@ -386,7 +386,7 @@ public class CharacterAnimEvent : MonoBehaviour
 		return this.m_head.position;
 	}
 
-	// Token: 0x060000DA RID: 218 RVA: 0x000068FC File Offset: 0x00004AFC
+	// Token: 0x060000DB RID: 219 RVA: 0x00006920 File Offset: 0x00004B20
 	public void FindJoints()
 	{
 		ZLog.Log("Finding joints");
@@ -458,122 +458,122 @@ public class CharacterAnimEvent : MonoBehaviour
 		this.m_feets = list2.ToArray();
 	}
 
-	// Token: 0x0400008C RID: 140
+	// Token: 0x0400008D RID: 141
 	[Header("Foot IK")]
 	public bool m_footIK;
 
-	// Token: 0x0400008D RID: 141
+	// Token: 0x0400008E RID: 142
 	public float m_footDownMax = 0.4f;
 
-	// Token: 0x0400008E RID: 142
+	// Token: 0x0400008F RID: 143
 	public float m_footOffset = 0.1f;
 
-	// Token: 0x0400008F RID: 143
+	// Token: 0x04000090 RID: 144
 	public float m_footStepHeight = 1f;
 
-	// Token: 0x04000090 RID: 144
+	// Token: 0x04000091 RID: 145
 	public float m_stabalizeDistance;
 
-	// Token: 0x04000091 RID: 145
+	// Token: 0x04000092 RID: 146
 	public bool m_useFeetValues;
 
-	// Token: 0x04000092 RID: 146
+	// Token: 0x04000093 RID: 147
 	public CharacterAnimEvent.Foot[] m_feets = new CharacterAnimEvent.Foot[0];
 
-	// Token: 0x04000093 RID: 147
+	// Token: 0x04000094 RID: 148
 	[Header("Head/eye rotation")]
 	public bool m_headRotation = true;
 
-	// Token: 0x04000094 RID: 148
+	// Token: 0x04000095 RID: 149
 	public Transform[] m_eyes;
 
-	// Token: 0x04000095 RID: 149
+	// Token: 0x04000096 RID: 150
 	public float m_lookWeight = 0.5f;
 
-	// Token: 0x04000096 RID: 150
+	// Token: 0x04000097 RID: 151
 	public float m_bodyLookWeight = 0.1f;
 
-	// Token: 0x04000097 RID: 151
+	// Token: 0x04000098 RID: 152
 	public float m_headLookWeight = 1f;
 
-	// Token: 0x04000098 RID: 152
+	// Token: 0x04000099 RID: 153
 	public float m_eyeLookWeight;
 
-	// Token: 0x04000099 RID: 153
+	// Token: 0x0400009A RID: 154
 	public float m_lookClamp = 0.5f;
 
-	// Token: 0x0400009A RID: 154
+	// Token: 0x0400009B RID: 155
 	private const float m_headRotationSmoothness = 0.1f;
 
-	// Token: 0x0400009B RID: 155
+	// Token: 0x0400009C RID: 156
 	public Transform m_lookAt;
 
-	// Token: 0x0400009C RID: 156
+	// Token: 0x0400009D RID: 157
 	[Header("Player Female hack")]
 	public bool m_femaleHack;
 
-	// Token: 0x0400009D RID: 157
+	// Token: 0x0400009E RID: 158
 	public Transform m_leftShoulder;
 
-	// Token: 0x0400009E RID: 158
+	// Token: 0x0400009F RID: 159
 	public Transform m_rightShoulder;
 
-	// Token: 0x0400009F RID: 159
+	// Token: 0x040000A0 RID: 160
 	public float m_femaleOffset = 0.0004f;
 
-	// Token: 0x040000A0 RID: 160
+	// Token: 0x040000A1 RID: 161
 	public float m_maleOffset = 0.0007651657f;
 
-	// Token: 0x040000A1 RID: 161
+	// Token: 0x040000A2 RID: 162
 	private Character m_character;
 
-	// Token: 0x040000A2 RID: 162
+	// Token: 0x040000A3 RID: 163
 	private Animator m_animator;
 
-	// Token: 0x040000A3 RID: 163
+	// Token: 0x040000A4 RID: 164
 	private ZNetView m_nview;
 
-	// Token: 0x040000A4 RID: 164
+	// Token: 0x040000A5 RID: 165
 	private MonsterAI m_monsterAI;
 
-	// Token: 0x040000A5 RID: 165
+	// Token: 0x040000A6 RID: 166
 	private VisEquipment m_visEquipment;
 
-	// Token: 0x040000A6 RID: 166
+	// Token: 0x040000A7 RID: 167
 	private FootStep m_footStep;
 
-	// Token: 0x040000A7 RID: 167
+	// Token: 0x040000A8 RID: 168
 	private int m_chainID;
 
-	// Token: 0x040000A8 RID: 168
+	// Token: 0x040000A9 RID: 169
 	private float m_pauseTimer;
 
-	// Token: 0x040000A9 RID: 169
+	// Token: 0x040000AA RID: 170
 	private float m_pauseSpeed = 1f;
 
-	// Token: 0x040000AA RID: 170
+	// Token: 0x040000AB RID: 171
 	private float m_sendTimer;
 
-	// Token: 0x040000AB RID: 171
+	// Token: 0x040000AC RID: 172
 	private Vector3 m_headLookDir;
 
-	// Token: 0x040000AC RID: 172
+	// Token: 0x040000AD RID: 173
 	private float m_lookAtWeight;
 
-	// Token: 0x040000AD RID: 173
+	// Token: 0x040000AE RID: 174
 	private Transform m_head;
 
-	// Token: 0x040000AE RID: 174
+	// Token: 0x040000AF RID: 175
 	private bool m_chain;
 
-	// Token: 0x040000AF RID: 175
+	// Token: 0x040000B0 RID: 176
 	private static int m_ikGroundMask;
 
 	// Token: 0x0200011D RID: 285
 	[Serializable]
 	public class Foot
 	{
-		// Token: 0x060010B2 RID: 4274 RVA: 0x00076960 File Offset: 0x00074B60
+		// Token: 0x060010B3 RID: 4275 RVA: 0x00076AE8 File Offset: 0x00074CE8
 		public Foot(Transform t, AvatarIKGoal handle)
 		{
 			this.m_transform = t;
@@ -581,37 +581,37 @@ public class CharacterAnimEvent : MonoBehaviour
 			this.m_ikWeight = 0f;
 		}
 
-		// Token: 0x04000FB2 RID: 4018
+		// Token: 0x04000FB8 RID: 4024
 		public Transform m_transform;
 
-		// Token: 0x04000FB3 RID: 4019
+		// Token: 0x04000FB9 RID: 4025
 		public AvatarIKGoal m_ikHandle;
 
-		// Token: 0x04000FB4 RID: 4020
+		// Token: 0x04000FBA RID: 4026
 		public float m_footDownMax = 0.4f;
 
-		// Token: 0x04000FB5 RID: 4021
+		// Token: 0x04000FBB RID: 4027
 		public float m_footOffset = 0.1f;
 
-		// Token: 0x04000FB6 RID: 4022
+		// Token: 0x04000FBC RID: 4028
 		public float m_footStepHeight = 1f;
 
-		// Token: 0x04000FB7 RID: 4023
+		// Token: 0x04000FBD RID: 4029
 		public float m_stabalizeDistance;
 
-		// Token: 0x04000FB8 RID: 4024
+		// Token: 0x04000FBE RID: 4030
 		[NonSerialized]
 		public float m_ikWeight;
 
-		// Token: 0x04000FB9 RID: 4025
+		// Token: 0x04000FBF RID: 4031
 		[NonSerialized]
 		public Vector3 m_plantPosition = Vector3.zero;
 
-		// Token: 0x04000FBA RID: 4026
+		// Token: 0x04000FC0 RID: 4032
 		[NonSerialized]
 		public Vector3 m_plantNormal = Vector3.up;
 
-		// Token: 0x04000FBB RID: 4027
+		// Token: 0x04000FC1 RID: 4033
 		[NonSerialized]
 		public bool m_isPlanted;
 	}

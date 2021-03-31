@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000020 RID: 32
 public class BaseAI : MonoBehaviour
 {
-	// Token: 0x06000318 RID: 792 RVA: 0x0001A5B0 File Offset: 0x000187B0
+	// Token: 0x06000319 RID: 793 RVA: 0x0001A664 File Offset: 0x00018864
 	protected virtual void Awake()
 	{
 		BaseAI.m_instances.Add(this);
@@ -65,19 +65,19 @@ public class BaseAI : MonoBehaviour
 		base.InvokeRepeating("DoIdleSound", this.m_idleSoundInterval, this.m_idleSoundInterval);
 	}
 
-	// Token: 0x06000319 RID: 793 RVA: 0x0001A853 File Offset: 0x00018A53
+	// Token: 0x0600031A RID: 794 RVA: 0x0001A907 File Offset: 0x00018B07
 	private void OnDestroy()
 	{
 		BaseAI.m_instances.Remove(this);
 	}
 
-	// Token: 0x0600031A RID: 794 RVA: 0x0001A861 File Offset: 0x00018A61
+	// Token: 0x0600031B RID: 795 RVA: 0x0001A915 File Offset: 0x00018B15
 	public void SetPatrolPoint()
 	{
 		this.SetPatrolPoint(base.transform.position);
 	}
 
-	// Token: 0x0600031B RID: 795 RVA: 0x0001A874 File Offset: 0x00018A74
+	// Token: 0x0600031C RID: 796 RVA: 0x0001A928 File Offset: 0x00018B28
 	public void SetPatrolPoint(Vector3 point)
 	{
 		this.m_patrol = true;
@@ -86,14 +86,14 @@ public class BaseAI : MonoBehaviour
 		this.m_nview.GetZDO().Set("patrol", true);
 	}
 
-	// Token: 0x0600031C RID: 796 RVA: 0x0001A8B0 File Offset: 0x00018AB0
+	// Token: 0x0600031D RID: 797 RVA: 0x0001A964 File Offset: 0x00018B64
 	public void ResetPatrolPoint()
 	{
 		this.m_patrol = false;
 		this.m_nview.GetZDO().Set("patrol", false);
 	}
 
-	// Token: 0x0600031D RID: 797 RVA: 0x0001A8D0 File Offset: 0x00018AD0
+	// Token: 0x0600031E RID: 798 RVA: 0x0001A984 File Offset: 0x00018B84
 	public bool GetPatrolPoint(out Vector3 point)
 	{
 		if (Time.time - this.m_patrolPointUpdateTime > 1f)
@@ -109,7 +109,7 @@ public class BaseAI : MonoBehaviour
 		return this.m_patrol;
 	}
 
-	// Token: 0x0600031E RID: 798 RVA: 0x0001A954 File Offset: 0x00018B54
+	// Token: 0x0600031F RID: 799 RVA: 0x0001AA08 File Offset: 0x00018C08
 	private void FixedUpdate()
 	{
 		if (!this.m_nview.IsValid())
@@ -124,7 +124,7 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600031F RID: 799 RVA: 0x0001A9AC File Offset: 0x00018BAC
+	// Token: 0x06000320 RID: 800 RVA: 0x0001AA60 File Offset: 0x00018C60
 	protected virtual void UpdateAI(float dt)
 	{
 		if (this.m_nview.IsOwner())
@@ -145,7 +145,7 @@ public class BaseAI : MonoBehaviour
 		this.m_alerted = this.m_nview.GetZDO().GetBool("alert", false);
 	}
 
-	// Token: 0x06000320 RID: 800 RVA: 0x0001AA38 File Offset: 0x00018C38
+	// Token: 0x06000321 RID: 801 RVA: 0x0001AAEC File Offset: 0x00018CEC
 	private void UpdateRegeneration(float dt)
 	{
 		this.m_regenTimer += dt;
@@ -158,13 +158,13 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000321 RID: 801 RVA: 0x0001AA93 File Offset: 0x00018C93
+	// Token: 0x06000322 RID: 802 RVA: 0x0001AB47 File Offset: 0x00018D47
 	public bool IsTakingOff()
 	{
 		return this.m_randomFly && this.m_character.IsFlying() && this.m_randomFlyTimer < this.m_takeoffTime;
 	}
 
-	// Token: 0x06000322 RID: 802 RVA: 0x0001AABC File Offset: 0x00018CBC
+	// Token: 0x06000323 RID: 803 RVA: 0x0001AB70 File Offset: 0x00018D70
 	public void UpdateTakeoffLanding(float dt)
 	{
 		if (!this.m_randomFly)
@@ -201,7 +201,7 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000323 RID: 803 RVA: 0x0001ABD0 File Offset: 0x00018DD0
+	// Token: 0x06000324 RID: 804 RVA: 0x0001AC84 File Offset: 0x00018E84
 	private float GetWorldTimeDelta()
 	{
 		DateTime time = ZNet.instance.GetTime();
@@ -217,7 +217,7 @@ public class BaseAI : MonoBehaviour
 		return (float)timeSpan.TotalSeconds;
 	}
 
-	// Token: 0x06000324 RID: 804 RVA: 0x0001AC5C File Offset: 0x00018E5C
+	// Token: 0x06000325 RID: 805 RVA: 0x0001AD10 File Offset: 0x00018F10
 	public TimeSpan GetTimeSinceSpawned()
 	{
 		long num = this.m_nview.GetZDO().GetLong("spawntime", 0L);
@@ -230,7 +230,7 @@ public class BaseAI : MonoBehaviour
 		return ZNet.instance.GetTime() - d;
 	}
 
-	// Token: 0x06000325 RID: 805 RVA: 0x0001ACC5 File Offset: 0x00018EC5
+	// Token: 0x06000326 RID: 806 RVA: 0x0001AD79 File Offset: 0x00018F79
 	private void DoIdleSound()
 	{
 		if (this.IsSleeping())
@@ -244,7 +244,7 @@ public class BaseAI : MonoBehaviour
 		this.m_idleSound.Create(base.transform.position, Quaternion.identity, null, 1f);
 	}
 
-	// Token: 0x06000326 RID: 806 RVA: 0x0001AD00 File Offset: 0x00018F00
+	// Token: 0x06000327 RID: 807 RVA: 0x0001ADB4 File Offset: 0x00018FB4
 	protected void Follow(GameObject go, float dt)
 	{
 		float num = Vector3.Distance(go.transform.position, base.transform.position);
@@ -257,7 +257,7 @@ public class BaseAI : MonoBehaviour
 		this.MoveTo(dt, go.transform.position, 0f, run);
 	}
 
-	// Token: 0x06000327 RID: 807 RVA: 0x0001AD58 File Offset: 0x00018F58
+	// Token: 0x06000328 RID: 808 RVA: 0x0001AE0C File Offset: 0x0001900C
 	protected void MoveToWater(float dt, float maxRange)
 	{
 		float num = this.m_haveWaterPosition ? 2f : 0.5f;
@@ -291,7 +291,7 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000328 RID: 808 RVA: 0x0001AE6C File Offset: 0x0001906C
+	// Token: 0x06000329 RID: 809 RVA: 0x0001AF20 File Offset: 0x00019120
 	protected void MoveAwayAndDespawn(float dt, bool run)
 	{
 		Player closestPlayer = Player.GetClosestPlayer(base.transform.position, 40f);
@@ -304,7 +304,7 @@ public class BaseAI : MonoBehaviour
 		this.m_nview.Destroy();
 	}
 
-	// Token: 0x06000329 RID: 809 RVA: 0x0001AEF4 File Offset: 0x000190F4
+	// Token: 0x0600032A RID: 810 RVA: 0x0001AFA8 File Offset: 0x000191A8
 	protected void IdleMovement(float dt)
 	{
 		Vector3 centerPoint = this.m_character.IsTamed() ? base.transform.position : this.m_spawnPoint;
@@ -316,7 +316,7 @@ public class BaseAI : MonoBehaviour
 		this.RandomMovement(dt, centerPoint);
 	}
 
-	// Token: 0x0600032A RID: 810 RVA: 0x0001AF38 File Offset: 0x00019138
+	// Token: 0x0600032B RID: 811 RVA: 0x0001AFEC File Offset: 0x000191EC
 	protected void RandomMovement(float dt, Vector3 centerPoint)
 	{
 		if (this.m_randomMoveUpdateTimer <= 0f)
@@ -360,7 +360,7 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600032B RID: 811 RVA: 0x0001B13C File Offset: 0x0001933C
+	// Token: 0x0600032C RID: 812 RVA: 0x0001B1F0 File Offset: 0x000193F0
 	protected void Flee(float dt, Vector3 from)
 	{
 		float time = Time.time;
@@ -388,7 +388,7 @@ public class BaseAI : MonoBehaviour
 		this.MoveTo(dt, this.m_fleeTarget, 0f, this.IsAlerted());
 	}
 
-	// Token: 0x0600032C RID: 812 RVA: 0x0001B290 File Offset: 0x00019490
+	// Token: 0x0600032D RID: 813 RVA: 0x0001B344 File Offset: 0x00019544
 	protected bool AvoidFire(float dt, Character moveToTarget, bool superAfraid)
 	{
 		if (superAfraid)
@@ -423,7 +423,7 @@ public class BaseAI : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x0600032D RID: 813 RVA: 0x0001B3B8 File Offset: 0x000195B8
+	// Token: 0x0600032E RID: 814 RVA: 0x0001B46C File Offset: 0x0001966C
 	protected void RandomMovementArroundPoint(float dt, Vector3 point, float distance, bool run)
 	{
 		float time = Time.time;
@@ -471,7 +471,7 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600032E RID: 814 RVA: 0x0001B5AC File Offset: 0x000197AC
+	// Token: 0x0600032F RID: 815 RVA: 0x0001B660 File Offset: 0x00019860
 	private bool GetSolidHeight(Vector3 p, out float height, float maxYDistance)
 	{
 		RaycastHit raycastHit;
@@ -484,7 +484,7 @@ public class BaseAI : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x0600032F RID: 815 RVA: 0x0001B600 File Offset: 0x00019800
+	// Token: 0x06000330 RID: 816 RVA: 0x0001B6B4 File Offset: 0x000198B4
 	protected bool IsValidRandomMovePoint(Vector3 point)
 	{
 		if (this.m_character.IsFlying())
@@ -510,13 +510,13 @@ public class BaseAI : MonoBehaviour
 		return (!this.m_afraidOfFire && !this.m_avoidFire) || !EffectArea.IsPointInsideArea(point, EffectArea.Type.Fire, 0f);
 	}
 
-	// Token: 0x06000330 RID: 816 RVA: 0x0001B696 File Offset: 0x00019896
+	// Token: 0x06000331 RID: 817 RVA: 0x0001B74A File Offset: 0x0001994A
 	protected virtual void OnDamaged(float damage, Character attacker)
 	{
 		this.m_timeSinceHurt = 0f;
 	}
 
-	// Token: 0x06000331 RID: 817 RVA: 0x0001B6A3 File Offset: 0x000198A3
+	// Token: 0x06000332 RID: 818 RVA: 0x0001B757 File Offset: 0x00019957
 	protected virtual void OnDeath()
 	{
 		if (!string.IsNullOrEmpty(this.m_deathMessage))
@@ -525,13 +525,13 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000332 RID: 818 RVA: 0x0001B6C3 File Offset: 0x000198C3
+	// Token: 0x06000333 RID: 819 RVA: 0x0001B777 File Offset: 0x00019977
 	public bool CanSenseTarget(Character target)
 	{
 		return this.CanHearTarget(target) || this.CanSeeTarget(target);
 	}
 
-	// Token: 0x06000333 RID: 819 RVA: 0x0001B6DC File Offset: 0x000198DC
+	// Token: 0x06000334 RID: 820 RVA: 0x0001B790 File Offset: 0x00019990
 	public bool CanHearTarget(Character target)
 	{
 		if (target.IsPlayer())
@@ -551,7 +551,7 @@ public class BaseAI : MonoBehaviour
 		return num <= num2 && num < target.GetNoiseRange();
 	}
 
-	// Token: 0x06000334 RID: 820 RVA: 0x0001B758 File Offset: 0x00019958
+	// Token: 0x06000335 RID: 821 RVA: 0x0001B80C File Offset: 0x00019A0C
 	public bool CanSeeTarget(Character target)
 	{
 		if (target.IsPlayer())
@@ -589,7 +589,7 @@ public class BaseAI : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000335 RID: 821 RVA: 0x0001B8A0 File Offset: 0x00019AA0
+	// Token: 0x06000336 RID: 822 RVA: 0x0001B954 File Offset: 0x00019B54
 	public bool CanSeeTarget(StaticTarget target)
 	{
 		Vector3 center = target.GetCenter();
@@ -615,7 +615,7 @@ public class BaseAI : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000336 RID: 822 RVA: 0x0001B970 File Offset: 0x00019B70
+	// Token: 0x06000337 RID: 823 RVA: 0x0001BA24 File Offset: 0x00019C24
 	protected void MoveTowardsSwoop(Vector3 dir, bool run, float distance)
 	{
 		dir = dir.normalized;
@@ -630,7 +630,7 @@ public class BaseAI : MonoBehaviour
 		this.m_character.SetRun(run);
 	}
 
-	// Token: 0x06000337 RID: 823 RVA: 0x0001BA0C File Offset: 0x00019C0C
+	// Token: 0x06000338 RID: 824 RVA: 0x0001BAC0 File Offset: 0x00019CC0
 	protected void MoveTowards(Vector3 dir, bool run)
 	{
 		dir = dir.normalized;
@@ -667,7 +667,7 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000338 RID: 824 RVA: 0x0001BB28 File Offset: 0x00019D28
+	// Token: 0x06000339 RID: 825 RVA: 0x0001BBDC File Offset: 0x00019DDC
 	protected void LookAt(Vector3 point)
 	{
 		Vector3 vector = point - this.m_character.m_eye.position;
@@ -679,19 +679,19 @@ public class BaseAI : MonoBehaviour
 		this.LookTowards(vector);
 	}
 
-	// Token: 0x06000339 RID: 825 RVA: 0x0001BB68 File Offset: 0x00019D68
+	// Token: 0x0600033A RID: 826 RVA: 0x0001BC1C File Offset: 0x00019E1C
 	protected void LookTowards(Vector3 dir)
 	{
 		this.m_character.SetLookDir(dir);
 	}
 
-	// Token: 0x0600033A RID: 826 RVA: 0x0001BB78 File Offset: 0x00019D78
+	// Token: 0x0600033B RID: 827 RVA: 0x0001BC2C File Offset: 0x00019E2C
 	protected bool IsLookingAt(Vector3 point, float minAngle)
 	{
 		return this.IsLookingTowards((point - base.transform.position).normalized, minAngle);
 	}
 
-	// Token: 0x0600033B RID: 827 RVA: 0x0001BBA8 File Offset: 0x00019DA8
+	// Token: 0x0600033C RID: 828 RVA: 0x0001BC5C File Offset: 0x00019E5C
 	protected bool IsLookingTowards(Vector3 dir, float minAngle)
 	{
 		dir.y = 0f;
@@ -700,13 +700,13 @@ public class BaseAI : MonoBehaviour
 		return Vector3.Angle(dir, forward) < minAngle;
 	}
 
-	// Token: 0x0600033C RID: 828 RVA: 0x0001BBE3 File Offset: 0x00019DE3
+	// Token: 0x0600033D RID: 829 RVA: 0x0001BC97 File Offset: 0x00019E97
 	protected void StopMoving()
 	{
 		this.m_character.SetMoveDir(Vector3.zero);
 	}
 
-	// Token: 0x0600033D RID: 829 RVA: 0x0001BBF8 File Offset: 0x00019DF8
+	// Token: 0x0600033E RID: 830 RVA: 0x0001BCAC File Offset: 0x00019EAC
 	protected bool HavePath(Vector3 target)
 	{
 		if (this.m_character.IsFlying())
@@ -726,7 +726,7 @@ public class BaseAI : MonoBehaviour
 		return this.m_lastHavePathResult;
 	}
 
-	// Token: 0x0600033E RID: 830 RVA: 0x0001BC90 File Offset: 0x00019E90
+	// Token: 0x0600033F RID: 831 RVA: 0x0001BD44 File Offset: 0x00019F44
 	protected bool FindPath(Vector3 target)
 	{
 		float time = Time.time;
@@ -745,13 +745,13 @@ public class BaseAI : MonoBehaviour
 		return this.m_lastFindPathResult;
 	}
 
-	// Token: 0x0600033F RID: 831 RVA: 0x0001BD1B File Offset: 0x00019F1B
+	// Token: 0x06000340 RID: 832 RVA: 0x0001BDCF File Offset: 0x00019FCF
 	protected bool FoundPath()
 	{
 		return this.m_lastFindPathResult;
 	}
 
-	// Token: 0x06000340 RID: 832 RVA: 0x0001BD24 File Offset: 0x00019F24
+	// Token: 0x06000341 RID: 833 RVA: 0x0001BDD8 File Offset: 0x00019FD8
 	protected bool MoveTo(float dt, Vector3 point, float dist, bool run)
 	{
 		if (this.m_character.m_flying)
@@ -808,7 +808,7 @@ public class BaseAI : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000341 RID: 833 RVA: 0x0001BE94 File Offset: 0x0001A094
+	// Token: 0x06000342 RID: 834 RVA: 0x0001BF48 File Offset: 0x0001A148
 	protected bool MoveAndAvoid(float dt, Vector3 point, float dist, bool run)
 	{
 		Vector3 vector = point - base.transform.position;
@@ -893,7 +893,7 @@ public class BaseAI : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000342 RID: 834 RVA: 0x0001C104 File Offset: 0x0001A304
+	// Token: 0x06000343 RID: 835 RVA: 0x0001C1B8 File Offset: 0x0001A3B8
 	private bool CanMove(Vector3 dir, float checkRadius, float distance)
 	{
 		Vector3 centerPoint = this.m_character.GetCenterPoint();
@@ -901,7 +901,7 @@ public class BaseAI : MonoBehaviour
 		return this.Raycast(centerPoint, dir, distance, 0.1f) >= distance && this.Raycast(centerPoint - right * (checkRadius - 0.1f), dir, distance, 0.1f) >= distance && this.Raycast(centerPoint + right * (checkRadius - 0.1f), dir, distance, 0.1f) >= distance;
 	}
 
-	// Token: 0x06000343 RID: 835 RVA: 0x0001C188 File Offset: 0x0001A388
+	// Token: 0x06000344 RID: 836 RVA: 0x0001C23C File Offset: 0x0001A43C
 	public float Raycast(Vector3 p, Vector3 dir, float distance, float radius)
 	{
 		if (radius == 0f)
@@ -924,13 +924,13 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000344 RID: 836 RVA: 0x0001C1D7 File Offset: 0x0001A3D7
+	// Token: 0x06000345 RID: 837 RVA: 0x0001C28B File Offset: 0x0001A48B
 	public bool IsEnemey(Character other)
 	{
 		return BaseAI.IsEnemy(this.m_character, other);
 	}
 
-	// Token: 0x06000345 RID: 837 RVA: 0x0001C1E8 File Offset: 0x0001A3E8
+	// Token: 0x06000346 RID: 838 RVA: 0x0001C29C File Offset: 0x0001A49C
 	public static bool IsEnemy(Character a, Character b)
 	{
 		if (a == b)
@@ -974,7 +974,7 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000346 RID: 838 RVA: 0x0001C2B4 File Offset: 0x0001A4B4
+	// Token: 0x06000347 RID: 839 RVA: 0x0001C368 File Offset: 0x0001A568
 	protected StaticTarget FindRandomStaticTarget(float maxDistance, bool priorityTargetsOnly)
 	{
 		float radius = this.m_character.GetRadius();
@@ -1015,7 +1015,7 @@ public class BaseAI : MonoBehaviour
 		return list[UnityEngine.Random.Range(0, list.Count)];
 	}
 
-	// Token: 0x06000347 RID: 839 RVA: 0x0001C36C File Offset: 0x0001A56C
+	// Token: 0x06000348 RID: 840 RVA: 0x0001C420 File Offset: 0x0001A620
 	protected StaticTarget FindClosestStaticPriorityTarget(float maxDistance)
 	{
 		float num = Mathf.Min(maxDistance, this.m_viewRange);
@@ -1043,7 +1043,7 @@ public class BaseAI : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x06000348 RID: 840 RVA: 0x0001C418 File Offset: 0x0001A618
+	// Token: 0x06000349 RID: 841 RVA: 0x0001C4CC File Offset: 0x0001A6CC
 	protected void HaveFriendsInRange(float range, out Character hurtFriend, out Character friend)
 	{
 		List<Character> allCharacters = Character.GetAllCharacters();
@@ -1051,7 +1051,7 @@ public class BaseAI : MonoBehaviour
 		hurtFriend = this.HaveHurtFriendInRange(allCharacters, range);
 	}
 
-	// Token: 0x06000349 RID: 841 RVA: 0x0001C440 File Offset: 0x0001A640
+	// Token: 0x0600034A RID: 842 RVA: 0x0001C4F4 File Offset: 0x0001A6F4
 	private Character HaveFriendInRange(List<Character> characters, float range)
 	{
 		foreach (Character character in characters)
@@ -1064,14 +1064,14 @@ public class BaseAI : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x0600034A RID: 842 RVA: 0x0001C4C8 File Offset: 0x0001A6C8
+	// Token: 0x0600034B RID: 843 RVA: 0x0001C57C File Offset: 0x0001A77C
 	protected Character HaveFriendInRange(float range)
 	{
 		List<Character> allCharacters = Character.GetAllCharacters();
 		return this.HaveFriendInRange(allCharacters, range);
 	}
 
-	// Token: 0x0600034B RID: 843 RVA: 0x0001C4E4 File Offset: 0x0001A6E4
+	// Token: 0x0600034C RID: 844 RVA: 0x0001C598 File Offset: 0x0001A798
 	private Character HaveHurtFriendInRange(List<Character> characters, float range)
 	{
 		foreach (Character character in characters)
@@ -1084,14 +1084,14 @@ public class BaseAI : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x0600034C RID: 844 RVA: 0x0001C56C File Offset: 0x0001A76C
+	// Token: 0x0600034D RID: 845 RVA: 0x0001C620 File Offset: 0x0001A820
 	protected Character HaveHurtFriendInRange(float range)
 	{
 		List<Character> allCharacters = Character.GetAllCharacters();
 		return this.HaveHurtFriendInRange(allCharacters, range);
 	}
 
-	// Token: 0x0600034D RID: 845 RVA: 0x0001C588 File Offset: 0x0001A788
+	// Token: 0x0600034E RID: 846 RVA: 0x0001C63C File Offset: 0x0001A83C
 	protected Character FindEnemy()
 	{
 		List<Character> allCharacters = Character.GetAllCharacters();
@@ -1125,7 +1125,7 @@ public class BaseAI : MonoBehaviour
 		return closestPlayer;
 	}
 
-	// Token: 0x0600034E RID: 846 RVA: 0x0001C690 File Offset: 0x0001A890
+	// Token: 0x0600034F RID: 847 RVA: 0x0001C744 File Offset: 0x0001A944
 	public void SetHuntPlayer(bool hunt)
 	{
 		if (this.m_huntPlayer == hunt)
@@ -1139,13 +1139,13 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600034F RID: 847 RVA: 0x0001C6CB File Offset: 0x0001A8CB
+	// Token: 0x06000350 RID: 848 RVA: 0x0001C77F File Offset: 0x0001A97F
 	public virtual bool HuntPlayer()
 	{
 		return this.m_huntPlayer;
 	}
 
-	// Token: 0x06000350 RID: 848 RVA: 0x0001C6D4 File Offset: 0x0001A8D4
+	// Token: 0x06000351 RID: 849 RVA: 0x0001C788 File Offset: 0x0001A988
 	protected bool HaveAlertedCreatureInRange(float range)
 	{
 		foreach (BaseAI baseAI in BaseAI.m_instances)
@@ -1158,7 +1158,7 @@ public class BaseAI : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000351 RID: 849 RVA: 0x0001C74C File Offset: 0x0001A94C
+	// Token: 0x06000352 RID: 850 RVA: 0x0001C800 File Offset: 0x0001AA00
 	public static void DoProjectileHitNoise(Vector3 center, float range, Character attacker)
 	{
 		foreach (BaseAI baseAI in BaseAI.m_instances)
@@ -1175,13 +1175,13 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000352 RID: 850 RVA: 0x0001C824 File Offset: 0x0001AA24
+	// Token: 0x06000353 RID: 851 RVA: 0x0001C8D8 File Offset: 0x0001AAD8
 	protected virtual void RPC_OnNearProjectileHit(long sender, Vector3 center, float range, ZDOID attacker)
 	{
 		this.Alert();
 	}
 
-	// Token: 0x06000353 RID: 851 RVA: 0x0001C82C File Offset: 0x0001AA2C
+	// Token: 0x06000354 RID: 852 RVA: 0x0001C8E0 File Offset: 0x0001AAE0
 	public void Alert()
 	{
 		if (!this.m_nview.IsValid())
@@ -1200,7 +1200,7 @@ public class BaseAI : MonoBehaviour
 		this.m_nview.InvokeRPC("Alert", Array.Empty<object>());
 	}
 
-	// Token: 0x06000354 RID: 852 RVA: 0x0001C87A File Offset: 0x0001AA7A
+	// Token: 0x06000355 RID: 853 RVA: 0x0001C92E File Offset: 0x0001AB2E
 	private void RPC_Alert(long sender)
 	{
 		if (!this.m_nview.IsOwner())
@@ -1210,7 +1210,7 @@ public class BaseAI : MonoBehaviour
 		this.SetAlerted(true);
 	}
 
-	// Token: 0x06000355 RID: 853 RVA: 0x0001C894 File Offset: 0x0001AA94
+	// Token: 0x06000356 RID: 854 RVA: 0x0001C948 File Offset: 0x0001AB48
 	protected virtual void SetAlerted(bool alert)
 	{
 		if (this.m_alerted == alert)
@@ -1229,7 +1229,7 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000356 RID: 854 RVA: 0x0001C91C File Offset: 0x0001AB1C
+	// Token: 0x06000357 RID: 855 RVA: 0x0001C9D0 File Offset: 0x0001ABD0
 	public static bool InStealthRange(Character me)
 	{
 		bool result = false;
@@ -1251,7 +1251,7 @@ public class BaseAI : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x06000357 RID: 855 RVA: 0x0001C9B8 File Offset: 0x0001ABB8
+	// Token: 0x06000358 RID: 856 RVA: 0x0001CA6C File Offset: 0x0001AC6C
 	public static Character FindClosestEnemy(Character me, Vector3 point, float maxDistance)
 	{
 		Character character = null;
@@ -1271,7 +1271,7 @@ public class BaseAI : MonoBehaviour
 		return character;
 	}
 
-	// Token: 0x06000358 RID: 856 RVA: 0x0001CA38 File Offset: 0x0001AC38
+	// Token: 0x06000359 RID: 857 RVA: 0x0001CAEC File Offset: 0x0001ACEC
 	public static Character FindRandomEnemy(Character me, Vector3 point, float maxDistance)
 	{
 		List<Character> list = new List<Character>();
@@ -1289,38 +1289,38 @@ public class BaseAI : MonoBehaviour
 		return list[UnityEngine.Random.Range(0, list.Count)];
 	}
 
-	// Token: 0x06000359 RID: 857 RVA: 0x0001CACC File Offset: 0x0001ACCC
+	// Token: 0x0600035A RID: 858 RVA: 0x0001CB80 File Offset: 0x0001AD80
 	public bool IsAlerted()
 	{
 		return this.m_alerted;
 	}
 
-	// Token: 0x0600035A RID: 858 RVA: 0x0001CAD4 File Offset: 0x0001ACD4
+	// Token: 0x0600035B RID: 859 RVA: 0x0001CB88 File Offset: 0x0001AD88
 	protected void SetTargetInfo(ZDOID targetID)
 	{
 		this.m_nview.GetZDO().Set(BaseAI.havetTargetHash, !targetID.IsNone());
 	}
 
-	// Token: 0x0600035B RID: 859 RVA: 0x0001CAF5 File Offset: 0x0001ACF5
+	// Token: 0x0600035C RID: 860 RVA: 0x0001CBA9 File Offset: 0x0001ADA9
 	public bool HaveTarget()
 	{
 		return this.m_nview.IsValid() && this.m_nview.GetZDO().GetBool(BaseAI.havetTargetHash, false);
 	}
 
-	// Token: 0x0600035C RID: 860 RVA: 0x0001CB1C File Offset: 0x0001AD1C
+	// Token: 0x0600035D RID: 861 RVA: 0x0001CBD0 File Offset: 0x0001ADD0
 	protected float GetAltitude()
 	{
 		float groundHeight = ZoneSystem.instance.GetGroundHeight(this.m_character.transform.position);
 		return this.m_character.transform.position.y - groundHeight;
 	}
 
-	// Token: 0x0600035D RID: 861 RVA: 0x0001CB5B File Offset: 0x0001AD5B
+	// Token: 0x0600035E RID: 862 RVA: 0x0001CC0F File Offset: 0x0001AE0F
 	public static List<BaseAI> GetAllInstances()
 	{
 		return BaseAI.m_instances;
 	}
 
-	// Token: 0x0600035E RID: 862 RVA: 0x0001CB64 File Offset: 0x0001AD64
+	// Token: 0x0600035F RID: 863 RVA: 0x0001CC18 File Offset: 0x0001AE18
 	protected virtual void OnDrawGizmosSelected()
 	{
 		if (this.m_lastFindPathResult)
@@ -1347,19 +1347,19 @@ public class BaseAI : MonoBehaviour
 		Gizmos.DrawSphere(this.m_lastFindPathTarget, 0.2f);
 	}
 
-	// Token: 0x0600035F RID: 863 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000360 RID: 864 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool IsSleeping()
 	{
 		return false;
 	}
 
-	// Token: 0x06000360 RID: 864 RVA: 0x0001CCB0 File Offset: 0x0001AEB0
+	// Token: 0x06000361 RID: 865 RVA: 0x0001CD64 File Offset: 0x0001AF64
 	public bool HasZDOOwner()
 	{
 		return this.m_nview.IsValid() && this.m_nview.GetZDO().HasOwner();
 	}
 
-	// Token: 0x06000361 RID: 865 RVA: 0x0001CCD4 File Offset: 0x0001AED4
+	// Token: 0x06000362 RID: 866 RVA: 0x0001CD88 File Offset: 0x0001AF88
 	public static bool CanUseAttack(Character character, ItemDrop.ItemData item)
 	{
 		bool flag = character.IsFlying();
@@ -1367,256 +1367,256 @@ public class BaseAI : MonoBehaviour
 		return (item.m_shared.m_aiWhenFlying && flag) || (item.m_shared.m_aiWhenWalking && !flag && !flag2) || (item.m_shared.m_aiWhenSwiming && flag2);
 	}
 
-	// Token: 0x06000362 RID: 866 RVA: 0x000058A9 File Offset: 0x00003AA9
+	// Token: 0x06000363 RID: 867 RVA: 0x000058CD File Offset: 0x00003ACD
 	public virtual Character GetTargetCreature()
 	{
 		return null;
 	}
 
-	// Token: 0x040002EE RID: 750
+	// Token: 0x040002F2 RID: 754
 	private float m_lastMoveToWaterUpdate;
 
-	// Token: 0x040002EF RID: 751
+	// Token: 0x040002F3 RID: 755
 	private bool m_haveWaterPosition;
 
-	// Token: 0x040002F0 RID: 752
+	// Token: 0x040002F4 RID: 756
 	private Vector3 m_moveToWaterPosition = Vector3.zero;
 
-	// Token: 0x040002F1 RID: 753
+	// Token: 0x040002F5 RID: 757
 	private float m_fleeTargetUpdateTime;
 
-	// Token: 0x040002F2 RID: 754
+	// Token: 0x040002F6 RID: 758
 	private Vector3 m_fleeTarget = Vector3.zero;
 
-	// Token: 0x040002F3 RID: 755
+	// Token: 0x040002F7 RID: 759
 	private float m_nearFireTime;
 
-	// Token: 0x040002F4 RID: 756
+	// Token: 0x040002F8 RID: 760
 	private EffectArea m_nearFireArea;
 
-	// Token: 0x040002F5 RID: 757
+	// Token: 0x040002F9 RID: 761
 	private float aroundPointUpdateTime;
 
-	// Token: 0x040002F6 RID: 758
+	// Token: 0x040002FA RID: 762
 	private Vector3 arroundPointTarget = Vector3.zero;
 
-	// Token: 0x040002F7 RID: 759
+	// Token: 0x040002FB RID: 763
 	private const bool m_debugDraw = false;
 
-	// Token: 0x040002F8 RID: 760
+	// Token: 0x040002FC RID: 764
 	public float m_viewRange = 50f;
 
-	// Token: 0x040002F9 RID: 761
+	// Token: 0x040002FD RID: 765
 	public float m_viewAngle = 90f;
 
-	// Token: 0x040002FA RID: 762
+	// Token: 0x040002FE RID: 766
 	public float m_hearRange = 9999f;
 
-	// Token: 0x040002FB RID: 763
+	// Token: 0x040002FF RID: 767
 	private const float m_interiorMaxHearRange = 8f;
 
-	// Token: 0x040002FC RID: 764
+	// Token: 0x04000300 RID: 768
 	private const float m_despawnDistance = 80f;
 
-	// Token: 0x040002FD RID: 765
+	// Token: 0x04000301 RID: 769
 	private const float m_regenAllHPTime = 3600f;
 
-	// Token: 0x040002FE RID: 766
+	// Token: 0x04000302 RID: 770
 	public EffectList m_alertedEffects = new EffectList();
 
-	// Token: 0x040002FF RID: 767
+	// Token: 0x04000303 RID: 771
 	public EffectList m_idleSound = new EffectList();
 
-	// Token: 0x04000300 RID: 768
+	// Token: 0x04000304 RID: 772
 	public float m_idleSoundInterval = 5f;
 
-	// Token: 0x04000301 RID: 769
+	// Token: 0x04000305 RID: 773
 	public float m_idleSoundChance = 0.5f;
 
-	// Token: 0x04000302 RID: 770
+	// Token: 0x04000306 RID: 774
 	public Pathfinding.AgentType m_pathAgentType = Pathfinding.AgentType.Humanoid;
 
-	// Token: 0x04000303 RID: 771
+	// Token: 0x04000307 RID: 775
 	public float m_moveMinAngle = 10f;
 
-	// Token: 0x04000304 RID: 772
+	// Token: 0x04000308 RID: 776
 	public bool m_smoothMovement = true;
 
-	// Token: 0x04000305 RID: 773
+	// Token: 0x04000309 RID: 777
 	public bool m_serpentMovement;
 
-	// Token: 0x04000306 RID: 774
+	// Token: 0x0400030A RID: 778
 	public float m_serpentTurnRadius = 20f;
 
-	// Token: 0x04000307 RID: 775
+	// Token: 0x0400030B RID: 779
 	public float m_jumpInterval;
 
-	// Token: 0x04000308 RID: 776
+	// Token: 0x0400030C RID: 780
 	[Header("Random circle")]
 	public float m_randomCircleInterval = 2f;
 
-	// Token: 0x04000309 RID: 777
+	// Token: 0x0400030D RID: 781
 	[Header("Random movement")]
 	public float m_randomMoveInterval = 5f;
 
-	// Token: 0x0400030A RID: 778
+	// Token: 0x0400030E RID: 782
 	public float m_randomMoveRange = 4f;
 
-	// Token: 0x0400030B RID: 779
+	// Token: 0x0400030F RID: 783
 	[Header("Fly behaviour")]
 	public bool m_randomFly;
 
-	// Token: 0x0400030C RID: 780
+	// Token: 0x04000310 RID: 784
 	public float m_chanceToTakeoff = 1f;
 
-	// Token: 0x0400030D RID: 781
+	// Token: 0x04000311 RID: 785
 	public float m_chanceToLand = 1f;
 
-	// Token: 0x0400030E RID: 782
+	// Token: 0x04000312 RID: 786
 	public float m_groundDuration = 10f;
 
-	// Token: 0x0400030F RID: 783
+	// Token: 0x04000313 RID: 787
 	public float m_airDuration = 10f;
 
-	// Token: 0x04000310 RID: 784
+	// Token: 0x04000314 RID: 788
 	public float m_maxLandAltitude = 5f;
 
-	// Token: 0x04000311 RID: 785
+	// Token: 0x04000315 RID: 789
 	public float m_flyAltitudeMin = 3f;
 
-	// Token: 0x04000312 RID: 786
+	// Token: 0x04000316 RID: 790
 	public float m_flyAltitudeMax = 10f;
 
-	// Token: 0x04000313 RID: 787
+	// Token: 0x04000317 RID: 791
 	public float m_takeoffTime = 5f;
 
-	// Token: 0x04000314 RID: 788
+	// Token: 0x04000318 RID: 792
 	[Header("Other")]
 	public bool m_avoidFire;
 
-	// Token: 0x04000315 RID: 789
+	// Token: 0x04000319 RID: 793
 	public bool m_afraidOfFire;
 
-	// Token: 0x04000316 RID: 790
+	// Token: 0x0400031A RID: 794
 	public bool m_avoidWater = true;
 
-	// Token: 0x04000317 RID: 791
+	// Token: 0x0400031B RID: 795
 	public string m_spawnMessage = "";
 
-	// Token: 0x04000318 RID: 792
+	// Token: 0x0400031C RID: 796
 	public string m_deathMessage = "";
 
-	// Token: 0x04000319 RID: 793
+	// Token: 0x0400031D RID: 797
 	private bool m_patrol;
 
-	// Token: 0x0400031A RID: 794
+	// Token: 0x0400031E RID: 798
 	private Vector3 m_patrolPoint = Vector3.zero;
 
-	// Token: 0x0400031B RID: 795
+	// Token: 0x0400031F RID: 799
 	private float m_patrolPointUpdateTime;
 
-	// Token: 0x0400031C RID: 796
+	// Token: 0x04000320 RID: 800
 	protected ZNetView m_nview;
 
-	// Token: 0x0400031D RID: 797
+	// Token: 0x04000321 RID: 801
 	protected Character m_character;
 
-	// Token: 0x0400031E RID: 798
+	// Token: 0x04000322 RID: 802
 	protected ZSyncAnimation m_animator;
 
-	// Token: 0x0400031F RID: 799
+	// Token: 0x04000323 RID: 803
 	protected Rigidbody m_body;
 
-	// Token: 0x04000320 RID: 800
+	// Token: 0x04000324 RID: 804
 	private float m_updateTimer;
 
-	// Token: 0x04000321 RID: 801
+	// Token: 0x04000325 RID: 805
 	private int m_solidRayMask;
 
-	// Token: 0x04000322 RID: 802
+	// Token: 0x04000326 RID: 806
 	private int m_viewBlockMask;
 
-	// Token: 0x04000323 RID: 803
+	// Token: 0x04000327 RID: 807
 	private int m_monsterTargetRayMask;
 
-	// Token: 0x04000324 RID: 804
+	// Token: 0x04000328 RID: 808
 	private Vector3 m_randomMoveTarget = Vector3.zero;
 
-	// Token: 0x04000325 RID: 805
+	// Token: 0x04000329 RID: 809
 	private float m_randomMoveUpdateTimer;
 
-	// Token: 0x04000326 RID: 806
+	// Token: 0x0400032A RID: 810
 	private float m_jumpTimer;
 
-	// Token: 0x04000327 RID: 807
+	// Token: 0x0400032B RID: 811
 	private float m_randomFlyTimer;
 
-	// Token: 0x04000328 RID: 808
+	// Token: 0x0400032C RID: 812
 	private float m_regenTimer;
 
-	// Token: 0x04000329 RID: 809
+	// Token: 0x0400032D RID: 813
 	protected bool m_alerted;
 
-	// Token: 0x0400032A RID: 810
+	// Token: 0x0400032E RID: 814
 	protected bool m_huntPlayer;
 
-	// Token: 0x0400032B RID: 811
+	// Token: 0x0400032F RID: 815
 	protected Vector3 m_spawnPoint = Vector3.zero;
 
-	// Token: 0x0400032C RID: 812
+	// Token: 0x04000330 RID: 816
 	private const float m_getOfOfCornerMaxAngle = 20f;
 
-	// Token: 0x0400032D RID: 813
+	// Token: 0x04000331 RID: 817
 	private float m_getOutOfCornerTimer;
 
-	// Token: 0x0400032E RID: 814
+	// Token: 0x04000332 RID: 818
 	private float m_getOutOfCornerAngle;
 
-	// Token: 0x0400032F RID: 815
+	// Token: 0x04000333 RID: 819
 	private Vector3 m_lastPosition = Vector3.zero;
 
-	// Token: 0x04000330 RID: 816
+	// Token: 0x04000334 RID: 820
 	private float m_stuckTimer;
 
-	// Token: 0x04000331 RID: 817
+	// Token: 0x04000335 RID: 821
 	protected float m_timeSinceHurt = 99999f;
 
-	// Token: 0x04000332 RID: 818
+	// Token: 0x04000336 RID: 822
 	private Vector3 m_havePathTarget = new Vector3(-999999f, -999999f, -999999f);
 
-	// Token: 0x04000333 RID: 819
+	// Token: 0x04000337 RID: 823
 	private Vector3 m_havePathFrom = new Vector3(-999999f, -999999f, -999999f);
 
-	// Token: 0x04000334 RID: 820
+	// Token: 0x04000338 RID: 824
 	private float m_lastHavePathTime;
 
-	// Token: 0x04000335 RID: 821
+	// Token: 0x04000339 RID: 825
 	private bool m_lastHavePathResult;
 
-	// Token: 0x04000336 RID: 822
+	// Token: 0x0400033A RID: 826
 	private Vector3 m_lastFindPathTarget = new Vector3(-999999f, -999999f, -999999f);
 
-	// Token: 0x04000337 RID: 823
+	// Token: 0x0400033B RID: 827
 	private float m_lastFindPathTime;
 
-	// Token: 0x04000338 RID: 824
+	// Token: 0x0400033C RID: 828
 	private bool m_lastFindPathResult;
 
-	// Token: 0x04000339 RID: 825
+	// Token: 0x0400033D RID: 829
 	private List<Vector3> m_path = new List<Vector3>();
 
-	// Token: 0x0400033A RID: 826
+	// Token: 0x0400033E RID: 830
 	private static RaycastHit[] m_tempRaycastHits = new RaycastHit[128];
 
-	// Token: 0x0400033B RID: 827
+	// Token: 0x0400033F RID: 831
 	private static List<BaseAI> m_instances = new List<BaseAI>();
 
-	// Token: 0x0400033C RID: 828
+	// Token: 0x04000340 RID: 832
 	private static int worldTimeHash = "lastWorldTime".GetStableHashCode();
 
-	// Token: 0x0400033D RID: 829
+	// Token: 0x04000341 RID: 833
 	private static int spawnTimeHash = "spawntime".GetStableHashCode();
 
-	// Token: 0x0400033E RID: 830
+	// Token: 0x04000342 RID: 834
 	private static int havetTargetHash = "haveTarget".GetStableHashCode();
 }

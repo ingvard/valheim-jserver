@@ -8,7 +8,7 @@ using UnityEngine;
 public class SteamManager2 : MonoBehaviour
 {
 	// Token: 0x17000020 RID: 32
-	// (get) Token: 0x060009E7 RID: 2535 RVA: 0x00047D11 File Offset: 0x00045F11
+	// (get) Token: 0x060009E8 RID: 2536 RVA: 0x00047DBD File Offset: 0x00045FBD
 	protected static SteamManager2 Instance
 	{
 		get
@@ -22,7 +22,7 @@ public class SteamManager2 : MonoBehaviour
 	}
 
 	// Token: 0x17000021 RID: 33
-	// (get) Token: 0x060009E8 RID: 2536 RVA: 0x00047D35 File Offset: 0x00045F35
+	// (get) Token: 0x060009E9 RID: 2537 RVA: 0x00047DE1 File Offset: 0x00045FE1
 	public static bool Initialized
 	{
 		get
@@ -31,13 +31,13 @@ public class SteamManager2 : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009E9 RID: 2537 RVA: 0x00047A95 File Offset: 0x00045C95
+	// Token: 0x060009EA RID: 2538 RVA: 0x00047B41 File Offset: 0x00045D41
 	protected static void SteamAPIDebugTextHook(int nSeverity, StringBuilder pchDebugText)
 	{
 		Debug.LogWarning(pchDebugText);
 	}
 
-	// Token: 0x060009EA RID: 2538 RVA: 0x00047D44 File Offset: 0x00045F44
+	// Token: 0x060009EB RID: 2539 RVA: 0x00047DF0 File Offset: 0x00045FF0
 	protected virtual void Awake()
 	{
 		if (SteamManager2.s_instance != null)
@@ -82,7 +82,7 @@ public class SteamManager2 : MonoBehaviour
 		SteamManager2.s_EverInitialized = true;
 	}
 
-	// Token: 0x060009EB RID: 2539 RVA: 0x00047E18 File Offset: 0x00046018
+	// Token: 0x060009EC RID: 2540 RVA: 0x00047EC4 File Offset: 0x000460C4
 	protected virtual void OnEnable()
 	{
 		if (SteamManager2.s_instance == null)
@@ -100,7 +100,7 @@ public class SteamManager2 : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009EC RID: 2540 RVA: 0x00047E66 File Offset: 0x00046066
+	// Token: 0x060009ED RID: 2541 RVA: 0x00047F12 File Offset: 0x00046112
 	protected virtual void OnDestroy()
 	{
 		if (SteamManager2.s_instance != this)
@@ -115,7 +115,7 @@ public class SteamManager2 : MonoBehaviour
 		SteamAPI.Shutdown();
 	}
 
-	// Token: 0x060009ED RID: 2541 RVA: 0x00047E8A File Offset: 0x0004608A
+	// Token: 0x060009EE RID: 2542 RVA: 0x00047F36 File Offset: 0x00046136
 	protected virtual void Update()
 	{
 		if (!this.m_bInitialized)
@@ -125,15 +125,15 @@ public class SteamManager2 : MonoBehaviour
 		SteamAPI.RunCallbacks();
 	}
 
-	// Token: 0x040008FD RID: 2301
+	// Token: 0x04000901 RID: 2305
 	protected static bool s_EverInitialized;
 
-	// Token: 0x040008FE RID: 2302
+	// Token: 0x04000902 RID: 2306
 	protected static SteamManager2 s_instance;
 
-	// Token: 0x040008FF RID: 2303
+	// Token: 0x04000903 RID: 2307
 	protected bool m_bInitialized;
 
-	// Token: 0x04000900 RID: 2304
+	// Token: 0x04000904 RID: 2308
 	protected SteamAPIWarningMessageHook_t m_SteamAPIWarningMessageHook;
 }

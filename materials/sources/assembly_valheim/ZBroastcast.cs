@@ -8,7 +8,7 @@ using System.Threading;
 public class ZBroastcast : IDisposable
 {
 	// Token: 0x17000015 RID: 21
-	// (get) Token: 0x06000733 RID: 1843 RVA: 0x0003A33C File Offset: 0x0003853C
+	// (get) Token: 0x06000734 RID: 1844 RVA: 0x0003A3F0 File Offset: 0x000385F0
 	public static ZBroastcast instance
 	{
 		get
@@ -17,7 +17,7 @@ public class ZBroastcast : IDisposable
 		}
 	}
 
-	// Token: 0x06000734 RID: 1844 RVA: 0x0003A343 File Offset: 0x00038543
+	// Token: 0x06000735 RID: 1845 RVA: 0x0003A3F7 File Offset: 0x000385F7
 	public static void Initialize()
 	{
 		if (ZBroastcast.m_instance == null)
@@ -26,7 +26,7 @@ public class ZBroastcast : IDisposable
 		}
 	}
 
-	// Token: 0x06000735 RID: 1845 RVA: 0x0003A358 File Offset: 0x00038558
+	// Token: 0x06000736 RID: 1846 RVA: 0x0003A40C File Offset: 0x0003860C
 	private ZBroastcast()
 	{
 		ZLog.Log("opening zbroadcast");
@@ -45,13 +45,13 @@ public class ZBroastcast : IDisposable
 		}
 	}
 
-	// Token: 0x06000736 RID: 1846 RVA: 0x0003A40C File Offset: 0x0003860C
+	// Token: 0x06000737 RID: 1847 RVA: 0x0003A4C0 File Offset: 0x000386C0
 	public void SetServerPort(int port)
 	{
 		this.m_myPort = port;
 	}
 
-	// Token: 0x06000737 RID: 1847 RVA: 0x0003A418 File Offset: 0x00038618
+	// Token: 0x06000738 RID: 1848 RVA: 0x0003A4CC File Offset: 0x000386CC
 	public void Dispose()
 	{
 		ZLog.Log("Clozing zbroadcast");
@@ -67,7 +67,7 @@ public class ZBroastcast : IDisposable
 		}
 	}
 
-	// Token: 0x06000738 RID: 1848 RVA: 0x0003A466 File Offset: 0x00038666
+	// Token: 0x06000739 RID: 1849 RVA: 0x0003A51A File Offset: 0x0003871A
 	public void Update(float dt)
 	{
 		this.m_timer -= dt;
@@ -82,7 +82,7 @@ public class ZBroastcast : IDisposable
 		this.TimeoutHosts(dt);
 	}
 
-	// Token: 0x06000739 RID: 1849 RVA: 0x0003A4A4 File Offset: 0x000386A4
+	// Token: 0x0600073A RID: 1850 RVA: 0x0003A558 File Offset: 0x00038758
 	private void GotPackage(IAsyncResult ar)
 	{
 		IPEndPoint ipendPoint = new IPEndPoint(0L, 0);
@@ -123,7 +123,7 @@ public class ZBroastcast : IDisposable
 		this.m_listner.BeginReceive(new AsyncCallback(this.GotPackage), null);
 	}
 
-	// Token: 0x0600073A RID: 1850 RVA: 0x0003A564 File Offset: 0x00038764
+	// Token: 0x0600073B RID: 1851 RVA: 0x0003A618 File Offset: 0x00038818
 	private void Ping()
 	{
 		IPEndPoint remoteEP = new IPEndPoint(IPAddress.Broadcast, 6542);
@@ -136,7 +136,7 @@ public class ZBroastcast : IDisposable
 		this.m_socket.SendTo(zpackage.GetArray(), remoteEP);
 	}
 
-	// Token: 0x0600073B RID: 1851 RVA: 0x0003A5C8 File Offset: 0x000387C8
+	// Token: 0x0600073C RID: 1852 RVA: 0x0003A67C File Offset: 0x0003887C
 	private void AddHost(string host, int port)
 	{
 		foreach (ZBroastcast.HostData hostData in this.m_hosts)
@@ -154,7 +154,7 @@ public class ZBroastcast : IDisposable
 		this.m_hosts.Add(hostData2);
 	}
 
-	// Token: 0x0600073C RID: 1852 RVA: 0x0003A664 File Offset: 0x00038864
+	// Token: 0x0600073D RID: 1853 RVA: 0x0003A718 File Offset: 0x00038918
 	private void TimeoutHosts(float dt)
 	{
 		this.m_lock.WaitOne();
@@ -170,52 +170,52 @@ public class ZBroastcast : IDisposable
 		this.m_lock.ReleaseMutex();
 	}
 
-	// Token: 0x0600073D RID: 1853 RVA: 0x0003A6F4 File Offset: 0x000388F4
+	// Token: 0x0600073E RID: 1854 RVA: 0x0003A7A8 File Offset: 0x000389A8
 	public void GetHostList(List<ZBroastcast.HostData> hosts)
 	{
 		hosts.AddRange(this.m_hosts);
 	}
 
-	// Token: 0x0400079E RID: 1950
+	// Token: 0x040007A2 RID: 1954
 	private List<ZBroastcast.HostData> m_hosts = new List<ZBroastcast.HostData>();
 
-	// Token: 0x0400079F RID: 1951
+	// Token: 0x040007A3 RID: 1955
 	private static ZBroastcast m_instance;
 
-	// Token: 0x040007A0 RID: 1952
+	// Token: 0x040007A4 RID: 1956
 	private const int m_port = 6542;
 
-	// Token: 0x040007A1 RID: 1953
+	// Token: 0x040007A5 RID: 1957
 	private const float m_pingInterval = 5f;
 
-	// Token: 0x040007A2 RID: 1954
+	// Token: 0x040007A6 RID: 1958
 	private const float m_hostTimeout = 10f;
 
-	// Token: 0x040007A3 RID: 1955
+	// Token: 0x040007A7 RID: 1959
 	private float m_timer;
 
-	// Token: 0x040007A4 RID: 1956
+	// Token: 0x040007A8 RID: 1960
 	private int m_myPort;
 
-	// Token: 0x040007A5 RID: 1957
+	// Token: 0x040007A9 RID: 1961
 	private Socket m_socket;
 
-	// Token: 0x040007A6 RID: 1958
+	// Token: 0x040007AA RID: 1962
 	private UdpClient m_listner;
 
-	// Token: 0x040007A7 RID: 1959
+	// Token: 0x040007AB RID: 1963
 	private Mutex m_lock = new Mutex();
 
 	// Token: 0x02000167 RID: 359
 	public class HostData
 	{
-		// Token: 0x04001159 RID: 4441
+		// Token: 0x04001160 RID: 4448
 		public string m_host;
 
-		// Token: 0x0400115A RID: 4442
+		// Token: 0x04001161 RID: 4449
 		public int m_port;
 
-		// Token: 0x0400115B RID: 4443
+		// Token: 0x04001162 RID: 4450
 		public float m_timeout;
 	}
 }

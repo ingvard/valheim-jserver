@@ -5,13 +5,13 @@ using UnityEngine;
 // Token: 0x02000034 RID: 52
 public class CircleProjector : MonoBehaviour
 {
-	// Token: 0x06000413 RID: 1043 RVA: 0x000210AC File Offset: 0x0001F2AC
+	// Token: 0x06000414 RID: 1044 RVA: 0x00021160 File Offset: 0x0001F360
 	private void Start()
 	{
 		this.CreateSegments();
 	}
 
-	// Token: 0x06000414 RID: 1044 RVA: 0x000210B4 File Offset: 0x0001F2B4
+	// Token: 0x06000415 RID: 1045 RVA: 0x00021168 File Offset: 0x0001F368
 	private void Update()
 	{
 		this.CreateSegments();
@@ -37,7 +37,7 @@ public class CircleProjector : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000415 RID: 1045 RVA: 0x00021260 File Offset: 0x0001F460
+	// Token: 0x06000416 RID: 1046 RVA: 0x00021314 File Offset: 0x0001F514
 	private void CreateSegments()
 	{
 		if (this.m_segments.Count == this.m_nrOfSegments)
@@ -56,18 +56,18 @@ public class CircleProjector : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000402 RID: 1026
+	// Token: 0x04000406 RID: 1030
 	public float m_radius = 5f;
 
-	// Token: 0x04000403 RID: 1027
+	// Token: 0x04000407 RID: 1031
 	public int m_nrOfSegments = 20;
 
-	// Token: 0x04000404 RID: 1028
+	// Token: 0x04000408 RID: 1032
 	public GameObject m_prefab;
 
-	// Token: 0x04000405 RID: 1029
+	// Token: 0x04000409 RID: 1033
 	public LayerMask m_mask;
 
-	// Token: 0x04000406 RID: 1030
+	// Token: 0x0400040A RID: 1034
 	private List<GameObject> m_segments = new List<GameObject>();
 }

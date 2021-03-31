@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x0200000D RID: 13
 public class LevelEffects : MonoBehaviour
 {
-	// Token: 0x06000153 RID: 339 RVA: 0x0000A630 File Offset: 0x00008830
+	// Token: 0x06000154 RID: 340 RVA: 0x0000A670 File Offset: 0x00008870
 	private void Start()
 	{
 		this.m_character = base.GetComponentInParent<Character>();
@@ -14,13 +14,13 @@ public class LevelEffects : MonoBehaviour
 		this.SetupLevelVisualization(this.m_character.GetLevel());
 	}
 
-	// Token: 0x06000154 RID: 340 RVA: 0x0000A681 File Offset: 0x00008881
+	// Token: 0x06000155 RID: 341 RVA: 0x0000A6C1 File Offset: 0x000088C1
 	private void OnLevelSet(int level)
 	{
 		this.SetupLevelVisualization(level);
 	}
 
-	// Token: 0x06000155 RID: 341 RVA: 0x0000A68C File Offset: 0x0000888C
+	// Token: 0x06000156 RID: 342 RVA: 0x0000A6CC File Offset: 0x000088CC
 	private void SetupLevelVisualization(int level)
 	{
 		if (level <= 1)
@@ -63,7 +63,7 @@ public class LevelEffects : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000156 RID: 342 RVA: 0x0000A7DC File Offset: 0x000089DC
+	// Token: 0x06000157 RID: 343 RVA: 0x0000A81C File Offset: 0x00008A1C
 	public void GetColorChanges(out float hue, out float saturation, out float value)
 	{
 		int level = this.m_character.GetLevel();
@@ -80,38 +80,38 @@ public class LevelEffects : MonoBehaviour
 		value = 0f;
 	}
 
-	// Token: 0x04000111 RID: 273
+	// Token: 0x04000112 RID: 274
 	public Renderer m_mainRender;
 
-	// Token: 0x04000112 RID: 274
+	// Token: 0x04000113 RID: 275
 	public GameObject m_baseEnableObject;
 
-	// Token: 0x04000113 RID: 275
+	// Token: 0x04000114 RID: 276
 	public List<LevelEffects.LevelSetup> m_levelSetups = new List<LevelEffects.LevelSetup>();
 
-	// Token: 0x04000114 RID: 276
+	// Token: 0x04000115 RID: 277
 	private static Dictionary<string, Material> m_materials = new Dictionary<string, Material>();
 
-	// Token: 0x04000115 RID: 277
+	// Token: 0x04000116 RID: 278
 	private Character m_character;
 
 	// Token: 0x02000123 RID: 291
 	[Serializable]
 	public class LevelSetup
 	{
-		// Token: 0x04000FDA RID: 4058
+		// Token: 0x04000FE1 RID: 4065
 		public float m_scale = 1f;
 
-		// Token: 0x04000FDB RID: 4059
+		// Token: 0x04000FE2 RID: 4066
 		public float m_hue;
 
-		// Token: 0x04000FDC RID: 4060
+		// Token: 0x04000FE3 RID: 4067
 		public float m_saturation;
 
-		// Token: 0x04000FDD RID: 4061
+		// Token: 0x04000FE4 RID: 4068
 		public float m_value;
 
-		// Token: 0x04000FDE RID: 4062
+		// Token: 0x04000FE5 RID: 4069
 		public GameObject m_enableObject;
 	}
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x020000C5 RID: 197
 public class DreamTexts : MonoBehaviour
 {
-	// Token: 0x06000CEE RID: 3310 RVA: 0x0005C79C File Offset: 0x0005A99C
+	// Token: 0x06000CEF RID: 3311 RVA: 0x0005C924 File Offset: 0x0005AB24
 	public DreamTexts.DreamText GetRandomDreamText()
 	{
 		List<DreamTexts.DreamText> list = new List<DreamTexts.DreamText>();
@@ -28,7 +28,7 @@ public class DreamTexts : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000CEF RID: 3311 RVA: 0x0005C82C File Offset: 0x0005AA2C
+	// Token: 0x06000CF0 RID: 3312 RVA: 0x0005C9B4 File Offset: 0x0005ABB4
 	private bool HaveGlobalKeys(DreamTexts.DreamText dream)
 	{
 		foreach (string name in dream.m_trueKeys)
@@ -48,23 +48,23 @@ public class DreamTexts : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x04000BCD RID: 3021
+	// Token: 0x04000BD3 RID: 3027
 	public List<DreamTexts.DreamText> m_texts = new List<DreamTexts.DreamText>();
 
 	// Token: 0x02000194 RID: 404
 	[Serializable]
 	public class DreamText
 	{
-		// Token: 0x04001279 RID: 4729
+		// Token: 0x04001280 RID: 4736
 		public string m_text = "Fluffy sheep";
 
-		// Token: 0x0400127A RID: 4730
+		// Token: 0x04001281 RID: 4737
 		public float m_chanceToDream = 0.1f;
 
-		// Token: 0x0400127B RID: 4731
+		// Token: 0x04001282 RID: 4738
 		public List<string> m_trueKeys = new List<string>();
 
-		// Token: 0x0400127C RID: 4732
+		// Token: 0x04001283 RID: 4739
 		public List<string> m_falseKeys = new List<string>();
 	}
 }

@@ -344,6 +344,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		this.m_sliding = false;
 		this.m_wallRunning = false;
 		this.m_running = false;
+		this.m_walking = false;
 		if (this.IsDead())
 		{
 			return;
@@ -380,7 +381,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		this.m_jumpTimer += Time.fixedDeltaTime;
 	}
 
-	// Token: 0x06000016 RID: 22 RVA: 0x00002A18 File Offset: 0x00000C18
+	// Token: 0x06000016 RID: 22 RVA: 0x00002A20 File Offset: 0x00000C20
 	private void UpdateDebugFly(float dt)
 	{
 		float num = (float)(this.m_run ? 50 : 20);
@@ -406,7 +407,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		this.UpdateEyeRotation();
 	}
 
-	// Token: 0x06000017 RID: 23 RVA: 0x00002B0C File Offset: 0x00000D0C
+	// Token: 0x06000017 RID: 23 RVA: 0x00002B14 File Offset: 0x00000D14
 	private void UpdateSwiming(float dt)
 	{
 		bool flag = this.IsOnGround();
@@ -497,7 +498,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x06000018 RID: 24 RVA: 0x00002F58 File Offset: 0x00001158
+	// Token: 0x06000018 RID: 24 RVA: 0x00002F60 File Offset: 0x00001160
 	private void UpdateFlying(float dt)
 	{
 		float d = (this.m_run ? this.m_flyFastSpeed : this.m_flySlowSpeed) * this.GetAttackSpeedFactorMovement();
@@ -535,7 +536,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		this.m_zanim.SetBool(Character.flying, true);
 	}
 
-	// Token: 0x06000019 RID: 25 RVA: 0x00003194 File Offset: 0x00001394
+	// Token: 0x06000019 RID: 25 RVA: 0x0000319C File Offset: 0x0000139C
 	private void UpdateWalking(float dt)
 	{
 		Vector3 moveDir = this.m_moveDir;
@@ -545,6 +546,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		if ((this.m_walk || this.InMinorAction()) && !flag)
 		{
 			num = this.m_walkSpeed;
+			this.m_walking = (moveDir.magnitude > 0.1f);
 		}
 		else if (this.m_running)
 		{
@@ -657,13 +659,13 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x0600001A RID: 26 RVA: 0x000036A0 File Offset: 0x000018A0
+	// Token: 0x0600001A RID: 26 RVA: 0x000036BC File Offset: 0x000018BC
 	public bool IsSneaking()
 	{
 		return this.IsCrouching() && this.m_currentVel.magnitude > 0.1f && this.IsOnGround();
 	}
 
-	// Token: 0x0600001B RID: 27 RVA: 0x000036C4 File Offset: 0x000018C4
+	// Token: 0x0600001B RID: 27 RVA: 0x000036E0 File Offset: 0x000018E0
 	private float GetSlopeAngle()
 	{
 		if (!this.IsOnGround())
@@ -674,7 +676,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return -(90f - -num);
 	}
 
-	// Token: 0x0600001C RID: 28 RVA: 0x0000370C File Offset: 0x0000190C
+	// Token: 0x0600001C RID: 28 RVA: 0x00003728 File Offset: 0x00001928
 	protected void AddPushbackForce(ref Vector3 velocity)
 	{
 		if (this.m_pushForce != Vector3.zero)
@@ -692,7 +694,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x0600001D RID: 29 RVA: 0x00003790 File Offset: 0x00001990
+	// Token: 0x0600001D RID: 29 RVA: 0x000037AC File Offset: 0x000019AC
 	private void ApplyPushback(HitData hit)
 	{
 		if (hit.m_pushForce != 0f)
@@ -708,13 +710,13 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x0600001E RID: 30 RVA: 0x0000381B File Offset: 0x00001A1B
+	// Token: 0x0600001E RID: 30 RVA: 0x00003837 File Offset: 0x00001A37
 	private void UpdatePushback(float dt)
 	{
 		this.m_pushForce = Vector3.MoveTowards(this.m_pushForce, Vector3.zero, 100f * dt);
 	}
 
-	// Token: 0x0600001F RID: 31 RVA: 0x0000383C File Offset: 0x00001A3C
+	// Token: 0x0600001F RID: 31 RVA: 0x00003858 File Offset: 0x00001A58
 	private void ApplyGroundForce(ref Vector3 vel, Vector3 targetVel)
 	{
 		Vector3 vector = Vector3.zero;
@@ -766,7 +768,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		vel += vector;
 	}
 
-	// Token: 0x06000020 RID: 32 RVA: 0x000039AC File Offset: 0x00001BAC
+	// Token: 0x06000020 RID: 32 RVA: 0x000039C8 File Offset: 0x00001BC8
 	private float UpdateRotation(float turnSpeed, float dt)
 	{
 		Quaternion quaternion = this.AlwaysRotateCamera() ? this.m_lookYaw : Quaternion.LookRotation(this.m_moveDir);
@@ -786,7 +788,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return num2 * Mathf.Sign(yawDeltaAngle) * 0.017453292f;
 	}
 
-	// Token: 0x06000021 RID: 33 RVA: 0x00003A5C File Offset: 0x00001C5C
+	// Token: 0x06000021 RID: 33 RVA: 0x00003A78 File Offset: 0x00001C78
 	private void UpdateGroundTilt(float dt)
 	{
 		if (this.m_visual == null)
@@ -860,7 +862,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x06000022 RID: 34 RVA: 0x00003D60 File Offset: 0x00001F60
+	// Token: 0x06000022 RID: 34 RVA: 0x00003D7C File Offset: 0x00001F7C
 	public bool IsWallRunning()
 	{
 		return this.m_wallRunning;
@@ -872,7 +874,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return false;
 	}
 
-	// Token: 0x06000024 RID: 36 RVA: 0x00003D68 File Offset: 0x00001F68
+	// Token: 0x06000024 RID: 36 RVA: 0x00003D84 File Offset: 0x00001F84
 	public void Heal(float hp, bool showText = true)
 	{
 		if (hp <= 0f)
@@ -891,7 +893,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		});
 	}
 
-	// Token: 0x06000025 RID: 37 RVA: 0x00003DC0 File Offset: 0x00001FC0
+	// Token: 0x06000025 RID: 37 RVA: 0x00003DDC File Offset: 0x00001FDC
 	private void RPC_Heal(long sender, float hp, bool showText)
 	{
 		if (!this.m_nview.IsOwner())
@@ -915,7 +917,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x06000026 RID: 38 RVA: 0x00003E2C File Offset: 0x0000202C
+	// Token: 0x06000026 RID: 38 RVA: 0x00003E48 File Offset: 0x00002048
 	public Vector3 GetTopPoint()
 	{
 		Vector3 center = this.m_collider.bounds.center;
@@ -923,37 +925,37 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return center;
 	}
 
-	// Token: 0x06000027 RID: 39 RVA: 0x00003E6D File Offset: 0x0000206D
+	// Token: 0x06000027 RID: 39 RVA: 0x00003E89 File Offset: 0x00002089
 	public float GetRadius()
 	{
 		return this.m_collider.radius;
 	}
 
-	// Token: 0x06000028 RID: 40 RVA: 0x00003E7A File Offset: 0x0000207A
+	// Token: 0x06000028 RID: 40 RVA: 0x00003E96 File Offset: 0x00002096
 	public Vector3 GetHeadPoint()
 	{
 		return this.m_head.position;
 	}
 
-	// Token: 0x06000029 RID: 41 RVA: 0x00003E87 File Offset: 0x00002087
+	// Token: 0x06000029 RID: 41 RVA: 0x00003EA3 File Offset: 0x000020A3
 	public Vector3 GetEyePoint()
 	{
 		return this.m_eye.position;
 	}
 
-	// Token: 0x0600002A RID: 42 RVA: 0x00003E94 File Offset: 0x00002094
+	// Token: 0x0600002A RID: 42 RVA: 0x00003EB0 File Offset: 0x000020B0
 	public Vector3 GetCenterPoint()
 	{
 		return this.m_collider.bounds.center;
 	}
 
-	// Token: 0x0600002B RID: 43 RVA: 0x00003EB4 File Offset: 0x000020B4
+	// Token: 0x0600002B RID: 43 RVA: 0x00003ED0 File Offset: 0x000020D0
 	public DestructibleType GetDestructibleType()
 	{
 		return DestructibleType.Character;
 	}
 
-	// Token: 0x0600002C RID: 44 RVA: 0x00003EB7 File Offset: 0x000020B7
+	// Token: 0x0600002C RID: 44 RVA: 0x00003ED3 File Offset: 0x000020D3
 	public void Damage(HitData hit)
 	{
 		if (!this.m_nview.IsValid())
@@ -966,7 +968,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		});
 	}
 
-	// Token: 0x0600002D RID: 45 RVA: 0x00003EE4 File Offset: 0x000020E4
+	// Token: 0x0600002D RID: 45 RVA: 0x00003F00 File Offset: 0x00002100
 	private void RPC_Damage(long sender, HitData hit)
 	{
 		if (this.IsDebugFlying())
@@ -1051,13 +1053,13 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		this.AddLightningDamage(hit.m_damage.m_lightning);
 	}
 
-	// Token: 0x0600002E RID: 46 RVA: 0x000041AC File Offset: 0x000023AC
+	// Token: 0x0600002E RID: 46 RVA: 0x000041C8 File Offset: 0x000023C8
 	protected HitData.DamageModifier GetDamageModifier(HitData.DamageType damageType)
 	{
 		return this.GetDamageModifiers().GetModifier(damageType);
 	}
 
-	// Token: 0x0600002F RID: 47 RVA: 0x000041C8 File Offset: 0x000023C8
+	// Token: 0x0600002F RID: 47 RVA: 0x000041E4 File Offset: 0x000023E4
 	protected HitData.DamageModifiers GetDamageModifiers()
 	{
 		HitData.DamageModifiers result = this.m_damageModifiers.Clone();
@@ -1066,7 +1068,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return result;
 	}
 
-	// Token: 0x06000030 RID: 48 RVA: 0x000041F8 File Offset: 0x000023F8
+	// Token: 0x06000030 RID: 48 RVA: 0x00004214 File Offset: 0x00002414
 	public void ApplyDamage(HitData hit, bool showDamageText, bool triggerEffects, HitData.DamageModifier mod = HitData.DamageModifier.Normal)
 	{
 		if (this.IsDebugFlying() || this.IsDead() || this.IsTeleporting() || this.InCutscene())
@@ -1119,7 +1121,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 	{
 	}
 
-	// Token: 0x06000033 RID: 51 RVA: 0x0000431C File Offset: 0x0000251C
+	// Token: 0x06000033 RID: 51 RVA: 0x00004338 File Offset: 0x00002538
 	private void AddFireDamage(float damage)
 	{
 		if (damage <= 0f)
@@ -1134,7 +1136,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		se_Burning.AddFireDamage(damage);
 	}
 
-	// Token: 0x06000034 RID: 52 RVA: 0x00004370 File Offset: 0x00002570
+	// Token: 0x06000034 RID: 52 RVA: 0x0000438C File Offset: 0x0000258C
 	private void AddSpiritDamage(float damage)
 	{
 		if (damage <= 0f)
@@ -1149,7 +1151,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		se_Burning.AddSpiritDamage(damage);
 	}
 
-	// Token: 0x06000035 RID: 53 RVA: 0x000043C4 File Offset: 0x000025C4
+	// Token: 0x06000035 RID: 53 RVA: 0x000043E0 File Offset: 0x000025E0
 	private void AddPoisonDamage(float damage)
 	{
 		if (damage <= 0f)
@@ -1164,7 +1166,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		se_Poison.AddDamage(damage);
 	}
 
-	// Token: 0x06000036 RID: 54 RVA: 0x00004418 File Offset: 0x00002618
+	// Token: 0x06000036 RID: 54 RVA: 0x00004434 File Offset: 0x00002634
 	private void AddFrostDamage(float damage)
 	{
 		if (damage <= 0f)
@@ -1179,7 +1181,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		se_Frost.AddDamage(damage);
 	}
 
-	// Token: 0x06000037 RID: 55 RVA: 0x0000446B File Offset: 0x0000266B
+	// Token: 0x06000037 RID: 55 RVA: 0x00004487 File Offset: 0x00002687
 	private void AddLightningDamage(float damage)
 	{
 		if (damage <= 0f)
@@ -1189,7 +1191,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		this.m_seman.AddStatusEffect("Lightning", true);
 	}
 
-	// Token: 0x06000038 RID: 56 RVA: 0x00004488 File Offset: 0x00002688
+	// Token: 0x06000038 RID: 56 RVA: 0x000044A4 File Offset: 0x000026A4
 	private void AddStaggerDamage(float damage, Vector3 forceDirection)
 	{
 		if (this.m_staggerDamageFactor <= 0f && !this.IsPlayer())
@@ -1207,7 +1209,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x06000039 RID: 57 RVA: 0x00004500 File Offset: 0x00002700
+	// Token: 0x06000039 RID: 57 RVA: 0x0000451C File Offset: 0x0000271C
 	private static void AddDPS(float damage, Character me)
 	{
 		if (me == Player.m_localPlayer)
@@ -1218,7 +1220,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		Character.CalculateDPS("To-others ", Character.m_enemyDamage, damage);
 	}
 
-	// Token: 0x0600003A RID: 58 RVA: 0x00004530 File Offset: 0x00002730
+	// Token: 0x0600003A RID: 58 RVA: 0x0000454C File Offset: 0x0000274C
 	private static void CalculateDPS(string name, List<KeyValuePair<float, float>> damages, float damage)
 	{
 		float time = Time.time;
@@ -1251,7 +1253,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		MessageHud.instance.ShowMessage(MessageHud.MessageType.Center, text, 0, null);
 	}
 
-	// Token: 0x0600003B RID: 59 RVA: 0x00004650 File Offset: 0x00002850
+	// Token: 0x0600003B RID: 59 RVA: 0x0000466C File Offset: 0x0000286C
 	private void UpdateStagger(float dt)
 	{
 		if (this.m_staggerDamageFactor <= 0f && !this.IsPlayer())
@@ -1265,7 +1267,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x0600003C RID: 60 RVA: 0x0000468E File Offset: 0x0000288E
+	// Token: 0x0600003C RID: 60 RVA: 0x000046AA File Offset: 0x000028AA
 	public void Stagger(Vector3 forceDirection)
 	{
 		if (this.m_nview.IsOwner())
@@ -1279,7 +1281,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		});
 	}
 
-	// Token: 0x0600003D RID: 61 RVA: 0x000046C8 File Offset: 0x000028C8
+	// Token: 0x0600003D RID: 61 RVA: 0x000046E4 File Offset: 0x000028E4
 	private void RPC_Stagger(long sender, Vector3 forceDirection)
 	{
 		if (!this.IsStaggering())
@@ -1298,7 +1300,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 	{
 	}
 
-	// Token: 0x0600003F RID: 63 RVA: 0x0000471D File Offset: 0x0000291D
+	// Token: 0x0600003F RID: 63 RVA: 0x00004739 File Offset: 0x00002939
 	public virtual float GetBodyArmor()
 	{
 		return 0f;
@@ -1315,7 +1317,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 	{
 	}
 
-	// Token: 0x06000042 RID: 66 RVA: 0x00004724 File Offset: 0x00002924
+	// Token: 0x06000042 RID: 66 RVA: 0x00004740 File Offset: 0x00002940
 	private void OnCollisionStay(Collision collision)
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -1351,7 +1353,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x06000043 RID: 67 RVA: 0x0000486C File Offset: 0x00002A6C
+	// Token: 0x06000043 RID: 67 RVA: 0x00004888 File Offset: 0x00002A88
 	private void UpdateGroundContact(float dt)
 	{
 		if (!this.m_groundContact)
@@ -1394,7 +1396,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		this.m_maxAirAltitude = base.transform.position.y;
 	}
 
-	// Token: 0x06000044 RID: 68 RVA: 0x000049EC File Offset: 0x00002BEC
+	// Token: 0x06000044 RID: 68 RVA: 0x00004A08 File Offset: 0x00002C08
 	private void ResetGroundContact()
 	{
 		this.m_lowestContactCollider = null;
@@ -1403,7 +1405,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		this.m_groundContactPoint = Vector3.zero;
 	}
 
-	// Token: 0x06000045 RID: 69 RVA: 0x00004A12 File Offset: 0x00002C12
+	// Token: 0x06000045 RID: 69 RVA: 0x00004A2E File Offset: 0x00002C2E
 	public Ship GetStandingOnShip()
 	{
 		if (!this.IsOnGround())
@@ -1417,13 +1419,13 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return null;
 	}
 
-	// Token: 0x06000046 RID: 70 RVA: 0x00004A38 File Offset: 0x00002C38
+	// Token: 0x06000046 RID: 70 RVA: 0x00004A54 File Offset: 0x00002C54
 	public bool IsOnGround()
 	{
 		return this.m_lastGroundTouch < 0.2f || this.m_body.IsSleeping();
 	}
 
-	// Token: 0x06000047 RID: 71 RVA: 0x00004A54 File Offset: 0x00002C54
+	// Token: 0x06000047 RID: 71 RVA: 0x00004A70 File Offset: 0x00002C70
 	private void CheckDeath()
 	{
 		if (this.IsDead())
@@ -1445,7 +1447,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 	{
 	}
 
-	// Token: 0x06000049 RID: 73 RVA: 0x00004A88 File Offset: 0x00002C88
+	// Token: 0x06000049 RID: 73 RVA: 0x00004AA4 File Offset: 0x00002CA4
 	protected virtual void OnDeath()
 	{
 		GameObject[] array = this.m_deathEffects.Create(base.transform.position, base.transform.rotation, base.transform, 1f);
@@ -1484,7 +1486,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		Gogan.LogEvent("Game", "Killed", this.m_name, 0L);
 	}
 
-	// Token: 0x0600004A RID: 74 RVA: 0x00004BC8 File Offset: 0x00002DC8
+	// Token: 0x0600004A RID: 74 RVA: 0x00004BE4 File Offset: 0x00002DE4
 	public float GetHealth()
 	{
 		ZDO zdo = this.m_nview.GetZDO();
@@ -1495,7 +1497,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return zdo.GetFloat("health", this.GetMaxHealth());
 	}
 
-	// Token: 0x0600004B RID: 75 RVA: 0x00004BFC File Offset: 0x00002DFC
+	// Token: 0x0600004B RID: 75 RVA: 0x00004C18 File Offset: 0x00002E18
 	public void SetHealth(float health)
 	{
 		ZDO zdo = this.m_nview.GetZDO();
@@ -1510,7 +1512,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		zdo.Set("health", health);
 	}
 
-	// Token: 0x0600004C RID: 76 RVA: 0x00004C41 File Offset: 0x00002E41
+	// Token: 0x0600004C RID: 76 RVA: 0x00004C5D File Offset: 0x00002E5D
 	public float GetHealthPercentage()
 	{
 		return this.GetHealth() / this.GetMaxHealth();
@@ -1522,7 +1524,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return false;
 	}
 
-	// Token: 0x0600004E RID: 78 RVA: 0x00004C50 File Offset: 0x00002E50
+	// Token: 0x0600004E RID: 78 RVA: 0x00004C6C File Offset: 0x00002E6C
 	public void SetMaxHealth(float health)
 	{
 		if (this.m_nview.GetZDO() != null)
@@ -1535,7 +1537,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x0600004F RID: 79 RVA: 0x00004C85 File Offset: 0x00002E85
+	// Token: 0x0600004F RID: 79 RVA: 0x00004CA1 File Offset: 0x00002EA1
 	public float GetMaxHealth()
 	{
 		if (this.m_nview.GetZDO() != null)
@@ -1545,25 +1547,25 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return this.m_health;
 	}
 
-	// Token: 0x06000050 RID: 80 RVA: 0x0000471D File Offset: 0x0000291D
+	// Token: 0x06000050 RID: 80 RVA: 0x00004739 File Offset: 0x00002939
 	public virtual float GetMaxStamina()
 	{
 		return 0f;
 	}
 
-	// Token: 0x06000051 RID: 81 RVA: 0x00004CB6 File Offset: 0x00002EB6
+	// Token: 0x06000051 RID: 81 RVA: 0x00004CD2 File Offset: 0x00002ED2
 	public virtual float GetStaminaPercentage()
 	{
 		return 1f;
 	}
 
-	// Token: 0x06000052 RID: 82 RVA: 0x00004CBD File Offset: 0x00002EBD
+	// Token: 0x06000052 RID: 82 RVA: 0x00004CD9 File Offset: 0x00002ED9
 	public bool IsBoss()
 	{
 		return this.m_boss;
 	}
 
-	// Token: 0x06000053 RID: 83 RVA: 0x00004CC8 File Offset: 0x00002EC8
+	// Token: 0x06000053 RID: 83 RVA: 0x00004CE4 File Offset: 0x00002EE4
 	public void SetLookDir(Vector3 dir)
 	{
 		if (dir.magnitude <= Mathf.Epsilon)
@@ -1579,7 +1581,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		this.m_lookYaw = Quaternion.LookRotation(dir);
 	}
 
-	// Token: 0x06000054 RID: 84 RVA: 0x00004D18 File Offset: 0x00002F18
+	// Token: 0x06000054 RID: 84 RVA: 0x00004D34 File Offset: 0x00002F34
 	public Vector3 GetLookDir()
 	{
 		return this.m_eye.forward;
@@ -1600,37 +1602,37 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 	{
 	}
 
-	// Token: 0x06000058 RID: 88 RVA: 0x00004D25 File Offset: 0x00002F25
+	// Token: 0x06000058 RID: 88 RVA: 0x00004D41 File Offset: 0x00002F41
 	public void SetMoveDir(Vector3 dir)
 	{
 		this.m_moveDir = dir;
 	}
 
-	// Token: 0x06000059 RID: 89 RVA: 0x00004D2E File Offset: 0x00002F2E
+	// Token: 0x06000059 RID: 89 RVA: 0x00004D4A File Offset: 0x00002F4A
 	public void SetRun(bool run)
 	{
 		this.m_run = run;
 	}
 
-	// Token: 0x0600005A RID: 90 RVA: 0x00004D37 File Offset: 0x00002F37
+	// Token: 0x0600005A RID: 90 RVA: 0x00004D53 File Offset: 0x00002F53
 	public void SetWalk(bool walk)
 	{
 		this.m_walk = walk;
 	}
 
-	// Token: 0x0600005B RID: 91 RVA: 0x00004D40 File Offset: 0x00002F40
+	// Token: 0x0600005B RID: 91 RVA: 0x00004D5C File Offset: 0x00002F5C
 	public bool GetWalk()
 	{
 		return this.m_walk;
 	}
 
-	// Token: 0x0600005C RID: 92 RVA: 0x00004D48 File Offset: 0x00002F48
+	// Token: 0x0600005C RID: 92 RVA: 0x00004D64 File Offset: 0x00002F64
 	protected virtual void UpdateEyeRotation()
 	{
 		this.m_eye.rotation = Quaternion.LookRotation(this.m_lookDir);
 	}
 
-	// Token: 0x0600005D RID: 93 RVA: 0x00004D60 File Offset: 0x00002F60
+	// Token: 0x0600005D RID: 93 RVA: 0x00004D7C File Offset: 0x00002F7C
 	public void OnAutoJump(Vector3 dir, float upVel, float forwardVel)
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -1661,7 +1663,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		this.UpdateBodyFriction();
 	}
 
-	// Token: 0x0600005E RID: 94 RVA: 0x00004E5C File Offset: 0x0000305C
+	// Token: 0x0600005E RID: 94 RVA: 0x00004E78 File Offset: 0x00003078
 	public void Jump()
 	{
 		if (this.IsOnGround() && !this.IsDead() && !this.InAttack() && !this.IsEncumbered() && !this.InDodge() && !this.IsKnockedBack())
@@ -1714,7 +1716,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x0600005F RID: 95 RVA: 0x00005038 File Offset: 0x00003238
+	// Token: 0x0600005F RID: 95 RVA: 0x00005054 File Offset: 0x00003254
 	private void UpdateBodyFriction()
 	{
 		this.m_collider.material.frictionCombine = PhysicMaterialCombine.Multiply;
@@ -1765,7 +1767,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 	{
 	}
 
-	// Token: 0x06000062 RID: 98 RVA: 0x000051DF File Offset: 0x000033DF
+	// Token: 0x06000062 RID: 98 RVA: 0x000051FB File Offset: 0x000033FB
 	public ZDOID GetZDOID()
 	{
 		if (this.m_nview.IsValid())
@@ -1775,13 +1777,13 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return ZDOID.None;
 	}
 
-	// Token: 0x06000063 RID: 99 RVA: 0x00005204 File Offset: 0x00003404
+	// Token: 0x06000063 RID: 99 RVA: 0x00005220 File Offset: 0x00003420
 	public bool IsOwner()
 	{
 		return this.m_nview.IsValid() && this.m_nview.IsOwner();
 	}
 
-	// Token: 0x06000064 RID: 100 RVA: 0x00005220 File Offset: 0x00003420
+	// Token: 0x06000064 RID: 100 RVA: 0x0000523C File Offset: 0x0000343C
 	public long GetOwner()
 	{
 		if (this.m_nview.IsValid())
@@ -1803,7 +1805,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return true;
 	}
 
-	// Token: 0x06000067 RID: 103 RVA: 0x00005242 File Offset: 0x00003442
+	// Token: 0x06000067 RID: 103 RVA: 0x0000525E File Offset: 0x0000345E
 	public void SetInWater(float depth)
 	{
 		this.m_waterLevel = depth;
@@ -1860,7 +1862,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 	{
 	}
 
-	// Token: 0x06000071 RID: 113 RVA: 0x0000524C File Offset: 0x0000344C
+	// Token: 0x06000071 RID: 113 RVA: 0x00005268 File Offset: 0x00003468
 	private void UpdateWater(float dt)
 	{
 		this.m_swimTimer += dt;
@@ -1877,19 +1879,19 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x06000072 RID: 114 RVA: 0x000052A1 File Offset: 0x000034A1
+	// Token: 0x06000072 RID: 114 RVA: 0x000052BD File Offset: 0x000034BD
 	public bool IsSwiming()
 	{
 		return this.m_swimTimer < 0.5f;
 	}
 
-	// Token: 0x06000073 RID: 115 RVA: 0x000052B0 File Offset: 0x000034B0
+	// Token: 0x06000073 RID: 115 RVA: 0x000052CC File Offset: 0x000034CC
 	public bool InWaterSwimDepth()
 	{
 		return this.InWaterDepth() > Mathf.Max(0f, this.m_swimDepth - 0.4f);
 	}
 
-	// Token: 0x06000074 RID: 116 RVA: 0x000052D0 File Offset: 0x000034D0
+	// Token: 0x06000074 RID: 116 RVA: 0x000052EC File Offset: 0x000034EC
 	private float InWaterDepth()
 	{
 		if (this.GetStandingOnShip() != null)
@@ -1899,112 +1901,118 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return Mathf.Max(0f, this.m_waterLevel - base.transform.position.y);
 	}
 
-	// Token: 0x06000075 RID: 117 RVA: 0x00005307 File Offset: 0x00003507
+	// Token: 0x06000075 RID: 117 RVA: 0x00005323 File Offset: 0x00003523
 	public bool InWater()
 	{
 		return this.InWaterDepth() > 0f;
 	}
 
-	// Token: 0x06000076 RID: 118 RVA: 0x00005316 File Offset: 0x00003516
+	// Token: 0x06000076 RID: 118 RVA: 0x00005332 File Offset: 0x00003532
 	protected virtual bool CheckRun(Vector3 moveDir, float dt)
 	{
 		return this.m_run && moveDir.magnitude >= 0.1f && !this.IsCrouching() && !this.IsEncumbered() && !this.InDodge();
 	}
 
-	// Token: 0x06000077 RID: 119 RVA: 0x0000534F File Offset: 0x0000354F
+	// Token: 0x06000077 RID: 119 RVA: 0x0000536B File Offset: 0x0000356B
 	public bool IsRunning()
 	{
 		return this.m_running;
 	}
 
-	// Token: 0x06000078 RID: 120 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000078 RID: 120 RVA: 0x00005373 File Offset: 0x00003573
+	public bool IsWalking()
+	{
+		return this.m_walking;
+	}
+
+	// Token: 0x06000079 RID: 121 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool InPlaceMode()
 	{
 		return false;
 	}
 
-	// Token: 0x06000079 RID: 121 RVA: 0x000027E2 File Offset: 0x000009E2
+	// Token: 0x0600007A RID: 122 RVA: 0x000027E2 File Offset: 0x000009E2
 	public virtual bool HaveStamina(float amount = 0f)
 	{
 		return true;
 	}
 
-	// Token: 0x0600007A RID: 122 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x0600007B RID: 123 RVA: 0x000027E0 File Offset: 0x000009E0
 	public virtual void AddStamina(float v)
 	{
 	}
 
-	// Token: 0x0600007B RID: 123 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x0600007C RID: 124 RVA: 0x000027E0 File Offset: 0x000009E0
 	public virtual void UseStamina(float stamina)
 	{
 	}
 
-	// Token: 0x0600007C RID: 124 RVA: 0x00005358 File Offset: 0x00003558
+	// Token: 0x0600007D RID: 125 RVA: 0x0000537C File Offset: 0x0000357C
 	public bool IsStaggering()
 	{
 		return this.m_animator.GetCurrentAnimatorStateInfo(0).tagHash == Character.m_animatorTagStagger;
 	}
 
-	// Token: 0x0600007D RID: 125 RVA: 0x00005380 File Offset: 0x00003580
+	// Token: 0x0600007E RID: 126 RVA: 0x000053A4 File Offset: 0x000035A4
 	public virtual bool CanMove()
 	{
 		AnimatorStateInfo animatorStateInfo = this.m_animator.IsInTransition(0) ? this.m_animator.GetNextAnimatorStateInfo(0) : this.m_animator.GetCurrentAnimatorStateInfo(0);
 		return animatorStateInfo.tagHash != Character.m_animatorTagFreeze && animatorStateInfo.tagHash != Character.m_animatorTagStagger && animatorStateInfo.tagHash != Character.m_animatorTagSitting;
 	}
 
-	// Token: 0x0600007E RID: 126 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x0600007F RID: 127 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool IsEncumbered()
 	{
 		return false;
 	}
 
-	// Token: 0x0600007F RID: 127 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000080 RID: 128 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool IsTeleporting()
 	{
 		return false;
 	}
 
-	// Token: 0x06000080 RID: 128 RVA: 0x000053E3 File Offset: 0x000035E3
+	// Token: 0x06000081 RID: 129 RVA: 0x00005407 File Offset: 0x00003607
 	private bool CanWallRun()
 	{
 		return this.IsPlayer();
 	}
 
-	// Token: 0x06000081 RID: 129 RVA: 0x000053EB File Offset: 0x000035EB
+	// Token: 0x06000082 RID: 130 RVA: 0x0000540F File Offset: 0x0000360F
 	public void ShowPickupMessage(ItemDrop.ItemData item, int amount)
 	{
 		this.Message(MessageHud.MessageType.TopLeft, "$msg_added " + item.m_shared.m_name, amount, item.GetIcon());
 	}
 
-	// Token: 0x06000082 RID: 130 RVA: 0x00005410 File Offset: 0x00003610
+	// Token: 0x06000083 RID: 131 RVA: 0x00005434 File Offset: 0x00003634
 	public void ShowRemovedMessage(ItemDrop.ItemData item, int amount)
 	{
 		this.Message(MessageHud.MessageType.TopLeft, "$msg_removed " + item.m_shared.m_name, amount, item.GetIcon());
 	}
 
-	// Token: 0x06000083 RID: 131 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x06000084 RID: 132 RVA: 0x000027E0 File Offset: 0x000009E0
 	public virtual void Message(MessageHud.MessageType type, string msg, int amount = 0, Sprite icon = null)
 	{
 	}
 
-	// Token: 0x06000084 RID: 132 RVA: 0x00005435 File Offset: 0x00003635
+	// Token: 0x06000085 RID: 133 RVA: 0x00005459 File Offset: 0x00003659
 	public CapsuleCollider GetCollider()
 	{
 		return this.m_collider;
 	}
 
-	// Token: 0x06000085 RID: 133 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x06000086 RID: 134 RVA: 0x000027E0 File Offset: 0x000009E0
 	public virtual void OnStealthSuccess(Character character, float factor)
 	{
 	}
 
-	// Token: 0x06000086 RID: 134 RVA: 0x00004CB6 File Offset: 0x00002EB6
+	// Token: 0x06000087 RID: 135 RVA: 0x00004CD2 File Offset: 0x00002ED2
 	public virtual float GetStealthFactor()
 	{
 		return 1f;
 	}
 
-	// Token: 0x06000087 RID: 135 RVA: 0x00005440 File Offset: 0x00003640
+	// Token: 0x06000088 RID: 136 RVA: 0x00005464 File Offset: 0x00003664
 	private void UpdateNoise(float dt)
 	{
 		this.m_noiseRange = Mathf.Max(0f, this.m_noiseRange - dt * 4f);
@@ -2016,7 +2024,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x06000088 RID: 136 RVA: 0x000054AC File Offset: 0x000036AC
+	// Token: 0x06000089 RID: 137 RVA: 0x000054D0 File Offset: 0x000036D0
 	public void AddNoise(float range)
 	{
 		if (!this.m_nview.IsValid())
@@ -2034,7 +2042,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		});
 	}
 
-	// Token: 0x06000089 RID: 137 RVA: 0x000054FD File Offset: 0x000036FD
+	// Token: 0x0600008A RID: 138 RVA: 0x00005521 File Offset: 0x00003721
 	private void RPC_AddNoise(long sender, float range)
 	{
 		if (!this.m_nview.IsOwner())
@@ -2048,7 +2056,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x0600008A RID: 138 RVA: 0x00005534 File Offset: 0x00003734
+	// Token: 0x0600008B RID: 139 RVA: 0x00005558 File Offset: 0x00003758
 	public float GetNoiseRange()
 	{
 		if (!this.m_nview.IsValid())
@@ -2062,25 +2070,25 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return this.m_nview.GetZDO().GetFloat("noise", 0f);
 	}
 
-	// Token: 0x0600008B RID: 139 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x0600008C RID: 140 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool InGodMode()
 	{
 		return false;
 	}
 
-	// Token: 0x0600008C RID: 140 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x0600008D RID: 141 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool InGhostMode()
 	{
 		return false;
 	}
 
-	// Token: 0x0600008D RID: 141 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x0600008E RID: 142 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool IsDebugFlying()
 	{
 		return false;
 	}
 
-	// Token: 0x0600008E RID: 142 RVA: 0x00005584 File Offset: 0x00003784
+	// Token: 0x0600008F RID: 143 RVA: 0x000055A8 File Offset: 0x000037A8
 	public virtual string GetHoverText()
 	{
 		Tameable component = base.GetComponent<Tameable>();
@@ -2091,72 +2099,72 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return "";
 	}
 
-	// Token: 0x0600008F RID: 143 RVA: 0x000055AC File Offset: 0x000037AC
+	// Token: 0x06000090 RID: 144 RVA: 0x000055D0 File Offset: 0x000037D0
 	public virtual string GetHoverName()
 	{
 		return Localization.instance.Localize(this.m_name);
 	}
 
-	// Token: 0x06000090 RID: 144 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000091 RID: 145 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool IsHoldingAttack()
 	{
 		return false;
 	}
 
-	// Token: 0x06000091 RID: 145 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000092 RID: 146 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool InAttack()
 	{
 		return false;
 	}
 
-	// Token: 0x06000092 RID: 146 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x06000093 RID: 147 RVA: 0x000027E0 File Offset: 0x000009E0
 	protected virtual void StopEmote()
 	{
 	}
 
-	// Token: 0x06000093 RID: 147 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000094 RID: 148 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool InMinorAction()
 	{
 		return false;
 	}
 
-	// Token: 0x06000094 RID: 148 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000095 RID: 149 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool InDodge()
 	{
 		return false;
 	}
 
-	// Token: 0x06000095 RID: 149 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000096 RID: 150 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool IsDodgeInvincible()
 	{
 		return false;
 	}
 
-	// Token: 0x06000096 RID: 150 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000097 RID: 151 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool InEmote()
 	{
 		return false;
 	}
 
-	// Token: 0x06000097 RID: 151 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000098 RID: 152 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool IsBlocking()
 	{
 		return false;
 	}
 
-	// Token: 0x06000098 RID: 152 RVA: 0x000055BE File Offset: 0x000037BE
+	// Token: 0x06000099 RID: 153 RVA: 0x000055E2 File Offset: 0x000037E2
 	public bool IsFlying()
 	{
 		return this.m_flying;
 	}
 
-	// Token: 0x06000099 RID: 153 RVA: 0x000055C6 File Offset: 0x000037C6
+	// Token: 0x0600009A RID: 154 RVA: 0x000055EA File Offset: 0x000037EA
 	public bool IsKnockedBack()
 	{
 		return this.m_pushForce != Vector3.zero;
 	}
 
-	// Token: 0x0600009A RID: 154 RVA: 0x000055D8 File Offset: 0x000037D8
+	// Token: 0x0600009B RID: 155 RVA: 0x000055FC File Offset: 0x000037FC
 	private void OnDrawGizmosSelected()
 	{
 		if (this.m_nview != null && this.m_nview.GetZDO() != null)
@@ -2173,19 +2181,19 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x0600009B RID: 155 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x0600009C RID: 156 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool TeleportTo(Vector3 pos, Quaternion rot, bool distantTeleport)
 	{
 		return false;
 	}
 
-	// Token: 0x0600009C RID: 156 RVA: 0x0000569D File Offset: 0x0000389D
+	// Token: 0x0600009D RID: 157 RVA: 0x000056C1 File Offset: 0x000038C1
 	private void SyncVelocity()
 	{
 		this.m_nview.GetZDO().Set("BodyVelocity", this.m_body.velocity);
 	}
 
-	// Token: 0x0600009D RID: 157 RVA: 0x000056C0 File Offset: 0x000038C0
+	// Token: 0x0600009E RID: 158 RVA: 0x000056E4 File Offset: 0x000038E4
 	public Vector3 GetVelocity()
 	{
 		if (!this.m_nview.IsValid())
@@ -2199,7 +2207,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return this.m_nview.GetZDO().GetVec3("BodyVelocity", Vector3.zero);
 	}
 
-	// Token: 0x0600009E RID: 158 RVA: 0x00005713 File Offset: 0x00003913
+	// Token: 0x0600009F RID: 159 RVA: 0x00005737 File Offset: 0x00003937
 	public void AddRootMotion(Vector3 vel)
 	{
 		if (this.InDodge() || this.InAttack() || this.InEmote())
@@ -2208,7 +2216,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x0600009F RID: 159 RVA: 0x00005740 File Offset: 0x00003940
+	// Token: 0x060000A0 RID: 160 RVA: 0x00005764 File Offset: 0x00003964
 	private void ApplyRootMotion(ref Vector3 vel)
 	{
 		Vector3 vector = this.m_rootMotion * 55f;
@@ -2219,7 +2227,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		this.m_rootMotion = Vector3.zero;
 	}
 
-	// Token: 0x060000A0 RID: 160 RVA: 0x00005780 File Offset: 0x00003980
+	// Token: 0x060000A1 RID: 161 RVA: 0x000057A4 File Offset: 0x000039A4
 	public static void GetCharactersInRange(Vector3 point, float radius, List<Character> characters)
 	{
 		foreach (Character character in Character.m_characters)
@@ -2231,13 +2239,13 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x060000A1 RID: 161 RVA: 0x000057E8 File Offset: 0x000039E8
+	// Token: 0x060000A2 RID: 162 RVA: 0x0000580C File Offset: 0x00003A0C
 	public static List<Character> GetAllCharacters()
 	{
 		return Character.m_characters;
 	}
 
-	// Token: 0x060000A2 RID: 162 RVA: 0x000057F0 File Offset: 0x000039F0
+	// Token: 0x060000A3 RID: 163 RVA: 0x00005814 File Offset: 0x00003A14
 	public static bool IsCharacterInRange(Vector3 point, float range)
 	{
 		using (List<Character>.Enumerator enumerator = Character.m_characters.GetEnumerator())
@@ -2253,18 +2261,18 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return false;
 	}
 
-	// Token: 0x060000A3 RID: 163 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x060000A4 RID: 164 RVA: 0x000027E0 File Offset: 0x000009E0
 	public virtual void OnTargeted(bool sensed, bool alerted)
 	{
 	}
 
-	// Token: 0x060000A4 RID: 164 RVA: 0x00005854 File Offset: 0x00003A54
+	// Token: 0x060000A5 RID: 165 RVA: 0x00005878 File Offset: 0x00003A78
 	public GameObject GetVisual()
 	{
 		return this.m_visual;
 	}
 
-	// Token: 0x060000A5 RID: 165 RVA: 0x0000585C File Offset: 0x00003A5C
+	// Token: 0x060000A6 RID: 166 RVA: 0x00005880 File Offset: 0x00003A80
 	protected void UpdateLodgroup()
 	{
 		if (this.m_lodGroup == null)
@@ -2277,66 +2285,66 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		this.m_lodGroup.SetLODs(lods);
 	}
 
-	// Token: 0x060000A6 RID: 166 RVA: 0x0000471D File Offset: 0x0000291D
+	// Token: 0x060000A7 RID: 167 RVA: 0x00004739 File Offset: 0x00002939
 	public virtual float GetEquipmentMovementModifier()
 	{
 		return 0f;
 	}
 
-	// Token: 0x060000A7 RID: 167 RVA: 0x00004CB6 File Offset: 0x00002EB6
+	// Token: 0x060000A8 RID: 168 RVA: 0x00004CD2 File Offset: 0x00002ED2
 	protected virtual float GetJogSpeedFactor()
 	{
 		return 1f;
 	}
 
-	// Token: 0x060000A8 RID: 168 RVA: 0x00004CB6 File Offset: 0x00002EB6
+	// Token: 0x060000A9 RID: 169 RVA: 0x00004CD2 File Offset: 0x00002ED2
 	protected virtual float GetRunSpeedFactor()
 	{
 		return 1f;
 	}
 
-	// Token: 0x060000A9 RID: 169 RVA: 0x00004CB6 File Offset: 0x00002EB6
+	// Token: 0x060000AA RID: 170 RVA: 0x00004CD2 File Offset: 0x00002ED2
 	protected virtual float GetAttackSpeedFactorMovement()
 	{
 		return 1f;
 	}
 
-	// Token: 0x060000AA RID: 170 RVA: 0x00004CB6 File Offset: 0x00002EB6
+	// Token: 0x060000AB RID: 171 RVA: 0x00004CD2 File Offset: 0x00002ED2
 	protected virtual float GetAttackSpeedFactorRotation()
 	{
 		return 1f;
 	}
 
-	// Token: 0x060000AB RID: 171 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x060000AC RID: 172 RVA: 0x000027E0 File Offset: 0x000009E0
 	public virtual void RaiseSkill(Skills.SkillType skill, float value = 1f)
 	{
 	}
 
-	// Token: 0x060000AC RID: 172 RVA: 0x000058A9 File Offset: 0x00003AA9
+	// Token: 0x060000AD RID: 173 RVA: 0x000058CD File Offset: 0x00003ACD
 	public virtual Skills GetSkills()
 	{
 		return null;
 	}
 
-	// Token: 0x060000AD RID: 173 RVA: 0x0000471D File Offset: 0x0000291D
+	// Token: 0x060000AE RID: 174 RVA: 0x00004739 File Offset: 0x00002939
 	public virtual float GetSkillFactor(Skills.SkillType skill)
 	{
 		return 0f;
 	}
 
-	// Token: 0x060000AE RID: 174 RVA: 0x000058AC File Offset: 0x00003AAC
+	// Token: 0x060000AF RID: 175 RVA: 0x000058D0 File Offset: 0x00003AD0
 	public virtual float GetRandomSkillFactor(Skills.SkillType skill)
 	{
 		return UnityEngine.Random.Range(0.75f, 1f);
 	}
 
-	// Token: 0x060000AF RID: 175 RVA: 0x000058C0 File Offset: 0x00003AC0
+	// Token: 0x060000B0 RID: 176 RVA: 0x000058E4 File Offset: 0x00003AE4
 	public bool IsMonsterFaction()
 	{
 		return !this.IsTamed() && (this.m_faction == Character.Faction.ForestMonsters || this.m_faction == Character.Faction.Undead || this.m_faction == Character.Faction.Demon || this.m_faction == Character.Faction.PlainsMonsters || this.m_faction == Character.Faction.MountainMonsters || this.m_faction == Character.Faction.SeaMonsters);
 	}
 
-	// Token: 0x060000B0 RID: 176 RVA: 0x0000590F File Offset: 0x00003B0F
+	// Token: 0x060000B1 RID: 177 RVA: 0x00005933 File Offset: 0x00003B33
 	public Transform GetTransform()
 	{
 		if (this == null)
@@ -2346,25 +2354,25 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return base.transform;
 	}
 
-	// Token: 0x060000B1 RID: 177 RVA: 0x00005922 File Offset: 0x00003B22
+	// Token: 0x060000B2 RID: 178 RVA: 0x00005946 File Offset: 0x00003B46
 	public Collider GetLastGroundCollider()
 	{
 		return this.m_lastGroundCollider;
 	}
 
-	// Token: 0x060000B2 RID: 178 RVA: 0x0000592A File Offset: 0x00003B2A
+	// Token: 0x060000B3 RID: 179 RVA: 0x0000594E File Offset: 0x00003B4E
 	public Vector3 GetLastGroundNormal()
 	{
 		return this.m_groundContactNormal;
 	}
 
-	// Token: 0x060000B3 RID: 179 RVA: 0x00005932 File Offset: 0x00003B32
+	// Token: 0x060000B4 RID: 180 RVA: 0x00005956 File Offset: 0x00003B56
 	public void ResetCloth()
 	{
 		this.m_nview.InvokeRPC(ZNetView.Everybody, "ResetCloth", Array.Empty<object>());
 	}
 
-	// Token: 0x060000B4 RID: 180 RVA: 0x00005950 File Offset: 0x00003B50
+	// Token: 0x060000B5 RID: 181 RVA: 0x00005974 File Offset: 0x00003B74
 	private void RPC_ResetCloth(long sender)
 	{
 		foreach (Cloth cloth in base.GetComponentsInChildren<Cloth>())
@@ -2377,7 +2385,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		}
 	}
 
-	// Token: 0x060000B5 RID: 181 RVA: 0x0000598C File Offset: 0x00003B8C
+	// Token: 0x060000B6 RID: 182 RVA: 0x000059B0 File Offset: 0x00003BB0
 	public virtual bool GetRelativePosition(out ZDOID parent, out Vector3 relativePos, out Vector3 relativeVel)
 	{
 		relativeVel = Vector3.zero;
@@ -2397,31 +2405,31 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return false;
 	}
 
-	// Token: 0x060000B6 RID: 182 RVA: 0x00005A4A File Offset: 0x00003C4A
+	// Token: 0x060000B7 RID: 183 RVA: 0x00005A6E File Offset: 0x00003C6E
 	public Quaternion GetLookYaw()
 	{
 		return this.m_lookYaw;
 	}
 
-	// Token: 0x060000B7 RID: 183 RVA: 0x00005A52 File Offset: 0x00003C52
+	// Token: 0x060000B8 RID: 184 RVA: 0x00005A76 File Offset: 0x00003C76
 	public Vector3 GetMoveDir()
 	{
 		return this.m_moveDir;
 	}
 
-	// Token: 0x060000B8 RID: 184 RVA: 0x00005A5A File Offset: 0x00003C5A
+	// Token: 0x060000B9 RID: 185 RVA: 0x00005A7E File Offset: 0x00003C7E
 	public BaseAI GetBaseAI()
 	{
 		return this.m_baseAI;
 	}
 
-	// Token: 0x060000B9 RID: 185 RVA: 0x00005A62 File Offset: 0x00003C62
+	// Token: 0x060000BA RID: 186 RVA: 0x00005A86 File Offset: 0x00003C86
 	public float GetMass()
 	{
 		return this.m_body.mass;
 	}
 
-	// Token: 0x060000BA RID: 186 RVA: 0x00005A70 File Offset: 0x00003C70
+	// Token: 0x060000BB RID: 187 RVA: 0x00005A94 File Offset: 0x00003C94
 	protected void SetVisible(bool visible)
 	{
 		if (this.m_lodGroup == null)
@@ -2441,7 +2449,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		this.m_lodGroup.localReferencePoint = new Vector3(999999f, 999999f, 999999f);
 	}
 
-	// Token: 0x060000BB RID: 187 RVA: 0x00005AD6 File Offset: 0x00003CD6
+	// Token: 0x060000BC RID: 188 RVA: 0x00005AFA File Offset: 0x00003CFA
 	public void SetTamed(bool tamed)
 	{
 		if (!this.m_nview.IsValid())
@@ -2458,7 +2466,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		});
 	}
 
-	// Token: 0x060000BC RID: 188 RVA: 0x00005B0F File Offset: 0x00003D0F
+	// Token: 0x060000BD RID: 189 RVA: 0x00005B33 File Offset: 0x00003D33
 	private void RPC_SetTamed(long sender, bool tamed)
 	{
 		if (!this.m_nview.IsOwner())
@@ -2473,7 +2481,7 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		this.m_nview.GetZDO().Set("tamed", this.m_tamed);
 	}
 
-	// Token: 0x060000BD RID: 189 RVA: 0x00005B4C File Offset: 0x00003D4C
+	// Token: 0x060000BE RID: 190 RVA: 0x00005B70 File Offset: 0x00003D70
 	public bool IsTamed()
 	{
 		if (!this.m_nview.IsValid())
@@ -2488,25 +2496,25 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 		return this.m_tamed;
 	}
 
-	// Token: 0x060000BE RID: 190 RVA: 0x00005BBA File Offset: 0x00003DBA
+	// Token: 0x060000BF RID: 191 RVA: 0x00005BDE File Offset: 0x00003DDE
 	public SEMan GetSEMan()
 	{
 		return this.m_seman;
 	}
 
-	// Token: 0x060000BF RID: 191 RVA: 0x00005BC2 File Offset: 0x00003DC2
+	// Token: 0x060000C0 RID: 192 RVA: 0x00005BE6 File Offset: 0x00003DE6
 	public bool InInterior()
 	{
 		return base.transform.position.y > 3000f;
 	}
 
-	// Token: 0x060000C0 RID: 192 RVA: 0x00005BDB File Offset: 0x00003DDB
+	// Token: 0x060000C1 RID: 193 RVA: 0x00005BFF File Offset: 0x00003DFF
 	public static void SetDPSDebug(bool enabled)
 	{
 		Character.m_dpsDebugEnabled = enabled;
 	}
 
-	// Token: 0x060000C1 RID: 193 RVA: 0x00005BE3 File Offset: 0x00003DE3
+	// Token: 0x060000C2 RID: 194 RVA: 0x00005C07 File Offset: 0x00003E07
 	public static bool IsDPSDebugEnabled()
 	{
 		return Character.m_dpsDebugEnabled;
@@ -2893,82 +2901,85 @@ public class Character : MonoBehaviour, IDestructible, Hoverable, IWaterInteract
 	protected bool m_running;
 
 	// Token: 0x0400007E RID: 126
-	private Vector3 m_originalLocalRef;
+	protected bool m_walking;
 
 	// Token: 0x0400007F RID: 127
-	private bool m_lodVisible = true;
+	private Vector3 m_originalLocalRef;
 
 	// Token: 0x04000080 RID: 128
-	private static int m_smokeRayMask = 0;
+	private bool m_lodVisible = true;
 
 	// Token: 0x04000081 RID: 129
-	private float m_smokeCheckTimer;
+	private static int m_smokeRayMask = 0;
 
 	// Token: 0x04000082 RID: 130
-	private static bool m_dpsDebugEnabled = false;
+	private float m_smokeCheckTimer;
 
 	// Token: 0x04000083 RID: 131
-	private static List<KeyValuePair<float, float>> m_enemyDamage = new List<KeyValuePair<float, float>>();
+	private static bool m_dpsDebugEnabled = false;
 
 	// Token: 0x04000084 RID: 132
-	private static List<KeyValuePair<float, float>> m_playerDamage = new List<KeyValuePair<float, float>>();
+	private static List<KeyValuePair<float, float>> m_enemyDamage = new List<KeyValuePair<float, float>>();
 
 	// Token: 0x04000085 RID: 133
-	private static List<Character> m_characters = new List<Character>();
+	private static List<KeyValuePair<float, float>> m_playerDamage = new List<KeyValuePair<float, float>>();
 
 	// Token: 0x04000086 RID: 134
-	protected static int m_characterLayer = 0;
+	private static List<Character> m_characters = new List<Character>();
 
 	// Token: 0x04000087 RID: 135
-	protected static int m_characterNetLayer = 0;
+	protected static int m_characterLayer = 0;
 
 	// Token: 0x04000088 RID: 136
-	protected static int m_characterGhostLayer = 0;
+	protected static int m_characterNetLayer = 0;
 
 	// Token: 0x04000089 RID: 137
-	protected static int m_animatorTagFreeze = Animator.StringToHash("freeze");
+	protected static int m_characterGhostLayer = 0;
 
 	// Token: 0x0400008A RID: 138
-	protected static int m_animatorTagStagger = Animator.StringToHash("stagger");
+	protected static int m_animatorTagFreeze = Animator.StringToHash("freeze");
 
 	// Token: 0x0400008B RID: 139
+	protected static int m_animatorTagStagger = Animator.StringToHash("stagger");
+
+	// Token: 0x0400008C RID: 140
 	protected static int m_animatorTagSitting = Animator.StringToHash("sitting");
 
 	// Token: 0x0200011B RID: 283
 	public enum Faction
 	{
-		// Token: 0x04000FA3 RID: 4003
-		Players,
-		// Token: 0x04000FA4 RID: 4004
-		AnimalsVeg,
-		// Token: 0x04000FA5 RID: 4005
-		ForestMonsters,
-		// Token: 0x04000FA6 RID: 4006
-		Undead,
-		// Token: 0x04000FA7 RID: 4007
-		Demon,
-		// Token: 0x04000FA8 RID: 4008
-		MountainMonsters,
 		// Token: 0x04000FA9 RID: 4009
-		SeaMonsters,
+		Players,
 		// Token: 0x04000FAA RID: 4010
-		PlainsMonsters,
+		AnimalsVeg,
 		// Token: 0x04000FAB RID: 4011
+		ForestMonsters,
+		// Token: 0x04000FAC RID: 4012
+		Undead,
+		// Token: 0x04000FAD RID: 4013
+		Demon,
+		// Token: 0x04000FAE RID: 4014
+		MountainMonsters,
+		// Token: 0x04000FAF RID: 4015
+		SeaMonsters,
+		// Token: 0x04000FB0 RID: 4016
+		PlainsMonsters,
+		// Token: 0x04000FB1 RID: 4017
 		Boss
 	}
 
 	// Token: 0x0200011C RID: 284
 	public enum GroundTiltType
 	{
-		// Token: 0x04000FAD RID: 4013
+		// Token: 0x04000FB3 RID: 4019
 		None,
-		// Token: 0x04000FAE RID: 4014
+		// Token: 0x04000FB4 RID: 4020
 		Pitch,
-		// Token: 0x04000FAF RID: 4015
+		// Token: 0x04000FB5 RID: 4021
 		Full,
-		// Token: 0x04000FB0 RID: 4016
+		// Token: 0x04000FB6 RID: 4022
 		PitchRaycast,
-		// Token: 0x04000FB1 RID: 4017
+		// Token: 0x04000FB7 RID: 4023
 		FullRaycast
 	}
 }

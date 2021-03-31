@@ -5,14 +5,14 @@ using UnityEngine;
 // Token: 0x020000AF RID: 175
 public class SpawnArea : MonoBehaviour
 {
-	// Token: 0x06000BC2 RID: 3010 RVA: 0x00053995 File Offset: 0x00051B95
+	// Token: 0x06000BC3 RID: 3011 RVA: 0x00053B1D File Offset: 0x00051D1D
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
 		base.InvokeRepeating("UpdateSpawn", 2f, 2f);
 	}
 
-	// Token: 0x06000BC3 RID: 3011 RVA: 0x000539B8 File Offset: 0x00051BB8
+	// Token: 0x06000BC4 RID: 3012 RVA: 0x00053B40 File Offset: 0x00051D40
 	private void UpdateSpawn()
 	{
 		if (!this.m_nview.IsOwner())
@@ -35,7 +35,7 @@ public class SpawnArea : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000BC4 RID: 3012 RVA: 0x00053A38 File Offset: 0x00051C38
+	// Token: 0x06000BC5 RID: 3013 RVA: 0x00053BC0 File Offset: 0x00051DC0
 	private bool SpawnOne()
 	{
 		int num;
@@ -82,7 +82,7 @@ public class SpawnArea : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000BC5 RID: 3013 RVA: 0x00053B40 File Offset: 0x00051D40
+	// Token: 0x06000BC6 RID: 3014 RVA: 0x00053CC8 File Offset: 0x00051EC8
 	private bool FindSpawnPoint(GameObject prefab, out Vector3 point)
 	{
 		prefab.GetComponent<BaseAI>();
@@ -101,7 +101,7 @@ public class SpawnArea : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000BC6 RID: 3014 RVA: 0x00053BFC File Offset: 0x00051DFC
+	// Token: 0x06000BC7 RID: 3015 RVA: 0x00053D84 File Offset: 0x00051F84
 	private SpawnArea.SpawnData SelectWeightedPrefab()
 	{
 		if (this.m_prefabs.Count == 0)
@@ -126,7 +126,7 @@ public class SpawnArea : MonoBehaviour
 		return this.m_prefabs[this.m_prefabs.Count - 1];
 	}
 
-	// Token: 0x06000BC7 RID: 3015 RVA: 0x00053CE8 File Offset: 0x00051EE8
+	// Token: 0x06000BC8 RID: 3016 RVA: 0x00053E70 File Offset: 0x00052070
 	private void GetInstances(out int near, out int total)
 	{
 		near = 0;
@@ -149,7 +149,7 @@ public class SpawnArea : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000BC8 RID: 3016 RVA: 0x00053D84 File Offset: 0x00051F84
+	// Token: 0x06000BC9 RID: 3017 RVA: 0x00053F0C File Offset: 0x0005210C
 	private bool IsSpawnPrefab(GameObject go)
 	{
 		string name = go.name;
@@ -163,7 +163,7 @@ public class SpawnArea : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000BC9 RID: 3017 RVA: 0x00053DF4 File Offset: 0x00051FF4
+	// Token: 0x06000BCA RID: 3018 RVA: 0x00053F7C File Offset: 0x0005217C
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.red;
@@ -172,66 +172,66 @@ public class SpawnArea : MonoBehaviour
 		Gizmos.DrawWireSphere(base.transform.position, this.m_nearRadius);
 	}
 
-	// Token: 0x04000AEA RID: 2794
+	// Token: 0x04000AF0 RID: 2800
 	private const float dt = 2f;
 
-	// Token: 0x04000AEB RID: 2795
+	// Token: 0x04000AF1 RID: 2801
 	public List<SpawnArea.SpawnData> m_prefabs = new List<SpawnArea.SpawnData>();
 
-	// Token: 0x04000AEC RID: 2796
+	// Token: 0x04000AF2 RID: 2802
 	public float m_levelupChance = 15f;
 
-	// Token: 0x04000AED RID: 2797
+	// Token: 0x04000AF3 RID: 2803
 	public float m_spawnIntervalSec = 30f;
 
-	// Token: 0x04000AEE RID: 2798
+	// Token: 0x04000AF4 RID: 2804
 	public float m_triggerDistance = 256f;
 
-	// Token: 0x04000AEF RID: 2799
+	// Token: 0x04000AF5 RID: 2805
 	public bool m_setPatrolSpawnPoint = true;
 
-	// Token: 0x04000AF0 RID: 2800
+	// Token: 0x04000AF6 RID: 2806
 	public float m_spawnRadius = 2f;
 
-	// Token: 0x04000AF1 RID: 2801
+	// Token: 0x04000AF7 RID: 2807
 	public float m_nearRadius = 10f;
 
-	// Token: 0x04000AF2 RID: 2802
+	// Token: 0x04000AF8 RID: 2808
 	public float m_farRadius = 1000f;
 
-	// Token: 0x04000AF3 RID: 2803
+	// Token: 0x04000AF9 RID: 2809
 	public int m_maxNear = 3;
 
-	// Token: 0x04000AF4 RID: 2804
+	// Token: 0x04000AFA RID: 2810
 	public int m_maxTotal = 20;
 
-	// Token: 0x04000AF5 RID: 2805
+	// Token: 0x04000AFB RID: 2811
 	public bool m_onGroundOnly;
 
-	// Token: 0x04000AF6 RID: 2806
+	// Token: 0x04000AFC RID: 2812
 	public EffectList m_spawnEffects = new EffectList();
 
-	// Token: 0x04000AF7 RID: 2807
+	// Token: 0x04000AFD RID: 2813
 	private ZNetView m_nview;
 
-	// Token: 0x04000AF8 RID: 2808
+	// Token: 0x04000AFE RID: 2814
 	private float m_spawnTimer;
 
 	// Token: 0x02000185 RID: 389
 	[Serializable]
 	public class SpawnData
 	{
-		// Token: 0x040011DA RID: 4570
+		// Token: 0x040011E1 RID: 4577
 		public GameObject m_prefab;
 
-		// Token: 0x040011DB RID: 4571
+		// Token: 0x040011E2 RID: 4578
 		public float m_weight;
 
-		// Token: 0x040011DC RID: 4572
+		// Token: 0x040011E3 RID: 4579
 		[Header("Level")]
 		public int m_maxLevel = 1;
 
-		// Token: 0x040011DD RID: 4573
+		// Token: 0x040011E4 RID: 4580
 		public int m_minLevel = 1;
 	}
 }

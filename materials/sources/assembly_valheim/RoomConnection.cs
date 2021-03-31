@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x02000119 RID: 281
 public class RoomConnection : MonoBehaviour
 {
-	// Token: 0x060010AF RID: 4271 RVA: 0x00076858 File Offset: 0x00074A58
+	// Token: 0x060010B0 RID: 4272 RVA: 0x000769E0 File Offset: 0x00074BE0
 	private void OnDrawGizmos()
 	{
 		if (this.m_entrance)
@@ -21,22 +21,22 @@ public class RoomConnection : MonoBehaviour
 		Gizmos.matrix = Matrix4x4.identity;
 	}
 
-	// Token: 0x060010B0 RID: 4272 RVA: 0x00076920 File Offset: 0x00074B20
+	// Token: 0x060010B1 RID: 4273 RVA: 0x00076AA8 File Offset: 0x00074CA8
 	public bool TestContact(RoomConnection other)
 	{
 		return Vector3.Distance(base.transform.position, other.transform.position) < 0.1f;
 	}
 
-	// Token: 0x04000F9B RID: 3995
+	// Token: 0x04000FA1 RID: 4001
 	public string m_type = "";
 
-	// Token: 0x04000F9C RID: 3996
+	// Token: 0x04000FA2 RID: 4002
 	public bool m_entrance;
 
-	// Token: 0x04000F9D RID: 3997
+	// Token: 0x04000FA3 RID: 4003
 	public bool m_allowDoor = true;
 
-	// Token: 0x04000F9E RID: 3998
+	// Token: 0x04000FA4 RID: 4004
 	[NonSerialized]
 	public int m_placeOrder;
 }

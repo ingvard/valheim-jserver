@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class InventoryGui : MonoBehaviour
 {
 	// Token: 0x1700000A RID: 10
-	// (get) Token: 0x06000539 RID: 1337 RVA: 0x0002C1C2 File Offset: 0x0002A3C2
+	// (get) Token: 0x0600053A RID: 1338 RVA: 0x0002C276 File Offset: 0x0002A476
 	public static InventoryGui instance
 	{
 		get
@@ -17,7 +17,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600053A RID: 1338 RVA: 0x0002C1CC File Offset: 0x0002A3CC
+	// Token: 0x0600053B RID: 1339 RVA: 0x0002C280 File Offset: 0x0002A480
 	private void Awake()
 	{
 		InventoryGui.m_instance = this;
@@ -56,13 +56,13 @@ public class InventoryGui : MonoBehaviour
 		this.m_tabUpgrade.interactable = true;
 	}
 
-	// Token: 0x0600053B RID: 1339 RVA: 0x0002C47D File Offset: 0x0002A67D
+	// Token: 0x0600053C RID: 1340 RVA: 0x0002C531 File Offset: 0x0002A731
 	private void OnDestroy()
 	{
 		InventoryGui.m_instance = null;
 	}
 
-	// Token: 0x0600053C RID: 1340 RVA: 0x0002C488 File Offset: 0x0002A688
+	// Token: 0x0600053D RID: 1341 RVA: 0x0002C53C File Offset: 0x0002A73C
 	private void Update()
 	{
 		bool @bool = this.m_animator.GetBool("visible");
@@ -124,7 +124,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600053D RID: 1341 RVA: 0x0002C6F4 File Offset: 0x0002A8F4
+	// Token: 0x0600053E RID: 1342 RVA: 0x0002C7A8 File Offset: 0x0002A9A8
 	private void UpdateGamepad()
 	{
 		if (!this.m_inventoryGroup.IsActive())
@@ -149,7 +149,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600053E RID: 1342 RVA: 0x0002C76C File Offset: 0x0002A96C
+	// Token: 0x0600053F RID: 1343 RVA: 0x0002C820 File Offset: 0x0002AA20
 	private void SetActiveGroup(int index)
 	{
 		index = Mathf.Clamp(index, 0, this.m_uiGroups.Length - 1);
@@ -160,7 +160,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600053F RID: 1343 RVA: 0x0002C7BC File Offset: 0x0002A9BC
+	// Token: 0x06000540 RID: 1344 RVA: 0x0002C870 File Offset: 0x0002AA70
 	private void UpdateCharacterStats(Player player)
 	{
 		PlayerProfile playerProfile = Game.instance.GetPlayerProfile();
@@ -171,7 +171,7 @@ public class InventoryGui : MonoBehaviour
 		player.SetPVP(this.m_pvp.isOn);
 	}
 
-	// Token: 0x06000540 RID: 1344 RVA: 0x0002C820 File Offset: 0x0002AA20
+	// Token: 0x06000541 RID: 1345 RVA: 0x0002C8D4 File Offset: 0x0002AAD4
 	private void UpdateInventoryWeight(Player player)
 	{
 		int num = Mathf.CeilToInt(player.GetInventory().GetTotalWeight());
@@ -195,7 +195,7 @@ public class InventoryGui : MonoBehaviour
 		this.m_weight.text = num + "/" + num2;
 	}
 
-	// Token: 0x06000541 RID: 1345 RVA: 0x0002C8E4 File Offset: 0x0002AAE4
+	// Token: 0x06000542 RID: 1346 RVA: 0x0002C998 File Offset: 0x0002AB98
 	private void UpdateContainerWeight()
 	{
 		if (this.m_currentContainer == null)
@@ -206,14 +206,14 @@ public class InventoryGui : MonoBehaviour
 		this.m_containerWeight.text = num.ToString();
 	}
 
-	// Token: 0x06000542 RID: 1346 RVA: 0x0002C928 File Offset: 0x0002AB28
+	// Token: 0x06000543 RID: 1347 RVA: 0x0002C9DC File Offset: 0x0002ABDC
 	private void UpdateInventory(Player player)
 	{
 		Inventory inventory = player.GetInventory();
 		this.m_playerGrid.UpdateInventory(inventory, player, this.m_dragItem);
 	}
 
-	// Token: 0x06000543 RID: 1347 RVA: 0x0002C950 File Offset: 0x0002AB50
+	// Token: 0x06000544 RID: 1348 RVA: 0x0002CA04 File Offset: 0x0002AC04
 	private void UpdateContainer(Player player)
 	{
 		if (!this.m_animator.GetBool("visible"))
@@ -243,7 +243,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000544 RID: 1348 RVA: 0x0002CA4C File Offset: 0x0002AC4C
+	// Token: 0x06000545 RID: 1349 RVA: 0x0002CB00 File Offset: 0x0002AD00
 	private RectTransform GetSelectedGamepadElement()
 	{
 		RectTransform gamepadSelectedElement = this.m_playerGrid.GetGamepadSelectedElement();
@@ -258,7 +258,7 @@ public class InventoryGui : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000545 RID: 1349 RVA: 0x0002CA90 File Offset: 0x0002AC90
+	// Token: 0x06000546 RID: 1350 RVA: 0x0002CB44 File Offset: 0x0002AD44
 	private void UpdateItemDrag()
 	{
 		if (this.m_dragGo)
@@ -294,7 +294,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000546 RID: 1350 RVA: 0x0002CBF0 File Offset: 0x0002ADF0
+	// Token: 0x06000547 RID: 1351 RVA: 0x0002CCA4 File Offset: 0x0002AEA4
 	private void OnTakeAll()
 	{
 		if (Player.m_localPlayer.IsTeleporting())
@@ -309,7 +309,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000547 RID: 1351 RVA: 0x0002CC3C File Offset: 0x0002AE3C
+	// Token: 0x06000548 RID: 1352 RVA: 0x0002CCF0 File Offset: 0x0002AEF0
 	private void OnDropOutside()
 	{
 		if (this.m_dragGo)
@@ -329,7 +329,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000548 RID: 1352 RVA: 0x0002CCE5 File Offset: 0x0002AEE5
+	// Token: 0x06000549 RID: 1353 RVA: 0x0002CD99 File Offset: 0x0002AF99
 	private void OnRightClickItem(InventoryGrid grid, ItemDrop.ItemData item, Vector2i pos)
 	{
 		if (item != null && Player.m_localPlayer)
@@ -338,7 +338,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000549 RID: 1353 RVA: 0x0002CD08 File Offset: 0x0002AF08
+	// Token: 0x0600054A RID: 1354 RVA: 0x0002CDBC File Offset: 0x0002AFBC
 	private void OnSelectedItem(InventoryGrid grid, ItemDrop.ItemData item, Vector2i pos, InventoryGrid.Modifier mod)
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -442,19 +442,19 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600054A RID: 1354 RVA: 0x0002CFD7 File Offset: 0x0002B1D7
+	// Token: 0x0600054B RID: 1355 RVA: 0x0002D08B File Offset: 0x0002B28B
 	public static bool IsVisible()
 	{
 		return InventoryGui.m_instance && InventoryGui.m_instance.m_hiddenFrames <= 1;
 	}
 
-	// Token: 0x0600054B RID: 1355 RVA: 0x0002CFF7 File Offset: 0x0002B1F7
+	// Token: 0x0600054C RID: 1356 RVA: 0x0002D0AB File Offset: 0x0002B2AB
 	public bool IsContainerOpen()
 	{
 		return this.m_currentContainer != null;
 	}
 
-	// Token: 0x0600054C RID: 1356 RVA: 0x0002D008 File Offset: 0x0002B208
+	// Token: 0x0600054D RID: 1357 RVA: 0x0002D0BC File Offset: 0x0002B2BC
 	public void Show(Container container)
 	{
 		Hud.HidePieceSelection();
@@ -474,7 +474,7 @@ public class InventoryGui : MonoBehaviour
 		Gogan.LogEvent("Screen", "Enter", "Inventory", 0L);
 	}
 
-	// Token: 0x0600054D RID: 1357 RVA: 0x0002D094 File Offset: 0x0002B294
+	// Token: 0x0600054E RID: 1358 RVA: 0x0002D148 File Offset: 0x0002B348
 	public void Hide()
 	{
 		if (!this.m_animator.GetBool("visible"))
@@ -501,7 +501,7 @@ public class InventoryGui : MonoBehaviour
 		Gogan.LogEvent("Screen", "Exit", "Inventory", 0L);
 	}
 
-	// Token: 0x0600054E RID: 1358 RVA: 0x0002D194 File Offset: 0x0002B394
+	// Token: 0x0600054F RID: 1359 RVA: 0x0002D248 File Offset: 0x0002B448
 	private void CloseContainer()
 	{
 		if (this.m_dragInventory != null && this.m_dragInventory != Player.m_localPlayer.GetInventory())
@@ -518,13 +518,13 @@ public class InventoryGui : MonoBehaviour
 		this.m_container.gameObject.SetActive(false);
 	}
 
-	// Token: 0x0600054F RID: 1359 RVA: 0x0002D20D File Offset: 0x0002B40D
+	// Token: 0x06000550 RID: 1360 RVA: 0x0002D2C1 File Offset: 0x0002B4C1
 	private void SetupCrafting()
 	{
 		this.UpdateCraftingPanel(true);
 	}
 
-	// Token: 0x06000550 RID: 1360 RVA: 0x0002D218 File Offset: 0x0002B418
+	// Token: 0x06000551 RID: 1361 RVA: 0x0002D2CC File Offset: 0x0002B4CC
 	private void UpdateCraftingPanel(bool focusView = false)
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -555,7 +555,7 @@ public class InventoryGui : MonoBehaviour
 		this.SetRecipe(0, focusView);
 	}
 
-	// Token: 0x06000551 RID: 1361 RVA: 0x0002D2D4 File Offset: 0x0002B4D4
+	// Token: 0x06000552 RID: 1362 RVA: 0x0002D388 File Offset: 0x0002B588
 	private void UpdateRecipeList(List<Recipe> recipes)
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -626,7 +626,7 @@ public class InventoryGui : MonoBehaviour
 		this.m_recipeListRoot.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, num);
 	}
 
-	// Token: 0x06000552 RID: 1362 RVA: 0x0002D5BC File Offset: 0x0002B7BC
+	// Token: 0x06000553 RID: 1363 RVA: 0x0002D670 File Offset: 0x0002B870
 	private void AddRecipeToList(Player player, Recipe recipe, ItemDrop.ItemData item, bool canCraft)
 	{
 		int count = this.m_recipeList.Count;
@@ -672,14 +672,14 @@ public class InventoryGui : MonoBehaviour
 		this.m_availableRecipes.Add(new KeyValuePair<Recipe, ItemDrop.ItemData>(recipe, item));
 	}
 
-	// Token: 0x06000553 RID: 1363 RVA: 0x0002D804 File Offset: 0x0002BA04
+	// Token: 0x06000554 RID: 1364 RVA: 0x0002D8B8 File Offset: 0x0002BAB8
 	private void OnSelectedRecipe(GameObject button)
 	{
 		int index = this.FindSelectedRecipe(button);
 		this.SetRecipe(index, false);
 	}
 
-	// Token: 0x06000554 RID: 1364 RVA: 0x0002D824 File Offset: 0x0002BA24
+	// Token: 0x06000555 RID: 1365 RVA: 0x0002D8D8 File Offset: 0x0002BAD8
 	private void UpdateRecipeGamepadInput()
 	{
 		if (this.m_availableRecipes.Count > 0)
@@ -695,7 +695,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000555 RID: 1365 RVA: 0x0002D890 File Offset: 0x0002BA90
+	// Token: 0x06000556 RID: 1366 RVA: 0x0002D944 File Offset: 0x0002BB44
 	private int GetSelectedRecipeIndex()
 	{
 		int result = 0;
@@ -709,7 +709,7 @@ public class InventoryGui : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x06000556 RID: 1366 RVA: 0x0002D900 File Offset: 0x0002BB00
+	// Token: 0x06000557 RID: 1367 RVA: 0x0002D9B4 File Offset: 0x0002BBB4
 	private void SetRecipe(int index, bool center)
 	{
 		ZLog.Log("Setting selected recipe " + index);
@@ -736,7 +736,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000557 RID: 1367 RVA: 0x0002D9EC File Offset: 0x0002BBEC
+	// Token: 0x06000558 RID: 1368 RVA: 0x0002DAA0 File Offset: 0x0002BCA0
 	private void UpdateRecipe(Player player, float dt)
 	{
 		CraftingStation currentCraftingStation = player.GetCurrentCraftingStation();
@@ -879,7 +879,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000558 RID: 1368 RVA: 0x0002E03C File Offset: 0x0002C23C
+	// Token: 0x06000559 RID: 1369 RVA: 0x0002E0F0 File Offset: 0x0002C2F0
 	private void SetupRequirementList(int quality, Player player, bool allowedQuality)
 	{
 		int i = 0;
@@ -900,7 +900,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000559 RID: 1369 RVA: 0x0002E0B0 File Offset: 0x0002C2B0
+	// Token: 0x0600055A RID: 1370 RVA: 0x0002E164 File Offset: 0x0002C364
 	private void SetupUpgradeItem(Recipe recipe, ItemDrop.ItemData item)
 	{
 		if (item == null)
@@ -935,7 +935,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600055A RID: 1370 RVA: 0x0002E278 File Offset: 0x0002C478
+	// Token: 0x0600055B RID: 1371 RVA: 0x0002E32C File Offset: 0x0002C52C
 	public static bool SetupRequirement(Transform elementRoot, Piece.Requirement req, Player player, bool craft, int quality)
 	{
 		Image component = elementRoot.transform.Find("res_icon").GetComponent<Image>();
@@ -971,7 +971,7 @@ public class InventoryGui : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0600055B RID: 1371 RVA: 0x0002E3F4 File Offset: 0x0002C5F4
+	// Token: 0x0600055C RID: 1372 RVA: 0x0002E4A8 File Offset: 0x0002C6A8
 	public static void HideRequirement(Transform elementRoot)
 	{
 		Image component = elementRoot.transform.Find("res_icon").GetComponent<Image>();
@@ -983,7 +983,7 @@ public class InventoryGui : MonoBehaviour
 		component3.gameObject.SetActive(false);
 	}
 
-	// Token: 0x0600055C RID: 1372 RVA: 0x0002E478 File Offset: 0x0002C678
+	// Token: 0x0600055D RID: 1373 RVA: 0x0002E52C File Offset: 0x0002C72C
 	private void DoCrafting(Player player)
 	{
 		if (this.m_craftRecipe == null)
@@ -1042,7 +1042,7 @@ public class InventoryGui : MonoBehaviour
 		Gogan.LogEvent("Game", "Crafted", this.m_craftRecipe.m_item.m_itemData.m_shared.m_name, (long)num);
 	}
 
-	// Token: 0x0600055D RID: 1373 RVA: 0x0002E6AC File Offset: 0x0002C8AC
+	// Token: 0x0600055E RID: 1374 RVA: 0x0002E760 File Offset: 0x0002C960
 	private int FindSelectedRecipe(GameObject button)
 	{
 		for (int i = 0; i < this.m_recipeList.Count; i++)
@@ -1055,7 +1055,7 @@ public class InventoryGui : MonoBehaviour
 		return -1;
 	}
 
-	// Token: 0x0600055E RID: 1374 RVA: 0x0002E6E6 File Offset: 0x0002C8E6
+	// Token: 0x0600055F RID: 1375 RVA: 0x0002E79A File Offset: 0x0002C99A
 	private void OnCraftCancelPressed()
 	{
 		if (this.m_craftTimer >= 0f)
@@ -1064,7 +1064,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600055F RID: 1375 RVA: 0x0002E700 File Offset: 0x0002C900
+	// Token: 0x06000560 RID: 1376 RVA: 0x0002E7B4 File Offset: 0x0002C9B4
 	private void OnCraftPressed()
 	{
 		if (!this.m_selectedRecipe.Key)
@@ -1090,14 +1090,14 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000560 RID: 1376 RVA: 0x0002E7CB File Offset: 0x0002C9CB
+	// Token: 0x06000561 RID: 1377 RVA: 0x0002E87F File Offset: 0x0002CA7F
 	private void OnRepairPressed()
 	{
 		this.RepairOneItem();
 		this.UpdateRepair();
 	}
 
-	// Token: 0x06000561 RID: 1377 RVA: 0x0002E7DC File Offset: 0x0002C9DC
+	// Token: 0x06000562 RID: 1378 RVA: 0x0002E890 File Offset: 0x0002CA90
 	private void UpdateRepair()
 	{
 		if (Player.m_localPlayer.GetCurrentCraftingStation() == null && !Player.m_localPlayer.NoCostCheat())
@@ -1123,7 +1123,7 @@ public class InventoryGui : MonoBehaviour
 		this.m_repairButtonGlow.gameObject.SetActive(false);
 	}
 
-	// Token: 0x06000562 RID: 1378 RVA: 0x0002E8EC File Offset: 0x0002CAEC
+	// Token: 0x06000563 RID: 1379 RVA: 0x0002E9A0 File Offset: 0x0002CBA0
 	private void RepairOneItem()
 	{
 		if (Player.m_localPlayer == null)
@@ -1160,7 +1160,7 @@ public class InventoryGui : MonoBehaviour
 		Player.m_localPlayer.Message(MessageHud.MessageType.Center, "No more item to repair", 0, null);
 	}
 
-	// Token: 0x06000563 RID: 1379 RVA: 0x0002EA24 File Offset: 0x0002CC24
+	// Token: 0x06000564 RID: 1380 RVA: 0x0002EAD8 File Offset: 0x0002CCD8
 	private bool HaveRepairableItems()
 	{
 		if (Player.m_localPlayer == null)
@@ -1188,7 +1188,7 @@ public class InventoryGui : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000564 RID: 1380 RVA: 0x0002EAEC File Offset: 0x0002CCEC
+	// Token: 0x06000565 RID: 1381 RVA: 0x0002EBA0 File Offset: 0x0002CDA0
 	private bool CanRepair(ItemDrop.ItemData item)
 	{
 		if (Player.m_localPlayer == null)
@@ -1212,7 +1212,7 @@ public class InventoryGui : MonoBehaviour
 		return !(recipe == null) && (!(recipe.m_craftingStation == null) || !(recipe.m_repairStation == null)) && ((recipe.m_repairStation != null && recipe.m_repairStation.m_name == currentCraftingStation.m_name) || (recipe.m_craftingStation != null && recipe.m_craftingStation.m_name == currentCraftingStation.m_name)) && currentCraftingStation.GetLevel() >= recipe.m_minStationLevel;
 	}
 
-	// Token: 0x06000565 RID: 1381 RVA: 0x0002EBD0 File Offset: 0x0002CDD0
+	// Token: 0x06000566 RID: 1382 RVA: 0x0002EC84 File Offset: 0x0002CE84
 	private void SetupDragItem(ItemDrop.ItemData item, Inventory inventory, int amount)
 	{
 		if (this.m_dragGo)
@@ -1234,7 +1234,7 @@ public class InventoryGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000566 RID: 1382 RVA: 0x0002EC68 File Offset: 0x0002CE68
+	// Token: 0x06000567 RID: 1383 RVA: 0x0002ED1C File Offset: 0x0002CF1C
 	private void ShowSplitDialog(ItemDrop.ItemData item, Inventory fromIventory)
 	{
 		this.m_splitSlider.minValue = 1f;
@@ -1248,13 +1248,13 @@ public class InventoryGui : MonoBehaviour
 		this.OnSplitSliderChanged(this.m_splitSlider.value);
 	}
 
-	// Token: 0x06000567 RID: 1383 RVA: 0x0002ED16 File Offset: 0x0002CF16
+	// Token: 0x06000568 RID: 1384 RVA: 0x0002EDCA File Offset: 0x0002CFCA
 	private void OnSplitSliderChanged(float value)
 	{
 		this.m_splitAmount.text = (int)value + "/" + (int)this.m_splitSlider.maxValue;
 	}
 
-	// Token: 0x06000568 RID: 1384 RVA: 0x0002ED45 File Offset: 0x0002CF45
+	// Token: 0x06000569 RID: 1385 RVA: 0x0002EDF9 File Offset: 0x0002CFF9
 	private void OnSplitCancel()
 	{
 		this.m_splitItem = null;
@@ -1262,7 +1262,7 @@ public class InventoryGui : MonoBehaviour
 		this.m_splitPanel.gameObject.SetActive(false);
 	}
 
-	// Token: 0x06000569 RID: 1385 RVA: 0x0002ED66 File Offset: 0x0002CF66
+	// Token: 0x0600056A RID: 1386 RVA: 0x0002EE1A File Offset: 0x0002D01A
 	private void OnSplitOk()
 	{
 		this.SetupDragItem(this.m_splitItem, this.m_splitInventory, (int)this.m_splitSlider.value);
@@ -1271,7 +1271,7 @@ public class InventoryGui : MonoBehaviour
 		this.m_splitPanel.gameObject.SetActive(false);
 	}
 
-	// Token: 0x0600056A RID: 1386 RVA: 0x0002EDA5 File Offset: 0x0002CFA5
+	// Token: 0x0600056B RID: 1387 RVA: 0x0002EE59 File Offset: 0x0002D059
 	public void OnOpenSkills()
 	{
 		if (!Player.m_localPlayer)
@@ -1282,7 +1282,7 @@ public class InventoryGui : MonoBehaviour
 		Gogan.LogEvent("Screen", "Enter", "Skills", 0L);
 	}
 
-	// Token: 0x0600056B RID: 1387 RVA: 0x0002EDDA File Offset: 0x0002CFDA
+	// Token: 0x0600056C RID: 1388 RVA: 0x0002EE8E File Offset: 0x0002D08E
 	public void OnOpenTexts()
 	{
 		if (!Player.m_localPlayer)
@@ -1293,7 +1293,7 @@ public class InventoryGui : MonoBehaviour
 		Gogan.LogEvent("Screen", "Enter", "Texts", 0L);
 	}
 
-	// Token: 0x0600056C RID: 1388 RVA: 0x0002EE0F File Offset: 0x0002D00F
+	// Token: 0x0600056D RID: 1389 RVA: 0x0002EEC3 File Offset: 0x0002D0C3
 	public void OnOpenTrophies()
 	{
 		this.m_trophiesPanel.SetActive(true);
@@ -1301,13 +1301,13 @@ public class InventoryGui : MonoBehaviour
 		Gogan.LogEvent("Screen", "Enter", "Trophies", 0L);
 	}
 
-	// Token: 0x0600056D RID: 1389 RVA: 0x0002EE39 File Offset: 0x0002D039
+	// Token: 0x0600056E RID: 1390 RVA: 0x0002EEED File Offset: 0x0002D0ED
 	public void OnCloseTrophies()
 	{
 		this.m_trophiesPanel.SetActive(false);
 	}
 
-	// Token: 0x0600056E RID: 1390 RVA: 0x0002EE48 File Offset: 0x0002D048
+	// Token: 0x0600056F RID: 1391 RVA: 0x0002EEFC File Offset: 0x0002D0FC
 	private void UpdateTrophyList()
 	{
 		if (Player.m_localPlayer == null)
@@ -1354,33 +1354,33 @@ public class InventoryGui : MonoBehaviour
 		this.m_trophyListScroll.value = 1f;
 	}
 
-	// Token: 0x0600056F RID: 1391 RVA: 0x0002F0AC File Offset: 0x0002D2AC
+	// Token: 0x06000570 RID: 1392 RVA: 0x0002F160 File Offset: 0x0002D360
 	public void OnShowVariantSelection()
 	{
 		this.m_variantDialog.Setup(this.m_selectedRecipe.Key.m_item.m_itemData);
 		Gogan.LogEvent("Screen", "Enter", "VariantSelection", 0L);
 	}
 
-	// Token: 0x06000570 RID: 1392 RVA: 0x0002F0E4 File Offset: 0x0002D2E4
+	// Token: 0x06000571 RID: 1393 RVA: 0x0002F198 File Offset: 0x0002D398
 	private void OnVariantSelected(int index)
 	{
 		ZLog.Log("Item variant selected " + index);
 		this.m_selectedVariant = index;
 	}
 
-	// Token: 0x06000571 RID: 1393 RVA: 0x0002F102 File Offset: 0x0002D302
+	// Token: 0x06000572 RID: 1394 RVA: 0x0002F1B6 File Offset: 0x0002D3B6
 	public bool InUpradeTab()
 	{
 		return !this.m_tabUpgrade.interactable;
 	}
 
-	// Token: 0x06000572 RID: 1394 RVA: 0x0002F112 File Offset: 0x0002D312
+	// Token: 0x06000573 RID: 1395 RVA: 0x0002F1C6 File Offset: 0x0002D3C6
 	public bool InCraftTab()
 	{
 		return !this.m_tabCraft.interactable;
 	}
 
-	// Token: 0x06000573 RID: 1395 RVA: 0x0002F122 File Offset: 0x0002D322
+	// Token: 0x06000574 RID: 1396 RVA: 0x0002F1D6 File Offset: 0x0002D3D6
 	public void OnTabCraftPressed()
 	{
 		this.m_tabCraft.interactable = false;
@@ -1388,7 +1388,7 @@ public class InventoryGui : MonoBehaviour
 		this.UpdateCraftingPanel(false);
 	}
 
-	// Token: 0x06000574 RID: 1396 RVA: 0x0002F143 File Offset: 0x0002D343
+	// Token: 0x06000575 RID: 1397 RVA: 0x0002F1F7 File Offset: 0x0002D3F7
 	public void OnTabUpgradePressed()
 	{
 		this.m_tabCraft.interactable = true;
@@ -1396,327 +1396,327 @@ public class InventoryGui : MonoBehaviour
 		this.UpdateCraftingPanel(false);
 	}
 
-	// Token: 0x040005B2 RID: 1458
+	// Token: 0x040005B6 RID: 1462
 	private List<ItemDrop.ItemData> m_tempItemList = new List<ItemDrop.ItemData>();
 
-	// Token: 0x040005B3 RID: 1459
+	// Token: 0x040005B7 RID: 1463
 	private List<ItemDrop.ItemData> m_tempWornItems = new List<ItemDrop.ItemData>();
 
-	// Token: 0x040005B4 RID: 1460
+	// Token: 0x040005B8 RID: 1464
 	private static InventoryGui m_instance;
 
-	// Token: 0x040005B5 RID: 1461
+	// Token: 0x040005B9 RID: 1465
 	[Header("Gamepad")]
 	public UIGroupHandler m_inventoryGroup;
 
-	// Token: 0x040005B6 RID: 1462
+	// Token: 0x040005BA RID: 1466
 	public UIGroupHandler[] m_uiGroups = new UIGroupHandler[0];
 
-	// Token: 0x040005B7 RID: 1463
+	// Token: 0x040005BB RID: 1467
 	private int m_activeGroup = 1;
 
-	// Token: 0x040005B8 RID: 1464
+	// Token: 0x040005BC RID: 1468
 	[Header("Other")]
 	public Transform m_inventoryRoot;
 
-	// Token: 0x040005B9 RID: 1465
+	// Token: 0x040005BD RID: 1469
 	public RectTransform m_player;
 
-	// Token: 0x040005BA RID: 1466
+	// Token: 0x040005BE RID: 1470
 	public RectTransform m_container;
 
-	// Token: 0x040005BB RID: 1467
+	// Token: 0x040005BF RID: 1471
 	public GameObject m_dragItemPrefab;
 
-	// Token: 0x040005BC RID: 1468
+	// Token: 0x040005C0 RID: 1472
 	public Text m_containerName;
 
-	// Token: 0x040005BD RID: 1469
+	// Token: 0x040005C1 RID: 1473
 	public Button m_dropButton;
 
-	// Token: 0x040005BE RID: 1470
+	// Token: 0x040005C2 RID: 1474
 	public Button m_takeAllButton;
 
-	// Token: 0x040005BF RID: 1471
+	// Token: 0x040005C3 RID: 1475
 	public float m_autoCloseDistance = 4f;
 
-	// Token: 0x040005C0 RID: 1472
+	// Token: 0x040005C4 RID: 1476
 	[Header("Crafting dialog")]
 	public Button m_tabCraft;
 
-	// Token: 0x040005C1 RID: 1473
+	// Token: 0x040005C5 RID: 1477
 	public Button m_tabUpgrade;
 
-	// Token: 0x040005C2 RID: 1474
+	// Token: 0x040005C6 RID: 1478
 	public GameObject m_recipeElementPrefab;
 
-	// Token: 0x040005C3 RID: 1475
+	// Token: 0x040005C7 RID: 1479
 	public RectTransform m_recipeListRoot;
 
-	// Token: 0x040005C4 RID: 1476
+	// Token: 0x040005C8 RID: 1480
 	public Scrollbar m_recipeListScroll;
 
-	// Token: 0x040005C5 RID: 1477
+	// Token: 0x040005C9 RID: 1481
 	public float m_recipeListSpace = 30f;
 
-	// Token: 0x040005C6 RID: 1478
+	// Token: 0x040005CA RID: 1482
 	public float m_craftDuration = 2f;
 
-	// Token: 0x040005C7 RID: 1479
+	// Token: 0x040005CB RID: 1483
 	public Text m_craftingStationName;
 
-	// Token: 0x040005C8 RID: 1480
+	// Token: 0x040005CC RID: 1484
 	public Image m_craftingStationIcon;
 
-	// Token: 0x040005C9 RID: 1481
+	// Token: 0x040005CD RID: 1485
 	public RectTransform m_craftingStationLevelRoot;
 
-	// Token: 0x040005CA RID: 1482
+	// Token: 0x040005CE RID: 1486
 	public Text m_craftingStationLevel;
 
-	// Token: 0x040005CB RID: 1483
+	// Token: 0x040005CF RID: 1487
 	public Text m_recipeName;
 
-	// Token: 0x040005CC RID: 1484
+	// Token: 0x040005D0 RID: 1488
 	public Text m_recipeDecription;
 
-	// Token: 0x040005CD RID: 1485
+	// Token: 0x040005D1 RID: 1489
 	public Image m_recipeIcon;
 
-	// Token: 0x040005CE RID: 1486
+	// Token: 0x040005D2 RID: 1490
 	public GameObject[] m_recipeRequirementList = new GameObject[0];
 
-	// Token: 0x040005CF RID: 1487
+	// Token: 0x040005D3 RID: 1491
 	public Button m_variantButton;
 
-	// Token: 0x040005D0 RID: 1488
+	// Token: 0x040005D4 RID: 1492
 	public Button m_craftButton;
 
-	// Token: 0x040005D1 RID: 1489
+	// Token: 0x040005D5 RID: 1493
 	public Button m_craftCancelButton;
 
-	// Token: 0x040005D2 RID: 1490
+	// Token: 0x040005D6 RID: 1494
 	public Transform m_craftProgressPanel;
 
-	// Token: 0x040005D3 RID: 1491
+	// Token: 0x040005D7 RID: 1495
 	public GuiBar m_craftProgressBar;
 
-	// Token: 0x040005D4 RID: 1492
+	// Token: 0x040005D8 RID: 1496
 	[Header("Repair")]
 	public Button m_repairButton;
 
-	// Token: 0x040005D5 RID: 1493
+	// Token: 0x040005D9 RID: 1497
 	public Transform m_repairPanel;
 
-	// Token: 0x040005D6 RID: 1494
+	// Token: 0x040005DA RID: 1498
 	public Image m_repairButtonGlow;
 
-	// Token: 0x040005D7 RID: 1495
+	// Token: 0x040005DB RID: 1499
 	public Transform m_repairPanelSelection;
 
-	// Token: 0x040005D8 RID: 1496
+	// Token: 0x040005DC RID: 1500
 	[Header("Upgrade")]
 	public Image m_upgradeItemIcon;
 
-	// Token: 0x040005D9 RID: 1497
+	// Token: 0x040005DD RID: 1501
 	public GuiBar m_upgradeItemDurability;
 
-	// Token: 0x040005DA RID: 1498
+	// Token: 0x040005DE RID: 1502
 	public Text m_upgradeItemName;
 
-	// Token: 0x040005DB RID: 1499
+	// Token: 0x040005DF RID: 1503
 	public Text m_upgradeItemQuality;
 
-	// Token: 0x040005DC RID: 1500
+	// Token: 0x040005E0 RID: 1504
 	public GameObject m_upgradeItemQualityArrow;
 
-	// Token: 0x040005DD RID: 1501
+	// Token: 0x040005E1 RID: 1505
 	public Text m_upgradeItemNextQuality;
 
-	// Token: 0x040005DE RID: 1502
+	// Token: 0x040005E2 RID: 1506
 	public Text m_upgradeItemIndex;
 
-	// Token: 0x040005DF RID: 1503
+	// Token: 0x040005E3 RID: 1507
 	public Text m_itemCraftType;
 
-	// Token: 0x040005E0 RID: 1504
+	// Token: 0x040005E4 RID: 1508
 	public RectTransform m_qualityPanel;
 
-	// Token: 0x040005E1 RID: 1505
+	// Token: 0x040005E5 RID: 1509
 	public Button m_qualityLevelDown;
 
-	// Token: 0x040005E2 RID: 1506
+	// Token: 0x040005E6 RID: 1510
 	public Button m_qualityLevelUp;
 
-	// Token: 0x040005E3 RID: 1507
+	// Token: 0x040005E7 RID: 1511
 	public Text m_qualityLevel;
 
-	// Token: 0x040005E4 RID: 1508
+	// Token: 0x040005E8 RID: 1512
 	public Image m_minStationLevelIcon;
 
-	// Token: 0x040005E5 RID: 1509
+	// Token: 0x040005E9 RID: 1513
 	private Color m_minStationLevelBasecolor;
 
-	// Token: 0x040005E6 RID: 1510
+	// Token: 0x040005EA RID: 1514
 	public Text m_minStationLevelText;
 
-	// Token: 0x040005E7 RID: 1511
+	// Token: 0x040005EB RID: 1515
 	public ScrollRectEnsureVisible m_recipeEnsureVisible;
 
-	// Token: 0x040005E8 RID: 1512
+	// Token: 0x040005EC RID: 1516
 	[Header("Variants dialog")]
 	public VariantDialog m_variantDialog;
 
-	// Token: 0x040005E9 RID: 1513
+	// Token: 0x040005ED RID: 1517
 	[Header("Skills dialog")]
 	public SkillsDialog m_skillsDialog;
 
-	// Token: 0x040005EA RID: 1514
+	// Token: 0x040005EE RID: 1518
 	[Header("Texts dialog")]
 	public TextsDialog m_textsDialog;
 
-	// Token: 0x040005EB RID: 1515
+	// Token: 0x040005EF RID: 1519
 	[Header("Split dialog")]
 	public Transform m_splitPanel;
 
-	// Token: 0x040005EC RID: 1516
+	// Token: 0x040005F0 RID: 1520
 	public Slider m_splitSlider;
 
-	// Token: 0x040005ED RID: 1517
+	// Token: 0x040005F1 RID: 1521
 	public Text m_splitAmount;
 
-	// Token: 0x040005EE RID: 1518
+	// Token: 0x040005F2 RID: 1522
 	public Button m_splitCancelButton;
 
-	// Token: 0x040005EF RID: 1519
+	// Token: 0x040005F3 RID: 1523
 	public Button m_splitOkButton;
 
-	// Token: 0x040005F0 RID: 1520
+	// Token: 0x040005F4 RID: 1524
 	public Image m_splitIcon;
 
-	// Token: 0x040005F1 RID: 1521
+	// Token: 0x040005F5 RID: 1525
 	public Text m_splitIconName;
 
-	// Token: 0x040005F2 RID: 1522
+	// Token: 0x040005F6 RID: 1526
 	[Header("Character stats")]
 	public Transform m_infoPanel;
 
-	// Token: 0x040005F3 RID: 1523
+	// Token: 0x040005F7 RID: 1527
 	public Text m_playerName;
 
-	// Token: 0x040005F4 RID: 1524
+	// Token: 0x040005F8 RID: 1528
 	public Text m_armor;
 
-	// Token: 0x040005F5 RID: 1525
+	// Token: 0x040005F9 RID: 1529
 	public Text m_weight;
 
-	// Token: 0x040005F6 RID: 1526
+	// Token: 0x040005FA RID: 1530
 	public Text m_containerWeight;
 
-	// Token: 0x040005F7 RID: 1527
+	// Token: 0x040005FB RID: 1531
 	public Toggle m_pvp;
 
-	// Token: 0x040005F8 RID: 1528
+	// Token: 0x040005FC RID: 1532
 	[Header("Trophies")]
 	public GameObject m_trophiesPanel;
 
-	// Token: 0x040005F9 RID: 1529
+	// Token: 0x040005FD RID: 1533
 	public RectTransform m_trophieListRoot;
 
-	// Token: 0x040005FA RID: 1530
+	// Token: 0x040005FE RID: 1534
 	public float m_trophieListSpace = 30f;
 
-	// Token: 0x040005FB RID: 1531
+	// Token: 0x040005FF RID: 1535
 	public GameObject m_trophieElementPrefab;
 
-	// Token: 0x040005FC RID: 1532
+	// Token: 0x04000600 RID: 1536
 	public Scrollbar m_trophyListScroll;
 
-	// Token: 0x040005FD RID: 1533
+	// Token: 0x04000601 RID: 1537
 	[Header("Effects")]
 	public EffectList m_moveItemEffects = new EffectList();
 
-	// Token: 0x040005FE RID: 1534
+	// Token: 0x04000602 RID: 1538
 	public EffectList m_craftItemEffects = new EffectList();
 
-	// Token: 0x040005FF RID: 1535
+	// Token: 0x04000603 RID: 1539
 	public EffectList m_craftItemDoneEffects = new EffectList();
 
-	// Token: 0x04000600 RID: 1536
+	// Token: 0x04000604 RID: 1540
 	public EffectList m_openInventoryEffects = new EffectList();
 
-	// Token: 0x04000601 RID: 1537
+	// Token: 0x04000605 RID: 1541
 	public EffectList m_closeInventoryEffects = new EffectList();
 
-	// Token: 0x04000602 RID: 1538
+	// Token: 0x04000606 RID: 1542
 	private InventoryGrid m_playerGrid;
 
-	// Token: 0x04000603 RID: 1539
+	// Token: 0x04000607 RID: 1543
 	private InventoryGrid m_containerGrid;
 
-	// Token: 0x04000604 RID: 1540
+	// Token: 0x04000608 RID: 1544
 	private Animator m_animator;
 
-	// Token: 0x04000605 RID: 1541
+	// Token: 0x04000609 RID: 1545
 	private Container m_currentContainer;
 
-	// Token: 0x04000606 RID: 1542
+	// Token: 0x0400060A RID: 1546
 	private bool m_firstContainerUpdate = true;
 
-	// Token: 0x04000607 RID: 1543
+	// Token: 0x0400060B RID: 1547
 	private KeyValuePair<Recipe, ItemDrop.ItemData> m_selectedRecipe;
 
-	// Token: 0x04000608 RID: 1544
+	// Token: 0x0400060C RID: 1548
 	private List<ItemDrop.ItemData> m_upgradeItems = new List<ItemDrop.ItemData>();
 
-	// Token: 0x04000609 RID: 1545
+	// Token: 0x0400060D RID: 1549
 	private int m_selectedVariant;
 
-	// Token: 0x0400060A RID: 1546
+	// Token: 0x0400060E RID: 1550
 	private Recipe m_craftRecipe;
 
-	// Token: 0x0400060B RID: 1547
+	// Token: 0x0400060F RID: 1551
 	private ItemDrop.ItemData m_craftUpgradeItem;
 
-	// Token: 0x0400060C RID: 1548
+	// Token: 0x04000610 RID: 1552
 	private int m_craftVariant;
 
-	// Token: 0x0400060D RID: 1549
+	// Token: 0x04000611 RID: 1553
 	private List<GameObject> m_recipeList = new List<GameObject>();
 
-	// Token: 0x0400060E RID: 1550
+	// Token: 0x04000612 RID: 1554
 	private List<KeyValuePair<Recipe, ItemDrop.ItemData>> m_availableRecipes = new List<KeyValuePair<Recipe, ItemDrop.ItemData>>();
 
-	// Token: 0x0400060F RID: 1551
+	// Token: 0x04000613 RID: 1555
 	private GameObject m_dragGo;
 
-	// Token: 0x04000610 RID: 1552
+	// Token: 0x04000614 RID: 1556
 	private ItemDrop.ItemData m_dragItem;
 
-	// Token: 0x04000611 RID: 1553
+	// Token: 0x04000615 RID: 1557
 	private Inventory m_dragInventory;
 
-	// Token: 0x04000612 RID: 1554
+	// Token: 0x04000616 RID: 1558
 	private int m_dragAmount = 1;
 
-	// Token: 0x04000613 RID: 1555
+	// Token: 0x04000617 RID: 1559
 	private ItemDrop.ItemData m_splitItem;
 
-	// Token: 0x04000614 RID: 1556
+	// Token: 0x04000618 RID: 1560
 	private Inventory m_splitInventory;
 
-	// Token: 0x04000615 RID: 1557
+	// Token: 0x04000619 RID: 1561
 	private float m_craftTimer = -1f;
 
-	// Token: 0x04000616 RID: 1558
+	// Token: 0x0400061A RID: 1562
 	private float m_recipeListBaseSize;
 
-	// Token: 0x04000617 RID: 1559
+	// Token: 0x0400061B RID: 1563
 	private int m_hiddenFrames = 9999;
 
-	// Token: 0x04000618 RID: 1560
+	// Token: 0x0400061C RID: 1564
 	private List<GameObject> m_trophyList = new List<GameObject>();
 
-	// Token: 0x04000619 RID: 1561
+	// Token: 0x0400061D RID: 1565
 	private float m_trophieListBaseSize;
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x0200004A RID: 74
 public class ZSFX : MonoBehaviour
 {
-	// Token: 0x0600049B RID: 1179 RVA: 0x00024E79 File Offset: 0x00023079
+	// Token: 0x0600049C RID: 1180 RVA: 0x00024F2D File Offset: 0x0002312D
 	public void Awake()
 	{
 		this.m_delay = UnityEngine.Random.Range(this.m_minDelay, this.m_maxDelay);
@@ -12,7 +12,7 @@ public class ZSFX : MonoBehaviour
 		this.m_baseSpread = this.m_audioSource.spread;
 	}
 
-	// Token: 0x0600049C RID: 1180 RVA: 0x00024EB0 File Offset: 0x000230B0
+	// Token: 0x0600049D RID: 1181 RVA: 0x00024F64 File Offset: 0x00023164
 	private void OnDisable()
 	{
 		if (this.m_playOnAwake && this.m_audioSource.loop)
@@ -23,7 +23,7 @@ public class ZSFX : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600049D RID: 1181 RVA: 0x00024F00 File Offset: 0x00023100
+	// Token: 0x0600049E RID: 1182 RVA: 0x00024FB4 File Offset: 0x000231B4
 	public void Update()
 	{
 		if (this.m_audioSource == null)
@@ -81,7 +81,7 @@ public class ZSFX : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600049E RID: 1182 RVA: 0x000250A9 File Offset: 0x000232A9
+	// Token: 0x0600049F RID: 1183 RVA: 0x0002515D File Offset: 0x0002335D
 	public void FadeOut()
 	{
 		if (this.m_fadeOutTimer < 0f)
@@ -90,7 +90,7 @@ public class ZSFX : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600049F RID: 1183 RVA: 0x000250C3 File Offset: 0x000232C3
+	// Token: 0x060004A0 RID: 1184 RVA: 0x00025177 File Offset: 0x00023377
 	public void Stop()
 	{
 		if (this.m_audioSource != null)
@@ -99,13 +99,13 @@ public class ZSFX : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004A0 RID: 1184 RVA: 0x000250DE File Offset: 0x000232DE
+	// Token: 0x060004A1 RID: 1185 RVA: 0x00025192 File Offset: 0x00023392
 	public bool IsPlaying()
 	{
 		return !(this.m_audioSource == null) && this.m_audioSource.isPlaying;
 	}
 
-	// Token: 0x060004A1 RID: 1185 RVA: 0x000250FC File Offset: 0x000232FC
+	// Token: 0x060004A2 RID: 1186 RVA: 0x000251B0 File Offset: 0x000233B0
 	private void UpdateReverb()
 	{
 		Camera mainCamera = Utils.GetMainCamera();
@@ -131,7 +131,7 @@ public class ZSFX : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004A2 RID: 1186 RVA: 0x00025204 File Offset: 0x00023404
+	// Token: 0x060004A3 RID: 1187 RVA: 0x000252B8 File Offset: 0x000234B8
 	public void Play()
 	{
 		if (this.m_audioSource == null)
@@ -167,96 +167,96 @@ public class ZSFX : MonoBehaviour
 		this.m_audioSource.Play();
 	}
 
-	// Token: 0x040004C1 RID: 1217
+	// Token: 0x040004C5 RID: 1221
 	public bool m_playOnAwake = true;
 
-	// Token: 0x040004C2 RID: 1218
+	// Token: 0x040004C6 RID: 1222
 	[Header("Clips")]
 	public AudioClip[] m_audioClips = new AudioClip[0];
 
-	// Token: 0x040004C3 RID: 1219
+	// Token: 0x040004C7 RID: 1223
 	[Header("Random")]
 	public float m_maxPitch = 1f;
 
-	// Token: 0x040004C4 RID: 1220
+	// Token: 0x040004C8 RID: 1224
 	public float m_minPitch = 1f;
 
-	// Token: 0x040004C5 RID: 1221
+	// Token: 0x040004C9 RID: 1225
 	public float m_maxVol = 1f;
 
-	// Token: 0x040004C6 RID: 1222
+	// Token: 0x040004CA RID: 1226
 	public float m_minVol = 1f;
 
-	// Token: 0x040004C7 RID: 1223
+	// Token: 0x040004CB RID: 1227
 	[Header("Fade")]
 	public float m_fadeInDuration;
 
-	// Token: 0x040004C8 RID: 1224
+	// Token: 0x040004CC RID: 1228
 	public float m_fadeOutDuration;
 
-	// Token: 0x040004C9 RID: 1225
+	// Token: 0x040004CD RID: 1229
 	public float m_fadeOutDelay;
 
-	// Token: 0x040004CA RID: 1226
+	// Token: 0x040004CE RID: 1230
 	public bool m_fadeOutOnAwake;
 
-	// Token: 0x040004CB RID: 1227
+	// Token: 0x040004CF RID: 1231
 	[Header("Pan")]
 	public bool m_randomPan;
 
-	// Token: 0x040004CC RID: 1228
+	// Token: 0x040004D0 RID: 1232
 	public float m_minPan = -1f;
 
-	// Token: 0x040004CD RID: 1229
+	// Token: 0x040004D1 RID: 1233
 	public float m_maxPan = 1f;
 
-	// Token: 0x040004CE RID: 1230
+	// Token: 0x040004D2 RID: 1234
 	[Header("Delay")]
 	public float m_maxDelay;
 
-	// Token: 0x040004CF RID: 1231
+	// Token: 0x040004D3 RID: 1235
 	public float m_minDelay;
 
-	// Token: 0x040004D0 RID: 1232
+	// Token: 0x040004D4 RID: 1236
 	[Header("Reverb")]
 	public bool m_distanceReverb = true;
 
-	// Token: 0x040004D1 RID: 1233
+	// Token: 0x040004D5 RID: 1237
 	public bool m_useCustomReverbDistance;
 
-	// Token: 0x040004D2 RID: 1234
+	// Token: 0x040004D6 RID: 1238
 	public float m_customReverbDistance = 10f;
 
-	// Token: 0x040004D3 RID: 1235
+	// Token: 0x040004D7 RID: 1239
 	private const float m_globalReverbDistance = 64f;
 
-	// Token: 0x040004D4 RID: 1236
+	// Token: 0x040004D8 RID: 1240
 	private const float m_minReverbSpread = 45f;
 
-	// Token: 0x040004D5 RID: 1237
+	// Token: 0x040004D9 RID: 1241
 	private const float m_maxReverbSpread = 120f;
 
-	// Token: 0x040004D6 RID: 1238
+	// Token: 0x040004DA RID: 1242
 	private float m_delay;
 
-	// Token: 0x040004D7 RID: 1239
+	// Token: 0x040004DB RID: 1243
 	private float m_time;
 
-	// Token: 0x040004D8 RID: 1240
+	// Token: 0x040004DC RID: 1244
 	private float m_fadeOutTimer = -1f;
 
-	// Token: 0x040004D9 RID: 1241
+	// Token: 0x040004DD RID: 1245
 	private float m_fadeInTimer = -1f;
 
-	// Token: 0x040004DA RID: 1242
+	// Token: 0x040004DE RID: 1246
 	private float m_vol = 1f;
 
-	// Token: 0x040004DB RID: 1243
+	// Token: 0x040004DF RID: 1247
 	private float m_baseSpread;
 
-	// Token: 0x040004DC RID: 1244
+	// Token: 0x040004E0 RID: 1248
 	private float m_updateReverbTimer;
 
-	// Token: 0x040004DD RID: 1245
+	// Token: 0x040004E1 RID: 1249
 	private AudioSource m_audioSource;
 }

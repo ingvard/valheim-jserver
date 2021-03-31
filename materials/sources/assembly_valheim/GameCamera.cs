@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameCamera : MonoBehaviour
 {
 	// Token: 0x17000027 RID: 39
-	// (get) Token: 0x06000AD9 RID: 2777 RVA: 0x0004DD79 File Offset: 0x0004BF79
+	// (get) Token: 0x06000ADA RID: 2778 RVA: 0x0004DF01 File Offset: 0x0004C101
 	public static GameCamera instance
 	{
 		get
@@ -15,7 +15,7 @@ public class GameCamera : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000ADA RID: 2778 RVA: 0x0004DD80 File Offset: 0x0004BF80
+	// Token: 0x06000ADB RID: 2779 RVA: 0x0004DF08 File Offset: 0x0004C108
 	private void Awake()
 	{
 		GameCamera.m_instance = this;
@@ -29,7 +29,7 @@ public class GameCamera : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000ADB RID: 2779 RVA: 0x0004DDC0 File Offset: 0x0004BFC0
+	// Token: 0x06000ADC RID: 2780 RVA: 0x0004DF48 File Offset: 0x0004C148
 	private void OnDestroy()
 	{
 		if (GameCamera.m_instance == this)
@@ -38,14 +38,14 @@ public class GameCamera : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000ADC RID: 2780 RVA: 0x0004DDD5 File Offset: 0x0004BFD5
+	// Token: 0x06000ADD RID: 2781 RVA: 0x0004DF5D File Offset: 0x0004C15D
 	public void ApplySettings()
 	{
 		this.m_cameraShakeEnabled = (PlayerPrefs.GetInt("CameraShake", 1) == 1);
 		this.m_shipCameraTilt = (PlayerPrefs.GetInt("ShipCameraTilt", 1) == 1);
 	}
 
-	// Token: 0x06000ADD RID: 2781 RVA: 0x0004DE08 File Offset: 0x0004C008
+	// Token: 0x06000ADE RID: 2782 RVA: 0x0004DF90 File Offset: 0x0004C190
 	private void LateUpdate()
 	{
 		float deltaTime = Time.deltaTime;
@@ -63,7 +63,7 @@ public class GameCamera : MonoBehaviour
 		this.UpdateListner();
 	}
 
-	// Token: 0x06000ADE RID: 2782 RVA: 0x0004DE6C File Offset: 0x0004C06C
+	// Token: 0x06000ADF RID: 2783 RVA: 0x0004DFF4 File Offset: 0x0004C1F4
 	private void UpdateMouseCapture()
 	{
 		if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.F1))
@@ -80,7 +80,7 @@ public class GameCamera : MonoBehaviour
 		Cursor.visible = ZInput.IsMouseActive();
 	}
 
-	// Token: 0x06000ADF RID: 2783 RVA: 0x0004DEE8 File Offset: 0x0004C0E8
+	// Token: 0x06000AE0 RID: 2784 RVA: 0x0004E070 File Offset: 0x0004C270
 	public static void ScreenShot()
 	{
 		DateTime now = DateTime.Now;
@@ -104,7 +104,7 @@ public class GameCamera : MonoBehaviour
 		ZLog.Log("Screenshot saved:" + text3);
 	}
 
-	// Token: 0x06000AE0 RID: 2784 RVA: 0x0004DFB8 File Offset: 0x0004C1B8
+	// Token: 0x06000AE1 RID: 2785 RVA: 0x0004E140 File Offset: 0x0004C340
 	private void UpdateListner()
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -116,7 +116,7 @@ public class GameCamera : MonoBehaviour
 		this.m_listner.transform.localPosition = Vector3.zero;
 	}
 
-	// Token: 0x06000AE1 RID: 2785 RVA: 0x0004E00C File Offset: 0x0004C20C
+	// Token: 0x06000AE2 RID: 2786 RVA: 0x0004E194 File Offset: 0x0004C394
 	private void UpdateCamera(float dt)
 	{
 		if (this.m_freeFly)
@@ -155,7 +155,7 @@ public class GameCamera : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000AE2 RID: 2786 RVA: 0x0004E168 File Offset: 0x0004C368
+	// Token: 0x06000AE3 RID: 2787 RVA: 0x0004E2F0 File Offset: 0x0004C4F0
 	private void GetCameraPosition(float dt, out Vector3 pos, out Quaternion rot)
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -198,7 +198,7 @@ public class GameCamera : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000AE3 RID: 2787 RVA: 0x0004E2B4 File Offset: 0x0004C4B4
+	// Token: 0x06000AE4 RID: 2788 RVA: 0x0004E43C File Offset: 0x0004C63C
 	private void ApplyCameraTilt(Player player, float dt, ref Quaternion rot)
 	{
 		if (player.InIntro())
@@ -224,7 +224,7 @@ public class GameCamera : MonoBehaviour
 		rot = Quaternion.LookRotation(forward, this.m_smoothedCameraUp);
 	}
 
-	// Token: 0x06000AE4 RID: 2788 RVA: 0x0004E3B8 File Offset: 0x0004C5B8
+	// Token: 0x06000AE5 RID: 2789 RVA: 0x0004E540 File Offset: 0x0004C740
 	private void UpdateNearClipping(Vector3 eyePos, Vector3 camPos, float dt)
 	{
 		float num = this.m_nearClipPlaneMax;
@@ -239,7 +239,7 @@ public class GameCamera : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000AE5 RID: 2789 RVA: 0x0004E430 File Offset: 0x0004C630
+	// Token: 0x06000AE6 RID: 2790 RVA: 0x0004E5B8 File Offset: 0x0004C7B8
 	private void CollideRay2(Vector3 eyePos, Vector3 offsetedEyePos, ref Vector3 end)
 	{
 		float num;
@@ -252,7 +252,7 @@ public class GameCamera : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000AE6 RID: 2790 RVA: 0x0004E4CC File Offset: 0x0004C6CC
+	// Token: 0x06000AE7 RID: 2791 RVA: 0x0004E654 File Offset: 0x0004C854
 	private bool RayTestPoint(Vector3 point, Vector3 offsetedPoint, Vector3 dir, float maxDist, out float distance)
 	{
 		bool result = false;
@@ -284,7 +284,7 @@ public class GameCamera : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x06000AE7 RID: 2791 RVA: 0x0004E584 File Offset: 0x0004C784
+	// Token: 0x06000AE8 RID: 2792 RVA: 0x0004E70C File Offset: 0x0004C90C
 	private bool RayTestPoint(Vector3 point, Vector3 dir, float maxDist, out Vector3 hitPoint)
 	{
 		RaycastHit raycastHit;
@@ -302,7 +302,7 @@ public class GameCamera : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000AE8 RID: 2792 RVA: 0x0004E610 File Offset: 0x0004C810
+	// Token: 0x06000AE9 RID: 2793 RVA: 0x0004E798 File Offset: 0x0004C998
 	private void UpdateFreeFly(float dt)
 	{
 		if (global::Console.IsVisible())
@@ -483,7 +483,7 @@ public class GameCamera : MonoBehaviour
 		base.transform.rotation = rotation;
 	}
 
-	// Token: 0x06000AE9 RID: 2793 RVA: 0x0004ECB4 File Offset: 0x0004CEB4
+	// Token: 0x06000AEA RID: 2794 RVA: 0x0004EE3C File Offset: 0x0004D03C
 	private void UpdateCameraShake(float dt)
 	{
 		this.m_shakeIntensity -= dt;
@@ -498,7 +498,7 @@ public class GameCamera : MonoBehaviour
 		base.transform.rotation = base.transform.rotation * rhs;
 	}
 
-	// Token: 0x06000AEA RID: 2794 RVA: 0x0004ED74 File Offset: 0x0004CF74
+	// Token: 0x06000AEB RID: 2795 RVA: 0x0004EEFC File Offset: 0x0004D0FC
 	public void AddShake(Vector3 point, float range, float strength, bool continous)
 	{
 		if (!this.m_cameraShakeEnabled)
@@ -526,7 +526,7 @@ public class GameCamera : MonoBehaviour
 		this.m_shakeTimer = Time.time * Mathf.Clamp01(this.m_shakeIntensity) * this.m_shakeFreq;
 	}
 
-	// Token: 0x06000AEB RID: 2795 RVA: 0x0004EE08 File Offset: 0x0004D008
+	// Token: 0x06000AEC RID: 2796 RVA: 0x0004EF90 File Offset: 0x0004D190
 	private float RayTest(Vector3 point, Vector3 dir, float maxDist)
 	{
 		RaycastHit raycastHit;
@@ -537,7 +537,7 @@ public class GameCamera : MonoBehaviour
 		return maxDist;
 	}
 
-	// Token: 0x06000AEC RID: 2796 RVA: 0x0004EE3C File Offset: 0x0004D03C
+	// Token: 0x06000AED RID: 2797 RVA: 0x0004EFC4 File Offset: 0x0004D1C4
 	private Vector3 GetCameraBaseOffset(Player player)
 	{
 		if (player.InBed())
@@ -551,7 +551,7 @@ public class GameCamera : MonoBehaviour
 		return player.m_eye.transform.position - player.transform.position;
 	}
 
-	// Token: 0x06000AED RID: 2797 RVA: 0x0004EEC4 File Offset: 0x0004D0C4
+	// Token: 0x06000AEE RID: 2798 RVA: 0x0004F04C File Offset: 0x0004D24C
 	private void UpdateBaseOffset(Player player, float dt)
 	{
 		Vector3 cameraBaseOffset = this.GetCameraBaseOffset(player);
@@ -563,7 +563,7 @@ public class GameCamera : MonoBehaviour
 		this.m_playerPos = Vector3.SmoothDamp(this.m_playerPos, player.transform.position, ref this.m_playerVel, this.m_smoothness, 999f, dt);
 	}
 
-	// Token: 0x06000AEE RID: 2798 RVA: 0x0004EF58 File Offset: 0x0004D158
+	// Token: 0x06000AEF RID: 2799 RVA: 0x0004F0E0 File Offset: 0x0004D2E0
 	private Vector3 GetOffsetedEyePos()
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -578,7 +578,7 @@ public class GameCamera : MonoBehaviour
 		return this.m_playerPos + this.m_currentBaseOffset + this.GetCameraOffset(localPlayer);
 	}
 
-	// Token: 0x06000AEF RID: 2799 RVA: 0x0004EFD8 File Offset: 0x0004D1D8
+	// Token: 0x06000AF0 RID: 2800 RVA: 0x0004F160 File Offset: 0x0004D360
 	private Vector3 GetCameraOffset(Player player)
 	{
 		if (this.m_distance <= 0f)
@@ -593,189 +593,189 @@ public class GameCamera : MonoBehaviour
 		return player.m_eye.transform.TransformVector(vector);
 	}
 
-	// Token: 0x06000AF0 RID: 2800 RVA: 0x0004F03F File Offset: 0x0004D23F
+	// Token: 0x06000AF1 RID: 2801 RVA: 0x0004F1C7 File Offset: 0x0004D3C7
 	public void ToggleFreeFly()
 	{
 		this.m_freeFly = !this.m_freeFly;
 	}
 
-	// Token: 0x06000AF1 RID: 2801 RVA: 0x0004F050 File Offset: 0x0004D250
+	// Token: 0x06000AF2 RID: 2802 RVA: 0x0004F1D8 File Offset: 0x0004D3D8
 	public void SetFreeFlySmoothness(float smooth)
 	{
 		this.m_freeFlySmooth = Mathf.Clamp(smooth, 0f, 1f);
 	}
 
-	// Token: 0x06000AF2 RID: 2802 RVA: 0x0004F068 File Offset: 0x0004D268
+	// Token: 0x06000AF3 RID: 2803 RVA: 0x0004F1F0 File Offset: 0x0004D3F0
 	public float GetFreeFlySmoothness()
 	{
 		return this.m_freeFlySmooth;
 	}
 
-	// Token: 0x06000AF3 RID: 2803 RVA: 0x0004F070 File Offset: 0x0004D270
+	// Token: 0x06000AF4 RID: 2804 RVA: 0x0004F1F8 File Offset: 0x0004D3F8
 	public static bool InFreeFly()
 	{
 		return GameCamera.m_instance && GameCamera.m_instance.m_freeFly;
 	}
 
-	// Token: 0x04000A28 RID: 2600
+	// Token: 0x04000A2E RID: 2606
 	private Vector3 m_playerPos = Vector3.zero;
 
-	// Token: 0x04000A29 RID: 2601
+	// Token: 0x04000A2F RID: 2607
 	private Vector3 m_currentBaseOffset = Vector3.zero;
 
-	// Token: 0x04000A2A RID: 2602
+	// Token: 0x04000A30 RID: 2608
 	private Vector3 m_offsetBaseVel = Vector3.zero;
 
-	// Token: 0x04000A2B RID: 2603
+	// Token: 0x04000A31 RID: 2609
 	private Vector3 m_playerVel = Vector3.zero;
 
-	// Token: 0x04000A2C RID: 2604
+	// Token: 0x04000A32 RID: 2610
 	public Vector3 m_3rdOffset = Vector3.zero;
 
-	// Token: 0x04000A2D RID: 2605
+	// Token: 0x04000A33 RID: 2611
 	public Vector3 m_3rdCombatOffset = Vector3.zero;
 
-	// Token: 0x04000A2E RID: 2606
+	// Token: 0x04000A34 RID: 2612
 	public Vector3 m_fpsOffset = Vector3.zero;
 
-	// Token: 0x04000A2F RID: 2607
+	// Token: 0x04000A35 RID: 2613
 	public float m_flyingDistance = 15f;
 
-	// Token: 0x04000A30 RID: 2608
+	// Token: 0x04000A36 RID: 2614
 	public LayerMask m_blockCameraMask;
 
-	// Token: 0x04000A31 RID: 2609
+	// Token: 0x04000A37 RID: 2615
 	public float m_minDistance;
 
-	// Token: 0x04000A32 RID: 2610
+	// Token: 0x04000A38 RID: 2616
 	public float m_maxDistance = 6f;
 
-	// Token: 0x04000A33 RID: 2611
+	// Token: 0x04000A39 RID: 2617
 	public float m_maxDistanceBoat = 6f;
 
-	// Token: 0x04000A34 RID: 2612
+	// Token: 0x04000A3A RID: 2618
 	public float m_raycastWidth = 0.35f;
 
-	// Token: 0x04000A35 RID: 2613
+	// Token: 0x04000A3B RID: 2619
 	public bool m_smoothYTilt;
 
-	// Token: 0x04000A36 RID: 2614
+	// Token: 0x04000A3C RID: 2620
 	public float m_zoomSens = 10f;
 
-	// Token: 0x04000A37 RID: 2615
+	// Token: 0x04000A3D RID: 2621
 	public float m_inventoryOffset = 0.1f;
 
-	// Token: 0x04000A38 RID: 2616
+	// Token: 0x04000A3E RID: 2622
 	public float m_nearClipPlaneMin = 0.1f;
 
-	// Token: 0x04000A39 RID: 2617
+	// Token: 0x04000A3F RID: 2623
 	public float m_nearClipPlaneMax = 0.5f;
 
-	// Token: 0x04000A3A RID: 2618
+	// Token: 0x04000A40 RID: 2624
 	public float m_fov = 65f;
 
-	// Token: 0x04000A3B RID: 2619
+	// Token: 0x04000A41 RID: 2625
 	public float m_freeFlyMinFov = 5f;
 
-	// Token: 0x04000A3C RID: 2620
+	// Token: 0x04000A42 RID: 2626
 	public float m_freeFlyMaxFov = 120f;
 
-	// Token: 0x04000A3D RID: 2621
+	// Token: 0x04000A43 RID: 2627
 	public float m_tiltSmoothnessShipMin = 0.1f;
 
-	// Token: 0x04000A3E RID: 2622
+	// Token: 0x04000A44 RID: 2628
 	public float m_tiltSmoothnessShipMax = 0.5f;
 
-	// Token: 0x04000A3F RID: 2623
+	// Token: 0x04000A45 RID: 2629
 	public float m_shakeFreq = 10f;
 
-	// Token: 0x04000A40 RID: 2624
+	// Token: 0x04000A46 RID: 2630
 	public float m_shakeMovement = 1f;
 
-	// Token: 0x04000A41 RID: 2625
+	// Token: 0x04000A47 RID: 2631
 	public float m_smoothness = 0.1f;
 
-	// Token: 0x04000A42 RID: 2626
+	// Token: 0x04000A48 RID: 2632
 	public float m_minWaterDistance = 0.3f;
 
-	// Token: 0x04000A43 RID: 2627
+	// Token: 0x04000A49 RID: 2633
 	public Camera m_skyCamera;
 
-	// Token: 0x04000A44 RID: 2628
+	// Token: 0x04000A4A RID: 2634
 	private float m_distance = 4f;
 
-	// Token: 0x04000A45 RID: 2629
+	// Token: 0x04000A4B RID: 2635
 	private bool m_freeFly;
 
-	// Token: 0x04000A46 RID: 2630
+	// Token: 0x04000A4C RID: 2636
 	private float m_shakeIntensity;
 
-	// Token: 0x04000A47 RID: 2631
+	// Token: 0x04000A4D RID: 2637
 	private float m_shakeTimer;
 
-	// Token: 0x04000A48 RID: 2632
+	// Token: 0x04000A4E RID: 2638
 	private bool m_cameraShakeEnabled = true;
 
-	// Token: 0x04000A49 RID: 2633
+	// Token: 0x04000A4F RID: 2639
 	private bool m_mouseCapture;
 
-	// Token: 0x04000A4A RID: 2634
+	// Token: 0x04000A50 RID: 2640
 	private Quaternion m_freeFlyRef = Quaternion.identity;
 
-	// Token: 0x04000A4B RID: 2635
+	// Token: 0x04000A51 RID: 2641
 	private float m_freeFlyYaw;
 
-	// Token: 0x04000A4C RID: 2636
+	// Token: 0x04000A52 RID: 2642
 	private float m_freeFlyPitch;
 
-	// Token: 0x04000A4D RID: 2637
+	// Token: 0x04000A53 RID: 2643
 	private float m_freeFlySpeed = 20f;
 
-	// Token: 0x04000A4E RID: 2638
+	// Token: 0x04000A54 RID: 2644
 	private float m_freeFlySmooth;
 
-	// Token: 0x04000A4F RID: 2639
+	// Token: 0x04000A55 RID: 2645
 	private Vector3 m_freeFlySavedVel = Vector3.zero;
 
-	// Token: 0x04000A50 RID: 2640
+	// Token: 0x04000A56 RID: 2646
 	private Transform m_freeFlyTarget;
 
-	// Token: 0x04000A51 RID: 2641
+	// Token: 0x04000A57 RID: 2647
 	private Vector3 m_freeFlyTargetOffset = Vector3.zero;
 
-	// Token: 0x04000A52 RID: 2642
+	// Token: 0x04000A58 RID: 2648
 	private Transform m_freeFlyLockon;
 
-	// Token: 0x04000A53 RID: 2643
+	// Token: 0x04000A59 RID: 2649
 	private Vector3 m_freeFlyLockonOffset = Vector3.zero;
 
-	// Token: 0x04000A54 RID: 2644
+	// Token: 0x04000A5A RID: 2650
 	private Vector3 m_freeFlyVel = Vector3.zero;
 
-	// Token: 0x04000A55 RID: 2645
+	// Token: 0x04000A5B RID: 2651
 	private Vector3 m_freeFlyAcc = Vector3.zero;
 
-	// Token: 0x04000A56 RID: 2646
+	// Token: 0x04000A5C RID: 2652
 	private Vector3 m_freeFlyTurnVel = Vector3.zero;
 
-	// Token: 0x04000A57 RID: 2647
+	// Token: 0x04000A5D RID: 2653
 	private bool m_shipCameraTilt = true;
 
-	// Token: 0x04000A58 RID: 2648
+	// Token: 0x04000A5E RID: 2654
 	private Vector3 m_smoothedCameraUp = Vector3.up;
 
-	// Token: 0x04000A59 RID: 2649
+	// Token: 0x04000A5F RID: 2655
 	private Vector3 m_smoothedCameraUpVel = Vector3.zero;
 
-	// Token: 0x04000A5A RID: 2650
+	// Token: 0x04000A60 RID: 2656
 	private AudioListener m_listner;
 
-	// Token: 0x04000A5B RID: 2651
+	// Token: 0x04000A61 RID: 2657
 	private Camera m_camera;
 
-	// Token: 0x04000A5C RID: 2652
+	// Token: 0x04000A62 RID: 2658
 	private bool m_waterClipping;
 
-	// Token: 0x04000A5D RID: 2653
+	// Token: 0x04000A63 RID: 2659
 	private static GameCamera m_instance;
 }

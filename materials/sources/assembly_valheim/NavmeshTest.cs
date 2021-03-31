@@ -5,12 +5,12 @@ using UnityEngine;
 // Token: 0x020000A4 RID: 164
 public class NavmeshTest : MonoBehaviour
 {
-	// Token: 0x06000B25 RID: 2853 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x06000B26 RID: 2854 RVA: 0x000027E0 File Offset: 0x000009E0
 	private void Awake()
 	{
 	}
 
-	// Token: 0x06000B26 RID: 2854 RVA: 0x000503A8 File Offset: 0x0004E5A8
+	// Token: 0x06000B27 RID: 2855 RVA: 0x00050530 File Offset: 0x0004E730
 	private void Update()
 	{
 		if (Pathfinding.instance.GetPath(base.transform.position, this.m_target.position, this.m_path, this.m_agentType, false, this.m_cleanPath))
@@ -21,7 +21,7 @@ public class NavmeshTest : MonoBehaviour
 		this.m_havePath = false;
 	}
 
-	// Token: 0x06000B27 RID: 2855 RVA: 0x000503FC File Offset: 0x0004E5FC
+	// Token: 0x06000B28 RID: 2856 RVA: 0x00050584 File Offset: 0x0004E784
 	private void OnDrawGizmos()
 	{
 		if (this.m_target == null)
@@ -52,18 +52,18 @@ public class NavmeshTest : MonoBehaviour
 		Gizmos.DrawSphere(this.m_target.position, 0.3f);
 	}
 
-	// Token: 0x04000A8B RID: 2699
+	// Token: 0x04000A91 RID: 2705
 	public Transform m_target;
 
-	// Token: 0x04000A8C RID: 2700
+	// Token: 0x04000A92 RID: 2706
 	public Pathfinding.AgentType m_agentType = Pathfinding.AgentType.Humanoid;
 
-	// Token: 0x04000A8D RID: 2701
+	// Token: 0x04000A93 RID: 2707
 	public bool m_cleanPath = true;
 
-	// Token: 0x04000A8E RID: 2702
+	// Token: 0x04000A94 RID: 2708
 	private List<Vector3> m_path = new List<Vector3>();
 
-	// Token: 0x04000A8F RID: 2703
+	// Token: 0x04000A95 RID: 2709
 	private bool m_havePath;
 }

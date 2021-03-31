@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x0200000A RID: 10
 public class Humanoid : Character
 {
-	// Token: 0x0600010A RID: 266 RVA: 0x00007E50 File Offset: 0x00006050
+	// Token: 0x0600010B RID: 267 RVA: 0x00007E90 File Offset: 0x00006090
 	protected override void Awake()
 	{
 		base.Awake();
@@ -22,7 +22,7 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x0600010B RID: 267 RVA: 0x00007EB9 File Offset: 0x000060B9
+	// Token: 0x0600010C RID: 268 RVA: 0x00007EF9 File Offset: 0x000060F9
 	protected override void Start()
 	{
 		base.Start();
@@ -32,7 +32,7 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x0600010C RID: 268 RVA: 0x00007ED0 File Offset: 0x000060D0
+	// Token: 0x0600010D RID: 269 RVA: 0x00007F10 File Offset: 0x00006110
 	public void GiveDefaultItems()
 	{
 		foreach (GameObject prefab in this.m_defaultItems)
@@ -78,7 +78,7 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x0600010D RID: 269 RVA: 0x00008024 File Offset: 0x00006224
+	// Token: 0x0600010E RID: 270 RVA: 0x00008064 File Offset: 0x00006264
 	private void GiveDefaultItem(GameObject prefab)
 	{
 		ItemDrop.ItemData itemData = this.PickupPrefab(prefab, 0);
@@ -88,7 +88,7 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x0600010E RID: 270 RVA: 0x00008050 File Offset: 0x00006250
+	// Token: 0x0600010F RID: 271 RVA: 0x00008090 File Offset: 0x00006290
 	protected override void FixedUpdate()
 	{
 		if (!this.m_nview.IsValid())
@@ -104,7 +104,7 @@ public class Humanoid : Character
 		base.FixedUpdate();
 	}
 
-	// Token: 0x0600010F RID: 271 RVA: 0x000080B0 File Offset: 0x000062B0
+	// Token: 0x06000110 RID: 272 RVA: 0x000080F0 File Offset: 0x000062F0
 	public override bool InAttack()
 	{
 		if (this.m_animator.IsInTransition(0))
@@ -114,7 +114,7 @@ public class Humanoid : Character
 		return this.m_animator.GetCurrentAnimatorStateInfo(0).tagHash == Humanoid.m_animatorTagAttack;
 	}
 
-	// Token: 0x06000110 RID: 272 RVA: 0x00008128 File Offset: 0x00006328
+	// Token: 0x06000111 RID: 273 RVA: 0x00008168 File Offset: 0x00006368
 	public override bool StartAttack(Character target, bool secondaryAttack)
 	{
 		this.AbortEquipQueue();
@@ -159,7 +159,7 @@ public class Humanoid : Character
 		return false;
 	}
 
-	// Token: 0x06000111 RID: 273 RVA: 0x0000822C File Offset: 0x0000642C
+	// Token: 0x06000112 RID: 274 RVA: 0x0000826C File Offset: 0x0000646C
 	public float GetAttackDrawPercentage()
 	{
 		ItemDrop.ItemData currentWeapon = this.GetCurrentWeapon();
@@ -176,7 +176,7 @@ public class Humanoid : Character
 		return Mathf.Clamp01(this.m_attackDrawTime / num);
 	}
 
-	// Token: 0x06000112 RID: 274 RVA: 0x000082AC File Offset: 0x000064AC
+	// Token: 0x06000113 RID: 275 RVA: 0x000082EC File Offset: 0x000064EC
 	private void UpdateEquipment(float dt)
 	{
 		if (!this.IsPlayer())
@@ -217,7 +217,7 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x06000113 RID: 275 RVA: 0x000083EC File Offset: 0x000065EC
+	// Token: 0x06000114 RID: 276 RVA: 0x0000842C File Offset: 0x0000662C
 	private void DrainEquipedItemDurability(ItemDrop.ItemData item, float dt)
 	{
 		item.m_durability -= item.m_shared.m_durabilityDrain * dt;
@@ -235,13 +235,13 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x06000114 RID: 276 RVA: 0x00008475 File Offset: 0x00006675
+	// Token: 0x06000115 RID: 277 RVA: 0x000084B5 File Offset: 0x000066B5
 	protected override void OnDamaged(HitData hit)
 	{
 		this.SetCrouch(false);
 	}
 
-	// Token: 0x06000115 RID: 277 RVA: 0x00008480 File Offset: 0x00006680
+	// Token: 0x06000116 RID: 278 RVA: 0x000084C0 File Offset: 0x000066C0
 	protected override void DamageArmorDurability(HitData hit)
 	{
 		List<ItemDrop.ItemData> list = new List<ItemDrop.ItemData>();
@@ -275,7 +275,7 @@ public class Humanoid : Character
 		itemData.m_durability = Mathf.Max(0f, itemData.m_durability - num);
 	}
 
-	// Token: 0x06000116 RID: 278 RVA: 0x00008530 File Offset: 0x00006730
+	// Token: 0x06000117 RID: 279 RVA: 0x00008570 File Offset: 0x00006770
 	public ItemDrop.ItemData GetCurrentWeapon()
 	{
 		if (this.m_rightItem != null && this.m_rightItem.IsWeapon())
@@ -293,7 +293,7 @@ public class Humanoid : Character
 		return null;
 	}
 
-	// Token: 0x06000117 RID: 279 RVA: 0x000085A3 File Offset: 0x000067A3
+	// Token: 0x06000118 RID: 280 RVA: 0x000085E3 File Offset: 0x000067E3
 	protected ItemDrop.ItemData GetCurrentBlocker()
 	{
 		if (this.m_leftItem != null)
@@ -303,7 +303,7 @@ public class Humanoid : Character
 		return this.GetCurrentWeapon();
 	}
 
-	// Token: 0x06000118 RID: 280 RVA: 0x000085BC File Offset: 0x000067BC
+	// Token: 0x06000119 RID: 281 RVA: 0x000085FC File Offset: 0x000067FC
 	private void UpdateAttack(float dt)
 	{
 		this.m_lastCombatTimer += dt;
@@ -319,7 +319,7 @@ public class Humanoid : Character
 		this.m_timeSinceLastAttack += dt;
 	}
 
-	// Token: 0x06000119 RID: 281 RVA: 0x00008615 File Offset: 0x00006815
+	// Token: 0x0600011A RID: 282 RVA: 0x00008655 File Offset: 0x00006855
 	protected override float GetAttackSpeedFactorMovement()
 	{
 		if (!this.InAttack() || this.m_currentAttack == null)
@@ -333,7 +333,7 @@ public class Humanoid : Character
 		return this.m_currentAttack.m_speedFactor;
 	}
 
-	// Token: 0x0600011A RID: 282 RVA: 0x0000864E File Offset: 0x0000684E
+	// Token: 0x0600011B RID: 283 RVA: 0x0000868E File Offset: 0x0000688E
 	protected override float GetAttackSpeedFactorRotation()
 	{
 		if (this.InAttack() && this.m_currentAttack != null)
@@ -343,13 +343,13 @@ public class Humanoid : Character
 		return 1f;
 	}
 
-	// Token: 0x0600011B RID: 283 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x0600011C RID: 284 RVA: 0x000023E2 File Offset: 0x000005E2
 	protected virtual bool HaveQueuedChain()
 	{
 		return false;
 	}
 
-	// Token: 0x0600011C RID: 284 RVA: 0x00008671 File Offset: 0x00006871
+	// Token: 0x0600011D RID: 285 RVA: 0x000086B1 File Offset: 0x000068B1
 	public override void OnWeaponTrailStart()
 	{
 		if (this.m_nview.IsValid() && this.m_nview.IsOwner() && this.GetCurrentWeapon() != null && this.m_currentAttack != null)
@@ -358,7 +358,7 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x0600011D RID: 285 RVA: 0x000086A8 File Offset: 0x000068A8
+	// Token: 0x0600011E RID: 286 RVA: 0x000086E8 File Offset: 0x000068E8
 	public override void OnAttackTrigger()
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -371,7 +371,7 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x0600011E RID: 286 RVA: 0x000086E0 File Offset: 0x000068E0
+	// Token: 0x0600011F RID: 287 RVA: 0x00008720 File Offset: 0x00006920
 	public override void OnStopMoving()
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -389,13 +389,13 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x0600011F RID: 287 RVA: 0x00008741 File Offset: 0x00006941
+	// Token: 0x06000120 RID: 288 RVA: 0x00008781 File Offset: 0x00006981
 	public virtual Vector3 GetAimDir(Vector3 fromPoint)
 	{
 		return base.GetLookDir();
 	}
 
-	// Token: 0x06000120 RID: 288 RVA: 0x0000874C File Offset: 0x0000694C
+	// Token: 0x06000121 RID: 289 RVA: 0x0000878C File Offset: 0x0000698C
 	public ItemDrop.ItemData PickupPrefab(GameObject prefab, int stackSize = 0)
 	{
 		ZNetView.m_forceDisableInit = true;
@@ -414,18 +414,18 @@ public class Humanoid : Character
 		return null;
 	}
 
-	// Token: 0x06000121 RID: 289 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000122 RID: 290 RVA: 0x000023E2 File Offset: 0x000005E2
 	public virtual bool HaveUniqueKey(string name)
 	{
 		return false;
 	}
 
-	// Token: 0x06000122 RID: 290 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x06000123 RID: 291 RVA: 0x000027E0 File Offset: 0x000009E0
 	public virtual void AddUniqueKey(string name)
 	{
 	}
 
-	// Token: 0x06000123 RID: 291 RVA: 0x000087B8 File Offset: 0x000069B8
+	// Token: 0x06000124 RID: 292 RVA: 0x000087F8 File Offset: 0x000069F8
 	public bool Pickup(GameObject go)
 	{
 		if (this.IsTeleporting())
@@ -478,7 +478,7 @@ public class Humanoid : Character
 		return flag;
 	}
 
-	// Token: 0x06000124 RID: 292 RVA: 0x00008920 File Offset: 0x00006B20
+	// Token: 0x06000125 RID: 293 RVA: 0x00008960 File Offset: 0x00006B60
 	public void EquipBestWeapon(Character targetCreature, StaticTarget targetStatic, Character hurtFriend, Character friend)
 	{
 		List<ItemDrop.ItemData> allItems = this.m_inventory.GetAllItems();
@@ -578,7 +578,7 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x06000125 RID: 293 RVA: 0x00008C48 File Offset: 0x00006E48
+	// Token: 0x06000126 RID: 294 RVA: 0x00008C88 File Offset: 0x00006E88
 	public bool DropItem(Inventory inventory, ItemDrop.ItemData item, int amount)
 	{
 		if (amount == 0)
@@ -644,18 +644,18 @@ public class Humanoid : Character
 		return true;
 	}
 
-	// Token: 0x06000126 RID: 294 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x06000127 RID: 295 RVA: 0x000027E0 File Offset: 0x000009E0
 	protected virtual void SetPlaceMode(PieceTable buildPieces)
 	{
 	}
 
-	// Token: 0x06000127 RID: 295 RVA: 0x00008E46 File Offset: 0x00007046
+	// Token: 0x06000128 RID: 296 RVA: 0x00008E86 File Offset: 0x00007086
 	public Inventory GetInventory()
 	{
 		return this.m_inventory;
 	}
 
-	// Token: 0x06000128 RID: 296 RVA: 0x00008E50 File Offset: 0x00007050
+	// Token: 0x06000129 RID: 297 RVA: 0x00008E90 File Offset: 0x00007090
 	public void UseItem(Inventory inventory, ItemDrop.ItemData item, bool fromInventoryGui)
 	{
 		if (inventory == null)
@@ -707,17 +707,17 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x06000129 RID: 297 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x0600012A RID: 298 RVA: 0x000027E0 File Offset: 0x000009E0
 	public virtual void AbortEquipQueue()
 	{
 	}
 
-	// Token: 0x0600012A RID: 298 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x0600012B RID: 299 RVA: 0x000027E0 File Offset: 0x000009E0
 	public virtual void RemoveFromEquipQueue(ItemDrop.ItemData item)
 	{
 	}
 
-	// Token: 0x0600012B RID: 299 RVA: 0x00008F70 File Offset: 0x00007170
+	// Token: 0x0600012C RID: 300 RVA: 0x00008FB0 File Offset: 0x000071B0
 	protected virtual bool ToggleEquiped(ItemDrop.ItemData item)
 	{
 		if (!item.IsEquipable())
@@ -739,20 +739,20 @@ public class Humanoid : Character
 		return true;
 	}
 
-	// Token: 0x0600012C RID: 300 RVA: 0x00008FA3 File Offset: 0x000071A3
+	// Token: 0x0600012D RID: 301 RVA: 0x00008FE3 File Offset: 0x000071E3
 	public virtual bool CanConsumeItem(ItemDrop.ItemData item)
 	{
 		return item.m_shared.m_itemType == ItemDrop.ItemData.ItemType.Consumable;
 	}
 
-	// Token: 0x0600012D RID: 301 RVA: 0x00008FB6 File Offset: 0x000071B6
+	// Token: 0x0600012E RID: 302 RVA: 0x00008FF6 File Offset: 0x000071F6
 	public virtual bool ConsumeItem(Inventory inventory, ItemDrop.ItemData item)
 	{
 		this.CanConsumeItem(item);
 		return false;
 	}
 
-	// Token: 0x0600012E RID: 302 RVA: 0x00008FC4 File Offset: 0x000071C4
+	// Token: 0x0600012F RID: 303 RVA: 0x00009004 File Offset: 0x00007204
 	public bool EquipItem(ItemDrop.ItemData item, bool triggerEquipEffects = true)
 	{
 		if (this.IsItemEquiped(item))
@@ -893,7 +893,7 @@ public class Humanoid : Character
 		return true;
 	}
 
-	// Token: 0x0600012F RID: 303 RVA: 0x000093FC File Offset: 0x000075FC
+	// Token: 0x06000130 RID: 304 RVA: 0x0000943C File Offset: 0x0000763C
 	public void UnequipItem(ItemDrop.ItemData item, bool triggerEquipEffects = true)
 	{
 		if (item == null)
@@ -967,7 +967,7 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x06000130 RID: 304 RVA: 0x00009568 File Offset: 0x00007768
+	// Token: 0x06000131 RID: 305 RVA: 0x000095A8 File Offset: 0x000077A8
 	private void TriggerEquipEffect(ItemDrop.ItemData item)
 	{
 		if (this.m_nview.GetZDO() == null)
@@ -982,7 +982,7 @@ public class Humanoid : Character
 		this.m_equipEffects.Create(base.transform.position, Quaternion.identity, null, 1f);
 	}
 
-	// Token: 0x06000131 RID: 305 RVA: 0x000095C0 File Offset: 0x000077C0
+	// Token: 0x06000132 RID: 306 RVA: 0x00009600 File Offset: 0x00007800
 	public void UnequipAllItems()
 	{
 		if (this.m_rightItem != null)
@@ -1019,7 +1019,7 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x06000132 RID: 306 RVA: 0x00009678 File Offset: 0x00007878
+	// Token: 0x06000133 RID: 307 RVA: 0x000096B8 File Offset: 0x000078B8
 	protected override void OnRagdollCreated(Ragdoll ragdoll)
 	{
 		VisEquipment component = ragdoll.GetComponent<VisEquipment>();
@@ -1029,7 +1029,7 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x06000133 RID: 307 RVA: 0x0000969C File Offset: 0x0000789C
+	// Token: 0x06000134 RID: 308 RVA: 0x000096DC File Offset: 0x000078DC
 	protected virtual void SetupVisEquipment(VisEquipment visEq, bool isRagdoll)
 	{
 		if (!isRagdoll)
@@ -1054,7 +1054,7 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x06000134 RID: 308 RVA: 0x00009868 File Offset: 0x00007A68
+	// Token: 0x06000135 RID: 309 RVA: 0x000098A8 File Offset: 0x00007AA8
 	private void SetupEquipment()
 	{
 		if (this.m_visEquipment && (this.m_nview.GetZDO() == null || this.m_nview.IsOwner()))
@@ -1076,7 +1076,7 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x06000135 RID: 309 RVA: 0x00009900 File Offset: 0x00007B00
+	// Token: 0x06000136 RID: 310 RVA: 0x00009940 File Offset: 0x00007B40
 	private void SetupAnimationState()
 	{
 		if (this.m_leftItem != null)
@@ -1104,20 +1104,20 @@ public class Humanoid : Character
 		}
 	}
 
-	// Token: 0x06000136 RID: 310 RVA: 0x00009990 File Offset: 0x00007B90
+	// Token: 0x06000137 RID: 311 RVA: 0x000099D0 File Offset: 0x00007BD0
 	private void SetAnimationState(ItemDrop.ItemData.AnimationState state)
 	{
 		this.m_zanim.SetFloat(Humanoid.statef, (float)state);
 		this.m_zanim.SetInt(Humanoid.statei, (int)state);
 	}
 
-	// Token: 0x06000137 RID: 311 RVA: 0x000099B8 File Offset: 0x00007BB8
+	// Token: 0x06000138 RID: 312 RVA: 0x000099F8 File Offset: 0x00007BF8
 	public bool IsSitting()
 	{
 		return this.m_animator.GetCurrentAnimatorStateInfo(0).tagHash == Character.m_animatorTagSitting;
 	}
 
-	// Token: 0x06000138 RID: 312 RVA: 0x000099E0 File Offset: 0x00007BE0
+	// Token: 0x06000139 RID: 313 RVA: 0x00009A20 File Offset: 0x00007C20
 	private void UpdateEquipmentStatusEffects()
 	{
 		HashSet<StatusEffect> hashSet = new HashSet<StatusEffect>();
@@ -1195,13 +1195,13 @@ public class Humanoid : Character
 		this.m_eqipmentStatusEffects.UnionWith(hashSet);
 	}
 
-	// Token: 0x06000139 RID: 313 RVA: 0x00009D34 File Offset: 0x00007F34
+	// Token: 0x0600013A RID: 314 RVA: 0x00009D74 File Offset: 0x00007F74
 	private bool HaveSetEffect(ItemDrop.ItemData item)
 	{
 		return item != null && !(item.m_shared.m_setStatusEffect == null) && item.m_shared.m_setName.Length != 0 && item.m_shared.m_setSize > 1 && this.GetSetCount(item.m_shared.m_setName) >= item.m_shared.m_setSize;
 	}
 
-	// Token: 0x0600013A RID: 314 RVA: 0x00009D9C File Offset: 0x00007F9C
+	// Token: 0x0600013B RID: 315 RVA: 0x00009DDC File Offset: 0x00007FDC
 	private int GetSetCount(string setName)
 	{
 		int num = 0;
@@ -1236,64 +1236,64 @@ public class Humanoid : Character
 		return num;
 	}
 
-	// Token: 0x0600013B RID: 315 RVA: 0x00009EA8 File Offset: 0x000080A8
+	// Token: 0x0600013C RID: 316 RVA: 0x00009EE8 File Offset: 0x000080E8
 	public void SetBeard(string name)
 	{
 		this.m_beardItem = name;
 		this.SetupEquipment();
 	}
 
-	// Token: 0x0600013C RID: 316 RVA: 0x00009EB7 File Offset: 0x000080B7
+	// Token: 0x0600013D RID: 317 RVA: 0x00009EF7 File Offset: 0x000080F7
 	public string GetBeard()
 	{
 		return this.m_beardItem;
 	}
 
-	// Token: 0x0600013D RID: 317 RVA: 0x00009EBF File Offset: 0x000080BF
+	// Token: 0x0600013E RID: 318 RVA: 0x00009EFF File Offset: 0x000080FF
 	public void SetHair(string hair)
 	{
 		this.m_hairItem = hair;
 		this.SetupEquipment();
 	}
 
-	// Token: 0x0600013E RID: 318 RVA: 0x00009ECE File Offset: 0x000080CE
+	// Token: 0x0600013F RID: 319 RVA: 0x00009F0E File Offset: 0x0000810E
 	public string GetHair()
 	{
 		return this.m_hairItem;
 	}
 
-	// Token: 0x0600013F RID: 319 RVA: 0x00009ED8 File Offset: 0x000080D8
+	// Token: 0x06000140 RID: 320 RVA: 0x00009F18 File Offset: 0x00008118
 	public bool IsItemEquiped(ItemDrop.ItemData item)
 	{
 		return this.m_rightItem == item || this.m_leftItem == item || this.m_chestItem == item || this.m_legItem == item || this.m_ammoItem == item || this.m_helmetItem == item || this.m_shoulderItem == item || this.m_utilityItem == item;
 	}
 
-	// Token: 0x06000140 RID: 320 RVA: 0x00009F3E File Offset: 0x0000813E
+	// Token: 0x06000141 RID: 321 RVA: 0x00009F7E File Offset: 0x0000817E
 	public ItemDrop.ItemData GetRightItem()
 	{
 		return this.m_rightItem;
 	}
 
-	// Token: 0x06000141 RID: 321 RVA: 0x00009F46 File Offset: 0x00008146
+	// Token: 0x06000142 RID: 322 RVA: 0x00009F86 File Offset: 0x00008186
 	public ItemDrop.ItemData GetLeftItem()
 	{
 		return this.m_leftItem;
 	}
 
-	// Token: 0x06000142 RID: 322 RVA: 0x00009F4E File Offset: 0x0000814E
+	// Token: 0x06000143 RID: 323 RVA: 0x00009F8E File Offset: 0x0000818E
 	protected override bool CheckRun(Vector3 moveDir, float dt)
 	{
 		return !this.IsHoldingAttack() && !this.IsBlocking() && base.CheckRun(moveDir, dt);
 	}
 
-	// Token: 0x06000143 RID: 323 RVA: 0x00009F6C File Offset: 0x0000816C
+	// Token: 0x06000144 RID: 324 RVA: 0x00009FAC File Offset: 0x000081AC
 	public override bool IsHoldingAttack()
 	{
 		ItemDrop.ItemData currentWeapon = this.GetCurrentWeapon();
 		return currentWeapon != null && currentWeapon.m_shared.m_holdDurationMin > 0f && this.m_attackDrawTime > 0f;
 	}
 
-	// Token: 0x06000144 RID: 324 RVA: 0x00009FA8 File Offset: 0x000081A8
+	// Token: 0x06000145 RID: 325 RVA: 0x00009FE8 File Offset: 0x000081E8
 	protected override bool BlockAttack(HitData hit, Character attacker)
 	{
 		if (Vector3.Dot(hit.m_dir, base.transform.forward) > 0f)
@@ -1361,7 +1361,7 @@ public class Humanoid : Character
 		return true;
 	}
 
-	// Token: 0x06000145 RID: 325 RVA: 0x0000A20C File Offset: 0x0000840C
+	// Token: 0x06000146 RID: 326 RVA: 0x0000A24C File Offset: 0x0000844C
 	public override bool IsBlocking()
 	{
 		if (this.m_nview.IsValid() && !this.m_nview.IsOwner())
@@ -1371,7 +1371,7 @@ public class Humanoid : Character
 		return this.m_blocking && !this.InAttack() && !this.InDodge() && !this.InPlaceMode() && !this.IsEncumbered() && !this.InMinorAction();
 	}
 
-	// Token: 0x06000146 RID: 326 RVA: 0x0000A280 File Offset: 0x00008480
+	// Token: 0x06000147 RID: 327 RVA: 0x0000A2C0 File Offset: 0x000084C0
 	private void UpdateBlock(float dt)
 	{
 		if (!this.IsBlocking())
@@ -1399,7 +1399,7 @@ public class Humanoid : Character
 		this.m_blockTimer += dt;
 	}
 
-	// Token: 0x06000147 RID: 327 RVA: 0x0000A334 File Offset: 0x00008534
+	// Token: 0x06000148 RID: 328 RVA: 0x0000A374 File Offset: 0x00008574
 	public void HideHandItems()
 	{
 		if (this.m_leftItem == null && this.m_rightItem == null)
@@ -1416,7 +1416,7 @@ public class Humanoid : Character
 		this.m_zanim.SetTrigger("equip_hip");
 	}
 
-	// Token: 0x06000148 RID: 328 RVA: 0x0000A3A8 File Offset: 0x000085A8
+	// Token: 0x06000149 RID: 329 RVA: 0x0000A3E8 File Offset: 0x000085E8
 	public void ShowHandItems()
 	{
 		ItemDrop.ItemData hiddenLeftItem = this.m_hiddenLeftItem;
@@ -1438,32 +1438,32 @@ public class Humanoid : Character
 		this.m_zanim.SetTrigger("equip_hip");
 	}
 
-	// Token: 0x06000149 RID: 329 RVA: 0x0000A400 File Offset: 0x00008600
+	// Token: 0x0600014A RID: 330 RVA: 0x0000A440 File Offset: 0x00008640
 	public ItemDrop.ItemData GetAmmoItem()
 	{
 		return this.m_ammoItem;
 	}
 
-	// Token: 0x0600014A RID: 330 RVA: 0x000058A9 File Offset: 0x00003AA9
+	// Token: 0x0600014B RID: 331 RVA: 0x000058CD File Offset: 0x00003ACD
 	public virtual GameObject GetHoverObject()
 	{
 		return null;
 	}
 
-	// Token: 0x0600014B RID: 331 RVA: 0x0000A408 File Offset: 0x00008608
+	// Token: 0x0600014C RID: 332 RVA: 0x0000A448 File Offset: 0x00008648
 	public bool IsTeleportable()
 	{
 		return this.m_inventory.IsTeleportable();
 	}
 
-	// Token: 0x0600014C RID: 332 RVA: 0x0000A418 File Offset: 0x00008618
+	// Token: 0x0600014D RID: 333 RVA: 0x0000A458 File Offset: 0x00008658
 	public override bool UseMeleeCamera()
 	{
 		ItemDrop.ItemData currentWeapon = this.GetCurrentWeapon();
 		return currentWeapon != null && currentWeapon.m_shared.m_centerCamera;
 	}
 
-	// Token: 0x0600014D RID: 333 RVA: 0x0000A43C File Offset: 0x0000863C
+	// Token: 0x0600014E RID: 334 RVA: 0x0000A47C File Offset: 0x0000867C
 	public float GetEquipmentWeight()
 	{
 		float num = 0f;
@@ -1498,152 +1498,152 @@ public class Humanoid : Character
 		return num;
 	}
 
-	// Token: 0x040000E4 RID: 228
+	// Token: 0x040000E5 RID: 229
 	private static List<ItemDrop.ItemData> optimalWeapons = new List<ItemDrop.ItemData>();
 
-	// Token: 0x040000E5 RID: 229
+	// Token: 0x040000E6 RID: 230
 	private static List<ItemDrop.ItemData> outofRangeWeapons = new List<ItemDrop.ItemData>();
 
-	// Token: 0x040000E6 RID: 230
+	// Token: 0x040000E7 RID: 231
 	private static List<ItemDrop.ItemData> allWeapons = new List<ItemDrop.ItemData>();
 
-	// Token: 0x040000E7 RID: 231
+	// Token: 0x040000E8 RID: 232
 	[Header("Humanoid")]
 	public float m_equipStaminaDrain = 10f;
 
-	// Token: 0x040000E8 RID: 232
+	// Token: 0x040000E9 RID: 233
 	public float m_blockStaminaDrain = 25f;
 
-	// Token: 0x040000E9 RID: 233
+	// Token: 0x040000EA RID: 234
 	[Header("Default items")]
 	public GameObject[] m_defaultItems;
 
-	// Token: 0x040000EA RID: 234
+	// Token: 0x040000EB RID: 235
 	public GameObject[] m_randomWeapon;
 
-	// Token: 0x040000EB RID: 235
+	// Token: 0x040000EC RID: 236
 	public GameObject[] m_randomArmor;
 
-	// Token: 0x040000EC RID: 236
+	// Token: 0x040000ED RID: 237
 	public GameObject[] m_randomShield;
 
-	// Token: 0x040000ED RID: 237
+	// Token: 0x040000EE RID: 238
 	public Humanoid.ItemSet[] m_randomSets;
 
-	// Token: 0x040000EE RID: 238
+	// Token: 0x040000EF RID: 239
 	public ItemDrop m_unarmedWeapon;
 
-	// Token: 0x040000EF RID: 239
+	// Token: 0x040000F0 RID: 240
 	[Header("Effects")]
 	public EffectList m_pickupEffects = new EffectList();
 
-	// Token: 0x040000F0 RID: 240
+	// Token: 0x040000F1 RID: 241
 	public EffectList m_dropEffects = new EffectList();
 
-	// Token: 0x040000F1 RID: 241
+	// Token: 0x040000F2 RID: 242
 	public EffectList m_consumeItemEffects = new EffectList();
 
-	// Token: 0x040000F2 RID: 242
+	// Token: 0x040000F3 RID: 243
 	public EffectList m_equipEffects = new EffectList();
 
-	// Token: 0x040000F3 RID: 243
+	// Token: 0x040000F4 RID: 244
 	public EffectList m_perfectBlockEffect = new EffectList();
 
-	// Token: 0x040000F4 RID: 244
+	// Token: 0x040000F5 RID: 245
 	protected Inventory m_inventory = new Inventory("Inventory", null, 8, 4);
 
-	// Token: 0x040000F5 RID: 245
+	// Token: 0x040000F6 RID: 246
 	protected ItemDrop.ItemData m_rightItem;
 
-	// Token: 0x040000F6 RID: 246
+	// Token: 0x040000F7 RID: 247
 	protected ItemDrop.ItemData m_leftItem;
 
-	// Token: 0x040000F7 RID: 247
+	// Token: 0x040000F8 RID: 248
 	protected ItemDrop.ItemData m_chestItem;
 
-	// Token: 0x040000F8 RID: 248
+	// Token: 0x040000F9 RID: 249
 	protected ItemDrop.ItemData m_legItem;
 
-	// Token: 0x040000F9 RID: 249
+	// Token: 0x040000FA RID: 250
 	protected ItemDrop.ItemData m_ammoItem;
 
-	// Token: 0x040000FA RID: 250
+	// Token: 0x040000FB RID: 251
 	protected ItemDrop.ItemData m_helmetItem;
 
-	// Token: 0x040000FB RID: 251
+	// Token: 0x040000FC RID: 252
 	protected ItemDrop.ItemData m_shoulderItem;
 
-	// Token: 0x040000FC RID: 252
+	// Token: 0x040000FD RID: 253
 	protected ItemDrop.ItemData m_utilityItem;
 
-	// Token: 0x040000FD RID: 253
+	// Token: 0x040000FE RID: 254
 	protected string m_beardItem = "";
 
-	// Token: 0x040000FE RID: 254
+	// Token: 0x040000FF RID: 255
 	protected string m_hairItem = "";
 
-	// Token: 0x040000FF RID: 255
+	// Token: 0x04000100 RID: 256
 	private int m_lastEquipEffectFrame;
 
-	// Token: 0x04000100 RID: 256
+	// Token: 0x04000101 RID: 257
 	protected ItemDrop.ItemData m_hiddenLeftItem;
 
-	// Token: 0x04000101 RID: 257
+	// Token: 0x04000102 RID: 258
 	protected ItemDrop.ItemData m_hiddenRightItem;
 
-	// Token: 0x04000102 RID: 258
+	// Token: 0x04000103 RID: 259
 	protected Attack m_currentAttack;
 
-	// Token: 0x04000103 RID: 259
+	// Token: 0x04000104 RID: 260
 	protected Attack m_previousAttack;
 
-	// Token: 0x04000104 RID: 260
+	// Token: 0x04000105 RID: 261
 	private float m_timeSinceLastAttack;
 
-	// Token: 0x04000105 RID: 261
+	// Token: 0x04000106 RID: 262
 	private bool m_internalBlockingState;
 
-	// Token: 0x04000106 RID: 262
+	// Token: 0x04000107 RID: 263
 	private float m_blockTimer = 9999f;
 
-	// Token: 0x04000107 RID: 263
+	// Token: 0x04000108 RID: 264
 	private const float m_perfectBlockInterval = 0.25f;
 
-	// Token: 0x04000108 RID: 264
+	// Token: 0x04000109 RID: 265
 	protected float m_attackDrawTime;
 
-	// Token: 0x04000109 RID: 265
+	// Token: 0x0400010A RID: 266
 	protected float m_lastCombatTimer = 999f;
 
-	// Token: 0x0400010A RID: 266
+	// Token: 0x0400010B RID: 267
 	protected VisEquipment m_visEquipment;
 
-	// Token: 0x0400010B RID: 267
+	// Token: 0x0400010C RID: 268
 	private static int statef = 0;
 
-	// Token: 0x0400010C RID: 268
+	// Token: 0x0400010D RID: 269
 	private static int statei = 0;
 
-	// Token: 0x0400010D RID: 269
+	// Token: 0x0400010E RID: 270
 	private static int blocking = 0;
 
-	// Token: 0x0400010E RID: 270
+	// Token: 0x0400010F RID: 271
 	private static int isBlockingHash = 0;
 
-	// Token: 0x0400010F RID: 271
+	// Token: 0x04000110 RID: 272
 	private HashSet<StatusEffect> m_eqipmentStatusEffects = new HashSet<StatusEffect>();
 
-	// Token: 0x04000110 RID: 272
+	// Token: 0x04000111 RID: 273
 	protected static int m_animatorTagAttack = Animator.StringToHash("attack");
 
 	// Token: 0x02000122 RID: 290
 	[Serializable]
 	public class ItemSet
 	{
-		// Token: 0x04000FD8 RID: 4056
+		// Token: 0x04000FDF RID: 4063
 		public string m_name = "";
 
-		// Token: 0x04000FD9 RID: 4057
+		// Token: 0x04000FE0 RID: 4064
 		public GameObject[] m_items = new GameObject[0];
 	}
 }

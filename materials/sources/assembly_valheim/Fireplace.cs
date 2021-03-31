@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x020000CB RID: 203
 public class Fireplace : MonoBehaviour, Hoverable, Interactable
 {
-	// Token: 0x06000D1C RID: 3356 RVA: 0x0005D668 File Offset: 0x0005B868
+	// Token: 0x06000D1D RID: 3357 RVA: 0x0005D7F0 File Offset: 0x0005B9F0
 	public void Awake()
 	{
 		this.m_nview = base.gameObject.GetComponent<ZNetView>();
@@ -37,7 +37,7 @@ public class Fireplace : MonoBehaviour, Hoverable, Interactable
 		base.InvokeRepeating("CheckEnv", 4f, 4f);
 	}
 
-	// Token: 0x06000D1D RID: 3357 RVA: 0x0005D7A8 File Offset: 0x0005B9A8
+	// Token: 0x06000D1E RID: 3358 RVA: 0x0005D930 File Offset: 0x0005BB30
 	private void Start()
 	{
 		if (this.m_playerBaseObject && this.m_piece)
@@ -46,7 +46,7 @@ public class Fireplace : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000D1E RID: 3358 RVA: 0x0005D7DC File Offset: 0x0005B9DC
+	// Token: 0x06000D1F RID: 3359 RVA: 0x0005D964 File Offset: 0x0005BB64
 	private double GetTimeSinceLastUpdate()
 	{
 		DateTime time = ZNet.instance.GetTime();
@@ -61,7 +61,7 @@ public class Fireplace : MonoBehaviour, Hoverable, Interactable
 		return num;
 	}
 
-	// Token: 0x06000D1F RID: 3359 RVA: 0x0005D85C File Offset: 0x0005BA5C
+	// Token: 0x06000D20 RID: 3360 RVA: 0x0005D9E4 File Offset: 0x0005BBE4
 	private void UpdateFireplace()
 	{
 		if (!this.m_nview.IsValid())
@@ -86,7 +86,7 @@ public class Fireplace : MonoBehaviour, Hoverable, Interactable
 		this.UpdateState();
 	}
 
-	// Token: 0x06000D20 RID: 3360 RVA: 0x0005D8E7 File Offset: 0x0005BAE7
+	// Token: 0x06000D21 RID: 3361 RVA: 0x0005DA6F File Offset: 0x0005BC6F
 	private void CheckEnv()
 	{
 		this.CheckUnderTerrain();
@@ -96,7 +96,7 @@ public class Fireplace : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000D21 RID: 3361 RVA: 0x0005D914 File Offset: 0x0005BB14
+	// Token: 0x06000D22 RID: 3362 RVA: 0x0005DA9C File Offset: 0x0005BC9C
 	private void CheckUnderTerrain()
 	{
 		this.m_blocked = false;
@@ -119,7 +119,7 @@ public class Fireplace : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000D22 RID: 3362 RVA: 0x0005D9C0 File Offset: 0x0005BBC0
+	// Token: 0x06000D23 RID: 3363 RVA: 0x0005DB48 File Offset: 0x0005BD48
 	private void CheckWet()
 	{
 		float num;
@@ -136,7 +136,7 @@ public class Fireplace : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000D23 RID: 3363 RVA: 0x0005DA34 File Offset: 0x0005BC34
+	// Token: 0x06000D24 RID: 3364 RVA: 0x0005DBBC File Offset: 0x0005BDBC
 	private void UpdateState()
 	{
 		if (this.IsBurning())
@@ -160,7 +160,7 @@ public class Fireplace : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000D24 RID: 3364 RVA: 0x0005DAD4 File Offset: 0x0005BCD4
+	// Token: 0x06000D25 RID: 3365 RVA: 0x0005DC5C File Offset: 0x0005BE5C
 	public string GetHoverText()
 	{
 		float @float = this.m_nview.GetZDO().GetFloat("fuel", 0f);
@@ -177,13 +177,13 @@ public class Fireplace : MonoBehaviour, Hoverable, Interactable
 		}));
 	}
 
-	// Token: 0x06000D25 RID: 3365 RVA: 0x0005DB6F File Offset: 0x0005BD6F
+	// Token: 0x06000D26 RID: 3366 RVA: 0x0005DCF7 File Offset: 0x0005BEF7
 	public string GetHoverName()
 	{
 		return this.m_name;
 	}
 
-	// Token: 0x06000D26 RID: 3366 RVA: 0x0005DB78 File Offset: 0x0005BD78
+	// Token: 0x06000D27 RID: 3367 RVA: 0x0005DD00 File Offset: 0x0005BF00
 	public bool Interact(Humanoid user, bool hold)
 	{
 		if (hold)
@@ -221,7 +221,7 @@ public class Fireplace : MonoBehaviour, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x06000D27 RID: 3367 RVA: 0x0005DCC4 File Offset: 0x0005BEC4
+	// Token: 0x06000D28 RID: 3368 RVA: 0x0005DE4C File Offset: 0x0005C04C
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		if (item.m_shared.m_name == this.m_fuelItem.m_itemData.m_shared.m_name)
@@ -270,7 +270,7 @@ public class Fireplace : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000D28 RID: 3368 RVA: 0x0005DEDC File Offset: 0x0005C0DC
+	// Token: 0x06000D29 RID: 3369 RVA: 0x0005E064 File Offset: 0x0005C264
 	private void RPC_AddFuel(long sender)
 	{
 		if (this.m_nview.IsOwner())
@@ -289,13 +289,13 @@ public class Fireplace : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000D29 RID: 3369 RVA: 0x0005DF94 File Offset: 0x0005C194
+	// Token: 0x06000D2A RID: 3370 RVA: 0x0005E11C File Offset: 0x0005C31C
 	public bool CanBeRemoved()
 	{
 		return !this.IsBurning();
 	}
 
-	// Token: 0x06000D2A RID: 3370 RVA: 0x0005DFA0 File Offset: 0x0005C1A0
+	// Token: 0x06000D2B RID: 3371 RVA: 0x0005E128 File Offset: 0x0005C328
 	public bool IsBurning()
 	{
 		if (this.m_blocked)
@@ -306,7 +306,7 @@ public class Fireplace : MonoBehaviour, Hoverable, Interactable
 		return this.m_enabledObject.transform.position.y >= waterLevel && this.m_nview.GetZDO().GetFloat("fuel", 0f) > 0f;
 	}
 
-	// Token: 0x06000D2B RID: 3371 RVA: 0x0005E010 File Offset: 0x0005C210
+	// Token: 0x06000D2C RID: 3372 RVA: 0x0005E198 File Offset: 0x0005C398
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.white;
@@ -315,71 +315,71 @@ public class Fireplace : MonoBehaviour, Hoverable, Interactable
 		Gizmos.DrawWireCube(base.transform.position + Vector3.up * this.m_checkTerrainOffset, new Vector3(1f, 0.01f, 1f));
 	}
 
-	// Token: 0x04000BEF RID: 3055
+	// Token: 0x04000BF5 RID: 3061
 	private ZNetView m_nview;
 
-	// Token: 0x04000BF0 RID: 3056
+	// Token: 0x04000BF6 RID: 3062
 	private Piece m_piece;
 
-	// Token: 0x04000BF1 RID: 3057
+	// Token: 0x04000BF7 RID: 3063
 	[Header("Fire")]
 	public string m_name = "Fire";
 
-	// Token: 0x04000BF2 RID: 3058
+	// Token: 0x04000BF8 RID: 3064
 	public float m_startFuel = 3f;
 
-	// Token: 0x04000BF3 RID: 3059
+	// Token: 0x04000BF9 RID: 3065
 	public float m_maxFuel = 10f;
 
-	// Token: 0x04000BF4 RID: 3060
+	// Token: 0x04000BFA RID: 3066
 	public float m_secPerFuel = 3f;
 
-	// Token: 0x04000BF5 RID: 3061
+	// Token: 0x04000BFB RID: 3067
 	public float m_checkTerrainOffset = 0.2f;
 
-	// Token: 0x04000BF6 RID: 3062
+	// Token: 0x04000BFC RID: 3068
 	public float m_coverCheckOffset = 0.5f;
 
-	// Token: 0x04000BF7 RID: 3063
+	// Token: 0x04000BFD RID: 3069
 	private const float m_minimumOpenSpace = 0.5f;
 
-	// Token: 0x04000BF8 RID: 3064
+	// Token: 0x04000BFE RID: 3070
 	public GameObject m_enabledObject;
 
-	// Token: 0x04000BF9 RID: 3065
+	// Token: 0x04000BFF RID: 3071
 	public GameObject m_enabledObjectLow;
 
-	// Token: 0x04000BFA RID: 3066
+	// Token: 0x04000C00 RID: 3072
 	public GameObject m_enabledObjectHigh;
 
-	// Token: 0x04000BFB RID: 3067
+	// Token: 0x04000C01 RID: 3073
 	public GameObject m_playerBaseObject;
 
-	// Token: 0x04000BFC RID: 3068
+	// Token: 0x04000C02 RID: 3074
 	public ItemDrop m_fuelItem;
 
-	// Token: 0x04000BFD RID: 3069
+	// Token: 0x04000C03 RID: 3075
 	public SmokeSpawner m_smokeSpawner;
 
-	// Token: 0x04000BFE RID: 3070
+	// Token: 0x04000C04 RID: 3076
 	public EffectList m_fuelAddedEffects = new EffectList();
 
-	// Token: 0x04000BFF RID: 3071
+	// Token: 0x04000C05 RID: 3077
 	[Header("Fireworks")]
 	public ItemDrop m_fireworkItem;
 
-	// Token: 0x04000C00 RID: 3072
+	// Token: 0x04000C06 RID: 3078
 	public int m_fireworkItems = 2;
 
-	// Token: 0x04000C01 RID: 3073
+	// Token: 0x04000C07 RID: 3079
 	public GameObject m_fireworks;
 
-	// Token: 0x04000C02 RID: 3074
+	// Token: 0x04000C08 RID: 3080
 	private bool m_blocked;
 
-	// Token: 0x04000C03 RID: 3075
+	// Token: 0x04000C09 RID: 3081
 	private bool m_wet;
 
-	// Token: 0x04000C04 RID: 3076
+	// Token: 0x04000C0A RID: 3082
 	private static int m_solidRayMask;
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000011 RID: 17
 public class Ragdoll : MonoBehaviour
 {
-	// Token: 0x06000258 RID: 600 RVA: 0x00013080 File Offset: 0x00011280
+	// Token: 0x06000259 RID: 601 RVA: 0x00013134 File Offset: 0x00011334
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -23,7 +23,7 @@ public class Ragdoll : MonoBehaviour
 		base.InvokeRepeating("DestroyNow", this.m_ttl, 1f);
 	}
 
-	// Token: 0x06000259 RID: 601 RVA: 0x00013170 File Offset: 0x00011370
+	// Token: 0x0600025A RID: 602 RVA: 0x00013224 File Offset: 0x00011424
 	public Vector3 GetAverageBodyPosition()
 	{
 		if (this.m_bodies.Length == 0)
@@ -38,7 +38,7 @@ public class Ragdoll : MonoBehaviour
 		return a / (float)this.m_bodies.Length;
 	}
 
-	// Token: 0x0600025A RID: 602 RVA: 0x000131D0 File Offset: 0x000113D0
+	// Token: 0x0600025B RID: 603 RVA: 0x00013284 File Offset: 0x00011484
 	private void DestroyNow()
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -51,7 +51,7 @@ public class Ragdoll : MonoBehaviour
 		ZNetScene.instance.Destroy(base.gameObject);
 	}
 
-	// Token: 0x0600025B RID: 603 RVA: 0x0001322E File Offset: 0x0001142E
+	// Token: 0x0600025C RID: 604 RVA: 0x000132E2 File Offset: 0x000114E2
 	private void RemoveInitVel()
 	{
 		if (this.m_nview.IsOwner())
@@ -60,7 +60,7 @@ public class Ragdoll : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600025C RID: 604 RVA: 0x00013258 File Offset: 0x00011458
+	// Token: 0x0600025D RID: 605 RVA: 0x0001330C File Offset: 0x0001150C
 	private void Start()
 	{
 		Vector3 vec = this.m_nview.GetZDO().GetVec3("InitVel", Vector3.zero);
@@ -75,7 +75,7 @@ public class Ragdoll : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600025D RID: 605 RVA: 0x000132CC File Offset: 0x000114CC
+	// Token: 0x0600025E RID: 606 RVA: 0x00013380 File Offset: 0x00011580
 	public void Setup(Vector3 velocity, float hue, float saturation, float value, CharacterDrop characterDrop)
 	{
 		velocity.x *= this.m_velMultiplier;
@@ -96,7 +96,7 @@ public class Ragdoll : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600025E RID: 606 RVA: 0x000133B8 File Offset: 0x000115B8
+	// Token: 0x0600025F RID: 607 RVA: 0x0001346C File Offset: 0x0001166C
 	private void SaveLootList(CharacterDrop characterDrop)
 	{
 		List<KeyValuePair<GameObject, int>> list = characterDrop.GenerateDropList();
@@ -114,7 +114,7 @@ public class Ragdoll : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600025F RID: 607 RVA: 0x00013454 File Offset: 0x00011654
+	// Token: 0x06000260 RID: 608 RVA: 0x00013508 File Offset: 0x00011708
 	private void SpawnLoot(Vector3 center)
 	{
 		ZDO zdo = this.m_nview.GetZDO();
@@ -141,7 +141,7 @@ public class Ragdoll : MonoBehaviour
 		CharacterDrop.DropItems(list, center + Vector3.up * 0.75f, 0.5f);
 	}
 
-	// Token: 0x06000260 RID: 608 RVA: 0x00013527 File Offset: 0x00011727
+	// Token: 0x06000261 RID: 609 RVA: 0x000135DB File Offset: 0x000117DB
 	private void FixedUpdate()
 	{
 		if (this.m_float)
@@ -150,7 +150,7 @@ public class Ragdoll : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000261 RID: 609 RVA: 0x0001353C File Offset: 0x0001173C
+	// Token: 0x06000262 RID: 610 RVA: 0x000135F0 File Offset: 0x000117F0
 	private void UpdateFloating(float dt)
 	{
 		foreach (Rigidbody rigidbody in this.m_bodies)
@@ -168,42 +168,42 @@ public class Ragdoll : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040001C6 RID: 454
+	// Token: 0x040001CA RID: 458
 	public float m_velMultiplier = 1f;
 
-	// Token: 0x040001C7 RID: 455
+	// Token: 0x040001CB RID: 459
 	public float m_ttl;
 
-	// Token: 0x040001C8 RID: 456
+	// Token: 0x040001CC RID: 460
 	public Renderer m_mainModel;
 
-	// Token: 0x040001C9 RID: 457
+	// Token: 0x040001CD RID: 461
 	public EffectList m_removeEffect = new EffectList();
 
-	// Token: 0x040001CA RID: 458
+	// Token: 0x040001CE RID: 462
 	public Action<Vector3> m_onDestroyed;
 
-	// Token: 0x040001CB RID: 459
+	// Token: 0x040001CF RID: 463
 	public bool m_float;
 
-	// Token: 0x040001CC RID: 460
+	// Token: 0x040001D0 RID: 464
 	public float m_floatOffset = -0.1f;
 
-	// Token: 0x040001CD RID: 461
+	// Token: 0x040001D1 RID: 465
 	private const float m_floatForce = 20f;
 
-	// Token: 0x040001CE RID: 462
+	// Token: 0x040001D2 RID: 466
 	private const float m_damping = 0.05f;
 
-	// Token: 0x040001CF RID: 463
+	// Token: 0x040001D3 RID: 467
 	private ZNetView m_nview;
 
-	// Token: 0x040001D0 RID: 464
+	// Token: 0x040001D4 RID: 468
 	private Rigidbody[] m_bodies;
 
-	// Token: 0x040001D1 RID: 465
+	// Token: 0x040001D5 RID: 469
 	private const float m_dropOffset = 0.75f;
 
-	// Token: 0x040001D2 RID: 466
+	// Token: 0x040001D6 RID: 470
 	private const float m_dropArea = 0.5f;
 }

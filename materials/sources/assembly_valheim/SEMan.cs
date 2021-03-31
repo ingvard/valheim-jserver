@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // Token: 0x02000022 RID: 34
 public class SEMan
 {
-	// Token: 0x06000381 RID: 897 RVA: 0x0001E5B8 File Offset: 0x0001C7B8
+	// Token: 0x06000382 RID: 898 RVA: 0x0001E66C File Offset: 0x0001C86C
 	public SEMan(Character character, ZNetView nview)
 	{
 		this.m_character = character;
@@ -12,7 +12,7 @@ public class SEMan
 		this.m_nview.Register<string, bool>("AddStatusEffect", new Action<long, string, bool>(this.RPC_AddStatusEffect));
 	}
 
-	// Token: 0x06000382 RID: 898 RVA: 0x0001E60C File Offset: 0x0001C80C
+	// Token: 0x06000383 RID: 899 RVA: 0x0001E6C0 File Offset: 0x0001C8C0
 	public void OnDestroy()
 	{
 		foreach (StatusEffect statusEffect in this.m_statusEffects)
@@ -22,7 +22,7 @@ public class SEMan
 		this.m_statusEffects.Clear();
 	}
 
-	// Token: 0x06000383 RID: 899 RVA: 0x0001E668 File Offset: 0x0001C868
+	// Token: 0x06000384 RID: 900 RVA: 0x0001E71C File Offset: 0x0001C91C
 	public void ApplyStatusEffectSpeedMods(ref float speed)
 	{
 		foreach (StatusEffect statusEffect in this.m_statusEffects)
@@ -31,7 +31,7 @@ public class SEMan
 		}
 	}
 
-	// Token: 0x06000384 RID: 900 RVA: 0x0001E6BC File Offset: 0x0001C8BC
+	// Token: 0x06000385 RID: 901 RVA: 0x0001E770 File Offset: 0x0001C970
 	public void ApplyDamageMods(ref HitData.DamageModifiers mods)
 	{
 		foreach (StatusEffect statusEffect in this.m_statusEffects)
@@ -40,7 +40,7 @@ public class SEMan
 		}
 	}
 
-	// Token: 0x06000385 RID: 901 RVA: 0x0001E710 File Offset: 0x0001C910
+	// Token: 0x06000386 RID: 902 RVA: 0x0001E7C4 File Offset: 0x0001C9C4
 	public void Update(float dt)
 	{
 		this.m_statusEffectAttributes = 0;
@@ -70,7 +70,7 @@ public class SEMan
 		this.m_nview.GetZDO().Set("seAttrib", this.m_statusEffectAttributes);
 	}
 
-	// Token: 0x06000386 RID: 902 RVA: 0x0001E804 File Offset: 0x0001CA04
+	// Token: 0x06000387 RID: 903 RVA: 0x0001E8B8 File Offset: 0x0001CAB8
 	public StatusEffect AddStatusEffect(string name, bool resetTime = false)
 	{
 		if (this.m_nview.IsOwner())
@@ -85,7 +85,7 @@ public class SEMan
 		return null;
 	}
 
-	// Token: 0x06000387 RID: 903 RVA: 0x0001E840 File Offset: 0x0001CA40
+	// Token: 0x06000388 RID: 904 RVA: 0x0001E8F4 File Offset: 0x0001CAF4
 	private void RPC_AddStatusEffect(long sender, string name, bool resetTime)
 	{
 		if (!this.m_nview.IsOwner())
@@ -95,7 +95,7 @@ public class SEMan
 		this.Internal_AddStatusEffect(name, resetTime);
 	}
 
-	// Token: 0x06000388 RID: 904 RVA: 0x0001E85C File Offset: 0x0001CA5C
+	// Token: 0x06000389 RID: 905 RVA: 0x0001E910 File Offset: 0x0001CB10
 	private StatusEffect Internal_AddStatusEffect(string name, bool resetTime)
 	{
 		StatusEffect statusEffect = this.GetStatusEffect(name);
@@ -115,7 +115,7 @@ public class SEMan
 		return this.AddStatusEffect(statusEffect2, false);
 	}
 
-	// Token: 0x06000389 RID: 905 RVA: 0x0001E8A4 File Offset: 0x0001CAA4
+	// Token: 0x0600038A RID: 906 RVA: 0x0001E958 File Offset: 0x0001CB58
 	public StatusEffect AddStatusEffect(StatusEffect statusEffect, bool resetTime = false)
 	{
 		StatusEffect statusEffect2 = this.GetStatusEffect(statusEffect.name);
@@ -141,13 +141,13 @@ public class SEMan
 		return statusEffect3;
 	}
 
-	// Token: 0x0600038A RID: 906 RVA: 0x0001E925 File Offset: 0x0001CB25
+	// Token: 0x0600038B RID: 907 RVA: 0x0001E9D9 File Offset: 0x0001CBD9
 	public bool RemoveStatusEffect(StatusEffect se, bool quiet = false)
 	{
 		return this.RemoveStatusEffect(se.name, quiet);
 	}
 
-	// Token: 0x0600038B RID: 907 RVA: 0x0001E934 File Offset: 0x0001CB34
+	// Token: 0x0600038C RID: 908 RVA: 0x0001E9E8 File Offset: 0x0001CBE8
 	public bool RemoveStatusEffect(string name, bool quiet = false)
 	{
 		for (int i = 0; i < this.m_statusEffects.Count; i++)
@@ -167,7 +167,7 @@ public class SEMan
 		return false;
 	}
 
-	// Token: 0x0600038C RID: 908 RVA: 0x0001E998 File Offset: 0x0001CB98
+	// Token: 0x0600038D RID: 909 RVA: 0x0001EA4C File Offset: 0x0001CC4C
 	public bool HaveStatusEffectCategory(string cat)
 	{
 		if (cat.Length == 0)
@@ -185,7 +185,7 @@ public class SEMan
 		return false;
 	}
 
-	// Token: 0x0600038D RID: 909 RVA: 0x0001E9F4 File Offset: 0x0001CBF4
+	// Token: 0x0600038E RID: 910 RVA: 0x0001EAA8 File Offset: 0x0001CCA8
 	public bool HaveStatusAttribute(StatusEffect.StatusAttribute value)
 	{
 		if (!this.m_nview.IsValid())
@@ -199,7 +199,7 @@ public class SEMan
 		return (this.m_nview.GetZDO().GetInt("seAttrib", 0) & (int)value) != 0;
 	}
 
-	// Token: 0x0600038E RID: 910 RVA: 0x0001EA44 File Offset: 0x0001CC44
+	// Token: 0x0600038F RID: 911 RVA: 0x0001EAF8 File Offset: 0x0001CCF8
 	public bool HaveStatusEffect(string name)
 	{
 		for (int i = 0; i < this.m_statusEffects.Count; i++)
@@ -212,13 +212,13 @@ public class SEMan
 		return false;
 	}
 
-	// Token: 0x0600038F RID: 911 RVA: 0x0001EA83 File Offset: 0x0001CC83
+	// Token: 0x06000390 RID: 912 RVA: 0x0001EB37 File Offset: 0x0001CD37
 	public List<StatusEffect> GetStatusEffects()
 	{
 		return this.m_statusEffects;
 	}
 
-	// Token: 0x06000390 RID: 912 RVA: 0x0001EA8C File Offset: 0x0001CC8C
+	// Token: 0x06000391 RID: 913 RVA: 0x0001EB40 File Offset: 0x0001CD40
 	public StatusEffect GetStatusEffect(string name)
 	{
 		for (int i = 0; i < this.m_statusEffects.Count; i++)
@@ -232,7 +232,7 @@ public class SEMan
 		return null;
 	}
 
-	// Token: 0x06000391 RID: 913 RVA: 0x0001EAD0 File Offset: 0x0001CCD0
+	// Token: 0x06000392 RID: 914 RVA: 0x0001EB84 File Offset: 0x0001CD84
 	public void GetHUDStatusEffects(List<StatusEffect> effects)
 	{
 		for (int i = 0; i < this.m_statusEffects.Count; i++)
@@ -245,7 +245,7 @@ public class SEMan
 		}
 	}
 
-	// Token: 0x06000392 RID: 914 RVA: 0x0001EB14 File Offset: 0x0001CD14
+	// Token: 0x06000393 RID: 915 RVA: 0x0001EBC8 File Offset: 0x0001CDC8
 	public void ModifyNoise(float baseNoise, ref float noise)
 	{
 		foreach (StatusEffect statusEffect in this.m_statusEffects)
@@ -254,7 +254,7 @@ public class SEMan
 		}
 	}
 
-	// Token: 0x06000393 RID: 915 RVA: 0x0001EB68 File Offset: 0x0001CD68
+	// Token: 0x06000394 RID: 916 RVA: 0x0001EC1C File Offset: 0x0001CE1C
 	public void ModifyRaiseSkill(Skills.SkillType skill, ref float multiplier)
 	{
 		foreach (StatusEffect statusEffect in this.m_statusEffects)
@@ -263,7 +263,7 @@ public class SEMan
 		}
 	}
 
-	// Token: 0x06000394 RID: 916 RVA: 0x0001EBBC File Offset: 0x0001CDBC
+	// Token: 0x06000395 RID: 917 RVA: 0x0001EC70 File Offset: 0x0001CE70
 	public void ModifyStaminaRegen(ref float staminaMultiplier)
 	{
 		foreach (StatusEffect statusEffect in this.m_statusEffects)
@@ -272,7 +272,7 @@ public class SEMan
 		}
 	}
 
-	// Token: 0x06000395 RID: 917 RVA: 0x0001EC10 File Offset: 0x0001CE10
+	// Token: 0x06000396 RID: 918 RVA: 0x0001ECC4 File Offset: 0x0001CEC4
 	public void ModifyHealthRegen(ref float regenMultiplier)
 	{
 		foreach (StatusEffect statusEffect in this.m_statusEffects)
@@ -281,7 +281,7 @@ public class SEMan
 		}
 	}
 
-	// Token: 0x06000396 RID: 918 RVA: 0x0001EC64 File Offset: 0x0001CE64
+	// Token: 0x06000397 RID: 919 RVA: 0x0001ED18 File Offset: 0x0001CF18
 	public void ModifyMaxCarryWeight(float baseLimit, ref float limit)
 	{
 		foreach (StatusEffect statusEffect in this.m_statusEffects)
@@ -290,7 +290,7 @@ public class SEMan
 		}
 	}
 
-	// Token: 0x06000397 RID: 919 RVA: 0x0001ECB8 File Offset: 0x0001CEB8
+	// Token: 0x06000398 RID: 920 RVA: 0x0001ED6C File Offset: 0x0001CF6C
 	public void ModifyStealth(float baseStealth, ref float stealth)
 	{
 		foreach (StatusEffect statusEffect in this.m_statusEffects)
@@ -299,7 +299,7 @@ public class SEMan
 		}
 	}
 
-	// Token: 0x06000398 RID: 920 RVA: 0x0001ED0C File Offset: 0x0001CF0C
+	// Token: 0x06000399 RID: 921 RVA: 0x0001EDC0 File Offset: 0x0001CFC0
 	public void ModifyAttack(Skills.SkillType skill, ref HitData hitData)
 	{
 		foreach (StatusEffect statusEffect in this.m_statusEffects)
@@ -308,7 +308,7 @@ public class SEMan
 		}
 	}
 
-	// Token: 0x06000399 RID: 921 RVA: 0x0001ED60 File Offset: 0x0001CF60
+	// Token: 0x0600039A RID: 922 RVA: 0x0001EE14 File Offset: 0x0001D014
 	public void ModifyRunStaminaDrain(float baseDrain, ref float drain)
 	{
 		foreach (StatusEffect statusEffect in this.m_statusEffects)
@@ -321,7 +321,7 @@ public class SEMan
 		}
 	}
 
-	// Token: 0x0600039A RID: 922 RVA: 0x0001EDC4 File Offset: 0x0001CFC4
+	// Token: 0x0600039B RID: 923 RVA: 0x0001EE78 File Offset: 0x0001D078
 	public void ModifyJumpStaminaUsage(float baseStaminaUse, ref float staminaUse)
 	{
 		foreach (StatusEffect statusEffect in this.m_statusEffects)
@@ -334,7 +334,7 @@ public class SEMan
 		}
 	}
 
-	// Token: 0x0600039B RID: 923 RVA: 0x0001EE28 File Offset: 0x0001D028
+	// Token: 0x0600039C RID: 924 RVA: 0x0001EEDC File Offset: 0x0001D0DC
 	public void OnDamaged(HitData hit, Character attacker)
 	{
 		foreach (StatusEffect statusEffect in this.m_statusEffects)
@@ -343,18 +343,18 @@ public class SEMan
 		}
 	}
 
-	// Token: 0x0400037A RID: 890
+	// Token: 0x0400037E RID: 894
 	protected List<StatusEffect> m_statusEffects = new List<StatusEffect>();
 
-	// Token: 0x0400037B RID: 891
+	// Token: 0x0400037F RID: 895
 	private List<StatusEffect> m_removeStatusEffects = new List<StatusEffect>();
 
-	// Token: 0x0400037C RID: 892
+	// Token: 0x04000380 RID: 896
 	private int m_statusEffectAttributes;
 
-	// Token: 0x0400037D RID: 893
+	// Token: 0x04000381 RID: 897
 	private Character m_character;
 
-	// Token: 0x0400037E RID: 894
+	// Token: 0x04000382 RID: 898
 	private ZNetView m_nview;
 }

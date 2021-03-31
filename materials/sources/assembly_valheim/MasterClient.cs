@@ -6,7 +6,7 @@ using UnityEngine;
 public class MasterClient
 {
 	// Token: 0x17000014 RID: 20
-	// (get) Token: 0x06000723 RID: 1827 RVA: 0x00039D3E File Offset: 0x00037F3E
+	// (get) Token: 0x06000724 RID: 1828 RVA: 0x00039DF2 File Offset: 0x00037FF2
 	public static MasterClient instance
 	{
 		get
@@ -15,7 +15,7 @@ public class MasterClient
 		}
 	}
 
-	// Token: 0x06000724 RID: 1828 RVA: 0x00039D45 File Offset: 0x00037F45
+	// Token: 0x06000725 RID: 1829 RVA: 0x00039DF9 File Offset: 0x00037FF9
 	public static void Initialize()
 	{
 		if (MasterClient.m_instance == null)
@@ -24,13 +24,13 @@ public class MasterClient
 		}
 	}
 
-	// Token: 0x06000725 RID: 1829 RVA: 0x00039D58 File Offset: 0x00037F58
+	// Token: 0x06000726 RID: 1830 RVA: 0x00039E0C File Offset: 0x0003800C
 	public MasterClient()
 	{
 		this.m_sessionUID = Utils.GenerateUID();
 	}
 
-	// Token: 0x06000726 RID: 1830 RVA: 0x00039D98 File Offset: 0x00037F98
+	// Token: 0x06000727 RID: 1831 RVA: 0x00039E4C File Offset: 0x0003804C
 	public void Dispose()
 	{
 		if (this.m_socket != null)
@@ -51,7 +51,7 @@ public class MasterClient
 		}
 	}
 
-	// Token: 0x06000727 RID: 1831 RVA: 0x00039DEC File Offset: 0x00037FEC
+	// Token: 0x06000728 RID: 1832 RVA: 0x00039EA0 File Offset: 0x000380A0
 	public void Update(float dt)
 	{
 		if (this.m_rpc == null)
@@ -101,7 +101,7 @@ public class MasterClient
 		}
 	}
 
-	// Token: 0x06000728 RID: 1832 RVA: 0x00039F18 File Offset: 0x00038118
+	// Token: 0x06000729 RID: 1833 RVA: 0x00039FCC File Offset: 0x000381CC
 	private void SendStats(float duration)
 	{
 		ZPackage zpackage = new ZPackage();
@@ -148,7 +148,7 @@ public class MasterClient
 		});
 	}
 
-	// Token: 0x06000729 RID: 1833 RVA: 0x0003A0C8 File Offset: 0x000382C8
+	// Token: 0x0600072A RID: 1834 RVA: 0x0003A17C File Offset: 0x0003837C
 	public void RegisterServer(string name, string host, int port, bool password, bool upnp, long worldUID, string version)
 	{
 		this.m_registerPkg = new ZPackage();
@@ -178,7 +178,7 @@ public class MasterClient
 		}));
 	}
 
-	// Token: 0x0600072A RID: 1834 RVA: 0x0003A1A4 File Offset: 0x000383A4
+	// Token: 0x0600072B RID: 1835 RVA: 0x0003A258 File Offset: 0x00038458
 	public void UnregisterServer()
 	{
 		if (this.m_registerPkg == null)
@@ -192,13 +192,13 @@ public class MasterClient
 		this.m_registerPkg = null;
 	}
 
-	// Token: 0x0600072B RID: 1835 RVA: 0x0003A1D3 File Offset: 0x000383D3
+	// Token: 0x0600072C RID: 1836 RVA: 0x0003A287 File Offset: 0x00038487
 	public List<ServerData> GetServers()
 	{
 		return this.m_servers;
 	}
 
-	// Token: 0x0600072C RID: 1836 RVA: 0x0003A1DB File Offset: 0x000383DB
+	// Token: 0x0600072D RID: 1837 RVA: 0x0003A28F File Offset: 0x0003848F
 	public bool GetServers(List<ServerData> servers)
 	{
 		if (!this.m_haveServerlist)
@@ -210,7 +210,7 @@ public class MasterClient
 		return true;
 	}
 
-	// Token: 0x0600072D RID: 1837 RVA: 0x0003A1FA File Offset: 0x000383FA
+	// Token: 0x0600072E RID: 1838 RVA: 0x0003A2AE File Offset: 0x000384AE
 	public void RequestServerlist()
 	{
 		if (this.m_rpc != null)
@@ -219,7 +219,7 @@ public class MasterClient
 		}
 	}
 
-	// Token: 0x0600072E RID: 1838 RVA: 0x0003A21C File Offset: 0x0003841C
+	// Token: 0x0600072F RID: 1839 RVA: 0x0003A2D0 File Offset: 0x000384D0
 	private void RPC_ServerList(ZRpc rpc, ZPackage pkg)
 	{
 		this.m_haveServerlist = true;
@@ -249,67 +249,67 @@ public class MasterClient
 		}
 	}
 
-	// Token: 0x0600072F RID: 1839 RVA: 0x0003A310 File Offset: 0x00038510
+	// Token: 0x06000730 RID: 1840 RVA: 0x0003A3C4 File Offset: 0x000385C4
 	public int GetServerListRevision()
 	{
 		return this.m_serverListRevision;
 	}
 
-	// Token: 0x06000730 RID: 1840 RVA: 0x0003A318 File Offset: 0x00038518
+	// Token: 0x06000731 RID: 1841 RVA: 0x0003A3CC File Offset: 0x000385CC
 	public bool IsConnected()
 	{
 		return this.m_rpc != null;
 	}
 
-	// Token: 0x06000731 RID: 1841 RVA: 0x0003A323 File Offset: 0x00038523
+	// Token: 0x06000732 RID: 1842 RVA: 0x0003A3D7 File Offset: 0x000385D7
 	public void SetNameFilter(string filter)
 	{
 		this.m_nameFilter = filter;
 		ZLog.Log("filter is " + filter);
 	}
 
-	// Token: 0x0400078F RID: 1935
+	// Token: 0x04000793 RID: 1939
 	private const int statVersion = 2;
 
-	// Token: 0x04000790 RID: 1936
+	// Token: 0x04000794 RID: 1940
 	public Action<List<ServerData>> m_onServerList;
 
-	// Token: 0x04000791 RID: 1937
+	// Token: 0x04000795 RID: 1941
 	private string m_msHost = "dvoid.noip.me";
 
-	// Token: 0x04000792 RID: 1938
+	// Token: 0x04000796 RID: 1942
 	private int m_msPort = 9983;
 
-	// Token: 0x04000793 RID: 1939
+	// Token: 0x04000797 RID: 1943
 	private long m_sessionUID;
 
-	// Token: 0x04000794 RID: 1940
+	// Token: 0x04000798 RID: 1944
 	private ZConnector2 m_connector;
 
-	// Token: 0x04000795 RID: 1941
+	// Token: 0x04000799 RID: 1945
 	private ZSocket2 m_socket;
 
-	// Token: 0x04000796 RID: 1942
+	// Token: 0x0400079A RID: 1946
 	private ZRpc m_rpc;
 
-	// Token: 0x04000797 RID: 1943
+	// Token: 0x0400079B RID: 1947
 	private bool m_haveServerlist;
 
-	// Token: 0x04000798 RID: 1944
+	// Token: 0x0400079C RID: 1948
 	private List<ServerData> m_servers = new List<ServerData>();
 
-	// Token: 0x04000799 RID: 1945
+	// Token: 0x0400079D RID: 1949
 	private ZPackage m_registerPkg;
 
-	// Token: 0x0400079A RID: 1946
+	// Token: 0x0400079E RID: 1950
 	private float m_sendStatsTimer;
 
-	// Token: 0x0400079B RID: 1947
+	// Token: 0x0400079F RID: 1951
 	private int m_serverListRevision;
 
-	// Token: 0x0400079C RID: 1948
+	// Token: 0x040007A0 RID: 1952
 	private string m_nameFilter = "";
 
-	// Token: 0x0400079D RID: 1949
+	// Token: 0x040007A1 RID: 1953
 	private static MasterClient m_instance;
 }

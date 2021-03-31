@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x020000EA RID: 234
 public class RandomFlyingBird : MonoBehaviour
 {
-	// Token: 0x06000E8A RID: 3722 RVA: 0x00067CAC File Offset: 0x00065EAC
+	// Token: 0x06000E8B RID: 3723 RVA: 0x00067E34 File Offset: 0x00066034
 	private void Start()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -32,7 +32,7 @@ public class RandomFlyingBird : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000E8B RID: 3723 RVA: 0x00067DA4 File Offset: 0x00065FA4
+	// Token: 0x06000E8C RID: 3724 RVA: 0x00067F2C File Offset: 0x0006612C
 	private void FixedUpdate()
 	{
 		if (!this.m_nview.IsValid())
@@ -142,7 +142,7 @@ public class RandomFlyingBird : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000E8C RID: 3724 RVA: 0x00068200 File Offset: 0x00066400
+	// Token: 0x06000E8D RID: 3725 RVA: 0x00068388 File Offset: 0x00066588
 	private void RandomizeWaypoint(bool ground)
 	{
 		this.m_flyTimer = 0f;
@@ -168,7 +168,7 @@ public class RandomFlyingBird : MonoBehaviour
 		this.m_groundwp = false;
 	}
 
-	// Token: 0x06000E8D RID: 3725 RVA: 0x000682BC File Offset: 0x000664BC
+	// Token: 0x06000E8E RID: 3726 RVA: 0x00068444 File Offset: 0x00066644
 	private bool FindLandingPoint(out Vector3 waypoint)
 	{
 		waypoint = new Vector3(0f, -999f, 0f);
@@ -191,13 +191,13 @@ public class RandomFlyingBird : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x06000E8E RID: 3726 RVA: 0x00068368 File Offset: 0x00066568
+	// Token: 0x06000E8F RID: 3727 RVA: 0x000684F0 File Offset: 0x000666F0
 	private bool DangerNearby(Vector3 p)
 	{
 		return Player.IsPlayerInRange(p, this.m_avoidDangerDistance);
 	}
 
-	// Token: 0x06000E8F RID: 3727 RVA: 0x0006837C File Offset: 0x0006657C
+	// Token: 0x06000E90 RID: 3728 RVA: 0x00068504 File Offset: 0x00066704
 	private void SetVisible(bool visible)
 	{
 		if (this.m_lodGroup == null)
@@ -217,99 +217,99 @@ public class RandomFlyingBird : MonoBehaviour
 		this.m_lodGroup.localReferencePoint = new Vector3(999999f, 999999f, 999999f);
 	}
 
-	// Token: 0x04000D59 RID: 3417
+	// Token: 0x04000D5F RID: 3423
 	public float m_flyRange = 20f;
 
-	// Token: 0x04000D5A RID: 3418
+	// Token: 0x04000D60 RID: 3424
 	public float m_minAlt = 5f;
 
-	// Token: 0x04000D5B RID: 3419
+	// Token: 0x04000D61 RID: 3425
 	public float m_maxAlt = 20f;
 
-	// Token: 0x04000D5C RID: 3420
+	// Token: 0x04000D62 RID: 3426
 	public float m_speed = 10f;
 
-	// Token: 0x04000D5D RID: 3421
+	// Token: 0x04000D63 RID: 3427
 	public float m_turnRate = 10f;
 
-	// Token: 0x04000D5E RID: 3422
+	// Token: 0x04000D64 RID: 3428
 	public float m_wpDuration = 4f;
 
-	// Token: 0x04000D5F RID: 3423
+	// Token: 0x04000D65 RID: 3429
 	public float m_flapDuration = 2f;
 
-	// Token: 0x04000D60 RID: 3424
+	// Token: 0x04000D66 RID: 3430
 	public float m_sailDuration = 4f;
 
-	// Token: 0x04000D61 RID: 3425
+	// Token: 0x04000D67 RID: 3431
 	public float m_landChance = 0.5f;
 
-	// Token: 0x04000D62 RID: 3426
+	// Token: 0x04000D68 RID: 3432
 	public float m_landDuration = 2f;
 
-	// Token: 0x04000D63 RID: 3427
+	// Token: 0x04000D69 RID: 3433
 	public float m_avoidDangerDistance = 4f;
 
-	// Token: 0x04000D64 RID: 3428
+	// Token: 0x04000D6A RID: 3434
 	public bool m_noRandomFlightAtNight = true;
 
-	// Token: 0x04000D65 RID: 3429
+	// Token: 0x04000D6B RID: 3435
 	public float m_randomNoiseIntervalMin = 3f;
 
-	// Token: 0x04000D66 RID: 3430
+	// Token: 0x04000D6C RID: 3436
 	public float m_randomNoiseIntervalMax = 6f;
 
-	// Token: 0x04000D67 RID: 3431
+	// Token: 0x04000D6D RID: 3437
 	public bool m_noNoiseAtNight = true;
 
-	// Token: 0x04000D68 RID: 3432
+	// Token: 0x04000D6E RID: 3438
 	public EffectList m_randomNoise = new EffectList();
 
-	// Token: 0x04000D69 RID: 3433
+	// Token: 0x04000D6F RID: 3439
 	public GameObject m_flyingModel;
 
-	// Token: 0x04000D6A RID: 3434
+	// Token: 0x04000D70 RID: 3440
 	public GameObject m_landedModel;
 
-	// Token: 0x04000D6B RID: 3435
+	// Token: 0x04000D71 RID: 3441
 	private Vector3 m_spawnPoint;
 
-	// Token: 0x04000D6C RID: 3436
+	// Token: 0x04000D72 RID: 3442
 	private Vector3 m_waypoint;
 
-	// Token: 0x04000D6D RID: 3437
+	// Token: 0x04000D73 RID: 3443
 	private bool m_groundwp;
 
-	// Token: 0x04000D6E RID: 3438
+	// Token: 0x04000D74 RID: 3444
 	private float m_flyTimer;
 
-	// Token: 0x04000D6F RID: 3439
+	// Token: 0x04000D75 RID: 3445
 	private float m_modeTimer;
 
-	// Token: 0x04000D70 RID: 3440
+	// Token: 0x04000D76 RID: 3446
 	private float m_randomNoiseTimer;
 
-	// Token: 0x04000D71 RID: 3441
+	// Token: 0x04000D77 RID: 3447
 	private ZSyncAnimation m_anim;
 
-	// Token: 0x04000D72 RID: 3442
+	// Token: 0x04000D78 RID: 3448
 	private bool m_flapping = true;
 
-	// Token: 0x04000D73 RID: 3443
+	// Token: 0x04000D79 RID: 3449
 	private float m_landedTimer;
 
-	// Token: 0x04000D74 RID: 3444
+	// Token: 0x04000D7A RID: 3450
 	private static int flapping;
 
-	// Token: 0x04000D75 RID: 3445
+	// Token: 0x04000D7B RID: 3451
 	private ZNetView m_nview;
 
-	// Token: 0x04000D76 RID: 3446
+	// Token: 0x04000D7C RID: 3452
 	protected LODGroup m_lodGroup;
 
-	// Token: 0x04000D77 RID: 3447
+	// Token: 0x04000D7D RID: 3453
 	private Vector3 m_originalLocalRef;
 
-	// Token: 0x04000D78 RID: 3448
+	// Token: 0x04000D7E RID: 3454
 	private bool m_lodVisible = true;
 }

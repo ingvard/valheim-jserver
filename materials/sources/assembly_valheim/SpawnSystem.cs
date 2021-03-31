@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x020000B0 RID: 176
 public class SpawnSystem : MonoBehaviour
 {
-	// Token: 0x06000BCB RID: 3019 RVA: 0x00053EC8 File Offset: 0x000520C8
+	// Token: 0x06000BCC RID: 3020 RVA: 0x00054050 File Offset: 0x00052250
 	private void Awake()
 	{
 		SpawnSystem.m_instances.Add(this);
@@ -14,13 +14,13 @@ public class SpawnSystem : MonoBehaviour
 		base.InvokeRepeating("UpdateSpawning", 4f, 4f);
 	}
 
-	// Token: 0x06000BCC RID: 3020 RVA: 0x00053F17 File Offset: 0x00052117
+	// Token: 0x06000BCD RID: 3021 RVA: 0x0005409F File Offset: 0x0005229F
 	private void OnDestroy()
 	{
 		SpawnSystem.m_instances.Remove(this);
 	}
 
-	// Token: 0x06000BCD RID: 3021 RVA: 0x00053F28 File Offset: 0x00052128
+	// Token: 0x06000BCE RID: 3022 RVA: 0x000540B0 File Offset: 0x000522B0
 	private void UpdateSpawning()
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -46,7 +46,7 @@ public class SpawnSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000BCE RID: 3022 RVA: 0x00053FB4 File Offset: 0x000521B4
+	// Token: 0x06000BCF RID: 3023 RVA: 0x0005413C File Offset: 0x0005233C
 	private void UpdateSpawnList(List<SpawnSystem.SpawnData> spawners, DateTime currentTime, bool eventSpawners)
 	{
 		string str = eventSpawners ? "e_" : "b_";
@@ -107,7 +107,7 @@ public class SpawnSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000BCF RID: 3023 RVA: 0x000542A0 File Offset: 0x000524A0
+	// Token: 0x06000BD0 RID: 3024 RVA: 0x00054428 File Offset: 0x00052628
 	private void Spawn(SpawnSystem.SpawnData critter, Vector3 spawnPoint, bool eventSpawner)
 	{
 		GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(critter.m_prefab, spawnPoint, Quaternion.identity);
@@ -149,7 +149,7 @@ public class SpawnSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000BD0 RID: 3024 RVA: 0x0005437C File Offset: 0x0005257C
+	// Token: 0x06000BD1 RID: 3025 RVA: 0x00054504 File Offset: 0x00052704
 	private bool IsSpawnPointGood(SpawnSystem.SpawnData spawn, ref Vector3 spawnPoint)
 	{
 		Vector3 vector;
@@ -212,7 +212,7 @@ public class SpawnSystem : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000BD1 RID: 3025 RVA: 0x000544EC File Offset: 0x000526EC
+	// Token: 0x06000BD2 RID: 3026 RVA: 0x00054674 File Offset: 0x00052874
 	private bool FindBaseSpawnPoint(SpawnSystem.SpawnData spawn, List<Player> allPlayers, out Vector3 spawnCenter, out Player targetPlayer)
 	{
 		float min = (spawn.m_spawnRadiusMin > 0f) ? spawn.m_spawnRadiusMin : 40f;
@@ -234,7 +234,7 @@ public class SpawnSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000BD2 RID: 3026 RVA: 0x000545C0 File Offset: 0x000527C0
+	// Token: 0x06000BD3 RID: 3027 RVA: 0x00054748 File Offset: 0x00052948
 	private int GetNrOfInstances(string prefabName)
 	{
 		List<Character> allCharacters = Character.GetAllCharacters();
@@ -249,7 +249,7 @@ public class SpawnSystem : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x06000BD3 RID: 3027 RVA: 0x00054640 File Offset: 0x00052840
+	// Token: 0x06000BD4 RID: 3028 RVA: 0x000547C8 File Offset: 0x000529C8
 	private void GetPlayersInZone(List<Player> players)
 	{
 		foreach (Player player in Player.GetAllPlayers())
@@ -261,7 +261,7 @@ public class SpawnSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000BD4 RID: 3028 RVA: 0x000546AC File Offset: 0x000528AC
+	// Token: 0x06000BD5 RID: 3029 RVA: 0x00054834 File Offset: 0x00052A34
 	private void GetPlayersNearZone(List<Player> players, float marginDistance)
 	{
 		foreach (Player player in Player.GetAllPlayers())
@@ -273,7 +273,7 @@ public class SpawnSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000BD5 RID: 3029 RVA: 0x00054714 File Offset: 0x00052914
+	// Token: 0x06000BD6 RID: 3030 RVA: 0x0005489C File Offset: 0x00052A9C
 	private bool IsPlayerTooClose(List<Player> players, Vector3 point, float minDistance)
 	{
 		using (List<Player>.Enumerator enumerator = players.GetEnumerator())
@@ -289,7 +289,7 @@ public class SpawnSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000BD6 RID: 3030 RVA: 0x00054774 File Offset: 0x00052974
+	// Token: 0x06000BD7 RID: 3031 RVA: 0x000548FC File Offset: 0x00052AFC
 	private bool InPlayerRange(List<Player> players, Vector3 point, float minDistance, float maxDistance)
 	{
 		bool result = false;
@@ -308,7 +308,7 @@ public class SpawnSystem : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x06000BD7 RID: 3031 RVA: 0x000547E0 File Offset: 0x000529E0
+	// Token: 0x06000BD8 RID: 3032 RVA: 0x00054968 File Offset: 0x00052B68
 	private static bool HaveInstanceInRange(GameObject prefab, Vector3 centerPoint, float minDistance)
 	{
 		string name = prefab.name;
@@ -333,13 +333,13 @@ public class SpawnSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000BD8 RID: 3032 RVA: 0x000548C4 File Offset: 0x00052AC4
+	// Token: 0x06000BD9 RID: 3033 RVA: 0x00054A4C File Offset: 0x00052C4C
 	public static int GetNrOfInstances(GameObject prefab)
 	{
 		return SpawnSystem.GetNrOfInstances(prefab, Vector3.zero, 0f, false, false);
 	}
 
-	// Token: 0x06000BD9 RID: 3033 RVA: 0x000548D8 File Offset: 0x00052AD8
+	// Token: 0x06000BDA RID: 3034 RVA: 0x00054A60 File Offset: 0x00052C60
 	public static int GetNrOfInstances(GameObject prefab, Vector3 center, float maxRange, bool eventCreaturesOnly = false, bool procreationOnly = false)
 	{
 		string text = prefab.name + "(Clone)";
@@ -384,7 +384,7 @@ public class SpawnSystem : MonoBehaviour
 		return num2;
 	}
 
-	// Token: 0x06000BDA RID: 3034 RVA: 0x00054A14 File Offset: 0x00052C14
+	// Token: 0x06000BDB RID: 3035 RVA: 0x00054B9C File Offset: 0x00052D9C
 	public void GetSpawners(Heightmap.Biome biome, List<SpawnSystem.SpawnData> spawners)
 	{
 		foreach (SpawnSystem.SpawnData spawnData in this.m_spawners)
@@ -396,7 +396,7 @@ public class SpawnSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000BDB RID: 3035 RVA: 0x00054A7C File Offset: 0x00052C7C
+	// Token: 0x06000BDC RID: 3036 RVA: 0x00054C04 File Offset: 0x00052E04
 	private bool InsideZone(Vector3 point, float extra = 0f)
 	{
 		float num = ZoneSystem.instance.m_zoneSize * 0.5f + extra;
@@ -404,45 +404,45 @@ public class SpawnSystem : MonoBehaviour
 		return point.x >= position.x - num && point.x <= position.x + num && point.z >= position.z - num && point.z <= position.z + num;
 	}
 
-	// Token: 0x06000BDC RID: 3036 RVA: 0x00054AED File Offset: 0x00052CED
+	// Token: 0x06000BDD RID: 3037 RVA: 0x00054C75 File Offset: 0x00052E75
 	private bool HaveGlobalKeys(SpawnSystem.SpawnData ev)
 	{
 		return string.IsNullOrEmpty(ev.m_requiredGlobalKey) || ZoneSystem.instance.GetGlobalKey(ev.m_requiredGlobalKey);
 	}
 
-	// Token: 0x04000AF9 RID: 2809
+	// Token: 0x04000AFF RID: 2815
 	private static List<SpawnSystem> m_instances = new List<SpawnSystem>();
 
-	// Token: 0x04000AFA RID: 2810
+	// Token: 0x04000B00 RID: 2816
 	private const float m_spawnDistanceMin = 40f;
 
-	// Token: 0x04000AFB RID: 2811
+	// Token: 0x04000B01 RID: 2817
 	private const float m_spawnDistanceMax = 80f;
 
-	// Token: 0x04000AFC RID: 2812
+	// Token: 0x04000B02 RID: 2818
 	public List<SpawnSystem.SpawnData> m_spawners = new List<SpawnSystem.SpawnData>();
 
-	// Token: 0x04000AFD RID: 2813
+	// Token: 0x04000B03 RID: 2819
 	public float m_levelupChance = 10f;
 
-	// Token: 0x04000AFE RID: 2814
+	// Token: 0x04000B04 RID: 2820
 	[HideInInspector]
 	public List<Heightmap.Biome> m_biomeFolded = new List<Heightmap.Biome>();
 
-	// Token: 0x04000AFF RID: 2815
+	// Token: 0x04000B05 RID: 2821
 	private List<Player> m_nearPlayers = new List<Player>();
 
-	// Token: 0x04000B00 RID: 2816
+	// Token: 0x04000B06 RID: 2822
 	private ZNetView m_nview;
 
-	// Token: 0x04000B01 RID: 2817
+	// Token: 0x04000B07 RID: 2823
 	private Heightmap m_heightmap;
 
 	// Token: 0x02000186 RID: 390
 	[Serializable]
 	public class SpawnData
 	{
-		// Token: 0x0600118A RID: 4490 RVA: 0x00078CC1 File Offset: 0x00076EC1
+		// Token: 0x0600118B RID: 4491 RVA: 0x00078E49 File Offset: 0x00077049
 		public SpawnSystem.SpawnData Clone()
 		{
 			SpawnSystem.SpawnData spawnData = base.MemberwiseClone() as SpawnSystem.SpawnData;
@@ -450,118 +450,118 @@ public class SpawnSystem : MonoBehaviour
 			return spawnData;
 		}
 
-		// Token: 0x040011DE RID: 4574
+		// Token: 0x040011E5 RID: 4581
 		public string m_name = "";
 
-		// Token: 0x040011DF RID: 4575
+		// Token: 0x040011E6 RID: 4582
 		public bool m_enabled = true;
 
-		// Token: 0x040011E0 RID: 4576
+		// Token: 0x040011E7 RID: 4583
 		public GameObject m_prefab;
 
-		// Token: 0x040011E1 RID: 4577
+		// Token: 0x040011E8 RID: 4584
 		[BitMask(typeof(Heightmap.Biome))]
 		public Heightmap.Biome m_biome;
 
-		// Token: 0x040011E2 RID: 4578
+		// Token: 0x040011E9 RID: 4585
 		[BitMask(typeof(Heightmap.BiomeArea))]
 		public Heightmap.BiomeArea m_biomeArea = Heightmap.BiomeArea.Everything;
 
-		// Token: 0x040011E3 RID: 4579
+		// Token: 0x040011EA RID: 4586
 		[Header("Total nr of instances (if near player is set, only instances within the max spawn radius is counted)")]
 		public int m_maxSpawned = 1;
 
-		// Token: 0x040011E4 RID: 4580
+		// Token: 0x040011EB RID: 4587
 		[Header("How often do we spawn")]
 		public float m_spawnInterval = 4f;
 
-		// Token: 0x040011E5 RID: 4581
+		// Token: 0x040011EC RID: 4588
 		[Header("Chanse to spawn each spawn interval")]
 		[Range(0f, 100f)]
 		public float m_spawnChance = 100f;
 
-		// Token: 0x040011E6 RID: 4582
+		// Token: 0x040011ED RID: 4589
 		[Header("Minimum distance to another instance")]
 		public float m_spawnDistance = 10f;
 
-		// Token: 0x040011E7 RID: 4583
+		// Token: 0x040011EE RID: 4590
 		[Header("Spawn range ( 0 = use global setting )")]
 		public float m_spawnRadiusMin;
 
-		// Token: 0x040011E8 RID: 4584
+		// Token: 0x040011EF RID: 4591
 		public float m_spawnRadiusMax;
 
-		// Token: 0x040011E9 RID: 4585
+		// Token: 0x040011F0 RID: 4592
 		[Header("Only spawn if this key is set")]
 		public string m_requiredGlobalKey = "";
 
-		// Token: 0x040011EA RID: 4586
+		// Token: 0x040011F1 RID: 4593
 		[Header("Only spawn if this environment is active")]
 		public List<string> m_requiredEnvironments = new List<string>();
 
-		// Token: 0x040011EB RID: 4587
+		// Token: 0x040011F2 RID: 4594
 		[Header("Group spawning")]
 		public int m_groupSizeMin = 1;
 
-		// Token: 0x040011EC RID: 4588
+		// Token: 0x040011F3 RID: 4595
 		public int m_groupSizeMax = 1;
 
-		// Token: 0x040011ED RID: 4589
+		// Token: 0x040011F4 RID: 4596
 		public float m_groupRadius = 3f;
 
-		// Token: 0x040011EE RID: 4590
+		// Token: 0x040011F5 RID: 4597
 		[Header("Time of day")]
 		public bool m_spawnAtNight = true;
 
-		// Token: 0x040011EF RID: 4591
+		// Token: 0x040011F6 RID: 4598
 		public bool m_spawnAtDay = true;
 
-		// Token: 0x040011F0 RID: 4592
+		// Token: 0x040011F7 RID: 4599
 		[Header("Altitude")]
 		public float m_minAltitude = -1000f;
 
-		// Token: 0x040011F1 RID: 4593
+		// Token: 0x040011F8 RID: 4600
 		public float m_maxAltitude = 1000f;
 
-		// Token: 0x040011F2 RID: 4594
+		// Token: 0x040011F9 RID: 4601
 		[Header("Terrain tilt")]
 		public float m_minTilt;
 
-		// Token: 0x040011F3 RID: 4595
+		// Token: 0x040011FA RID: 4602
 		public float m_maxTilt = 35f;
 
-		// Token: 0x040011F4 RID: 4596
+		// Token: 0x040011FB RID: 4603
 		[Header("Forest")]
 		public bool m_inForest = true;
 
-		// Token: 0x040011F5 RID: 4597
+		// Token: 0x040011FC RID: 4604
 		public bool m_outsideForest = true;
 
-		// Token: 0x040011F6 RID: 4598
+		// Token: 0x040011FD RID: 4605
 		[Header("Ocean depth ")]
 		public float m_minOceanDepth;
 
-		// Token: 0x040011F7 RID: 4599
+		// Token: 0x040011FE RID: 4606
 		public float m_maxOceanDepth;
 
-		// Token: 0x040011F8 RID: 4600
+		// Token: 0x040011FF RID: 4607
 		[Header("States")]
 		public bool m_huntPlayer;
 
-		// Token: 0x040011F9 RID: 4601
+		// Token: 0x04001200 RID: 4608
 		public float m_groundOffset = 0.5f;
 
-		// Token: 0x040011FA RID: 4602
+		// Token: 0x04001201 RID: 4609
 		[Header("Level")]
 		public int m_maxLevel = 1;
 
-		// Token: 0x040011FB RID: 4603
+		// Token: 0x04001202 RID: 4610
 		public int m_minLevel = 1;
 
-		// Token: 0x040011FC RID: 4604
+		// Token: 0x04001203 RID: 4611
 		public float m_levelUpMinCenterDistance;
 
-		// Token: 0x040011FD RID: 4605
+		// Token: 0x04001204 RID: 4612
 		[HideInInspector]
 		public bool m_foldout;
 	}

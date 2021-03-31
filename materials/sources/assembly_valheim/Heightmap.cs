@@ -6,7 +6,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class Heightmap : MonoBehaviour
 {
-	// Token: 0x06000D6C RID: 3436 RVA: 0x0005F808 File Offset: 0x0005DA08
+	// Token: 0x06000D6D RID: 3437 RVA: 0x0005F990 File Offset: 0x0005DB90
 	private void Awake()
 	{
 		if (!this.m_isDistantLod)
@@ -16,7 +16,7 @@ public class Heightmap : MonoBehaviour
 		this.m_collider = base.GetComponent<MeshCollider>();
 	}
 
-	// Token: 0x06000D6D RID: 3437 RVA: 0x0005F829 File Offset: 0x0005DA29
+	// Token: 0x06000D6E RID: 3438 RVA: 0x0005F9B1 File Offset: 0x0005DBB1
 	private void OnDestroy()
 	{
 		if (!this.m_isDistantLod)
@@ -29,7 +29,7 @@ public class Heightmap : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D6E RID: 3438 RVA: 0x0005F857 File Offset: 0x0005DA57
+	// Token: 0x06000D6F RID: 3439 RVA: 0x0005F9DF File Offset: 0x0005DBDF
 	private void OnEnable()
 	{
 		if (this.m_isDistantLod && Application.isPlaying && !this.m_distantLodEditorHax)
@@ -39,13 +39,13 @@ public class Heightmap : MonoBehaviour
 		this.Regenerate();
 	}
 
-	// Token: 0x06000D6F RID: 3439 RVA: 0x0005F877 File Offset: 0x0005DA77
+	// Token: 0x06000D70 RID: 3440 RVA: 0x0005F9FF File Offset: 0x0005DBFF
 	private void Update()
 	{
 		this.Render();
 	}
 
-	// Token: 0x06000D70 RID: 3440 RVA: 0x0005F880 File Offset: 0x0005DA80
+	// Token: 0x06000D71 RID: 3441 RVA: 0x0005FA08 File Offset: 0x0005DC08
 	private void Render()
 	{
 		if (!this.IsVisible())
@@ -65,13 +65,13 @@ public class Heightmap : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D71 RID: 3441 RVA: 0x0005F906 File Offset: 0x0005DB06
+	// Token: 0x06000D72 RID: 3442 RVA: 0x0005FA8E File Offset: 0x0005DC8E
 	private bool IsVisible()
 	{
 		return Utils.InsideMainCamera(this.m_boundingSphere) && Utils.InsideMainCamera(this.m_bounds);
 	}
 
-	// Token: 0x06000D72 RID: 3442 RVA: 0x0005F928 File Offset: 0x0005DB28
+	// Token: 0x06000D73 RID: 3443 RVA: 0x0005FAB0 File Offset: 0x0005DCB0
 	public static void ForceGenerateAll()
 	{
 		foreach (Heightmap heightmap in Heightmap.m_heightmaps)
@@ -84,7 +84,7 @@ public class Heightmap : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D73 RID: 3443 RVA: 0x0005F9A0 File Offset: 0x0005DBA0
+	// Token: 0x06000D74 RID: 3444 RVA: 0x0005FB28 File Offset: 0x0005DD28
 	public void Poke(bool delayed)
 	{
 		if (delayed)
@@ -99,13 +99,13 @@ public class Heightmap : MonoBehaviour
 		this.Regenerate();
 	}
 
-	// Token: 0x06000D74 RID: 3444 RVA: 0x0005F9D4 File Offset: 0x0005DBD4
+	// Token: 0x06000D75 RID: 3445 RVA: 0x0005FB5C File Offset: 0x0005DD5C
 	public bool HaveQueuedRebuild()
 	{
 		return base.IsInvoking("Regenerate");
 	}
 
-	// Token: 0x06000D75 RID: 3445 RVA: 0x0005F9E1 File Offset: 0x0005DBE1
+	// Token: 0x06000D76 RID: 3446 RVA: 0x0005FB69 File Offset: 0x0005DD69
 	public void Regenerate()
 	{
 		if (this.HaveQueuedRebuild())
@@ -118,7 +118,7 @@ public class Heightmap : MonoBehaviour
 		this.m_dirty = true;
 	}
 
-	// Token: 0x06000D76 RID: 3446 RVA: 0x0005FA10 File Offset: 0x0005DC10
+	// Token: 0x06000D77 RID: 3447 RVA: 0x0005FB98 File Offset: 0x0005DD98
 	private void UpdateCornerDepths()
 	{
 		float num = ZoneSystem.instance ? ZoneSystem.instance.m_waterLevel : 30f;
@@ -133,13 +133,13 @@ public class Heightmap : MonoBehaviour
 		this.m_materialInstance.SetFloatArray("_depth", this.m_oceanDepth);
 	}
 
-	// Token: 0x06000D77 RID: 3447 RVA: 0x0005FB15 File Offset: 0x0005DD15
+	// Token: 0x06000D78 RID: 3448 RVA: 0x0005FC9D File Offset: 0x0005DE9D
 	public float[] GetOceanDepth()
 	{
 		return this.m_oceanDepth;
 	}
 
-	// Token: 0x06000D78 RID: 3448 RVA: 0x0005FB20 File Offset: 0x0005DD20
+	// Token: 0x06000D79 RID: 3449 RVA: 0x0005FCA8 File Offset: 0x0005DEA8
 	public static float GetOceanDepthAll(Vector3 worldPos)
 	{
 		Heightmap heightmap = Heightmap.FindHeightmap(worldPos);
@@ -150,7 +150,7 @@ public class Heightmap : MonoBehaviour
 		return 0f;
 	}
 
-	// Token: 0x06000D79 RID: 3449 RVA: 0x0005FB4C File Offset: 0x0005DD4C
+	// Token: 0x06000D7A RID: 3450 RVA: 0x0005FCD4 File Offset: 0x0005DED4
 	public float GetOceanDepth(Vector3 worldPos)
 	{
 		int num;
@@ -163,7 +163,7 @@ public class Heightmap : MonoBehaviour
 		return Mathf.Lerp(a, b, t2);
 	}
 
-	// Token: 0x06000D7A RID: 3450 RVA: 0x0005FBB0 File Offset: 0x0005DDB0
+	// Token: 0x06000D7B RID: 3451 RVA: 0x0005FD38 File Offset: 0x0005DF38
 	private void Initialize()
 	{
 		int num = this.m_width + 1;
@@ -182,7 +182,7 @@ public class Heightmap : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D7B RID: 3451 RVA: 0x0005FC48 File Offset: 0x0005DE48
+	// Token: 0x06000D7C RID: 3452 RVA: 0x0005FDD0 File Offset: 0x0005DFD0
 	private void Generate()
 	{
 		this.Initialize();
@@ -203,7 +203,7 @@ public class Heightmap : MonoBehaviour
 		this.ApplyModifiers();
 	}
 
-	// Token: 0x06000D7C RID: 3452 RVA: 0x0005FD58 File Offset: 0x0005DF58
+	// Token: 0x06000D7D RID: 3453 RVA: 0x0005FEE0 File Offset: 0x0005E0E0
 	private float Distance(float x, float y, float rx, float ry)
 	{
 		float num = x - rx;
@@ -213,7 +213,7 @@ public class Heightmap : MonoBehaviour
 		return num4 * num4 * num4;
 	}
 
-	// Token: 0x06000D7D RID: 3453 RVA: 0x0005FD88 File Offset: 0x0005DF88
+	// Token: 0x06000D7E RID: 3454 RVA: 0x0005FF10 File Offset: 0x0005E110
 	public List<Heightmap.Biome> GetBiomes()
 	{
 		List<Heightmap.Biome> list = new List<Heightmap.Biome>();
@@ -227,13 +227,13 @@ public class Heightmap : MonoBehaviour
 		return list;
 	}
 
-	// Token: 0x06000D7E RID: 3454 RVA: 0x0005FDC5 File Offset: 0x0005DFC5
+	// Token: 0x06000D7F RID: 3455 RVA: 0x0005FF4D File Offset: 0x0005E14D
 	public bool HaveBiome(Heightmap.Biome biome)
 	{
 		return (this.m_cornerBiomes[0] & biome) != Heightmap.Biome.None || (this.m_cornerBiomes[1] & biome) != Heightmap.Biome.None || (this.m_cornerBiomes[2] & biome) != Heightmap.Biome.None || (this.m_cornerBiomes[3] & biome) > Heightmap.Biome.None;
 	}
 
-	// Token: 0x06000D7F RID: 3455 RVA: 0x0005FDFC File Offset: 0x0005DFFC
+	// Token: 0x06000D80 RID: 3456 RVA: 0x0005FF84 File Offset: 0x0005E184
 	public Heightmap.Biome GetBiome(Vector3 point)
 	{
 		if (this.m_isDistantLod)
@@ -268,7 +268,7 @@ public class Heightmap : MonoBehaviour
 		return (Heightmap.Biome)result;
 	}
 
-	// Token: 0x06000D80 RID: 3456 RVA: 0x0005FF79 File Offset: 0x0005E179
+	// Token: 0x06000D81 RID: 3457 RVA: 0x00060101 File Offset: 0x0005E301
 	public Heightmap.BiomeArea GetBiomeArea()
 	{
 		if (this.IsBiomeEdge())
@@ -278,13 +278,13 @@ public class Heightmap : MonoBehaviour
 		return Heightmap.BiomeArea.Median;
 	}
 
-	// Token: 0x06000D81 RID: 3457 RVA: 0x0005FF86 File Offset: 0x0005E186
+	// Token: 0x06000D82 RID: 3458 RVA: 0x0006010E File Offset: 0x0005E30E
 	public bool IsBiomeEdge()
 	{
 		return this.m_cornerBiomes[0] != this.m_cornerBiomes[1] || this.m_cornerBiomes[0] != this.m_cornerBiomes[2] || this.m_cornerBiomes[0] != this.m_cornerBiomes[3];
 	}
 
-	// Token: 0x06000D82 RID: 3458 RVA: 0x0005FFC4 File Offset: 0x0005E1C4
+	// Token: 0x06000D83 RID: 3459 RVA: 0x0006014C File Offset: 0x0005E34C
 	private void ApplyModifiers()
 	{
 		List<TerrainModifier> allInstances = TerrainModifier.GetAllInstances();
@@ -305,7 +305,7 @@ public class Heightmap : MonoBehaviour
 		this.m_clearedMask.Apply();
 	}
 
-	// Token: 0x06000D83 RID: 3459 RVA: 0x0006005C File Offset: 0x0005E25C
+	// Token: 0x06000D84 RID: 3460 RVA: 0x000601E4 File Offset: 0x0005E3E4
 	private void ApplyModifier(TerrainModifier modifier, float[] baseHeights, float[] levelOnly)
 	{
 		if (modifier.m_level)
@@ -322,7 +322,7 @@ public class Heightmap : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D84 RID: 3460 RVA: 0x00060120 File Offset: 0x0005E320
+	// Token: 0x06000D85 RID: 3461 RVA: 0x000602A8 File Offset: 0x0005E4A8
 	public bool TerrainVSModifier(TerrainModifier modifier)
 	{
 		Vector3 position = modifier.transform.position;
@@ -332,7 +332,7 @@ public class Heightmap : MonoBehaviour
 		return position.x + num >= position2.x - num2 && position.x - num <= position2.x + num2 && position.z + num >= position2.z - num2 && position.z - num <= position2.z + num2;
 	}
 
-	// Token: 0x06000D85 RID: 3461 RVA: 0x000601B8 File Offset: 0x0005E3B8
+	// Token: 0x06000D86 RID: 3462 RVA: 0x00060340 File Offset: 0x0005E540
 	private Vector3 CalcNormal2(List<Vector3> vertises, int x, int y)
 	{
 		int num = this.m_width + 1;
@@ -370,7 +370,7 @@ public class Heightmap : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x06000D86 RID: 3462 RVA: 0x000602A0 File Offset: 0x0005E4A0
+	// Token: 0x06000D87 RID: 3463 RVA: 0x00060428 File Offset: 0x0005E628
 	private Vector3 CalcNormal(int x, int y)
 	{
 		Vector3 vector = this.CalcVertex(x, y);
@@ -397,7 +397,7 @@ public class Heightmap : MonoBehaviour
 		return Vector3.Cross(lhs, rhs).normalized;
 	}
 
-	// Token: 0x06000D87 RID: 3463 RVA: 0x00060328 File Offset: 0x0005E528
+	// Token: 0x06000D88 RID: 3464 RVA: 0x000604B0 File Offset: 0x0005E6B0
 	private Vector3 CalcVertex(int x, int y)
 	{
 		int num = this.m_width + 1;
@@ -406,7 +406,7 @@ public class Heightmap : MonoBehaviour
 		return a + new Vector3((float)x * this.m_scale, y2, (float)y * this.m_scale);
 	}
 
-	// Token: 0x06000D88 RID: 3464 RVA: 0x000603A0 File Offset: 0x0005E5A0
+	// Token: 0x06000D89 RID: 3465 RVA: 0x00060528 File Offset: 0x0005E728
 	private Color GetBiomeColor(float ix, float iy)
 	{
 		if (this.m_cornerBiomes[0] == this.m_cornerBiomes[1] && this.m_cornerBiomes[0] == this.m_cornerBiomes[2] && this.m_cornerBiomes[0] == this.m_cornerBiomes[3])
@@ -422,7 +422,7 @@ public class Heightmap : MonoBehaviour
 		return Color32.Lerp(a, b, iy);
 	}
 
-	// Token: 0x06000D89 RID: 3465 RVA: 0x0006044C File Offset: 0x0005E64C
+	// Token: 0x06000D8A RID: 3466 RVA: 0x000605D4 File Offset: 0x0005E7D4
 	public static Color32 GetBiomeColor(Heightmap.Biome biome)
 	{
 		if (biome <= Heightmap.Biome.Plains)
@@ -466,7 +466,7 @@ public class Heightmap : MonoBehaviour
 		return new Color32(0, 0, 0, 0);
 	}
 
-	// Token: 0x06000D8A RID: 3466 RVA: 0x00060508 File Offset: 0x0005E708
+	// Token: 0x06000D8B RID: 3467 RVA: 0x00060690 File Offset: 0x0005E890
 	private void RebuildCollisionMesh()
 	{
 		if (this.m_collisionMesh == null)
@@ -526,7 +526,7 @@ public class Heightmap : MonoBehaviour
 		this.m_boundingSphere.radius = Vector3.Distance(this.m_boundingSphere.position, this.m_bounds.max);
 	}
 
-	// Token: 0x06000D8B RID: 3467 RVA: 0x0006074C File Offset: 0x0005E94C
+	// Token: 0x06000D8C RID: 3468 RVA: 0x000608D4 File Offset: 0x0005EAD4
 	private void RebuildRenderMesh()
 	{
 		if (this.m_renderMesh == null)
@@ -571,7 +571,7 @@ public class Heightmap : MonoBehaviour
 		this.m_renderMesh.RecalculateTangents();
 	}
 
-	// Token: 0x06000D8C RID: 3468 RVA: 0x00060960 File Offset: 0x0005EB60
+	// Token: 0x06000D8D RID: 3469 RVA: 0x00060AE8 File Offset: 0x0005ECE8
 	private void SmoothTerrain2(Vector3 worldPos, float radius, bool square, float[] levelOnlyHeights, float power, bool playerModifiction)
 	{
 		int num;
@@ -615,7 +615,7 @@ public class Heightmap : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D8D RID: 3469 RVA: 0x00060AA0 File Offset: 0x0005ECA0
+	// Token: 0x06000D8E RID: 3470 RVA: 0x00060C28 File Offset: 0x0005EE28
 	private bool AtMaxWorldLevelDepth(Vector3 worldPos)
 	{
 		float num;
@@ -625,7 +625,7 @@ public class Heightmap : MonoBehaviour
 		return Mathf.Max(-(num - num2), 0f) >= 7.95f;
 	}
 
-	// Token: 0x06000D8E RID: 3470 RVA: 0x00060ADC File Offset: 0x0005ECDC
+	// Token: 0x06000D8F RID: 3471 RVA: 0x00060C64 File Offset: 0x0005EE64
 	private bool GetWorldBaseHeight(Vector3 worldPos, out float height)
 	{
 		int num;
@@ -641,7 +641,7 @@ public class Heightmap : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000D8F RID: 3471 RVA: 0x00060B40 File Offset: 0x0005ED40
+	// Token: 0x06000D90 RID: 3472 RVA: 0x00060CC8 File Offset: 0x0005EEC8
 	private bool GetWorldHeight(Vector3 worldPos, out float height)
 	{
 		int num;
@@ -657,7 +657,7 @@ public class Heightmap : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000D90 RID: 3472 RVA: 0x00060BA0 File Offset: 0x0005EDA0
+	// Token: 0x06000D91 RID: 3473 RVA: 0x00060D28 File Offset: 0x0005EF28
 	private bool GetAverageWorldHeight(Vector3 worldPos, float radius, out float height)
 	{
 		int num;
@@ -689,7 +689,7 @@ public class Heightmap : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000D91 RID: 3473 RVA: 0x00060C78 File Offset: 0x0005EE78
+	// Token: 0x06000D92 RID: 3474 RVA: 0x00060E00 File Offset: 0x0005F000
 	private bool GetMinWorldHeight(Vector3 worldPos, float radius, out float height)
 	{
 		int num;
@@ -717,7 +717,7 @@ public class Heightmap : MonoBehaviour
 		return height != 99999f;
 	}
 
-	// Token: 0x06000D92 RID: 3474 RVA: 0x00060D34 File Offset: 0x0005EF34
+	// Token: 0x06000D93 RID: 3475 RVA: 0x00060EBC File Offset: 0x0005F0BC
 	private bool GetMaxWorldHeight(Vector3 worldPos, float radius, out float height)
 	{
 		int num;
@@ -745,14 +745,14 @@ public class Heightmap : MonoBehaviour
 		return height != -99999f;
 	}
 
-	// Token: 0x06000D93 RID: 3475 RVA: 0x00060DF0 File Offset: 0x0005EFF0
+	// Token: 0x06000D94 RID: 3476 RVA: 0x00060F78 File Offset: 0x0005F178
 	public static bool AtMaxLevelDepth(Vector3 worldPos)
 	{
 		Heightmap heightmap = Heightmap.FindHeightmap(worldPos);
 		return heightmap && heightmap.AtMaxWorldLevelDepth(worldPos);
 	}
 
-	// Token: 0x06000D94 RID: 3476 RVA: 0x00060E18 File Offset: 0x0005F018
+	// Token: 0x06000D95 RID: 3477 RVA: 0x00060FA0 File Offset: 0x0005F1A0
 	public static bool GetHeight(Vector3 worldPos, out float height)
 	{
 		Heightmap heightmap = Heightmap.FindHeightmap(worldPos);
@@ -764,7 +764,7 @@ public class Heightmap : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000D95 RID: 3477 RVA: 0x00060E48 File Offset: 0x0005F048
+	// Token: 0x06000D96 RID: 3478 RVA: 0x00060FD0 File Offset: 0x0005F1D0
 	public static bool GetAverageHeight(Vector3 worldPos, float radius, out float height)
 	{
 		List<Heightmap> list = new List<Heightmap>();
@@ -792,7 +792,7 @@ public class Heightmap : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000D96 RID: 3478 RVA: 0x00060ECC File Offset: 0x0005F0CC
+	// Token: 0x06000D97 RID: 3479 RVA: 0x00061054 File Offset: 0x0005F254
 	private void SmoothTerrain(Vector3 worldPos, float radius, bool square, float intensity)
 	{
 		int num;
@@ -819,7 +819,7 @@ public class Heightmap : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D97 RID: 3479 RVA: 0x00061010 File Offset: 0x0005F210
+	// Token: 0x06000D98 RID: 3480 RVA: 0x00061198 File Offset: 0x0005F398
 	private float GetAvgHeight(int cx, int cy, int w)
 	{
 		int num = this.m_width + 1;
@@ -843,7 +843,7 @@ public class Heightmap : MonoBehaviour
 		return num2 / (float)num3;
 	}
 
-	// Token: 0x06000D98 RID: 3480 RVA: 0x00061084 File Offset: 0x0005F284
+	// Token: 0x06000D99 RID: 3481 RVA: 0x0006120C File Offset: 0x0005F40C
 	private float GroundHeight(Vector3 point)
 	{
 		Ray ray = new Ray(point + Vector3.up * 100f, Vector3.down);
@@ -855,7 +855,7 @@ public class Heightmap : MonoBehaviour
 		return -10000f;
 	}
 
-	// Token: 0x06000D99 RID: 3481 RVA: 0x000610DC File Offset: 0x0005F2DC
+	// Token: 0x06000D9A RID: 3482 RVA: 0x00061264 File Offset: 0x0005F464
 	private void FindObjectsToMove(Vector3 worldPos, float area, List<Rigidbody> objects)
 	{
 		if (this.m_collider == null)
@@ -876,7 +876,7 @@ public class Heightmap : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D9A RID: 3482 RVA: 0x0006116C File Offset: 0x0005F36C
+	// Token: 0x06000D9B RID: 3483 RVA: 0x000612F4 File Offset: 0x0005F4F4
 	private void PaintCleared(Vector3 worldPos, float radius, TerrainModifier.PaintType paintType, bool heightCheck, bool apply)
 	{
 		worldPos.x -= 0.5f;
@@ -923,7 +923,7 @@ public class Heightmap : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D9B RID: 3483 RVA: 0x0006131C File Offset: 0x0005F51C
+	// Token: 0x06000D9C RID: 3484 RVA: 0x000614A4 File Offset: 0x0005F6A4
 	public bool IsCleared(Vector3 worldPos)
 	{
 		worldPos.x -= 0.5f;
@@ -935,7 +935,7 @@ public class Heightmap : MonoBehaviour
 		return pixel.r > 0.5f || pixel.g > 0.5f || pixel.b > 0.5f;
 	}
 
-	// Token: 0x06000D9C RID: 3484 RVA: 0x0006138C File Offset: 0x0005F58C
+	// Token: 0x06000D9D RID: 3485 RVA: 0x00061514 File Offset: 0x0005F714
 	public bool IsCultivated(Vector3 worldPos)
 	{
 		int x;
@@ -944,7 +944,7 @@ public class Heightmap : MonoBehaviour
 		return this.m_clearedMask.GetPixel(x, y).g > 0.5f;
 	}
 
-	// Token: 0x06000D9D RID: 3485 RVA: 0x000613C0 File Offset: 0x0005F5C0
+	// Token: 0x06000D9E RID: 3486 RVA: 0x00061548 File Offset: 0x0005F748
 	private void WorldToVertex(Vector3 worldPos, out int x, out int y)
 	{
 		Vector3 vector = worldPos - base.transform.position;
@@ -952,7 +952,7 @@ public class Heightmap : MonoBehaviour
 		y = Mathf.FloorToInt(vector.z / this.m_scale + 0.5f) + this.m_width / 2;
 	}
 
-	// Token: 0x06000D9E RID: 3486 RVA: 0x00061428 File Offset: 0x0005F628
+	// Token: 0x06000D9F RID: 3487 RVA: 0x000615B0 File Offset: 0x0005F7B0
 	private void WorldToNormalizedHM(Vector3 worldPos, out float x, out float y)
 	{
 		float num = (float)this.m_width * this.m_scale;
@@ -961,7 +961,7 @@ public class Heightmap : MonoBehaviour
 		y = vector.z / num + 0.5f;
 	}
 
-	// Token: 0x06000D9F RID: 3487 RVA: 0x00061478 File Offset: 0x0005F678
+	// Token: 0x06000DA0 RID: 3488 RVA: 0x00061600 File Offset: 0x0005F800
 	private void LevelTerrain(Vector3 worldPos, float radius, bool square, float[] baseHeights, float[] levelOnly, bool playerModifiction)
 	{
 		int num;
@@ -991,7 +991,7 @@ public class Heightmap : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000DA0 RID: 3488 RVA: 0x00061578 File Offset: 0x0005F778
+	// Token: 0x06000DA1 RID: 3489 RVA: 0x00061700 File Offset: 0x0005F900
 	private float GetHeight(int x, int y)
 	{
 		int num = this.m_width + 1;
@@ -1002,7 +1002,7 @@ public class Heightmap : MonoBehaviour
 		return this.m_heights[y * num + x];
 	}
 
-	// Token: 0x06000DA1 RID: 3489 RVA: 0x000615B4 File Offset: 0x0005F7B4
+	// Token: 0x06000DA2 RID: 3490 RVA: 0x0006173C File Offset: 0x0005F93C
 	private float GetBaseHeight(int x, int y)
 	{
 		int num = this.m_width + 1;
@@ -1013,7 +1013,7 @@ public class Heightmap : MonoBehaviour
 		return this.m_buildData.m_baseHeights[y * num + x];
 	}
 
-	// Token: 0x06000DA2 RID: 3490 RVA: 0x000615F8 File Offset: 0x0005F7F8
+	// Token: 0x06000DA3 RID: 3491 RVA: 0x00061780 File Offset: 0x0005F980
 	private void SetHeight(int x, int y, float h)
 	{
 		int num = this.m_width + 1;
@@ -1024,7 +1024,7 @@ public class Heightmap : MonoBehaviour
 		this.m_heights[y * num + x] = h;
 	}
 
-	// Token: 0x06000DA3 RID: 3491 RVA: 0x00061630 File Offset: 0x0005F830
+	// Token: 0x06000DA4 RID: 3492 RVA: 0x000617B8 File Offset: 0x0005F9B8
 	public bool IsPointInside(Vector3 point, float radius = 0f)
 	{
 		float num = (float)this.m_width * this.m_scale * 0.5f;
@@ -1032,13 +1032,13 @@ public class Heightmap : MonoBehaviour
 		return point.x + radius >= position.x - num && point.x - radius <= position.x + num && point.z + radius >= position.z - num && point.z - radius <= position.z + num;
 	}
 
-	// Token: 0x06000DA4 RID: 3492 RVA: 0x000616A9 File Offset: 0x0005F8A9
+	// Token: 0x06000DA5 RID: 3493 RVA: 0x00061831 File Offset: 0x0005FA31
 	public static List<Heightmap> GetAllHeightmaps()
 	{
 		return Heightmap.m_heightmaps;
 	}
 
-	// Token: 0x06000DA5 RID: 3493 RVA: 0x000616B0 File Offset: 0x0005F8B0
+	// Token: 0x06000DA6 RID: 3494 RVA: 0x00061838 File Offset: 0x0005FA38
 	public static Heightmap FindHeightmap(Vector3 point)
 	{
 		foreach (Heightmap heightmap in Heightmap.m_heightmaps)
@@ -1051,7 +1051,7 @@ public class Heightmap : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000DA6 RID: 3494 RVA: 0x00061710 File Offset: 0x0005F910
+	// Token: 0x06000DA7 RID: 3495 RVA: 0x00061898 File Offset: 0x0005FA98
 	public static void FindHeightmap(Vector3 point, float radius, List<Heightmap> heightmaps)
 	{
 		foreach (Heightmap heightmap in Heightmap.m_heightmaps)
@@ -1063,7 +1063,7 @@ public class Heightmap : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000DA7 RID: 3495 RVA: 0x0006176C File Offset: 0x0005F96C
+	// Token: 0x06000DA8 RID: 3496 RVA: 0x000618F4 File Offset: 0x0005FAF4
 	public static Heightmap.Biome FindBiome(Vector3 point)
 	{
 		Heightmap heightmap = Heightmap.FindHeightmap(point);
@@ -1074,7 +1074,7 @@ public class Heightmap : MonoBehaviour
 		return Heightmap.Biome.None;
 	}
 
-	// Token: 0x06000DA8 RID: 3496 RVA: 0x00061794 File Offset: 0x0005F994
+	// Token: 0x06000DA9 RID: 3497 RVA: 0x0006191C File Offset: 0x0005FB1C
 	public static bool HaveQueuedRebuild(Vector3 point, float radius)
 	{
 		Heightmap.tempHmaps.Clear();
@@ -1092,7 +1092,7 @@ public class Heightmap : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000DA9 RID: 3497 RVA: 0x00061804 File Offset: 0x0005FA04
+	// Token: 0x06000DAA RID: 3498 RVA: 0x0006198C File Offset: 0x0005FB8C
 	public static Heightmap.Biome FindBiomeClutter(Vector3 point)
 	{
 		if (ZoneSystem.instance && !ZoneSystem.instance.IsZoneLoaded(point))
@@ -1107,7 +1107,7 @@ public class Heightmap : MonoBehaviour
 		return Heightmap.Biome.None;
 	}
 
-	// Token: 0x06000DAA RID: 3498 RVA: 0x00061844 File Offset: 0x0005FA44
+	// Token: 0x06000DAB RID: 3499 RVA: 0x000619CC File Offset: 0x0005FBCC
 	public void Clear()
 	{
 		this.m_heights.Clear();
@@ -1128,52 +1128,52 @@ public class Heightmap : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000C46 RID: 3142
+	// Token: 0x04000C4C RID: 3148
 	private static float[] tempBiomeWeights = new float[513];
 
-	// Token: 0x04000C47 RID: 3143
+	// Token: 0x04000C4D RID: 3149
 	private static List<Heightmap> tempHmaps = new List<Heightmap>();
 
-	// Token: 0x04000C48 RID: 3144
+	// Token: 0x04000C4E RID: 3150
 	public int m_width = 32;
 
-	// Token: 0x04000C49 RID: 3145
+	// Token: 0x04000C4F RID: 3151
 	public float m_scale = 1f;
 
-	// Token: 0x04000C4A RID: 3146
+	// Token: 0x04000C50 RID: 3152
 	public Material m_material;
 
-	// Token: 0x04000C4B RID: 3147
+	// Token: 0x04000C51 RID: 3153
 	private const float m_levelMaxDelta = 8f;
 
-	// Token: 0x04000C4C RID: 3148
+	// Token: 0x04000C52 RID: 3154
 	private const float m_smoothMaxDelta = 1f;
 
-	// Token: 0x04000C4D RID: 3149
+	// Token: 0x04000C53 RID: 3155
 	public bool m_isDistantLod;
 
-	// Token: 0x04000C4E RID: 3150
+	// Token: 0x04000C54 RID: 3156
 	public bool m_distantLodEditorHax;
 
-	// Token: 0x04000C4F RID: 3151
+	// Token: 0x04000C55 RID: 3157
 	private List<float> m_heights = new List<float>();
 
-	// Token: 0x04000C50 RID: 3152
+	// Token: 0x04000C56 RID: 3158
 	private HeightmapBuilder.HMBuildData m_buildData;
 
-	// Token: 0x04000C51 RID: 3153
+	// Token: 0x04000C57 RID: 3159
 	private Texture2D m_clearedMask;
 
-	// Token: 0x04000C52 RID: 3154
+	// Token: 0x04000C58 RID: 3160
 	private Material m_materialInstance;
 
-	// Token: 0x04000C53 RID: 3155
+	// Token: 0x04000C59 RID: 3161
 	private MeshCollider m_collider;
 
-	// Token: 0x04000C54 RID: 3156
+	// Token: 0x04000C5A RID: 3162
 	private float[] m_oceanDepth = new float[4];
 
-	// Token: 0x04000C55 RID: 3157
+	// Token: 0x04000C5B RID: 3163
 	private Heightmap.Biome[] m_cornerBiomes = new Heightmap.Biome[]
 	{
 		Heightmap.Biome.Meadows,
@@ -1182,71 +1182,71 @@ public class Heightmap : MonoBehaviour
 		Heightmap.Biome.Meadows
 	};
 
-	// Token: 0x04000C56 RID: 3158
+	// Token: 0x04000C5C RID: 3164
 	private Bounds m_bounds;
 
-	// Token: 0x04000C57 RID: 3159
+	// Token: 0x04000C5D RID: 3165
 	private BoundingSphere m_boundingSphere;
 
-	// Token: 0x04000C58 RID: 3160
+	// Token: 0x04000C5E RID: 3166
 	private Mesh m_collisionMesh;
 
-	// Token: 0x04000C59 RID: 3161
+	// Token: 0x04000C5F RID: 3167
 	private Mesh m_renderMesh;
 
-	// Token: 0x04000C5A RID: 3162
+	// Token: 0x04000C60 RID: 3168
 	private bool m_dirty;
 
-	// Token: 0x04000C5B RID: 3163
+	// Token: 0x04000C61 RID: 3169
 	private static List<Heightmap> m_heightmaps = new List<Heightmap>();
 
-	// Token: 0x04000C5C RID: 3164
+	// Token: 0x04000C62 RID: 3170
 	private static List<Vector3> m_tempVertises = new List<Vector3>();
 
-	// Token: 0x04000C5D RID: 3165
+	// Token: 0x04000C63 RID: 3171
 	private static List<Vector2> m_tempUVs = new List<Vector2>();
 
-	// Token: 0x04000C5E RID: 3166
+	// Token: 0x04000C64 RID: 3172
 	private static List<int> m_tempIndices = new List<int>();
 
-	// Token: 0x04000C5F RID: 3167
+	// Token: 0x04000C65 RID: 3173
 	private static List<Color32> m_tempColors = new List<Color32>();
 
 	// Token: 0x02000198 RID: 408
 	public enum Biome
 	{
-		// Token: 0x0400128E RID: 4750
-		None,
-		// Token: 0x0400128F RID: 4751
-		Meadows,
-		// Token: 0x04001290 RID: 4752
-		Swamp,
-		// Token: 0x04001291 RID: 4753
-		Mountain = 4,
-		// Token: 0x04001292 RID: 4754
-		BlackForest = 8,
-		// Token: 0x04001293 RID: 4755
-		Plains = 16,
-		// Token: 0x04001294 RID: 4756
-		AshLands = 32,
 		// Token: 0x04001295 RID: 4757
-		DeepNorth = 64,
+		None,
 		// Token: 0x04001296 RID: 4758
-		Ocean = 256,
+		Meadows,
 		// Token: 0x04001297 RID: 4759
-		Mistlands = 512,
+		Swamp,
 		// Token: 0x04001298 RID: 4760
+		Mountain = 4,
+		// Token: 0x04001299 RID: 4761
+		BlackForest = 8,
+		// Token: 0x0400129A RID: 4762
+		Plains = 16,
+		// Token: 0x0400129B RID: 4763
+		AshLands = 32,
+		// Token: 0x0400129C RID: 4764
+		DeepNorth = 64,
+		// Token: 0x0400129D RID: 4765
+		Ocean = 256,
+		// Token: 0x0400129E RID: 4766
+		Mistlands = 512,
+		// Token: 0x0400129F RID: 4767
 		BiomesMax
 	}
 
 	// Token: 0x02000199 RID: 409
 	public enum BiomeArea
 	{
-		// Token: 0x0400129A RID: 4762
+		// Token: 0x040012A1 RID: 4769
 		Edge = 1,
-		// Token: 0x0400129B RID: 4763
+		// Token: 0x040012A2 RID: 4770
 		Median,
-		// Token: 0x0400129C RID: 4764
+		// Token: 0x040012A3 RID: 4771
 		Everything
 	}
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x020000D4 RID: 212
 public class HitData
 {
-	// Token: 0x06000DBA RID: 3514 RVA: 0x0006212C File Offset: 0x0006032C
+	// Token: 0x06000DBB RID: 3515 RVA: 0x000622B4 File Offset: 0x000604B4
 	public void Serialize(ref ZPackage pkg)
 	{
 		pkg.Write(this.m_damage.m_damage);
@@ -32,7 +32,7 @@ public class HitData
 		pkg.Write((int)this.m_skill);
 	}
 
-	// Token: 0x06000DBB RID: 3515 RVA: 0x00062290 File Offset: 0x00060490
+	// Token: 0x06000DBC RID: 3516 RVA: 0x00062418 File Offset: 0x00060618
 	public void Deserialize(ref ZPackage pkg)
 	{
 		this.m_damage.m_damage = pkg.ReadSingle();
@@ -59,25 +59,25 @@ public class HitData
 		this.m_skill = (Skills.SkillType)pkg.ReadInt();
 	}
 
-	// Token: 0x06000DBC RID: 3516 RVA: 0x000623F2 File Offset: 0x000605F2
+	// Token: 0x06000DBD RID: 3517 RVA: 0x0006257A File Offset: 0x0006077A
 	public float GetTotalPhysicalDamage()
 	{
 		return this.m_damage.GetTotalPhysicalDamage();
 	}
 
-	// Token: 0x06000DBD RID: 3517 RVA: 0x000623FF File Offset: 0x000605FF
+	// Token: 0x06000DBE RID: 3518 RVA: 0x00062587 File Offset: 0x00060787
 	public float GetTotalElementalDamage()
 	{
 		return this.m_damage.GetTotalElementalDamage();
 	}
 
-	// Token: 0x06000DBE RID: 3518 RVA: 0x0006240C File Offset: 0x0006060C
+	// Token: 0x06000DBF RID: 3519 RVA: 0x00062594 File Offset: 0x00060794
 	public float GetTotalDamage()
 	{
 		return this.m_damage.GetTotalDamage();
 	}
 
-	// Token: 0x06000DBF RID: 3519 RVA: 0x0006241C File Offset: 0x0006061C
+	// Token: 0x06000DC0 RID: 3520 RVA: 0x000625A4 File Offset: 0x000607A4
 	private float ApplyModifier(float baseDamage, HitData.DamageModifier mod, ref float normalDmg, ref float resistantDmg, ref float weakDmg, ref float immuneDmg)
 	{
 		if (mod == HitData.DamageModifier.Ignore)
@@ -112,7 +112,7 @@ public class HitData
 		return num;
 	}
 
-	// Token: 0x06000DC0 RID: 3520 RVA: 0x000624B8 File Offset: 0x000606B8
+	// Token: 0x06000DC1 RID: 3521 RVA: 0x00062640 File Offset: 0x00060840
 	public void ApplyResistance(HitData.DamageModifiers modifiers, out HitData.DamageModifier significantModifier)
 	{
 		float damage = this.m_damage.m_damage;
@@ -148,13 +148,13 @@ public class HitData
 		}
 	}
 
-	// Token: 0x06000DC1 RID: 3521 RVA: 0x000626C6 File Offset: 0x000608C6
+	// Token: 0x06000DC2 RID: 3522 RVA: 0x0006284E File Offset: 0x00060A4E
 	public void ApplyArmor(float ac)
 	{
 		this.m_damage.ApplyArmor(ac);
 	}
 
-	// Token: 0x06000DC2 RID: 3522 RVA: 0x000626D4 File Offset: 0x000608D4
+	// Token: 0x06000DC3 RID: 3523 RVA: 0x0006285C File Offset: 0x00060A5C
 	public void ApplyModifier(float multiplier)
 	{
 		this.m_damage.m_blunt = this.m_damage.m_blunt * multiplier;
@@ -169,13 +169,13 @@ public class HitData
 		this.m_damage.m_spirit = this.m_damage.m_spirit * multiplier;
 	}
 
-	// Token: 0x06000DC3 RID: 3523 RVA: 0x00062784 File Offset: 0x00060984
+	// Token: 0x06000DC4 RID: 3524 RVA: 0x0006290C File Offset: 0x00060B0C
 	public float GetTotalBlockableDamage()
 	{
 		return this.m_damage.m_blunt + this.m_damage.m_slash + this.m_damage.m_pierce + this.m_damage.m_fire + this.m_damage.m_frost + this.m_damage.m_lightning + this.m_damage.m_poison + this.m_damage.m_spirit;
 	}
 
-	// Token: 0x06000DC4 RID: 3524 RVA: 0x000627F0 File Offset: 0x000609F0
+	// Token: 0x06000DC5 RID: 3525 RVA: 0x00062978 File Offset: 0x00060B78
 	public void BlockDamage(float damage)
 	{
 		float totalBlockableDamage = this.GetTotalBlockableDamage();
@@ -195,13 +195,13 @@ public class HitData
 		this.m_damage.m_spirit = this.m_damage.m_spirit * num2;
 	}
 
-	// Token: 0x06000DC5 RID: 3525 RVA: 0x0006289F File Offset: 0x00060A9F
+	// Token: 0x06000DC6 RID: 3526 RVA: 0x00062A27 File Offset: 0x00060C27
 	public bool HaveAttacker()
 	{
 		return !this.m_attacker.IsNone();
 	}
 
-	// Token: 0x06000DC6 RID: 3526 RVA: 0x000628B0 File Offset: 0x00060AB0
+	// Token: 0x06000DC7 RID: 3527 RVA: 0x00062A38 File Offset: 0x00060C38
 	public Character GetAttacker()
 	{
 		if (this.m_attacker.IsNone())
@@ -220,7 +220,7 @@ public class HitData
 		return gameObject.GetComponent<Character>();
 	}
 
-	// Token: 0x06000DC7 RID: 3527 RVA: 0x000628FD File Offset: 0x00060AFD
+	// Token: 0x06000DC8 RID: 3528 RVA: 0x00062A85 File Offset: 0x00060C85
 	public void SetAttacker(Character attacker)
 	{
 		if (attacker)
@@ -231,91 +231,91 @@ public class HitData
 		this.m_attacker = ZDOID.None;
 	}
 
-	// Token: 0x04000C6A RID: 3178
+	// Token: 0x04000C70 RID: 3184
 	public HitData.DamageTypes m_damage;
 
-	// Token: 0x04000C6B RID: 3179
+	// Token: 0x04000C71 RID: 3185
 	public int m_toolTier;
 
-	// Token: 0x04000C6C RID: 3180
+	// Token: 0x04000C72 RID: 3186
 	public bool m_dodgeable;
 
-	// Token: 0x04000C6D RID: 3181
+	// Token: 0x04000C73 RID: 3187
 	public bool m_blockable;
 
-	// Token: 0x04000C6E RID: 3182
+	// Token: 0x04000C74 RID: 3188
 	public float m_pushForce;
 
-	// Token: 0x04000C6F RID: 3183
+	// Token: 0x04000C75 RID: 3189
 	public float m_backstabBonus = 1f;
 
-	// Token: 0x04000C70 RID: 3184
+	// Token: 0x04000C76 RID: 3190
 	public float m_staggerMultiplier = 1f;
 
-	// Token: 0x04000C71 RID: 3185
+	// Token: 0x04000C77 RID: 3191
 	public Vector3 m_point = Vector3.zero;
 
-	// Token: 0x04000C72 RID: 3186
+	// Token: 0x04000C78 RID: 3192
 	public Vector3 m_dir = Vector3.zero;
 
-	// Token: 0x04000C73 RID: 3187
+	// Token: 0x04000C79 RID: 3193
 	public string m_statusEffect = "";
 
-	// Token: 0x04000C74 RID: 3188
+	// Token: 0x04000C7A RID: 3194
 	public ZDOID m_attacker = ZDOID.None;
 
-	// Token: 0x04000C75 RID: 3189
+	// Token: 0x04000C7B RID: 3195
 	public Skills.SkillType m_skill;
 
-	// Token: 0x04000C76 RID: 3190
+	// Token: 0x04000C7C RID: 3196
 	public Collider m_hitCollider;
 
 	// Token: 0x0200019B RID: 411
 	[Flags]
 	public enum DamageType
 	{
-		// Token: 0x040012A6 RID: 4774
-		Blunt = 1,
-		// Token: 0x040012A7 RID: 4775
-		Slash = 2,
-		// Token: 0x040012A8 RID: 4776
-		Pierce = 4,
-		// Token: 0x040012A9 RID: 4777
-		Chop = 8,
-		// Token: 0x040012AA RID: 4778
-		Pickaxe = 16,
-		// Token: 0x040012AB RID: 4779
-		Fire = 32,
-		// Token: 0x040012AC RID: 4780
-		Frost = 64,
 		// Token: 0x040012AD RID: 4781
-		Lightning = 128,
+		Blunt = 1,
 		// Token: 0x040012AE RID: 4782
-		Poison = 256,
+		Slash = 2,
 		// Token: 0x040012AF RID: 4783
-		Spirit = 512,
+		Pierce = 4,
 		// Token: 0x040012B0 RID: 4784
-		Physical = 31,
+		Chop = 8,
 		// Token: 0x040012B1 RID: 4785
+		Pickaxe = 16,
+		// Token: 0x040012B2 RID: 4786
+		Fire = 32,
+		// Token: 0x040012B3 RID: 4787
+		Frost = 64,
+		// Token: 0x040012B4 RID: 4788
+		Lightning = 128,
+		// Token: 0x040012B5 RID: 4789
+		Poison = 256,
+		// Token: 0x040012B6 RID: 4790
+		Spirit = 512,
+		// Token: 0x040012B7 RID: 4791
+		Physical = 31,
+		// Token: 0x040012B8 RID: 4792
 		Elemental = 224
 	}
 
 	// Token: 0x0200019C RID: 412
 	public enum DamageModifier
 	{
-		// Token: 0x040012B3 RID: 4787
+		// Token: 0x040012BA RID: 4794
 		Normal,
-		// Token: 0x040012B4 RID: 4788
+		// Token: 0x040012BB RID: 4795
 		Resistant,
-		// Token: 0x040012B5 RID: 4789
+		// Token: 0x040012BC RID: 4796
 		Weak,
-		// Token: 0x040012B6 RID: 4790
+		// Token: 0x040012BD RID: 4797
 		Immune,
-		// Token: 0x040012B7 RID: 4791
+		// Token: 0x040012BE RID: 4798
 		Ignore,
-		// Token: 0x040012B8 RID: 4792
+		// Token: 0x040012BF RID: 4799
 		VeryResistant,
-		// Token: 0x040012B9 RID: 4793
+		// Token: 0x040012C0 RID: 4800
 		VeryWeak
 	}
 
@@ -323,10 +323,10 @@ public class HitData
 	[Serializable]
 	public struct DamageModPair
 	{
-		// Token: 0x040012BA RID: 4794
+		// Token: 0x040012C1 RID: 4801
 		public HitData.DamageType m_type;
 
-		// Token: 0x040012BB RID: 4795
+		// Token: 0x040012C2 RID: 4802
 		public HitData.DamageModifier m_modifier;
 	}
 
@@ -334,13 +334,13 @@ public class HitData
 	[Serializable]
 	public struct DamageModifiers
 	{
-		// Token: 0x060011A2 RID: 4514 RVA: 0x000791E2 File Offset: 0x000773E2
+		// Token: 0x060011A3 RID: 4515 RVA: 0x0007936A File Offset: 0x0007756A
 		public HitData.DamageModifiers Clone()
 		{
 			return (HitData.DamageModifiers)base.MemberwiseClone();
 		}
 
-		// Token: 0x060011A3 RID: 4515 RVA: 0x000791FC File Offset: 0x000773FC
+		// Token: 0x060011A4 RID: 4516 RVA: 0x00079384 File Offset: 0x00077584
 		public void Apply(List<HitData.DamageModPair> modifiers)
 		{
 			foreach (HitData.DamageModPair damageModPair in modifiers)
@@ -411,7 +411,7 @@ public class HitData
 			}
 		}
 
-		// Token: 0x060011A4 RID: 4516 RVA: 0x000793A8 File Offset: 0x000775A8
+		// Token: 0x060011A5 RID: 4517 RVA: 0x00079530 File Offset: 0x00077730
 		public HitData.DamageModifier GetModifier(HitData.DamageType type)
 		{
 			if (type <= HitData.DamageType.Fire)
@@ -473,7 +473,7 @@ public class HitData
 			return HitData.DamageModifier.Normal;
 		}
 
-		// Token: 0x060011A5 RID: 4517 RVA: 0x00079458 File Offset: 0x00077658
+		// Token: 0x060011A6 RID: 4518 RVA: 0x000795E0 File Offset: 0x000777E0
 		private void ApplyIfBetter(ref HitData.DamageModifier original, HitData.DamageModifier mod)
 		{
 			if (this.ShouldOverride(original, mod))
@@ -482,13 +482,13 @@ public class HitData
 			}
 		}
 
-		// Token: 0x060011A6 RID: 4518 RVA: 0x00079468 File Offset: 0x00077668
+		// Token: 0x060011A7 RID: 4519 RVA: 0x000795F0 File Offset: 0x000777F0
 		private bool ShouldOverride(HitData.DamageModifier a, HitData.DamageModifier b)
 		{
 			return a != HitData.DamageModifier.Ignore && (b == HitData.DamageModifier.Immune || ((a != HitData.DamageModifier.VeryResistant || b != HitData.DamageModifier.Resistant) && (a != HitData.DamageModifier.VeryWeak || b != HitData.DamageModifier.Weak)));
 		}
 
-		// Token: 0x060011A7 RID: 4519 RVA: 0x0007948C File Offset: 0x0007768C
+		// Token: 0x060011A8 RID: 4520 RVA: 0x00079614 File Offset: 0x00077814
 		public void Print()
 		{
 			ZLog.Log("m_blunt " + this.m_blunt);
@@ -503,34 +503,34 @@ public class HitData
 			ZLog.Log("m_spirit " + this.m_spirit);
 		}
 
-		// Token: 0x040012BC RID: 4796
+		// Token: 0x040012C3 RID: 4803
 		public HitData.DamageModifier m_blunt;
 
-		// Token: 0x040012BD RID: 4797
+		// Token: 0x040012C4 RID: 4804
 		public HitData.DamageModifier m_slash;
 
-		// Token: 0x040012BE RID: 4798
+		// Token: 0x040012C5 RID: 4805
 		public HitData.DamageModifier m_pierce;
 
-		// Token: 0x040012BF RID: 4799
+		// Token: 0x040012C6 RID: 4806
 		public HitData.DamageModifier m_chop;
 
-		// Token: 0x040012C0 RID: 4800
+		// Token: 0x040012C7 RID: 4807
 		public HitData.DamageModifier m_pickaxe;
 
-		// Token: 0x040012C1 RID: 4801
+		// Token: 0x040012C8 RID: 4808
 		public HitData.DamageModifier m_fire;
 
-		// Token: 0x040012C2 RID: 4802
+		// Token: 0x040012C9 RID: 4809
 		public HitData.DamageModifier m_frost;
 
-		// Token: 0x040012C3 RID: 4803
+		// Token: 0x040012CA RID: 4810
 		public HitData.DamageModifier m_lightning;
 
-		// Token: 0x040012C4 RID: 4804
+		// Token: 0x040012CB RID: 4811
 		public HitData.DamageModifier m_poison;
 
-		// Token: 0x040012C5 RID: 4805
+		// Token: 0x040012CC RID: 4812
 		public HitData.DamageModifier m_spirit;
 	}
 
@@ -538,37 +538,37 @@ public class HitData
 	[Serializable]
 	public struct DamageTypes
 	{
-		// Token: 0x060011A8 RID: 4520 RVA: 0x000795A0 File Offset: 0x000777A0
+		// Token: 0x060011A9 RID: 4521 RVA: 0x00079728 File Offset: 0x00077928
 		public bool HaveDamage()
 		{
 			return this.m_damage > 0f || this.m_blunt > 0f || this.m_slash > 0f || this.m_pierce > 0f || this.m_chop > 0f || this.m_pickaxe > 0f || this.m_fire > 0f || this.m_frost > 0f || this.m_lightning > 0f || this.m_poison > 0f || this.m_spirit > 0f;
 		}
 
-		// Token: 0x060011A9 RID: 4521 RVA: 0x00079641 File Offset: 0x00077841
+		// Token: 0x060011AA RID: 4522 RVA: 0x000797C9 File Offset: 0x000779C9
 		public float GetTotalPhysicalDamage()
 		{
 			return this.m_blunt + this.m_slash + this.m_pierce;
 		}
 
-		// Token: 0x060011AA RID: 4522 RVA: 0x00079657 File Offset: 0x00077857
+		// Token: 0x060011AB RID: 4523 RVA: 0x000797DF File Offset: 0x000779DF
 		public float GetTotalElementalDamage()
 		{
 			return this.m_fire + this.m_frost + this.m_lightning;
 		}
 
-		// Token: 0x060011AB RID: 4523 RVA: 0x00079670 File Offset: 0x00077870
+		// Token: 0x060011AC RID: 4524 RVA: 0x000797F8 File Offset: 0x000779F8
 		public float GetTotalDamage()
 		{
 			return this.m_damage + this.m_blunt + this.m_slash + this.m_pierce + this.m_chop + this.m_pickaxe + this.m_fire + this.m_frost + this.m_lightning + this.m_poison + this.m_spirit;
 		}
 
-		// Token: 0x060011AC RID: 4524 RVA: 0x000796C9 File Offset: 0x000778C9
+		// Token: 0x060011AD RID: 4525 RVA: 0x00079851 File Offset: 0x00077A51
 		public HitData.DamageTypes Clone()
 		{
 			return (HitData.DamageTypes)base.MemberwiseClone();
 		}
 
-		// Token: 0x060011AD RID: 4525 RVA: 0x000796E0 File Offset: 0x000778E0
+		// Token: 0x060011AE RID: 4526 RVA: 0x00079868 File Offset: 0x00077A68
 		public void Add(HitData.DamageTypes other, int multiplier = 1)
 		{
 			this.m_damage += other.m_damage * (float)multiplier;
@@ -584,7 +584,7 @@ public class HitData
 			this.m_spirit += other.m_spirit * (float)multiplier;
 		}
 
-		// Token: 0x060011AE RID: 4526 RVA: 0x000797E0 File Offset: 0x000779E0
+		// Token: 0x060011AF RID: 4527 RVA: 0x00079968 File Offset: 0x00077B68
 		public void Modify(float multiplier)
 		{
 			this.m_damage *= multiplier;
@@ -600,7 +600,7 @@ public class HitData
 			this.m_spirit *= multiplier;
 		}
 
-		// Token: 0x060011AF RID: 4527 RVA: 0x00079888 File Offset: 0x00077A88
+		// Token: 0x060011B0 RID: 4528 RVA: 0x00079A10 File Offset: 0x00077C10
 		private float ApplyArmor(float dmg, float ac)
 		{
 			float result = Mathf.Clamp01(dmg / (ac * 4f)) * dmg;
@@ -611,7 +611,7 @@ public class HitData
 			return result;
 		}
 
-		// Token: 0x060011B0 RID: 4528 RVA: 0x000798B8 File Offset: 0x00077AB8
+		// Token: 0x060011B1 RID: 4529 RVA: 0x00079A40 File Offset: 0x00077C40
 		public void ApplyArmor(float ac)
 		{
 			if (ac <= 0f)
@@ -635,7 +635,7 @@ public class HitData
 			this.m_spirit *= num2;
 		}
 
-		// Token: 0x060011B1 RID: 4529 RVA: 0x000799A0 File Offset: 0x00077BA0
+		// Token: 0x060011B2 RID: 4530 RVA: 0x00079B28 File Offset: 0x00077D28
 		private string DamageRange(float damage, float minFactor, float maxFactor)
 		{
 			int num = Mathf.RoundToInt(damage * minFactor);
@@ -652,7 +652,7 @@ public class HitData
 			});
 		}
 
-		// Token: 0x060011B2 RID: 4530 RVA: 0x00079A0C File Offset: 0x00077C0C
+		// Token: 0x060011B3 RID: 4531 RVA: 0x00079B94 File Offset: 0x00077D94
 		public string GetTooltipString(Skills.SkillType skillType = Skills.SkillType.None)
 		{
 			if (Player.m_localPlayer == null)
@@ -702,7 +702,7 @@ public class HitData
 			return text;
 		}
 
-		// Token: 0x060011B3 RID: 4531 RVA: 0x00079BA8 File Offset: 0x00077DA8
+		// Token: 0x060011B4 RID: 4532 RVA: 0x00079D30 File Offset: 0x00077F30
 		public string GetTooltipString()
 		{
 			string text = "";
@@ -745,37 +745,37 @@ public class HitData
 			return text;
 		}
 
-		// Token: 0x040012C6 RID: 4806
+		// Token: 0x040012CD RID: 4813
 		public float m_damage;
 
-		// Token: 0x040012C7 RID: 4807
+		// Token: 0x040012CE RID: 4814
 		public float m_blunt;
 
-		// Token: 0x040012C8 RID: 4808
+		// Token: 0x040012CF RID: 4815
 		public float m_slash;
 
-		// Token: 0x040012C9 RID: 4809
+		// Token: 0x040012D0 RID: 4816
 		public float m_pierce;
 
-		// Token: 0x040012CA RID: 4810
+		// Token: 0x040012D1 RID: 4817
 		public float m_chop;
 
-		// Token: 0x040012CB RID: 4811
+		// Token: 0x040012D2 RID: 4818
 		public float m_pickaxe;
 
-		// Token: 0x040012CC RID: 4812
+		// Token: 0x040012D3 RID: 4819
 		public float m_fire;
 
-		// Token: 0x040012CD RID: 4813
+		// Token: 0x040012D4 RID: 4820
 		public float m_frost;
 
-		// Token: 0x040012CE RID: 4814
+		// Token: 0x040012D5 RID: 4821
 		public float m_lightning;
 
-		// Token: 0x040012CF RID: 4815
+		// Token: 0x040012D6 RID: 4822
 		public float m_poison;
 
-		// Token: 0x040012D0 RID: 4816
+		// Token: 0x040012D7 RID: 4823
 		public float m_spirit;
 	}
 }

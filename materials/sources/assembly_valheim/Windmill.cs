@@ -4,14 +4,14 @@ using UnityEngine;
 // Token: 0x02000114 RID: 276
 public class Windmill : MonoBehaviour
 {
-	// Token: 0x0600103B RID: 4155 RVA: 0x0007264F File Offset: 0x0007084F
+	// Token: 0x0600103C RID: 4156 RVA: 0x000727D7 File Offset: 0x000709D7
 	private void Start()
 	{
 		this.m_smelter = base.GetComponent<Smelter>();
 		base.InvokeRepeating("CheckCover", 0.1f, 5f);
 	}
 
-	// Token: 0x0600103C RID: 4156 RVA: 0x00072674 File Offset: 0x00070874
+	// Token: 0x0600103D RID: 4157 RVA: 0x000727FC File Offset: 0x000709FC
 	private void Update()
 	{
 		Quaternion to = Quaternion.LookRotation(-EnvMan.instance.GetWindDir());
@@ -29,21 +29,21 @@ public class Windmill : MonoBehaviour
 		this.UpdateAudio(Time.deltaTime);
 	}
 
-	// Token: 0x0600103D RID: 4157 RVA: 0x00072780 File Offset: 0x00070980
+	// Token: 0x0600103E RID: 4158 RVA: 0x00072908 File Offset: 0x00070B08
 	public float GetPowerOutput()
 	{
 		float num = Utils.LerpStep(this.m_minWindSpeed, 1f, EnvMan.instance.GetWindIntensity());
 		return (1f - this.m_cover) * num;
 	}
 
-	// Token: 0x0600103E RID: 4158 RVA: 0x000727B8 File Offset: 0x000709B8
+	// Token: 0x0600103F RID: 4159 RVA: 0x00072940 File Offset: 0x00070B40
 	private void CheckCover()
 	{
 		bool flag;
 		Cover.GetCoverForPoint(this.m_propeller.transform.position, out this.m_cover, out flag);
 	}
 
-	// Token: 0x0600103F RID: 4159 RVA: 0x000727E4 File Offset: 0x000709E4
+	// Token: 0x06001040 RID: 4160 RVA: 0x0007296C File Offset: 0x00070B6C
 	private void UpdateAudio(float dt)
 	{
 		float powerOutput = this.GetPowerOutput();
@@ -56,63 +56,63 @@ public class Windmill : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000F1E RID: 3870
+	// Token: 0x04000F24 RID: 3876
 	public Transform m_propeller;
 
-	// Token: 0x04000F1F RID: 3871
+	// Token: 0x04000F25 RID: 3877
 	public Transform m_grindstone;
 
-	// Token: 0x04000F20 RID: 3872
+	// Token: 0x04000F26 RID: 3878
 	public Transform m_bom;
 
-	// Token: 0x04000F21 RID: 3873
+	// Token: 0x04000F27 RID: 3879
 	public AudioSource[] m_sfxLoops;
 
-	// Token: 0x04000F22 RID: 3874
+	// Token: 0x04000F28 RID: 3880
 	public GameObject m_propellerAOE;
 
-	// Token: 0x04000F23 RID: 3875
+	// Token: 0x04000F29 RID: 3881
 	public float m_minAOEPropellerSpeed = 5f;
 
-	// Token: 0x04000F24 RID: 3876
+	// Token: 0x04000F2A RID: 3882
 	public float m_bomRotationSpeed = 10f;
 
-	// Token: 0x04000F25 RID: 3877
+	// Token: 0x04000F2B RID: 3883
 	public float m_propellerRotationSpeed = 10f;
 
-	// Token: 0x04000F26 RID: 3878
+	// Token: 0x04000F2C RID: 3884
 	public float m_grindstoneRotationSpeed = 10f;
 
-	// Token: 0x04000F27 RID: 3879
+	// Token: 0x04000F2D RID: 3885
 	public float m_minWindSpeed = 0.1f;
 
-	// Token: 0x04000F28 RID: 3880
+	// Token: 0x04000F2E RID: 3886
 	public float m_minPitch = 1f;
 
-	// Token: 0x04000F29 RID: 3881
+	// Token: 0x04000F2F RID: 3887
 	public float m_maxPitch = 1.5f;
 
-	// Token: 0x04000F2A RID: 3882
+	// Token: 0x04000F30 RID: 3888
 	public float m_maxPitchVel = 10f;
 
-	// Token: 0x04000F2B RID: 3883
+	// Token: 0x04000F31 RID: 3889
 	public float m_maxVol = 1f;
 
-	// Token: 0x04000F2C RID: 3884
+	// Token: 0x04000F32 RID: 3890
 	public float m_maxVolVel = 10f;
 
-	// Token: 0x04000F2D RID: 3885
+	// Token: 0x04000F33 RID: 3891
 	public float m_audioChangeSpeed = 2f;
 
-	// Token: 0x04000F2E RID: 3886
+	// Token: 0x04000F34 RID: 3892
 	private float m_cover;
 
-	// Token: 0x04000F2F RID: 3887
+	// Token: 0x04000F35 RID: 3893
 	private float m_propAngle;
 
-	// Token: 0x04000F30 RID: 3888
+	// Token: 0x04000F36 RID: 3894
 	private float m_grindStoneAngle;
 
-	// Token: 0x04000F31 RID: 3889
+	// Token: 0x04000F37 RID: 3895
 	private Smelter m_smelter;
 }

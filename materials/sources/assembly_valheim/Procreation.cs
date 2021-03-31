@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x02000010 RID: 16
 public class Procreation : MonoBehaviour
 {
-	// Token: 0x06000250 RID: 592 RVA: 0x00012C44 File Offset: 0x00010E44
+	// Token: 0x06000251 RID: 593 RVA: 0x00012CF8 File Offset: 0x00010EF8
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -14,7 +14,7 @@ public class Procreation : MonoBehaviour
 		base.InvokeRepeating("Procreate", UnityEngine.Random.Range(this.m_updateInterval, this.m_updateInterval + this.m_updateInterval * 0.5f), this.m_updateInterval);
 	}
 
-	// Token: 0x06000251 RID: 593 RVA: 0x00012CB0 File Offset: 0x00010EB0
+	// Token: 0x06000252 RID: 594 RVA: 0x00012D64 File Offset: 0x00010F64
 	private void Procreate()
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -84,25 +84,25 @@ public class Procreation : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000252 RID: 594 RVA: 0x00012F0D File Offset: 0x0001110D
+	// Token: 0x06000253 RID: 595 RVA: 0x00012FC1 File Offset: 0x000111C1
 	public bool ReadyForProcreation()
 	{
 		return this.m_character.IsTamed() && !this.IsPregnant() && !this.m_tameable.IsHungry();
 	}
 
-	// Token: 0x06000253 RID: 595 RVA: 0x00012F34 File Offset: 0x00011134
+	// Token: 0x06000254 RID: 596 RVA: 0x00012FE8 File Offset: 0x000111E8
 	private void MakePregnant()
 	{
 		this.m_nview.GetZDO().Set("pregnant", ZNet.instance.GetTime().Ticks);
 	}
 
-	// Token: 0x06000254 RID: 596 RVA: 0x00012F68 File Offset: 0x00011168
+	// Token: 0x06000255 RID: 597 RVA: 0x0001301C File Offset: 0x0001121C
 	private void ResetPregnancy()
 	{
 		this.m_nview.GetZDO().Set("pregnant", 0L);
 	}
 
-	// Token: 0x06000255 RID: 597 RVA: 0x00012F84 File Offset: 0x00011184
+	// Token: 0x06000256 RID: 598 RVA: 0x00013038 File Offset: 0x00011238
 	private bool IsDue()
 	{
 		long @long = this.m_nview.GetZDO().GetLong("pregnant", 0L);
@@ -114,63 +114,63 @@ public class Procreation : MonoBehaviour
 		return (ZNet.instance.GetTime() - d).TotalSeconds > (double)this.m_pregnancyDuration;
 	}
 
-	// Token: 0x06000256 RID: 598 RVA: 0x00012FD7 File Offset: 0x000111D7
+	// Token: 0x06000257 RID: 599 RVA: 0x0001308B File Offset: 0x0001128B
 	public bool IsPregnant()
 	{
 		return this.m_nview.IsValid() && this.m_nview.GetZDO().GetLong("pregnant", 0L) != 0L;
 	}
 
-	// Token: 0x040001B4 RID: 436
+	// Token: 0x040001B8 RID: 440
 	public float m_updateInterval = 10f;
 
-	// Token: 0x040001B5 RID: 437
+	// Token: 0x040001B9 RID: 441
 	public float m_totalCheckRange = 10f;
 
-	// Token: 0x040001B6 RID: 438
+	// Token: 0x040001BA RID: 442
 	public int m_maxCreatures = 4;
 
-	// Token: 0x040001B7 RID: 439
+	// Token: 0x040001BB RID: 443
 	public float m_partnerCheckRange = 3f;
 
-	// Token: 0x040001B8 RID: 440
+	// Token: 0x040001BC RID: 444
 	public float m_pregnancyChance = 0.5f;
 
-	// Token: 0x040001B9 RID: 441
+	// Token: 0x040001BD RID: 445
 	public float m_pregnancyDuration = 10f;
 
-	// Token: 0x040001BA RID: 442
+	// Token: 0x040001BE RID: 446
 	public int m_requiredLovePoints = 4;
 
-	// Token: 0x040001BB RID: 443
+	// Token: 0x040001BF RID: 447
 	public GameObject m_offspring;
 
-	// Token: 0x040001BC RID: 444
+	// Token: 0x040001C0 RID: 448
 	public int m_minOffspringLevel;
 
-	// Token: 0x040001BD RID: 445
+	// Token: 0x040001C1 RID: 449
 	public float m_spawnOffset = 2f;
 
-	// Token: 0x040001BE RID: 446
+	// Token: 0x040001C2 RID: 450
 	public EffectList m_birthEffects = new EffectList();
 
-	// Token: 0x040001BF RID: 447
+	// Token: 0x040001C3 RID: 451
 	public EffectList m_loveEffects = new EffectList();
 
-	// Token: 0x040001C0 RID: 448
+	// Token: 0x040001C4 RID: 452
 	private GameObject m_myPrefab;
 
-	// Token: 0x040001C1 RID: 449
+	// Token: 0x040001C5 RID: 453
 	private GameObject m_offspringPrefab;
 
-	// Token: 0x040001C2 RID: 450
+	// Token: 0x040001C6 RID: 454
 	private ZNetView m_nview;
 
-	// Token: 0x040001C3 RID: 451
+	// Token: 0x040001C7 RID: 455
 	private BaseAI m_baseAI;
 
-	// Token: 0x040001C4 RID: 452
+	// Token: 0x040001C8 RID: 456
 	private Character m_character;
 
-	// Token: 0x040001C5 RID: 453
+	// Token: 0x040001C9 RID: 457
 	private Tameable m_tameable;
 }

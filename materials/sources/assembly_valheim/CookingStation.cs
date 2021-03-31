@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 // Token: 0x020000C0 RID: 192
 public class CookingStation : MonoBehaviour, Interactable, Hoverable
 {
-	// Token: 0x06000CBD RID: 3261 RVA: 0x0005B274 File Offset: 0x00059474
+	// Token: 0x06000CBE RID: 3262 RVA: 0x0005B3FC File Offset: 0x000595FC
 	private void Awake()
 	{
 		this.m_nview = base.gameObject.GetComponent<ZNetView>();
@@ -27,7 +27,7 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		base.InvokeRepeating("UpdateCooking", 0f, 1f);
 	}
 
-	// Token: 0x06000CBE RID: 3262 RVA: 0x0005B36C File Offset: 0x0005956C
+	// Token: 0x06000CBF RID: 3263 RVA: 0x0005B4F4 File Offset: 0x000596F4
 	private void UpdateCooking()
 	{
 		if (!this.m_nview.IsValid())
@@ -72,7 +72,7 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		this.UpdateVisual();
 	}
 
-	// Token: 0x06000CBF RID: 3263 RVA: 0x0005B4C4 File Offset: 0x000596C4
+	// Token: 0x06000CC0 RID: 3264 RVA: 0x0005B64C File Offset: 0x0005984C
 	private void UpdateVisual()
 	{
 		for (int i = 0; i < this.m_slots.Length; i++)
@@ -84,13 +84,13 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		}
 	}
 
-	// Token: 0x06000CC0 RID: 3264 RVA: 0x0005B4F7 File Offset: 0x000596F7
+	// Token: 0x06000CC1 RID: 3265 RVA: 0x0005B67F File Offset: 0x0005987F
 	private void RPC_SetSlotVisual(long sender, int slot, string item)
 	{
 		this.SetSlotVisual(slot, item);
 	}
 
-	// Token: 0x06000CC1 RID: 3265 RVA: 0x0005B504 File Offset: 0x00059704
+	// Token: 0x06000CC2 RID: 3266 RVA: 0x0005B68C File Offset: 0x0005988C
 	private void SetSlotVisual(int i, string item)
 	{
 		if (item == "")
@@ -126,7 +126,7 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		}
 	}
 
-	// Token: 0x06000CC2 RID: 3266 RVA: 0x0005B64C File Offset: 0x0005984C
+	// Token: 0x06000CC3 RID: 3267 RVA: 0x0005B7D4 File Offset: 0x000599D4
 	private void RPC_RemoveDoneItem(long sender)
 	{
 		for (int i = 0; i < this.m_slots.Length; i++)
@@ -148,7 +148,7 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		}
 	}
 
-	// Token: 0x06000CC3 RID: 3267 RVA: 0x0005B6D4 File Offset: 0x000598D4
+	// Token: 0x06000CC4 RID: 3268 RVA: 0x0005B85C File Offset: 0x00059A5C
 	private bool HaveDoneItem()
 	{
 		for (int i = 0; i < this.m_slots.Length; i++)
@@ -164,7 +164,7 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		return false;
 	}
 
-	// Token: 0x06000CC4 RID: 3268 RVA: 0x0005B718 File Offset: 0x00059918
+	// Token: 0x06000CC5 RID: 3269 RVA: 0x0005B8A0 File Offset: 0x00059AA0
 	private bool IsItemDone(string itemName)
 	{
 		if (itemName == this.m_overCookedItem.name)
@@ -175,7 +175,7 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		return itemConversion != null && itemName == itemConversion.m_to.name;
 	}
 
-	// Token: 0x06000CC5 RID: 3269 RVA: 0x0005B760 File Offset: 0x00059960
+	// Token: 0x06000CC6 RID: 3270 RVA: 0x0005B8E8 File Offset: 0x00059AE8
 	private void SpawnItem(string name)
 	{
 		GameObject itemPrefab = ObjectDB.instance.GetItemPrefab(name);
@@ -185,19 +185,19 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		this.m_pickEffector.Create(vector, Quaternion.identity, null, 1f);
 	}
 
-	// Token: 0x06000CC6 RID: 3270 RVA: 0x0005B7EE File Offset: 0x000599EE
+	// Token: 0x06000CC7 RID: 3271 RVA: 0x0005B976 File Offset: 0x00059B76
 	public string GetHoverText()
 	{
 		return Localization.instance.Localize(this.m_name + "\n[<color=yellow><b>$KEY_Use</b></color>] $piece_cstand_cook\n[<color=yellow><b>1-8</b></color>] $piece_cstand_cook");
 	}
 
-	// Token: 0x06000CC7 RID: 3271 RVA: 0x0005B80A File Offset: 0x00059A0A
+	// Token: 0x06000CC8 RID: 3272 RVA: 0x0005B992 File Offset: 0x00059B92
 	public string GetHoverName()
 	{
 		return this.m_name;
 	}
 
-	// Token: 0x06000CC8 RID: 3272 RVA: 0x0005B814 File Offset: 0x00059A14
+	// Token: 0x06000CC9 RID: 3273 RVA: 0x0005B99C File Offset: 0x00059B9C
 	public bool Interact(Humanoid user, bool hold)
 	{
 		if (hold)
@@ -219,7 +219,7 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		return true;
 	}
 
-	// Token: 0x06000CC9 RID: 3273 RVA: 0x0005B86F File Offset: 0x00059A6F
+	// Token: 0x06000CCA RID: 3274 RVA: 0x0005B9F7 File Offset: 0x00059BF7
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		if (!this.IsFireLit())
@@ -235,13 +235,13 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		return this.CookItem(user.GetInventory(), item);
 	}
 
-	// Token: 0x06000CCA RID: 3274 RVA: 0x0005B8AF File Offset: 0x00059AAF
+	// Token: 0x06000CCB RID: 3275 RVA: 0x0005BA37 File Offset: 0x00059C37
 	private bool IsFireLit()
 	{
 		return EffectArea.IsPointInsideArea(base.transform.position, EffectArea.Type.Burning, 0.25f);
 	}
 
-	// Token: 0x06000CCB RID: 3275 RVA: 0x0005B8D4 File Offset: 0x00059AD4
+	// Token: 0x06000CCC RID: 3276 RVA: 0x0005BA5C File Offset: 0x00059C5C
 	private ItemDrop.ItemData FindCookableItem(Inventory inventory)
 	{
 		foreach (CookingStation.ItemConversion itemConversion in this.m_conversion)
@@ -255,7 +255,7 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		return null;
 	}
 
-	// Token: 0x06000CCC RID: 3276 RVA: 0x0005B948 File Offset: 0x00059B48
+	// Token: 0x06000CCD RID: 3277 RVA: 0x0005BAD0 File Offset: 0x00059CD0
 	private bool CookItem(Inventory inventory, ItemDrop.ItemData item)
 	{
 		string name = item.m_dropPrefab.name;
@@ -279,7 +279,7 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		return true;
 	}
 
-	// Token: 0x06000CCD RID: 3277 RVA: 0x0005B9B4 File Offset: 0x00059BB4
+	// Token: 0x06000CCE RID: 3278 RVA: 0x0005BB3C File Offset: 0x00059D3C
 	private void RPC_AddItem(long sender, string itemName)
 	{
 		if (!this.IsItemAllowed(itemName))
@@ -300,21 +300,21 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		this.m_addEffect.Create(this.m_slots[freeSlot].position, Quaternion.identity, null, 1f);
 	}
 
-	// Token: 0x06000CCE RID: 3278 RVA: 0x0005BA30 File Offset: 0x00059C30
+	// Token: 0x06000CCF RID: 3279 RVA: 0x0005BBB8 File Offset: 0x00059DB8
 	private void SetSlot(int slot, string itemName, float cookedTime)
 	{
 		this.m_nview.GetZDO().Set("slot" + slot, itemName);
 		this.m_nview.GetZDO().Set("slot" + slot, cookedTime);
 	}
 
-	// Token: 0x06000CCF RID: 3279 RVA: 0x0005BA80 File Offset: 0x00059C80
+	// Token: 0x06000CD0 RID: 3280 RVA: 0x0005BC08 File Offset: 0x00059E08
 	private void GetSlot(int slot, out string itemName, out float cookedTime)
 	{
 		itemName = this.m_nview.GetZDO().GetString("slot" + slot, "");
 		cookedTime = this.m_nview.GetZDO().GetFloat("slot" + slot, 0f);
 	}
 
-	// Token: 0x06000CD0 RID: 3280 RVA: 0x0005BADC File Offset: 0x00059CDC
+	// Token: 0x06000CD1 RID: 3281 RVA: 0x0005BC64 File Offset: 0x00059E64
 	private int GetFreeSlot()
 	{
 		for (int i = 0; i < this.m_slots.Length; i++)
@@ -327,13 +327,13 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		return -1;
 	}
 
-	// Token: 0x06000CD1 RID: 3281 RVA: 0x0005BB30 File Offset: 0x00059D30
+	// Token: 0x06000CD2 RID: 3282 RVA: 0x0005BCB8 File Offset: 0x00059EB8
 	private bool IsItemAllowed(ItemDrop.ItemData item)
 	{
 		return this.IsItemAllowed(item.m_dropPrefab.name);
 	}
 
-	// Token: 0x06000CD2 RID: 3282 RVA: 0x0005BB44 File Offset: 0x00059D44
+	// Token: 0x06000CD3 RID: 3283 RVA: 0x0005BCCC File Offset: 0x00059ECC
 	private bool IsItemAllowed(string itemName)
 	{
 		using (List<CookingStation.ItemConversion>.Enumerator enumerator = this.m_conversion.GetEnumerator())
@@ -349,7 +349,7 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		return false;
 	}
 
-	// Token: 0x06000CD3 RID: 3283 RVA: 0x0005BBB0 File Offset: 0x00059DB0
+	// Token: 0x06000CD4 RID: 3284 RVA: 0x0005BD38 File Offset: 0x00059F38
 	private CookingStation.ItemConversion GetItemConversion(string itemName)
 	{
 		foreach (CookingStation.ItemConversion itemConversion in this.m_conversion)
@@ -362,59 +362,59 @@ public class CookingStation : MonoBehaviour, Interactable, Hoverable
 		return null;
 	}
 
-	// Token: 0x04000BA0 RID: 2976
+	// Token: 0x04000BA6 RID: 2982
 	private const float cookDelta = 1f;
 
-	// Token: 0x04000BA1 RID: 2977
+	// Token: 0x04000BA7 RID: 2983
 	public EffectList m_addEffect = new EffectList();
 
-	// Token: 0x04000BA2 RID: 2978
+	// Token: 0x04000BA8 RID: 2984
 	public EffectList m_doneEffect = new EffectList();
 
-	// Token: 0x04000BA3 RID: 2979
+	// Token: 0x04000BA9 RID: 2985
 	public EffectList m_overcookedEffect = new EffectList();
 
-	// Token: 0x04000BA4 RID: 2980
+	// Token: 0x04000BAA RID: 2986
 	public EffectList m_pickEffector = new EffectList();
 
-	// Token: 0x04000BA5 RID: 2981
+	// Token: 0x04000BAB RID: 2987
 	public float m_spawnOffset = 0.5f;
 
-	// Token: 0x04000BA6 RID: 2982
+	// Token: 0x04000BAC RID: 2988
 	public float m_spawnForce = 5f;
 
-	// Token: 0x04000BA7 RID: 2983
+	// Token: 0x04000BAD RID: 2989
 	public ItemDrop m_overCookedItem;
 
-	// Token: 0x04000BA8 RID: 2984
+	// Token: 0x04000BAE RID: 2990
 	public List<CookingStation.ItemConversion> m_conversion = new List<CookingStation.ItemConversion>();
 
-	// Token: 0x04000BA9 RID: 2985
+	// Token: 0x04000BAF RID: 2991
 	public Transform[] m_slots;
 
-	// Token: 0x04000BAA RID: 2986
+	// Token: 0x04000BB0 RID: 2992
 	public string m_name = "";
 
-	// Token: 0x04000BAB RID: 2987
+	// Token: 0x04000BB1 RID: 2993
 	private ZNetView m_nview;
 
-	// Token: 0x04000BAC RID: 2988
+	// Token: 0x04000BB2 RID: 2994
 	private ParticleSystem[] m_ps;
 
-	// Token: 0x04000BAD RID: 2989
+	// Token: 0x04000BB3 RID: 2995
 	private AudioSource[] m_as;
 
 	// Token: 0x02000193 RID: 403
 	[Serializable]
 	public class ItemConversion
 	{
-		// Token: 0x04001276 RID: 4726
+		// Token: 0x0400127D RID: 4733
 		public ItemDrop m_from;
 
-		// Token: 0x04001277 RID: 4727
+		// Token: 0x0400127E RID: 4734
 		public ItemDrop m_to;
 
-		// Token: 0x04001278 RID: 4728
+		// Token: 0x0400127F RID: 4735
 		public float m_cookTime = 10f;
 	}
 }

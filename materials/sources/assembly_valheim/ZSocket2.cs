@@ -7,12 +7,12 @@ using System.Threading;
 // Token: 0x0200008D RID: 141
 public class ZSocket2 : IDisposable, ISocket
 {
-	// Token: 0x06000935 RID: 2357 RVA: 0x00044329 File Offset: 0x00042529
+	// Token: 0x06000936 RID: 2358 RVA: 0x000443DD File Offset: 0x000425DD
 	public ZSocket2()
 	{
 	}
 
-	// Token: 0x06000936 RID: 2358 RVA: 0x00044369 File Offset: 0x00042569
+	// Token: 0x06000937 RID: 2359 RVA: 0x0004441D File Offset: 0x0004261D
 	public static TcpClient CreateSocket()
 	{
 		TcpClient tcpClient = new TcpClient(AddressFamily.InterNetwork);
@@ -20,14 +20,14 @@ public class ZSocket2 : IDisposable, ISocket
 		return tcpClient;
 	}
 
-	// Token: 0x06000937 RID: 2359 RVA: 0x00044377 File Offset: 0x00042577
+	// Token: 0x06000938 RID: 2360 RVA: 0x0004442B File Offset: 0x0004262B
 	private static void ConfigureSocket(TcpClient socket)
 	{
 		socket.NoDelay = true;
 		socket.SendBufferSize = 2048;
 	}
 
-	// Token: 0x06000938 RID: 2360 RVA: 0x0004438C File Offset: 0x0004258C
+	// Token: 0x06000939 RID: 2361 RVA: 0x00044440 File Offset: 0x00042640
 	public ZSocket2(TcpClient socket, string originalHostName = null)
 	{
 		this.m_socket = socket;
@@ -44,7 +44,7 @@ public class ZSocket2 : IDisposable, ISocket
 		this.BeginReceive();
 	}
 
-	// Token: 0x06000939 RID: 2361 RVA: 0x00044424 File Offset: 0x00042624
+	// Token: 0x0600093A RID: 2362 RVA: 0x000444D8 File Offset: 0x000426D8
 	public void Dispose()
 	{
 		this.Close();
@@ -53,7 +53,7 @@ public class ZSocket2 : IDisposable, ISocket
 		this.m_recvBuffer = null;
 	}
 
-	// Token: 0x0600093A RID: 2362 RVA: 0x0004444C File Offset: 0x0004264C
+	// Token: 0x0600093B RID: 2363 RVA: 0x00044500 File Offset: 0x00042700
 	public void Close()
 	{
 		ZLog.Log("Closing socket " + this.GetEndPointString());
@@ -70,13 +70,13 @@ public class ZSocket2 : IDisposable, ISocket
 		this.m_endpoint = null;
 	}
 
-	// Token: 0x0600093B RID: 2363 RVA: 0x00043B38 File Offset: 0x00041D38
+	// Token: 0x0600093C RID: 2364 RVA: 0x00043BEC File Offset: 0x00041DEC
 	public static IPEndPoint GetEndPoint(string host, int port)
 	{
 		return new IPEndPoint(Dns.GetHostEntry(host).AddressList[0], port);
 	}
 
-	// Token: 0x0600093C RID: 2364 RVA: 0x000444A9 File Offset: 0x000426A9
+	// Token: 0x0600093D RID: 2365 RVA: 0x0004455D File Offset: 0x0004275D
 	public bool StartHost(int port)
 	{
 		if (this.m_listner != null)
@@ -92,7 +92,7 @@ public class ZSocket2 : IDisposable, ISocket
 		return true;
 	}
 
-	// Token: 0x0600093D RID: 2365 RVA: 0x000444E0 File Offset: 0x000426E0
+	// Token: 0x0600093E RID: 2366 RVA: 0x00044594 File Offset: 0x00042794
 	private bool BindSocket(int startPort, int endPort)
 	{
 		for (int i = startPort; i <= endPort; i++)
@@ -114,14 +114,14 @@ public class ZSocket2 : IDisposable, ISocket
 		return false;
 	}
 
-	// Token: 0x0600093E RID: 2366 RVA: 0x00044568 File Offset: 0x00042768
+	// Token: 0x0600093F RID: 2367 RVA: 0x0004461C File Offset: 0x0004281C
 	private void BeginReceive()
 	{
 		this.m_recvSizeOffset = 0;
 		this.m_socket.GetStream().BeginRead(this.m_recvSizeBuffer, 0, this.m_recvSizeBuffer.Length, new AsyncCallback(this.PkgSizeReceived), this.m_socket);
 	}
 
-	// Token: 0x0600093F RID: 2367 RVA: 0x000445A4 File Offset: 0x000427A4
+	// Token: 0x06000940 RID: 2368 RVA: 0x00044658 File Offset: 0x00042858
 	private void PkgSizeReceived(IAsyncResult res)
 	{
 		if (this.m_socket == null || !this.m_socket.Connected)
@@ -171,7 +171,7 @@ public class ZSocket2 : IDisposable, ISocket
 		this.m_socket.GetStream().BeginRead(this.m_recvBuffer, this.m_recvOffset, this.m_lastRecvPkgSize, new AsyncCallback(this.PkgReceived), this.m_socket);
 	}
 
-	// Token: 0x06000940 RID: 2368 RVA: 0x00044728 File Offset: 0x00042928
+	// Token: 0x06000941 RID: 2369 RVA: 0x000447DC File Offset: 0x000429DC
 	private void PkgReceived(IAsyncResult res)
 	{
 		int num;
@@ -211,7 +211,7 @@ public class ZSocket2 : IDisposable, ISocket
 		this.BeginReceive();
 	}
 
-	// Token: 0x06000941 RID: 2369 RVA: 0x00044854 File Offset: 0x00042A54
+	// Token: 0x06000942 RID: 2370 RVA: 0x00044908 File Offset: 0x00042B08
 	public ISocket Accept()
 	{
 		if (this.m_listner == null)
@@ -227,13 +227,13 @@ public class ZSocket2 : IDisposable, ISocket
 		return new ZSocket2(socket, null);
 	}
 
-	// Token: 0x06000942 RID: 2370 RVA: 0x00044886 File Offset: 0x00042A86
+	// Token: 0x06000943 RID: 2371 RVA: 0x0004493A File Offset: 0x00042B3A
 	public bool IsConnected()
 	{
 		return this.m_socket != null && this.m_socket.Connected;
 	}
 
-	// Token: 0x06000943 RID: 2371 RVA: 0x000448A0 File Offset: 0x00042AA0
+	// Token: 0x06000944 RID: 2372 RVA: 0x00044954 File Offset: 0x00042B54
 	public void Send(ZPackage pkg)
 	{
 		if (pkg.Size() == 0)
@@ -275,7 +275,7 @@ public class ZSocket2 : IDisposable, ISocket
 		this.m_sendMutex.ReleaseMutex();
 	}
 
-	// Token: 0x06000944 RID: 2372 RVA: 0x000449B0 File Offset: 0x00042BB0
+	// Token: 0x06000945 RID: 2373 RVA: 0x00044A64 File Offset: 0x00042C64
 	private void PkgSent(IAsyncResult res)
 	{
 		try
@@ -311,7 +311,7 @@ public class ZSocket2 : IDisposable, ISocket
 		this.m_sendMutex.ReleaseMutex();
 	}
 
-	// Token: 0x06000945 RID: 2373 RVA: 0x00044AA8 File Offset: 0x00042CA8
+	// Token: 0x06000946 RID: 2374 RVA: 0x00044B5C File Offset: 0x00042D5C
 	public ZPackage Recv()
 	{
 		if (this.m_socket == null)
@@ -332,7 +332,7 @@ public class ZSocket2 : IDisposable, ISocket
 		return result;
 	}
 
-	// Token: 0x06000946 RID: 2374 RVA: 0x00044B02 File Offset: 0x00042D02
+	// Token: 0x06000947 RID: 2375 RVA: 0x00044BB6 File Offset: 0x00042DB6
 	public string GetEndPointString()
 	{
 		if (this.m_endpoint != null)
@@ -342,7 +342,7 @@ public class ZSocket2 : IDisposable, ISocket
 		return "None";
 	}
 
-	// Token: 0x06000947 RID: 2375 RVA: 0x00044B1D File Offset: 0x00042D1D
+	// Token: 0x06000948 RID: 2376 RVA: 0x00044BD1 File Offset: 0x00042DD1
 	public string GetHostName()
 	{
 		if (this.m_endpoint != null)
@@ -352,13 +352,13 @@ public class ZSocket2 : IDisposable, ISocket
 		return "None";
 	}
 
-	// Token: 0x06000948 RID: 2376 RVA: 0x00044B3D File Offset: 0x00042D3D
+	// Token: 0x06000949 RID: 2377 RVA: 0x00044BF1 File Offset: 0x00042DF1
 	public IPEndPoint GetEndPoint()
 	{
 		return this.m_endpoint;
 	}
 
-	// Token: 0x06000949 RID: 2377 RVA: 0x00044B48 File Offset: 0x00042D48
+	// Token: 0x0600094A RID: 2378 RVA: 0x00044BFC File Offset: 0x00042DFC
 	public bool IsPeer(string host, int port)
 	{
 		if (!this.IsConnected())
@@ -373,19 +373,19 @@ public class ZSocket2 : IDisposable, ISocket
 		return (endpoint.Address.ToString() == host && endpoint.Port == port) || (this.m_originalHostName != null && this.m_originalHostName == host && endpoint.Port == port);
 	}
 
-	// Token: 0x0600094A RID: 2378 RVA: 0x00044BB0 File Offset: 0x00042DB0
+	// Token: 0x0600094B RID: 2379 RVA: 0x00044C64 File Offset: 0x00042E64
 	public bool IsHost()
 	{
 		return this.m_listenPort != 0;
 	}
 
-	// Token: 0x0600094B RID: 2379 RVA: 0x00044BBB File Offset: 0x00042DBB
+	// Token: 0x0600094C RID: 2380 RVA: 0x00044C6F File Offset: 0x00042E6F
 	public int GetHostPort()
 	{
 		return this.m_listenPort;
 	}
 
-	// Token: 0x0600094C RID: 2380 RVA: 0x00044BC4 File Offset: 0x00042DC4
+	// Token: 0x0600094D RID: 2381 RVA: 0x00044C78 File Offset: 0x00042E78
 	public int GetSendQueueSize()
 	{
 		if (!this.IsConnected())
@@ -400,13 +400,13 @@ public class ZSocket2 : IDisposable, ISocket
 		return num;
 	}
 
-	// Token: 0x0600094D RID: 2381 RVA: 0x00044C24 File Offset: 0x00042E24
+	// Token: 0x0600094E RID: 2382 RVA: 0x00044CD8 File Offset: 0x00042ED8
 	public bool IsSending()
 	{
 		return this.m_isSending || this.m_sendQueue.Count > 0;
 	}
 
-	// Token: 0x0600094E RID: 2382 RVA: 0x00044C3E File Offset: 0x00042E3E
+	// Token: 0x0600094F RID: 2383 RVA: 0x00044CF2 File Offset: 0x00042EF2
 	public void GetConnectionQuality(out float localQuality, out float remoteQuality, out int ping, out float outByteSec, out float inByteSec)
 	{
 		localQuality = 0f;
@@ -416,7 +416,7 @@ public class ZSocket2 : IDisposable, ISocket
 		inByteSec = 0f;
 	}
 
-	// Token: 0x0600094F RID: 2383 RVA: 0x00044C61 File Offset: 0x00042E61
+	// Token: 0x06000950 RID: 2384 RVA: 0x00044D15 File Offset: 0x00042F15
 	public void GetAndResetStats(out int totalSent, out int totalRecv)
 	{
 		totalSent = this.m_totalSent;
@@ -425,7 +425,7 @@ public class ZSocket2 : IDisposable, ISocket
 		this.m_totalRecv = 0;
 	}
 
-	// Token: 0x06000950 RID: 2384 RVA: 0x00044C81 File Offset: 0x00042E81
+	// Token: 0x06000951 RID: 2385 RVA: 0x00044D35 File Offset: 0x00042F35
 	public bool GotNewData()
 	{
 		bool gotData = this.m_gotData;
@@ -433,78 +433,78 @@ public class ZSocket2 : IDisposable, ISocket
 		return gotData;
 	}
 
-	// Token: 0x06000951 RID: 2385 RVA: 0x000027E2 File Offset: 0x000009E2
+	// Token: 0x06000952 RID: 2386 RVA: 0x000027E2 File Offset: 0x000009E2
 	public bool Flush()
 	{
 		return true;
 	}
 
-	// Token: 0x06000952 RID: 2386 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000953 RID: 2387 RVA: 0x000023E2 File Offset: 0x000005E2
 	public int GetCurrentSendRate()
 	{
 		return 0;
 	}
 
-	// Token: 0x06000953 RID: 2387 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000954 RID: 2388 RVA: 0x000023E2 File Offset: 0x000005E2
 	public int GetAverageSendRate()
 	{
 		return 0;
 	}
 
-	// Token: 0x0400087F RID: 2175
+	// Token: 0x04000883 RID: 2179
 	private TcpListener m_listner;
 
-	// Token: 0x04000880 RID: 2176
+	// Token: 0x04000884 RID: 2180
 	private TcpClient m_socket;
 
-	// Token: 0x04000881 RID: 2177
+	// Token: 0x04000885 RID: 2181
 	private Mutex m_mutex = new Mutex();
 
-	// Token: 0x04000882 RID: 2178
+	// Token: 0x04000886 RID: 2182
 	private Mutex m_sendMutex = new Mutex();
 
-	// Token: 0x04000883 RID: 2179
+	// Token: 0x04000887 RID: 2183
 	private static int m_maxRecvBuffer = 10485760;
 
-	// Token: 0x04000884 RID: 2180
+	// Token: 0x04000888 RID: 2184
 	private int m_recvOffset;
 
-	// Token: 0x04000885 RID: 2181
+	// Token: 0x04000889 RID: 2185
 	private byte[] m_recvBuffer;
 
-	// Token: 0x04000886 RID: 2182
+	// Token: 0x0400088A RID: 2186
 	private int m_recvSizeOffset;
 
-	// Token: 0x04000887 RID: 2183
+	// Token: 0x0400088B RID: 2187
 	private byte[] m_recvSizeBuffer = new byte[4];
 
-	// Token: 0x04000888 RID: 2184
+	// Token: 0x0400088C RID: 2188
 	private Queue<ZPackage> m_pkgQueue = new Queue<ZPackage>();
 
-	// Token: 0x04000889 RID: 2185
+	// Token: 0x0400088D RID: 2189
 	private bool m_isSending;
 
-	// Token: 0x0400088A RID: 2186
+	// Token: 0x0400088E RID: 2190
 	private Queue<byte[]> m_sendQueue = new Queue<byte[]>();
 
-	// Token: 0x0400088B RID: 2187
+	// Token: 0x0400088F RID: 2191
 	private IPEndPoint m_endpoint;
 
-	// Token: 0x0400088C RID: 2188
+	// Token: 0x04000890 RID: 2192
 	private string m_originalHostName;
 
-	// Token: 0x0400088D RID: 2189
+	// Token: 0x04000891 RID: 2193
 	private int m_listenPort;
 
-	// Token: 0x0400088E RID: 2190
+	// Token: 0x04000892 RID: 2194
 	private int m_lastRecvPkgSize;
 
-	// Token: 0x0400088F RID: 2191
+	// Token: 0x04000893 RID: 2195
 	private int m_totalSent;
 
-	// Token: 0x04000890 RID: 2192
+	// Token: 0x04000894 RID: 2196
 	private int m_totalRecv;
 
-	// Token: 0x04000891 RID: 2193
+	// Token: 0x04000895 RID: 2197
 	private bool m_gotData;
 }

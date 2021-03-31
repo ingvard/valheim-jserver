@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class DamageText : MonoBehaviour
 {
 	// Token: 0x17000007 RID: 7
-	// (get) Token: 0x060004D5 RID: 1237 RVA: 0x00027FB1 File Offset: 0x000261B1
+	// (get) Token: 0x060004D6 RID: 1238 RVA: 0x00028065 File Offset: 0x00026265
 	public static DamageText instance
 	{
 		get
@@ -17,20 +17,20 @@ public class DamageText : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004D6 RID: 1238 RVA: 0x00027FB8 File Offset: 0x000261B8
+	// Token: 0x060004D7 RID: 1239 RVA: 0x0002806C File Offset: 0x0002626C
 	private void Awake()
 	{
 		DamageText.m_instance = this;
 		ZRoutedRpc.instance.Register<ZPackage>("DamageText", new Action<long, ZPackage>(this.RPC_DamageText));
 	}
 
-	// Token: 0x060004D7 RID: 1239 RVA: 0x00027FDB File Offset: 0x000261DB
+	// Token: 0x060004D8 RID: 1240 RVA: 0x0002808F File Offset: 0x0002628F
 	private void LateUpdate()
 	{
 		this.UpdateWorldTexts(Time.deltaTime);
 	}
 
-	// Token: 0x060004D8 RID: 1240 RVA: 0x00027FE8 File Offset: 0x000261E8
+	// Token: 0x060004D9 RID: 1241 RVA: 0x0002809C File Offset: 0x0002629C
 	private void UpdateWorldTexts(float dt)
 	{
 		DamageText.WorldTextInstance worldTextInstance = null;
@@ -66,7 +66,7 @@ public class DamageText : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004D9 RID: 1241 RVA: 0x00028164 File Offset: 0x00026364
+	// Token: 0x060004DA RID: 1242 RVA: 0x00028218 File Offset: 0x00026418
 	private void AddInworldText(DamageText.TextType type, Vector3 pos, float distance, float dmg, bool mySelf)
 	{
 		DamageText.WorldTextInstance worldTextInstance = new DamageText.WorldTextInstance();
@@ -142,7 +142,7 @@ public class DamageText : MonoBehaviour
 		worldTextInstance.m_timer = 0f;
 	}
 
-	// Token: 0x060004DA RID: 1242 RVA: 0x000283B0 File Offset: 0x000265B0
+	// Token: 0x060004DB RID: 1243 RVA: 0x00028464 File Offset: 0x00026664
 	public void ShowText(HitData.DamageModifier type, Vector3 pos, float dmg, bool player = false)
 	{
 		DamageText.TextType type2 = DamageText.TextType.Normal;
@@ -170,7 +170,7 @@ public class DamageText : MonoBehaviour
 		this.ShowText(type2, pos, dmg, player);
 	}
 
-	// Token: 0x060004DB RID: 1243 RVA: 0x00028404 File Offset: 0x00026604
+	// Token: 0x060004DC RID: 1244 RVA: 0x000284B8 File Offset: 0x000266B8
 	public void ShowText(DamageText.TextType type, Vector3 pos, float dmg, bool player = false)
 	{
 		ZPackage zpackage = new ZPackage();
@@ -184,7 +184,7 @@ public class DamageText : MonoBehaviour
 		});
 	}
 
-	// Token: 0x060004DC RID: 1244 RVA: 0x00028454 File Offset: 0x00026654
+	// Token: 0x060004DD RID: 1245 RVA: 0x00028508 File Offset: 0x00026708
 	private void RPC_DamageText(long sender, ZPackage pkg)
 	{
 		Camera mainCamera = Utils.GetMainCamera();
@@ -209,62 +209,62 @@ public class DamageText : MonoBehaviour
 		this.AddInworldText(type, vector, num, dmg, mySelf);
 	}
 
-	// Token: 0x0400051D RID: 1309
+	// Token: 0x04000521 RID: 1313
 	private static DamageText m_instance;
 
-	// Token: 0x0400051E RID: 1310
+	// Token: 0x04000522 RID: 1314
 	public float m_textDuration = 1.5f;
 
-	// Token: 0x0400051F RID: 1311
+	// Token: 0x04000523 RID: 1315
 	public float m_maxTextDistance = 30f;
 
-	// Token: 0x04000520 RID: 1312
+	// Token: 0x04000524 RID: 1316
 	public int m_largeFontSize = 16;
 
-	// Token: 0x04000521 RID: 1313
+	// Token: 0x04000525 RID: 1317
 	public int m_smallFontSize = 8;
 
-	// Token: 0x04000522 RID: 1314
+	// Token: 0x04000526 RID: 1318
 	public float m_smallFontDistance = 10f;
 
-	// Token: 0x04000523 RID: 1315
+	// Token: 0x04000527 RID: 1319
 	public GameObject m_worldTextBase;
 
-	// Token: 0x04000524 RID: 1316
+	// Token: 0x04000528 RID: 1320
 	private List<DamageText.WorldTextInstance> m_worldTexts = new List<DamageText.WorldTextInstance>();
 
 	// Token: 0x02000146 RID: 326
 	public enum TextType
 	{
-		// Token: 0x040010C2 RID: 4290
+		// Token: 0x040010C9 RID: 4297
 		Normal,
-		// Token: 0x040010C3 RID: 4291
+		// Token: 0x040010CA RID: 4298
 		Resistant,
-		// Token: 0x040010C4 RID: 4292
+		// Token: 0x040010CB RID: 4299
 		Weak,
-		// Token: 0x040010C5 RID: 4293
+		// Token: 0x040010CC RID: 4300
 		Immune,
-		// Token: 0x040010C6 RID: 4294
+		// Token: 0x040010CD RID: 4301
 		Heal,
-		// Token: 0x040010C7 RID: 4295
+		// Token: 0x040010CE RID: 4302
 		TooHard,
-		// Token: 0x040010C8 RID: 4296
+		// Token: 0x040010CF RID: 4303
 		Blocked
 	}
 
 	// Token: 0x02000147 RID: 327
 	private class WorldTextInstance
 	{
-		// Token: 0x040010C9 RID: 4297
+		// Token: 0x040010D0 RID: 4304
 		public Vector3 m_worldPos;
 
-		// Token: 0x040010CA RID: 4298
+		// Token: 0x040010D1 RID: 4305
 		public GameObject m_gui;
 
-		// Token: 0x040010CB RID: 4299
+		// Token: 0x040010D2 RID: 4306
 		public float m_timer;
 
-		// Token: 0x040010CC RID: 4300
+		// Token: 0x040010D3 RID: 4307
 		public Text m_textField;
 	}
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000077 RID: 119
 public class ZDO : IEquatable<ZDO>
 {
-	// Token: 0x06000759 RID: 1881 RVA: 0x0003AB8B File Offset: 0x00038D8B
+	// Token: 0x0600075A RID: 1882 RVA: 0x0003AC3F File Offset: 0x00038E3F
 	public void Initialize(ZDOMan man, ZDOID id, Vector3 position)
 	{
 		this.m_zdoMan = man;
@@ -15,19 +15,19 @@ public class ZDO : IEquatable<ZDO>
 		this.m_zdoMan.AddToSector(this, this.m_sector);
 	}
 
-	// Token: 0x0600075A RID: 1882 RVA: 0x0003ABCA File Offset: 0x00038DCA
+	// Token: 0x0600075B RID: 1883 RVA: 0x0003AC7E File Offset: 0x00038E7E
 	public void Initialize(ZDOMan man)
 	{
 		this.m_zdoMan = man;
 	}
 
-	// Token: 0x0600075C RID: 1884 RVA: 0x0003AC0A File Offset: 0x00038E0A
+	// Token: 0x0600075D RID: 1885 RVA: 0x0003ACBE File Offset: 0x00038EBE
 	public bool IsValid()
 	{
 		return this.m_zdoMan != null;
 	}
 
-	// Token: 0x0600075D RID: 1885 RVA: 0x0003AC18 File Offset: 0x00038E18
+	// Token: 0x0600075E RID: 1886 RVA: 0x0003ACCC File Offset: 0x00038ECC
 	public void Reset()
 	{
 		this.m_uid = ZDOID.None;
@@ -53,7 +53,7 @@ public class ZDO : IEquatable<ZDO>
 		this.m_zdoMan = null;
 	}
 
-	// Token: 0x0600075E RID: 1886 RVA: 0x0003ACC8 File Offset: 0x00038EC8
+	// Token: 0x0600075F RID: 1887 RVA: 0x0003AD7C File Offset: 0x00038F7C
 	public ZDO Clone()
 	{
 		ZDO zdo = base.MemberwiseClone() as ZDO;
@@ -96,32 +96,32 @@ public class ZDO : IEquatable<ZDO>
 		return zdo;
 	}
 
-	// Token: 0x0600075F RID: 1887 RVA: 0x0003AE1A File Offset: 0x0003901A
+	// Token: 0x06000760 RID: 1888 RVA: 0x0003AECE File Offset: 0x000390CE
 	public bool Equals(ZDO other)
 	{
 		return this == other;
 	}
 
-	// Token: 0x06000760 RID: 1888 RVA: 0x0003AE20 File Offset: 0x00039020
+	// Token: 0x06000761 RID: 1889 RVA: 0x0003AED4 File Offset: 0x000390D4
 	public void Set(KeyValuePair<int, int> hashPair, ZDOID id)
 	{
 		this.Set(hashPair.Key, id.userID);
 		this.Set(hashPair.Value, (long)((ulong)id.id));
 	}
 
-	// Token: 0x06000761 RID: 1889 RVA: 0x0003AE4B File Offset: 0x0003904B
+	// Token: 0x06000762 RID: 1890 RVA: 0x0003AEFF File Offset: 0x000390FF
 	public static KeyValuePair<int, int> GetHashZDOID(string name)
 	{
 		return new KeyValuePair<int, int>((name + "_u").GetStableHashCode(), (name + "_i").GetStableHashCode());
 	}
 
-	// Token: 0x06000762 RID: 1890 RVA: 0x0003AE72 File Offset: 0x00039072
+	// Token: 0x06000763 RID: 1891 RVA: 0x0003AF26 File Offset: 0x00039126
 	public void Set(string name, ZDOID id)
 	{
 		this.Set(ZDO.GetHashZDOID(name), id);
 	}
 
-	// Token: 0x06000763 RID: 1891 RVA: 0x0003AE84 File Offset: 0x00039084
+	// Token: 0x06000764 RID: 1892 RVA: 0x0003AF38 File Offset: 0x00039138
 	public ZDOID GetZDOID(KeyValuePair<int, int> hashPair)
 	{
 		long @long = this.GetLong(hashPair.Key, 0L);
@@ -133,20 +133,20 @@ public class ZDO : IEquatable<ZDO>
 		return new ZDOID(@long, num);
 	}
 
-	// Token: 0x06000764 RID: 1892 RVA: 0x0003AEC5 File Offset: 0x000390C5
+	// Token: 0x06000765 RID: 1893 RVA: 0x0003AF79 File Offset: 0x00039179
 	public ZDOID GetZDOID(string name)
 	{
 		return this.GetZDOID(ZDO.GetHashZDOID(name));
 	}
 
-	// Token: 0x06000765 RID: 1893 RVA: 0x0003AED4 File Offset: 0x000390D4
+	// Token: 0x06000766 RID: 1894 RVA: 0x0003AF88 File Offset: 0x00039188
 	public void Set(string name, float value)
 	{
 		int stableHashCode = name.GetStableHashCode();
 		this.Set(stableHashCode, value);
 	}
 
-	// Token: 0x06000766 RID: 1894 RVA: 0x0003AEF0 File Offset: 0x000390F0
+	// Token: 0x06000767 RID: 1895 RVA: 0x0003AFA4 File Offset: 0x000391A4
 	public void Set(int hash, float value)
 	{
 		this.InitFloats();
@@ -159,14 +159,14 @@ public class ZDO : IEquatable<ZDO>
 		this.IncreseDataRevision();
 	}
 
-	// Token: 0x06000767 RID: 1895 RVA: 0x0003AF2C File Offset: 0x0003912C
+	// Token: 0x06000768 RID: 1896 RVA: 0x0003AFE0 File Offset: 0x000391E0
 	public void Set(string name, Vector3 value)
 	{
 		int stableHashCode = name.GetStableHashCode();
 		this.Set(stableHashCode, value);
 	}
 
-	// Token: 0x06000768 RID: 1896 RVA: 0x0003AF48 File Offset: 0x00039148
+	// Token: 0x06000769 RID: 1897 RVA: 0x0003AFFC File Offset: 0x000391FC
 	public void Set(int hash, Vector3 value)
 	{
 		this.InitVec3();
@@ -179,14 +179,14 @@ public class ZDO : IEquatable<ZDO>
 		this.IncreseDataRevision();
 	}
 
-	// Token: 0x06000769 RID: 1897 RVA: 0x0003AF88 File Offset: 0x00039188
+	// Token: 0x0600076A RID: 1898 RVA: 0x0003B03C File Offset: 0x0003923C
 	public void Set(string name, Quaternion value)
 	{
 		int stableHashCode = name.GetStableHashCode();
 		this.Set(stableHashCode, value);
 	}
 
-	// Token: 0x0600076A RID: 1898 RVA: 0x0003AFA4 File Offset: 0x000391A4
+	// Token: 0x0600076B RID: 1899 RVA: 0x0003B058 File Offset: 0x00039258
 	public void Set(int hash, Quaternion value)
 	{
 		this.InitQuats();
@@ -199,13 +199,13 @@ public class ZDO : IEquatable<ZDO>
 		this.IncreseDataRevision();
 	}
 
-	// Token: 0x0600076B RID: 1899 RVA: 0x0003AFE4 File Offset: 0x000391E4
+	// Token: 0x0600076C RID: 1900 RVA: 0x0003B098 File Offset: 0x00039298
 	public void Set(string name, int value)
 	{
 		this.Set(name.GetStableHashCode(), value);
 	}
 
-	// Token: 0x0600076C RID: 1900 RVA: 0x0003AFF4 File Offset: 0x000391F4
+	// Token: 0x0600076D RID: 1901 RVA: 0x0003B0A8 File Offset: 0x000392A8
 	public void Set(int hash, int value)
 	{
 		this.InitInts();
@@ -218,25 +218,25 @@ public class ZDO : IEquatable<ZDO>
 		this.IncreseDataRevision();
 	}
 
-	// Token: 0x0600076D RID: 1901 RVA: 0x0003B02F File Offset: 0x0003922F
+	// Token: 0x0600076E RID: 1902 RVA: 0x0003B0E3 File Offset: 0x000392E3
 	public void Set(string name, bool value)
 	{
 		this.Set(name, value ? 1 : 0);
 	}
 
-	// Token: 0x0600076E RID: 1902 RVA: 0x0003B03F File Offset: 0x0003923F
+	// Token: 0x0600076F RID: 1903 RVA: 0x0003B0F3 File Offset: 0x000392F3
 	public void Set(int hash, bool value)
 	{
 		this.Set(hash, value ? 1 : 0);
 	}
 
-	// Token: 0x0600076F RID: 1903 RVA: 0x0003B04F File Offset: 0x0003924F
+	// Token: 0x06000770 RID: 1904 RVA: 0x0003B103 File Offset: 0x00039303
 	public void Set(string name, long value)
 	{
 		this.Set(name.GetStableHashCode(), value);
 	}
 
-	// Token: 0x06000770 RID: 1904 RVA: 0x0003B060 File Offset: 0x00039260
+	// Token: 0x06000771 RID: 1905 RVA: 0x0003B114 File Offset: 0x00039314
 	public void Set(int hash, long value)
 	{
 		this.InitLongs();
@@ -249,14 +249,14 @@ public class ZDO : IEquatable<ZDO>
 		this.IncreseDataRevision();
 	}
 
-	// Token: 0x06000771 RID: 1905 RVA: 0x0003B09C File Offset: 0x0003929C
+	// Token: 0x06000772 RID: 1906 RVA: 0x0003B150 File Offset: 0x00039350
 	public void Set(string name, byte[] bytes)
 	{
 		string value = Convert.ToBase64String(bytes);
 		this.Set(name, value);
 	}
 
-	// Token: 0x06000772 RID: 1906 RVA: 0x0003B0B8 File Offset: 0x000392B8
+	// Token: 0x06000773 RID: 1907 RVA: 0x0003B16C File Offset: 0x0003936C
 	public byte[] GetByteArray(string name)
 	{
 		string @string = this.GetString(name, "");
@@ -267,7 +267,7 @@ public class ZDO : IEquatable<ZDO>
 		return null;
 	}
 
-	// Token: 0x06000773 RID: 1907 RVA: 0x0003B0E4 File Offset: 0x000392E4
+	// Token: 0x06000774 RID: 1908 RVA: 0x0003B198 File Offset: 0x00039398
 	public void Set(string name, string value)
 	{
 		this.InitStrings();
@@ -281,13 +281,13 @@ public class ZDO : IEquatable<ZDO>
 		this.IncreseDataRevision();
 	}
 
-	// Token: 0x06000774 RID: 1908 RVA: 0x0003B12B File Offset: 0x0003932B
+	// Token: 0x06000775 RID: 1909 RVA: 0x0003B1DF File Offset: 0x000393DF
 	public void SetPosition(Vector3 pos)
 	{
 		this.InternalSetPosition(pos);
 	}
 
-	// Token: 0x06000775 RID: 1909 RVA: 0x0003B134 File Offset: 0x00039334
+	// Token: 0x06000776 RID: 1910 RVA: 0x0003B1E8 File Offset: 0x000393E8
 	public void InternalSetPosition(Vector3 pos)
 	{
 		if (this.m_position == pos)
@@ -302,13 +302,13 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x06000776 RID: 1910 RVA: 0x0003B170 File Offset: 0x00039370
+	// Token: 0x06000777 RID: 1911 RVA: 0x0003B224 File Offset: 0x00039424
 	public void InvalidateSector()
 	{
 		this.SetSector(new Vector2i(-100000, -10000));
 	}
 
-	// Token: 0x06000777 RID: 1911 RVA: 0x0003B188 File Offset: 0x00039388
+	// Token: 0x06000778 RID: 1912 RVA: 0x0003B23C File Offset: 0x0003943C
 	private void SetSector(Vector2i sector)
 	{
 		if (this.m_sector == sector)
@@ -324,13 +324,13 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x06000778 RID: 1912 RVA: 0x0003B1E7 File Offset: 0x000393E7
+	// Token: 0x06000779 RID: 1913 RVA: 0x0003B29B File Offset: 0x0003949B
 	public Vector2i GetSector()
 	{
 		return this.m_sector;
 	}
 
-	// Token: 0x06000779 RID: 1913 RVA: 0x0003B1EF File Offset: 0x000393EF
+	// Token: 0x0600077A RID: 1914 RVA: 0x0003B2A3 File Offset: 0x000394A3
 	public void SetRotation(Quaternion rot)
 	{
 		if (this.m_rotation == rot)
@@ -341,7 +341,7 @@ public class ZDO : IEquatable<ZDO>
 		this.IncreseDataRevision();
 	}
 
-	// Token: 0x0600077A RID: 1914 RVA: 0x0003B20D File Offset: 0x0003940D
+	// Token: 0x0600077B RID: 1915 RVA: 0x0003B2C1 File Offset: 0x000394C1
 	public void SetType(ZDO.ObjectType type)
 	{
 		if (this.m_type == type)
@@ -352,7 +352,7 @@ public class ZDO : IEquatable<ZDO>
 		this.IncreseDataRevision();
 	}
 
-	// Token: 0x0600077B RID: 1915 RVA: 0x0003B226 File Offset: 0x00039426
+	// Token: 0x0600077C RID: 1916 RVA: 0x0003B2DA File Offset: 0x000394DA
 	public void SetDistant(bool distant)
 	{
 		if (this.m_distant == distant)
@@ -363,7 +363,7 @@ public class ZDO : IEquatable<ZDO>
 		this.IncreseDataRevision();
 	}
 
-	// Token: 0x0600077C RID: 1916 RVA: 0x0003B23F File Offset: 0x0003943F
+	// Token: 0x0600077D RID: 1917 RVA: 0x0003B2F3 File Offset: 0x000394F3
 	public void SetPrefab(int prefab)
 	{
 		if (this.m_prefab == prefab)
@@ -374,25 +374,25 @@ public class ZDO : IEquatable<ZDO>
 		this.IncreseDataRevision();
 	}
 
-	// Token: 0x0600077D RID: 1917 RVA: 0x0003B258 File Offset: 0x00039458
+	// Token: 0x0600077E RID: 1918 RVA: 0x0003B30C File Offset: 0x0003950C
 	public int GetPrefab()
 	{
 		return this.m_prefab;
 	}
 
-	// Token: 0x0600077E RID: 1918 RVA: 0x0003B260 File Offset: 0x00039460
+	// Token: 0x0600077F RID: 1919 RVA: 0x0003B314 File Offset: 0x00039514
 	public Vector3 GetPosition()
 	{
 		return this.m_position;
 	}
 
-	// Token: 0x0600077F RID: 1919 RVA: 0x0003B268 File Offset: 0x00039468
+	// Token: 0x06000780 RID: 1920 RVA: 0x0003B31C File Offset: 0x0003951C
 	public Quaternion GetRotation()
 	{
 		return this.m_rotation;
 	}
 
-	// Token: 0x06000780 RID: 1920 RVA: 0x0003B270 File Offset: 0x00039470
+	// Token: 0x06000781 RID: 1921 RVA: 0x0003B324 File Offset: 0x00039524
 	private void IncreseDataRevision()
 	{
 		this.m_dataRevision += 1U;
@@ -402,7 +402,7 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x06000781 RID: 1921 RVA: 0x0003B29C File Offset: 0x0003949C
+	// Token: 0x06000782 RID: 1922 RVA: 0x0003B350 File Offset: 0x00039550
 	private void IncreseOwnerRevision()
 	{
 		this.m_ownerRevision += 1U;
@@ -412,13 +412,13 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x06000782 RID: 1922 RVA: 0x0003B2C8 File Offset: 0x000394C8
+	// Token: 0x06000783 RID: 1923 RVA: 0x0003B37C File Offset: 0x0003957C
 	public float GetFloat(string name, float defaultValue = 0f)
 	{
 		return this.GetFloat(name.GetStableHashCode(), defaultValue);
 	}
 
-	// Token: 0x06000783 RID: 1923 RVA: 0x0003B2D8 File Offset: 0x000394D8
+	// Token: 0x06000784 RID: 1924 RVA: 0x0003B38C File Offset: 0x0003958C
 	public float GetFloat(int hash, float defaultValue = 0f)
 	{
 		if (this.m_floats == null)
@@ -433,13 +433,13 @@ public class ZDO : IEquatable<ZDO>
 		return defaultValue;
 	}
 
-	// Token: 0x06000784 RID: 1924 RVA: 0x0003B302 File Offset: 0x00039502
+	// Token: 0x06000785 RID: 1925 RVA: 0x0003B3B6 File Offset: 0x000395B6
 	public Vector3 GetVec3(string name, Vector3 defaultValue)
 	{
 		return this.GetVec3(name.GetStableHashCode(), defaultValue);
 	}
 
-	// Token: 0x06000785 RID: 1925 RVA: 0x0003B314 File Offset: 0x00039514
+	// Token: 0x06000786 RID: 1926 RVA: 0x0003B3C8 File Offset: 0x000395C8
 	public Vector3 GetVec3(int hash, Vector3 defaultValue)
 	{
 		if (this.m_vec3 == null)
@@ -454,13 +454,13 @@ public class ZDO : IEquatable<ZDO>
 		return defaultValue;
 	}
 
-	// Token: 0x06000786 RID: 1926 RVA: 0x0003B33E File Offset: 0x0003953E
+	// Token: 0x06000787 RID: 1927 RVA: 0x0003B3F2 File Offset: 0x000395F2
 	public Quaternion GetQuaternion(string name, Quaternion defaultValue)
 	{
 		return this.GetQuaternion(name.GetStableHashCode(), defaultValue);
 	}
 
-	// Token: 0x06000787 RID: 1927 RVA: 0x0003B350 File Offset: 0x00039550
+	// Token: 0x06000788 RID: 1928 RVA: 0x0003B404 File Offset: 0x00039604
 	public Quaternion GetQuaternion(int hash, Quaternion defaultValue)
 	{
 		if (this.m_quats == null)
@@ -475,13 +475,13 @@ public class ZDO : IEquatable<ZDO>
 		return defaultValue;
 	}
 
-	// Token: 0x06000788 RID: 1928 RVA: 0x0003B37A File Offset: 0x0003957A
+	// Token: 0x06000789 RID: 1929 RVA: 0x0003B42E File Offset: 0x0003962E
 	public int GetInt(string name, int defaultValue = 0)
 	{
 		return this.GetInt(name.GetStableHashCode(), defaultValue);
 	}
 
-	// Token: 0x06000789 RID: 1929 RVA: 0x0003B38C File Offset: 0x0003958C
+	// Token: 0x0600078A RID: 1930 RVA: 0x0003B440 File Offset: 0x00039640
 	public int GetInt(int hash, int defaultValue = 0)
 	{
 		if (this.m_ints == null)
@@ -496,13 +496,13 @@ public class ZDO : IEquatable<ZDO>
 		return defaultValue;
 	}
 
-	// Token: 0x0600078A RID: 1930 RVA: 0x0003B3B6 File Offset: 0x000395B6
+	// Token: 0x0600078B RID: 1931 RVA: 0x0003B46A File Offset: 0x0003966A
 	public bool GetBool(string name, bool defaultValue = false)
 	{
 		return this.GetBool(name.GetStableHashCode(), defaultValue);
 	}
 
-	// Token: 0x0600078B RID: 1931 RVA: 0x0003B3C8 File Offset: 0x000395C8
+	// Token: 0x0600078C RID: 1932 RVA: 0x0003B47C File Offset: 0x0003967C
 	public bool GetBool(int hash, bool defaultValue = false)
 	{
 		if (this.m_ints == null)
@@ -517,13 +517,13 @@ public class ZDO : IEquatable<ZDO>
 		return defaultValue;
 	}
 
-	// Token: 0x0600078C RID: 1932 RVA: 0x0003B3F5 File Offset: 0x000395F5
+	// Token: 0x0600078D RID: 1933 RVA: 0x0003B4A9 File Offset: 0x000396A9
 	public long GetLong(string name, long defaultValue = 0L)
 	{
 		return this.GetLong(name.GetStableHashCode(), defaultValue);
 	}
 
-	// Token: 0x0600078D RID: 1933 RVA: 0x0003B404 File Offset: 0x00039604
+	// Token: 0x0600078E RID: 1934 RVA: 0x0003B4B8 File Offset: 0x000396B8
 	public long GetLong(int hash, long defaultValue = 0L)
 	{
 		if (this.m_longs == null)
@@ -538,7 +538,7 @@ public class ZDO : IEquatable<ZDO>
 		return defaultValue;
 	}
 
-	// Token: 0x0600078E RID: 1934 RVA: 0x0003B430 File Offset: 0x00039630
+	// Token: 0x0600078F RID: 1935 RVA: 0x0003B4E4 File Offset: 0x000396E4
 	public string GetString(string name, string defaultValue = "")
 	{
 		if (this.m_strings == null)
@@ -553,7 +553,7 @@ public class ZDO : IEquatable<ZDO>
 		return defaultValue;
 	}
 
-	// Token: 0x0600078F RID: 1935 RVA: 0x0003B460 File Offset: 0x00039660
+	// Token: 0x06000790 RID: 1936 RVA: 0x0003B514 File Offset: 0x00039714
 	public void Serialize(ZPackage pkg)
 	{
 		pkg.Write(this.m_persistent);
@@ -645,7 +645,7 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x06000790 RID: 1936 RVA: 0x0003B864 File Offset: 0x00039A64
+	// Token: 0x06000791 RID: 1937 RVA: 0x0003B918 File Offset: 0x00039B18
 	public void Deserialize(ZPackage pkg)
 	{
 		this.m_persistent = pkg.ReadBool();
@@ -740,7 +740,7 @@ public class ZDO : IEquatable<ZDO>
 		this.ReleaseStrings();
 	}
 
-	// Token: 0x06000791 RID: 1937 RVA: 0x0003BA70 File Offset: 0x00039C70
+	// Token: 0x06000792 RID: 1938 RVA: 0x0003BB24 File Offset: 0x00039D24
 	public void Save(ZPackage pkg)
 	{
 		pkg.Write(this.m_ownerRevision);
@@ -852,7 +852,7 @@ public class ZDO : IEquatable<ZDO>
 		pkg.Write('\0');
 	}
 
-	// Token: 0x06000792 RID: 1938 RVA: 0x0003BDE0 File Offset: 0x00039FE0
+	// Token: 0x06000793 RID: 1939 RVA: 0x0003BE94 File Offset: 0x0003A094
 	public void Load(ZPackage pkg, int version)
 	{
 		this.m_ownerRevision = pkg.ReadUInt();
@@ -975,19 +975,19 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x06000793 RID: 1939 RVA: 0x0003C065 File Offset: 0x0003A265
+	// Token: 0x06000794 RID: 1940 RVA: 0x0003C119 File Offset: 0x0003A319
 	public bool IsOwner()
 	{
 		return this.m_owner == this.m_zdoMan.GetMyID();
 	}
 
-	// Token: 0x06000794 RID: 1940 RVA: 0x0003C07A File Offset: 0x0003A27A
+	// Token: 0x06000795 RID: 1941 RVA: 0x0003C12E File Offset: 0x0003A32E
 	public bool HasOwner()
 	{
 		return this.m_owner != 0L;
 	}
 
-	// Token: 0x06000795 RID: 1941 RVA: 0x0003C088 File Offset: 0x0003A288
+	// Token: 0x06000796 RID: 1942 RVA: 0x0003C13C File Offset: 0x0003A33C
 	public void Print()
 	{
 		ZLog.Log("UID:" + this.m_uid);
@@ -1074,7 +1074,7 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x06000796 RID: 1942 RVA: 0x0003C40C File Offset: 0x0003A60C
+	// Token: 0x06000797 RID: 1943 RVA: 0x0003C4C0 File Offset: 0x0003A6C0
 	public void SetOwner(long uid)
 	{
 		if (this.m_owner == uid)
@@ -1085,19 +1085,19 @@ public class ZDO : IEquatable<ZDO>
 		this.IncreseOwnerRevision();
 	}
 
-	// Token: 0x06000797 RID: 1943 RVA: 0x0003C425 File Offset: 0x0003A625
+	// Token: 0x06000798 RID: 1944 RVA: 0x0003C4D9 File Offset: 0x0003A6D9
 	public void SetPGWVersion(int version)
 	{
 		this.m_pgwVersion = version;
 	}
 
-	// Token: 0x06000798 RID: 1944 RVA: 0x0003C42E File Offset: 0x0003A62E
+	// Token: 0x06000799 RID: 1945 RVA: 0x0003C4E2 File Offset: 0x0003A6E2
 	public int GetPGWVersion()
 	{
 		return this.m_pgwVersion;
 	}
 
-	// Token: 0x06000799 RID: 1945 RVA: 0x0003C436 File Offset: 0x0003A636
+	// Token: 0x0600079A RID: 1946 RVA: 0x0003C4EA File Offset: 0x0003A6EA
 	private void InitFloats()
 	{
 		if (this.m_floats == null)
@@ -1107,7 +1107,7 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x0600079A RID: 1946 RVA: 0x0003C456 File Offset: 0x0003A656
+	// Token: 0x0600079B RID: 1947 RVA: 0x0003C50A File Offset: 0x0003A70A
 	private void InitVec3()
 	{
 		if (this.m_vec3 == null)
@@ -1117,7 +1117,7 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x0600079B RID: 1947 RVA: 0x0003C476 File Offset: 0x0003A676
+	// Token: 0x0600079C RID: 1948 RVA: 0x0003C52A File Offset: 0x0003A72A
 	private void InitQuats()
 	{
 		if (this.m_quats == null)
@@ -1127,7 +1127,7 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x0600079C RID: 1948 RVA: 0x0003C496 File Offset: 0x0003A696
+	// Token: 0x0600079D RID: 1949 RVA: 0x0003C54A File Offset: 0x0003A74A
 	private void InitInts()
 	{
 		if (this.m_ints == null)
@@ -1137,7 +1137,7 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x0600079D RID: 1949 RVA: 0x0003C4B6 File Offset: 0x0003A6B6
+	// Token: 0x0600079E RID: 1950 RVA: 0x0003C56A File Offset: 0x0003A76A
 	private void InitLongs()
 	{
 		if (this.m_longs == null)
@@ -1147,7 +1147,7 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x0600079E RID: 1950 RVA: 0x0003C4D6 File Offset: 0x0003A6D6
+	// Token: 0x0600079F RID: 1951 RVA: 0x0003C58A File Offset: 0x0003A78A
 	private void InitStrings()
 	{
 		if (this.m_strings == null)
@@ -1157,7 +1157,7 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x0600079F RID: 1951 RVA: 0x0003C4F6 File Offset: 0x0003A6F6
+	// Token: 0x060007A0 RID: 1952 RVA: 0x0003C5AA File Offset: 0x0003A7AA
 	private void ReleaseFloats()
 	{
 		if (this.m_floats != null)
@@ -1167,7 +1167,7 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x060007A0 RID: 1952 RVA: 0x0003C512 File Offset: 0x0003A712
+	// Token: 0x060007A1 RID: 1953 RVA: 0x0003C5C6 File Offset: 0x0003A7C6
 	private void ReleaseVec3()
 	{
 		if (this.m_vec3 != null)
@@ -1177,7 +1177,7 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x060007A1 RID: 1953 RVA: 0x0003C52E File Offset: 0x0003A72E
+	// Token: 0x060007A2 RID: 1954 RVA: 0x0003C5E2 File Offset: 0x0003A7E2
 	private void ReleaseQuats()
 	{
 		if (this.m_quats != null)
@@ -1187,7 +1187,7 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x060007A2 RID: 1954 RVA: 0x0003C54A File Offset: 0x0003A74A
+	// Token: 0x060007A3 RID: 1955 RVA: 0x0003C5FE File Offset: 0x0003A7FE
 	private void ReleaseInts()
 	{
 		if (this.m_ints != null)
@@ -1197,7 +1197,7 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x060007A3 RID: 1955 RVA: 0x0003C566 File Offset: 0x0003A766
+	// Token: 0x060007A4 RID: 1956 RVA: 0x0003C61A File Offset: 0x0003A81A
 	private void ReleaseLongs()
 	{
 		if (this.m_longs != null)
@@ -1207,7 +1207,7 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x060007A4 RID: 1956 RVA: 0x0003C582 File Offset: 0x0003A782
+	// Token: 0x060007A5 RID: 1957 RVA: 0x0003C636 File Offset: 0x0003A836
 	private void ReleaseStrings()
 	{
 		if (this.m_strings != null)
@@ -1217,86 +1217,86 @@ public class ZDO : IEquatable<ZDO>
 		}
 	}
 
-	// Token: 0x040007BA RID: 1978
+	// Token: 0x040007BE RID: 1982
 	public ZDOID m_uid;
 
-	// Token: 0x040007BB RID: 1979
+	// Token: 0x040007BF RID: 1983
 	public bool m_persistent;
 
-	// Token: 0x040007BC RID: 1980
+	// Token: 0x040007C0 RID: 1984
 	public bool m_distant;
 
-	// Token: 0x040007BD RID: 1981
+	// Token: 0x040007C1 RID: 1985
 	public long m_owner;
 
-	// Token: 0x040007BE RID: 1982
+	// Token: 0x040007C2 RID: 1986
 	public long m_timeCreated;
 
-	// Token: 0x040007BF RID: 1983
+	// Token: 0x040007C3 RID: 1987
 	public uint m_ownerRevision;
 
-	// Token: 0x040007C0 RID: 1984
+	// Token: 0x040007C4 RID: 1988
 	public uint m_dataRevision;
 
-	// Token: 0x040007C1 RID: 1985
+	// Token: 0x040007C5 RID: 1989
 	public int m_pgwVersion;
 
-	// Token: 0x040007C2 RID: 1986
+	// Token: 0x040007C6 RID: 1990
 	public ZDO.ObjectType m_type;
 
-	// Token: 0x040007C3 RID: 1987
+	// Token: 0x040007C7 RID: 1991
 	public float m_tempSortValue;
 
-	// Token: 0x040007C4 RID: 1988
+	// Token: 0x040007C8 RID: 1992
 	public bool m_tempHaveRevision;
 
-	// Token: 0x040007C5 RID: 1989
+	// Token: 0x040007C9 RID: 1993
 	public int m_tempRemoveEarmark = -1;
 
-	// Token: 0x040007C6 RID: 1990
+	// Token: 0x040007CA RID: 1994
 	public int m_tempCreateEarmark = -1;
 
-	// Token: 0x040007C7 RID: 1991
+	// Token: 0x040007CB RID: 1995
 	private int m_prefab;
 
-	// Token: 0x040007C8 RID: 1992
+	// Token: 0x040007CC RID: 1996
 	private Vector2i m_sector = Vector2i.zero;
 
-	// Token: 0x040007C9 RID: 1993
+	// Token: 0x040007CD RID: 1997
 	private Vector3 m_position = Vector3.zero;
 
-	// Token: 0x040007CA RID: 1994
+	// Token: 0x040007CE RID: 1998
 	private Quaternion m_rotation = Quaternion.identity;
 
-	// Token: 0x040007CB RID: 1995
+	// Token: 0x040007CF RID: 1999
 	private Dictionary<int, float> m_floats;
 
-	// Token: 0x040007CC RID: 1996
+	// Token: 0x040007D0 RID: 2000
 	private Dictionary<int, Vector3> m_vec3;
 
-	// Token: 0x040007CD RID: 1997
+	// Token: 0x040007D1 RID: 2001
 	private Dictionary<int, Quaternion> m_quats;
 
-	// Token: 0x040007CE RID: 1998
+	// Token: 0x040007D2 RID: 2002
 	private Dictionary<int, int> m_ints;
 
-	// Token: 0x040007CF RID: 1999
+	// Token: 0x040007D3 RID: 2003
 	private Dictionary<int, long> m_longs;
 
-	// Token: 0x040007D0 RID: 2000
+	// Token: 0x040007D4 RID: 2004
 	private Dictionary<int, string> m_strings;
 
-	// Token: 0x040007D1 RID: 2001
+	// Token: 0x040007D5 RID: 2005
 	private ZDOMan m_zdoMan;
 
 	// Token: 0x02000168 RID: 360
 	public enum ObjectType
 	{
-		// Token: 0x0400115D RID: 4445
+		// Token: 0x04001164 RID: 4452
 		Default,
-		// Token: 0x0400115E RID: 4446
+		// Token: 0x04001165 RID: 4453
 		Prioritized,
-		// Token: 0x0400115F RID: 4447
+		// Token: 0x04001166 RID: 4454
 		Solid
 	}
 }

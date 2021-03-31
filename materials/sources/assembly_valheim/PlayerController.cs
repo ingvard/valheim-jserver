@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x0200000F RID: 15
 public class PlayerController : MonoBehaviour
 {
-	// Token: 0x06000248 RID: 584 RVA: 0x00012754 File Offset: 0x00010954
+	// Token: 0x06000249 RID: 585 RVA: 0x00012808 File Offset: 0x00010A08
 	private void Awake()
 	{
 		this.m_character = base.GetComponent<Player>();
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 		PlayerController.m_invertMouse = (PlayerPrefs.GetInt("InvertMouse", 0) == 1);
 	}
 
-	// Token: 0x06000249 RID: 585 RVA: 0x000127BC File Offset: 0x000109BC
+	// Token: 0x0600024A RID: 586 RVA: 0x00012870 File Offset: 0x00010A70
 	private void FixedUpdate()
 	{
 		if (this.m_nview && !this.m_nview.IsOwner())
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
 		this.m_character.SetControls(zero, attack, attackHold, secondaryAttack, block, blockHold, jump, crouch, run, button2);
 	}
 
-	// Token: 0x0600024A RID: 586 RVA: 0x00012A24 File Offset: 0x00010C24
+	// Token: 0x0600024B RID: 587 RVA: 0x00012AD8 File Offset: 0x00010CD8
 	private static bool DetectTap(bool pressed, float dt, float minPressTime, bool run, ref float pressTimer, ref float releasedTimer, ref bool tapPressed)
 	{
 		bool result = false;
@@ -108,19 +108,19 @@ public class PlayerController : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x0600024B RID: 587 RVA: 0x00012A98 File Offset: 0x00010C98
+	// Token: 0x0600024C RID: 588 RVA: 0x00012B4C File Offset: 0x00010D4C
 	private bool TakeInput()
 	{
 		return !GameCamera.InFreeFly() && ((!Chat.instance || !Chat.instance.HasFocus()) && !Menu.IsVisible() && !global::Console.IsVisible() && !TextInput.IsVisible() && !Minimap.InTextInput() && (!ZInput.IsGamepadActive() || !Minimap.IsOpen()) && (!ZInput.IsGamepadActive() || !InventoryGui.IsVisible()) && (!ZInput.IsGamepadActive() || !StoreGui.IsVisible())) && (!ZInput.IsGamepadActive() || !Hud.IsPieceSelectionVisible());
 	}
 
-	// Token: 0x0600024C RID: 588 RVA: 0x00012B1F File Offset: 0x00010D1F
+	// Token: 0x0600024D RID: 589 RVA: 0x00012BD3 File Offset: 0x00010DD3
 	private bool InInventoryEtc()
 	{
 		return InventoryGui.IsVisible() || Minimap.IsOpen() || StoreGui.IsVisible() || Hud.IsPieceSelectionVisible();
 	}
 
-	// Token: 0x0600024D RID: 589 RVA: 0x00012B40 File Offset: 0x00010D40
+	// Token: 0x0600024E RID: 590 RVA: 0x00012BF4 File Offset: 0x00010DF4
 	private void LateUpdate()
 	{
 		if (!this.TakeInput() || this.InInventoryEtc())
@@ -143,33 +143,33 @@ public class PlayerController : MonoBehaviour
 		this.m_character.SetMouseLook(zero);
 	}
 
-	// Token: 0x040001AA RID: 426
+	// Token: 0x040001AE RID: 430
 	private Player m_character;
 
-	// Token: 0x040001AB RID: 427
+	// Token: 0x040001AF RID: 431
 	private ZNetView m_nview;
 
-	// Token: 0x040001AC RID: 428
+	// Token: 0x040001B0 RID: 432
 	public static float m_mouseSens = 1f;
 
-	// Token: 0x040001AD RID: 429
+	// Token: 0x040001B1 RID: 433
 	public static bool m_invertMouse = false;
 
-	// Token: 0x040001AE RID: 430
+	// Token: 0x040001B2 RID: 434
 	public float m_minDodgeTime = 0.2f;
 
-	// Token: 0x040001AF RID: 431
+	// Token: 0x040001B3 RID: 435
 	private bool m_attackWasPressed;
 
-	// Token: 0x040001B0 RID: 432
+	// Token: 0x040001B4 RID: 436
 	private bool m_secondAttackWasPressed;
 
-	// Token: 0x040001B1 RID: 433
+	// Token: 0x040001B5 RID: 437
 	private bool m_blockWasPressed;
 
-	// Token: 0x040001B2 RID: 434
+	// Token: 0x040001B6 RID: 438
 	private bool m_lastJump;
 
-	// Token: 0x040001B3 RID: 435
+	// Token: 0x040001B7 RID: 439
 	private bool m_lastCrouch;
 }

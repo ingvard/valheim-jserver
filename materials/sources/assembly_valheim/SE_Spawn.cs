@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x0200002D RID: 45
 public class SE_Spawn : StatusEffect
 {
-	// Token: 0x060003C6 RID: 966 RVA: 0x0001FD54 File Offset: 0x0001DF54
+	// Token: 0x060003C7 RID: 967 RVA: 0x0001FE08 File Offset: 0x0001E008
 	public override void UpdateStatusEffect(float dt)
 	{
 		base.UpdateStatusEffect(dt);
@@ -26,19 +26,19 @@ public class SE_Spawn : StatusEffect
 		}
 	}
 
-	// Token: 0x040003B6 RID: 950
+	// Token: 0x040003BA RID: 954
 	[Header("__SE_Spawn__")]
 	public float m_delay = 10f;
 
-	// Token: 0x040003B7 RID: 951
+	// Token: 0x040003BB RID: 955
 	public GameObject m_prefab;
 
-	// Token: 0x040003B8 RID: 952
+	// Token: 0x040003BC RID: 956
 	public Vector3 m_spawnOffset = new Vector3(0f, 0f, 0f);
 
-	// Token: 0x040003B9 RID: 953
+	// Token: 0x040003BD RID: 957
 	public EffectList m_spawnEffect = new EffectList();
 
-	// Token: 0x040003BA RID: 954
+	// Token: 0x040003BE RID: 958
 	private bool m_spawned;
 }

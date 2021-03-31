@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Token: 0x02000043 RID: 67
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class ParticleDecal : MonoBehaviour
 {
-	// Token: 0x0600047B RID: 1147 RVA: 0x00024326 File Offset: 0x00022526
+	// Token: 0x0600047C RID: 1148 RVA: 0x000243DA File Offset: 0x000225DA
 	private void Awake()
 	{
 		this.part = base.GetComponent<ParticleSystem>();
 		this.collisionEvents = new List<ParticleCollisionEvent>();
 	}
 
-	// Token: 0x0600047C RID: 1148 RVA: 0x00024340 File Offset: 0x00022540
+	// Token: 0x0600047D RID: 1149 RVA: 0x000243F4 File Offset: 0x000225F4
 	private void OnParticleCollision(GameObject other)
 	{
 		if (this.m_chance < 100f && UnityEngine.Random.Range(0f, 100f) > this.m_chance)
@@ -36,16 +36,16 @@ public class ParticleDecal : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0400048B RID: 1163
+	// Token: 0x0400048F RID: 1167
 	public ParticleSystem m_decalSystem;
 
-	// Token: 0x0400048C RID: 1164
+	// Token: 0x04000490 RID: 1168
 	[Range(0f, 100f)]
 	public float m_chance = 100f;
 
-	// Token: 0x0400048D RID: 1165
+	// Token: 0x04000491 RID: 1169
 	private ParticleSystem part;
 
-	// Token: 0x0400048E RID: 1166
+	// Token: 0x04000492 RID: 1170
 	private List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
 }

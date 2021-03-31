@@ -5,14 +5,14 @@ using UnityEngine;
 // Token: 0x02000012 RID: 18
 public class RandomAnimation : MonoBehaviour
 {
-	// Token: 0x06000263 RID: 611 RVA: 0x00013620 File Offset: 0x00011820
+	// Token: 0x06000264 RID: 612 RVA: 0x000136D4 File Offset: 0x000118D4
 	private void Start()
 	{
 		this.m_anim = base.GetComponentInChildren<Animator>();
 		this.m_nview = base.GetComponent<ZNetView>();
 	}
 
-	// Token: 0x06000264 RID: 612 RVA: 0x0001363C File Offset: 0x0001183C
+	// Token: 0x06000265 RID: 613 RVA: 0x000136F0 File Offset: 0x000118F0
 	private void FixedUpdate()
 	{
 		if (this.m_nview != null && !this.m_nview.IsValid())
@@ -79,43 +79,43 @@ public class RandomAnimation : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040001D3 RID: 467
+	// Token: 0x040001D7 RID: 471
 	public List<RandomAnimation.RandomValue> m_values = new List<RandomAnimation.RandomValue>();
 
-	// Token: 0x040001D4 RID: 468
+	// Token: 0x040001D8 RID: 472
 	private Animator m_anim;
 
-	// Token: 0x040001D5 RID: 469
+	// Token: 0x040001D9 RID: 473
 	private ZNetView m_nview;
 
 	// Token: 0x02000129 RID: 297
 	[Serializable]
 	public class RandomValue
 	{
-		// Token: 0x04000FF9 RID: 4089
+		// Token: 0x04001000 RID: 4096
 		public string m_name;
 
-		// Token: 0x04000FFA RID: 4090
+		// Token: 0x04001001 RID: 4097
 		public int m_values;
 
-		// Token: 0x04000FFB RID: 4091
+		// Token: 0x04001002 RID: 4098
 		public float m_interval;
 
-		// Token: 0x04000FFC RID: 4092
+		// Token: 0x04001003 RID: 4099
 		public bool m_floatValue;
 
-		// Token: 0x04000FFD RID: 4093
+		// Token: 0x04001004 RID: 4100
 		public float m_floatTransition = 1f;
 
-		// Token: 0x04000FFE RID: 4094
+		// Token: 0x04001005 RID: 4101
 		[NonSerialized]
 		public float m_timer;
 
-		// Token: 0x04000FFF RID: 4095
+		// Token: 0x04001006 RID: 4102
 		[NonSerialized]
 		public int m_value;
 
-		// Token: 0x04001000 RID: 4096
+		// Token: 0x04001007 RID: 4103
 		[NonSerialized]
 		public int[] m_hashValues;
 	}

@@ -5,13 +5,13 @@ using UnityEngine.UI;
 // Token: 0x02000064 RID: 100
 public class ToggleImage : MonoBehaviour
 {
-	// Token: 0x0600065F RID: 1631 RVA: 0x00035DDA File Offset: 0x00033FDA
+	// Token: 0x06000660 RID: 1632 RVA: 0x00035E8E File Offset: 0x0003408E
 	private void Awake()
 	{
 		this.m_toggle = base.GetComponent<Toggle>();
 	}
 
-	// Token: 0x06000660 RID: 1632 RVA: 0x00035DE8 File Offset: 0x00033FE8
+	// Token: 0x06000661 RID: 1633 RVA: 0x00035E9C File Offset: 0x0003409C
 	private void Update()
 	{
 		if (this.m_toggle.isOn)
@@ -22,15 +22,15 @@ public class ToggleImage : MonoBehaviour
 		this.m_targetImage.sprite = this.m_offImage;
 	}
 
-	// Token: 0x0400071B RID: 1819
+	// Token: 0x0400071F RID: 1823
 	private Toggle m_toggle;
 
-	// Token: 0x0400071C RID: 1820
+	// Token: 0x04000720 RID: 1824
 	public Image m_targetImage;
 
-	// Token: 0x0400071D RID: 1821
+	// Token: 0x04000721 RID: 1825
 	public Sprite m_onImage;
 
-	// Token: 0x0400071E RID: 1822
+	// Token: 0x04000722 RID: 1826
 	public Sprite m_offImage;
 }

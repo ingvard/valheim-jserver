@@ -7,13 +7,13 @@ using UnityEngine.UI;
 // Token: 0x02000063 RID: 99
 public class TextsDialog : MonoBehaviour
 {
-	// Token: 0x06000651 RID: 1617 RVA: 0x00035744 File Offset: 0x00033944
+	// Token: 0x06000652 RID: 1618 RVA: 0x000357F8 File Offset: 0x000339F8
 	private void Awake()
 	{
 		this.m_baseListSize = this.m_listRoot.rect.height;
 	}
 
-	// Token: 0x06000652 RID: 1618 RVA: 0x0003576C File Offset: 0x0003396C
+	// Token: 0x06000653 RID: 1619 RVA: 0x00035820 File Offset: 0x00033A20
 	public void Setup(Player player)
 	{
 		base.gameObject.SetActive(true);
@@ -27,13 +27,13 @@ public class TextsDialog : MonoBehaviour
 		this.m_textArea.text = "";
 	}
 
-	// Token: 0x06000653 RID: 1619 RVA: 0x000357CC File Offset: 0x000339CC
+	// Token: 0x06000654 RID: 1620 RVA: 0x00035880 File Offset: 0x00033A80
 	private void Update()
 	{
 		this.UpdateGamepadInput();
 	}
 
-	// Token: 0x06000654 RID: 1620 RVA: 0x000357D4 File Offset: 0x000339D4
+	// Token: 0x06000655 RID: 1621 RVA: 0x00035888 File Offset: 0x00033A88
 	private void FillTextList()
 	{
 		foreach (TextsDialog.TextInfo textInfo in this.m_texts)
@@ -65,7 +65,7 @@ public class TextsDialog : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000655 RID: 1621 RVA: 0x000359AC File Offset: 0x00033BAC
+	// Token: 0x06000656 RID: 1622 RVA: 0x00035A60 File Offset: 0x00033C60
 	private void UpdateGamepadInput()
 	{
 		if (this.m_texts.Count > 0)
@@ -81,13 +81,13 @@ public class TextsDialog : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000656 RID: 1622 RVA: 0x00035A13 File Offset: 0x00033C13
+	// Token: 0x06000657 RID: 1623 RVA: 0x00035AC7 File Offset: 0x00033CC7
 	private void OnSelectText(TextsDialog.TextInfo text)
 	{
 		this.ShowText(text);
 	}
 
-	// Token: 0x06000657 RID: 1623 RVA: 0x00035A1C File Offset: 0x00033C1C
+	// Token: 0x06000658 RID: 1624 RVA: 0x00035AD0 File Offset: 0x00033CD0
 	private int GetSelectedText()
 	{
 		for (int i = 0; i < this.m_texts.Count; i++)
@@ -100,13 +100,13 @@ public class TextsDialog : MonoBehaviour
 		return 0;
 	}
 
-	// Token: 0x06000658 RID: 1624 RVA: 0x00035A5A File Offset: 0x00033C5A
+	// Token: 0x06000659 RID: 1625 RVA: 0x00035B0E File Offset: 0x00033D0E
 	private void ShowText(int i)
 	{
 		this.ShowText(this.m_texts[i]);
 	}
 
-	// Token: 0x06000659 RID: 1625 RVA: 0x00035A70 File Offset: 0x00033C70
+	// Token: 0x0600065A RID: 1626 RVA: 0x00035B24 File Offset: 0x00033D24
 	private void ShowText(TextsDialog.TextInfo text)
 	{
 		this.m_textAreaTopic.text = Localization.instance.Localize(text.m_topic);
@@ -118,13 +118,13 @@ public class TextsDialog : MonoBehaviour
 		text.m_selected.SetActive(true);
 	}
 
-	// Token: 0x0600065A RID: 1626 RVA: 0x00034714 File Offset: 0x00032914
+	// Token: 0x0600065B RID: 1627 RVA: 0x000347C8 File Offset: 0x000329C8
 	public void OnClose()
 	{
 		base.gameObject.SetActive(false);
 	}
 
-	// Token: 0x0600065B RID: 1627 RVA: 0x00035B08 File Offset: 0x00033D08
+	// Token: 0x0600065C RID: 1628 RVA: 0x00035BBC File Offset: 0x00033DBC
 	private void UpdateTextsList()
 	{
 		this.m_texts.Clear();
@@ -137,7 +137,7 @@ public class TextsDialog : MonoBehaviour
 		this.AddActiveEffects();
 	}
 
-	// Token: 0x0600065C RID: 1628 RVA: 0x00035BCC File Offset: 0x00033DCC
+	// Token: 0x0600065D RID: 1629 RVA: 0x00035C80 File Offset: 0x00033E80
 	private void AddLog()
 	{
 		StringBuilder stringBuilder = new StringBuilder();
@@ -148,7 +148,7 @@ public class TextsDialog : MonoBehaviour
 		this.m_texts.Insert(0, new TextsDialog.TextInfo(Localization.instance.Localize("$inventory_logs"), stringBuilder.ToString()));
 	}
 
-	// Token: 0x0600065D RID: 1629 RVA: 0x00035C5C File Offset: 0x00033E5C
+	// Token: 0x0600065E RID: 1630 RVA: 0x00035D10 File Offset: 0x00033F10
 	private void AddActiveEffects()
 	{
 		if (!Player.m_localPlayer)
@@ -176,53 +176,53 @@ public class TextsDialog : MonoBehaviour
 		this.m_texts.Insert(0, new TextsDialog.TextInfo(Localization.instance.Localize("$inventory_activeeffects"), stringBuilder.ToString()));
 	}
 
-	// Token: 0x04000712 RID: 1810
+	// Token: 0x04000716 RID: 1814
 	public RectTransform m_listRoot;
 
-	// Token: 0x04000713 RID: 1811
+	// Token: 0x04000717 RID: 1815
 	public GameObject m_elementPrefab;
 
-	// Token: 0x04000714 RID: 1812
+	// Token: 0x04000718 RID: 1816
 	public Text m_totalSkillText;
 
-	// Token: 0x04000715 RID: 1813
+	// Token: 0x04000719 RID: 1817
 	public float m_spacing = 80f;
 
-	// Token: 0x04000716 RID: 1814
+	// Token: 0x0400071A RID: 1818
 	public Text m_textAreaTopic;
 
-	// Token: 0x04000717 RID: 1815
+	// Token: 0x0400071B RID: 1819
 	public Text m_textArea;
 
-	// Token: 0x04000718 RID: 1816
+	// Token: 0x0400071C RID: 1820
 	public ScrollRectEnsureVisible m_recipeEnsureVisible;
 
-	// Token: 0x04000719 RID: 1817
+	// Token: 0x0400071D RID: 1821
 	private List<TextsDialog.TextInfo> m_texts = new List<TextsDialog.TextInfo>();
 
-	// Token: 0x0400071A RID: 1818
+	// Token: 0x0400071E RID: 1822
 	private float m_baseListSize;
 
 	// Token: 0x0200015D RID: 349
 	public class TextInfo
 	{
-		// Token: 0x06001123 RID: 4387 RVA: 0x00077908 File Offset: 0x00075B08
+		// Token: 0x06001124 RID: 4388 RVA: 0x00077A90 File Offset: 0x00075C90
 		public TextInfo(string topic, string text)
 		{
 			this.m_topic = topic;
 			this.m_text = text;
 		}
 
-		// Token: 0x04001134 RID: 4404
+		// Token: 0x0400113B RID: 4411
 		public string m_topic;
 
-		// Token: 0x04001135 RID: 4405
+		// Token: 0x0400113C RID: 4412
 		public string m_text;
 
-		// Token: 0x04001136 RID: 4406
+		// Token: 0x0400113D RID: 4413
 		public GameObject m_listElement;
 
-		// Token: 0x04001137 RID: 4407
+		// Token: 0x0400113E RID: 4414
 		public GameObject m_selected;
 	}
 }

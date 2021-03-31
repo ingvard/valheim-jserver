@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x020000B9 RID: 185
 public class Bed : MonoBehaviour, Hoverable, Interactable
 {
-	// Token: 0x06000C5D RID: 3165 RVA: 0x00058BEB File Offset: 0x00056DEB
+	// Token: 0x06000C5E RID: 3166 RVA: 0x00058D73 File Offset: 0x00056F73
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -15,7 +15,7 @@ public class Bed : MonoBehaviour, Hoverable, Interactable
 		this.m_nview.Register<long, string>("SetOwner", new Action<long, long, string>(this.RPC_SetOwner));
 	}
 
-	// Token: 0x06000C5E RID: 3166 RVA: 0x00058C24 File Offset: 0x00056E24
+	// Token: 0x06000C5F RID: 3167 RVA: 0x00058DAC File Offset: 0x00056FAC
 	public string GetHoverText()
 	{
 		string ownerName = this.GetOwnerName();
@@ -35,13 +35,13 @@ public class Bed : MonoBehaviour, Hoverable, Interactable
 		return Localization.instance.Localize(text + "\n[<color=yellow><b>$KEY_Use</b></color>] $piece_bed_setspawn");
 	}
 
-	// Token: 0x06000C5F RID: 3167 RVA: 0x00058CA8 File Offset: 0x00056EA8
+	// Token: 0x06000C60 RID: 3168 RVA: 0x00058E30 File Offset: 0x00057030
 	public string GetHoverName()
 	{
 		return Localization.instance.Localize("$piece_bed");
 	}
 
-	// Token: 0x06000C60 RID: 3168 RVA: 0x00058CBC File Offset: 0x00056EBC
+	// Token: 0x06000C61 RID: 3169 RVA: 0x00058E44 File Offset: 0x00057044
 	public bool Interact(Humanoid human, bool repeat)
 	{
 		if (repeat)
@@ -106,7 +106,7 @@ public class Bed : MonoBehaviour, Hoverable, Interactable
 		return false;
 	}
 
-	// Token: 0x06000C61 RID: 3169 RVA: 0x00058E20 File Offset: 0x00057020
+	// Token: 0x06000C62 RID: 3170 RVA: 0x00058FA8 File Offset: 0x000571A8
 	private bool CheckWet(Player human)
 	{
 		if (human.GetSEMan().HaveStatusEffect("Wet"))
@@ -117,7 +117,7 @@ public class Bed : MonoBehaviour, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x06000C62 RID: 3170 RVA: 0x00058E45 File Offset: 0x00057045
+	// Token: 0x06000C63 RID: 3171 RVA: 0x00058FCD File Offset: 0x000571CD
 	private bool CheckEnemies(Player human)
 	{
 		if (human.IsSensed())
@@ -128,7 +128,7 @@ public class Bed : MonoBehaviour, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x06000C63 RID: 3171 RVA: 0x00058E60 File Offset: 0x00057060
+	// Token: 0x06000C64 RID: 3172 RVA: 0x00058FE8 File Offset: 0x000571E8
 	private bool CheckExposure(Player human)
 	{
 		float num;
@@ -154,7 +154,7 @@ public class Bed : MonoBehaviour, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x06000C64 RID: 3172 RVA: 0x00058EDB File Offset: 0x000570DB
+	// Token: 0x06000C65 RID: 3173 RVA: 0x00059063 File Offset: 0x00057263
 	private bool CheckFire(Player human)
 	{
 		if (!EffectArea.IsPointInsideArea(base.transform.position, EffectArea.Type.Heat, 0f))
@@ -165,25 +165,25 @@ public class Bed : MonoBehaviour, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x06000C65 RID: 3173 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000C66 RID: 3174 RVA: 0x000023E2 File Offset: 0x000005E2
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		return false;
 	}
 
-	// Token: 0x06000C66 RID: 3174 RVA: 0x00058F0B File Offset: 0x0005710B
+	// Token: 0x06000C67 RID: 3175 RVA: 0x00059093 File Offset: 0x00057293
 	public bool IsCurrent()
 	{
 		return this.IsMine() && Vector3.Distance(this.GetSpawnPoint(), Game.instance.GetPlayerProfile().GetCustomSpawnPoint()) < 1f;
 	}
 
-	// Token: 0x06000C67 RID: 3175 RVA: 0x00058F38 File Offset: 0x00057138
+	// Token: 0x06000C68 RID: 3176 RVA: 0x000590C0 File Offset: 0x000572C0
 	public Vector3 GetSpawnPoint()
 	{
 		return this.m_spawnPoint.position;
 	}
 
-	// Token: 0x06000C68 RID: 3176 RVA: 0x00058F48 File Offset: 0x00057148
+	// Token: 0x06000C69 RID: 3177 RVA: 0x000590D0 File Offset: 0x000572D0
 	private bool IsMine()
 	{
 		long playerID = Game.instance.GetPlayerProfile().GetPlayerID();
@@ -191,7 +191,7 @@ public class Bed : MonoBehaviour, Hoverable, Interactable
 		return playerID == owner;
 	}
 
-	// Token: 0x06000C69 RID: 3177 RVA: 0x00058F6E File Offset: 0x0005716E
+	// Token: 0x06000C6A RID: 3178 RVA: 0x000590F6 File Offset: 0x000572F6
 	private void SetOwner(long uid, string name)
 	{
 		this.m_nview.InvokeRPC("SetOwner", new object[]
@@ -201,7 +201,7 @@ public class Bed : MonoBehaviour, Hoverable, Interactable
 		});
 	}
 
-	// Token: 0x06000C6A RID: 3178 RVA: 0x00058F93 File Offset: 0x00057193
+	// Token: 0x06000C6B RID: 3179 RVA: 0x0005911B File Offset: 0x0005731B
 	private void RPC_SetOwner(long sender, long uid, string name)
 	{
 		if (!this.m_nview.IsOwner())
@@ -212,24 +212,24 @@ public class Bed : MonoBehaviour, Hoverable, Interactable
 		this.m_nview.GetZDO().Set("ownerName", name);
 	}
 
-	// Token: 0x06000C6B RID: 3179 RVA: 0x00058FCF File Offset: 0x000571CF
+	// Token: 0x06000C6C RID: 3180 RVA: 0x00059157 File Offset: 0x00057357
 	private long GetOwner()
 	{
 		return this.m_nview.GetZDO().GetLong("owner", 0L);
 	}
 
-	// Token: 0x06000C6C RID: 3180 RVA: 0x00058FE8 File Offset: 0x000571E8
+	// Token: 0x06000C6D RID: 3181 RVA: 0x00059170 File Offset: 0x00057370
 	private string GetOwnerName()
 	{
 		return this.m_nview.GetZDO().GetString("ownerName", "");
 	}
 
-	// Token: 0x04000B54 RID: 2900
+	// Token: 0x04000B5A RID: 2906
 	public Transform m_spawnPoint;
 
-	// Token: 0x04000B55 RID: 2901
+	// Token: 0x04000B5B RID: 2907
 	public float m_monsterCheckRadius = 20f;
 
-	// Token: 0x04000B56 RID: 2902
+	// Token: 0x04000B5C RID: 2908
 	private ZNetView m_nview;
 }

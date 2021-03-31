@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class Pathfinding : MonoBehaviour
 {
 	// Token: 0x1700002A RID: 42
-	// (get) Token: 0x06000B34 RID: 2868 RVA: 0x00050898 File Offset: 0x0004EA98
+	// (get) Token: 0x06000B35 RID: 2869 RVA: 0x00050A20 File Offset: 0x0004EC20
 	public static Pathfinding instance
 	{
 		get
@@ -16,7 +16,7 @@ public class Pathfinding : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B35 RID: 2869 RVA: 0x0005089F File Offset: 0x0004EA9F
+	// Token: 0x06000B36 RID: 2870 RVA: 0x00050A27 File Offset: 0x0004EC27
 	private void Awake()
 	{
 		Pathfinding.m_instance = this;
@@ -24,7 +24,7 @@ public class Pathfinding : MonoBehaviour
 		this.m_path = new NavMeshPath();
 	}
 
-	// Token: 0x06000B36 RID: 2870 RVA: 0x000508B8 File Offset: 0x0004EAB8
+	// Token: 0x06000B37 RID: 2871 RVA: 0x00050A40 File Offset: 0x0004EC40
 	private void ClearAgentSettings()
 	{
 		List<NavMeshBuildSettings> list = new List<NavMeshBuildSettings>();
@@ -41,7 +41,7 @@ public class Pathfinding : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B37 RID: 2871 RVA: 0x00050938 File Offset: 0x0004EB38
+	// Token: 0x06000B38 RID: 2872 RVA: 0x00050AC0 File Offset: 0x0004ECC0
 	private void OnDestroy()
 	{
 		foreach (Pathfinding.NavMeshTile navMeshTile in this.m_tiles.Values)
@@ -56,7 +56,7 @@ public class Pathfinding : MonoBehaviour
 		this.DestroyAllLinks();
 	}
 
-	// Token: 0x06000B38 RID: 2872 RVA: 0x000509BC File Offset: 0x0004EBBC
+	// Token: 0x06000B39 RID: 2873 RVA: 0x00050B44 File Offset: 0x0004ED44
 	private Pathfinding.AgentSettings AddAgent(Pathfinding.AgentType type, Pathfinding.AgentSettings copy = null)
 	{
 		while (type + 1 > (Pathfinding.AgentType)this.m_agentSettings.Count)
@@ -75,7 +75,7 @@ public class Pathfinding : MonoBehaviour
 		return agentSettings;
 	}
 
-	// Token: 0x06000B39 RID: 2873 RVA: 0x00050A5C File Offset: 0x0004EC5C
+	// Token: 0x06000B3A RID: 2874 RVA: 0x00050BE4 File Offset: 0x0004EDE4
 	private void SetupAgents()
 	{
 		this.ClearAgentSettings();
@@ -135,19 +135,19 @@ public class Pathfinding : MonoBehaviour
 		NavMesh.SetAreaCost(3, this.m_waterCost);
 	}
 
-	// Token: 0x06000B3A RID: 2874 RVA: 0x00050D40 File Offset: 0x0004EF40
+	// Token: 0x06000B3B RID: 2875 RVA: 0x00050EC8 File Offset: 0x0004F0C8
 	private Pathfinding.AgentSettings GetSettings(Pathfinding.AgentType agentType)
 	{
 		return this.m_agentSettings[(int)agentType];
 	}
 
-	// Token: 0x06000B3B RID: 2875 RVA: 0x00050D4E File Offset: 0x0004EF4E
+	// Token: 0x06000B3C RID: 2876 RVA: 0x00050ED6 File Offset: 0x0004F0D6
 	private int GetAgentID(Pathfinding.AgentType agentType)
 	{
 		return this.GetSettings(agentType).m_build.agentTypeID;
 	}
 
-	// Token: 0x06000B3C RID: 2876 RVA: 0x00050D64 File Offset: 0x0004EF64
+	// Token: 0x06000B3D RID: 2877 RVA: 0x00050EEC File Offset: 0x0004F0EC
 	private void Update()
 	{
 		if (this.IsBuilding())
@@ -166,7 +166,7 @@ public class Pathfinding : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B3D RID: 2877 RVA: 0x00050DB8 File Offset: 0x0004EFB8
+	// Token: 0x06000B3E RID: 2878 RVA: 0x00050F40 File Offset: 0x0004F140
 	private void DestroyAllLinks()
 	{
 		while (this.m_linkRemoveQueue.Count > 0 || this.m_tileRemoveQueue.Count > 0)
@@ -175,7 +175,7 @@ public class Pathfinding : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B3E RID: 2878 RVA: 0x00050DE0 File Offset: 0x0004EFE0
+	// Token: 0x06000B3F RID: 2879 RVA: 0x00050F68 File Offset: 0x0004F168
 	private void DestroyQueuedNavmeshData()
 	{
 		if (this.m_linkRemoveQueue.Count > 0)
@@ -193,20 +193,20 @@ public class Pathfinding : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B3F RID: 2879 RVA: 0x00050E5C File Offset: 0x0004F05C
+	// Token: 0x06000B40 RID: 2880 RVA: 0x00050FE4 File Offset: 0x0004F1E4
 	private void UpdatePathfinding()
 	{
 		this.Buildtiles();
 		this.TimeoutTiles();
 	}
 
-	// Token: 0x06000B40 RID: 2880 RVA: 0x00050E6A File Offset: 0x0004F06A
+	// Token: 0x06000B41 RID: 2881 RVA: 0x00050FF2 File Offset: 0x0004F1F2
 	public bool HavePath(Vector3 from, Vector3 to, Pathfinding.AgentType agentType)
 	{
 		return this.GetPath(from, to, null, agentType, true, false);
 	}
 
-	// Token: 0x06000B41 RID: 2881 RVA: 0x00050E78 File Offset: 0x0004F078
+	// Token: 0x06000B42 RID: 2882 RVA: 0x00051000 File Offset: 0x0004F200
 	public bool FindValidPoint(out Vector3 point, Vector3 center, float range, Pathfinding.AgentType agentType)
 	{
 		this.PokePoint(center, agentType);
@@ -225,7 +225,7 @@ public class Pathfinding : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000B42 RID: 2882 RVA: 0x00050EDC File Offset: 0x0004F0DC
+	// Token: 0x06000B43 RID: 2883 RVA: 0x00051064 File Offset: 0x0004F264
 	public bool GetPath(Vector3 from, Vector3 to, List<Vector3> path, Pathfinding.AgentType agentType, bool requireFullPath = false, bool cleanup = true)
 	{
 		if (path != null)
@@ -267,7 +267,7 @@ public class Pathfinding : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000B43 RID: 2883 RVA: 0x00050F98 File Offset: 0x0004F198
+	// Token: 0x06000B44 RID: 2884 RVA: 0x00051120 File Offset: 0x0004F320
 	private void CleanPath(List<Vector3> basePath, Pathfinding.AgentSettings settings)
 	{
 		if (basePath.Count <= 2)
@@ -317,7 +317,7 @@ public class Pathfinding : MonoBehaviour
 		basePath.AddRange(this.tempPath);
 	}
 
-	// Token: 0x06000B44 RID: 2884 RVA: 0x00051230 File Offset: 0x0004F430
+	// Token: 0x06000B45 RID: 2885 RVA: 0x000513B8 File Offset: 0x0004F5B8
 	private int FindNextNode(List<Vector3> path, NavMeshQueryFilter filter, int start)
 	{
 		for (int i = start + 2; i < path.Count; i++)
@@ -331,7 +331,7 @@ public class Pathfinding : MonoBehaviour
 		return path.Count - 1;
 	}
 
-	// Token: 0x06000B45 RID: 2885 RVA: 0x00051274 File Offset: 0x0004F474
+	// Token: 0x06000B46 RID: 2886 RVA: 0x000513FC File Offset: 0x0004F5FC
 	private bool SnapToNavMesh(ref Vector3 point, Pathfinding.AgentSettings settings)
 	{
 		if (ZoneSystem.instance)
@@ -368,7 +368,7 @@ public class Pathfinding : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000B46 RID: 2886 RVA: 0x00051370 File Offset: 0x0004F570
+	// Token: 0x06000B47 RID: 2887 RVA: 0x000514F8 File Offset: 0x0004F6F8
 	private void TimeoutTiles()
 	{
 		float realtimeSinceStartup = Time.realtimeSinceStartup;
@@ -387,7 +387,7 @@ public class Pathfinding : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B47 RID: 2887 RVA: 0x00051424 File Offset: 0x0004F624
+	// Token: 0x06000B48 RID: 2888 RVA: 0x000515AC File Offset: 0x0004F7AC
 	private void PokeArea(Vector3 point, Pathfinding.AgentType agentType)
 	{
 		Vector3Int tile = this.GetTile(point, agentType);
@@ -405,20 +405,20 @@ public class Pathfinding : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B48 RID: 2888 RVA: 0x00051488 File Offset: 0x0004F688
+	// Token: 0x06000B49 RID: 2889 RVA: 0x00051610 File Offset: 0x0004F810
 	private void PokePoint(Vector3 point, Pathfinding.AgentType agentType)
 	{
 		Vector3Int tile = this.GetTile(point, agentType);
 		this.PokeTile(tile);
 	}
 
-	// Token: 0x06000B49 RID: 2889 RVA: 0x000514A5 File Offset: 0x0004F6A5
+	// Token: 0x06000B4A RID: 2890 RVA: 0x0005162D File Offset: 0x0004F82D
 	private void PokeTile(Vector3Int tileID)
 	{
 		this.GetNavTile(tileID).m_pokeTime = Time.realtimeSinceStartup;
 	}
 
-	// Token: 0x06000B4A RID: 2890 RVA: 0x000514B8 File Offset: 0x0004F6B8
+	// Token: 0x06000B4B RID: 2891 RVA: 0x00051640 File Offset: 0x0004F840
 	private void Buildtiles()
 	{
 		if (this.UpdateAsyncBuild())
@@ -443,7 +443,7 @@ public class Pathfinding : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B4B RID: 2891 RVA: 0x00051558 File Offset: 0x0004F758
+	// Token: 0x06000B4C RID: 2892 RVA: 0x000516E0 File Offset: 0x0004F8E0
 	private void BuildTile(Pathfinding.NavMeshTile tile)
 	{
 		DateTime now = DateTime.Now;
@@ -499,13 +499,13 @@ public class Pathfinding : MonoBehaviour
 		this.m_buildTile = tile;
 	}
 
-	// Token: 0x06000B4C RID: 2892 RVA: 0x0005177C File Offset: 0x0004F97C
+	// Token: 0x06000B4D RID: 2893 RVA: 0x00051904 File Offset: 0x0004FB04
 	private bool IsBuilding()
 	{
 		return this.m_buildOperation != null && !this.m_buildOperation.isDone;
 	}
 
-	// Token: 0x06000B4D RID: 2893 RVA: 0x00051798 File Offset: 0x0004F998
+	// Token: 0x06000B4E RID: 2894 RVA: 0x00051920 File Offset: 0x0004FB20
 	private bool UpdateAsyncBuild()
 	{
 		if (this.m_buildOperation == null)
@@ -526,14 +526,14 @@ public class Pathfinding : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000B4E RID: 2894 RVA: 0x00051806 File Offset: 0x0004FA06
+	// Token: 0x06000B4F RID: 2895 RVA: 0x0005198E File Offset: 0x0004FB8E
 	private void ClearLinks(Pathfinding.NavMeshTile tile)
 	{
 		this.ClearLinks(tile.m_links1);
 		this.ClearLinks(tile.m_links2);
 	}
 
-	// Token: 0x06000B4F RID: 2895 RVA: 0x00051820 File Offset: 0x0004FA20
+	// Token: 0x06000B50 RID: 2896 RVA: 0x000519A8 File Offset: 0x0004FBA8
 	private void ClearLinks(List<KeyValuePair<Vector3, NavMeshLinkInstance>> links)
 	{
 		foreach (KeyValuePair<Vector3, NavMeshLinkInstance> keyValuePair in links)
@@ -543,7 +543,7 @@ public class Pathfinding : MonoBehaviour
 		links.Clear();
 	}
 
-	// Token: 0x06000B50 RID: 2896 RVA: 0x00051880 File Offset: 0x0004FA80
+	// Token: 0x06000B51 RID: 2897 RVA: 0x00051A08 File Offset: 0x0004FC08
 	private void RebuildLinks(Pathfinding.NavMeshTile tile)
 	{
 		Pathfinding.AgentType z = (Pathfinding.AgentType)tile.m_tile.z;
@@ -553,7 +553,7 @@ public class Pathfinding : MonoBehaviour
 		this.ConnectAlongEdge(tile.m_links2, tile.m_center + new Vector3(-num, 0f, num), tile.m_center + new Vector3(num, 0f, num), this.m_linkWidth, settings);
 	}
 
-	// Token: 0x06000B51 RID: 2897 RVA: 0x00051934 File Offset: 0x0004FB34
+	// Token: 0x06000B52 RID: 2898 RVA: 0x00051ABC File Offset: 0x0004FCBC
 	private void ConnectAlongEdge(List<KeyValuePair<Vector3, NavMeshLinkInstance>> links, Vector3 p0, Vector3 p1, float step, Pathfinding.AgentSettings settings)
 	{
 		Vector3 normalized = (p1 - p0).normalized;
@@ -590,7 +590,7 @@ public class Pathfinding : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B52 RID: 2898 RVA: 0x00051AA4 File Offset: 0x0004FCA4
+	// Token: 0x06000B53 RID: 2899 RVA: 0x00051C2C File Offset: 0x0004FE2C
 	private bool CompareLinks(List<Vector3> tempStitchPoints, List<KeyValuePair<Vector3, NavMeshLinkInstance>> links)
 	{
 		if (tempStitchPoints.Count != links.Count)
@@ -607,7 +607,7 @@ public class Pathfinding : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000B53 RID: 2899 RVA: 0x00051AF4 File Offset: 0x0004FCF4
+	// Token: 0x06000B54 RID: 2900 RVA: 0x00051C7C File Offset: 0x0004FE7C
 	private bool SnapToNearestGround(Vector3 p, out Vector3 pos, float range)
 	{
 		RaycastHit raycastHit;
@@ -625,7 +625,7 @@ public class Pathfinding : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000B54 RID: 2900 RVA: 0x00051B98 File Offset: 0x0004FD98
+	// Token: 0x06000B55 RID: 2901 RVA: 0x00051D20 File Offset: 0x0004FF20
 	private void FindGround(Vector3 p, bool testWater, List<Vector3> hits, Pathfinding.AgentSettings settings)
 	{
 		p.y = 6000f;
@@ -648,14 +648,14 @@ public class Pathfinding : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B55 RID: 2901 RVA: 0x00051C90 File Offset: 0x0004FE90
+	// Token: 0x06000B56 RID: 2902 RVA: 0x00051E18 File Offset: 0x00050018
 	private Pathfinding.NavMeshTile GetNavTile(Vector3 point, Pathfinding.AgentType agent)
 	{
 		Vector3Int tile = this.GetTile(point, agent);
 		return this.GetNavTile(tile);
 	}
 
-	// Token: 0x06000B56 RID: 2902 RVA: 0x00051CB0 File Offset: 0x0004FEB0
+	// Token: 0x06000B57 RID: 2903 RVA: 0x00051E38 File Offset: 0x00050038
 	private Pathfinding.NavMeshTile GetNavTile(Vector3Int tile)
 	{
 		if (tile == this.m_cachedTileID)
@@ -678,7 +678,7 @@ public class Pathfinding : MonoBehaviour
 		return navMeshTile;
 	}
 
-	// Token: 0x06000B57 RID: 2903 RVA: 0x00051D28 File Offset: 0x0004FF28
+	// Token: 0x06000B58 RID: 2904 RVA: 0x00051EB0 File Offset: 0x000500B0
 	private Vector3Int GetTile(Vector3 point, Pathfinding.AgentType agent)
 	{
 		int x = Mathf.FloorToInt((point.x + this.m_tileSize / 2f) / this.m_tileSize);
@@ -686,193 +686,193 @@ public class Pathfinding : MonoBehaviour
 		return new Vector3Int(x, y, (int)agent);
 	}
 
-	// Token: 0x06000B58 RID: 2904 RVA: 0x00051D7B File Offset: 0x0004FF7B
+	// Token: 0x06000B59 RID: 2905 RVA: 0x00051F03 File Offset: 0x00050103
 	public Vector3 GetTilePos(Vector3Int id)
 	{
 		return new Vector3((float)id.x * this.m_tileSize, 2500f, (float)id.y * this.m_tileSize);
 	}
 
-	// Token: 0x04000A95 RID: 2709
+	// Token: 0x04000A9B RID: 2715
 	private List<Vector3> tempPath = new List<Vector3>();
 
-	// Token: 0x04000A96 RID: 2710
+	// Token: 0x04000A9C RID: 2716
 	private List<Vector3> optPath = new List<Vector3>();
 
-	// Token: 0x04000A97 RID: 2711
+	// Token: 0x04000A9D RID: 2717
 	private List<Vector3> tempStitchPoints = new List<Vector3>();
 
-	// Token: 0x04000A98 RID: 2712
+	// Token: 0x04000A9E RID: 2718
 	private RaycastHit[] tempHitArray = new RaycastHit[255];
 
-	// Token: 0x04000A99 RID: 2713
+	// Token: 0x04000A9F RID: 2719
 	private static Pathfinding m_instance;
 
-	// Token: 0x04000A9A RID: 2714
+	// Token: 0x04000AA0 RID: 2720
 	public LayerMask m_layers;
 
-	// Token: 0x04000A9B RID: 2715
+	// Token: 0x04000AA1 RID: 2721
 	public LayerMask m_waterLayers;
 
-	// Token: 0x04000A9C RID: 2716
+	// Token: 0x04000AA2 RID: 2722
 	private Dictionary<Vector3Int, Pathfinding.NavMeshTile> m_tiles = new Dictionary<Vector3Int, Pathfinding.NavMeshTile>();
 
-	// Token: 0x04000A9D RID: 2717
+	// Token: 0x04000AA3 RID: 2723
 	public float m_tileSize = 32f;
 
-	// Token: 0x04000A9E RID: 2718
+	// Token: 0x04000AA4 RID: 2724
 	public float m_defaultCost = 1f;
 
-	// Token: 0x04000A9F RID: 2719
+	// Token: 0x04000AA5 RID: 2725
 	public float m_waterCost = 4f;
 
-	// Token: 0x04000AA0 RID: 2720
+	// Token: 0x04000AA6 RID: 2726
 	public float m_linkCost = 10f;
 
-	// Token: 0x04000AA1 RID: 2721
+	// Token: 0x04000AA7 RID: 2727
 	public float m_linkWidth = 1f;
 
-	// Token: 0x04000AA2 RID: 2722
+	// Token: 0x04000AA8 RID: 2728
 	public float m_updateInterval = 5f;
 
-	// Token: 0x04000AA3 RID: 2723
+	// Token: 0x04000AA9 RID: 2729
 	public float m_tileTimeout = 30f;
 
-	// Token: 0x04000AA4 RID: 2724
+	// Token: 0x04000AAA RID: 2730
 	private const float m_tileHeight = 6000f;
 
-	// Token: 0x04000AA5 RID: 2725
+	// Token: 0x04000AAB RID: 2731
 	private const float m_tileY = 2500f;
 
-	// Token: 0x04000AA6 RID: 2726
+	// Token: 0x04000AAC RID: 2732
 	private float m_updatePathfindingTimer;
 
-	// Token: 0x04000AA7 RID: 2727
+	// Token: 0x04000AAD RID: 2733
 	private Queue<Vector3Int> m_queuedAreas = new Queue<Vector3Int>();
 
-	// Token: 0x04000AA8 RID: 2728
+	// Token: 0x04000AAE RID: 2734
 	private Queue<NavMeshLinkInstance> m_linkRemoveQueue = new Queue<NavMeshLinkInstance>();
 
-	// Token: 0x04000AA9 RID: 2729
+	// Token: 0x04000AAF RID: 2735
 	private Queue<NavMeshDataInstance> m_tileRemoveQueue = new Queue<NavMeshDataInstance>();
 
-	// Token: 0x04000AAA RID: 2730
+	// Token: 0x04000AB0 RID: 2736
 	private Vector3Int m_cachedTileID = new Vector3Int(-9999999, -9999999, -9999999);
 
-	// Token: 0x04000AAB RID: 2731
+	// Token: 0x04000AB1 RID: 2737
 	private Pathfinding.NavMeshTile m_cachedTile;
 
-	// Token: 0x04000AAC RID: 2732
+	// Token: 0x04000AB2 RID: 2738
 	private List<Pathfinding.AgentSettings> m_agentSettings = new List<Pathfinding.AgentSettings>();
 
-	// Token: 0x04000AAD RID: 2733
+	// Token: 0x04000AB3 RID: 2739
 	private AsyncOperation m_buildOperation;
 
-	// Token: 0x04000AAE RID: 2734
+	// Token: 0x04000AB4 RID: 2740
 	private Pathfinding.NavMeshTile m_buildTile;
 
-	// Token: 0x04000AAF RID: 2735
+	// Token: 0x04000AB5 RID: 2741
 	private List<KeyValuePair<Pathfinding.NavMeshTile, Pathfinding.NavMeshTile>> m_edgeBuildQueue = new List<KeyValuePair<Pathfinding.NavMeshTile, Pathfinding.NavMeshTile>>();
 
-	// Token: 0x04000AB0 RID: 2736
+	// Token: 0x04000AB6 RID: 2742
 	private NavMeshPath m_path;
 
 	// Token: 0x0200017D RID: 381
 	private class NavMeshTile
 	{
-		// Token: 0x040011A6 RID: 4518
+		// Token: 0x040011AD RID: 4525
 		public Vector3Int m_tile;
 
-		// Token: 0x040011A7 RID: 4519
+		// Token: 0x040011AE RID: 4526
 		public Vector3 m_center;
 
-		// Token: 0x040011A8 RID: 4520
+		// Token: 0x040011AF RID: 4527
 		public float m_pokeTime = -1000f;
 
-		// Token: 0x040011A9 RID: 4521
+		// Token: 0x040011B0 RID: 4528
 		public float m_buildTime = -1000f;
 
-		// Token: 0x040011AA RID: 4522
+		// Token: 0x040011B1 RID: 4529
 		public NavMeshData m_data;
 
-		// Token: 0x040011AB RID: 4523
+		// Token: 0x040011B2 RID: 4530
 		public NavMeshDataInstance m_instance;
 
-		// Token: 0x040011AC RID: 4524
+		// Token: 0x040011B3 RID: 4531
 		public List<KeyValuePair<Vector3, NavMeshLinkInstance>> m_links1 = new List<KeyValuePair<Vector3, NavMeshLinkInstance>>();
 
-		// Token: 0x040011AD RID: 4525
+		// Token: 0x040011B4 RID: 4532
 		public List<KeyValuePair<Vector3, NavMeshLinkInstance>> m_links2 = new List<KeyValuePair<Vector3, NavMeshLinkInstance>>();
 	}
 
 	// Token: 0x0200017E RID: 382
 	public enum AgentType
 	{
-		// Token: 0x040011AF RID: 4527
-		Humanoid = 1,
-		// Token: 0x040011B0 RID: 4528
-		TrollSize,
-		// Token: 0x040011B1 RID: 4529
-		HugeSize,
-		// Token: 0x040011B2 RID: 4530
-		HorseSize,
-		// Token: 0x040011B3 RID: 4531
-		HumanoidNoSwim,
-		// Token: 0x040011B4 RID: 4532
-		HumanoidAvoidWater,
-		// Token: 0x040011B5 RID: 4533
-		Fish,
 		// Token: 0x040011B6 RID: 4534
-		Wolf,
+		Humanoid = 1,
 		// Token: 0x040011B7 RID: 4535
-		BigFish,
+		TrollSize,
 		// Token: 0x040011B8 RID: 4536
-		GoblinBruteSize,
+		HugeSize,
 		// Token: 0x040011B9 RID: 4537
+		HorseSize,
+		// Token: 0x040011BA RID: 4538
+		HumanoidNoSwim,
+		// Token: 0x040011BB RID: 4539
+		HumanoidAvoidWater,
+		// Token: 0x040011BC RID: 4540
+		Fish,
+		// Token: 0x040011BD RID: 4541
+		Wolf,
+		// Token: 0x040011BE RID: 4542
+		BigFish,
+		// Token: 0x040011BF RID: 4543
+		GoblinBruteSize,
+		// Token: 0x040011C0 RID: 4544
 		HumanoidBigNoSwim
 	}
 
 	// Token: 0x0200017F RID: 383
 	public enum AreaType
 	{
-		// Token: 0x040011BB RID: 4539
+		// Token: 0x040011C2 RID: 4546
 		Default,
-		// Token: 0x040011BC RID: 4540
+		// Token: 0x040011C3 RID: 4547
 		NotWalkable,
-		// Token: 0x040011BD RID: 4541
+		// Token: 0x040011C4 RID: 4548
 		Jump,
-		// Token: 0x040011BE RID: 4542
+		// Token: 0x040011C5 RID: 4549
 		Water
 	}
 
 	// Token: 0x02000180 RID: 384
 	private class AgentSettings
 	{
-		// Token: 0x0600117A RID: 4474 RVA: 0x00078AB4 File Offset: 0x00076CB4
+		// Token: 0x0600117B RID: 4475 RVA: 0x00078C3C File Offset: 0x00076E3C
 		public AgentSettings(Pathfinding.AgentType type)
 		{
 			this.m_agentType = type;
 			this.m_build = NavMesh.CreateSettings();
 		}
 
-		// Token: 0x040011BF RID: 4543
+		// Token: 0x040011C6 RID: 4550
 		public Pathfinding.AgentType m_agentType;
 
-		// Token: 0x040011C0 RID: 4544
+		// Token: 0x040011C7 RID: 4551
 		public NavMeshBuildSettings m_build;
 
-		// Token: 0x040011C1 RID: 4545
+		// Token: 0x040011C8 RID: 4552
 		public bool m_canWalk = true;
 
-		// Token: 0x040011C2 RID: 4546
+		// Token: 0x040011C9 RID: 4553
 		public bool m_avoidWater;
 
-		// Token: 0x040011C3 RID: 4547
+		// Token: 0x040011CA RID: 4554
 		public bool m_canSwim = true;
 
-		// Token: 0x040011C4 RID: 4548
+		// Token: 0x040011CB RID: 4555
 		public float m_swimDepth;
 
-		// Token: 0x040011C5 RID: 4549
+		// Token: 0x040011CC RID: 4556
 		public int m_areaMask = -1;
 	}
 }

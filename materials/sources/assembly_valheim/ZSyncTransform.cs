@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000092 RID: 146
 public class ZSyncTransform : MonoBehaviour
 {
-	// Token: 0x060009D0 RID: 2512 RVA: 0x00047214 File Offset: 0x00045414
+	// Token: 0x060009D1 RID: 2513 RVA: 0x000472C0 File Offset: 0x000454C0
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -24,7 +24,7 @@ public class ZSyncTransform : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009D1 RID: 2513 RVA: 0x00047295 File Offset: 0x00045495
+	// Token: 0x060009D2 RID: 2514 RVA: 0x00047341 File Offset: 0x00045541
 	private Vector3 GetVelocity()
 	{
 		if (this.m_body != null)
@@ -38,7 +38,7 @@ public class ZSyncTransform : MonoBehaviour
 		return Vector3.zero;
 	}
 
-	// Token: 0x060009D2 RID: 2514 RVA: 0x000472D0 File Offset: 0x000454D0
+	// Token: 0x060009D3 RID: 2515 RVA: 0x0004737C File Offset: 0x0004557C
 	private Vector3 GetPosition()
 	{
 		if (!this.m_body)
@@ -48,7 +48,7 @@ public class ZSyncTransform : MonoBehaviour
 		return this.m_body.position;
 	}
 
-	// Token: 0x060009D3 RID: 2515 RVA: 0x000472F8 File Offset: 0x000454F8
+	// Token: 0x060009D4 RID: 2516 RVA: 0x000473A4 File Offset: 0x000455A4
 	private void OwnerSync()
 	{
 		ZDO zdo = this.m_nview.GetZDO();
@@ -111,7 +111,7 @@ public class ZSyncTransform : MonoBehaviour
 		base.transform.hasChanged = false;
 	}
 
-	// Token: 0x060009D4 RID: 2516 RVA: 0x00047500 File Offset: 0x00045700
+	// Token: 0x060009D5 RID: 2517 RVA: 0x000475AC File Offset: 0x000457AC
 	private void SyncPosition(ZDO zdo, float dt)
 	{
 		if (this.m_characterParentSync && zdo.HasOwner())
@@ -177,7 +177,7 @@ public class ZSyncTransform : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009D5 RID: 2517 RVA: 0x00047738 File Offset: 0x00045938
+	// Token: 0x060009D6 RID: 2518 RVA: 0x000477E4 File Offset: 0x000459E4
 	private void ClientSync(float dt)
 	{
 		ZDO zdo = this.m_nview.GetZDO();
@@ -268,7 +268,7 @@ public class ZSyncTransform : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009D6 RID: 2518 RVA: 0x00047992 File Offset: 0x00045B92
+	// Token: 0x060009D7 RID: 2519 RVA: 0x00047A3E File Offset: 0x00045C3E
 	private void FixedUpdate()
 	{
 		if (!this.m_nview.IsValid())
@@ -278,7 +278,7 @@ public class ZSyncTransform : MonoBehaviour
 		this.ClientSync(Time.fixedDeltaTime);
 	}
 
-	// Token: 0x060009D7 RID: 2519 RVA: 0x000479AD File Offset: 0x00045BAD
+	// Token: 0x060009D8 RID: 2520 RVA: 0x00047A59 File Offset: 0x00045C59
 	private void LateUpdate()
 	{
 		if (!this.m_nview.IsValid())
@@ -288,7 +288,7 @@ public class ZSyncTransform : MonoBehaviour
 		this.OwnerSync();
 	}
 
-	// Token: 0x060009D8 RID: 2520 RVA: 0x000479AD File Offset: 0x00045BAD
+	// Token: 0x060009D9 RID: 2521 RVA: 0x00047A59 File Offset: 0x00045C59
 	public void SyncNow()
 	{
 		if (!this.m_nview.IsValid())
@@ -298,72 +298,72 @@ public class ZSyncTransform : MonoBehaviour
 		this.OwnerSync();
 	}
 
-	// Token: 0x040008DF RID: 2271
+	// Token: 0x040008E3 RID: 2275
 	public bool m_syncPosition = true;
 
-	// Token: 0x040008E0 RID: 2272
+	// Token: 0x040008E4 RID: 2276
 	public bool m_syncRotation = true;
 
-	// Token: 0x040008E1 RID: 2273
+	// Token: 0x040008E5 RID: 2277
 	public bool m_syncScale;
 
-	// Token: 0x040008E2 RID: 2274
+	// Token: 0x040008E6 RID: 2278
 	public bool m_syncBodyVelocity;
 
-	// Token: 0x040008E3 RID: 2275
+	// Token: 0x040008E7 RID: 2279
 	public bool m_characterParentSync;
 
-	// Token: 0x040008E4 RID: 2276
+	// Token: 0x040008E8 RID: 2280
 	private const float m_smoothness = 0.2f;
 
-	// Token: 0x040008E5 RID: 2277
+	// Token: 0x040008E9 RID: 2281
 	private bool m_isKinematicBody;
 
-	// Token: 0x040008E6 RID: 2278
+	// Token: 0x040008EA RID: 2282
 	private bool m_useGravity = true;
 
-	// Token: 0x040008E7 RID: 2279
+	// Token: 0x040008EB RID: 2283
 	private Vector3 m_tempRelPos;
 
-	// Token: 0x040008E8 RID: 2280
+	// Token: 0x040008EC RID: 2284
 	private bool m_haveTempRelPos;
 
-	// Token: 0x040008E9 RID: 2281
+	// Token: 0x040008ED RID: 2285
 	private float m_targetPosTimer;
 
-	// Token: 0x040008EA RID: 2282
+	// Token: 0x040008EE RID: 2286
 	private uint m_posRevision;
 
-	// Token: 0x040008EB RID: 2283
+	// Token: 0x040008EF RID: 2287
 	private int m_lastUpdateFrame = -1;
 
-	// Token: 0x040008EC RID: 2284
+	// Token: 0x040008F0 RID: 2288
 	private static int m_velHash = "vel".GetStableHashCode();
 
-	// Token: 0x040008ED RID: 2285
+	// Token: 0x040008F1 RID: 2289
 	private static int m_scaleHash = "scale".GetStableHashCode();
 
-	// Token: 0x040008EE RID: 2286
+	// Token: 0x040008F2 RID: 2290
 	private static int m_bodyVel = "body_vel".GetStableHashCode();
 
-	// Token: 0x040008EF RID: 2287
+	// Token: 0x040008F3 RID: 2291
 	private static int m_bodyAVel = "body_avel".GetStableHashCode();
 
-	// Token: 0x040008F0 RID: 2288
+	// Token: 0x040008F4 RID: 2292
 	private static int m_relPos = "relPos".GetStableHashCode();
 
-	// Token: 0x040008F1 RID: 2289
+	// Token: 0x040008F5 RID: 2293
 	private static KeyValuePair<int, int> m_parentIDHash = ZDO.GetHashZDOID("parentID");
 
-	// Token: 0x040008F2 RID: 2290
+	// Token: 0x040008F6 RID: 2294
 	private ZNetView m_nview;
 
-	// Token: 0x040008F3 RID: 2291
+	// Token: 0x040008F7 RID: 2295
 	private Rigidbody m_body;
 
-	// Token: 0x040008F4 RID: 2292
+	// Token: 0x040008F8 RID: 2296
 	private Projectile m_projectile;
 
-	// Token: 0x040008F5 RID: 2293
+	// Token: 0x040008F9 RID: 2297
 	private Character m_character;
 }

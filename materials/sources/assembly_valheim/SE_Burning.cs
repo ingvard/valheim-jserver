@@ -4,13 +4,13 @@ using UnityEngine;
 // Token: 0x02000023 RID: 35
 public class SE_Burning : StatusEffect
 {
-	// Token: 0x0600039C RID: 924 RVA: 0x0001EE7C File Offset: 0x0001D07C
+	// Token: 0x0600039D RID: 925 RVA: 0x0001EF30 File Offset: 0x0001D130
 	public override void Setup(Character character)
 	{
 		base.Setup(character);
 	}
 
-	// Token: 0x0600039D RID: 925 RVA: 0x0001EE88 File Offset: 0x0001D088
+	// Token: 0x0600039E RID: 926 RVA: 0x0001EF3C File Offset: 0x0001D13C
 	public override void UpdateStatusEffect(float dt)
 	{
 		base.UpdateStatusEffect(dt);
@@ -29,7 +29,7 @@ public class SE_Burning : StatusEffect
 		}
 	}
 
-	// Token: 0x0600039E RID: 926 RVA: 0x0001EF28 File Offset: 0x0001D128
+	// Token: 0x0600039F RID: 927 RVA: 0x0001EFDC File Offset: 0x0001D1DC
 	public void AddFireDamage(float damage)
 	{
 		this.m_totalDamage = Mathf.Max(this.m_totalDamage, damage);
@@ -39,7 +39,7 @@ public class SE_Burning : StatusEffect
 		this.ResetTime();
 	}
 
-	// Token: 0x0600039F RID: 927 RVA: 0x0001EF74 File Offset: 0x0001D174
+	// Token: 0x060003A0 RID: 928 RVA: 0x0001F028 File Offset: 0x0001D228
 	public void AddSpiritDamage(float damage)
 	{
 		this.m_totalDamage = Mathf.Max(this.m_totalDamage, damage);
@@ -49,16 +49,16 @@ public class SE_Burning : StatusEffect
 		this.ResetTime();
 	}
 
-	// Token: 0x0400037F RID: 895
+	// Token: 0x04000383 RID: 899
 	[Header("SE_Burning")]
 	public float m_damageInterval = 1f;
 
-	// Token: 0x04000380 RID: 896
+	// Token: 0x04000384 RID: 900
 	private float m_timer;
 
-	// Token: 0x04000381 RID: 897
+	// Token: 0x04000385 RID: 901
 	private float m_totalDamage;
 
-	// Token: 0x04000382 RID: 898
+	// Token: 0x04000386 RID: 902
 	private HitData.DamageTypes m_damage;
 }

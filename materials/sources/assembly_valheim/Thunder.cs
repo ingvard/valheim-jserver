@@ -4,13 +4,13 @@ using UnityEngine;
 // Token: 0x02000049 RID: 73
 public class Thunder : MonoBehaviour
 {
-	// Token: 0x06000495 RID: 1173 RVA: 0x00024A28 File Offset: 0x00022C28
+	// Token: 0x06000496 RID: 1174 RVA: 0x00024ADC File Offset: 0x00022CDC
 	private void Start()
 	{
 		this.m_strikeTimer = UnityEngine.Random.Range(this.m_strikeIntervalMin, this.m_strikeIntervalMax);
 	}
 
-	// Token: 0x06000496 RID: 1174 RVA: 0x00024A44 File Offset: 0x00022C44
+	// Token: 0x06000497 RID: 1175 RVA: 0x00024AF8 File Offset: 0x00022CF8
 	private void Update()
 	{
 		if (this.m_strikeTimer > 0f)
@@ -44,7 +44,7 @@ public class Thunder : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000497 RID: 1175 RVA: 0x00024B38 File Offset: 0x00022D38
+	// Token: 0x06000498 RID: 1176 RVA: 0x00024BEC File Offset: 0x00022DEC
 	private void SpawnThor()
 	{
 		float num = UnityEngine.Random.value * 6.2831855f;
@@ -67,7 +67,7 @@ public class Thunder : MonoBehaviour
 		UnityEngine.Object.Instantiate<GameObject>(this.m_thorPrefab, vector, Quaternion.LookRotation(normalized));
 	}
 
-	// Token: 0x06000498 RID: 1176 RVA: 0x00024C74 File Offset: 0x00022E74
+	// Token: 0x06000499 RID: 1177 RVA: 0x00024D28 File Offset: 0x00022F28
 	private void DoFlash()
 	{
 		float f = UnityEngine.Random.value * 6.2831855f;
@@ -87,73 +87,73 @@ public class Thunder : MonoBehaviour
 		this.m_thunderTimer = UnityEngine.Random.Range(this.m_thunderDelayMin, this.m_thunderDelayMax);
 	}
 
-	// Token: 0x06000499 RID: 1177 RVA: 0x00024D81 File Offset: 0x00022F81
+	// Token: 0x0600049A RID: 1178 RVA: 0x00024E35 File Offset: 0x00023035
 	private void DoThunder()
 	{
 		this.m_thunderEffect.Create(this.m_flashPos, Quaternion.identity, null, 1f);
 	}
 
-	// Token: 0x040004AC RID: 1196
+	// Token: 0x040004B0 RID: 1200
 	public float m_strikeIntervalMin = 3f;
 
-	// Token: 0x040004AD RID: 1197
+	// Token: 0x040004B1 RID: 1201
 	public float m_strikeIntervalMax = 10f;
 
-	// Token: 0x040004AE RID: 1198
+	// Token: 0x040004B2 RID: 1202
 	public float m_thunderDelayMin = 3f;
 
-	// Token: 0x040004AF RID: 1199
+	// Token: 0x040004B3 RID: 1203
 	public float m_thunderDelayMax = 5f;
 
-	// Token: 0x040004B0 RID: 1200
+	// Token: 0x040004B4 RID: 1204
 	public float m_flashDistanceMin = 50f;
 
-	// Token: 0x040004B1 RID: 1201
+	// Token: 0x040004B5 RID: 1205
 	public float m_flashDistanceMax = 200f;
 
-	// Token: 0x040004B2 RID: 1202
+	// Token: 0x040004B6 RID: 1206
 	public float m_flashAltitude = 100f;
 
-	// Token: 0x040004B3 RID: 1203
+	// Token: 0x040004B7 RID: 1207
 	public EffectList m_flashEffect = new EffectList();
 
-	// Token: 0x040004B4 RID: 1204
+	// Token: 0x040004B8 RID: 1208
 	public EffectList m_thunderEffect = new EffectList();
 
-	// Token: 0x040004B5 RID: 1205
+	// Token: 0x040004B9 RID: 1209
 	[Header("Thor")]
 	public bool m_spawnThor;
 
-	// Token: 0x040004B6 RID: 1206
+	// Token: 0x040004BA RID: 1210
 	public string m_requiredGlobalKey = "";
 
-	// Token: 0x040004B7 RID: 1207
+	// Token: 0x040004BB RID: 1211
 	public GameObject m_thorPrefab;
 
-	// Token: 0x040004B8 RID: 1208
+	// Token: 0x040004BC RID: 1212
 	public float m_thorSpawnDistance = 300f;
 
-	// Token: 0x040004B9 RID: 1209
+	// Token: 0x040004BD RID: 1213
 	public float m_thorSpawnAltitudeMax = 100f;
 
-	// Token: 0x040004BA RID: 1210
+	// Token: 0x040004BE RID: 1214
 	public float m_thorSpawnAltitudeMin = 100f;
 
-	// Token: 0x040004BB RID: 1211
+	// Token: 0x040004BF RID: 1215
 	public float m_thorInterval = 10f;
 
-	// Token: 0x040004BC RID: 1212
+	// Token: 0x040004C0 RID: 1216
 	public float m_thorChance = 1f;
 
-	// Token: 0x040004BD RID: 1213
+	// Token: 0x040004C1 RID: 1217
 	private Vector3 m_flashPos = Vector3.zero;
 
-	// Token: 0x040004BE RID: 1214
+	// Token: 0x040004C2 RID: 1218
 	private float m_strikeTimer = -1f;
 
-	// Token: 0x040004BF RID: 1215
+	// Token: 0x040004C3 RID: 1219
 	private float m_thunderTimer = -1f;
 
-	// Token: 0x040004C0 RID: 1216
+	// Token: 0x040004C4 RID: 1220
 	private float m_thorTimer;
 }

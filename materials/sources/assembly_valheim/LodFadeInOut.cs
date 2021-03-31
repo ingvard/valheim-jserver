@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x020000DE RID: 222
 public class LodFadeInOut : MonoBehaviour
 {
-	// Token: 0x06000E05 RID: 3589 RVA: 0x00063DE0 File Offset: 0x00061FE0
+	// Token: 0x06000E06 RID: 3590 RVA: 0x00063F68 File Offset: 0x00062168
 	private void Awake()
 	{
 		Camera mainCamera = Utils.GetMainCamera();
@@ -24,18 +24,18 @@ public class LodFadeInOut : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000E06 RID: 3590 RVA: 0x00063E82 File Offset: 0x00062082
+	// Token: 0x06000E07 RID: 3591 RVA: 0x0006400A File Offset: 0x0006220A
 	private void FadeIn()
 	{
 		this.m_lodGroup.localReferencePoint = this.m_originalLocalRef;
 	}
 
-	// Token: 0x04000CB0 RID: 3248
+	// Token: 0x04000CB6 RID: 3254
 	private Vector3 m_originalLocalRef;
 
-	// Token: 0x04000CB1 RID: 3249
+	// Token: 0x04000CB7 RID: 3255
 	private LODGroup m_lodGroup;
 
-	// Token: 0x04000CB2 RID: 3250
+	// Token: 0x04000CB8 RID: 3256
 	private const float m_minTriggerDistance = 20f;
 }

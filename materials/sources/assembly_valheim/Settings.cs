@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class Settings : MonoBehaviour
 {
 	// Token: 0x1700000F RID: 15
-	// (get) Token: 0x060005FE RID: 1534 RVA: 0x00033185 File Offset: 0x00031385
+	// (get) Token: 0x060005FF RID: 1535 RVA: 0x00033239 File Offset: 0x00031439
 	public static Settings instance
 	{
 		get
@@ -19,7 +19,7 @@ public class Settings : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060005FF RID: 1535 RVA: 0x0003318C File Offset: 0x0003138C
+	// Token: 0x06000600 RID: 1536 RVA: 0x00033240 File Offset: 0x00031440
 	private void Awake()
 	{
 		Settings.m_instance = this;
@@ -31,13 +31,13 @@ public class Settings : MonoBehaviour
 		this.SetupKeys();
 	}
 
-	// Token: 0x06000600 RID: 1536 RVA: 0x000331E8 File Offset: 0x000313E8
+	// Token: 0x06000601 RID: 1537 RVA: 0x0003329C File Offset: 0x0003149C
 	private void OnDestroy()
 	{
 		Settings.m_instance = null;
 	}
 
-	// Token: 0x06000601 RID: 1537 RVA: 0x000331F0 File Offset: 0x000313F0
+	// Token: 0x06000602 RID: 1538 RVA: 0x000332A4 File Offset: 0x000314A4
 	private void Update()
 	{
 		if (this.m_bindDialog.activeSelf)
@@ -70,7 +70,7 @@ public class Settings : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000602 RID: 1538 RVA: 0x00033360 File Offset: 0x00031560
+	// Token: 0x06000603 RID: 1539 RVA: 0x00033414 File Offset: 0x00031614
 	private void SetQualityText(Text text, int level)
 	{
 		switch (level)
@@ -92,7 +92,7 @@ public class Settings : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000603 RID: 1539 RVA: 0x000333DB File Offset: 0x000315DB
+	// Token: 0x06000604 RID: 1540 RVA: 0x0003348F File Offset: 0x0003168F
 	public void OnBack()
 	{
 		this.RevertMode();
@@ -100,14 +100,14 @@ public class Settings : MonoBehaviour
 		UnityEngine.Object.Destroy(base.gameObject);
 	}
 
-	// Token: 0x06000604 RID: 1540 RVA: 0x000333F4 File Offset: 0x000315F4
+	// Token: 0x06000605 RID: 1541 RVA: 0x000334A8 File Offset: 0x000316A8
 	public void OnOk()
 	{
 		this.SaveSettings();
 		UnityEngine.Object.Destroy(base.gameObject);
 	}
 
-	// Token: 0x06000605 RID: 1541 RVA: 0x00033408 File Offset: 0x00031608
+	// Token: 0x06000606 RID: 1542 RVA: 0x000334BC File Offset: 0x000316BC
 	private void SaveSettings()
 	{
 		PlayerPrefs.SetFloat("MasterVolume", this.m_volumeSlider.value);
@@ -170,14 +170,14 @@ public class Settings : MonoBehaviour
 		PlayerPrefs.Save();
 	}
 
-	// Token: 0x06000606 RID: 1542 RVA: 0x0003376F File Offset: 0x0003196F
+	// Token: 0x06000607 RID: 1543 RVA: 0x00033823 File Offset: 0x00031A23
 	public static void ApplyStartupSettings()
 	{
 		QualitySettings.vSyncCount = ((PlayerPrefs.GetInt("VSync", 0) == 1) ? 1 : 0);
 		Settings.ApplyQualitySettings();
 	}
 
-	// Token: 0x06000607 RID: 1543 RVA: 0x00033794 File Offset: 0x00031994
+	// Token: 0x06000608 RID: 1544 RVA: 0x00033848 File Offset: 0x00031A48
 	private static void ApplyQualitySettings()
 	{
 		QualitySettings.softParticles = (PlayerPrefs.GetInt("SoftPart", 1) == 1);
@@ -219,7 +219,7 @@ public class Settings : MonoBehaviour
 		Settings.ApplyShadowQuality();
 	}
 
-	// Token: 0x06000608 RID: 1544 RVA: 0x0003386C File Offset: 0x00031A6C
+	// Token: 0x06000609 RID: 1545 RVA: 0x00033920 File Offset: 0x00031B20
 	private static void ApplyShadowQuality()
 	{
 		switch (PlayerPrefs.GetInt("ShadowQuality", 2))
@@ -244,7 +244,7 @@ public class Settings : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000609 RID: 1545 RVA: 0x000338DC File Offset: 0x00031ADC
+	// Token: 0x0600060A RID: 1546 RVA: 0x00033990 File Offset: 0x00031B90
 	private void LoadSettings()
 	{
 		ZInput.instance.Load();
@@ -301,7 +301,7 @@ public class Settings : MonoBehaviour
 		}));
 	}
 
-	// Token: 0x0600060A RID: 1546 RVA: 0x00033CF4 File Offset: 0x00031EF4
+	// Token: 0x0600060B RID: 1547 RVA: 0x00033DA8 File Offset: 0x00031FA8
 	private void SetupKeys()
 	{
 		foreach (Settings.KeySetting keySetting in this.m_keys)
@@ -311,7 +311,7 @@ public class Settings : MonoBehaviour
 		this.UpdateBindings();
 	}
 
-	// Token: 0x0600060B RID: 1547 RVA: 0x00033D68 File Offset: 0x00031F68
+	// Token: 0x0600060C RID: 1548 RVA: 0x00033E1C File Offset: 0x0003201C
 	private void UpdateBindings()
 	{
 		foreach (Settings.KeySetting keySetting in this.m_keys)
@@ -320,7 +320,7 @@ public class Settings : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600060C RID: 1548 RVA: 0x00033DDC File Offset: 0x00031FDC
+	// Token: 0x0600060D RID: 1549 RVA: 0x00033E90 File Offset: 0x00032090
 	private void OnKeySet()
 	{
 		foreach (Settings.KeySetting keySetting in this.m_keys)
@@ -334,7 +334,7 @@ public class Settings : MonoBehaviour
 		ZLog.Log("NOT FOUND");
 	}
 
-	// Token: 0x0600060D RID: 1549 RVA: 0x00033E64 File Offset: 0x00032064
+	// Token: 0x0600060E RID: 1550 RVA: 0x00033F18 File Offset: 0x00032118
 	private void OpenBindDialog(string keyName)
 	{
 		ZLog.Log("BInding key " + keyName);
@@ -342,7 +342,7 @@ public class Settings : MonoBehaviour
 		this.m_bindDialog.SetActive(true);
 	}
 
-	// Token: 0x0600060E RID: 1550 RVA: 0x00033E8D File Offset: 0x0003208D
+	// Token: 0x0600060F RID: 1551 RVA: 0x00033F41 File Offset: 0x00032141
 	private void UpdateBinding()
 	{
 		if (this.m_bindDialog.activeSelf && ZInput.instance.EndBindKey())
@@ -352,35 +352,35 @@ public class Settings : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600060F RID: 1551 RVA: 0x00033EBA File Offset: 0x000320BA
+	// Token: 0x06000610 RID: 1552 RVA: 0x00033F6E File Offset: 0x0003216E
 	public void ResetBindings()
 	{
 		ZInput.instance.Reset();
 		this.UpdateBindings();
 	}
 
-	// Token: 0x06000610 RID: 1552 RVA: 0x00033ECC File Offset: 0x000320CC
+	// Token: 0x06000611 RID: 1553 RVA: 0x00033F80 File Offset: 0x00032180
 	public void OnLanguageLeft()
 	{
 		this.m_languageKey = Localization.instance.GetPrevLanguage(this.m_languageKey);
 		this.m_language.text = Localization.instance.Localize("$language_" + this.m_languageKey.ToLower());
 	}
 
-	// Token: 0x06000611 RID: 1553 RVA: 0x00033F1C File Offset: 0x0003211C
+	// Token: 0x06000612 RID: 1554 RVA: 0x00033FD0 File Offset: 0x000321D0
 	public void OnLanguageRight()
 	{
 		this.m_languageKey = Localization.instance.GetNextLanguage(this.m_languageKey);
 		this.m_language.text = Localization.instance.Localize("$language_" + this.m_languageKey.ToLower());
 	}
 
-	// Token: 0x06000612 RID: 1554 RVA: 0x00033F69 File Offset: 0x00032169
+	// Token: 0x06000613 RID: 1555 RVA: 0x0003401D File Offset: 0x0003221D
 	public void OnShowResList()
 	{
 		this.m_resDialog.SetActive(true);
 		this.FillResList();
 	}
 
-	// Token: 0x06000613 RID: 1555 RVA: 0x00033F80 File Offset: 0x00032180
+	// Token: 0x06000614 RID: 1556 RVA: 0x00034034 File Offset: 0x00032234
 	private void UpdateValidResolutions()
 	{
 		Resolution[] array = Screen.resolutions;
@@ -409,7 +409,7 @@ public class Settings : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000614 RID: 1556 RVA: 0x00034064 File Offset: 0x00032264
+	// Token: 0x06000615 RID: 1557 RVA: 0x00034118 File Offset: 0x00032318
 	private void FillResList()
 	{
 		foreach (GameObject obj in this.m_resObjects)
@@ -442,13 +442,13 @@ public class Settings : MonoBehaviour
 		this.m_resListScroll.value = 1f;
 	}
 
-	// Token: 0x06000615 RID: 1557 RVA: 0x00034210 File Offset: 0x00032410
+	// Token: 0x06000616 RID: 1558 RVA: 0x000342C4 File Offset: 0x000324C4
 	public void OnResCancel()
 	{
 		this.m_resDialog.SetActive(false);
 	}
 
-	// Token: 0x06000616 RID: 1558 RVA: 0x00034220 File Offset: 0x00032420
+	// Token: 0x06000617 RID: 1559 RVA: 0x000342D4 File Offset: 0x000324D4
 	private void OnResClick()
 	{
 		this.m_resDialog.SetActive(false);
@@ -463,14 +463,14 @@ public class Settings : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000617 RID: 1559 RVA: 0x00034281 File Offset: 0x00032481
+	// Token: 0x06000618 RID: 1560 RVA: 0x00034335 File Offset: 0x00032535
 	public void OnApplyMode()
 	{
 		this.ApplyMode();
 		this.ShowResSwitchCountdown();
 	}
 
-	// Token: 0x06000618 RID: 1560 RVA: 0x00034290 File Offset: 0x00032490
+	// Token: 0x06000619 RID: 1561 RVA: 0x00034344 File Offset: 0x00032544
 	private void ApplyMode()
 	{
 		if (Screen.width == this.m_selectedRes.width && Screen.height == this.m_selectedRes.height && this.m_fullscreenToggle.isOn == Screen.fullScreen)
@@ -481,7 +481,7 @@ public class Settings : MonoBehaviour
 		this.m_modeApplied = true;
 	}
 
-	// Token: 0x06000619 RID: 1561 RVA: 0x0003430C File Offset: 0x0003250C
+	// Token: 0x0600061A RID: 1562 RVA: 0x000343C0 File Offset: 0x000325C0
 	private void RevertMode()
 	{
 		if (!this.m_modeApplied)
@@ -494,20 +494,20 @@ public class Settings : MonoBehaviour
 		Screen.SetResolution(this.m_oldRes.width, this.m_oldRes.height, this.m_oldFullscreen, this.m_oldRes.refreshRate);
 	}
 
-	// Token: 0x0600061A RID: 1562 RVA: 0x00034372 File Offset: 0x00032572
+	// Token: 0x0600061B RID: 1563 RVA: 0x00034426 File Offset: 0x00032626
 	private void ShowResSwitchCountdown()
 	{
 		this.m_resSwitchDialog.SetActive(true);
 		this.m_resCountdownTimer = 5f;
 	}
 
-	// Token: 0x0600061B RID: 1563 RVA: 0x0003438B File Offset: 0x0003258B
+	// Token: 0x0600061C RID: 1564 RVA: 0x0003443F File Offset: 0x0003263F
 	public void OnResSwitchOK()
 	{
 		this.m_resSwitchDialog.SetActive(false);
 	}
 
-	// Token: 0x0600061C RID: 1564 RVA: 0x0003439C File Offset: 0x0003259C
+	// Token: 0x0600061D RID: 1565 RVA: 0x00034450 File Offset: 0x00032650
 	private void UpdateResSwitch(float dt)
 	{
 		if (this.m_resSwitchDialog.activeSelf)
@@ -522,195 +522,195 @@ public class Settings : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600061D RID: 1565 RVA: 0x00034401 File Offset: 0x00032601
+	// Token: 0x0600061E RID: 1566 RVA: 0x000344B5 File Offset: 0x000326B5
 	public void OnResetTutorial()
 	{
 		Player.ResetSeenTutorials();
 	}
 
-	// Token: 0x040006A5 RID: 1701
+	// Token: 0x040006A9 RID: 1705
 	private static Settings m_instance;
 
-	// Token: 0x040006A6 RID: 1702
+	// Token: 0x040006AA RID: 1706
 	[Header("Inout")]
 	public Slider m_sensitivitySlider;
 
-	// Token: 0x040006A7 RID: 1703
+	// Token: 0x040006AB RID: 1707
 	public Toggle m_invertMouse;
 
-	// Token: 0x040006A8 RID: 1704
+	// Token: 0x040006AC RID: 1708
 	public Toggle m_gamepadEnabled;
 
-	// Token: 0x040006A9 RID: 1705
+	// Token: 0x040006AD RID: 1709
 	public GameObject m_bindDialog;
 
-	// Token: 0x040006AA RID: 1706
+	// Token: 0x040006AE RID: 1710
 	public List<Settings.KeySetting> m_keys = new List<Settings.KeySetting>();
 
-	// Token: 0x040006AB RID: 1707
+	// Token: 0x040006AF RID: 1711
 	[Header("Misc")]
 	public Toggle m_cameraShake;
 
-	// Token: 0x040006AC RID: 1708
+	// Token: 0x040006B0 RID: 1712
 	public Toggle m_shipCameraTilt;
 
-	// Token: 0x040006AD RID: 1709
+	// Token: 0x040006B1 RID: 1713
 	public Toggle m_quickPieceSelect;
 
-	// Token: 0x040006AE RID: 1710
+	// Token: 0x040006B2 RID: 1714
 	public Toggle m_showKeyHints;
 
-	// Token: 0x040006AF RID: 1711
+	// Token: 0x040006B3 RID: 1715
 	public Slider m_guiScaleSlider;
 
-	// Token: 0x040006B0 RID: 1712
+	// Token: 0x040006B4 RID: 1716
 	public Text m_guiScaleText;
 
-	// Token: 0x040006B1 RID: 1713
+	// Token: 0x040006B5 RID: 1717
 	public Text m_language;
 
-	// Token: 0x040006B2 RID: 1714
+	// Token: 0x040006B6 RID: 1718
 	public Button m_resetTutorial;
 
-	// Token: 0x040006B3 RID: 1715
+	// Token: 0x040006B7 RID: 1719
 	[Header("Audio")]
 	public Slider m_volumeSlider;
 
-	// Token: 0x040006B4 RID: 1716
+	// Token: 0x040006B8 RID: 1720
 	public Slider m_sfxVolumeSlider;
 
-	// Token: 0x040006B5 RID: 1717
+	// Token: 0x040006B9 RID: 1721
 	public Slider m_musicVolumeSlider;
 
-	// Token: 0x040006B6 RID: 1718
+	// Token: 0x040006BA RID: 1722
 	public Toggle m_continousMusic;
 
-	// Token: 0x040006B7 RID: 1719
+	// Token: 0x040006BB RID: 1723
 	public AudioMixer m_masterMixer;
 
-	// Token: 0x040006B8 RID: 1720
+	// Token: 0x040006BC RID: 1724
 	[Header("Graphics")]
 	public Toggle m_dofToggle;
 
-	// Token: 0x040006B9 RID: 1721
+	// Token: 0x040006BD RID: 1725
 	public Toggle m_vsyncToggle;
 
-	// Token: 0x040006BA RID: 1722
+	// Token: 0x040006BE RID: 1726
 	public Toggle m_bloomToggle;
 
-	// Token: 0x040006BB RID: 1723
+	// Token: 0x040006BF RID: 1727
 	public Toggle m_ssaoToggle;
 
-	// Token: 0x040006BC RID: 1724
+	// Token: 0x040006C0 RID: 1728
 	public Toggle m_sunshaftsToggle;
 
-	// Token: 0x040006BD RID: 1725
+	// Token: 0x040006C1 RID: 1729
 	public Toggle m_aaToggle;
 
-	// Token: 0x040006BE RID: 1726
+	// Token: 0x040006C2 RID: 1730
 	public Toggle m_caToggle;
 
-	// Token: 0x040006BF RID: 1727
+	// Token: 0x040006C3 RID: 1731
 	public Toggle m_motionblurToggle;
 
-	// Token: 0x040006C0 RID: 1728
+	// Token: 0x040006C4 RID: 1732
 	public Toggle m_tesselationToggle;
 
-	// Token: 0x040006C1 RID: 1729
+	// Token: 0x040006C5 RID: 1733
 	public Toggle m_softPartToggle;
 
-	// Token: 0x040006C2 RID: 1730
+	// Token: 0x040006C6 RID: 1734
 	public Toggle m_fullscreenToggle;
 
-	// Token: 0x040006C3 RID: 1731
+	// Token: 0x040006C7 RID: 1735
 	public Slider m_shadowQuality;
 
-	// Token: 0x040006C4 RID: 1732
+	// Token: 0x040006C8 RID: 1736
 	public Text m_shadowQualityText;
 
-	// Token: 0x040006C5 RID: 1733
+	// Token: 0x040006C9 RID: 1737
 	public Slider m_lod;
 
-	// Token: 0x040006C6 RID: 1734
+	// Token: 0x040006CA RID: 1738
 	public Text m_lodText;
 
-	// Token: 0x040006C7 RID: 1735
+	// Token: 0x040006CB RID: 1739
 	public Slider m_lights;
 
-	// Token: 0x040006C8 RID: 1736
+	// Token: 0x040006CC RID: 1740
 	public Text m_lightsText;
 
-	// Token: 0x040006C9 RID: 1737
+	// Token: 0x040006CD RID: 1741
 	public Slider m_vegetation;
 
-	// Token: 0x040006CA RID: 1738
+	// Token: 0x040006CE RID: 1742
 	public Text m_vegetationText;
 
-	// Token: 0x040006CB RID: 1739
+	// Token: 0x040006CF RID: 1743
 	public Text m_resButtonText;
 
-	// Token: 0x040006CC RID: 1740
+	// Token: 0x040006D0 RID: 1744
 	public GameObject m_resDialog;
 
-	// Token: 0x040006CD RID: 1741
+	// Token: 0x040006D1 RID: 1745
 	public GameObject m_resListElement;
 
-	// Token: 0x040006CE RID: 1742
+	// Token: 0x040006D2 RID: 1746
 	public RectTransform m_resListRoot;
 
-	// Token: 0x040006CF RID: 1743
+	// Token: 0x040006D3 RID: 1747
 	public Scrollbar m_resListScroll;
 
-	// Token: 0x040006D0 RID: 1744
+	// Token: 0x040006D4 RID: 1748
 	public float m_resListSpace = 20f;
 
-	// Token: 0x040006D1 RID: 1745
+	// Token: 0x040006D5 RID: 1749
 	public GameObject m_resSwitchDialog;
 
-	// Token: 0x040006D2 RID: 1746
+	// Token: 0x040006D6 RID: 1750
 	public Text m_resSwitchCountdown;
 
-	// Token: 0x040006D3 RID: 1747
+	// Token: 0x040006D7 RID: 1751
 	public int m_minResWidth = 1280;
 
-	// Token: 0x040006D4 RID: 1748
+	// Token: 0x040006D8 RID: 1752
 	public int m_minResHeight = 720;
 
-	// Token: 0x040006D5 RID: 1749
+	// Token: 0x040006D9 RID: 1753
 	private string m_languageKey = "";
 
-	// Token: 0x040006D6 RID: 1750
+	// Token: 0x040006DA RID: 1754
 	private bool m_oldFullscreen;
 
-	// Token: 0x040006D7 RID: 1751
+	// Token: 0x040006DB RID: 1755
 	private Resolution m_oldRes;
 
-	// Token: 0x040006D8 RID: 1752
+	// Token: 0x040006DC RID: 1756
 	private Resolution m_selectedRes;
 
-	// Token: 0x040006D9 RID: 1753
+	// Token: 0x040006DD RID: 1757
 	private List<GameObject> m_resObjects = new List<GameObject>();
 
-	// Token: 0x040006DA RID: 1754
+	// Token: 0x040006DE RID: 1758
 	private List<Resolution> m_resolutions = new List<Resolution>();
 
-	// Token: 0x040006DB RID: 1755
+	// Token: 0x040006DF RID: 1759
 	private float m_resListBaseSize;
 
-	// Token: 0x040006DC RID: 1756
+	// Token: 0x040006E0 RID: 1760
 	private bool m_modeApplied;
 
-	// Token: 0x040006DD RID: 1757
+	// Token: 0x040006E1 RID: 1761
 	private float m_resCountdownTimer = 1f;
 
 	// Token: 0x0200015A RID: 346
 	[Serializable]
 	public class KeySetting
 	{
-		// Token: 0x0400112C RID: 4396
+		// Token: 0x04001133 RID: 4403
 		public string m_keyName = "";
 
-		// Token: 0x0400112D RID: 4397
+		// Token: 0x04001134 RID: 4404
 		public RectTransform m_keyTransform;
 	}
 }

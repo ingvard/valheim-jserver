@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class Console : MonoBehaviour
 {
 	// Token: 0x17000006 RID: 6
-	// (get) Token: 0x060004C8 RID: 1224 RVA: 0x00026B83 File Offset: 0x00024D83
+	// (get) Token: 0x060004C9 RID: 1225 RVA: 0x00026C37 File Offset: 0x00024E37
 	public static global::Console instance
 	{
 		get
@@ -19,7 +19,7 @@ public class Console : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004C9 RID: 1225 RVA: 0x00026B8C File Offset: 0x00024D8C
+	// Token: 0x060004CA RID: 1226 RVA: 0x00026C40 File Offset: 0x00024E40
 	private void Awake()
 	{
 		global::Console.m_instance = this;
@@ -30,7 +30,7 @@ public class Console : MonoBehaviour
 		this.m_chatWindow.gameObject.SetActive(false);
 	}
 
-	// Token: 0x060004CA RID: 1226 RVA: 0x00026BE8 File Offset: 0x00024DE8
+	// Token: 0x060004CB RID: 1227 RVA: 0x00026C9C File Offset: 0x00024E9C
 	private void Update()
 	{
 		if (ZNet.instance && ZNet.instance.InPasswordDialog())
@@ -73,19 +73,19 @@ public class Console : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004CB RID: 1227 RVA: 0x00026D4A File Offset: 0x00024F4A
+	// Token: 0x060004CC RID: 1228 RVA: 0x00026DFE File Offset: 0x00024FFE
 	public static bool IsVisible()
 	{
 		return global::Console.m_instance && global::Console.m_instance.m_chatWindow.gameObject.activeInHierarchy;
 	}
 
-	// Token: 0x060004CC RID: 1228 RVA: 0x00026D6E File Offset: 0x00024F6E
+	// Token: 0x060004CD RID: 1229 RVA: 0x00026E22 File Offset: 0x00025022
 	public void Print(string text)
 	{
 		this.AddString(text);
 	}
 
-	// Token: 0x060004CD RID: 1229 RVA: 0x00026D77 File Offset: 0x00024F77
+	// Token: 0x060004CE RID: 1230 RVA: 0x00026E2B File Offset: 0x0002502B
 	private void AddString(string text)
 	{
 		this.m_chatBuffer.Add(text);
@@ -96,7 +96,7 @@ public class Console : MonoBehaviour
 		this.UpdateChat();
 	}
 
-	// Token: 0x060004CE RID: 1230 RVA: 0x00026DA8 File Offset: 0x00024FA8
+	// Token: 0x060004CF RID: 1231 RVA: 0x00026E5C File Offset: 0x0002505C
 	private void UpdateChat()
 	{
 		StringBuilder stringBuilder = new StringBuilder();
@@ -108,7 +108,7 @@ public class Console : MonoBehaviour
 		this.m_output.text = stringBuilder.ToString();
 	}
 
-	// Token: 0x060004CF RID: 1231 RVA: 0x00026E20 File Offset: 0x00025020
+	// Token: 0x060004D0 RID: 1232 RVA: 0x00026ED4 File Offset: 0x000250D4
 	private void InputText()
 	{
 		string text = this.m_input.text;
@@ -126,6 +126,7 @@ public class Console : MonoBehaviour
 			this.AddString("ping - ping server");
 			this.AddString("lodbias - set distance lod bias");
 			this.AddString("info - print system info");
+			this.AddString("save - force saving of world");
 			if (this.IsCheatsEnabled())
 			{
 				this.AddString("genloc - regenerate all locations.");
@@ -153,7 +154,6 @@ public class Console : MonoBehaviour
 				this.AddString("event [name] - start event");
 				this.AddString("stopevent - stop current event");
 				this.AddString("randomevent");
-				this.AddString("save - force saving of world");
 				this.AddString("resetcharacter - reset character data");
 				this.AddString("removedrops - remove all item-drops in area");
 				this.AddString("setkey [name]");
@@ -663,48 +663,48 @@ public class Console : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004D0 RID: 1232 RVA: 0x00027F60 File Offset: 0x00026160
+	// Token: 0x060004D1 RID: 1233 RVA: 0x00028014 File Offset: 0x00026214
 	public bool IsCheatsEnabled()
 	{
 		return this.m_cheat && ZNet.instance && ZNet.instance.IsServer();
 	}
 
-	// Token: 0x060004D1 RID: 1233 RVA: 0x00027F84 File Offset: 0x00026184
+	// Token: 0x060004D2 RID: 1234 RVA: 0x00028038 File Offset: 0x00026238
 	public bool IsConsoleEnabled()
 	{
 		return global::Console.m_consoleEnabled;
 	}
 
-	// Token: 0x060004D2 RID: 1234 RVA: 0x00027F8B File Offset: 0x0002618B
+	// Token: 0x060004D3 RID: 1235 RVA: 0x0002803F File Offset: 0x0002623F
 	public static void SetConsoleEnabled(bool enabled)
 	{
 		global::Console.m_consoleEnabled = enabled;
 	}
 
-	// Token: 0x04000514 RID: 1300
+	// Token: 0x04000518 RID: 1304
 	private static global::Console m_instance;
 
-	// Token: 0x04000515 RID: 1301
+	// Token: 0x04000519 RID: 1305
 	public RectTransform m_chatWindow;
 
-	// Token: 0x04000516 RID: 1302
+	// Token: 0x0400051A RID: 1306
 	public Text m_output;
 
-	// Token: 0x04000517 RID: 1303
+	// Token: 0x0400051B RID: 1307
 	public InputField m_input;
 
-	// Token: 0x04000518 RID: 1304
+	// Token: 0x0400051C RID: 1308
 	private const int m_maxBufferLength = 30;
 
-	// Token: 0x04000519 RID: 1305
+	// Token: 0x0400051D RID: 1309
 	private List<string> m_chatBuffer = new List<string>();
 
-	// Token: 0x0400051A RID: 1306
+	// Token: 0x0400051E RID: 1310
 	private bool m_cheat;
 
-	// Token: 0x0400051B RID: 1307
+	// Token: 0x0400051F RID: 1311
 	private string m_lastEntry = "";
 
-	// Token: 0x0400051C RID: 1308
+	// Token: 0x04000520 RID: 1312
 	private static bool m_consoleEnabled;
 }

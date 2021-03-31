@@ -6,7 +6,7 @@ using UnityEngine;
 // Token: 0x02000112 RID: 274
 public class WearNTear : MonoBehaviour, IDestructible
 {
-	// Token: 0x06001012 RID: 4114 RVA: 0x00070FB4 File Offset: 0x0006F1B4
+	// Token: 0x06001013 RID: 4115 RVA: 0x0007113C File Offset: 0x0006F33C
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -46,7 +46,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		this.UpdateVisual(false);
 	}
 
-	// Token: 0x06001013 RID: 4115 RVA: 0x00071130 File Offset: 0x0006F330
+	// Token: 0x06001014 RID: 4116 RVA: 0x000712B8 File Offset: 0x0006F4B8
 	private void OnDestroy()
 	{
 		if (this.m_myIndex != -1)
@@ -57,7 +57,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		}
 	}
 
-	// Token: 0x06001014 RID: 4116 RVA: 0x000711A0 File Offset: 0x0006F3A0
+	// Token: 0x06001015 RID: 4117 RVA: 0x00071328 File Offset: 0x0006F528
 	public bool Repair()
 	{
 		if (!this.m_nview.IsValid())
@@ -77,7 +77,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		return true;
 	}
 
-	// Token: 0x06001015 RID: 4117 RVA: 0x00071218 File Offset: 0x0006F418
+	// Token: 0x06001016 RID: 4118 RVA: 0x000713A0 File Offset: 0x0006F5A0
 	private void RPC_Repair(long sender)
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -91,7 +91,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		});
 	}
 
-	// Token: 0x06001016 RID: 4118 RVA: 0x00071284 File Offset: 0x0006F484
+	// Token: 0x06001017 RID: 4119 RVA: 0x0007140C File Offset: 0x0006F60C
 	private float GetSupport()
 	{
 		if (!this.m_nview.IsValid())
@@ -109,7 +109,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		return this.m_nview.GetZDO().GetFloat("support", this.GetMaxSupport());
 	}
 
-	// Token: 0x06001017 RID: 4119 RVA: 0x000712E8 File Offset: 0x0006F4E8
+	// Token: 0x06001018 RID: 4120 RVA: 0x00071470 File Offset: 0x0006F670
 	private float GetSupportColorValue()
 	{
 		float num = this.GetSupport();
@@ -126,13 +126,13 @@ public class WearNTear : MonoBehaviour, IDestructible
 		return Mathf.Clamp01(num / (num2 * 0.5f - num3));
 	}
 
-	// Token: 0x06001018 RID: 4120 RVA: 0x00071328 File Offset: 0x0006F528
+	// Token: 0x06001019 RID: 4121 RVA: 0x000714B0 File Offset: 0x0006F6B0
 	public void OnPlaced()
 	{
 		this.m_createTime = -1f;
 	}
 
-	// Token: 0x06001019 RID: 4121 RVA: 0x00071338 File Offset: 0x0006F538
+	// Token: 0x0600101A RID: 4122 RVA: 0x000714C0 File Offset: 0x0006F6C0
 	private List<Renderer> GetHighlightRenderers()
 	{
 		MeshRenderer[] componentsInChildren = base.GetComponentsInChildren<MeshRenderer>(true);
@@ -143,7 +143,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		return list;
 	}
 
-	// Token: 0x0600101A RID: 4122 RVA: 0x00071368 File Offset: 0x0006F568
+	// Token: 0x0600101B RID: 4123 RVA: 0x000714F0 File Offset: 0x0006F6F0
 	public void Highlight()
 	{
 		if (this.m_oldMaterials == null)
@@ -198,7 +198,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		base.Invoke("ResetHighlight", 0.2f);
 	}
 
-	// Token: 0x0600101B RID: 4123 RVA: 0x000715E8 File Offset: 0x0006F7E8
+	// Token: 0x0600101C RID: 4124 RVA: 0x00071770 File Offset: 0x0006F970
 	private void ResetHighlight()
 	{
 		if (this.m_oldMaterials != null)
@@ -238,7 +238,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		}
 	}
 
-	// Token: 0x0600101C RID: 4124 RVA: 0x0007170C File Offset: 0x0006F90C
+	// Token: 0x0600101D RID: 4125 RVA: 0x00071894 File Offset: 0x0006FA94
 	private void SetupColliders()
 	{
 		this.m_colliders = base.GetComponentsInChildren<Collider>(true);
@@ -270,13 +270,13 @@ public class WearNTear : MonoBehaviour, IDestructible
 		}
 	}
 
-	// Token: 0x0600101D RID: 4125 RVA: 0x000718CC File Offset: 0x0006FACC
+	// Token: 0x0600101E RID: 4126 RVA: 0x00071A54 File Offset: 0x0006FC54
 	private bool ShouldUpdate()
 	{
 		return this.m_createTime < 0f || Time.time - this.m_createTime > 30f;
 	}
 
-	// Token: 0x0600101E RID: 4126 RVA: 0x000718F0 File Offset: 0x0006FAF0
+	// Token: 0x0600101F RID: 4127 RVA: 0x00071A78 File Offset: 0x0006FC78
 	public void UpdateWear()
 	{
 		if (!this.m_nview.IsValid())
@@ -338,13 +338,13 @@ public class WearNTear : MonoBehaviour, IDestructible
 		this.UpdateVisual(true);
 	}
 
-	// Token: 0x0600101F RID: 4127 RVA: 0x00071A64 File Offset: 0x0006FC64
+	// Token: 0x06001020 RID: 4128 RVA: 0x00071BEC File Offset: 0x0006FDEC
 	private Vector3 GetCOM()
 	{
 		return base.transform.position + base.transform.rotation * this.m_comOffset;
 	}
 
-	// Token: 0x06001020 RID: 4128 RVA: 0x00071A8C File Offset: 0x0006FC8C
+	// Token: 0x06001021 RID: 4129 RVA: 0x00071C14 File Offset: 0x0006FE14
 	private void UpdateSupport()
 	{
 		if (this.m_colliders == null)
@@ -424,7 +424,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		this.m_nview.GetZDO().Set("support", this.m_support);
 	}
 
-	// Token: 0x06001021 RID: 4129 RVA: 0x00071DD4 File Offset: 0x0006FFD4
+	// Token: 0x06001022 RID: 4130 RVA: 0x00071F5C File Offset: 0x0007015C
 	private Vector3 FindSupportPoint(Vector3 com, WearNTear wnt, Collider otherCollider)
 	{
 		MeshCollider meshCollider = otherCollider as MeshCollider;
@@ -440,20 +440,20 @@ public class WearNTear : MonoBehaviour, IDestructible
 		return (com + wnt.GetCOM()) * 0.5f;
 	}
 
-	// Token: 0x06001022 RID: 4130 RVA: 0x00071E39 File Offset: 0x00070039
+	// Token: 0x06001023 RID: 4131 RVA: 0x00071FC1 File Offset: 0x000701C1
 	private bool HaveSupport()
 	{
 		return this.m_support >= this.GetMinSupport();
 	}
 
-	// Token: 0x06001023 RID: 4131 RVA: 0x00071E4C File Offset: 0x0007004C
+	// Token: 0x06001024 RID: 4132 RVA: 0x00071FD4 File Offset: 0x000701D4
 	private bool IsUnderWater()
 	{
 		float waterLevel = WaterVolume.GetWaterLevel(base.transform.position, 1f);
 		return base.transform.position.y < waterLevel;
 	}
 
-	// Token: 0x06001024 RID: 4132 RVA: 0x00071E84 File Offset: 0x00070084
+	// Token: 0x06001025 RID: 4133 RVA: 0x0007200C File Offset: 0x0007020C
 	private bool HaveRoof()
 	{
 		int num = Physics.SphereCastNonAlloc(base.transform.position, 0.1f, Vector3.up, WearNTear.m_raycastHits, 100f, WearNTear.m_rayMask);
@@ -468,14 +468,14 @@ public class WearNTear : MonoBehaviour, IDestructible
 		return false;
 	}
 
-	// Token: 0x06001025 RID: 4133 RVA: 0x00071EF0 File Offset: 0x000700F0
+	// Token: 0x06001026 RID: 4134 RVA: 0x00072078 File Offset: 0x00070278
 	private void RPC_HealthChanged(long peer, float health)
 	{
 		float health2 = health / this.m_health;
 		this.SetHealthVisual(health2, true);
 	}
 
-	// Token: 0x06001026 RID: 4134 RVA: 0x00071F0E File Offset: 0x0007010E
+	// Token: 0x06001027 RID: 4135 RVA: 0x00072096 File Offset: 0x00070296
 	private void UpdateVisual(bool triggerEffects)
 	{
 		if (!this.m_nview.IsValid())
@@ -485,7 +485,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		this.SetHealthVisual(this.GetHealthPercentage(), triggerEffects);
 	}
 
-	// Token: 0x06001027 RID: 4135 RVA: 0x00071F2C File Offset: 0x0007012C
+	// Token: 0x06001028 RID: 4136 RVA: 0x000720B4 File Offset: 0x000702B4
 	private void SetHealthVisual(float health, bool triggerEffects)
 	{
 		if (this.m_worn == null && this.m_broken == null && this.m_new == null)
@@ -537,7 +537,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		this.m_broken.SetActive(true);
 	}
 
-	// Token: 0x06001028 RID: 4136 RVA: 0x000720D1 File Offset: 0x000702D1
+	// Token: 0x06001029 RID: 4137 RVA: 0x00072259 File Offset: 0x00070459
 	public float GetHealthPercentage()
 	{
 		if (!this.m_nview.IsValid())
@@ -547,13 +547,13 @@ public class WearNTear : MonoBehaviour, IDestructible
 		return Mathf.Clamp01(this.m_nview.GetZDO().GetFloat("health", this.m_health) / this.m_health);
 	}
 
-	// Token: 0x06001029 RID: 4137 RVA: 0x000027E2 File Offset: 0x000009E2
+	// Token: 0x0600102A RID: 4138 RVA: 0x000027E2 File Offset: 0x000009E2
 	public DestructibleType GetDestructibleType()
 	{
 		return DestructibleType.Default;
 	}
 
-	// Token: 0x0600102A RID: 4138 RVA: 0x0007210D File Offset: 0x0007030D
+	// Token: 0x0600102B RID: 4139 RVA: 0x00072295 File Offset: 0x00070495
 	public void Damage(HitData hit)
 	{
 		if (!this.m_nview.IsValid())
@@ -566,13 +566,13 @@ public class WearNTear : MonoBehaviour, IDestructible
 		});
 	}
 
-	// Token: 0x0600102B RID: 4139 RVA: 0x00072137 File Offset: 0x00070337
+	// Token: 0x0600102C RID: 4140 RVA: 0x000722BF File Offset: 0x000704BF
 	private bool CanBeRemoved()
 	{
 		return !this.m_piece || this.m_piece.CanBeRemoved();
 	}
 
-	// Token: 0x0600102C RID: 4140 RVA: 0x00072154 File Offset: 0x00070354
+	// Token: 0x0600102D RID: 4141 RVA: 0x000722DC File Offset: 0x000704DC
 	private void RPC_Damage(long sender, HitData hit)
 	{
 		if (!this.m_nview.IsOwner())
@@ -611,7 +611,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		}
 	}
 
-	// Token: 0x0600102D RID: 4141 RVA: 0x00072260 File Offset: 0x00070460
+	// Token: 0x0600102E RID: 4142 RVA: 0x000723E8 File Offset: 0x000705E8
 	public bool ApplyDamage(float damage)
 	{
 		float num = this.m_nview.GetZDO().GetFloat("health", this.m_health);
@@ -635,7 +635,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		return true;
 	}
 
-	// Token: 0x0600102E RID: 4142 RVA: 0x000722E2 File Offset: 0x000704E2
+	// Token: 0x0600102F RID: 4143 RVA: 0x0007246A File Offset: 0x0007066A
 	public void Remove()
 	{
 		if (!this.m_nview.IsValid())
@@ -645,7 +645,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		this.m_nview.InvokeRPC("WNTRemove", Array.Empty<object>());
 	}
 
-	// Token: 0x0600102F RID: 4143 RVA: 0x00072307 File Offset: 0x00070507
+	// Token: 0x06001030 RID: 4144 RVA: 0x0007248F File Offset: 0x0007068F
 	private void RPC_Remove(long sender)
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -655,7 +655,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		this.Destroy();
 	}
 
-	// Token: 0x06001030 RID: 4144 RVA: 0x0007232C File Offset: 0x0007052C
+	// Token: 0x06001031 RID: 4145 RVA: 0x000724B4 File Offset: 0x000706B4
 	private void Destroy()
 	{
 		this.m_nview.GetZDO().Set("health", 0f);
@@ -683,7 +683,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		ZNetScene.instance.Destroy(base.gameObject);
 	}
 
-	// Token: 0x06001031 RID: 4145 RVA: 0x00072414 File Offset: 0x00070614
+	// Token: 0x06001032 RID: 4146 RVA: 0x0007259C File Offset: 0x0007079C
 	private void RPC_CreateFragments(long peer)
 	{
 		this.ResetHighlight();
@@ -699,7 +699,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		Destructible.CreateFragments(base.gameObject, true);
 	}
 
-	// Token: 0x06001032 RID: 4146 RVA: 0x0007246C File Offset: 0x0007066C
+	// Token: 0x06001033 RID: 4147 RVA: 0x000725F4 File Offset: 0x000707F4
 	private float GetMaxSupport()
 	{
 		float result;
@@ -710,7 +710,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		return result;
 	}
 
-	// Token: 0x06001033 RID: 4147 RVA: 0x00072488 File Offset: 0x00070688
+	// Token: 0x06001034 RID: 4148 RVA: 0x00072610 File Offset: 0x00070810
 	private float GetMinSupport()
 	{
 		float num;
@@ -721,7 +721,7 @@ public class WearNTear : MonoBehaviour, IDestructible
 		return result;
 	}
 
-	// Token: 0x06001034 RID: 4148 RVA: 0x000724A4 File Offset: 0x000706A4
+	// Token: 0x06001035 RID: 4149 RVA: 0x0007262C File Offset: 0x0007082C
 	private void GetMaterialProperties(out float maxSupport, out float minSupport, out float horizontalLoss, out float verticalLoss)
 	{
 		switch (this.m_materialType)
@@ -759,192 +759,192 @@ public class WearNTear : MonoBehaviour, IDestructible
 		}
 	}
 
-	// Token: 0x06001035 RID: 4149 RVA: 0x00072565 File Offset: 0x00070765
+	// Token: 0x06001036 RID: 4150 RVA: 0x000726ED File Offset: 0x000708ED
 	public static List<WearNTear> GetAllInstaces()
 	{
 		return WearNTear.m_allInstances;
 	}
 
-	// Token: 0x04000EEF RID: 3823
+	// Token: 0x04000EF5 RID: 3829
 	public static bool m_randomInitialDamage = false;
 
-	// Token: 0x04000EF0 RID: 3824
+	// Token: 0x04000EF6 RID: 3830
 	public Action m_onDestroyed;
 
-	// Token: 0x04000EF1 RID: 3825
+	// Token: 0x04000EF7 RID: 3831
 	public Action m_onDamaged;
 
-	// Token: 0x04000EF2 RID: 3826
+	// Token: 0x04000EF8 RID: 3832
 	[Header("Wear")]
 	public GameObject m_new;
 
-	// Token: 0x04000EF3 RID: 3827
+	// Token: 0x04000EF9 RID: 3833
 	public GameObject m_worn;
 
-	// Token: 0x04000EF4 RID: 3828
+	// Token: 0x04000EFA RID: 3834
 	public GameObject m_broken;
 
-	// Token: 0x04000EF5 RID: 3829
+	// Token: 0x04000EFB RID: 3835
 	public GameObject m_wet;
 
-	// Token: 0x04000EF6 RID: 3830
+	// Token: 0x04000EFC RID: 3836
 	public bool m_noRoofWear = true;
 
-	// Token: 0x04000EF7 RID: 3831
+	// Token: 0x04000EFD RID: 3837
 	public bool m_noSupportWear = true;
 
-	// Token: 0x04000EF8 RID: 3832
+	// Token: 0x04000EFE RID: 3838
 	public WearNTear.MaterialType m_materialType;
 
-	// Token: 0x04000EF9 RID: 3833
+	// Token: 0x04000EFF RID: 3839
 	public bool m_supports = true;
 
-	// Token: 0x04000EFA RID: 3834
+	// Token: 0x04000F00 RID: 3840
 	public Vector3 m_comOffset = Vector3.zero;
 
-	// Token: 0x04000EFB RID: 3835
+	// Token: 0x04000F01 RID: 3841
 	[Header("Destruction")]
 	public float m_health = 100f;
 
-	// Token: 0x04000EFC RID: 3836
+	// Token: 0x04000F02 RID: 3842
 	public HitData.DamageModifiers m_damages;
 
-	// Token: 0x04000EFD RID: 3837
+	// Token: 0x04000F03 RID: 3843
 	public float m_hitNoise;
 
-	// Token: 0x04000EFE RID: 3838
+	// Token: 0x04000F04 RID: 3844
 	public float m_destroyNoise;
 
-	// Token: 0x04000EFF RID: 3839
+	// Token: 0x04000F05 RID: 3845
 	[Header("Effects")]
 	public EffectList m_destroyedEffect = new EffectList();
 
-	// Token: 0x04000F00 RID: 3840
+	// Token: 0x04000F06 RID: 3846
 	public EffectList m_hitEffect = new EffectList();
 
-	// Token: 0x04000F01 RID: 3841
+	// Token: 0x04000F07 RID: 3847
 	public EffectList m_switchEffect = new EffectList();
 
-	// Token: 0x04000F02 RID: 3842
+	// Token: 0x04000F08 RID: 3848
 	public bool m_autoCreateFragments = true;
 
-	// Token: 0x04000F03 RID: 3843
+	// Token: 0x04000F09 RID: 3849
 	public GameObject[] m_fragmentRoots;
 
-	// Token: 0x04000F04 RID: 3844
+	// Token: 0x04000F0A RID: 3850
 	private const float m_noFireDrain = 0.0049603176f;
 
-	// Token: 0x04000F05 RID: 3845
+	// Token: 0x04000F0B RID: 3851
 	private const float m_noSupportDrain = 25f;
 
-	// Token: 0x04000F06 RID: 3846
+	// Token: 0x04000F0C RID: 3852
 	private const float m_rainDamageTime = 60f;
 
-	// Token: 0x04000F07 RID: 3847
+	// Token: 0x04000F0D RID: 3853
 	private const float m_rainDamage = 5f;
 
-	// Token: 0x04000F08 RID: 3848
+	// Token: 0x04000F0E RID: 3854
 	private const float m_comTestWidth = 0.2f;
 
-	// Token: 0x04000F09 RID: 3849
+	// Token: 0x04000F0F RID: 3855
 	private const float m_comMinAngle = 100f;
 
-	// Token: 0x04000F0A RID: 3850
+	// Token: 0x04000F10 RID: 3856
 	private const float m_minFireDistance = 20f;
 
-	// Token: 0x04000F0B RID: 3851
+	// Token: 0x04000F11 RID: 3857
 	private const int m_wearUpdateIntervalMinutes = 60;
 
-	// Token: 0x04000F0C RID: 3852
+	// Token: 0x04000F12 RID: 3858
 	private const float m_privateAreaModifier = 0.5f;
 
-	// Token: 0x04000F0D RID: 3853
+	// Token: 0x04000F13 RID: 3859
 	private static RaycastHit[] m_raycastHits = new RaycastHit[128];
 
-	// Token: 0x04000F0E RID: 3854
+	// Token: 0x04000F14 RID: 3860
 	private static Collider[] m_tempColliders = new Collider[128];
 
-	// Token: 0x04000F0F RID: 3855
+	// Token: 0x04000F15 RID: 3861
 	private static int m_rayMask = 0;
 
-	// Token: 0x04000F10 RID: 3856
+	// Token: 0x04000F16 RID: 3862
 	private static List<WearNTear> m_allInstances = new List<WearNTear>();
 
-	// Token: 0x04000F11 RID: 3857
+	// Token: 0x04000F17 RID: 3863
 	private static List<Vector3> m_tempSupportPoints = new List<Vector3>();
 
-	// Token: 0x04000F12 RID: 3858
+	// Token: 0x04000F18 RID: 3864
 	private static List<float> m_tempSupportPointValues = new List<float>();
 
-	// Token: 0x04000F13 RID: 3859
+	// Token: 0x04000F19 RID: 3865
 	private ZNetView m_nview;
 
-	// Token: 0x04000F14 RID: 3860
+	// Token: 0x04000F1A RID: 3866
 	private Collider[] m_colliders;
 
-	// Token: 0x04000F15 RID: 3861
+	// Token: 0x04000F1B RID: 3867
 	private float m_support = 1f;
 
-	// Token: 0x04000F16 RID: 3862
+	// Token: 0x04000F1C RID: 3868
 	private float m_createTime;
 
-	// Token: 0x04000F17 RID: 3863
+	// Token: 0x04000F1D RID: 3869
 	private int m_myIndex = -1;
 
-	// Token: 0x04000F18 RID: 3864
+	// Token: 0x04000F1E RID: 3870
 	private float m_rainTimer;
 
-	// Token: 0x04000F19 RID: 3865
+	// Token: 0x04000F1F RID: 3871
 	private float m_lastRepair;
 
-	// Token: 0x04000F1A RID: 3866
+	// Token: 0x04000F20 RID: 3872
 	private Piece m_piece;
 
-	// Token: 0x04000F1B RID: 3867
+	// Token: 0x04000F21 RID: 3873
 	private List<WearNTear.BoundData> m_bounds;
 
-	// Token: 0x04000F1C RID: 3868
+	// Token: 0x04000F22 RID: 3874
 	private List<WearNTear.OldMeshData> m_oldMaterials;
 
 	// Token: 0x020001B2 RID: 434
 	public enum MaterialType
 	{
-		// Token: 0x04001320 RID: 4896
+		// Token: 0x04001327 RID: 4903
 		Wood,
-		// Token: 0x04001321 RID: 4897
+		// Token: 0x04001328 RID: 4904
 		Stone,
-		// Token: 0x04001322 RID: 4898
+		// Token: 0x04001329 RID: 4905
 		Iron,
-		// Token: 0x04001323 RID: 4899
+		// Token: 0x0400132A RID: 4906
 		HardWood
 	}
 
 	// Token: 0x020001B3 RID: 435
 	private struct BoundData
 	{
-		// Token: 0x04001324 RID: 4900
+		// Token: 0x0400132B RID: 4907
 		public Vector3 m_pos;
 
-		// Token: 0x04001325 RID: 4901
+		// Token: 0x0400132C RID: 4908
 		public Quaternion m_rot;
 
-		// Token: 0x04001326 RID: 4902
+		// Token: 0x0400132D RID: 4909
 		public Vector3 m_size;
 	}
 
 	// Token: 0x020001B4 RID: 436
 	private struct OldMeshData
 	{
-		// Token: 0x04001327 RID: 4903
+		// Token: 0x0400132E RID: 4910
 		public Renderer m_renderer;
 
-		// Token: 0x04001328 RID: 4904
+		// Token: 0x0400132F RID: 4911
 		public Material[] m_materials;
 
-		// Token: 0x04001329 RID: 4905
+		// Token: 0x04001330 RID: 4912
 		public Color[] m_color;
 
-		// Token: 0x0400132A RID: 4906
+		// Token: 0x04001331 RID: 4913
 		public Color[] m_emissiveColor;
 	}
 }

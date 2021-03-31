@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class DungeonDB : MonoBehaviour
 {
 	// Token: 0x17000033 RID: 51
-	// (get) Token: 0x06001078 RID: 4216 RVA: 0x00074A71 File Offset: 0x00072C71
+	// (get) Token: 0x06001079 RID: 4217 RVA: 0x00074BF9 File Offset: 0x00072DF9
 	public static DungeonDB instance
 	{
 		get
@@ -16,7 +16,7 @@ public class DungeonDB : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001079 RID: 4217 RVA: 0x00074A78 File Offset: 0x00072C78
+	// Token: 0x0600107A RID: 4218 RVA: 0x00074C00 File Offset: 0x00072E00
 	private void Awake()
 	{
 		DungeonDB.m_instance = this;
@@ -24,13 +24,13 @@ public class DungeonDB : MonoBehaviour
 		ZLog.Log("DungeonDB Awake " + Time.frameCount);
 	}
 
-	// Token: 0x0600107A RID: 4218 RVA: 0x00074AA4 File Offset: 0x00072CA4
+	// Token: 0x0600107B RID: 4219 RVA: 0x00074C2C File Offset: 0x00072E2C
 	public bool SkipSaving()
 	{
 		return this.m_error;
 	}
 
-	// Token: 0x0600107B RID: 4219 RVA: 0x00074AAC File Offset: 0x00072CAC
+	// Token: 0x0600107C RID: 4220 RVA: 0x00074C34 File Offset: 0x00072E34
 	private void Start()
 	{
 		ZLog.Log("DungeonDB Start " + Time.frameCount);
@@ -38,13 +38,13 @@ public class DungeonDB : MonoBehaviour
 		this.GenerateHashList();
 	}
 
-	// Token: 0x0600107C RID: 4220 RVA: 0x00074AD8 File Offset: 0x00072CD8
+	// Token: 0x0600107D RID: 4221 RVA: 0x00074C60 File Offset: 0x00072E60
 	public static List<DungeonDB.RoomData> GetRooms()
 	{
 		return DungeonDB.m_instance.m_rooms;
 	}
 
-	// Token: 0x0600107D RID: 4221 RVA: 0x00074AE4 File Offset: 0x00072CE4
+	// Token: 0x0600107E RID: 4222 RVA: 0x00074C6C File Offset: 0x00072E6C
 	private static List<DungeonDB.RoomData> SetupRooms()
 	{
 		GameObject[] array = Resources.FindObjectsOfTypeAll<GameObject>();
@@ -78,7 +78,7 @@ public class DungeonDB : MonoBehaviour
 		return list;
 	}
 
-	// Token: 0x0600107E RID: 4222 RVA: 0x00074BD8 File Offset: 0x00072DD8
+	// Token: 0x0600107F RID: 4223 RVA: 0x00074D60 File Offset: 0x00072F60
 	public DungeonDB.RoomData GetRoom(int hash)
 	{
 		DungeonDB.RoomData result;
@@ -89,7 +89,7 @@ public class DungeonDB : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x0600107F RID: 4223 RVA: 0x00074BF8 File Offset: 0x00072DF8
+	// Token: 0x06001080 RID: 4224 RVA: 0x00074D80 File Offset: 0x00072F80
 	private void GenerateHashList()
 	{
 		this.m_roomByHash.Clear();
@@ -100,29 +100,29 @@ public class DungeonDB : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000F6F RID: 3951
+	// Token: 0x04000F75 RID: 3957
 	private static DungeonDB m_instance;
 
-	// Token: 0x04000F70 RID: 3952
+	// Token: 0x04000F76 RID: 3958
 	private List<DungeonDB.RoomData> m_rooms = new List<DungeonDB.RoomData>();
 
-	// Token: 0x04000F71 RID: 3953
+	// Token: 0x04000F77 RID: 3959
 	private Dictionary<int, DungeonDB.RoomData> m_roomByHash = new Dictionary<int, DungeonDB.RoomData>();
 
-	// Token: 0x04000F72 RID: 3954
+	// Token: 0x04000F78 RID: 3960
 	private bool m_error;
 
 	// Token: 0x020001B8 RID: 440
 	public class RoomData
 	{
-		// Token: 0x04001339 RID: 4921
+		// Token: 0x04001340 RID: 4928
 		public Room m_room;
 
-		// Token: 0x0400133A RID: 4922
+		// Token: 0x04001341 RID: 4929
 		[NonSerialized]
 		public List<ZNetView> m_netViews = new List<ZNetView>();
 
-		// Token: 0x0400133B RID: 4923
+		// Token: 0x04001342 RID: 4930
 		[NonSerialized]
 		public List<RandomSpawn> m_randomSpawns = new List<RandomSpawn>();
 	}

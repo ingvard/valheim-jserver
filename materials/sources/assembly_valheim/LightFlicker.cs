@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x0200003D RID: 61
 public class LightFlicker : MonoBehaviour
 {
-	// Token: 0x06000437 RID: 1079 RVA: 0x00022444 File Offset: 0x00020644
+	// Token: 0x06000438 RID: 1080 RVA: 0x000224F8 File Offset: 0x000206F8
 	private void Awake()
 	{
 		this.m_light = base.GetComponent<Light>();
@@ -13,7 +13,7 @@ public class LightFlicker : MonoBehaviour
 		this.m_flickerOffset = UnityEngine.Random.Range(0f, 10f);
 	}
 
-	// Token: 0x06000438 RID: 1080 RVA: 0x00022494 File Offset: 0x00020694
+	// Token: 0x06000439 RID: 1081 RVA: 0x00022548 File Offset: 0x00020748
 	private void OnEnable()
 	{
 		this.m_time = 0f;
@@ -23,7 +23,7 @@ public class LightFlicker : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000439 RID: 1081 RVA: 0x000224C0 File Offset: 0x000206C0
+	// Token: 0x0600043A RID: 1082 RVA: 0x00022574 File Offset: 0x00020774
 	private void Update()
 	{
 		if (!this.m_light)
@@ -52,36 +52,36 @@ public class LightFlicker : MonoBehaviour
 		base.transform.localPosition = this.m_basePosition + b;
 	}
 
-	// Token: 0x04000451 RID: 1105
+	// Token: 0x04000455 RID: 1109
 	public float m_flickerIntensity = 0.1f;
 
-	// Token: 0x04000452 RID: 1106
+	// Token: 0x04000456 RID: 1110
 	public float m_flickerSpeed = 10f;
 
-	// Token: 0x04000453 RID: 1107
+	// Token: 0x04000457 RID: 1111
 	public float m_movement = 0.1f;
 
-	// Token: 0x04000454 RID: 1108
+	// Token: 0x04000458 RID: 1112
 	public float m_ttl;
 
-	// Token: 0x04000455 RID: 1109
+	// Token: 0x04000459 RID: 1113
 	public float m_fadeDuration = 0.2f;
 
-	// Token: 0x04000456 RID: 1110
+	// Token: 0x0400045A RID: 1114
 	public float m_fadeInDuration;
 
-	// Token: 0x04000457 RID: 1111
+	// Token: 0x0400045B RID: 1115
 	private Light m_light;
 
-	// Token: 0x04000458 RID: 1112
+	// Token: 0x0400045C RID: 1116
 	private float m_baseIntensity = 1f;
 
-	// Token: 0x04000459 RID: 1113
+	// Token: 0x0400045D RID: 1117
 	private Vector3 m_basePosition = Vector3.zero;
 
-	// Token: 0x0400045A RID: 1114
+	// Token: 0x0400045E RID: 1118
 	private float m_time;
 
-	// Token: 0x0400045B RID: 1115
+	// Token: 0x0400045F RID: 1119
 	private float m_flickerOffset;
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x0200003F RID: 63
 public class LineConnect : MonoBehaviour
 {
-	// Token: 0x0600043E RID: 1086 RVA: 0x000226F4 File Offset: 0x000208F4
+	// Token: 0x0600043F RID: 1087 RVA: 0x000227A8 File Offset: 0x000209A8
 	private void Awake()
 	{
 		this.m_lineRenderer = base.GetComponent<LineRenderer>();
@@ -13,7 +13,7 @@ public class LineConnect : MonoBehaviour
 		this.m_linePeerID = ZDO.GetHashZDOID(this.m_netViewPrefix + "line_peer");
 	}
 
-	// Token: 0x0600043F RID: 1087 RVA: 0x0002272C File Offset: 0x0002092C
+	// Token: 0x06000440 RID: 1088 RVA: 0x000227E0 File Offset: 0x000209E0
 	private void LateUpdate()
 	{
 		if (!this.m_nview.IsValid())
@@ -55,7 +55,7 @@ public class LineConnect : MonoBehaviour
 		this.SetEndpoint(base.transform.position + this.m_noConnectionWorldOffset);
 	}
 
-	// Token: 0x06000440 RID: 1088 RVA: 0x00022834 File Offset: 0x00020A34
+	// Token: 0x06000441 RID: 1089 RVA: 0x000228E8 File Offset: 0x00020AE8
 	private void SetEndpoint(Vector3 pos)
 	{
 		Vector3 vector = base.transform.InverseTransformPoint(pos);
@@ -89,7 +89,7 @@ public class LineConnect : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000441 RID: 1089 RVA: 0x00022988 File Offset: 0x00020B88
+	// Token: 0x06000442 RID: 1090 RVA: 0x00022A3C File Offset: 0x00020C3C
 	public void SetPeer(ZNetView other)
 	{
 		if (other)
@@ -100,7 +100,7 @@ public class LineConnect : MonoBehaviour
 		this.SetPeer(ZDOID.None);
 	}
 
-	// Token: 0x06000442 RID: 1090 RVA: 0x000229AF File Offset: 0x00020BAF
+	// Token: 0x06000443 RID: 1091 RVA: 0x00022A63 File Offset: 0x00020C63
 	public void SetPeer(ZDOID zdoid)
 	{
 		if (!this.m_nview.IsValid())
@@ -110,53 +110,53 @@ public class LineConnect : MonoBehaviour
 		this.m_nview.GetZDO().Set(this.m_linePeerID, zdoid);
 	}
 
-	// Token: 0x0400045E RID: 1118
+	// Token: 0x04000462 RID: 1122
 	public bool m_centerOfCharacter;
 
-	// Token: 0x0400045F RID: 1119
+	// Token: 0x04000463 RID: 1123
 	public string m_childObject = "";
 
-	// Token: 0x04000460 RID: 1120
+	// Token: 0x04000464 RID: 1124
 	public bool m_hideIfNoConnection = true;
 
-	// Token: 0x04000461 RID: 1121
+	// Token: 0x04000465 RID: 1125
 	public Vector3 m_noConnectionWorldOffset = new Vector3(0f, -1f, 0f);
 
-	// Token: 0x04000462 RID: 1122
+	// Token: 0x04000466 RID: 1126
 	[Header("Dynamic slack")]
 	public bool m_dynamicSlack;
 
-	// Token: 0x04000463 RID: 1123
+	// Token: 0x04000467 RID: 1127
 	public float m_slack = 0.5f;
 
-	// Token: 0x04000464 RID: 1124
+	// Token: 0x04000468 RID: 1128
 	[Header("Thickness")]
 	public bool m_dynamicThickness = true;
 
-	// Token: 0x04000465 RID: 1125
+	// Token: 0x04000469 RID: 1129
 	public float m_minDistance = 6f;
 
-	// Token: 0x04000466 RID: 1126
+	// Token: 0x0400046A RID: 1130
 	public float m_maxDistance = 30f;
 
-	// Token: 0x04000467 RID: 1127
+	// Token: 0x0400046B RID: 1131
 	public float m_minThickness = 0.2f;
 
-	// Token: 0x04000468 RID: 1128
+	// Token: 0x0400046C RID: 1132
 	public float m_maxThickness = 0.8f;
 
-	// Token: 0x04000469 RID: 1129
+	// Token: 0x0400046D RID: 1133
 	public float m_thicknessPower = 0.2f;
 
-	// Token: 0x0400046A RID: 1130
+	// Token: 0x0400046E RID: 1134
 	public string m_netViewPrefix = "";
 
-	// Token: 0x0400046B RID: 1131
+	// Token: 0x0400046F RID: 1135
 	private LineRenderer m_lineRenderer;
 
-	// Token: 0x0400046C RID: 1132
+	// Token: 0x04000470 RID: 1136
 	private ZNetView m_nview;
 
-	// Token: 0x0400046D RID: 1133
+	// Token: 0x04000471 RID: 1137
 	private KeyValuePair<int, int> m_linePeerID;
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x020000E1 RID: 225
 public class MineRock : MonoBehaviour, IDestructible, Hoverable
 {
-	// Token: 0x06000E0E RID: 3598 RVA: 0x000640D0 File Offset: 0x000622D0
+	// Token: 0x06000E0F RID: 3599 RVA: 0x00064258 File Offset: 0x00062458
 	private void Start()
 	{
 		this.m_hitAreas = ((this.m_areaRoot != null) ? this.m_areaRoot.GetComponentsInChildren<Collider>() : base.gameObject.GetComponentsInChildren<Collider>());
@@ -25,19 +25,19 @@ public class MineRock : MonoBehaviour, IDestructible, Hoverable
 		base.InvokeRepeating("UpdateVisability", UnityEngine.Random.Range(1f, 2f), 10f);
 	}
 
-	// Token: 0x06000E0F RID: 3599 RVA: 0x000641CE File Offset: 0x000623CE
+	// Token: 0x06000E10 RID: 3600 RVA: 0x00064356 File Offset: 0x00062556
 	public string GetHoverText()
 	{
 		return Localization.instance.Localize(this.m_name);
 	}
 
-	// Token: 0x06000E10 RID: 3600 RVA: 0x000641E0 File Offset: 0x000623E0
+	// Token: 0x06000E11 RID: 3601 RVA: 0x00064368 File Offset: 0x00062568
 	public string GetHoverName()
 	{
 		return this.m_name;
 	}
 
-	// Token: 0x06000E11 RID: 3601 RVA: 0x000641E8 File Offset: 0x000623E8
+	// Token: 0x06000E12 RID: 3602 RVA: 0x00064370 File Offset: 0x00062570
 	private void UpdateVisability()
 	{
 		bool flag = false;
@@ -68,13 +68,13 @@ public class MineRock : MonoBehaviour, IDestructible, Hoverable
 		}
 	}
 
-	// Token: 0x06000E12 RID: 3602 RVA: 0x000027E2 File Offset: 0x000009E2
+	// Token: 0x06000E13 RID: 3603 RVA: 0x000027E2 File Offset: 0x000009E2
 	public DestructibleType GetDestructibleType()
 	{
 		return DestructibleType.Default;
 	}
 
-	// Token: 0x06000E13 RID: 3603 RVA: 0x000642BC File Offset: 0x000624BC
+	// Token: 0x06000E14 RID: 3604 RVA: 0x00064444 File Offset: 0x00062644
 	public void Damage(HitData hit)
 	{
 		if (hit.m_hitCollider == null)
@@ -96,7 +96,7 @@ public class MineRock : MonoBehaviour, IDestructible, Hoverable
 		});
 	}
 
-	// Token: 0x06000E14 RID: 3604 RVA: 0x00064348 File Offset: 0x00062548
+	// Token: 0x06000E15 RID: 3605 RVA: 0x000644D0 File Offset: 0x000626D0
 	private void RPC_Hit(long sender, HitData hit, int hitAreaIndex)
 	{
 		if (!this.m_nview.IsOwner())
@@ -160,7 +160,7 @@ public class MineRock : MonoBehaviour, IDestructible, Hoverable
 		}
 	}
 
-	// Token: 0x06000E15 RID: 3605 RVA: 0x00064588 File Offset: 0x00062788
+	// Token: 0x06000E16 RID: 3606 RVA: 0x00064710 File Offset: 0x00062910
 	private bool AllDestroyed()
 	{
 		for (int i = 0; i < this.m_hitAreas.Length; i++)
@@ -174,7 +174,7 @@ public class MineRock : MonoBehaviour, IDestructible, Hoverable
 		return true;
 	}
 
-	// Token: 0x06000E16 RID: 3606 RVA: 0x000645DC File Offset: 0x000627DC
+	// Token: 0x06000E17 RID: 3607 RVA: 0x00064764 File Offset: 0x00062964
 	private void RPC_Hide(long sender, int index)
 	{
 		Collider hitArea = this.GetHitArea(index);
@@ -195,7 +195,7 @@ public class MineRock : MonoBehaviour, IDestructible, Hoverable
 		}
 	}
 
-	// Token: 0x06000E17 RID: 3607 RVA: 0x00064660 File Offset: 0x00062860
+	// Token: 0x06000E18 RID: 3608 RVA: 0x000647E8 File Offset: 0x000629E8
 	private int GetAreaIndex(Collider area)
 	{
 		for (int i = 0; i < this.m_hitAreas.Length; i++)
@@ -208,7 +208,7 @@ public class MineRock : MonoBehaviour, IDestructible, Hoverable
 		return -1;
 	}
 
-	// Token: 0x06000E18 RID: 3608 RVA: 0x00064693 File Offset: 0x00062893
+	// Token: 0x06000E19 RID: 3609 RVA: 0x0006481B File Offset: 0x00062A1B
 	private Collider GetHitArea(int index)
 	{
 		if (index < 0 || index >= this.m_hitAreas.Length)
@@ -218,45 +218,45 @@ public class MineRock : MonoBehaviour, IDestructible, Hoverable
 		return this.m_hitAreas[index];
 	}
 
-	// Token: 0x04000CBE RID: 3262
+	// Token: 0x04000CC4 RID: 3268
 	public string m_name = "";
 
-	// Token: 0x04000CBF RID: 3263
+	// Token: 0x04000CC5 RID: 3269
 	public float m_health = 2f;
 
-	// Token: 0x04000CC0 RID: 3264
+	// Token: 0x04000CC6 RID: 3270
 	public bool m_removeWhenDestroyed = true;
 
-	// Token: 0x04000CC1 RID: 3265
+	// Token: 0x04000CC7 RID: 3271
 	public HitData.DamageModifiers m_damageModifiers;
 
-	// Token: 0x04000CC2 RID: 3266
+	// Token: 0x04000CC8 RID: 3272
 	public int m_minToolTier;
 
-	// Token: 0x04000CC3 RID: 3267
+	// Token: 0x04000CC9 RID: 3273
 	public GameObject m_areaRoot;
 
-	// Token: 0x04000CC4 RID: 3268
+	// Token: 0x04000CCA RID: 3274
 	public GameObject m_baseModel;
 
-	// Token: 0x04000CC5 RID: 3269
+	// Token: 0x04000CCB RID: 3275
 	public EffectList m_destroyedEffect = new EffectList();
 
-	// Token: 0x04000CC6 RID: 3270
+	// Token: 0x04000CCC RID: 3276
 	public EffectList m_hitEffect = new EffectList();
 
-	// Token: 0x04000CC7 RID: 3271
+	// Token: 0x04000CCD RID: 3277
 	public DropTable m_dropItems;
 
-	// Token: 0x04000CC8 RID: 3272
+	// Token: 0x04000CCE RID: 3278
 	public Action m_onHit;
 
-	// Token: 0x04000CC9 RID: 3273
+	// Token: 0x04000CCF RID: 3279
 	private Collider[] m_hitAreas;
 
-	// Token: 0x04000CCA RID: 3274
+	// Token: 0x04000CD0 RID: 3280
 	private MeshRenderer[][] m_areaMeshes;
 
-	// Token: 0x04000CCB RID: 3275
+	// Token: 0x04000CD1 RID: 3281
 	private ZNetView m_nview;
 }

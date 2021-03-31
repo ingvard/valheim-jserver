@@ -5,19 +5,19 @@ using UnityEngine;
 // Token: 0x020000B8 RID: 184
 public class Beacon : MonoBehaviour
 {
-	// Token: 0x06000C57 RID: 3159 RVA: 0x00058ABE File Offset: 0x00056CBE
+	// Token: 0x06000C58 RID: 3160 RVA: 0x00058C46 File Offset: 0x00056E46
 	private void Awake()
 	{
 		Beacon.m_instances.Add(this);
 	}
 
-	// Token: 0x06000C58 RID: 3160 RVA: 0x00058ACB File Offset: 0x00056CCB
+	// Token: 0x06000C59 RID: 3161 RVA: 0x00058C53 File Offset: 0x00056E53
 	private void OnDestroy()
 	{
 		Beacon.m_instances.Remove(this);
 	}
 
-	// Token: 0x06000C59 RID: 3161 RVA: 0x00058ADC File Offset: 0x00056CDC
+	// Token: 0x06000C5A RID: 3162 RVA: 0x00058C64 File Offset: 0x00056E64
 	public static Beacon FindClosestBeaconInRange(Vector3 point)
 	{
 		Beacon beacon = null;
@@ -34,7 +34,7 @@ public class Beacon : MonoBehaviour
 		return beacon;
 	}
 
-	// Token: 0x06000C5A RID: 3162 RVA: 0x00058B60 File Offset: 0x00056D60
+	// Token: 0x06000C5B RID: 3163 RVA: 0x00058CE8 File Offset: 0x00056EE8
 	public static void FindBeaconsInRange(Vector3 point, List<Beacon> becons)
 	{
 		foreach (Beacon beacon in Beacon.m_instances)
@@ -46,9 +46,9 @@ public class Beacon : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000B52 RID: 2898
+	// Token: 0x04000B58 RID: 2904
 	public float m_range = 20f;
 
-	// Token: 0x04000B53 RID: 2899
+	// Token: 0x04000B59 RID: 2905
 	private static List<Beacon> m_instances = new List<Beacon>();
 }

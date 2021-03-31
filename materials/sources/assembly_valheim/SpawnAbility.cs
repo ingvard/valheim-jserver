@@ -5,20 +5,20 @@ using UnityEngine;
 // Token: 0x0200001E RID: 30
 public class SpawnAbility : MonoBehaviour, IProjectile
 {
-	// Token: 0x0600030D RID: 781 RVA: 0x0001A1C0 File Offset: 0x000183C0
+	// Token: 0x0600030E RID: 782 RVA: 0x0001A274 File Offset: 0x00018474
 	public void Setup(Character owner, Vector3 velocity, float hitNoise, HitData hitData, ItemDrop.ItemData item)
 	{
 		this.m_owner = owner;
 		base.StartCoroutine("Spawn");
 	}
 
-	// Token: 0x0600030E RID: 782 RVA: 0x0000AC4C File Offset: 0x00008E4C
+	// Token: 0x0600030F RID: 783 RVA: 0x0000AC8C File Offset: 0x00008E8C
 	public string GetTooltipString(int itemQuality)
 	{
 		return "";
 	}
 
-	// Token: 0x0600030F RID: 783 RVA: 0x0001A1D5 File Offset: 0x000183D5
+	// Token: 0x06000310 RID: 784 RVA: 0x0001A289 File Offset: 0x00018489
 	private IEnumerator Spawn()
 	{
 		int toSpawn = UnityEngine.Random.Range(this.m_minToSpawn, this.m_maxToSpawn);
@@ -67,7 +67,7 @@ public class SpawnAbility : MonoBehaviour, IProjectile
 		yield break;
 	}
 
-	// Token: 0x06000310 RID: 784 RVA: 0x0001A1E4 File Offset: 0x000183E4
+	// Token: 0x06000311 RID: 785 RVA: 0x0001A298 File Offset: 0x00018498
 	private void SetupProjectile(Projectile projectile, Vector3 targetPoint)
 	{
 		Vector3 vector = (targetPoint - projectile.transform.position).normalized;
@@ -78,7 +78,7 @@ public class SpawnAbility : MonoBehaviour, IProjectile
 		projectile.Setup(this.m_owner, vector * this.m_projectileVelocity, -1f, null, null);
 	}
 
-	// Token: 0x06000311 RID: 785 RVA: 0x0001A278 File Offset: 0x00018478
+	// Token: 0x06000312 RID: 786 RVA: 0x0001A32C File Offset: 0x0001852C
 	private bool FindTarget(out Vector3 point)
 	{
 		point = Vector3.zero;
@@ -127,66 +127,66 @@ public class SpawnAbility : MonoBehaviour, IProjectile
 		}
 	}
 
-	// Token: 0x040002D7 RID: 727
+	// Token: 0x040002DB RID: 731
 	[Header("Spawn")]
 	public GameObject[] m_spawnPrefab;
 
-	// Token: 0x040002D8 RID: 728
+	// Token: 0x040002DC RID: 732
 	public bool m_alertSpawnedCreature = true;
 
-	// Token: 0x040002D9 RID: 729
+	// Token: 0x040002DD RID: 733
 	public bool m_spawnAtTarget = true;
 
-	// Token: 0x040002DA RID: 730
+	// Token: 0x040002DE RID: 734
 	public int m_minToSpawn = 1;
 
-	// Token: 0x040002DB RID: 731
+	// Token: 0x040002DF RID: 735
 	public int m_maxToSpawn = 1;
 
-	// Token: 0x040002DC RID: 732
+	// Token: 0x040002E0 RID: 736
 	public int m_maxSpawned = 3;
 
-	// Token: 0x040002DD RID: 733
+	// Token: 0x040002E1 RID: 737
 	public float m_spawnRadius = 3f;
 
-	// Token: 0x040002DE RID: 734
+	// Token: 0x040002E2 RID: 738
 	public bool m_snapToTerrain = true;
 
-	// Token: 0x040002DF RID: 735
+	// Token: 0x040002E3 RID: 739
 	public float m_spawnGroundOffset;
 
-	// Token: 0x040002E0 RID: 736
+	// Token: 0x040002E4 RID: 740
 	public float m_spawnDelay;
 
-	// Token: 0x040002E1 RID: 737
+	// Token: 0x040002E5 RID: 741
 	public SpawnAbility.TargetType m_targetType;
 
-	// Token: 0x040002E2 RID: 738
+	// Token: 0x040002E6 RID: 742
 	public float m_maxTargetRange = 40f;
 
-	// Token: 0x040002E3 RID: 739
+	// Token: 0x040002E7 RID: 743
 	public EffectList m_spawnEffects = new EffectList();
 
-	// Token: 0x040002E4 RID: 740
+	// Token: 0x040002E8 RID: 744
 	[Header("Projectile")]
 	public float m_projectileVelocity = 10f;
 
-	// Token: 0x040002E5 RID: 741
+	// Token: 0x040002E9 RID: 745
 	public float m_projectileAccuracy = 10f;
 
-	// Token: 0x040002E6 RID: 742
+	// Token: 0x040002EA RID: 746
 	private Character m_owner;
 
 	// Token: 0x02000134 RID: 308
 	public enum TargetType
 	{
-		// Token: 0x0400103C RID: 4156
+		// Token: 0x04001043 RID: 4163
 		ClosestEnemy,
-		// Token: 0x0400103D RID: 4157
+		// Token: 0x04001044 RID: 4164
 		RandomEnemy,
-		// Token: 0x0400103E RID: 4158
+		// Token: 0x04001045 RID: 4165
 		Caster,
-		// Token: 0x0400103F RID: 4159
+		// Token: 0x04001046 RID: 4166
 		Position
 	}
 }

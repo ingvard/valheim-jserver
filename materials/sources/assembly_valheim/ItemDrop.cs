@@ -6,7 +6,7 @@ using UnityEngine;
 // Token: 0x0200006B RID: 107
 public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 {
-	// Token: 0x060006C1 RID: 1729 RVA: 0x00037FB8 File Offset: 0x000361B8
+	// Token: 0x060006C2 RID: 1730 RVA: 0x0003806C File Offset: 0x0003626C
 	private void Awake()
 	{
 		this.m_myIndex = ItemDrop.m_instances.Count;
@@ -41,7 +41,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x060006C2 RID: 1730 RVA: 0x0003811C File Offset: 0x0003631C
+	// Token: 0x060006C3 RID: 1731 RVA: 0x000381D0 File Offset: 0x000363D0
 	private void OnDestroy()
 	{
 		ItemDrop.m_instances[this.m_myIndex] = ItemDrop.m_instances[ItemDrop.m_instances.Count - 1];
@@ -49,7 +49,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		ItemDrop.m_instances.RemoveAt(ItemDrop.m_instances.Count - 1);
 	}
 
-	// Token: 0x060006C3 RID: 1731 RVA: 0x00038180 File Offset: 0x00036380
+	// Token: 0x060006C4 RID: 1732 RVA: 0x00038234 File Offset: 0x00036434
 	private void Start()
 	{
 		this.Save();
@@ -60,14 +60,14 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x060006C4 RID: 1732 RVA: 0x000381B4 File Offset: 0x000363B4
+	// Token: 0x060006C5 RID: 1733 RVA: 0x00038268 File Offset: 0x00036468
 	private double GetTimeSinceSpawned()
 	{
 		DateTime d = new DateTime(this.m_nview.GetZDO().GetLong("SpawnTime", 0L));
 		return (ZNet.instance.GetTime() - d).TotalSeconds;
 	}
 
-	// Token: 0x060006C5 RID: 1733 RVA: 0x000381F8 File Offset: 0x000363F8
+	// Token: 0x060006C6 RID: 1734 RVA: 0x000382AC File Offset: 0x000364AC
 	private void SlowUpdate()
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -85,7 +85,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x060006C6 RID: 1734 RVA: 0x0003824C File Offset: 0x0003644C
+	// Token: 0x060006C7 RID: 1735 RVA: 0x00038300 File Offset: 0x00036500
 	private void TerrainCheck()
 	{
 		float groundHeight = ZoneSystem.instance.GetGroundHeight(base.transform.position);
@@ -102,7 +102,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x060006C7 RID: 1735 RVA: 0x000382C8 File Offset: 0x000364C8
+	// Token: 0x060006C8 RID: 1736 RVA: 0x0003837C File Offset: 0x0003657C
 	private void TimedDestruction()
 	{
 		if (this.IsInsideBase())
@@ -120,13 +120,13 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		this.m_nview.Destroy();
 	}
 
-	// Token: 0x060006C8 RID: 1736 RVA: 0x00038308 File Offset: 0x00036508
+	// Token: 0x060006C9 RID: 1737 RVA: 0x000383BC File Offset: 0x000365BC
 	private bool IsInsideBase()
 	{
 		return base.transform.position.y > ZoneSystem.instance.m_waterLevel + -2f && EffectArea.IsPointInsideArea(base.transform.position, EffectArea.Type.PlayerBase, 0f);
 	}
 
-	// Token: 0x060006C9 RID: 1737 RVA: 0x00038358 File Offset: 0x00036558
+	// Token: 0x060006CA RID: 1738 RVA: 0x0003840C File Offset: 0x0003660C
 	private void AutoStackItems()
 	{
 		if (this.m_itemData.m_shared.m_maxStackSize <= 1 || this.m_itemData.m_stack >= this.m_itemData.m_shared.m_maxStackSize)
@@ -173,7 +173,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x060006CA RID: 1738 RVA: 0x00038510 File Offset: 0x00036710
+	// Token: 0x060006CB RID: 1739 RVA: 0x000385C4 File Offset: 0x000367C4
 	public string GetHoverText()
 	{
 		string text = this.m_itemData.m_shared.m_name;
@@ -194,13 +194,13 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		return Localization.instance.Localize(text + "\n[<color=yellow><b>$KEY_Use</b></color>] $inventory_pickup");
 	}
 
-	// Token: 0x060006CB RID: 1739 RVA: 0x000385AE File Offset: 0x000367AE
+	// Token: 0x060006CC RID: 1740 RVA: 0x00038662 File Offset: 0x00036862
 	public string GetHoverName()
 	{
 		return this.m_itemData.m_shared.m_name;
 	}
 
-	// Token: 0x060006CC RID: 1740 RVA: 0x000385C0 File Offset: 0x000367C0
+	// Token: 0x060006CD RID: 1741 RVA: 0x00038674 File Offset: 0x00036874
 	private string GetPrefabName(string name)
 	{
 		char[] anyOf = new char[]
@@ -221,7 +221,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		return result;
 	}
 
-	// Token: 0x060006CD RID: 1741 RVA: 0x000385F8 File Offset: 0x000367F8
+	// Token: 0x060006CE RID: 1742 RVA: 0x000386AC File Offset: 0x000368AC
 	public bool Interact(Humanoid character, bool repeat)
 	{
 		if (repeat)
@@ -232,13 +232,13 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x060006CE RID: 1742 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x060006CF RID: 1743 RVA: 0x000023E2 File Offset: 0x000005E2
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		return false;
 	}
 
-	// Token: 0x060006CF RID: 1743 RVA: 0x00038608 File Offset: 0x00036808
+	// Token: 0x060006D0 RID: 1744 RVA: 0x000386BC File Offset: 0x000368BC
 	public void SetStack(int stack)
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -253,7 +253,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		this.Save();
 	}
 
-	// Token: 0x060006D0 RID: 1744 RVA: 0x0003867C File Offset: 0x0003687C
+	// Token: 0x060006D1 RID: 1745 RVA: 0x00038730 File Offset: 0x00036930
 	public void Pickup(Humanoid character)
 	{
 		if (!this.m_nview.IsValid())
@@ -274,7 +274,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		this.RequestOwn();
 	}
 
-	// Token: 0x060006D1 RID: 1745 RVA: 0x000386E4 File Offset: 0x000368E4
+	// Token: 0x060006D2 RID: 1746 RVA: 0x00038798 File Offset: 0x00036998
 	public void RequestOwn()
 	{
 		if (Time.time - this.m_lastOwnerRequest < 0.2f)
@@ -289,7 +289,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		this.m_nview.InvokeRPC("RequestOwn", Array.Empty<object>());
 	}
 
-	// Token: 0x060006D2 RID: 1746 RVA: 0x00038734 File Offset: 0x00036934
+	// Token: 0x060006D3 RID: 1747 RVA: 0x000387E8 File Offset: 0x000369E8
 	public bool RemoveOne()
 	{
 		if (!this.CanPickup())
@@ -307,19 +307,19 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x060006D3 RID: 1747 RVA: 0x00038786 File Offset: 0x00036986
+	// Token: 0x060006D4 RID: 1748 RVA: 0x0003883A File Offset: 0x00036A3A
 	public void OnPlayerDrop()
 	{
 		this.m_autoPickup = false;
 	}
 
-	// Token: 0x060006D4 RID: 1748 RVA: 0x00038790 File Offset: 0x00036990
+	// Token: 0x060006D5 RID: 1749 RVA: 0x00038844 File Offset: 0x00036A44
 	public bool CanPickup()
 	{
 		return this.m_nview == null || !this.m_nview.IsValid() || ((double)(Time.time - this.m_spawnTime) >= 0.5 && this.m_nview.IsOwner());
 	}
 
-	// Token: 0x060006D5 RID: 1749 RVA: 0x000387E0 File Offset: 0x000369E0
+	// Token: 0x060006D6 RID: 1750 RVA: 0x00038894 File Offset: 0x00036A94
 	private void RPC_RequestOwn(long uid)
 	{
 		ZLog.Log(string.Concat(new object[]
@@ -339,7 +339,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		this.m_nview.GetZDO().SetOwner(uid);
 	}
 
-	// Token: 0x060006D6 RID: 1750 RVA: 0x00038868 File Offset: 0x00036A68
+	// Token: 0x060006D7 RID: 1751 RVA: 0x0003891C File Offset: 0x00036B1C
 	private void PickupUpdate()
 	{
 		if (!this.m_nview.IsValid())
@@ -358,7 +358,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		ZLog.Log("Im still nto the owner");
 	}
 
-	// Token: 0x060006D7 RID: 1751 RVA: 0x000388D0 File Offset: 0x00036AD0
+	// Token: 0x060006D8 RID: 1752 RVA: 0x00038984 File Offset: 0x00036B84
 	private void Save()
 	{
 		if (this.m_nview == null || !this.m_nview.IsValid())
@@ -371,20 +371,20 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x060006D8 RID: 1752 RVA: 0x0003891C File Offset: 0x00036B1C
+	// Token: 0x060006D9 RID: 1753 RVA: 0x000389D0 File Offset: 0x00036BD0
 	private void Load()
 	{
 		ItemDrop.LoadFromZDO(this.m_itemData, this.m_nview.GetZDO());
 	}
 
-	// Token: 0x060006D9 RID: 1753 RVA: 0x00038934 File Offset: 0x00036B34
+	// Token: 0x060006DA RID: 1754 RVA: 0x000389E8 File Offset: 0x00036BE8
 	public void LoadFromExternalZDO(ZDO zdo)
 	{
 		ItemDrop.LoadFromZDO(this.m_itemData, zdo);
 		ItemDrop.SaveToZDO(this.m_itemData, this.m_nview.GetZDO());
 	}
 
-	// Token: 0x060006DA RID: 1754 RVA: 0x00038958 File Offset: 0x00036B58
+	// Token: 0x060006DB RID: 1755 RVA: 0x00038A0C File Offset: 0x00036C0C
 	public static void SaveToZDO(ItemDrop.ItemData itemData, ZDO zdo)
 	{
 		zdo.Set("durability", itemData.m_durability);
@@ -395,7 +395,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		zdo.Set("crafterName", itemData.m_crafterName);
 	}
 
-	// Token: 0x060006DB RID: 1755 RVA: 0x000389CC File Offset: 0x00036BCC
+	// Token: 0x060006DC RID: 1756 RVA: 0x00038A80 File Offset: 0x00036C80
 	public static void LoadFromZDO(ItemDrop.ItemData itemData, ZDO zdo)
 	{
 		itemData.m_durability = zdo.GetFloat("durability", itemData.m_durability);
@@ -406,7 +406,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		itemData.m_crafterName = zdo.GetString("crafterName", itemData.m_crafterName);
 	}
 
-	// Token: 0x060006DC RID: 1756 RVA: 0x00038A64 File Offset: 0x00036C64
+	// Token: 0x060006DD RID: 1757 RVA: 0x00038B18 File Offset: 0x00036D18
 	public static ItemDrop DropItem(ItemDrop.ItemData item, int amount, Vector3 position, Quaternion rotation)
 	{
 		ItemDrop component = UnityEngine.Object.Instantiate<GameObject>(item.m_dropPrefab, position, rotation).GetComponent<ItemDrop>();
@@ -419,124 +419,124 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		return component;
 	}
 
-	// Token: 0x060006DD RID: 1757 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x060006DE RID: 1758 RVA: 0x000027E0 File Offset: 0x000009E0
 	private void OnDrawGizmos()
 	{
 	}
 
-	// Token: 0x04000753 RID: 1875
+	// Token: 0x04000757 RID: 1879
 	private static List<ItemDrop> m_instances = new List<ItemDrop>();
 
-	// Token: 0x04000754 RID: 1876
+	// Token: 0x04000758 RID: 1880
 	private int m_myIndex = -1;
 
-	// Token: 0x04000755 RID: 1877
+	// Token: 0x04000759 RID: 1881
 	public bool m_autoPickup = true;
 
-	// Token: 0x04000756 RID: 1878
+	// Token: 0x0400075A RID: 1882
 	public bool m_autoDestroy = true;
 
-	// Token: 0x04000757 RID: 1879
+	// Token: 0x0400075B RID: 1883
 	public ItemDrop.ItemData m_itemData = new ItemDrop.ItemData();
 
-	// Token: 0x04000758 RID: 1880
+	// Token: 0x0400075C RID: 1884
 	private ZNetView m_nview;
 
-	// Token: 0x04000759 RID: 1881
+	// Token: 0x0400075D RID: 1885
 	private Character m_pickupRequester;
 
-	// Token: 0x0400075A RID: 1882
+	// Token: 0x0400075E RID: 1886
 	private float m_lastOwnerRequest;
 
-	// Token: 0x0400075B RID: 1883
+	// Token: 0x0400075F RID: 1887
 	private float m_spawnTime;
 
-	// Token: 0x0400075C RID: 1884
+	// Token: 0x04000760 RID: 1888
 	private const double m_autoDestroyTimeout = 3600.0;
 
-	// Token: 0x0400075D RID: 1885
+	// Token: 0x04000761 RID: 1889
 	private const double m_autoPickupDelay = 0.5;
 
-	// Token: 0x0400075E RID: 1886
+	// Token: 0x04000762 RID: 1890
 	private const float m_autoDespawnBaseMinAltitude = -2f;
 
-	// Token: 0x0400075F RID: 1887
+	// Token: 0x04000763 RID: 1891
 	private const int m_autoStackTreshold = 200;
 
-	// Token: 0x04000760 RID: 1888
+	// Token: 0x04000764 RID: 1892
 	private const float m_autoStackRange = 4f;
 
-	// Token: 0x04000761 RID: 1889
+	// Token: 0x04000765 RID: 1893
 	private static int m_itemMask = 0;
 
-	// Token: 0x04000762 RID: 1890
+	// Token: 0x04000766 RID: 1894
 	private bool m_haveAutoStacked;
 
 	// Token: 0x02000165 RID: 357
 	[Serializable]
 	public class ItemData
 	{
-		// Token: 0x06001133 RID: 4403 RVA: 0x00077A0A File Offset: 0x00075C0A
+		// Token: 0x06001134 RID: 4404 RVA: 0x00077B92 File Offset: 0x00075D92
 		public ItemDrop.ItemData Clone()
 		{
 			return base.MemberwiseClone() as ItemDrop.ItemData;
 		}
 
-		// Token: 0x06001134 RID: 4404 RVA: 0x00077A18 File Offset: 0x00075C18
+		// Token: 0x06001135 RID: 4405 RVA: 0x00077BA0 File Offset: 0x00075DA0
 		public bool IsEquipable()
 		{
 			return this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.Tool || this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.OneHandedWeapon || this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.TwoHandedWeapon || this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.Bow || this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.Shield || this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.Helmet || this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.Chest || this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.Legs || this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.Shoulder || this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.Ammo || this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.Torch || this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.Utility;
 		}
 
-		// Token: 0x06001135 RID: 4405 RVA: 0x00077ADF File Offset: 0x00075CDF
+		// Token: 0x06001136 RID: 4406 RVA: 0x00077C67 File Offset: 0x00075E67
 		public bool IsWeapon()
 		{
 			return this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.OneHandedWeapon || this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.Bow || this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.TwoHandedWeapon || this.m_shared.m_itemType == ItemDrop.ItemData.ItemType.Torch;
 		}
 
-		// Token: 0x06001136 RID: 4406 RVA: 0x00077B1D File Offset: 0x00075D1D
+		// Token: 0x06001137 RID: 4407 RVA: 0x00077CA5 File Offset: 0x00075EA5
 		public bool HavePrimaryAttack()
 		{
 			return !string.IsNullOrEmpty(this.m_shared.m_attack.m_attackAnimation);
 		}
 
-		// Token: 0x06001137 RID: 4407 RVA: 0x00077B37 File Offset: 0x00075D37
+		// Token: 0x06001138 RID: 4408 RVA: 0x00077CBF File Offset: 0x00075EBF
 		public bool HaveSecondaryAttack()
 		{
 			return !string.IsNullOrEmpty(this.m_shared.m_secondaryAttack.m_attackAnimation);
 		}
 
-		// Token: 0x06001138 RID: 4408 RVA: 0x00077B51 File Offset: 0x00075D51
+		// Token: 0x06001139 RID: 4409 RVA: 0x00077CD9 File Offset: 0x00075ED9
 		public float GetArmor()
 		{
 			return this.GetArmor(this.m_quality);
 		}
 
-		// Token: 0x06001139 RID: 4409 RVA: 0x00077B5F File Offset: 0x00075D5F
+		// Token: 0x0600113A RID: 4410 RVA: 0x00077CE7 File Offset: 0x00075EE7
 		public float GetArmor(int quality)
 		{
 			return this.m_shared.m_armor + (float)Mathf.Max(0, quality - 1) * this.m_shared.m_armorPerLevel;
 		}
 
-		// Token: 0x0600113A RID: 4410 RVA: 0x00077B83 File Offset: 0x00075D83
+		// Token: 0x0600113B RID: 4411 RVA: 0x00077D0B File Offset: 0x00075F0B
 		public int GetValue()
 		{
 			return this.m_shared.m_value * this.m_stack;
 		}
 
-		// Token: 0x0600113B RID: 4411 RVA: 0x00077B97 File Offset: 0x00075D97
+		// Token: 0x0600113C RID: 4412 RVA: 0x00077D1F File Offset: 0x00075F1F
 		public float GetWeight()
 		{
 			return this.m_shared.m_weight * (float)this.m_stack;
 		}
 
-		// Token: 0x0600113C RID: 4412 RVA: 0x00077BAC File Offset: 0x00075DAC
+		// Token: 0x0600113D RID: 4413 RVA: 0x00077D34 File Offset: 0x00075F34
 		public HitData.DamageTypes GetDamage()
 		{
 			return this.GetDamage(this.m_quality);
 		}
 
-		// Token: 0x0600113D RID: 4413 RVA: 0x00077BBC File Offset: 0x00075DBC
+		// Token: 0x0600113E RID: 4414 RVA: 0x00077D44 File Offset: 0x00075F44
 		public float GetDurabilityPercentage()
 		{
 			float maxDurability = this.GetMaxDurability();
@@ -547,19 +547,19 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 			return Mathf.Clamp01(this.m_durability / maxDurability);
 		}
 
-		// Token: 0x0600113E RID: 4414 RVA: 0x00077BEB File Offset: 0x00075DEB
+		// Token: 0x0600113F RID: 4415 RVA: 0x00077D73 File Offset: 0x00075F73
 		public float GetMaxDurability()
 		{
 			return this.GetMaxDurability(this.m_quality);
 		}
 
-		// Token: 0x0600113F RID: 4415 RVA: 0x00077BF9 File Offset: 0x00075DF9
+		// Token: 0x06001140 RID: 4416 RVA: 0x00077D81 File Offset: 0x00075F81
 		public float GetMaxDurability(int quality)
 		{
 			return this.m_shared.m_maxDurability + (float)Mathf.Max(0, quality - 1) * this.m_shared.m_durabilityPerLevel;
 		}
 
-		// Token: 0x06001140 RID: 4416 RVA: 0x00077C20 File Offset: 0x00075E20
+		// Token: 0x06001141 RID: 4417 RVA: 0x00077DA8 File Offset: 0x00075FA8
 		public HitData.DamageTypes GetDamage(int quality)
 		{
 			HitData.DamageTypes damages = this.m_shared.m_damages;
@@ -570,32 +570,32 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 			return damages;
 		}
 
-		// Token: 0x06001141 RID: 4417 RVA: 0x00077C53 File Offset: 0x00075E53
+		// Token: 0x06001142 RID: 4418 RVA: 0x00077DDB File Offset: 0x00075FDB
 		public float GetBaseBlockPower()
 		{
 			return this.GetBaseBlockPower(this.m_quality);
 		}
 
-		// Token: 0x06001142 RID: 4418 RVA: 0x00077C61 File Offset: 0x00075E61
+		// Token: 0x06001143 RID: 4419 RVA: 0x00077DE9 File Offset: 0x00075FE9
 		public float GetBaseBlockPower(int quality)
 		{
 			return this.m_shared.m_blockPower + (float)Mathf.Max(0, quality - 1) * this.m_shared.m_blockPowerPerLevel;
 		}
 
-		// Token: 0x06001143 RID: 4419 RVA: 0x00077C85 File Offset: 0x00075E85
+		// Token: 0x06001144 RID: 4420 RVA: 0x00077E0D File Offset: 0x0007600D
 		public float GetBlockPower(float skillFactor)
 		{
 			return this.GetBlockPower(this.m_quality, skillFactor);
 		}
 
-		// Token: 0x06001144 RID: 4420 RVA: 0x00077C94 File Offset: 0x00075E94
+		// Token: 0x06001145 RID: 4421 RVA: 0x00077E1C File Offset: 0x0007601C
 		public float GetBlockPower(int quality, float skillFactor)
 		{
 			float baseBlockPower = this.GetBaseBlockPower(quality);
 			return baseBlockPower + baseBlockPower * skillFactor * 0.5f;
 		}
 
-		// Token: 0x06001145 RID: 4421 RVA: 0x00077CA8 File Offset: 0x00075EA8
+		// Token: 0x06001146 RID: 4422 RVA: 0x00077E30 File Offset: 0x00076030
 		public float GetBlockPowerTooltip(int quality)
 		{
 			if (Player.m_localPlayer == null)
@@ -606,31 +606,31 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 			return this.GetBlockPower(quality, skillFactor);
 		}
 
-		// Token: 0x06001146 RID: 4422 RVA: 0x00077CDC File Offset: 0x00075EDC
+		// Token: 0x06001147 RID: 4423 RVA: 0x00077E64 File Offset: 0x00076064
 		public float GetDeflectionForce()
 		{
 			return this.GetDeflectionForce(this.m_quality);
 		}
 
-		// Token: 0x06001147 RID: 4423 RVA: 0x00077CEA File Offset: 0x00075EEA
+		// Token: 0x06001148 RID: 4424 RVA: 0x00077E72 File Offset: 0x00076072
 		public float GetDeflectionForce(int quality)
 		{
 			return this.m_shared.m_deflectionForce + (float)Mathf.Max(0, quality - 1) * this.m_shared.m_deflectionForcePerLevel;
 		}
 
-		// Token: 0x06001148 RID: 4424 RVA: 0x00077D0E File Offset: 0x00075F0E
+		// Token: 0x06001149 RID: 4425 RVA: 0x00077E96 File Offset: 0x00076096
 		public string GetTooltip()
 		{
 			return ItemDrop.ItemData.GetTooltip(this, this.m_quality, false);
 		}
 
-		// Token: 0x06001149 RID: 4425 RVA: 0x00077D1D File Offset: 0x00075F1D
+		// Token: 0x0600114A RID: 4426 RVA: 0x00077EA5 File Offset: 0x000760A5
 		public Sprite GetIcon()
 		{
 			return this.m_shared.m_icons[this.m_variant];
 		}
 
-		// Token: 0x0600114A RID: 4426 RVA: 0x00077D34 File Offset: 0x00075F34
+		// Token: 0x0600114B RID: 4427 RVA: 0x00077EBC File Offset: 0x000760BC
 		private static void AddHandedTip(ItemDrop.ItemData item, StringBuilder text)
 		{
 			ItemDrop.ItemData.ItemType itemType = item.m_shared.m_itemType;
@@ -665,7 +665,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 			text.Append("\n$item_twohanded");
 		}
 
-		// Token: 0x0600114B RID: 4427 RVA: 0x00077D90 File Offset: 0x00075F90
+		// Token: 0x0600114C RID: 4428 RVA: 0x00077F18 File Offset: 0x00076118
 		public static string GetTooltip(ItemDrop.ItemData item, int qualityLevel, bool crafting)
 		{
 			Player localPlayer = Player.m_localPlayer;
@@ -809,7 +809,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x0600114C RID: 4428 RVA: 0x00078340 File Offset: 0x00076540
+		// Token: 0x0600114D RID: 4429 RVA: 0x000784C8 File Offset: 0x000766C8
 		private string GetStatusEffectTooltip()
 		{
 			if (this.m_shared.m_attackStatusEffect)
@@ -823,7 +823,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 			return "";
 		}
 
-		// Token: 0x0600114D RID: 4429 RVA: 0x00078398 File Offset: 0x00076598
+		// Token: 0x0600114E RID: 4430 RVA: 0x00078520 File Offset: 0x00076720
 		private string GetSetStatusEffectTooltip()
 		{
 			if (this.m_shared.m_setStatusEffect)
@@ -837,7 +837,7 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 			return "";
 		}
 
-		// Token: 0x0600114E RID: 4430 RVA: 0x000783D8 File Offset: 0x000765D8
+		// Token: 0x0600114F RID: 4431 RVA: 0x00078560 File Offset: 0x00076760
 		private string GetProjectileTooltip(int itemQuality)
 		{
 			string text = "";
@@ -860,127 +860,127 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 			return text;
 		}
 
-		// Token: 0x0400114A RID: 4426
+		// Token: 0x04001151 RID: 4433
 		public int m_stack = 1;
 
-		// Token: 0x0400114B RID: 4427
+		// Token: 0x04001152 RID: 4434
 		public float m_durability = 100f;
 
-		// Token: 0x0400114C RID: 4428
+		// Token: 0x04001153 RID: 4435
 		public int m_quality = 1;
 
-		// Token: 0x0400114D RID: 4429
+		// Token: 0x04001154 RID: 4436
 		public int m_variant;
 
-		// Token: 0x0400114E RID: 4430
+		// Token: 0x04001155 RID: 4437
 		public ItemDrop.ItemData.SharedData m_shared;
 
-		// Token: 0x0400114F RID: 4431
+		// Token: 0x04001156 RID: 4438
 		[NonSerialized]
 		public long m_crafterID;
 
-		// Token: 0x04001150 RID: 4432
+		// Token: 0x04001157 RID: 4439
 		[NonSerialized]
 		public string m_crafterName = "";
 
-		// Token: 0x04001151 RID: 4433
+		// Token: 0x04001158 RID: 4440
 		[NonSerialized]
 		public Vector2i m_gridPos = Vector2i.zero;
 
-		// Token: 0x04001152 RID: 4434
+		// Token: 0x04001159 RID: 4441
 		[NonSerialized]
 		public bool m_equiped;
 
-		// Token: 0x04001153 RID: 4435
+		// Token: 0x0400115A RID: 4442
 		[NonSerialized]
 		public GameObject m_dropPrefab;
 
-		// Token: 0x04001154 RID: 4436
+		// Token: 0x0400115B RID: 4443
 		[NonSerialized]
 		public float m_lastAttackTime;
 
-		// Token: 0x04001155 RID: 4437
+		// Token: 0x0400115C RID: 4444
 		[NonSerialized]
 		public GameObject m_lastProjectile;
 
 		// Token: 0x020001C0 RID: 448
 		public enum ItemType
 		{
-			// Token: 0x0400134D RID: 4941
-			None,
-			// Token: 0x0400134E RID: 4942
-			Material,
-			// Token: 0x0400134F RID: 4943
-			Consumable,
-			// Token: 0x04001350 RID: 4944
-			OneHandedWeapon,
-			// Token: 0x04001351 RID: 4945
-			Bow,
-			// Token: 0x04001352 RID: 4946
-			Shield,
-			// Token: 0x04001353 RID: 4947
-			Helmet,
 			// Token: 0x04001354 RID: 4948
-			Chest,
+			None,
 			// Token: 0x04001355 RID: 4949
-			Ammo = 9,
+			Material,
 			// Token: 0x04001356 RID: 4950
-			Customization,
+			Consumable,
 			// Token: 0x04001357 RID: 4951
-			Legs,
+			OneHandedWeapon,
 			// Token: 0x04001358 RID: 4952
-			Hands,
+			Bow,
 			// Token: 0x04001359 RID: 4953
-			Trophie,
+			Shield,
 			// Token: 0x0400135A RID: 4954
-			TwoHandedWeapon,
+			Helmet,
 			// Token: 0x0400135B RID: 4955
-			Torch,
+			Chest,
 			// Token: 0x0400135C RID: 4956
-			Misc,
+			Ammo = 9,
 			// Token: 0x0400135D RID: 4957
-			Shoulder,
+			Customization,
 			// Token: 0x0400135E RID: 4958
-			Utility,
+			Legs,
 			// Token: 0x0400135F RID: 4959
-			Tool,
+			Hands,
 			// Token: 0x04001360 RID: 4960
+			Trophie,
+			// Token: 0x04001361 RID: 4961
+			TwoHandedWeapon,
+			// Token: 0x04001362 RID: 4962
+			Torch,
+			// Token: 0x04001363 RID: 4963
+			Misc,
+			// Token: 0x04001364 RID: 4964
+			Shoulder,
+			// Token: 0x04001365 RID: 4965
+			Utility,
+			// Token: 0x04001366 RID: 4966
+			Tool,
+			// Token: 0x04001367 RID: 4967
 			Attach_Atgeir
 		}
 
 		// Token: 0x020001C1 RID: 449
 		public enum AnimationState
 		{
-			// Token: 0x04001362 RID: 4962
-			Unarmed,
-			// Token: 0x04001363 RID: 4963
-			OneHanded,
-			// Token: 0x04001364 RID: 4964
-			TwoHandedClub,
-			// Token: 0x04001365 RID: 4965
-			Bow,
-			// Token: 0x04001366 RID: 4966
-			Shield,
-			// Token: 0x04001367 RID: 4967
-			Torch,
-			// Token: 0x04001368 RID: 4968
-			LeftTorch,
 			// Token: 0x04001369 RID: 4969
-			Atgeir,
+			Unarmed,
 			// Token: 0x0400136A RID: 4970
-			TwoHandedAxe,
+			OneHanded,
 			// Token: 0x0400136B RID: 4971
+			TwoHandedClub,
+			// Token: 0x0400136C RID: 4972
+			Bow,
+			// Token: 0x0400136D RID: 4973
+			Shield,
+			// Token: 0x0400136E RID: 4974
+			Torch,
+			// Token: 0x0400136F RID: 4975
+			LeftTorch,
+			// Token: 0x04001370 RID: 4976
+			Atgeir,
+			// Token: 0x04001371 RID: 4977
+			TwoHandedAxe,
+			// Token: 0x04001372 RID: 4978
 			FishingRod
 		}
 
 		// Token: 0x020001C2 RID: 450
 		public enum AiTarget
 		{
-			// Token: 0x0400136D RID: 4973
+			// Token: 0x04001374 RID: 4980
 			Enemy,
-			// Token: 0x0400136E RID: 4974
+			// Token: 0x04001375 RID: 4981
 			FriendHurt,
-			// Token: 0x0400136F RID: 4975
+			// Token: 0x04001376 RID: 4982
 			Friend
 		}
 
@@ -988,252 +988,252 @@ public class ItemDrop : MonoBehaviour, Hoverable, Interactable
 		[Serializable]
 		public class SharedData
 		{
-			// Token: 0x04001370 RID: 4976
+			// Token: 0x04001377 RID: 4983
 			public string m_name = "";
 
-			// Token: 0x04001371 RID: 4977
+			// Token: 0x04001378 RID: 4984
 			public string m_dlc = "";
 
-			// Token: 0x04001372 RID: 4978
+			// Token: 0x04001379 RID: 4985
 			public ItemDrop.ItemData.ItemType m_itemType = ItemDrop.ItemData.ItemType.Misc;
 
-			// Token: 0x04001373 RID: 4979
+			// Token: 0x0400137A RID: 4986
 			public Sprite[] m_icons = new Sprite[0];
 
-			// Token: 0x04001374 RID: 4980
+			// Token: 0x0400137B RID: 4987
 			public ItemDrop.ItemData.ItemType m_attachOverride;
 
-			// Token: 0x04001375 RID: 4981
+			// Token: 0x0400137C RID: 4988
 			[TextArea]
 			public string m_description = "";
 
-			// Token: 0x04001376 RID: 4982
+			// Token: 0x0400137D RID: 4989
 			public int m_maxStackSize = 1;
 
-			// Token: 0x04001377 RID: 4983
+			// Token: 0x0400137E RID: 4990
 			public int m_maxQuality = 1;
 
-			// Token: 0x04001378 RID: 4984
+			// Token: 0x0400137F RID: 4991
 			public float m_weight = 1f;
 
-			// Token: 0x04001379 RID: 4985
+			// Token: 0x04001380 RID: 4992
 			public int m_value;
 
-			// Token: 0x0400137A RID: 4986
+			// Token: 0x04001381 RID: 4993
 			public bool m_teleportable = true;
 
-			// Token: 0x0400137B RID: 4987
+			// Token: 0x04001382 RID: 4994
 			public bool m_questItem;
 
-			// Token: 0x0400137C RID: 4988
+			// Token: 0x04001383 RID: 4995
 			public float m_equipDuration = 1f;
 
-			// Token: 0x0400137D RID: 4989
+			// Token: 0x04001384 RID: 4996
 			public int m_variants;
 
-			// Token: 0x0400137E RID: 4990
+			// Token: 0x04001385 RID: 4997
 			public Vector2Int m_trophyPos = Vector2Int.zero;
 
-			// Token: 0x0400137F RID: 4991
+			// Token: 0x04001386 RID: 4998
 			public PieceTable m_buildPieces;
 
-			// Token: 0x04001380 RID: 4992
+			// Token: 0x04001387 RID: 4999
 			public bool m_centerCamera;
 
-			// Token: 0x04001381 RID: 4993
+			// Token: 0x04001388 RID: 5000
 			public string m_setName = "";
 
-			// Token: 0x04001382 RID: 4994
+			// Token: 0x04001389 RID: 5001
 			public int m_setSize;
 
-			// Token: 0x04001383 RID: 4995
+			// Token: 0x0400138A RID: 5002
 			public StatusEffect m_setStatusEffect;
 
-			// Token: 0x04001384 RID: 4996
+			// Token: 0x0400138B RID: 5003
 			public StatusEffect m_equipStatusEffect;
 
-			// Token: 0x04001385 RID: 4997
+			// Token: 0x0400138C RID: 5004
 			public float m_movementModifier;
 
-			// Token: 0x04001386 RID: 4998
+			// Token: 0x0400138D RID: 5005
 			[Header("Food settings")]
 			public float m_food;
 
-			// Token: 0x04001387 RID: 4999
+			// Token: 0x0400138E RID: 5006
 			public float m_foodStamina;
 
-			// Token: 0x04001388 RID: 5000
+			// Token: 0x0400138F RID: 5007
 			public float m_foodBurnTime;
 
-			// Token: 0x04001389 RID: 5001
+			// Token: 0x04001390 RID: 5008
 			public float m_foodRegen;
 
-			// Token: 0x0400138A RID: 5002
+			// Token: 0x04001391 RID: 5009
 			public Color m_foodColor = Color.white;
 
-			// Token: 0x0400138B RID: 5003
+			// Token: 0x04001392 RID: 5010
 			[Header("Armor settings")]
 			public Material m_armorMaterial;
 
-			// Token: 0x0400138C RID: 5004
+			// Token: 0x04001393 RID: 5011
 			public bool m_helmetHideHair = true;
 
-			// Token: 0x0400138D RID: 5005
+			// Token: 0x04001394 RID: 5012
 			public float m_armor = 10f;
 
-			// Token: 0x0400138E RID: 5006
+			// Token: 0x04001395 RID: 5013
 			public float m_armorPerLevel = 1f;
 
-			// Token: 0x0400138F RID: 5007
+			// Token: 0x04001396 RID: 5014
 			public List<HitData.DamageModPair> m_damageModifiers = new List<HitData.DamageModPair>();
 
-			// Token: 0x04001390 RID: 5008
+			// Token: 0x04001397 RID: 5015
 			[Header("Shield settings")]
 			public float m_blockPower = 10f;
 
-			// Token: 0x04001391 RID: 5009
+			// Token: 0x04001398 RID: 5016
 			public float m_blockPowerPerLevel;
 
-			// Token: 0x04001392 RID: 5010
+			// Token: 0x04001399 RID: 5017
 			public float m_deflectionForce;
 
-			// Token: 0x04001393 RID: 5011
+			// Token: 0x0400139A RID: 5018
 			public float m_deflectionForcePerLevel;
 
-			// Token: 0x04001394 RID: 5012
+			// Token: 0x0400139B RID: 5019
 			public float m_timedBlockBonus = 1.5f;
 
-			// Token: 0x04001395 RID: 5013
+			// Token: 0x0400139C RID: 5020
 			[Header("Weapon")]
 			public ItemDrop.ItemData.AnimationState m_animationState = ItemDrop.ItemData.AnimationState.OneHanded;
 
-			// Token: 0x04001396 RID: 5014
+			// Token: 0x0400139D RID: 5021
 			public Skills.SkillType m_skillType = Skills.SkillType.Swords;
 
-			// Token: 0x04001397 RID: 5015
+			// Token: 0x0400139E RID: 5022
 			public int m_toolTier;
 
-			// Token: 0x04001398 RID: 5016
+			// Token: 0x0400139F RID: 5023
 			public HitData.DamageTypes m_damages;
 
-			// Token: 0x04001399 RID: 5017
+			// Token: 0x040013A0 RID: 5024
 			public HitData.DamageTypes m_damagesPerLevel;
 
-			// Token: 0x0400139A RID: 5018
+			// Token: 0x040013A1 RID: 5025
 			public float m_attackForce = 30f;
 
-			// Token: 0x0400139B RID: 5019
+			// Token: 0x040013A2 RID: 5026
 			public float m_backstabBonus = 4f;
 
-			// Token: 0x0400139C RID: 5020
+			// Token: 0x040013A3 RID: 5027
 			public bool m_dodgeable;
 
-			// Token: 0x0400139D RID: 5021
+			// Token: 0x040013A4 RID: 5028
 			public bool m_blockable;
 
-			// Token: 0x0400139E RID: 5022
+			// Token: 0x040013A5 RID: 5029
 			public StatusEffect m_attackStatusEffect;
 
-			// Token: 0x0400139F RID: 5023
+			// Token: 0x040013A6 RID: 5030
 			public GameObject m_spawnOnHit;
 
-			// Token: 0x040013A0 RID: 5024
+			// Token: 0x040013A7 RID: 5031
 			public GameObject m_spawnOnHitTerrain;
 
-			// Token: 0x040013A1 RID: 5025
+			// Token: 0x040013A8 RID: 5032
 			[Header("Attacks")]
 			public Attack m_attack;
 
-			// Token: 0x040013A2 RID: 5026
+			// Token: 0x040013A9 RID: 5033
 			public Attack m_secondaryAttack;
 
-			// Token: 0x040013A3 RID: 5027
+			// Token: 0x040013AA RID: 5034
 			[Header("Durability")]
 			public bool m_useDurability;
 
-			// Token: 0x040013A4 RID: 5028
+			// Token: 0x040013AB RID: 5035
 			public bool m_destroyBroken = true;
 
-			// Token: 0x040013A5 RID: 5029
+			// Token: 0x040013AC RID: 5036
 			public bool m_canBeReparied = true;
 
-			// Token: 0x040013A6 RID: 5030
+			// Token: 0x040013AD RID: 5037
 			public float m_maxDurability = 100f;
 
-			// Token: 0x040013A7 RID: 5031
+			// Token: 0x040013AE RID: 5038
 			public float m_durabilityPerLevel = 50f;
 
-			// Token: 0x040013A8 RID: 5032
+			// Token: 0x040013AF RID: 5039
 			public float m_useDurabilityDrain = 1f;
 
-			// Token: 0x040013A9 RID: 5033
+			// Token: 0x040013B0 RID: 5040
 			public float m_durabilityDrain;
 
-			// Token: 0x040013AA RID: 5034
+			// Token: 0x040013B1 RID: 5041
 			[Header("Hold")]
 			public float m_holdDurationMin;
 
-			// Token: 0x040013AB RID: 5035
+			// Token: 0x040013B2 RID: 5042
 			public float m_holdStaminaDrain;
 
-			// Token: 0x040013AC RID: 5036
+			// Token: 0x040013B3 RID: 5043
 			public string m_holdAnimationState = "";
 
-			// Token: 0x040013AD RID: 5037
+			// Token: 0x040013B4 RID: 5044
 			[Header("Ammo")]
 			public string m_ammoType = "";
 
-			// Token: 0x040013AE RID: 5038
+			// Token: 0x040013B5 RID: 5045
 			[Header("AI")]
 			public float m_aiAttackRange = 2f;
 
-			// Token: 0x040013AF RID: 5039
+			// Token: 0x040013B6 RID: 5046
 			public float m_aiAttackRangeMin;
 
-			// Token: 0x040013B0 RID: 5040
+			// Token: 0x040013B7 RID: 5047
 			public float m_aiAttackInterval = 2f;
 
-			// Token: 0x040013B1 RID: 5041
+			// Token: 0x040013B8 RID: 5048
 			public float m_aiAttackMaxAngle = 5f;
 
-			// Token: 0x040013B2 RID: 5042
+			// Token: 0x040013B9 RID: 5049
 			public bool m_aiWhenFlying = true;
 
-			// Token: 0x040013B3 RID: 5043
+			// Token: 0x040013BA RID: 5050
 			public bool m_aiWhenWalking = true;
 
-			// Token: 0x040013B4 RID: 5044
+			// Token: 0x040013BB RID: 5051
 			public bool m_aiWhenSwiming = true;
 
-			// Token: 0x040013B5 RID: 5045
+			// Token: 0x040013BC RID: 5052
 			public bool m_aiPrioritized;
 
-			// Token: 0x040013B6 RID: 5046
+			// Token: 0x040013BD RID: 5053
 			public ItemDrop.ItemData.AiTarget m_aiTargetType;
 
-			// Token: 0x040013B7 RID: 5047
+			// Token: 0x040013BE RID: 5054
 			[Header("Effects")]
 			public EffectList m_hitEffect = new EffectList();
 
-			// Token: 0x040013B8 RID: 5048
+			// Token: 0x040013BF RID: 5055
 			public EffectList m_hitTerrainEffect = new EffectList();
 
-			// Token: 0x040013B9 RID: 5049
+			// Token: 0x040013C0 RID: 5056
 			public EffectList m_blockEffect = new EffectList();
 
-			// Token: 0x040013BA RID: 5050
+			// Token: 0x040013C1 RID: 5057
 			public EffectList m_startEffect = new EffectList();
 
-			// Token: 0x040013BB RID: 5051
+			// Token: 0x040013C2 RID: 5058
 			public EffectList m_holdStartEffect = new EffectList();
 
-			// Token: 0x040013BC RID: 5052
+			// Token: 0x040013C3 RID: 5059
 			public EffectList m_triggerEffect = new EffectList();
 
-			// Token: 0x040013BD RID: 5053
+			// Token: 0x040013C4 RID: 5060
 			public EffectList m_trailStartEffect = new EffectList();
 
-			// Token: 0x040013BE RID: 5054
+			// Token: 0x040013C5 RID: 5061
 			[Header("Consumable")]
 			public StatusEffect m_consumeStatusEffect;
 		}

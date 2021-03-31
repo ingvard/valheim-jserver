@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x020000C9 RID: 201
 public class EventZone : MonoBehaviour
 {
-	// Token: 0x06000D02 RID: 3330 RVA: 0x0005CD30 File Offset: 0x0005AF30
+	// Token: 0x06000D03 RID: 3331 RVA: 0x0005CEB8 File Offset: 0x0005B0B8
 	private void OnTriggerStay(Collider collider)
 	{
 		Player component = collider.GetComponent<Player>();
@@ -19,7 +19,7 @@ public class EventZone : MonoBehaviour
 		EventZone.m_triggered = this;
 	}
 
-	// Token: 0x06000D03 RID: 3331 RVA: 0x0005CD64 File Offset: 0x0005AF64
+	// Token: 0x06000D04 RID: 3332 RVA: 0x0005CEEC File Offset: 0x0005B0EC
 	private void OnTriggerExit(Collider collider)
 	{
 		if (EventZone.m_triggered != this)
@@ -38,7 +38,7 @@ public class EventZone : MonoBehaviour
 		EventZone.m_triggered = null;
 	}
 
-	// Token: 0x06000D04 RID: 3332 RVA: 0x0005CDA4 File Offset: 0x0005AFA4
+	// Token: 0x06000D05 RID: 3333 RVA: 0x0005CF2C File Offset: 0x0005B12C
 	public static string GetEvent()
 	{
 		if (EventZone.m_triggered && EventZone.m_triggered.m_event.Length > 0)
@@ -48,9 +48,9 @@ public class EventZone : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x04000BDA RID: 3034
+	// Token: 0x04000BE0 RID: 3040
 	public string m_event = "";
 
-	// Token: 0x04000BDB RID: 3035
+	// Token: 0x04000BE1 RID: 3041
 	private static EventZone m_triggered;
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x020000CC RID: 204
 public class Fish : MonoBehaviour, IWaterInteractable, Hoverable, Interactable
 {
-	// Token: 0x06000D2E RID: 3374 RVA: 0x0005E0FC File Offset: 0x0005C2FC
+	// Token: 0x06000D2F RID: 3375 RVA: 0x0005E284 File Offset: 0x0005C484
 	private void Start()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -25,13 +25,13 @@ public class Fish : MonoBehaviour, IWaterInteractable, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000D2F RID: 3375 RVA: 0x0005E1D5 File Offset: 0x0005C3D5
+	// Token: 0x06000D30 RID: 3376 RVA: 0x0005E35D File Offset: 0x0005C55D
 	public bool IsOwner()
 	{
 		return this.m_nview && this.m_nview.IsValid() && this.m_nview.IsOwner();
 	}
 
-	// Token: 0x06000D30 RID: 3376 RVA: 0x0005E200 File Offset: 0x0005C400
+	// Token: 0x06000D31 RID: 3377 RVA: 0x0005E388 File Offset: 0x0005C588
 	public string GetHoverText()
 	{
 		string text = this.m_name;
@@ -42,19 +42,19 @@ public class Fish : MonoBehaviour, IWaterInteractable, Hoverable, Interactable
 		return Localization.instance.Localize(text);
 	}
 
-	// Token: 0x06000D31 RID: 3377 RVA: 0x0005E233 File Offset: 0x0005C433
+	// Token: 0x06000D32 RID: 3378 RVA: 0x0005E3BB File Offset: 0x0005C5BB
 	public string GetHoverName()
 	{
 		return this.m_name;
 	}
 
-	// Token: 0x06000D32 RID: 3378 RVA: 0x0005E23B File Offset: 0x0005C43B
+	// Token: 0x06000D33 RID: 3379 RVA: 0x0005E3C3 File Offset: 0x0005C5C3
 	public bool Interact(Humanoid character, bool repeat)
 	{
 		return !repeat && this.IsOutOfWater() && this.Pickup(character);
 	}
 
-	// Token: 0x06000D33 RID: 3379 RVA: 0x0005E258 File Offset: 0x0005C458
+	// Token: 0x06000D34 RID: 3380 RVA: 0x0005E3E0 File Offset: 0x0005C5E0
 	public bool Pickup(Humanoid character)
 	{
 		if (!character.GetInventory().CanAddItem(this.m_pickupItem, this.m_pickupItemStackSize))
@@ -66,7 +66,7 @@ public class Fish : MonoBehaviour, IWaterInteractable, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x06000D34 RID: 3380 RVA: 0x0005E2A4 File Offset: 0x0005C4A4
+	// Token: 0x06000D35 RID: 3381 RVA: 0x0005E42C File Offset: 0x0005C62C
 	private void RPC_RequestPickup(long uid)
 	{
 		if (Time.time - this.m_pickupTime > 2f)
@@ -76,7 +76,7 @@ public class Fish : MonoBehaviour, IWaterInteractable, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000D35 RID: 3381 RVA: 0x0005E2DA File Offset: 0x0005C4DA
+	// Token: 0x06000D36 RID: 3382 RVA: 0x0005E462 File Offset: 0x0005C662
 	private void RPC_Pickup(long uid)
 	{
 		if (Player.m_localPlayer && Player.m_localPlayer.PickupPrefab(this.m_pickupItem, this.m_pickupItemStackSize) != null)
@@ -86,19 +86,19 @@ public class Fish : MonoBehaviour, IWaterInteractable, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000D36 RID: 3382 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000D37 RID: 3383 RVA: 0x000023E2 File Offset: 0x000005E2
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		return false;
 	}
 
-	// Token: 0x06000D37 RID: 3383 RVA: 0x0005E316 File Offset: 0x0005C516
+	// Token: 0x06000D38 RID: 3384 RVA: 0x0005E49E File Offset: 0x0005C69E
 	public void SetInWater(float waterLevel)
 	{
 		this.m_inWater = waterLevel;
 	}
 
-	// Token: 0x06000D38 RID: 3384 RVA: 0x0000590F File Offset: 0x00003B0F
+	// Token: 0x06000D39 RID: 3385 RVA: 0x00005933 File Offset: 0x00003B33
 	public Transform GetTransform()
 	{
 		if (this == null)
@@ -108,13 +108,13 @@ public class Fish : MonoBehaviour, IWaterInteractable, Hoverable, Interactable
 		return base.transform;
 	}
 
-	// Token: 0x06000D39 RID: 3385 RVA: 0x0005E31F File Offset: 0x0005C51F
+	// Token: 0x06000D3A RID: 3386 RVA: 0x0005E4A7 File Offset: 0x0005C6A7
 	private bool IsOutOfWater()
 	{
 		return this.m_inWater < base.transform.position.y - this.m_height;
 	}
 
-	// Token: 0x06000D3A RID: 3386 RVA: 0x0005E340 File Offset: 0x0005C540
+	// Token: 0x06000D3B RID: 3387 RVA: 0x0005E4C8 File Offset: 0x0005C6C8
 	private void FixedUpdate()
 	{
 		if (!this.m_nview.IsValid())
@@ -187,7 +187,7 @@ public class Fish : MonoBehaviour, IWaterInteractable, Hoverable, Interactable
 		this.Stop(fixedDeltaTime);
 	}
 
-	// Token: 0x06000D3B RID: 3387 RVA: 0x0005E578 File Offset: 0x0005C778
+	// Token: 0x06000D3C RID: 3388 RVA: 0x0005E700 File Offset: 0x0005C900
 	private void Stop(float dt)
 	{
 		if (this.m_inWater < base.transform.position.y + this.m_height)
@@ -204,7 +204,7 @@ public class Fish : MonoBehaviour, IWaterInteractable, Hoverable, Interactable
 		this.m_body.AddForce(force, ForceMode.VelocityChange);
 	}
 
-	// Token: 0x06000D3C RID: 3388 RVA: 0x0005E620 File Offset: 0x0005C820
+	// Token: 0x06000D3D RID: 3389 RVA: 0x0005E7A8 File Offset: 0x0005C9A8
 	private void SwimDirection(Vector3 dir, bool fast, bool avoidLand, float dt)
 	{
 		Vector3 forward = dir;
@@ -241,7 +241,7 @@ public class Fish : MonoBehaviour, IWaterInteractable, Hoverable, Interactable
 		this.m_body.AddForce(vector * this.m_acceleration, ForceMode.VelocityChange);
 	}
 
-	// Token: 0x06000D3D RID: 3389 RVA: 0x0005E778 File Offset: 0x0005C978
+	// Token: 0x06000D3E RID: 3390 RVA: 0x0005E900 File Offset: 0x0005CB00
 	private FishingFloat FindFloat()
 	{
 		foreach (FishingFloat fishingFloat in FishingFloat.GetAllInstances())
@@ -258,7 +258,7 @@ public class Fish : MonoBehaviour, IWaterInteractable, Hoverable, Interactable
 		return null;
 	}
 
-	// Token: 0x06000D3E RID: 3390 RVA: 0x0005E814 File Offset: 0x0005CA14
+	// Token: 0x06000D3F RID: 3391 RVA: 0x0005E99C File Offset: 0x0005CB9C
 	private void RandomizeWaypoint(bool canHook)
 	{
 		Vector2 vector = UnityEngine.Random.insideUnitCircle * this.m_swimRange;
@@ -290,7 +290,7 @@ public class Fish : MonoBehaviour, IWaterInteractable, Hoverable, Interactable
 		this.m_swimTimer = UnityEngine.Random.Range(this.m_wpDurationMin, this.m_wpDurationMax);
 	}
 
-	// Token: 0x06000D3F RID: 3391 RVA: 0x0005E940 File Offset: 0x0005CB40
+	// Token: 0x06000D40 RID: 3392 RVA: 0x0005EAC8 File Offset: 0x0005CCC8
 	private float GetPointDepth(Vector3 p)
 	{
 		float num;
@@ -301,106 +301,106 @@ public class Fish : MonoBehaviour, IWaterInteractable, Hoverable, Interactable
 		return 0f;
 	}
 
-	// Token: 0x06000D40 RID: 3392 RVA: 0x0005E96E File Offset: 0x0005CB6E
+	// Token: 0x06000D41 RID: 3393 RVA: 0x0005EAF6 File Offset: 0x0005CCF6
 	private bool DangerNearby()
 	{
 		return Player.GetPlayerNoiseRange(base.transform.position, 1f) != null;
 	}
 
-	// Token: 0x06000D41 RID: 3393 RVA: 0x0005E990 File Offset: 0x0005CB90
+	// Token: 0x06000D42 RID: 3394 RVA: 0x0005EB18 File Offset: 0x0005CD18
 	public ZDOID GetZDOID()
 	{
 		return this.m_nview.GetZDO().m_uid;
 	}
 
-	// Token: 0x06000D42 RID: 3394 RVA: 0x0005E9A4 File Offset: 0x0005CBA4
+	// Token: 0x06000D43 RID: 3395 RVA: 0x0005EB2C File Offset: 0x0005CD2C
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.blue;
 		Gizmos.DrawWireCube(base.transform.position + Vector3.up * this.m_height, new Vector3(1f, 0.02f, 1f));
 	}
 
-	// Token: 0x04000C05 RID: 3077
+	// Token: 0x04000C0B RID: 3083
 	public string m_name = "Fish";
 
-	// Token: 0x04000C06 RID: 3078
+	// Token: 0x04000C0C RID: 3084
 	public float m_swimRange = 20f;
 
-	// Token: 0x04000C07 RID: 3079
+	// Token: 0x04000C0D RID: 3085
 	public float m_minDepth = 1f;
 
-	// Token: 0x04000C08 RID: 3080
+	// Token: 0x04000C0E RID: 3086
 	public float m_maxDepth = 4f;
 
-	// Token: 0x04000C09 RID: 3081
+	// Token: 0x04000C0F RID: 3087
 	public float m_speed = 10f;
 
-	// Token: 0x04000C0A RID: 3082
+	// Token: 0x04000C10 RID: 3088
 	public float m_acceleration = 5f;
 
-	// Token: 0x04000C0B RID: 3083
+	// Token: 0x04000C11 RID: 3089
 	public float m_turnRate = 10f;
 
-	// Token: 0x04000C0C RID: 3084
+	// Token: 0x04000C12 RID: 3090
 	public float m_wpDurationMin = 4f;
 
-	// Token: 0x04000C0D RID: 3085
+	// Token: 0x04000C13 RID: 3091
 	public float m_wpDurationMax = 4f;
 
-	// Token: 0x04000C0E RID: 3086
+	// Token: 0x04000C14 RID: 3092
 	public float m_avoidSpeedScale = 2f;
 
-	// Token: 0x04000C0F RID: 3087
+	// Token: 0x04000C15 RID: 3093
 	public float m_avoidRange = 5f;
 
-	// Token: 0x04000C10 RID: 3088
+	// Token: 0x04000C16 RID: 3094
 	public float m_height = 0.2f;
 
-	// Token: 0x04000C11 RID: 3089
+	// Token: 0x04000C17 RID: 3095
 	public float m_eatDuration = 4f;
 
-	// Token: 0x04000C12 RID: 3090
+	// Token: 0x04000C18 RID: 3096
 	public float m_hookForce = 4f;
 
-	// Token: 0x04000C13 RID: 3091
+	// Token: 0x04000C19 RID: 3097
 	public float m_staminaUse = 1f;
 
-	// Token: 0x04000C14 RID: 3092
+	// Token: 0x04000C1A RID: 3098
 	public float m_baseHookChance = 0.5f;
 
-	// Token: 0x04000C15 RID: 3093
+	// Token: 0x04000C1B RID: 3099
 	public GameObject m_pickupItem;
 
-	// Token: 0x04000C16 RID: 3094
+	// Token: 0x04000C1C RID: 3100
 	public int m_pickupItemStackSize = 1;
 
-	// Token: 0x04000C17 RID: 3095
+	// Token: 0x04000C1D RID: 3101
 	private Vector3 m_spawnPoint;
 
-	// Token: 0x04000C18 RID: 3096
+	// Token: 0x04000C1E RID: 3102
 	private Vector3 m_waypoint;
 
-	// Token: 0x04000C19 RID: 3097
+	// Token: 0x04000C1F RID: 3103
 	private FishingFloat m_waypointFF;
 
-	// Token: 0x04000C1A RID: 3098
+	// Token: 0x04000C20 RID: 3104
 	private bool m_haveWaypoint;
 
-	// Token: 0x04000C1B RID: 3099
+	// Token: 0x04000C21 RID: 3105
 	private float m_swimTimer;
 
-	// Token: 0x04000C1C RID: 3100
+	// Token: 0x04000C22 RID: 3106
 	private float m_lastNibbleTime;
 
-	// Token: 0x04000C1D RID: 3101
+	// Token: 0x04000C23 RID: 3107
 	private float m_inWater = -10000f;
 
-	// Token: 0x04000C1E RID: 3102
+	// Token: 0x04000C24 RID: 3108
 	private float m_pickupTime;
 
-	// Token: 0x04000C1F RID: 3103
+	// Token: 0x04000C25 RID: 3109
 	private ZNetView m_nview;
 
-	// Token: 0x04000C20 RID: 3104
+	// Token: 0x04000C26 RID: 3110
 	private Rigidbody m_body;
 }

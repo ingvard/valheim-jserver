@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x0200010D RID: 269
 public class Valkyrie : MonoBehaviour
 {
-	// Token: 0x06000FE7 RID: 4071 RVA: 0x0006FDE4 File Offset: 0x0006DFE4
+	// Token: 0x06000FE8 RID: 4072 RVA: 0x0006FF6C File Offset: 0x0006E16C
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -41,24 +41,24 @@ public class Valkyrie : MonoBehaviour
 		}));
 	}
 
-	// Token: 0x06000FE8 RID: 4072 RVA: 0x0006FFAE File Offset: 0x0006E1AE
+	// Token: 0x06000FE9 RID: 4073 RVA: 0x00070136 File Offset: 0x0006E336
 	private void ShowText()
 	{
 		TextViewer.instance.ShowText(TextViewer.Style.Intro, this.m_introTopic, this.m_introText, false);
 	}
 
-	// Token: 0x06000FE9 RID: 4073 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x06000FEA RID: 4074 RVA: 0x000027E0 File Offset: 0x000009E0
 	private void HideText()
 	{
 	}
 
-	// Token: 0x06000FEA RID: 4074 RVA: 0x0006FFC8 File Offset: 0x0006E1C8
+	// Token: 0x06000FEB RID: 4075 RVA: 0x00070150 File Offset: 0x0006E350
 	private void OnDestroy()
 	{
 		ZLog.Log("Destroying valkyrie");
 	}
 
-	// Token: 0x06000FEB RID: 4075 RVA: 0x0006FFD4 File Offset: 0x0006E1D4
+	// Token: 0x06000FEC RID: 4076 RVA: 0x0007015C File Offset: 0x0006E35C
 	private void FixedUpdate()
 	{
 		this.UpdateValkyrie(Time.fixedDeltaTime);
@@ -68,7 +68,7 @@ public class Valkyrie : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FEC RID: 4076 RVA: 0x0006FFF0 File Offset: 0x0006E1F0
+	// Token: 0x06000FED RID: 4077 RVA: 0x00070178 File Offset: 0x0006E378
 	private void LateUpdate()
 	{
 		if (!this.m_droppedPlayer)
@@ -77,7 +77,7 @@ public class Valkyrie : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FED RID: 4077 RVA: 0x00070004 File Offset: 0x0006E204
+	// Token: 0x06000FEE RID: 4078 RVA: 0x0007018C File Offset: 0x0006E38C
 	private void UpdateValkyrie(float dt)
 	{
 		this.m_timer += dt;
@@ -144,7 +144,7 @@ public class Valkyrie : MonoBehaviour
 		base.transform.position = vector3;
 	}
 
-	// Token: 0x06000FEE RID: 4078 RVA: 0x00070258 File Offset: 0x0006E458
+	// Token: 0x06000FEF RID: 4079 RVA: 0x000703E0 File Offset: 0x0006E5E0
 	private void DropPlayer()
 	{
 		ZLog.Log("We are here");
@@ -157,7 +157,7 @@ public class Valkyrie : MonoBehaviour
 		this.m_animator.SetBool("dropped", true);
 	}
 
-	// Token: 0x06000FEF RID: 4079 RVA: 0x000702C8 File Offset: 0x0006E4C8
+	// Token: 0x06000FF0 RID: 4080 RVA: 0x00070450 File Offset: 0x0006E650
 	private void SyncPlayer(bool doNetworkSync)
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -177,67 +177,67 @@ public class Valkyrie : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000EC1 RID: 3777
+	// Token: 0x04000EC7 RID: 3783
 	public float m_startPause = 10f;
 
-	// Token: 0x04000EC2 RID: 3778
+	// Token: 0x04000EC8 RID: 3784
 	public float m_speed = 10f;
 
-	// Token: 0x04000EC3 RID: 3779
+	// Token: 0x04000EC9 RID: 3785
 	public float m_turnRate = 5f;
 
-	// Token: 0x04000EC4 RID: 3780
+	// Token: 0x04000ECA RID: 3786
 	public float m_dropHeight = 10f;
 
-	// Token: 0x04000EC5 RID: 3781
+	// Token: 0x04000ECB RID: 3787
 	public float m_startAltitude = 500f;
 
-	// Token: 0x04000EC6 RID: 3782
+	// Token: 0x04000ECC RID: 3788
 	public float m_descentAltitude = 100f;
 
-	// Token: 0x04000EC7 RID: 3783
+	// Token: 0x04000ECD RID: 3789
 	public float m_startDistance = 500f;
 
-	// Token: 0x04000EC8 RID: 3784
+	// Token: 0x04000ECE RID: 3790
 	public float m_startDescentDistance = 200f;
 
-	// Token: 0x04000EC9 RID: 3785
+	// Token: 0x04000ECF RID: 3791
 	public Vector3 m_attachOffset = new Vector3(0f, 0f, 1f);
 
-	// Token: 0x04000ECA RID: 3786
+	// Token: 0x04000ED0 RID: 3792
 	public float m_textDuration = 5f;
 
-	// Token: 0x04000ECB RID: 3787
+	// Token: 0x04000ED1 RID: 3793
 	public string m_introTopic = "";
 
-	// Token: 0x04000ECC RID: 3788
+	// Token: 0x04000ED2 RID: 3794
 	[TextArea]
 	public string m_introText = "";
 
-	// Token: 0x04000ECD RID: 3789
+	// Token: 0x04000ED3 RID: 3795
 	public Transform m_attachPoint;
 
-	// Token: 0x04000ECE RID: 3790
+	// Token: 0x04000ED4 RID: 3796
 	private Vector3 m_targetPoint;
 
-	// Token: 0x04000ECF RID: 3791
+	// Token: 0x04000ED5 RID: 3797
 	private Vector3 m_descentStart;
 
-	// Token: 0x04000ED0 RID: 3792
+	// Token: 0x04000ED6 RID: 3798
 	private Vector3 m_flyAwayPoint;
 
-	// Token: 0x04000ED1 RID: 3793
+	// Token: 0x04000ED7 RID: 3799
 	private bool m_descent;
 
-	// Token: 0x04000ED2 RID: 3794
+	// Token: 0x04000ED8 RID: 3800
 	private bool m_droppedPlayer;
 
-	// Token: 0x04000ED3 RID: 3795
+	// Token: 0x04000ED9 RID: 3801
 	private Animator m_animator;
 
-	// Token: 0x04000ED4 RID: 3796
+	// Token: 0x04000EDA RID: 3802
 	private ZNetView m_nview;
 
-	// Token: 0x04000ED5 RID: 3797
+	// Token: 0x04000EDB RID: 3803
 	private float m_timer;
 }

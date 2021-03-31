@@ -5,13 +5,13 @@ using UnityEngine;
 // Token: 0x020000EE RID: 238
 public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 {
-	// Token: 0x06000E9D RID: 3741 RVA: 0x0006883E File Offset: 0x00066A3E
+	// Token: 0x06000E9E RID: 3742 RVA: 0x000689C6 File Offset: 0x00066BC6
 	public static bool IsInstantiated()
 	{
 		return Raven.m_instance != null;
 	}
 
-	// Token: 0x06000E9E RID: 3742 RVA: 0x0006884C File Offset: 0x00066A4C
+	// Token: 0x06000E9F RID: 3743 RVA: 0x000689D4 File Offset: 0x00066BD4
 	private void Awake()
 	{
 		base.transform.position = new Vector3(0f, 100000f, 0f);
@@ -22,7 +22,7 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		base.InvokeRepeating("CheckSpawn", 1f, 1f);
 	}
 
-	// Token: 0x06000E9F RID: 3743 RVA: 0x000688DD File Offset: 0x00066ADD
+	// Token: 0x06000EA0 RID: 3744 RVA: 0x00068A65 File Offset: 0x00066C65
 	private void OnDestroy()
 	{
 		if (Raven.m_instance == this)
@@ -31,7 +31,7 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		}
 	}
 
-	// Token: 0x06000EA0 RID: 3744 RVA: 0x000688F2 File Offset: 0x00066AF2
+	// Token: 0x06000EA1 RID: 3745 RVA: 0x00068A7A File Offset: 0x00066C7A
 	public string GetHoverText()
 	{
 		if (this.IsSpawned())
@@ -41,13 +41,13 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		return "";
 	}
 
-	// Token: 0x06000EA1 RID: 3745 RVA: 0x0006891C File Offset: 0x00066B1C
+	// Token: 0x06000EA2 RID: 3746 RVA: 0x00068AA4 File Offset: 0x00066CA4
 	public string GetHoverName()
 	{
 		return Localization.instance.Localize(this.m_name);
 	}
 
-	// Token: 0x06000EA2 RID: 3746 RVA: 0x0006892E File Offset: 0x00066B2E
+	// Token: 0x06000EA3 RID: 3747 RVA: 0x00068AB6 File Offset: 0x00066CB6
 	public bool Interact(Humanoid character, bool hold)
 	{
 		if (hold)
@@ -65,7 +65,7 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		return false;
 	}
 
-	// Token: 0x06000EA3 RID: 3747 RVA: 0x00068968 File Offset: 0x00066B68
+	// Token: 0x06000EA4 RID: 3748 RVA: 0x00068AF0 File Offset: 0x00066CF0
 	private void Talk()
 	{
 		if (!Player.m_localPlayer)
@@ -93,7 +93,7 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		this.Say(this.m_currentText.m_topic, this.m_currentText.m_text, false, true, true);
 	}
 
-	// Token: 0x06000EA4 RID: 3748 RVA: 0x00068A48 File Offset: 0x00066C48
+	// Token: 0x06000EA5 RID: 3749 RVA: 0x00068BD0 File Offset: 0x00066DD0
 	private void Say(string topic, string text, bool showName, bool longTimeout, bool large)
 	{
 		if (topic.Length > 0)
@@ -104,13 +104,13 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		this.m_animator.SetTrigger("talk");
 	}
 
-	// Token: 0x06000EA5 RID: 3749 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000EA6 RID: 3750 RVA: 0x000023E2 File Offset: 0x000005E2
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		return false;
 	}
 
-	// Token: 0x06000EA6 RID: 3750 RVA: 0x00068ACC File Offset: 0x00066CCC
+	// Token: 0x06000EA7 RID: 3751 RVA: 0x00068C54 File Offset: 0x00066E54
 	private void IdleEffect()
 	{
 		if (!this.IsSpawned())
@@ -122,13 +122,13 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		base.InvokeRepeating("IdleEffect", UnityEngine.Random.Range(this.m_idleEffectIntervalMin, this.m_idleEffectIntervalMax), UnityEngine.Random.Range(this.m_idleEffectIntervalMin, this.m_idleEffectIntervalMax));
 	}
 
-	// Token: 0x06000EA7 RID: 3751 RVA: 0x00068B42 File Offset: 0x00066D42
+	// Token: 0x06000EA8 RID: 3752 RVA: 0x00068CCA File Offset: 0x00066ECA
 	private bool CanHide()
 	{
 		return Player.m_localPlayer == null || !Chat.instance.IsDialogVisible(base.gameObject);
 	}
 
-	// Token: 0x06000EA8 RID: 3752 RVA: 0x00068B68 File Offset: 0x00066D68
+	// Token: 0x06000EA9 RID: 3753 RVA: 0x00068CF0 File Offset: 0x00066EF0
 	private void Update()
 	{
 		this.m_timeSinceTeleport += Time.deltaTime;
@@ -179,7 +179,7 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		this.m_exclamation.SetActive(false);
 	}
 
-	// Token: 0x06000EA9 RID: 3753 RVA: 0x00068E30 File Offset: 0x00067030
+	// Token: 0x06000EAA RID: 3754 RVA: 0x00068FB8 File Offset: 0x000671B8
 	private bool FindSpawnPoint(out Vector3 point, out GameObject landOn)
 	{
 		Vector3 position = Player.m_localPlayer.transform.position;
@@ -207,19 +207,19 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		return result;
 	}
 
-	// Token: 0x06000EAA RID: 3754 RVA: 0x00068F59 File Offset: 0x00067159
+	// Token: 0x06000EAB RID: 3755 RVA: 0x000690E1 File Offset: 0x000672E1
 	private bool EnemyNearby(Vector3 point)
 	{
 		return LootSpawner.IsMonsterInRange(point, this.m_enemyCheckDistance);
 	}
 
-	// Token: 0x06000EAB RID: 3755 RVA: 0x00068F68 File Offset: 0x00067168
+	// Token: 0x06000EAC RID: 3756 RVA: 0x000690F0 File Offset: 0x000672F0
 	private bool InState(string name)
 	{
 		return this.m_animator.isInitialized && (this.m_animator.GetCurrentAnimatorStateInfo(0).IsTag(name) || this.m_animator.GetNextAnimatorStateInfo(0).IsTag(name));
 	}
 
-	// Token: 0x06000EAC RID: 3756 RVA: 0x00068FB8 File Offset: 0x000671B8
+	// Token: 0x06000EAD RID: 3757 RVA: 0x00069140 File Offset: 0x00067340
 	private Raven.RavenText GetBestText()
 	{
 		Raven.RavenText ravenText = this.GetTempText();
@@ -231,7 +231,7 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		return ravenText;
 	}
 
-	// Token: 0x06000EAD RID: 3757 RVA: 0x00068FF0 File Offset: 0x000671F0
+	// Token: 0x06000EAE RID: 3758 RVA: 0x00069178 File Offset: 0x00067378
 	private Raven.RavenText GetTempText()
 	{
 		foreach (Raven.RavenText ravenText in Raven.m_tempTexts)
@@ -244,7 +244,7 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		return null;
 	}
 
-	// Token: 0x06000EAE RID: 3758 RVA: 0x00069050 File Offset: 0x00067250
+	// Token: 0x06000EAF RID: 3759 RVA: 0x000691D8 File Offset: 0x000673D8
 	private Raven.RavenText GetClosestStaticText(float maxDistance)
 	{
 		if (Player.m_localPlayer == null)
@@ -302,7 +302,7 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		return ravenText;
 	}
 
-	// Token: 0x06000EAF RID: 3759 RVA: 0x000691A8 File Offset: 0x000673A8
+	// Token: 0x06000EB0 RID: 3760 RVA: 0x00069330 File Offset: 0x00067530
 	private void RemoveSeendTempTexts()
 	{
 		for (int i = 0; i < Raven.m_tempTexts.Count; i++)
@@ -315,7 +315,7 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		}
 	}
 
-	// Token: 0x06000EB0 RID: 3760 RVA: 0x000691F4 File Offset: 0x000673F4
+	// Token: 0x06000EB1 RID: 3761 RVA: 0x0006937C File Offset: 0x0006757C
 	private void FlyAway(bool forceTeleport = false)
 	{
 		Chat.instance.ClearNpcText(base.gameObject);
@@ -328,7 +328,7 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		this.m_animator.SetTrigger("flyaway");
 	}
 
-	// Token: 0x06000EB1 RID: 3761 RVA: 0x00069248 File Offset: 0x00067448
+	// Token: 0x06000EB2 RID: 3762 RVA: 0x000693D0 File Offset: 0x000675D0
 	private void CheckSpawn()
 	{
 		if (Player.m_localPlayer == null)
@@ -357,13 +357,13 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		}
 	}
 
-	// Token: 0x06000EB2 RID: 3762 RVA: 0x00003EB4 File Offset: 0x000020B4
+	// Token: 0x06000EB3 RID: 3763 RVA: 0x00003ED0 File Offset: 0x000020D0
 	public DestructibleType GetDestructibleType()
 	{
 		return DestructibleType.Character;
 	}
 
-	// Token: 0x06000EB3 RID: 3763 RVA: 0x000692D7 File Offset: 0x000674D7
+	// Token: 0x06000EB4 RID: 3764 RVA: 0x0006945F File Offset: 0x0006765F
 	public void Damage(HitData hit)
 	{
 		if (!this.IsSpawned())
@@ -374,32 +374,32 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		this.RestartSpawnCheck(4f);
 	}
 
-	// Token: 0x06000EB4 RID: 3764 RVA: 0x000692FD File Offset: 0x000674FD
+	// Token: 0x06000EB5 RID: 3765 RVA: 0x00069485 File Offset: 0x00067685
 	private void RestartSpawnCheck(float delay)
 	{
 		base.CancelInvoke("CheckSpawn");
 		base.InvokeRepeating("CheckSpawn", delay, 1f);
 	}
 
-	// Token: 0x06000EB5 RID: 3765 RVA: 0x0006931B File Offset: 0x0006751B
+	// Token: 0x06000EB6 RID: 3766 RVA: 0x000694A3 File Offset: 0x000676A3
 	private bool IsSpawned()
 	{
 		return this.InState("visible");
 	}
 
-	// Token: 0x06000EB6 RID: 3766 RVA: 0x00069328 File Offset: 0x00067528
+	// Token: 0x06000EB7 RID: 3767 RVA: 0x000694B0 File Offset: 0x000676B0
 	public bool IsAway()
 	{
 		return this.InState("away");
 	}
 
-	// Token: 0x06000EB7 RID: 3767 RVA: 0x00069335 File Offset: 0x00067535
+	// Token: 0x06000EB8 RID: 3768 RVA: 0x000694BD File Offset: 0x000676BD
 	public bool IsFlying()
 	{
 		return this.InState("flying");
 	}
 
-	// Token: 0x06000EB8 RID: 3768 RVA: 0x00069344 File Offset: 0x00067544
+	// Token: 0x06000EB9 RID: 3769 RVA: 0x000694CC File Offset: 0x000676CC
 	private void Spawn(Raven.RavenText text, bool forceTeleport)
 	{
 		if (Utils.GetMainCamera() == null)
@@ -451,7 +451,7 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		this.m_animator.SetTrigger("flyin");
 	}
 
-	// Token: 0x06000EB9 RID: 3769 RVA: 0x0006949C File Offset: 0x0006769C
+	// Token: 0x06000EBA RID: 3770 RVA: 0x00069624 File Offset: 0x00067824
 	private bool IsUnderRoof()
 	{
 		return Physics.Raycast(base.transform.position + Vector3.up * 0.2f, Vector3.up, 20f, LayerMask.GetMask(new string[]
@@ -462,19 +462,19 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		}));
 	}
 
-	// Token: 0x06000EBA RID: 3770 RVA: 0x000694FA File Offset: 0x000676FA
+	// Token: 0x06000EBB RID: 3771 RVA: 0x00069682 File Offset: 0x00067882
 	public static void RegisterStaticText(Raven.RavenText text)
 	{
 		Raven.m_staticTexts.Add(text);
 	}
 
-	// Token: 0x06000EBB RID: 3771 RVA: 0x00069507 File Offset: 0x00067707
+	// Token: 0x06000EBC RID: 3772 RVA: 0x0006968F File Offset: 0x0006788F
 	public static void UnregisterStaticText(Raven.RavenText text)
 	{
 		Raven.m_staticTexts.Remove(text);
 	}
 
-	// Token: 0x06000EBC RID: 3772 RVA: 0x00069518 File Offset: 0x00067718
+	// Token: 0x06000EBD RID: 3773 RVA: 0x000696A0 File Offset: 0x000678A0
 	public static void AddTempText(string key, string topic, string text, string label, bool munin)
 	{
 		if (key.Length > 0)
@@ -500,139 +500,139 @@ public class Raven : MonoBehaviour, Hoverable, Interactable, IDestructible
 		Raven.m_tempTexts.Add(ravenText);
 	}
 
-	// Token: 0x04000D8B RID: 3467
+	// Token: 0x04000D91 RID: 3473
 	public GameObject m_visual;
 
-	// Token: 0x04000D8C RID: 3468
+	// Token: 0x04000D92 RID: 3474
 	public GameObject m_exclamation;
 
-	// Token: 0x04000D8D RID: 3469
+	// Token: 0x04000D93 RID: 3475
 	public string m_name = "Name";
 
-	// Token: 0x04000D8E RID: 3470
+	// Token: 0x04000D94 RID: 3476
 	public bool m_isMunin;
 
-	// Token: 0x04000D8F RID: 3471
+	// Token: 0x04000D95 RID: 3477
 	public bool m_autoTalk = true;
 
-	// Token: 0x04000D90 RID: 3472
+	// Token: 0x04000D96 RID: 3478
 	public float m_idleEffectIntervalMin = 10f;
 
-	// Token: 0x04000D91 RID: 3473
+	// Token: 0x04000D97 RID: 3479
 	public float m_idleEffectIntervalMax = 20f;
 
-	// Token: 0x04000D92 RID: 3474
+	// Token: 0x04000D98 RID: 3480
 	public float m_spawnDistance = 15f;
 
-	// Token: 0x04000D93 RID: 3475
+	// Token: 0x04000D99 RID: 3481
 	public float m_despawnDistance = 20f;
 
-	// Token: 0x04000D94 RID: 3476
+	// Token: 0x04000D9A RID: 3482
 	public float m_autoTalkDistance = 3f;
 
-	// Token: 0x04000D95 RID: 3477
+	// Token: 0x04000D9B RID: 3483
 	public float m_enemyCheckDistance = 10f;
 
-	// Token: 0x04000D96 RID: 3478
+	// Token: 0x04000D9C RID: 3484
 	public float m_rotateSpeed = 10f;
 
-	// Token: 0x04000D97 RID: 3479
+	// Token: 0x04000D9D RID: 3485
 	public float m_minRotationAngle = 15f;
 
-	// Token: 0x04000D98 RID: 3480
+	// Token: 0x04000D9E RID: 3486
 	public float m_dialogVisibleTime = 10f;
 
-	// Token: 0x04000D99 RID: 3481
+	// Token: 0x04000D9F RID: 3487
 	public float m_longDialogVisibleTime = 10f;
 
-	// Token: 0x04000D9A RID: 3482
+	// Token: 0x04000DA0 RID: 3488
 	public float m_dontFlyDistance = 3f;
 
-	// Token: 0x04000D9B RID: 3483
+	// Token: 0x04000DA1 RID: 3489
 	public float m_textOffset = 1.5f;
 
-	// Token: 0x04000D9C RID: 3484
+	// Token: 0x04000DA2 RID: 3490
 	public float m_textCullDistance = 20f;
 
-	// Token: 0x04000D9D RID: 3485
+	// Token: 0x04000DA3 RID: 3491
 	public float m_randomTextInterval = 30f;
 
-	// Token: 0x04000D9E RID: 3486
+	// Token: 0x04000DA4 RID: 3492
 	public float m_randomTextIntervalImportant = 10f;
 
-	// Token: 0x04000D9F RID: 3487
+	// Token: 0x04000DA5 RID: 3493
 	public List<string> m_randomTextsImportant = new List<string>();
 
-	// Token: 0x04000DA0 RID: 3488
+	// Token: 0x04000DA6 RID: 3494
 	public List<string> m_randomTexts = new List<string>();
 
-	// Token: 0x04000DA1 RID: 3489
+	// Token: 0x04000DA7 RID: 3495
 	public EffectList m_idleEffect = new EffectList();
 
-	// Token: 0x04000DA2 RID: 3490
+	// Token: 0x04000DA8 RID: 3496
 	public EffectList m_despawnEffect = new EffectList();
 
-	// Token: 0x04000DA3 RID: 3491
+	// Token: 0x04000DA9 RID: 3497
 	private Raven.RavenText m_currentText;
 
-	// Token: 0x04000DA4 RID: 3492
+	// Token: 0x04000DAA RID: 3498
 	private GameObject m_groundObject;
 
-	// Token: 0x04000DA5 RID: 3493
+	// Token: 0x04000DAB RID: 3499
 	private Animator m_animator;
 
-	// Token: 0x04000DA6 RID: 3494
+	// Token: 0x04000DAC RID: 3500
 	private Collider m_collider;
 
-	// Token: 0x04000DA7 RID: 3495
+	// Token: 0x04000DAD RID: 3501
 	private bool m_hasTalked;
 
-	// Token: 0x04000DA8 RID: 3496
+	// Token: 0x04000DAE RID: 3502
 	private float m_randomTextTimer = 9999f;
 
-	// Token: 0x04000DA9 RID: 3497
+	// Token: 0x04000DAF RID: 3503
 	private float m_timeSinceTeleport = 9999f;
 
-	// Token: 0x04000DAA RID: 3498
+	// Token: 0x04000DB0 RID: 3504
 	private static List<Raven.RavenText> m_tempTexts = new List<Raven.RavenText>();
 
-	// Token: 0x04000DAB RID: 3499
+	// Token: 0x04000DB1 RID: 3505
 	private static List<Raven.RavenText> m_staticTexts = new List<Raven.RavenText>();
 
-	// Token: 0x04000DAC RID: 3500
+	// Token: 0x04000DB2 RID: 3506
 	private static Raven m_instance = null;
 
 	// Token: 0x020001A8 RID: 424
 	[Serializable]
 	public class RavenText
 	{
-		// Token: 0x040012F8 RID: 4856
+		// Token: 0x040012FF RID: 4863
 		public bool m_alwaysSpawn = true;
 
-		// Token: 0x040012F9 RID: 4857
+		// Token: 0x04001300 RID: 4864
 		public bool m_munin;
 
-		// Token: 0x040012FA RID: 4858
+		// Token: 0x04001301 RID: 4865
 		public int m_priority;
 
-		// Token: 0x040012FB RID: 4859
+		// Token: 0x04001302 RID: 4866
 		public string m_key = "";
 
-		// Token: 0x040012FC RID: 4860
+		// Token: 0x04001303 RID: 4867
 		public string m_topic = "";
 
-		// Token: 0x040012FD RID: 4861
+		// Token: 0x04001304 RID: 4868
 		public string m_label = "";
 
-		// Token: 0x040012FE RID: 4862
+		// Token: 0x04001305 RID: 4869
 		[TextArea]
 		public string m_text = "";
 
-		// Token: 0x040012FF RID: 4863
+		// Token: 0x04001306 RID: 4870
 		[NonSerialized]
 		public bool m_static;
 
-		// Token: 0x04001300 RID: 4864
+		// Token: 0x04001307 RID: 4871
 		[NonSerialized]
 		public GuidePoint m_guidePoint;
 	}

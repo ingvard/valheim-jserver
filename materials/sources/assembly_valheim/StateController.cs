@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x02000048 RID: 72
 public class StateController : StateMachineBehaviour
 {
-	// Token: 0x06000492 RID: 1170 RVA: 0x000248F4 File Offset: 0x00022AF4
+	// Token: 0x06000493 RID: 1171 RVA: 0x000249A8 File Offset: 0x00022BA8
 	public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		if (this.m_enterEffect.HasEffects())
@@ -27,7 +27,7 @@ public class StateController : StateMachineBehaviour
 		}
 	}
 
-	// Token: 0x06000493 RID: 1171 RVA: 0x0002499C File Offset: 0x00022B9C
+	// Token: 0x06000494 RID: 1172 RVA: 0x00024A50 File Offset: 0x00022C50
 	private Vector3 GetEffectPos(Animator animator)
 	{
 		if (this.m_effectJoint.Length == 0)
@@ -41,24 +41,24 @@ public class StateController : StateMachineBehaviour
 		return this.m_effectJoinT.position;
 	}
 
-	// Token: 0x040004A5 RID: 1189
+	// Token: 0x040004A9 RID: 1193
 	public string m_effectJoint = "";
 
-	// Token: 0x040004A6 RID: 1190
+	// Token: 0x040004AA RID: 1194
 	public EffectList m_enterEffect = new EffectList();
 
-	// Token: 0x040004A7 RID: 1191
+	// Token: 0x040004AB RID: 1195
 	public bool m_enterDisableChildren;
 
-	// Token: 0x040004A8 RID: 1192
+	// Token: 0x040004AC RID: 1196
 	public bool m_enterEnableChildren;
 
-	// Token: 0x040004A9 RID: 1193
+	// Token: 0x040004AD RID: 1197
 	public GameObject[] m_enterDisable = new GameObject[0];
 
-	// Token: 0x040004AA RID: 1194
+	// Token: 0x040004AE RID: 1198
 	public GameObject[] m_enterEnable = new GameObject[0];
 
-	// Token: 0x040004AB RID: 1195
+	// Token: 0x040004AF RID: 1199
 	private Transform m_effectJoinT;
 }

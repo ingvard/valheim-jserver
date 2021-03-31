@@ -5,7 +5,7 @@ using UnityEngine;
 public class StealthSystem : MonoBehaviour
 {
 	// Token: 0x1700002E RID: 46
-	// (get) Token: 0x06000BE9 RID: 3049 RVA: 0x00054E3A File Offset: 0x0005303A
+	// (get) Token: 0x06000BEA RID: 3050 RVA: 0x00054FC2 File Offset: 0x000531C2
 	public static StealthSystem instance
 	{
 		get
@@ -14,26 +14,26 @@ public class StealthSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000BEA RID: 3050 RVA: 0x00054E41 File Offset: 0x00053041
+	// Token: 0x06000BEB RID: 3051 RVA: 0x00054FC9 File Offset: 0x000531C9
 	private void Awake()
 	{
 		StealthSystem.m_instance = this;
 	}
 
-	// Token: 0x06000BEB RID: 3051 RVA: 0x00054E49 File Offset: 0x00053049
+	// Token: 0x06000BEC RID: 3052 RVA: 0x00054FD1 File Offset: 0x000531D1
 	private void OnDestroy()
 	{
 		StealthSystem.m_instance = null;
 	}
 
-	// Token: 0x06000BEC RID: 3052 RVA: 0x00054E54 File Offset: 0x00053054
+	// Token: 0x06000BED RID: 3053 RVA: 0x00054FDC File Offset: 0x000531DC
 	public float GetLightFactor(Vector3 point)
 	{
 		float lightLevel = this.GetLightLevel(point);
 		return Utils.LerpStep(this.m_minLightLevel, this.m_maxLightLevel, lightLevel);
 	}
 
-	// Token: 0x06000BED RID: 3053 RVA: 0x00054E7C File Offset: 0x0005307C
+	// Token: 0x06000BEE RID: 3054 RVA: 0x00055004 File Offset: 0x00053204
 	public float GetLightLevel(Vector3 point)
 	{
 		if (Time.time - this.m_lastLightListUpdate > 1f)
@@ -80,24 +80,24 @@ public class StealthSystem : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x04000B0B RID: 2827
+	// Token: 0x04000B11 RID: 2833
 	private static StealthSystem m_instance;
 
-	// Token: 0x04000B0C RID: 2828
+	// Token: 0x04000B12 RID: 2834
 	public LayerMask m_shadowTestMask;
 
-	// Token: 0x04000B0D RID: 2829
+	// Token: 0x04000B13 RID: 2835
 	public float m_minLightLevel = 0.2f;
 
-	// Token: 0x04000B0E RID: 2830
+	// Token: 0x04000B14 RID: 2836
 	public float m_maxLightLevel = 1.6f;
 
-	// Token: 0x04000B0F RID: 2831
+	// Token: 0x04000B15 RID: 2837
 	private Light[] m_allLights;
 
-	// Token: 0x04000B10 RID: 2832
+	// Token: 0x04000B16 RID: 2838
 	private float m_lastLightListUpdate;
 
-	// Token: 0x04000B11 RID: 2833
+	// Token: 0x04000B17 RID: 2839
 	private const float m_lightUpdateInterval = 1f;
 }

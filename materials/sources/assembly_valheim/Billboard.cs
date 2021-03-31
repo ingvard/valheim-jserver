@@ -4,13 +4,13 @@ using UnityEngine;
 // Token: 0x020000BB RID: 187
 public class Billboard : MonoBehaviour
 {
-	// Token: 0x06000C7D RID: 3197 RVA: 0x000594F9 File Offset: 0x000576F9
+	// Token: 0x06000C7E RID: 3198 RVA: 0x00059681 File Offset: 0x00057881
 	private void Awake()
 	{
 		this.m_normal = base.transform.up;
 	}
 
-	// Token: 0x06000C7E RID: 3198 RVA: 0x0005950C File Offset: 0x0005770C
+	// Token: 0x06000C7F RID: 3199 RVA: 0x00059694 File Offset: 0x00057894
 	private void LateUpdate()
 	{
 		Camera mainCamera = Utils.GetMainCamera();
@@ -32,12 +32,12 @@ public class Billboard : MonoBehaviour
 		base.transform.LookAt(vector);
 	}
 
-	// Token: 0x04000B62 RID: 2914
+	// Token: 0x04000B68 RID: 2920
 	public bool m_vertical = true;
 
-	// Token: 0x04000B63 RID: 2915
+	// Token: 0x04000B69 RID: 2921
 	public bool m_invert;
 
-	// Token: 0x04000B64 RID: 2916
+	// Token: 0x04000B6A RID: 2922
 	private Vector3 m_normal;
 }

@@ -4,13 +4,13 @@ using UnityEngine;
 // Token: 0x02000042 RID: 66
 public class MistEmitter : MonoBehaviour
 {
-	// Token: 0x06000475 RID: 1141 RVA: 0x000240D6 File Offset: 0x000222D6
+	// Token: 0x06000476 RID: 1142 RVA: 0x0002418A File Offset: 0x0002238A
 	public void SetEmit(bool emit)
 	{
 		this.m_emit = emit;
 	}
 
-	// Token: 0x06000476 RID: 1142 RVA: 0x000240DF File Offset: 0x000222DF
+	// Token: 0x06000477 RID: 1143 RVA: 0x00024193 File Offset: 0x00022393
 	private void Update()
 	{
 		if (!this.m_emit)
@@ -25,7 +25,7 @@ public class MistEmitter : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000477 RID: 1143 RVA: 0x0002411C File Offset: 0x0002231C
+	// Token: 0x06000478 RID: 1144 RVA: 0x000241D0 File Offset: 0x000223D0
 	private void PlaceOne()
 	{
 		Vector3 vector;
@@ -55,7 +55,7 @@ public class MistEmitter : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000478 RID: 1144 RVA: 0x000241F4 File Offset: 0x000223F4
+	// Token: 0x06000479 RID: 1145 RVA: 0x000242A8 File Offset: 0x000224A8
 	private bool GetRandomPoint(Vector3 center, float radius, out Vector3 p)
 	{
 		float f = UnityEngine.Random.value * 3.1415927f * 2f;
@@ -74,7 +74,7 @@ public class MistEmitter : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000479 RID: 1145 RVA: 0x00024274 File Offset: 0x00022474
+	// Token: 0x0600047A RID: 1146 RVA: 0x00024328 File Offset: 0x00022528
 	private Vector3 GetPointOnEdge(Vector3 center, float angle, float radius)
 	{
 		Vector3 vector = center + new Vector3(Mathf.Sin(angle) * radius, 0f, Mathf.Cos(angle) * radius);
@@ -86,27 +86,27 @@ public class MistEmitter : MonoBehaviour
 		return vector;
 	}
 
-	// Token: 0x04000483 RID: 1155
+	// Token: 0x04000487 RID: 1159
 	public float m_interval = 1f;
 
-	// Token: 0x04000484 RID: 1156
+	// Token: 0x04000488 RID: 1160
 	public float m_totalRadius = 30f;
 
-	// Token: 0x04000485 RID: 1157
+	// Token: 0x04000489 RID: 1161
 	public float m_testRadius = 5f;
 
-	// Token: 0x04000486 RID: 1158
+	// Token: 0x0400048A RID: 1162
 	public int m_rays = 10;
 
-	// Token: 0x04000487 RID: 1159
+	// Token: 0x0400048B RID: 1163
 	public float m_placeOffset = 1f;
 
-	// Token: 0x04000488 RID: 1160
+	// Token: 0x0400048C RID: 1164
 	public ParticleSystem m_psystem;
 
-	// Token: 0x04000489 RID: 1161
+	// Token: 0x0400048D RID: 1165
 	private float m_placeTimer;
 
-	// Token: 0x0400048A RID: 1162
+	// Token: 0x0400048E RID: 1166
 	private bool m_emit = true;
 }

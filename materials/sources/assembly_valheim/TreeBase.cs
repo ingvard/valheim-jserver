@@ -6,7 +6,7 @@ using UnityEngine;
 // Token: 0x0200010A RID: 266
 public class TreeBase : MonoBehaviour, IDestructible
 {
-	// Token: 0x06000FBD RID: 4029 RVA: 0x0006EC94 File Offset: 0x0006CE94
+	// Token: 0x06000FBE RID: 4030 RVA: 0x0006EE1C File Offset: 0x0006D01C
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -19,13 +19,13 @@ public class TreeBase : MonoBehaviour, IDestructible
 		}
 	}
 
-	// Token: 0x06000FBE RID: 4030 RVA: 0x0006ED3B File Offset: 0x0006CF3B
+	// Token: 0x06000FBF RID: 4031 RVA: 0x0006EEC3 File Offset: 0x0006D0C3
 	public DestructibleType GetDestructibleType()
 	{
 		return DestructibleType.Tree;
 	}
 
-	// Token: 0x06000FBF RID: 4031 RVA: 0x0006ED3E File Offset: 0x0006CF3E
+	// Token: 0x06000FC0 RID: 4032 RVA: 0x0006EEC6 File Offset: 0x0006D0C6
 	public void Damage(HitData hit)
 	{
 		this.m_nview.InvokeRPC("Damage", new object[]
@@ -34,19 +34,19 @@ public class TreeBase : MonoBehaviour, IDestructible
 		});
 	}
 
-	// Token: 0x06000FC0 RID: 4032 RVA: 0x0006ED5A File Offset: 0x0006CF5A
+	// Token: 0x06000FC1 RID: 4033 RVA: 0x0006EEE2 File Offset: 0x0006D0E2
 	public void Grow()
 	{
 		this.m_nview.InvokeRPC(ZNetView.Everybody, "Grow", Array.Empty<object>());
 	}
 
-	// Token: 0x06000FC1 RID: 4033 RVA: 0x0006ED76 File Offset: 0x0006CF76
+	// Token: 0x06000FC2 RID: 4034 RVA: 0x0006EEFE File Offset: 0x0006D0FE
 	private void RPC_Grow(long uid)
 	{
 		base.StartCoroutine("GrowAnimation");
 	}
 
-	// Token: 0x06000FC2 RID: 4034 RVA: 0x0006ED84 File Offset: 0x0006CF84
+	// Token: 0x06000FC3 RID: 4035 RVA: 0x0006EF0C File Offset: 0x0006D10C
 	private IEnumerator GrowAnimation()
 	{
 		GameObject animatedTrunk = UnityEngine.Object.Instantiate<GameObject>(this.m_trunk, this.m_trunk.transform.position, this.m_trunk.transform.rotation, base.transform);
@@ -72,7 +72,7 @@ public class TreeBase : MonoBehaviour, IDestructible
 		yield break;
 	}
 
-	// Token: 0x06000FC3 RID: 4035 RVA: 0x0006ED94 File Offset: 0x0006CF94
+	// Token: 0x06000FC4 RID: 4036 RVA: 0x0006EF1C File Offset: 0x0006D11C
 	private void RPC_Damage(long sender, HitData hit)
 	{
 		if (!this.m_nview.IsOwner())
@@ -124,20 +124,20 @@ public class TreeBase : MonoBehaviour, IDestructible
 		}
 	}
 
-	// Token: 0x06000FC4 RID: 4036 RVA: 0x0006EFAA File Offset: 0x0006D1AA
+	// Token: 0x06000FC5 RID: 4037 RVA: 0x0006F132 File Offset: 0x0006D332
 	private void Shake()
 	{
 		this.m_nview.InvokeRPC(ZNetView.Everybody, "Shake", Array.Empty<object>());
 	}
 
-	// Token: 0x06000FC5 RID: 4037 RVA: 0x0006EFC6 File Offset: 0x0006D1C6
+	// Token: 0x06000FC6 RID: 4038 RVA: 0x0006F14E File Offset: 0x0006D34E
 	private void RPC_Shake(long uid)
 	{
 		base.StopCoroutine("ShakeAnimation");
 		base.StartCoroutine("ShakeAnimation");
 	}
 
-	// Token: 0x06000FC6 RID: 4038 RVA: 0x0006EFDF File Offset: 0x0006D1DF
+	// Token: 0x06000FC7 RID: 4039 RVA: 0x0006F167 File Offset: 0x0006D367
 	private IEnumerator ShakeAnimation()
 	{
 		this.m_trunk.gameObject.isStatic = false;
@@ -156,7 +156,7 @@ public class TreeBase : MonoBehaviour, IDestructible
 		yield break;
 	}
 
-	// Token: 0x06000FC7 RID: 4039 RVA: 0x0006EFF0 File Offset: 0x0006D1F0
+	// Token: 0x06000FC8 RID: 4040 RVA: 0x0006F178 File Offset: 0x0006D378
 	private void SpawnLog(Vector3 hitDir)
 	{
 		GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.m_logPrefab, this.m_logSpawnPoint.position, this.m_logSpawnPoint.rotation);
@@ -171,46 +171,46 @@ public class TreeBase : MonoBehaviour, IDestructible
 		}
 	}
 
-	// Token: 0x04000E89 RID: 3721
+	// Token: 0x04000E8F RID: 3727
 	private ZNetView m_nview;
 
-	// Token: 0x04000E8A RID: 3722
+	// Token: 0x04000E90 RID: 3728
 	public float m_health = 1f;
 
-	// Token: 0x04000E8B RID: 3723
+	// Token: 0x04000E91 RID: 3729
 	public HitData.DamageModifiers m_damageModifiers;
 
-	// Token: 0x04000E8C RID: 3724
+	// Token: 0x04000E92 RID: 3730
 	public int m_minToolTier;
 
-	// Token: 0x04000E8D RID: 3725
+	// Token: 0x04000E93 RID: 3731
 	public EffectList m_destroyedEffect = new EffectList();
 
-	// Token: 0x04000E8E RID: 3726
+	// Token: 0x04000E94 RID: 3732
 	public EffectList m_hitEffect = new EffectList();
 
-	// Token: 0x04000E8F RID: 3727
+	// Token: 0x04000E95 RID: 3733
 	public EffectList m_respawnEffect = new EffectList();
 
-	// Token: 0x04000E90 RID: 3728
+	// Token: 0x04000E96 RID: 3734
 	public GameObject m_trunk;
 
-	// Token: 0x04000E91 RID: 3729
+	// Token: 0x04000E97 RID: 3735
 	public GameObject m_stubPrefab;
 
-	// Token: 0x04000E92 RID: 3730
+	// Token: 0x04000E98 RID: 3736
 	public GameObject m_logPrefab;
 
-	// Token: 0x04000E93 RID: 3731
+	// Token: 0x04000E99 RID: 3737
 	public Transform m_logSpawnPoint;
 
-	// Token: 0x04000E94 RID: 3732
+	// Token: 0x04000E9A RID: 3738
 	[Header("Drops")]
 	public DropTable m_dropWhenDestroyed = new DropTable();
 
-	// Token: 0x04000E95 RID: 3733
+	// Token: 0x04000E9B RID: 3739
 	public float m_spawnYOffset = 0.5f;
 
-	// Token: 0x04000E96 RID: 3734
+	// Token: 0x04000E9C RID: 3740
 	public float m_spawnYStep = 0.3f;
 }

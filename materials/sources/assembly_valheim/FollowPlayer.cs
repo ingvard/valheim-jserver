@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x02000039 RID: 57
 public class FollowPlayer : MonoBehaviour
 {
-	// Token: 0x06000427 RID: 1063 RVA: 0x000219EC File Offset: 0x0001FBEC
+	// Token: 0x06000428 RID: 1064 RVA: 0x00021AA0 File Offset: 0x0001FCA0
 	private void LateUpdate()
 	{
 		Camera mainCamera = Utils.GetMainCamera();
@@ -32,24 +32,24 @@ public class FollowPlayer : MonoBehaviour
 		base.transform.position = vector;
 	}
 
-	// Token: 0x04000424 RID: 1060
+	// Token: 0x04000428 RID: 1064
 	public FollowPlayer.Type m_follow = FollowPlayer.Type.Camera;
 
-	// Token: 0x04000425 RID: 1061
+	// Token: 0x04000429 RID: 1065
 	public bool m_lockYPos;
 
-	// Token: 0x04000426 RID: 1062
+	// Token: 0x0400042A RID: 1066
 	public bool m_followCameraInFreefly;
 
-	// Token: 0x04000427 RID: 1063
+	// Token: 0x0400042B RID: 1067
 	public float m_maxYPos = 1000000f;
 
 	// Token: 0x02000139 RID: 313
 	public enum Type
 	{
-		// Token: 0x04001056 RID: 4182
+		// Token: 0x0400105D RID: 4189
 		Player,
-		// Token: 0x04001057 RID: 4183
+		// Token: 0x0400105E RID: 4190
 		Camera
 	}
 }

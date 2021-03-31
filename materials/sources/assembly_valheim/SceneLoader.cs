@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 // Token: 0x020000AB RID: 171
 public class SceneLoader : MonoBehaviour
 {
-	// Token: 0x06000BB0 RID: 2992 RVA: 0x00053808 File Offset: 0x00051A08
+	// Token: 0x06000BB1 RID: 2993 RVA: 0x00053990 File Offset: 0x00051B90
 	private void Start()
 	{
 		base.StartCoroutine(this.LoadYourAsyncScene());
 	}
 
-	// Token: 0x06000BB1 RID: 2993 RVA: 0x00053817 File Offset: 0x00051A17
+	// Token: 0x06000BB2 RID: 2994 RVA: 0x0005399F File Offset: 0x00051B9F
 	private IEnumerator LoadYourAsyncScene()
 	{
 		ZLog.Log("Starting to load scene:" + this.m_scene);
@@ -24,6 +24,6 @@ public class SceneLoader : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x04000AE4 RID: 2788
+	// Token: 0x04000AEA RID: 2794
 	public string m_scene = "";
 }

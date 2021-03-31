@@ -5,7 +5,7 @@ using UnityEngine.UI;
 // Token: 0x02000062 RID: 98
 public class TextViewer : MonoBehaviour
 {
-	// Token: 0x06000647 RID: 1607 RVA: 0x00035410 File Offset: 0x00033610
+	// Token: 0x06000648 RID: 1608 RVA: 0x000354C4 File Offset: 0x000336C4
 	private void Awake()
 	{
 		TextViewer.m_instance = this;
@@ -17,14 +17,14 @@ public class TextViewer : MonoBehaviour
 		this.m_animatorRaven = this.m_ravenRoot.GetComponent<Animator>();
 	}
 
-	// Token: 0x06000648 RID: 1608 RVA: 0x0003547A File Offset: 0x0003367A
+	// Token: 0x06000649 RID: 1609 RVA: 0x0003552E File Offset: 0x0003372E
 	private void OnDestroy()
 	{
 		TextViewer.m_instance = null;
 	}
 
 	// Token: 0x17000012 RID: 18
-	// (get) Token: 0x06000649 RID: 1609 RVA: 0x00035482 File Offset: 0x00033682
+	// (get) Token: 0x0600064A RID: 1610 RVA: 0x00035536 File Offset: 0x00033736
 	public static TextViewer instance
 	{
 		get
@@ -33,7 +33,7 @@ public class TextViewer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600064A RID: 1610 RVA: 0x0003548C File Offset: 0x0003368C
+	// Token: 0x0600064B RID: 1611 RVA: 0x00035540 File Offset: 0x00033740
 	private void LateUpdate()
 	{
 		if (!this.IsVisible())
@@ -54,7 +54,7 @@ public class TextViewer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600064B RID: 1611 RVA: 0x00035524 File Offset: 0x00033724
+	// Token: 0x0600064C RID: 1612 RVA: 0x000355D8 File Offset: 0x000337D8
 	public void ShowText(TextViewer.Style style, string topic, string text, bool autoHide)
 	{
 		if (Player.m_localPlayer == null)
@@ -89,7 +89,7 @@ public class TextViewer : MonoBehaviour
 		ZLog.Log("Show text " + topic + ":" + text);
 	}
 
-	// Token: 0x0600064C RID: 1612 RVA: 0x00035645 File Offset: 0x00033845
+	// Token: 0x0600064D RID: 1613 RVA: 0x000356F9 File Offset: 0x000338F9
 	public void Hide()
 	{
 		this.m_autoHide = false;
@@ -97,89 +97,89 @@ public class TextViewer : MonoBehaviour
 		this.m_animatorRaven.SetBool(TextViewer.m_visibleID, false);
 	}
 
-	// Token: 0x0600064D RID: 1613 RVA: 0x00035670 File Offset: 0x00033870
+	// Token: 0x0600064E RID: 1614 RVA: 0x00035724 File Offset: 0x00033924
 	public bool IsVisible()
 	{
 		return TextViewer.m_instance.m_animatorIntro.GetCurrentAnimatorStateInfo(0).tagHash == TextViewer.m_animatorTagVisible || this.m_animator.GetBool(TextViewer.m_visibleID) || this.m_animatorIntro.GetBool(TextViewer.m_visibleID) || this.m_animatorRaven.GetBool(TextViewer.m_visibleID);
 	}
 
-	// Token: 0x0600064E RID: 1614 RVA: 0x000356D4 File Offset: 0x000338D4
+	// Token: 0x0600064F RID: 1615 RVA: 0x00035788 File Offset: 0x00033988
 	public static bool IsShowingIntro()
 	{
 		return TextViewer.m_instance != null && TextViewer.m_instance.m_animatorIntro.GetCurrentAnimatorStateInfo(0).tagHash == TextViewer.m_animatorTagVisible;
 	}
 
-	// Token: 0x040006FE RID: 1790
+	// Token: 0x04000702 RID: 1794
 	private static TextViewer m_instance;
 
-	// Token: 0x040006FF RID: 1791
+	// Token: 0x04000703 RID: 1795
 	private Animator m_animator;
 
-	// Token: 0x04000700 RID: 1792
+	// Token: 0x04000704 RID: 1796
 	private Animator m_animatorIntro;
 
-	// Token: 0x04000701 RID: 1793
+	// Token: 0x04000705 RID: 1797
 	private Animator m_animatorRaven;
 
-	// Token: 0x04000702 RID: 1794
+	// Token: 0x04000706 RID: 1798
 	[Header("Rune")]
 	public GameObject m_root;
 
-	// Token: 0x04000703 RID: 1795
+	// Token: 0x04000707 RID: 1799
 	public Text m_topic;
 
-	// Token: 0x04000704 RID: 1796
+	// Token: 0x04000708 RID: 1800
 	public Text m_text;
 
-	// Token: 0x04000705 RID: 1797
+	// Token: 0x04000709 RID: 1801
 	public Text m_runeText;
 
-	// Token: 0x04000706 RID: 1798
+	// Token: 0x0400070A RID: 1802
 	public GameObject m_closeText;
 
-	// Token: 0x04000707 RID: 1799
+	// Token: 0x0400070B RID: 1803
 	[Header("Intro")]
 	public GameObject m_introRoot;
 
-	// Token: 0x04000708 RID: 1800
+	// Token: 0x0400070C RID: 1804
 	public Text m_introTopic;
 
-	// Token: 0x04000709 RID: 1801
+	// Token: 0x0400070D RID: 1805
 	public Text m_introText;
 
-	// Token: 0x0400070A RID: 1802
+	// Token: 0x0400070E RID: 1806
 	[Header("Raven")]
 	public GameObject m_ravenRoot;
 
-	// Token: 0x0400070B RID: 1803
+	// Token: 0x0400070F RID: 1807
 	public Text m_ravenTopic;
 
-	// Token: 0x0400070C RID: 1804
+	// Token: 0x04000710 RID: 1808
 	public Text m_ravenText;
 
-	// Token: 0x0400070D RID: 1805
+	// Token: 0x04000711 RID: 1809
 	private static int m_visibleID = Animator.StringToHash("visible");
 
-	// Token: 0x0400070E RID: 1806
+	// Token: 0x04000712 RID: 1810
 	private static int m_animatorTagVisible = Animator.StringToHash("visible");
 
-	// Token: 0x0400070F RID: 1807
+	// Token: 0x04000713 RID: 1811
 	private float m_showTime;
 
-	// Token: 0x04000710 RID: 1808
+	// Token: 0x04000714 RID: 1812
 	private bool m_autoHide;
 
-	// Token: 0x04000711 RID: 1809
+	// Token: 0x04000715 RID: 1813
 	private Vector3 m_openPlayerPos = Vector3.zero;
 
 	// Token: 0x0200015C RID: 348
 	public enum Style
 	{
-		// Token: 0x04001131 RID: 4401
+		// Token: 0x04001138 RID: 4408
 		Rune,
-		// Token: 0x04001132 RID: 4402
+		// Token: 0x04001139 RID: 4409
 		Intro,
-		// Token: 0x04001133 RID: 4403
+		// Token: 0x0400113A RID: 4410
 		Raven
 	}
 }

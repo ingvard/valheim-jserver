@@ -5,7 +5,7 @@ using UnityEngine;
 public class ReflectionUpdate : MonoBehaviour
 {
 	// Token: 0x1700002C RID: 44
-	// (get) Token: 0x06000BAA RID: 2986 RVA: 0x000535BC File Offset: 0x000517BC
+	// (get) Token: 0x06000BAB RID: 2987 RVA: 0x00053744 File Offset: 0x00051944
 	public static ReflectionUpdate instance
 	{
 		get
@@ -14,20 +14,20 @@ public class ReflectionUpdate : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000BAB RID: 2987 RVA: 0x000535C3 File Offset: 0x000517C3
+	// Token: 0x06000BAC RID: 2988 RVA: 0x0005374B File Offset: 0x0005194B
 	private void Start()
 	{
 		ReflectionUpdate.m_instance = this;
 		this.m_current = this.m_probe1;
 	}
 
-	// Token: 0x06000BAC RID: 2988 RVA: 0x000535D7 File Offset: 0x000517D7
+	// Token: 0x06000BAD RID: 2989 RVA: 0x0005375F File Offset: 0x0005195F
 	private void OnDestroy()
 	{
 		ReflectionUpdate.m_instance = null;
 	}
 
-	// Token: 0x06000BAD RID: 2989 RVA: 0x000535E0 File Offset: 0x000517E0
+	// Token: 0x06000BAE RID: 2990 RVA: 0x00053768 File Offset: 0x00051968
 	public void UpdateReflection()
 	{
 		Vector3 vector = ZNet.instance.GetReferencePosition();
@@ -37,7 +37,7 @@ public class ReflectionUpdate : MonoBehaviour
 		this.m_renderID = this.m_current.RenderProbe();
 	}
 
-	// Token: 0x06000BAE RID: 2990 RVA: 0x00053658 File Offset: 0x00051858
+	// Token: 0x06000BAF RID: 2991 RVA: 0x000537E0 File Offset: 0x000519E0
 	private void Update()
 	{
 		float deltaTime = Time.deltaTime;
@@ -74,33 +74,33 @@ public class ReflectionUpdate : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000ADA RID: 2778
+	// Token: 0x04000AE0 RID: 2784
 	private static ReflectionUpdate m_instance;
 
-	// Token: 0x04000ADB RID: 2779
+	// Token: 0x04000AE1 RID: 2785
 	public ReflectionProbe m_probe1;
 
-	// Token: 0x04000ADC RID: 2780
+	// Token: 0x04000AE2 RID: 2786
 	public ReflectionProbe m_probe2;
 
-	// Token: 0x04000ADD RID: 2781
+	// Token: 0x04000AE3 RID: 2787
 	public float m_interval = 3f;
 
-	// Token: 0x04000ADE RID: 2782
+	// Token: 0x04000AE4 RID: 2788
 	public float m_reflectionHeight = 5f;
 
-	// Token: 0x04000ADF RID: 2783
+	// Token: 0x04000AE5 RID: 2789
 	public float m_transitionDuration = 3f;
 
-	// Token: 0x04000AE0 RID: 2784
+	// Token: 0x04000AE6 RID: 2790
 	public float m_power = 1f;
 
-	// Token: 0x04000AE1 RID: 2785
+	// Token: 0x04000AE7 RID: 2791
 	private ReflectionProbe m_current;
 
-	// Token: 0x04000AE2 RID: 2786
+	// Token: 0x04000AE8 RID: 2792
 	private int m_renderID;
 
-	// Token: 0x04000AE3 RID: 2787
+	// Token: 0x04000AE9 RID: 2793
 	private float m_updateTimer;
 }

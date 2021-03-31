@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000032 RID: 50
 public class CamShaker : MonoBehaviour
 {
-	// Token: 0x06000400 RID: 1024 RVA: 0x00020D31 File Offset: 0x0001EF31
+	// Token: 0x06000401 RID: 1025 RVA: 0x00020DE5 File Offset: 0x0001EFE5
 	private void Start()
 	{
 		if (this.m_continous)
@@ -21,7 +21,7 @@ public class CamShaker : MonoBehaviour
 		base.Invoke("Trigger", this.m_delay);
 	}
 
-	// Token: 0x06000401 RID: 1025 RVA: 0x00020D6D File Offset: 0x0001EF6D
+	// Token: 0x06000402 RID: 1026 RVA: 0x00020E21 File Offset: 0x0001F021
 	private IEnumerator TriggerContinous()
 	{
 		float t = 0f;
@@ -39,7 +39,7 @@ public class CamShaker : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000402 RID: 1026 RVA: 0x00020D7C File Offset: 0x0001EF7C
+	// Token: 0x06000403 RID: 1027 RVA: 0x00020E30 File Offset: 0x0001F030
 	private void Trigger()
 	{
 		if (GameCamera.instance)
@@ -56,21 +56,21 @@ public class CamShaker : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040003F3 RID: 1011
+	// Token: 0x040003F7 RID: 1015
 	public float m_strength = 1f;
 
-	// Token: 0x040003F4 RID: 1012
+	// Token: 0x040003F8 RID: 1016
 	public float m_range = 50f;
 
-	// Token: 0x040003F5 RID: 1013
+	// Token: 0x040003F9 RID: 1017
 	public float m_delay;
 
-	// Token: 0x040003F6 RID: 1014
+	// Token: 0x040003FA RID: 1018
 	public bool m_continous;
 
-	// Token: 0x040003F7 RID: 1015
+	// Token: 0x040003FB RID: 1019
 	public float m_continousDuration;
 
-	// Token: 0x040003F8 RID: 1016
+	// Token: 0x040003FC RID: 1020
 	public bool m_localOnly;
 }

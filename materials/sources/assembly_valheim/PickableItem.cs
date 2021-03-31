@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x0200006E RID: 110
 public class PickableItem : MonoBehaviour, Hoverable, Interactable
 {
-	// Token: 0x060006F0 RID: 1776 RVA: 0x00039230 File Offset: 0x00037430
+	// Token: 0x060006F1 RID: 1777 RVA: 0x000392E4 File Offset: 0x000374E4
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -17,7 +17,7 @@ public class PickableItem : MonoBehaviour, Hoverable, Interactable
 		this.SetupItem(true);
 	}
 
-	// Token: 0x060006F1 RID: 1777 RVA: 0x00039280 File Offset: 0x00037480
+	// Token: 0x060006F2 RID: 1778 RVA: 0x00039334 File Offset: 0x00037534
 	private void SetupRandomPrefab()
 	{
 		if (this.m_itemPrefab == null && this.m_randomItemPrefabs.Length != 0)
@@ -57,7 +57,7 @@ public class PickableItem : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x060006F2 RID: 1778 RVA: 0x000393D4 File Offset: 0x000375D4
+	// Token: 0x060006F3 RID: 1779 RVA: 0x00039488 File Offset: 0x00037688
 	public string GetHoverText()
 	{
 		if (this.m_picked)
@@ -67,7 +67,7 @@ public class PickableItem : MonoBehaviour, Hoverable, Interactable
 		return Localization.instance.Localize(this.GetHoverName() + "\n[<color=yellow><b>$KEY_Use</b></color>] $inventory_pickup");
 	}
 
-	// Token: 0x060006F3 RID: 1779 RVA: 0x00039400 File Offset: 0x00037600
+	// Token: 0x060006F4 RID: 1780 RVA: 0x000394B4 File Offset: 0x000376B4
 	public string GetHoverName()
 	{
 		if (!this.m_itemPrefab)
@@ -82,7 +82,7 @@ public class PickableItem : MonoBehaviour, Hoverable, Interactable
 		return this.m_itemPrefab.m_itemData.m_shared.m_name;
 	}
 
-	// Token: 0x060006F4 RID: 1780 RVA: 0x00039466 File Offset: 0x00037666
+	// Token: 0x060006F5 RID: 1781 RVA: 0x0003951A File Offset: 0x0003771A
 	public bool Interact(Humanoid character, bool repeat)
 	{
 		if (!this.m_nview.IsValid())
@@ -93,13 +93,13 @@ public class PickableItem : MonoBehaviour, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x060006F5 RID: 1781 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x060006F6 RID: 1782 RVA: 0x000023E2 File Offset: 0x000005E2
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		return false;
 	}
 
-	// Token: 0x060006F6 RID: 1782 RVA: 0x00039490 File Offset: 0x00037690
+	// Token: 0x060006F7 RID: 1783 RVA: 0x00039544 File Offset: 0x00037744
 	private void RPC_Pick(long sender)
 	{
 		if (!this.m_nview.IsOwner())
@@ -116,7 +116,7 @@ public class PickableItem : MonoBehaviour, Hoverable, Interactable
 		this.m_nview.Destroy();
 	}
 
-	// Token: 0x060006F7 RID: 1783 RVA: 0x000394F0 File Offset: 0x000376F0
+	// Token: 0x060006F8 RID: 1784 RVA: 0x000395A4 File Offset: 0x000377A4
 	private void Drop()
 	{
 		Vector3 position = base.transform.position + Vector3.up * 0.2f;
@@ -125,13 +125,13 @@ public class PickableItem : MonoBehaviour, Hoverable, Interactable
 		gameObject.GetComponent<Rigidbody>().velocity = Vector3.up * 4f;
 	}
 
-	// Token: 0x060006F8 RID: 1784 RVA: 0x00039568 File Offset: 0x00037768
+	// Token: 0x060006F9 RID: 1785 RVA: 0x0003961C File Offset: 0x0003781C
 	private int GetStackSize()
 	{
 		return Mathf.Clamp((this.m_stack > 0) ? this.m_stack : this.m_itemPrefab.m_itemData.m_stack, 1, this.m_itemPrefab.m_itemData.m_shared.m_maxStackSize);
 	}
 
-	// Token: 0x060006F9 RID: 1785 RVA: 0x000395A8 File Offset: 0x000377A8
+	// Token: 0x060006FA RID: 1786 RVA: 0x0003965C File Offset: 0x0003785C
 	private GameObject GetAttachPrefab()
 	{
 		Transform transform = this.m_itemPrefab.transform.Find("attach");
@@ -142,7 +142,7 @@ public class PickableItem : MonoBehaviour, Hoverable, Interactable
 		return null;
 	}
 
-	// Token: 0x060006FA RID: 1786 RVA: 0x000395DC File Offset: 0x000377DC
+	// Token: 0x060006FB RID: 1787 RVA: 0x00039690 File Offset: 0x00037890
 	private void SetupItem(bool enabled)
 	{
 		if (!enabled)
@@ -173,7 +173,7 @@ public class PickableItem : MonoBehaviour, Hoverable, Interactable
 		this.m_instance.transform.localRotation = attachPrefab.transform.localRotation;
 	}
 
-	// Token: 0x060006FB RID: 1787 RVA: 0x000396B4 File Offset: 0x000378B4
+	// Token: 0x060006FC RID: 1788 RVA: 0x00039768 File Offset: 0x00037968
 	private bool DrawPrefabMesh(ItemDrop prefab)
 	{
 		if (prefab == null)
@@ -199,38 +199,38 @@ public class PickableItem : MonoBehaviour, Hoverable, Interactable
 		return result;
 	}
 
-	// Token: 0x04000779 RID: 1913
+	// Token: 0x0400077D RID: 1917
 	public ItemDrop m_itemPrefab;
 
-	// Token: 0x0400077A RID: 1914
+	// Token: 0x0400077E RID: 1918
 	public int m_stack;
 
-	// Token: 0x0400077B RID: 1915
+	// Token: 0x0400077F RID: 1919
 	public PickableItem.RandomItem[] m_randomItemPrefabs = new PickableItem.RandomItem[0];
 
-	// Token: 0x0400077C RID: 1916
+	// Token: 0x04000780 RID: 1920
 	public EffectList m_pickEffector = new EffectList();
 
-	// Token: 0x0400077D RID: 1917
+	// Token: 0x04000781 RID: 1921
 	private ZNetView m_nview;
 
-	// Token: 0x0400077E RID: 1918
+	// Token: 0x04000782 RID: 1922
 	private GameObject m_instance;
 
-	// Token: 0x0400077F RID: 1919
+	// Token: 0x04000783 RID: 1923
 	private bool m_picked;
 
 	// Token: 0x02000166 RID: 358
 	[Serializable]
 	public struct RandomItem
 	{
-		// Token: 0x04001156 RID: 4438
+		// Token: 0x0400115D RID: 4445
 		public ItemDrop m_itemPrefab;
 
-		// Token: 0x04001157 RID: 4439
+		// Token: 0x0400115E RID: 4446
 		public int m_stackMin;
 
-		// Token: 0x04001158 RID: 4440
+		// Token: 0x0400115F RID: 4447
 		public int m_stackMax;
 	}
 }

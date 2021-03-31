@@ -5,13 +5,13 @@ using UnityEngine;
 // Token: 0x02000031 RID: 49
 public class AnimationEffect : MonoBehaviour
 {
-	// Token: 0x060003F9 RID: 1017 RVA: 0x00020A96 File Offset: 0x0001EC96
+	// Token: 0x060003FA RID: 1018 RVA: 0x00020B4A File Offset: 0x0001ED4A
 	private void Start()
 	{
 		this.m_animator = base.GetComponent<Animator>();
 	}
 
-	// Token: 0x060003FA RID: 1018 RVA: 0x00020AA4 File Offset: 0x0001ECA4
+	// Token: 0x060003FB RID: 1019 RVA: 0x00020B58 File Offset: 0x0001ED58
 	public void Effect(AnimationEvent e)
 	{
 		string stringParameter = e.stringParameter;
@@ -28,7 +28,7 @@ public class AnimationEffect : MonoBehaviour
 		UnityEngine.Object.Instantiate<GameObject>(original, transform.position, transform.rotation);
 	}
 
-	// Token: 0x060003FB RID: 1019 RVA: 0x00020B14 File Offset: 0x0001ED14
+	// Token: 0x060003FC RID: 1020 RVA: 0x00020BC8 File Offset: 0x0001EDC8
 	public void Attach(AnimationEvent e)
 	{
 		string stringParameter = e.stringParameter;
@@ -52,7 +52,7 @@ public class AnimationEffect : MonoBehaviour
 		base.InvokeRepeating("UpdateAttachments", 0.1f, 0.1f);
 	}
 
-	// Token: 0x060003FC RID: 1020 RVA: 0x00020BD8 File Offset: 0x0001EDD8
+	// Token: 0x060003FD RID: 1021 RVA: 0x00020C8C File Offset: 0x0001EE8C
 	private void ClearAttachment(Transform parent)
 	{
 		if (this.m_attachments == null)
@@ -70,7 +70,7 @@ public class AnimationEffect : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060003FD RID: 1021 RVA: 0x00020C60 File Offset: 0x0001EE60
+	// Token: 0x060003FE RID: 1022 RVA: 0x00020D14 File Offset: 0x0001EF14
 	public void RemoveAttachments()
 	{
 		if (this.m_attachments == null)
@@ -84,7 +84,7 @@ public class AnimationEffect : MonoBehaviour
 		this.m_attachments.Clear();
 	}
 
-	// Token: 0x060003FE RID: 1022 RVA: 0x00020CC4 File Offset: 0x0001EEC4
+	// Token: 0x060003FF RID: 1023 RVA: 0x00020D78 File Offset: 0x0001EF78
 	private void UpdateAttachments()
 	{
 		if (this.m_attachments != null && this.m_attachments.Count > 0)
@@ -101,15 +101,15 @@ public class AnimationEffect : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040003EF RID: 1007
+	// Token: 0x040003F3 RID: 1011
 	public Transform m_effectRoot;
 
-	// Token: 0x040003F0 RID: 1008
+	// Token: 0x040003F4 RID: 1012
 	private Animator m_animator;
 
-	// Token: 0x040003F1 RID: 1009
+	// Token: 0x040003F5 RID: 1013
 	private List<GameObject> m_attachments;
 
-	// Token: 0x040003F2 RID: 1010
+	// Token: 0x040003F6 RID: 1014
 	private int m_attachStateHash;
 }

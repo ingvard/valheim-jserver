@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x020000C3 RID: 195
 public class Destructible : MonoBehaviour, IDestructible
 {
-	// Token: 0x06000CD7 RID: 3287 RVA: 0x0005BCA0 File Offset: 0x00059EA0
+	// Token: 0x06000CD8 RID: 3288 RVA: 0x0005BE28 File Offset: 0x0005A028
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -24,25 +24,25 @@ public class Destructible : MonoBehaviour, IDestructible
 		}
 	}
 
-	// Token: 0x06000CD8 RID: 3288 RVA: 0x0005BD42 File Offset: 0x00059F42
+	// Token: 0x06000CD9 RID: 3289 RVA: 0x0005BECA File Offset: 0x0005A0CA
 	private void Start()
 	{
 		this.m_firstFrame = false;
 	}
 
-	// Token: 0x06000CD9 RID: 3289 RVA: 0x000058A9 File Offset: 0x00003AA9
+	// Token: 0x06000CDA RID: 3290 RVA: 0x000058CD File Offset: 0x00003ACD
 	public GameObject GetParentObject()
 	{
 		return null;
 	}
 
-	// Token: 0x06000CDA RID: 3290 RVA: 0x0005BD4B File Offset: 0x00059F4B
+	// Token: 0x06000CDB RID: 3291 RVA: 0x0005BED3 File Offset: 0x0005A0D3
 	public DestructibleType GetDestructibleType()
 	{
 		return this.m_destructibleType;
 	}
 
-	// Token: 0x06000CDB RID: 3291 RVA: 0x0005BD53 File Offset: 0x00059F53
+	// Token: 0x06000CDC RID: 3292 RVA: 0x0005BEDB File Offset: 0x0005A0DB
 	public void Damage(HitData hit)
 	{
 		if (this.m_firstFrame)
@@ -59,7 +59,7 @@ public class Destructible : MonoBehaviour, IDestructible
 		});
 	}
 
-	// Token: 0x06000CDC RID: 3292 RVA: 0x0005BD88 File Offset: 0x00059F88
+	// Token: 0x06000CDD RID: 3293 RVA: 0x0005BF10 File Offset: 0x0005A110
 	private void RPC_Damage(long sender, HitData hit)
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -109,7 +109,7 @@ public class Destructible : MonoBehaviour, IDestructible
 		}
 	}
 
-	// Token: 0x06000CDD RID: 3293 RVA: 0x0005BEEB File Offset: 0x0005A0EB
+	// Token: 0x06000CDE RID: 3294 RVA: 0x0005C073 File Offset: 0x0005A273
 	private void DestroyNow()
 	{
 		if (this.m_nview.IsValid() && this.m_nview.IsOwner())
@@ -118,7 +118,7 @@ public class Destructible : MonoBehaviour, IDestructible
 		}
 	}
 
-	// Token: 0x06000CDE RID: 3294 RVA: 0x0005BF10 File Offset: 0x0005A110
+	// Token: 0x06000CDF RID: 3295 RVA: 0x0005C098 File Offset: 0x0005A298
 	public void Destroy()
 	{
 		this.CreateDestructionEffects();
@@ -144,7 +144,7 @@ public class Destructible : MonoBehaviour, IDestructible
 		this.m_destroyed = true;
 	}
 
-	// Token: 0x06000CDF RID: 3295 RVA: 0x0005BFE4 File Offset: 0x0005A1E4
+	// Token: 0x06000CE0 RID: 3296 RVA: 0x0005C16C File Offset: 0x0005A36C
 	private void CreateDestructionEffects()
 	{
 		this.m_destroyedEffect.Create(base.transform.position, base.transform.rotation, base.transform, 1f);
@@ -154,13 +154,13 @@ public class Destructible : MonoBehaviour, IDestructible
 		}
 	}
 
-	// Token: 0x06000CE0 RID: 3296 RVA: 0x0005C040 File Offset: 0x0005A240
+	// Token: 0x06000CE1 RID: 3297 RVA: 0x0005C1C8 File Offset: 0x0005A3C8
 	private void RPC_CreateFragments(long peer)
 	{
 		Destructible.CreateFragments(base.gameObject, true);
 	}
 
-	// Token: 0x06000CE1 RID: 3297 RVA: 0x0005C050 File Offset: 0x0005A250
+	// Token: 0x06000CE2 RID: 3298 RVA: 0x0005C1D8 File Offset: 0x0005A3D8
 	public static void CreateFragments(GameObject rootObject, bool visibleOnly = true)
 	{
 		MeshRenderer[] componentsInChildren = rootObject.GetComponentsInChildren<MeshRenderer>(true);
@@ -216,59 +216,59 @@ public class Destructible : MonoBehaviour, IDestructible
 		}
 	}
 
-	// Token: 0x04000BB3 RID: 2995
+	// Token: 0x04000BB9 RID: 3001
 	public Action m_onDestroyed;
 
-	// Token: 0x04000BB4 RID: 2996
+	// Token: 0x04000BBA RID: 3002
 	public Action m_onDamaged;
 
-	// Token: 0x04000BB5 RID: 2997
+	// Token: 0x04000BBB RID: 3003
 	[Header("Destruction")]
 	public DestructibleType m_destructibleType = DestructibleType.Default;
 
-	// Token: 0x04000BB6 RID: 2998
+	// Token: 0x04000BBC RID: 3004
 	public float m_health = 1f;
 
-	// Token: 0x04000BB7 RID: 2999
+	// Token: 0x04000BBD RID: 3005
 	public HitData.DamageModifiers m_damages;
 
-	// Token: 0x04000BB8 RID: 3000
+	// Token: 0x04000BBE RID: 3006
 	public float m_minDamageTreshold;
 
-	// Token: 0x04000BB9 RID: 3001
+	// Token: 0x04000BBF RID: 3007
 	public int m_minToolTier;
 
-	// Token: 0x04000BBA RID: 3002
+	// Token: 0x04000BC0 RID: 3008
 	public float m_hitNoise;
 
-	// Token: 0x04000BBB RID: 3003
+	// Token: 0x04000BC1 RID: 3009
 	public float m_destroyNoise;
 
-	// Token: 0x04000BBC RID: 3004
+	// Token: 0x04000BC2 RID: 3010
 	public float m_ttl;
 
-	// Token: 0x04000BBD RID: 3005
+	// Token: 0x04000BC3 RID: 3011
 	public GameObject m_spawnWhenDestroyed;
 
-	// Token: 0x04000BBE RID: 3006
+	// Token: 0x04000BC4 RID: 3012
 	[Header("Effects")]
 	public EffectList m_destroyedEffect = new EffectList();
 
-	// Token: 0x04000BBF RID: 3007
+	// Token: 0x04000BC5 RID: 3013
 	public EffectList m_hitEffect = new EffectList();
 
-	// Token: 0x04000BC0 RID: 3008
+	// Token: 0x04000BC6 RID: 3014
 	public bool m_autoCreateFragments;
 
-	// Token: 0x04000BC1 RID: 3009
+	// Token: 0x04000BC7 RID: 3015
 	private ZNetView m_nview;
 
-	// Token: 0x04000BC2 RID: 3010
+	// Token: 0x04000BC8 RID: 3016
 	private Rigidbody m_body;
 
-	// Token: 0x04000BC3 RID: 3011
+	// Token: 0x04000BC9 RID: 3017
 	private bool m_firstFrame = true;
 
-	// Token: 0x04000BC4 RID: 3012
+	// Token: 0x04000BCA RID: 3018
 	private bool m_destroyed;
 }

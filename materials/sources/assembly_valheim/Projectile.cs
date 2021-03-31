@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x0200001D RID: 29
 public class Projectile : MonoBehaviour, IProjectile
 {
-	// Token: 0x060002FF RID: 767 RVA: 0x000197C4 File Offset: 0x000179C4
+	// Token: 0x06000300 RID: 768 RVA: 0x00019878 File Offset: 0x00017A78
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -30,13 +30,13 @@ public class Projectile : MonoBehaviour, IProjectile
 		this.m_nview.Register("OnHit", new Action<long>(this.RPC_OnHit));
 	}
 
-	// Token: 0x06000300 RID: 768 RVA: 0x0000AC4C File Offset: 0x00008E4C
+	// Token: 0x06000301 RID: 769 RVA: 0x0000AC8C File Offset: 0x00008E8C
 	public string GetTooltipString(int itemQuality)
 	{
 		return "";
 	}
 
-	// Token: 0x06000301 RID: 769 RVA: 0x00019874 File Offset: 0x00017A74
+	// Token: 0x06000302 RID: 770 RVA: 0x00019928 File Offset: 0x00017B28
 	private void FixedUpdate()
 	{
 		if (!this.m_nview.IsValid())
@@ -88,7 +88,7 @@ public class Projectile : MonoBehaviour, IProjectile
 		}
 	}
 
-	// Token: 0x06000302 RID: 770 RVA: 0x00019A32 File Offset: 0x00017C32
+	// Token: 0x06000303 RID: 771 RVA: 0x00019AE6 File Offset: 0x00017CE6
 	public Vector3 GetVelocity()
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -102,7 +102,7 @@ public class Projectile : MonoBehaviour, IProjectile
 		return this.m_vel;
 	}
 
-	// Token: 0x06000303 RID: 771 RVA: 0x00019A68 File Offset: 0x00017C68
+	// Token: 0x06000304 RID: 772 RVA: 0x00019B1C File Offset: 0x00017D1C
 	private void UpdateRotation(float dt)
 	{
 		if ((double)this.m_rotateVisual == 0.0 || this.m_visual == null)
@@ -112,7 +112,7 @@ public class Projectile : MonoBehaviour, IProjectile
 		this.m_visual.transform.Rotate(new Vector3(this.m_rotateVisual * dt, 0f, 0f));
 	}
 
-	// Token: 0x06000304 RID: 772 RVA: 0x00019AC0 File Offset: 0x00017CC0
+	// Token: 0x06000305 RID: 773 RVA: 0x00019B74 File Offset: 0x00017D74
 	public void Setup(Character owner, Vector3 velocity, float hitNoise, HitData hitData, ItemDrop.ItemData item)
 	{
 		this.m_owner = owner;
@@ -142,7 +142,7 @@ public class Projectile : MonoBehaviour, IProjectile
 		}
 	}
 
-	// Token: 0x06000305 RID: 773 RVA: 0x00019B74 File Offset: 0x00017D74
+	// Token: 0x06000306 RID: 774 RVA: 0x00019C28 File Offset: 0x00017E28
 	private void DoAOE(Vector3 hitPoint, ref bool hitCharacter, ref bool didDamage)
 	{
 		Collider[] array = Physics.OverlapSphere(hitPoint, this.m_aoe, Projectile.m_rayMaskSolids, QueryTriggerInteraction.UseGlobal);
@@ -179,7 +179,7 @@ public class Projectile : MonoBehaviour, IProjectile
 		}
 	}
 
-	// Token: 0x06000306 RID: 774 RVA: 0x00019CC8 File Offset: 0x00017EC8
+	// Token: 0x06000307 RID: 775 RVA: 0x00019D7C File Offset: 0x00017F7C
 	private bool IsValidTarget(IDestructible destr, ref bool hitCharacter)
 	{
 		Character character = destr as Character;
@@ -202,7 +202,7 @@ public class Projectile : MonoBehaviour, IProjectile
 		return true;
 	}
 
-	// Token: 0x06000307 RID: 775 RVA: 0x00019D38 File Offset: 0x00017F38
+	// Token: 0x06000308 RID: 776 RVA: 0x00019DEC File Offset: 0x00017FEC
 	private void OnHit(Collider collider, Vector3 hitPoint, bool water)
 	{
 		GameObject gameObject = collider ? Projectile.FindHitObject(collider) : null;
@@ -271,7 +271,7 @@ public class Projectile : MonoBehaviour, IProjectile
 		}
 	}
 
-	// Token: 0x06000308 RID: 776 RVA: 0x00019F64 File Offset: 0x00018164
+	// Token: 0x06000309 RID: 777 RVA: 0x0001A018 File Offset: 0x00018218
 	private void RPC_OnHit(long sender)
 	{
 		if (this.m_hideOnHit)
@@ -288,7 +288,7 @@ public class Projectile : MonoBehaviour, IProjectile
 		}
 	}
 
-	// Token: 0x06000309 RID: 777 RVA: 0x00019FB8 File Offset: 0x000181B8
+	// Token: 0x0600030A RID: 778 RVA: 0x0001A06C File Offset: 0x0001826C
 	private void SpawnOnHit(GameObject go, Collider collider)
 	{
 		if (this.m_groundHitOnly && go.GetComponent<Heightmap>() == null)
@@ -331,7 +331,7 @@ public class Projectile : MonoBehaviour, IProjectile
 		this.m_spawnOnHitEffects.Create(vector, Quaternion.identity, null, 1f);
 	}
 
-	// Token: 0x0600030A RID: 778 RVA: 0x0001A0F0 File Offset: 0x000182F0
+	// Token: 0x0600030B RID: 779 RVA: 0x0001A1A4 File Offset: 0x000183A4
 	public static GameObject FindHitObject(Collider collider)
 	{
 		IDestructible componentInParent = collider.gameObject.GetComponentInParent<IDestructible>();
@@ -346,111 +346,111 @@ public class Projectile : MonoBehaviour, IProjectile
 		return collider.gameObject;
 	}
 
-	// Token: 0x040002B4 RID: 692
+	// Token: 0x040002B8 RID: 696
 	public HitData.DamageTypes m_damage;
 
-	// Token: 0x040002B5 RID: 693
+	// Token: 0x040002B9 RID: 697
 	public float m_aoe;
 
-	// Token: 0x040002B6 RID: 694
+	// Token: 0x040002BA RID: 698
 	public bool m_dodgeable;
 
-	// Token: 0x040002B7 RID: 695
+	// Token: 0x040002BB RID: 699
 	public bool m_blockable;
 
-	// Token: 0x040002B8 RID: 696
+	// Token: 0x040002BC RID: 700
 	public float m_attackForce;
 
-	// Token: 0x040002B9 RID: 697
+	// Token: 0x040002BD RID: 701
 	public float m_backstabBonus = 4f;
 
-	// Token: 0x040002BA RID: 698
+	// Token: 0x040002BE RID: 702
 	public string m_statusEffect = "";
 
-	// Token: 0x040002BB RID: 699
+	// Token: 0x040002BF RID: 703
 	public bool m_canHitWater;
 
-	// Token: 0x040002BC RID: 700
+	// Token: 0x040002C0 RID: 704
 	public float m_ttl = 4f;
 
-	// Token: 0x040002BD RID: 701
+	// Token: 0x040002C1 RID: 705
 	public float m_gravity;
 
-	// Token: 0x040002BE RID: 702
+	// Token: 0x040002C2 RID: 706
 	public float m_rayRadius;
 
-	// Token: 0x040002BF RID: 703
+	// Token: 0x040002C3 RID: 707
 	public float m_hitNoise = 50f;
 
-	// Token: 0x040002C0 RID: 704
+	// Token: 0x040002C4 RID: 708
 	public bool m_stayAfterHitStatic;
 
-	// Token: 0x040002C1 RID: 705
+	// Token: 0x040002C5 RID: 709
 	public GameObject m_hideOnHit;
 
-	// Token: 0x040002C2 RID: 706
+	// Token: 0x040002C6 RID: 710
 	public bool m_stopEmittersOnHit = true;
 
-	// Token: 0x040002C3 RID: 707
+	// Token: 0x040002C7 RID: 711
 	public EffectList m_hitEffects = new EffectList();
 
-	// Token: 0x040002C4 RID: 708
+	// Token: 0x040002C8 RID: 712
 	public EffectList m_hitWaterEffects = new EffectList();
 
-	// Token: 0x040002C5 RID: 709
+	// Token: 0x040002C9 RID: 713
 	[Header("Spawn on hit")]
 	public bool m_respawnItemOnHit;
 
-	// Token: 0x040002C6 RID: 710
+	// Token: 0x040002CA RID: 714
 	public GameObject m_spawnOnHit;
 
-	// Token: 0x040002C7 RID: 711
+	// Token: 0x040002CB RID: 715
 	[Range(0f, 1f)]
 	public float m_spawnOnHitChance = 1f;
 
-	// Token: 0x040002C8 RID: 712
+	// Token: 0x040002CC RID: 716
 	public bool m_showBreakMessage;
 
-	// Token: 0x040002C9 RID: 713
+	// Token: 0x040002CD RID: 717
 	public bool m_staticHitOnly;
 
-	// Token: 0x040002CA RID: 714
+	// Token: 0x040002CE RID: 718
 	public bool m_groundHitOnly;
 
-	// Token: 0x040002CB RID: 715
+	// Token: 0x040002CF RID: 719
 	public Vector3 m_spawnOffset = Vector3.zero;
 
-	// Token: 0x040002CC RID: 716
+	// Token: 0x040002D0 RID: 720
 	public bool m_spawnRandomRotation;
 
-	// Token: 0x040002CD RID: 717
+	// Token: 0x040002D1 RID: 721
 	public EffectList m_spawnOnHitEffects = new EffectList();
 
-	// Token: 0x040002CE RID: 718
+	// Token: 0x040002D2 RID: 722
 	[Header("Rotate projectile")]
 	public float m_rotateVisual;
 
-	// Token: 0x040002CF RID: 719
+	// Token: 0x040002D3 RID: 723
 	public GameObject m_visual;
 
-	// Token: 0x040002D0 RID: 720
+	// Token: 0x040002D4 RID: 724
 	private ZNetView m_nview;
 
-	// Token: 0x040002D1 RID: 721
+	// Token: 0x040002D5 RID: 725
 	private Vector3 m_vel = Vector3.zero;
 
-	// Token: 0x040002D2 RID: 722
+	// Token: 0x040002D6 RID: 726
 	private Character m_owner;
 
-	// Token: 0x040002D3 RID: 723
+	// Token: 0x040002D7 RID: 727
 	private Skills.SkillType m_skill;
 
-	// Token: 0x040002D4 RID: 724
+	// Token: 0x040002D8 RID: 728
 	private ItemDrop.ItemData m_spawnItem;
 
-	// Token: 0x040002D5 RID: 725
+	// Token: 0x040002D9 RID: 729
 	private bool m_didHit;
 
-	// Token: 0x040002D6 RID: 726
+	// Token: 0x040002DA RID: 730
 	private static int m_rayMaskSolids;
 }

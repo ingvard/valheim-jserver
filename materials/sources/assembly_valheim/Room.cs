@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000118 RID: 280
 public class Room : MonoBehaviour
 {
-	// Token: 0x060010A6 RID: 4262 RVA: 0x00076648 File Offset: 0x00074848
+	// Token: 0x060010A7 RID: 4263 RVA: 0x000767D0 File Offset: 0x000749D0
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
@@ -14,19 +14,19 @@ public class Room : MonoBehaviour
 		Gizmos.matrix = Matrix4x4.identity;
 	}
 
-	// Token: 0x060010A7 RID: 4263 RVA: 0x000766E4 File Offset: 0x000748E4
+	// Token: 0x060010A8 RID: 4264 RVA: 0x0007686C File Offset: 0x00074A6C
 	public int GetHash()
 	{
 		return ZNetView.GetPrefabName(base.gameObject).GetStableHashCode();
 	}
 
-	// Token: 0x060010A8 RID: 4264 RVA: 0x000766F6 File Offset: 0x000748F6
+	// Token: 0x060010A9 RID: 4265 RVA: 0x0007687E File Offset: 0x00074A7E
 	private void OnEnable()
 	{
 		this.m_roomConnections = null;
 	}
 
-	// Token: 0x060010A9 RID: 4265 RVA: 0x000766FF File Offset: 0x000748FF
+	// Token: 0x060010AA RID: 4266 RVA: 0x00076887 File Offset: 0x00074A87
 	public RoomConnection[] GetConnections()
 	{
 		if (this.m_roomConnections == null)
@@ -36,7 +36,7 @@ public class Room : MonoBehaviour
 		return this.m_roomConnections;
 	}
 
-	// Token: 0x060010AA RID: 4266 RVA: 0x0007671C File Offset: 0x0007491C
+	// Token: 0x060010AB RID: 4267 RVA: 0x000768A4 File Offset: 0x00074AA4
 	public RoomConnection GetConnection(RoomConnection other)
 	{
 		RoomConnection[] connections = this.GetConnections();
@@ -55,7 +55,7 @@ public class Room : MonoBehaviour
 		return Room.tempConnections[UnityEngine.Random.Range(0, Room.tempConnections.Count)];
 	}
 
-	// Token: 0x060010AB RID: 4267 RVA: 0x00076794 File Offset: 0x00074994
+	// Token: 0x060010AC RID: 4268 RVA: 0x0007691C File Offset: 0x00074B1C
 	public RoomConnection GetEntrance()
 	{
 		RoomConnection[] connections = this.GetConnections();
@@ -70,7 +70,7 @@ public class Room : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x060010AC RID: 4268 RVA: 0x000767E0 File Offset: 0x000749E0
+	// Token: 0x060010AD RID: 4269 RVA: 0x00076968 File Offset: 0x00074B68
 	public bool HaveConnection(RoomConnection other)
 	{
 		RoomConnection[] connections = this.GetConnections();
@@ -84,63 +84,63 @@ public class Room : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x04000F8E RID: 3982
+	// Token: 0x04000F94 RID: 3988
 	private static List<RoomConnection> tempConnections = new List<RoomConnection>();
 
-	// Token: 0x04000F8F RID: 3983
+	// Token: 0x04000F95 RID: 3989
 	public Vector3Int m_size = new Vector3Int(8, 4, 8);
 
-	// Token: 0x04000F90 RID: 3984
+	// Token: 0x04000F96 RID: 3990
 	[BitMask(typeof(Room.Theme))]
 	public Room.Theme m_theme = Room.Theme.Crypt;
 
-	// Token: 0x04000F91 RID: 3985
+	// Token: 0x04000F97 RID: 3991
 	public bool m_enabled = true;
 
-	// Token: 0x04000F92 RID: 3986
+	// Token: 0x04000F98 RID: 3992
 	public bool m_entrance;
 
-	// Token: 0x04000F93 RID: 3987
+	// Token: 0x04000F99 RID: 3993
 	public bool m_endCap;
 
-	// Token: 0x04000F94 RID: 3988
+	// Token: 0x04000F9A RID: 3994
 	public int m_endCapPrio;
 
-	// Token: 0x04000F95 RID: 3989
+	// Token: 0x04000F9B RID: 3995
 	public int m_minPlaceOrder;
 
-	// Token: 0x04000F96 RID: 3990
+	// Token: 0x04000F9C RID: 3996
 	public float m_weight = 1f;
 
-	// Token: 0x04000F97 RID: 3991
+	// Token: 0x04000F9D RID: 3997
 	public bool m_faceCenter;
 
-	// Token: 0x04000F98 RID: 3992
+	// Token: 0x04000F9E RID: 3998
 	public bool m_perimeter;
 
-	// Token: 0x04000F99 RID: 3993
+	// Token: 0x04000F9F RID: 3999
 	[NonSerialized]
 	public int m_placeOrder;
 
-	// Token: 0x04000F9A RID: 3994
+	// Token: 0x04000FA0 RID: 4000
 	private RoomConnection[] m_roomConnections;
 
 	// Token: 0x020001BC RID: 444
 	public enum Theme
 	{
-		// Token: 0x04001345 RID: 4933
+		// Token: 0x0400134C RID: 4940
 		Crypt = 1,
-		// Token: 0x04001346 RID: 4934
+		// Token: 0x0400134D RID: 4941
 		SunkenCrypt,
-		// Token: 0x04001347 RID: 4935
+		// Token: 0x0400134E RID: 4942
 		Cave = 4,
-		// Token: 0x04001348 RID: 4936
+		// Token: 0x0400134F RID: 4943
 		ForestCrypt = 8,
-		// Token: 0x04001349 RID: 4937
+		// Token: 0x04001350 RID: 4944
 		GoblinCamp = 16,
-		// Token: 0x0400134A RID: 4938
+		// Token: 0x04001351 RID: 4945
 		MeadowsVillage = 32,
-		// Token: 0x0400134B RID: 4939
+		// Token: 0x04001352 RID: 4946
 		MeadowsFarm = 64
 	}
 }

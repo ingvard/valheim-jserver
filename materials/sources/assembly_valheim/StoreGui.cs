@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class StoreGui : MonoBehaviour
 {
 	// Token: 0x17000010 RID: 16
-	// (get) Token: 0x06000623 RID: 1571 RVA: 0x00034740 File Offset: 0x00032940
+	// (get) Token: 0x06000624 RID: 1572 RVA: 0x000347F4 File Offset: 0x000329F4
 	public static StoreGui instance
 	{
 		get
@@ -16,7 +16,7 @@ public class StoreGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000624 RID: 1572 RVA: 0x00034748 File Offset: 0x00032948
+	// Token: 0x06000625 RID: 1573 RVA: 0x000347FC File Offset: 0x000329FC
 	private void Awake()
 	{
 		StoreGui.m_instance = this;
@@ -24,7 +24,7 @@ public class StoreGui : MonoBehaviour
 		this.m_itemlistBaseSize = this.m_listRoot.rect.height;
 	}
 
-	// Token: 0x06000625 RID: 1573 RVA: 0x00034780 File Offset: 0x00032980
+	// Token: 0x06000626 RID: 1574 RVA: 0x00034834 File Offset: 0x00032A34
 	private void OnDestroy()
 	{
 		if (StoreGui.m_instance == this)
@@ -33,7 +33,7 @@ public class StoreGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000626 RID: 1574 RVA: 0x00034798 File Offset: 0x00032998
+	// Token: 0x06000627 RID: 1575 RVA: 0x0003484C File Offset: 0x00032A4C
 	private void Update()
 	{
 		if (!this.m_rootPanel.activeSelf)
@@ -74,7 +74,7 @@ public class StoreGui : MonoBehaviour
 		this.m_coinText.text = this.GetPlayerCoins().ToString();
 	}
 
-	// Token: 0x06000627 RID: 1575 RVA: 0x000348F3 File Offset: 0x00032AF3
+	// Token: 0x06000628 RID: 1576 RVA: 0x000349A7 File Offset: 0x00032BA7
 	public void Show(Trader trader)
 	{
 		if (this.m_trader == trader && StoreGui.IsVisible())
@@ -86,26 +86,26 @@ public class StoreGui : MonoBehaviour
 		this.FillList();
 	}
 
-	// Token: 0x06000628 RID: 1576 RVA: 0x00034924 File Offset: 0x00032B24
+	// Token: 0x06000629 RID: 1577 RVA: 0x000349D8 File Offset: 0x00032BD8
 	public void Hide()
 	{
 		this.m_trader = null;
 		this.m_rootPanel.SetActive(false);
 	}
 
-	// Token: 0x06000629 RID: 1577 RVA: 0x00034939 File Offset: 0x00032B39
+	// Token: 0x0600062A RID: 1578 RVA: 0x000349ED File Offset: 0x00032BED
 	public static bool IsVisible()
 	{
 		return StoreGui.m_instance && StoreGui.m_instance.m_hiddenFrames <= 1;
 	}
 
-	// Token: 0x0600062A RID: 1578 RVA: 0x00034959 File Offset: 0x00032B59
+	// Token: 0x0600062B RID: 1579 RVA: 0x00034A0D File Offset: 0x00032C0D
 	public void OnBuyItem()
 	{
 		this.BuySelectedItem();
 	}
 
-	// Token: 0x0600062B RID: 1579 RVA: 0x00034964 File Offset: 0x00032B64
+	// Token: 0x0600062C RID: 1580 RVA: 0x00034A18 File Offset: 0x00032C18
 	private void BuySelectedItem()
 	{
 		if (this.m_selectedItem == null || !this.CanAfford(this.m_selectedItem))
@@ -126,13 +126,13 @@ public class StoreGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600062C RID: 1580 RVA: 0x00034AC5 File Offset: 0x00032CC5
+	// Token: 0x0600062D RID: 1581 RVA: 0x00034B79 File Offset: 0x00032D79
 	public void OnSellItem()
 	{
 		this.SellItem();
 	}
 
-	// Token: 0x0600062D RID: 1581 RVA: 0x00034AD0 File Offset: 0x00032CD0
+	// Token: 0x0600062E RID: 1582 RVA: 0x00034B84 File Offset: 0x00032D84
 	private void SellItem()
 	{
 		ItemDrop.ItemData sellableItem = this.GetSellableItem();
@@ -163,20 +163,20 @@ public class StoreGui : MonoBehaviour
 		Gogan.LogEvent("Game", "SoldItem", text, 0L);
 	}
 
-	// Token: 0x0600062E RID: 1582 RVA: 0x00034C13 File Offset: 0x00032E13
+	// Token: 0x0600062F RID: 1583 RVA: 0x00034CC7 File Offset: 0x00032EC7
 	private int GetPlayerCoins()
 	{
 		return Player.m_localPlayer.GetInventory().CountItems(this.m_coinPrefab.m_itemData.m_shared.m_name);
 	}
 
-	// Token: 0x0600062F RID: 1583 RVA: 0x00034C3C File Offset: 0x00032E3C
+	// Token: 0x06000630 RID: 1584 RVA: 0x00034CF0 File Offset: 0x00032EF0
 	private bool CanAfford(Trader.TradeItem item)
 	{
 		int playerCoins = this.GetPlayerCoins();
 		return item.m_price <= playerCoins;
 	}
 
-	// Token: 0x06000630 RID: 1584 RVA: 0x00034C5C File Offset: 0x00032E5C
+	// Token: 0x06000631 RID: 1585 RVA: 0x00034D10 File Offset: 0x00032F10
 	private void FillList()
 	{
 		int playerCoins = this.GetPlayerCoins();
@@ -230,14 +230,14 @@ public class StoreGui : MonoBehaviour
 		this.SelectItem(num, false);
 	}
 
-	// Token: 0x06000631 RID: 1585 RVA: 0x00034F30 File Offset: 0x00033130
+	// Token: 0x06000632 RID: 1586 RVA: 0x00034FE4 File Offset: 0x000331E4
 	private void OnSelectedItem(GameObject button)
 	{
 		int index = this.FindSelectedRecipe(button);
 		this.SelectItem(index, false);
 	}
 
-	// Token: 0x06000632 RID: 1586 RVA: 0x00034F50 File Offset: 0x00033150
+	// Token: 0x06000633 RID: 1587 RVA: 0x00035004 File Offset: 0x00033204
 	private int FindSelectedRecipe(GameObject button)
 	{
 		for (int i = 0; i < this.m_itemList.Count; i++)
@@ -250,7 +250,7 @@ public class StoreGui : MonoBehaviour
 		return -1;
 	}
 
-	// Token: 0x06000633 RID: 1587 RVA: 0x00034F8C File Offset: 0x0003318C
+	// Token: 0x06000634 RID: 1588 RVA: 0x00035040 File Offset: 0x00033240
 	private void SelectItem(int index, bool center)
 	{
 		ZLog.Log("Setting selected recipe " + index);
@@ -271,13 +271,13 @@ public class StoreGui : MonoBehaviour
 		this.m_selectedItem = this.m_trader.m_items[index];
 	}
 
-	// Token: 0x06000634 RID: 1588 RVA: 0x0003503A File Offset: 0x0003323A
+	// Token: 0x06000635 RID: 1589 RVA: 0x000350EE File Offset: 0x000332EE
 	private void UpdateSellButton()
 	{
 		this.m_sellButton.interactable = (this.GetSellableItem() != null);
 	}
 
-	// Token: 0x06000635 RID: 1589 RVA: 0x00035050 File Offset: 0x00033250
+	// Token: 0x06000636 RID: 1590 RVA: 0x00035104 File Offset: 0x00033304
 	private ItemDrop.ItemData GetSellableItem()
 	{
 		this.m_tempItems.Clear();
@@ -292,7 +292,7 @@ public class StoreGui : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000636 RID: 1590 RVA: 0x000350EC File Offset: 0x000332EC
+	// Token: 0x06000637 RID: 1591 RVA: 0x000351A0 File Offset: 0x000333A0
 	private int GetSelectedItemIndex()
 	{
 		int result = 0;
@@ -306,7 +306,7 @@ public class StoreGui : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x06000637 RID: 1591 RVA: 0x00035134 File Offset: 0x00033334
+	// Token: 0x06000638 RID: 1592 RVA: 0x000351E8 File Offset: 0x000333E8
 	private void UpdateBuyButton()
 	{
 		UITooltip component = this.m_buyButton.GetComponent<UITooltip>();
@@ -332,7 +332,7 @@ public class StoreGui : MonoBehaviour
 		component.m_text = "";
 	}
 
-	// Token: 0x06000638 RID: 1592 RVA: 0x000351D8 File Offset: 0x000333D8
+	// Token: 0x06000639 RID: 1593 RVA: 0x0003528C File Offset: 0x0003348C
 	private void UpdateRecipeGamepadInput()
 	{
 		if (this.m_itemList.Count > 0)
@@ -348,63 +348,63 @@ public class StoreGui : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040006E4 RID: 1764
+	// Token: 0x040006E8 RID: 1768
 	private static StoreGui m_instance;
 
-	// Token: 0x040006E5 RID: 1765
+	// Token: 0x040006E9 RID: 1769
 	public GameObject m_rootPanel;
 
-	// Token: 0x040006E6 RID: 1766
+	// Token: 0x040006EA RID: 1770
 	public Button m_buyButton;
 
-	// Token: 0x040006E7 RID: 1767
+	// Token: 0x040006EB RID: 1771
 	public Button m_sellButton;
 
-	// Token: 0x040006E8 RID: 1768
+	// Token: 0x040006EC RID: 1772
 	public RectTransform m_listRoot;
 
-	// Token: 0x040006E9 RID: 1769
+	// Token: 0x040006ED RID: 1773
 	public GameObject m_listElement;
 
-	// Token: 0x040006EA RID: 1770
+	// Token: 0x040006EE RID: 1774
 	public Scrollbar m_listScroll;
 
-	// Token: 0x040006EB RID: 1771
+	// Token: 0x040006EF RID: 1775
 	public ScrollRectEnsureVisible m_itemEnsureVisible;
 
-	// Token: 0x040006EC RID: 1772
+	// Token: 0x040006F0 RID: 1776
 	public Text m_coinText;
 
-	// Token: 0x040006ED RID: 1773
+	// Token: 0x040006F1 RID: 1777
 	public EffectList m_buyEffects = new EffectList();
 
-	// Token: 0x040006EE RID: 1774
+	// Token: 0x040006F2 RID: 1778
 	public EffectList m_sellEffects = new EffectList();
 
-	// Token: 0x040006EF RID: 1775
+	// Token: 0x040006F3 RID: 1779
 	public float m_hideDistance = 5f;
 
-	// Token: 0x040006F0 RID: 1776
+	// Token: 0x040006F4 RID: 1780
 	public float m_itemSpacing = 64f;
 
-	// Token: 0x040006F1 RID: 1777
+	// Token: 0x040006F5 RID: 1781
 	public ItemDrop m_coinPrefab;
 
-	// Token: 0x040006F2 RID: 1778
+	// Token: 0x040006F6 RID: 1782
 	private List<GameObject> m_itemList = new List<GameObject>();
 
-	// Token: 0x040006F3 RID: 1779
+	// Token: 0x040006F7 RID: 1783
 	private Trader.TradeItem m_selectedItem;
 
-	// Token: 0x040006F4 RID: 1780
+	// Token: 0x040006F8 RID: 1784
 	private Trader m_trader;
 
-	// Token: 0x040006F5 RID: 1781
+	// Token: 0x040006F9 RID: 1785
 	private float m_itemlistBaseSize;
 
-	// Token: 0x040006F6 RID: 1782
+	// Token: 0x040006FA RID: 1786
 	private int m_hiddenFrames;
 
-	// Token: 0x040006F7 RID: 1783
+	// Token: 0x040006FB RID: 1787
 	private List<ItemDrop.ItemData> m_tempItems = new List<ItemDrop.ItemData>();
 }

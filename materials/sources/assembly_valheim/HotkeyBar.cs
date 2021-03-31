@@ -6,7 +6,7 @@ using UnityEngine.UI;
 // Token: 0x02000052 RID: 82
 public class HotkeyBar : MonoBehaviour
 {
-	// Token: 0x060004F1 RID: 1265 RVA: 0x00028DE4 File Offset: 0x00026FE4
+	// Token: 0x060004F2 RID: 1266 RVA: 0x00028E98 File Offset: 0x00027098
 	private void Update()
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -32,7 +32,7 @@ public class HotkeyBar : MonoBehaviour
 		this.UpdateIcons(localPlayer);
 	}
 
-	// Token: 0x060004F2 RID: 1266 RVA: 0x00028EB0 File Offset: 0x000270B0
+	// Token: 0x060004F3 RID: 1267 RVA: 0x00028F64 File Offset: 0x00027164
 	private void UpdateIcons(Player player)
 	{
 		if (!player || player.IsDead())
@@ -129,46 +129,46 @@ public class HotkeyBar : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000536 RID: 1334
+	// Token: 0x0400053A RID: 1338
 	public GameObject m_elementPrefab;
 
-	// Token: 0x04000537 RID: 1335
+	// Token: 0x0400053B RID: 1339
 	public float m_elementSpace = 70f;
 
-	// Token: 0x04000538 RID: 1336
+	// Token: 0x0400053C RID: 1340
 	private int m_selected;
 
-	// Token: 0x04000539 RID: 1337
+	// Token: 0x0400053D RID: 1341
 	private List<HotkeyBar.ElementData> m_elements = new List<HotkeyBar.ElementData>();
 
-	// Token: 0x0400053A RID: 1338
+	// Token: 0x0400053E RID: 1342
 	private List<ItemDrop.ItemData> m_items = new List<ItemDrop.ItemData>();
 
 	// Token: 0x02000149 RID: 329
 	private class ElementData
 	{
-		// Token: 0x040010D9 RID: 4313
+		// Token: 0x040010E0 RID: 4320
 		public bool m_used;
 
-		// Token: 0x040010DA RID: 4314
+		// Token: 0x040010E1 RID: 4321
 		public GameObject m_go;
 
-		// Token: 0x040010DB RID: 4315
+		// Token: 0x040010E2 RID: 4322
 		public Image m_icon;
 
-		// Token: 0x040010DC RID: 4316
+		// Token: 0x040010E3 RID: 4323
 		public GuiBar m_durability;
 
-		// Token: 0x040010DD RID: 4317
+		// Token: 0x040010E4 RID: 4324
 		public Text m_amount;
 
-		// Token: 0x040010DE RID: 4318
+		// Token: 0x040010E5 RID: 4325
 		public GameObject m_equiped;
 
-		// Token: 0x040010DF RID: 4319
+		// Token: 0x040010E6 RID: 4326
 		public GameObject m_queued;
 
-		// Token: 0x040010E0 RID: 4320
+		// Token: 0x040010E7 RID: 4327
 		public GameObject m_selection;
 	}
 }

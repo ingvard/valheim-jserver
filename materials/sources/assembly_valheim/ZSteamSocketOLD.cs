@@ -6,14 +6,14 @@ using Steamworks;
 // Token: 0x02000090 RID: 144
 public class ZSteamSocketOLD : IDisposable, ISocket
 {
-	// Token: 0x0600099E RID: 2462 RVA: 0x000464BC File Offset: 0x000446BC
+	// Token: 0x0600099F RID: 2463 RVA: 0x00046568 File Offset: 0x00044768
 	public ZSteamSocketOLD()
 	{
 		ZSteamSocketOLD.m_sockets.Add(this);
 		ZSteamSocketOLD.RegisterGlobalCallbacks();
 	}
 
-	// Token: 0x0600099F RID: 2463 RVA: 0x0004650C File Offset: 0x0004470C
+	// Token: 0x060009A0 RID: 2464 RVA: 0x000465B8 File Offset: 0x000447B8
 	public ZSteamSocketOLD(CSteamID peerID)
 	{
 		ZSteamSocketOLD.m_sockets.Add(this);
@@ -21,7 +21,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		ZSteamSocketOLD.RegisterGlobalCallbacks();
 	}
 
-	// Token: 0x060009A0 RID: 2464 RVA: 0x00046564 File Offset: 0x00044764
+	// Token: 0x060009A1 RID: 2465 RVA: 0x00046610 File Offset: 0x00044810
 	private static void RegisterGlobalCallbacks()
 	{
 		if (ZSteamSocketOLD.m_connectionFailed == null)
@@ -35,7 +35,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		}
 	}
 
-	// Token: 0x060009A1 RID: 2465 RVA: 0x000465B8 File Offset: 0x000447B8
+	// Token: 0x060009A2 RID: 2466 RVA: 0x00046664 File Offset: 0x00044864
 	private static void UnregisterGlobalCallbacks()
 	{
 		ZLog.Log("ZSteamSocket  UnregisterGlobalCallbacks, existing sockets:" + ZSteamSocketOLD.m_sockets.Count);
@@ -51,7 +51,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		}
 	}
 
-	// Token: 0x060009A2 RID: 2466 RVA: 0x00046614 File Offset: 0x00044814
+	// Token: 0x060009A3 RID: 2467 RVA: 0x000466C0 File Offset: 0x000448C0
 	private static void OnConnectionFailed(P2PSessionConnectFail_t data)
 	{
 		ZLog.Log("Got connection failed callback: " + data.m_steamIDRemote);
@@ -64,7 +64,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		}
 	}
 
-	// Token: 0x060009A3 RID: 2467 RVA: 0x00046690 File Offset: 0x00044890
+	// Token: 0x060009A4 RID: 2468 RVA: 0x0004673C File Offset: 0x0004493C
 	private static void OnSessionRequest(P2PSessionRequest_t data)
 	{
 		ZLog.Log("Got session request from " + data.m_steamIDRemote);
@@ -78,7 +78,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		}
 	}
 
-	// Token: 0x060009A4 RID: 2468 RVA: 0x000466DC File Offset: 0x000448DC
+	// Token: 0x060009A5 RID: 2469 RVA: 0x00046788 File Offset: 0x00044988
 	public void Dispose()
 	{
 		ZLog.Log("Disposing socket");
@@ -92,7 +92,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		}
 	}
 
-	// Token: 0x060009A5 RID: 2469 RVA: 0x0004672C File Offset: 0x0004492C
+	// Token: 0x060009A6 RID: 2470 RVA: 0x000467D8 File Offset: 0x000449D8
 	public void Close()
 	{
 		ZLog.Log("Closing socket " + this.GetEndPointString());
@@ -111,7 +111,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		this.m_listner = false;
 	}
 
-	// Token: 0x060009A6 RID: 2470 RVA: 0x000467DE File Offset: 0x000449DE
+	// Token: 0x060009A7 RID: 2471 RVA: 0x0004688A File Offset: 0x00044A8A
 	public bool StartHost()
 	{
 		this.m_listner = true;
@@ -119,7 +119,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		return true;
 	}
 
-	// Token: 0x060009A7 RID: 2471 RVA: 0x000467F4 File Offset: 0x000449F4
+	// Token: 0x060009A8 RID: 2472 RVA: 0x000468A0 File Offset: 0x00044AA0
 	private ZSteamSocketOLD QueuePendingConnection(CSteamID id)
 	{
 		foreach (ZSteamSocketOLD zsteamSocketOLD in this.m_pendingConnections)
@@ -134,7 +134,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		return zsteamSocketOLD2;
 	}
 
-	// Token: 0x060009A8 RID: 2472 RVA: 0x00046864 File Offset: 0x00044A64
+	// Token: 0x060009A9 RID: 2473 RVA: 0x00046910 File Offset: 0x00044B10
 	public ISocket Accept()
 	{
 		if (!this.m_listner)
@@ -148,13 +148,13 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		return null;
 	}
 
-	// Token: 0x060009A9 RID: 2473 RVA: 0x0004688B File Offset: 0x00044A8B
+	// Token: 0x060009AA RID: 2474 RVA: 0x00046937 File Offset: 0x00044B37
 	public bool IsConnected()
 	{
 		return this.m_peerID != CSteamID.Nil;
 	}
 
-	// Token: 0x060009AA RID: 2474 RVA: 0x000468A0 File Offset: 0x00044AA0
+	// Token: 0x060009AB RID: 2475 RVA: 0x0004694C File Offset: 0x00044B4C
 	public void Send(ZPackage pkg)
 	{
 		if (pkg.Size() == 0)
@@ -174,14 +174,14 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		this.SendQueuedPackages();
 	}
 
-	// Token: 0x060009AB RID: 2475 RVA: 0x000468FE File Offset: 0x00044AFE
+	// Token: 0x060009AC RID: 2476 RVA: 0x000469AA File Offset: 0x00044BAA
 	public bool Flush()
 	{
 		this.SendQueuedPackages();
 		return this.m_sendQueue.Count == 0;
 	}
 
-	// Token: 0x060009AC RID: 2476 RVA: 0x00046914 File Offset: 0x00044B14
+	// Token: 0x060009AD RID: 2477 RVA: 0x000469C0 File Offset: 0x00044BC0
 	private void SendQueuedPackages()
 	{
 		if (!this.IsConnected())
@@ -201,7 +201,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		}
 	}
 
-	// Token: 0x060009AD RID: 2477 RVA: 0x00046978 File Offset: 0x00044B78
+	// Token: 0x060009AE RID: 2478 RVA: 0x00046A24 File Offset: 0x00044C24
 	public static void Update()
 	{
 		foreach (ZSteamSocketOLD zsteamSocketOLD in ZSteamSocketOLD.m_sockets)
@@ -211,7 +211,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		ZSteamSocketOLD.ReceivePackages();
 	}
 
-	// Token: 0x060009AE RID: 2478 RVA: 0x000469CC File Offset: 0x00044BCC
+	// Token: 0x060009AF RID: 2479 RVA: 0x00046A78 File Offset: 0x00044C78
 	private static void ReceivePackages()
 	{
 		uint num;
@@ -228,7 +228,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		}
 	}
 
-	// Token: 0x060009AF RID: 2479 RVA: 0x00046A04 File Offset: 0x00044C04
+	// Token: 0x060009B0 RID: 2480 RVA: 0x00046AB0 File Offset: 0x00044CB0
 	private static void QueueNewPkg(CSteamID sender, byte[] data)
 	{
 		foreach (ZSteamSocketOLD zsteamSocketOLD in ZSteamSocketOLD.m_sockets)
@@ -249,7 +249,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		ZLog.Log("Got package from unkown peer " + sender + " but no active listner");
 	}
 
-	// Token: 0x060009B0 RID: 2480 RVA: 0x00046AA8 File Offset: 0x00044CA8
+	// Token: 0x060009B1 RID: 2481 RVA: 0x00046B54 File Offset: 0x00044D54
 	private static ZSteamSocketOLD GetListner()
 	{
 		foreach (ZSteamSocketOLD zsteamSocketOLD in ZSteamSocketOLD.m_sockets)
@@ -262,7 +262,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		return null;
 	}
 
-	// Token: 0x060009B1 RID: 2481 RVA: 0x00046B04 File Offset: 0x00044D04
+	// Token: 0x060009B2 RID: 2482 RVA: 0x00046BB0 File Offset: 0x00044DB0
 	private void QueuePackage(byte[] data)
 	{
 		ZPackage item = new ZPackage(data);
@@ -271,7 +271,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		this.m_totalRecv += data.Length;
 	}
 
-	// Token: 0x060009B2 RID: 2482 RVA: 0x00046B3B File Offset: 0x00044D3B
+	// Token: 0x060009B3 RID: 2483 RVA: 0x00046BE7 File Offset: 0x00044DE7
 	public ZPackage Recv()
 	{
 		if (!this.IsConnected())
@@ -285,37 +285,37 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		return null;
 	}
 
-	// Token: 0x060009B3 RID: 2483 RVA: 0x00046B62 File Offset: 0x00044D62
+	// Token: 0x060009B4 RID: 2484 RVA: 0x00046C0E File Offset: 0x00044E0E
 	public string GetEndPointString()
 	{
 		return this.m_peerID.ToString();
 	}
 
-	// Token: 0x060009B4 RID: 2484 RVA: 0x00046B62 File Offset: 0x00044D62
+	// Token: 0x060009B5 RID: 2485 RVA: 0x00046C0E File Offset: 0x00044E0E
 	public string GetHostName()
 	{
 		return this.m_peerID.ToString();
 	}
 
-	// Token: 0x060009B5 RID: 2485 RVA: 0x00046B75 File Offset: 0x00044D75
+	// Token: 0x060009B6 RID: 2486 RVA: 0x00046C21 File Offset: 0x00044E21
 	public CSteamID GetPeerID()
 	{
 		return this.m_peerID;
 	}
 
-	// Token: 0x060009B6 RID: 2486 RVA: 0x00046B7D File Offset: 0x00044D7D
+	// Token: 0x060009B7 RID: 2487 RVA: 0x00046C29 File Offset: 0x00044E29
 	public bool IsPeer(CSteamID peer)
 	{
 		return this.IsConnected() && peer == this.m_peerID;
 	}
 
-	// Token: 0x060009B7 RID: 2487 RVA: 0x00046B95 File Offset: 0x00044D95
+	// Token: 0x060009B8 RID: 2488 RVA: 0x00046C41 File Offset: 0x00044E41
 	public bool IsHost()
 	{
 		return this.m_listner;
 	}
 
-	// Token: 0x060009B8 RID: 2488 RVA: 0x00046BA0 File Offset: 0x00044DA0
+	// Token: 0x060009B9 RID: 2489 RVA: 0x00046C4C File Offset: 0x00044E4C
 	public int GetSendQueueSize()
 	{
 		if (!this.IsConnected())
@@ -330,13 +330,13 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		return num;
 	}
 
-	// Token: 0x060009B9 RID: 2489 RVA: 0x00046C00 File Offset: 0x00044E00
+	// Token: 0x060009BA RID: 2490 RVA: 0x00046CAC File Offset: 0x00044EAC
 	public bool IsSending()
 	{
 		return this.IsConnected() && this.m_sendQueue.Count > 0;
 	}
 
-	// Token: 0x060009BA RID: 2490 RVA: 0x00044C3E File Offset: 0x00042E3E
+	// Token: 0x060009BB RID: 2491 RVA: 0x00044CF2 File Offset: 0x00042EF2
 	public void GetConnectionQuality(out float localQuality, out float remoteQuality, out int ping, out float outByteSec, out float inByteSec)
 	{
 		localQuality = 0f;
@@ -346,7 +346,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		inByteSec = 0f;
 	}
 
-	// Token: 0x060009BB RID: 2491 RVA: 0x00046C1A File Offset: 0x00044E1A
+	// Token: 0x060009BC RID: 2492 RVA: 0x00046CC6 File Offset: 0x00044EC6
 	public void GetAndResetStats(out int totalSent, out int totalRecv)
 	{
 		totalSent = this.m_totalSent;
@@ -355,7 +355,7 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		this.m_totalRecv = 0;
 	}
 
-	// Token: 0x060009BC RID: 2492 RVA: 0x00046C3A File Offset: 0x00044E3A
+	// Token: 0x060009BD RID: 2493 RVA: 0x00046CE6 File Offset: 0x00044EE6
 	public bool GotNewData()
 	{
 		bool gotData = this.m_gotData;
@@ -363,19 +363,19 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		return gotData;
 	}
 
-	// Token: 0x060009BD RID: 2493 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x060009BE RID: 2494 RVA: 0x000023E2 File Offset: 0x000005E2
 	public int GetCurrentSendRate()
 	{
 		return 0;
 	}
 
-	// Token: 0x060009BE RID: 2494 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x060009BF RID: 2495 RVA: 0x000023E2 File Offset: 0x000005E2
 	public int GetAverageSendRate()
 	{
 		return 0;
 	}
 
-	// Token: 0x060009BF RID: 2495 RVA: 0x00046C49 File Offset: 0x00044E49
+	// Token: 0x060009C0 RID: 2496 RVA: 0x00046CF5 File Offset: 0x00044EF5
 	public int GetHostPort()
 	{
 		if (this.IsHost())
@@ -385,36 +385,36 @@ public class ZSteamSocketOLD : IDisposable, ISocket
 		return -1;
 	}
 
-	// Token: 0x040008C4 RID: 2244
+	// Token: 0x040008C8 RID: 2248
 	private static List<ZSteamSocketOLD> m_sockets = new List<ZSteamSocketOLD>();
 
-	// Token: 0x040008C5 RID: 2245
+	// Token: 0x040008C9 RID: 2249
 	private static Callback<P2PSessionRequest_t> m_SessionRequest;
 
-	// Token: 0x040008C6 RID: 2246
+	// Token: 0x040008CA RID: 2250
 	private static Callback<P2PSessionConnectFail_t> m_connectionFailed;
 
-	// Token: 0x040008C7 RID: 2247
+	// Token: 0x040008CB RID: 2251
 	private Queue<ZSteamSocketOLD> m_pendingConnections = new Queue<ZSteamSocketOLD>();
 
-	// Token: 0x040008C8 RID: 2248
+	// Token: 0x040008CC RID: 2252
 	private CSteamID m_peerID = CSteamID.Nil;
 
-	// Token: 0x040008C9 RID: 2249
+	// Token: 0x040008CD RID: 2253
 	private bool m_listner;
 
-	// Token: 0x040008CA RID: 2250
+	// Token: 0x040008CE RID: 2254
 	private Queue<ZPackage> m_pkgQueue = new Queue<ZPackage>();
 
-	// Token: 0x040008CB RID: 2251
+	// Token: 0x040008CF RID: 2255
 	private Queue<byte[]> m_sendQueue = new Queue<byte[]>();
 
-	// Token: 0x040008CC RID: 2252
+	// Token: 0x040008D0 RID: 2256
 	private int m_totalSent;
 
-	// Token: 0x040008CD RID: 2253
+	// Token: 0x040008D1 RID: 2257
 	private int m_totalRecv;
 
-	// Token: 0x040008CE RID: 2254
+	// Token: 0x040008D2 RID: 2258
 	private bool m_gotData;
 }

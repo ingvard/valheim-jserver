@@ -6,12 +6,12 @@ using UnityEngine.UI;
 // Token: 0x02000055 RID: 85
 public class InventoryGrid : MonoBehaviour
 {
-	// Token: 0x06000527 RID: 1319 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x06000528 RID: 1320 RVA: 0x000027E0 File Offset: 0x000009E0
 	protected void Awake()
 	{
 	}
 
-	// Token: 0x06000528 RID: 1320 RVA: 0x0002B428 File Offset: 0x00029628
+	// Token: 0x06000529 RID: 1321 RVA: 0x0002B4DC File Offset: 0x000296DC
 	public void ResetView()
 	{
 		RectTransform rectTransform = base.transform as RectTransform;
@@ -26,7 +26,7 @@ public class InventoryGrid : MonoBehaviour
 		this.m_gridRoot.anchoredPosition = new Vector2(0f, 0f);
 	}
 
-	// Token: 0x06000529 RID: 1321 RVA: 0x0002B4CA File Offset: 0x000296CA
+	// Token: 0x0600052A RID: 1322 RVA: 0x0002B57E File Offset: 0x0002977E
 	public void UpdateInventory(Inventory inventory, Player player, ItemDrop.ItemData dragItem)
 	{
 		this.m_inventory = inventory;
@@ -34,7 +34,7 @@ public class InventoryGrid : MonoBehaviour
 		this.UpdateGui(player, dragItem);
 	}
 
-	// Token: 0x0600052A RID: 1322 RVA: 0x0002B4E4 File Offset: 0x000296E4
+	// Token: 0x0600052B RID: 1323 RVA: 0x0002B598 File Offset: 0x00029798
 	private void UpdateGamepad()
 	{
 		if (!this.m_uiGroup.IsActive())
@@ -78,7 +78,7 @@ public class InventoryGrid : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600052B RID: 1323 RVA: 0x0002B650 File Offset: 0x00029850
+	// Token: 0x0600052C RID: 1324 RVA: 0x0002B704 File Offset: 0x00029904
 	private void UpdateGui(Player player, ItemDrop.ItemData dragItem)
 	{
 		RectTransform rectTransform = base.transform as RectTransform;
@@ -202,19 +202,19 @@ public class InventoryGrid : MonoBehaviour
 		this.m_gridRoot.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, size);
 	}
 
-	// Token: 0x0600052C RID: 1324 RVA: 0x0002BDA4 File Offset: 0x00029FA4
+	// Token: 0x0600052D RID: 1325 RVA: 0x0002BE58 File Offset: 0x0002A058
 	private void CreateItemTooltip(ItemDrop.ItemData item, UITooltip tooltip)
 	{
 		tooltip.Set(item.m_shared.m_name, item.GetTooltip());
 	}
 
-	// Token: 0x0600052D RID: 1325 RVA: 0x0002BDBD File Offset: 0x00029FBD
+	// Token: 0x0600052E RID: 1326 RVA: 0x0002BE71 File Offset: 0x0002A071
 	public Vector2 GetWidgetSize()
 	{
 		return new Vector2((float)this.m_width * this.m_elementSpace, (float)this.m_height * this.m_elementSpace);
 	}
 
-	// Token: 0x0600052E RID: 1326 RVA: 0x0002BDE0 File Offset: 0x00029FE0
+	// Token: 0x0600052F RID: 1327 RVA: 0x0002BE94 File Offset: 0x0002A094
 	private void OnRightClick(UIInputHandler element)
 	{
 		GameObject gameObject = element.gameObject;
@@ -226,7 +226,7 @@ public class InventoryGrid : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600052F RID: 1327 RVA: 0x0002BE2C File Offset: 0x0002A02C
+	// Token: 0x06000530 RID: 1328 RVA: 0x0002BEE0 File Offset: 0x0002A0E0
 	private void OnLeftClick(UIInputHandler clickHandler)
 	{
 		GameObject gameObject = clickHandler.gameObject;
@@ -247,14 +247,14 @@ public class InventoryGrid : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000530 RID: 1328 RVA: 0x0002BEB0 File Offset: 0x0002A0B0
+	// Token: 0x06000531 RID: 1329 RVA: 0x0002BF64 File Offset: 0x0002A164
 	private InventoryGrid.Element GetElement(int x, int y, int width)
 	{
 		int index = y * width + x;
 		return this.m_elements[index];
 	}
 
-	// Token: 0x06000531 RID: 1329 RVA: 0x0002BED0 File Offset: 0x0002A0D0
+	// Token: 0x06000532 RID: 1330 RVA: 0x0002BF84 File Offset: 0x0002A184
 	private Vector2i GetButtonPos(GameObject go)
 	{
 		for (int i = 0; i < this.m_elements.Count; i++)
@@ -268,7 +268,7 @@ public class InventoryGrid : MonoBehaviour
 		return new Vector2i(-1, -1);
 	}
 
-	// Token: 0x06000532 RID: 1330 RVA: 0x0002BF30 File Offset: 0x0002A130
+	// Token: 0x06000533 RID: 1331 RVA: 0x0002BFE4 File Offset: 0x0002A1E4
 	public bool DropItem(Inventory fromInventory, ItemDrop.ItemData item, int amount, Vector2i pos)
 	{
 		ItemDrop.ItemData itemAt = this.m_inventory.GetItemAt(pos.x, pos.y);
@@ -286,7 +286,7 @@ public class InventoryGrid : MonoBehaviour
 		return this.m_inventory.MoveItemToThis(fromInventory, item, amount, pos.x, pos.y);
 	}
 
-	// Token: 0x06000533 RID: 1331 RVA: 0x0002C020 File Offset: 0x0002A220
+	// Token: 0x06000534 RID: 1332 RVA: 0x0002C0D4 File Offset: 0x0002A2D4
 	public ItemDrop.ItemData GetItem(Vector2i cursorPosition)
 	{
 		foreach (InventoryGrid.Element element in this.m_elements)
@@ -300,19 +300,19 @@ public class InventoryGrid : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000534 RID: 1332 RVA: 0x0002C0B4 File Offset: 0x0002A2B4
+	// Token: 0x06000535 RID: 1333 RVA: 0x0002C168 File Offset: 0x0002A368
 	public Inventory GetInventory()
 	{
 		return this.m_inventory;
 	}
 
-	// Token: 0x06000535 RID: 1333 RVA: 0x0002C0BC File Offset: 0x0002A2BC
+	// Token: 0x06000536 RID: 1334 RVA: 0x0002C170 File Offset: 0x0002A370
 	public void SetSelection(Vector2i pos)
 	{
 		this.m_selected = pos;
 	}
 
-	// Token: 0x06000536 RID: 1334 RVA: 0x0002C0C5 File Offset: 0x0002A2C5
+	// Token: 0x06000537 RID: 1335 RVA: 0x0002C179 File Offset: 0x0002A379
 	public ItemDrop.ItemData GetGamepadSelectedItem()
 	{
 		if (!this.m_uiGroup.IsActive())
@@ -322,7 +322,7 @@ public class InventoryGrid : MonoBehaviour
 		return this.m_inventory.GetItemAt(this.m_selected.x, this.m_selected.y);
 	}
 
-	// Token: 0x06000537 RID: 1335 RVA: 0x0002C0F8 File Offset: 0x0002A2F8
+	// Token: 0x06000538 RID: 1336 RVA: 0x0002C1AC File Offset: 0x0002A3AC
 	public RectTransform GetGamepadSelectedElement()
 	{
 		if (!this.m_uiGroup.IsActive())
@@ -336,90 +336,90 @@ public class InventoryGrid : MonoBehaviour
 		return this.GetElement(this.m_selected.x, this.m_selected.y, this.m_width).m_go.transform as RectTransform;
 	}
 
-	// Token: 0x040005A6 RID: 1446
+	// Token: 0x040005AA RID: 1450
 	public Action<InventoryGrid, ItemDrop.ItemData, Vector2i, InventoryGrid.Modifier> m_onSelected;
 
-	// Token: 0x040005A7 RID: 1447
+	// Token: 0x040005AB RID: 1451
 	public Action<InventoryGrid, ItemDrop.ItemData, Vector2i> m_onRightClick;
 
-	// Token: 0x040005A8 RID: 1448
+	// Token: 0x040005AC RID: 1452
 	public GameObject m_elementPrefab;
 
-	// Token: 0x040005A9 RID: 1449
+	// Token: 0x040005AD RID: 1453
 	public RectTransform m_gridRoot;
 
-	// Token: 0x040005AA RID: 1450
+	// Token: 0x040005AE RID: 1454
 	public Scrollbar m_scrollbar;
 
-	// Token: 0x040005AB RID: 1451
+	// Token: 0x040005AF RID: 1455
 	public UIGroupHandler m_uiGroup;
 
-	// Token: 0x040005AC RID: 1452
+	// Token: 0x040005B0 RID: 1456
 	public float m_elementSpace = 10f;
 
-	// Token: 0x040005AD RID: 1453
+	// Token: 0x040005B1 RID: 1457
 	private int m_width = 4;
 
-	// Token: 0x040005AE RID: 1454
+	// Token: 0x040005B2 RID: 1458
 	private int m_height = 4;
 
-	// Token: 0x040005AF RID: 1455
+	// Token: 0x040005B3 RID: 1459
 	private Vector2i m_selected = new Vector2i(0, 0);
 
-	// Token: 0x040005B0 RID: 1456
+	// Token: 0x040005B4 RID: 1460
 	private Inventory m_inventory;
 
-	// Token: 0x040005B1 RID: 1457
+	// Token: 0x040005B5 RID: 1461
 	private List<InventoryGrid.Element> m_elements = new List<InventoryGrid.Element>();
 
 	// Token: 0x0200014C RID: 332
 	private class Element
 	{
-		// Token: 0x040010E8 RID: 4328
+		// Token: 0x040010EF RID: 4335
 		public Vector2i m_pos;
 
-		// Token: 0x040010E9 RID: 4329
+		// Token: 0x040010F0 RID: 4336
 		public GameObject m_go;
 
-		// Token: 0x040010EA RID: 4330
+		// Token: 0x040010F1 RID: 4337
 		public Image m_icon;
 
-		// Token: 0x040010EB RID: 4331
+		// Token: 0x040010F2 RID: 4338
 		public Text m_amount;
 
-		// Token: 0x040010EC RID: 4332
+		// Token: 0x040010F3 RID: 4339
 		public Text m_quality;
 
-		// Token: 0x040010ED RID: 4333
+		// Token: 0x040010F4 RID: 4340
 		public Image m_equiped;
 
-		// Token: 0x040010EE RID: 4334
+		// Token: 0x040010F5 RID: 4341
 		public Image m_queued;
 
-		// Token: 0x040010EF RID: 4335
+		// Token: 0x040010F6 RID: 4342
 		public GameObject m_selected;
 
-		// Token: 0x040010F0 RID: 4336
+		// Token: 0x040010F7 RID: 4343
 		public Image m_noteleport;
 
-		// Token: 0x040010F1 RID: 4337
+		// Token: 0x040010F8 RID: 4344
 		public UITooltip m_tooltip;
 
-		// Token: 0x040010F2 RID: 4338
+		// Token: 0x040010F9 RID: 4345
 		public GuiBar m_durability;
 
-		// Token: 0x040010F3 RID: 4339
+		// Token: 0x040010FA RID: 4346
 		public bool m_used;
 	}
 
 	// Token: 0x0200014D RID: 333
 	public enum Modifier
 	{
-		// Token: 0x040010F5 RID: 4341
+		// Token: 0x040010FC RID: 4348
 		Select,
-		// Token: 0x040010F6 RID: 4342
+		// Token: 0x040010FD RID: 4349
 		Split,
-		// Token: 0x040010F7 RID: 4343
+		// Token: 0x040010FE RID: 4350
 		Move
 	}
 }

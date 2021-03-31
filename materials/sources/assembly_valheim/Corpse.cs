@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000006 RID: 6
 public class Corpse : MonoBehaviour
 {
-	// Token: 0x060000E8 RID: 232 RVA: 0x00006F10 File Offset: 0x00005110
+	// Token: 0x060000E9 RID: 233 RVA: 0x00006F34 File Offset: 0x00005134
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -18,7 +18,7 @@ public class Corpse : MonoBehaviour
 		base.InvokeRepeating("UpdateDespawn", Corpse.m_updateDt, Corpse.m_updateDt);
 	}
 
-	// Token: 0x060000E9 RID: 233 RVA: 0x00006FA4 File Offset: 0x000051A4
+	// Token: 0x060000EA RID: 234 RVA: 0x00006FC8 File Offset: 0x000051C8
 	public void SetEquipedItems(List<ItemDrop.ItemData> items)
 	{
 		foreach (ItemDrop.ItemData itemData in items)
@@ -34,7 +34,7 @@ public class Corpse : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000EA RID: 234 RVA: 0x00007048 File Offset: 0x00005248
+	// Token: 0x060000EB RID: 235 RVA: 0x0000706C File Offset: 0x0000526C
 	private void UpdateDespawn()
 	{
 		if (this.m_nview.IsOwner() && !this.m_container.IsInUse())
@@ -56,24 +56,24 @@ public class Corpse : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040000BB RID: 187
+	// Token: 0x040000BC RID: 188
 	private static float m_updateDt = 2f;
 
-	// Token: 0x040000BC RID: 188
+	// Token: 0x040000BD RID: 189
 	public float m_emptyDespawnDelaySec = 10f;
 
-	// Token: 0x040000BD RID: 189
+	// Token: 0x040000BE RID: 190
 	public float m_DespawnDelayMin = 20f;
 
-	// Token: 0x040000BE RID: 190
+	// Token: 0x040000BF RID: 191
 	private float m_emptyTimer;
 
-	// Token: 0x040000BF RID: 191
+	// Token: 0x040000C0 RID: 192
 	private Container m_container;
 
-	// Token: 0x040000C0 RID: 192
+	// Token: 0x040000C1 RID: 193
 	private ZNetView m_nview;
 
-	// Token: 0x040000C1 RID: 193
+	// Token: 0x040000C2 RID: 194
 	private SkinnedMeshRenderer m_model;
 }

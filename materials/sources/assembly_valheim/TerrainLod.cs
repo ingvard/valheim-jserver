@@ -4,13 +4,13 @@ using UnityEngine;
 // Token: 0x020000B3 RID: 179
 public class TerrainLod : MonoBehaviour
 {
-	// Token: 0x06000BEF RID: 3055 RVA: 0x000550A9 File Offset: 0x000532A9
+	// Token: 0x06000BF0 RID: 3056 RVA: 0x00055231 File Offset: 0x00053431
 	private void Awake()
 	{
 		this.m_hmap = base.GetComponent<Heightmap>();
 	}
 
-	// Token: 0x06000BF0 RID: 3056 RVA: 0x000550B8 File Offset: 0x000532B8
+	// Token: 0x06000BF1 RID: 3057 RVA: 0x00055240 File Offset: 0x00053440
 	private void Update()
 	{
 		Camera mainCamera = Utils.GetMainCamera();
@@ -36,15 +36,15 @@ public class TerrainLod : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000B12 RID: 2834
+	// Token: 0x04000B18 RID: 2840
 	public float m_updateStepDistance = 256f;
 
-	// Token: 0x04000B13 RID: 2835
+	// Token: 0x04000B19 RID: 2841
 	private Heightmap m_hmap;
 
-	// Token: 0x04000B14 RID: 2836
+	// Token: 0x04000B1A RID: 2842
 	private Vector3 m_lastPoint = new Vector3(99999f, 0f, 99999f);
 
-	// Token: 0x04000B15 RID: 2837
+	// Token: 0x04000B1B RID: 2843
 	private bool m_needRebuild = true;
 }

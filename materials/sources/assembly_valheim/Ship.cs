@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x020000F1 RID: 241
 public class Ship : MonoBehaviour
 {
-	// Token: 0x06000ECC RID: 3788 RVA: 0x00069984 File Offset: 0x00067B84
+	// Token: 0x06000ECD RID: 3789 RVA: 0x00069B0C File Offset: 0x00067D0C
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -25,13 +25,13 @@ public class Ship : MonoBehaviour
 		this.m_sailCloth = this.m_sailObject.GetComponentInChildren<Cloth>();
 	}
 
-	// Token: 0x06000ECD RID: 3789 RVA: 0x00069A14 File Offset: 0x00067C14
+	// Token: 0x06000ECE RID: 3790 RVA: 0x00069B9C File Offset: 0x00067D9C
 	public bool CanBeRemoved()
 	{
 		return this.m_players.Count == 0;
 	}
 
-	// Token: 0x06000ECE RID: 3790 RVA: 0x00069A24 File Offset: 0x00067C24
+	// Token: 0x06000ECF RID: 3791 RVA: 0x00069BAC File Offset: 0x00067DAC
 	private void Start()
 	{
 		this.m_nview.Register("Stop", new Action<long>(this.RPC_Stop));
@@ -41,7 +41,7 @@ public class Ship : MonoBehaviour
 		base.InvokeRepeating("UpdateOwner", 2f, 2f);
 	}
 
-	// Token: 0x06000ECF RID: 3791 RVA: 0x00069AB8 File Offset: 0x00067CB8
+	// Token: 0x06000ED0 RID: 3792 RVA: 0x00069C40 File Offset: 0x00067E40
 	private void PrintStats()
 	{
 		if (this.m_players.Count == 0)
@@ -51,7 +51,7 @@ public class Ship : MonoBehaviour
 		ZLog.Log("Vel:" + this.m_body.velocity.magnitude.ToString("0.0"));
 	}
 
-	// Token: 0x06000ED0 RID: 3792 RVA: 0x00069B04 File Offset: 0x00067D04
+	// Token: 0x06000ED1 RID: 3793 RVA: 0x00069C8C File Offset: 0x00067E8C
 	public void ApplyMovementControlls(Vector3 dir)
 	{
 		bool flag = (double)dir.z > 0.5;
@@ -81,43 +81,43 @@ public class Ship : MonoBehaviour
 		this.m_backwardPressed = flag2;
 	}
 
-	// Token: 0x06000ED1 RID: 3793 RVA: 0x00069C0F File Offset: 0x00067E0F
+	// Token: 0x06000ED2 RID: 3794 RVA: 0x00069D97 File Offset: 0x00067F97
 	public void Forward()
 	{
 		this.m_nview.InvokeRPC("Forward", Array.Empty<object>());
 	}
 
-	// Token: 0x06000ED2 RID: 3794 RVA: 0x00069C26 File Offset: 0x00067E26
+	// Token: 0x06000ED3 RID: 3795 RVA: 0x00069DAE File Offset: 0x00067FAE
 	public void Backward()
 	{
 		this.m_nview.InvokeRPC("Backward", Array.Empty<object>());
 	}
 
-	// Token: 0x06000ED3 RID: 3795 RVA: 0x00069C3D File Offset: 0x00067E3D
+	// Token: 0x06000ED4 RID: 3796 RVA: 0x00069DC5 File Offset: 0x00067FC5
 	public void Rudder(float rudder)
 	{
 		this.m_nview.Invoke("Rudder", rudder);
 	}
 
-	// Token: 0x06000ED4 RID: 3796 RVA: 0x00069C50 File Offset: 0x00067E50
+	// Token: 0x06000ED5 RID: 3797 RVA: 0x00069DD8 File Offset: 0x00067FD8
 	private void RPC_Rudder(long sender, float value)
 	{
 		this.m_rudderValue = value;
 	}
 
-	// Token: 0x06000ED5 RID: 3797 RVA: 0x00069C59 File Offset: 0x00067E59
+	// Token: 0x06000ED6 RID: 3798 RVA: 0x00069DE1 File Offset: 0x00067FE1
 	public void Stop()
 	{
 		this.m_nview.InvokeRPC("Stop", Array.Empty<object>());
 	}
 
-	// Token: 0x06000ED6 RID: 3798 RVA: 0x00069C70 File Offset: 0x00067E70
+	// Token: 0x06000ED7 RID: 3799 RVA: 0x00069DF8 File Offset: 0x00067FF8
 	private void RPC_Stop(long sender)
 	{
 		this.m_speed = Ship.Speed.Stop;
 	}
 
-	// Token: 0x06000ED7 RID: 3799 RVA: 0x00069C7C File Offset: 0x00067E7C
+	// Token: 0x06000ED8 RID: 3800 RVA: 0x00069E04 File Offset: 0x00068004
 	private void RPC_Forward(long sender)
 	{
 		switch (this.m_speed)
@@ -141,7 +141,7 @@ public class Ship : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000ED8 RID: 3800 RVA: 0x00069CCC File Offset: 0x00067ECC
+	// Token: 0x06000ED9 RID: 3801 RVA: 0x00069E54 File Offset: 0x00068054
 	private void RPC_Backward(long sender)
 	{
 		switch (this.m_speed)
@@ -165,7 +165,7 @@ public class Ship : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000ED9 RID: 3801 RVA: 0x00069D1C File Offset: 0x00067F1C
+	// Token: 0x06000EDA RID: 3802 RVA: 0x00069EA4 File Offset: 0x000680A4
 	private void FixedUpdate()
 	{
 		bool flag = this.HaveControllingPlayer();
@@ -285,7 +285,7 @@ public class Ship : MonoBehaviour
 		this.ApplyEdgeForce(Time.fixedDeltaTime);
 	}
 
-	// Token: 0x06000EDA RID: 3802 RVA: 0x0006A4FC File Offset: 0x000686FC
+	// Token: 0x06000EDB RID: 3803 RVA: 0x0006A684 File Offset: 0x00068884
 	private void UpdateUpsideDmg(float dt)
 	{
 		if (base.transform.up.y < 0f)
@@ -307,7 +307,7 @@ public class Ship : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000EDB RID: 3803 RVA: 0x0006A58C File Offset: 0x0006878C
+	// Token: 0x06000EDC RID: 3804 RVA: 0x0006A714 File Offset: 0x00068914
 	private Vector3 GetSailForce(float sailSize, float dt)
 	{
 		Vector3 windDir = EnvMan.instance.GetWindDir();
@@ -320,7 +320,7 @@ public class Ship : MonoBehaviour
 		return this.m_sailForce;
 	}
 
-	// Token: 0x06000EDC RID: 3804 RVA: 0x0006A620 File Offset: 0x00068820
+	// Token: 0x06000EDD RID: 3805 RVA: 0x0006A7A8 File Offset: 0x000689A8
 	public float GetWindAngleFactor()
 	{
 		float num = Vector3.Dot(EnvMan.instance.GetWindDir(), -base.transform.forward);
@@ -329,7 +329,7 @@ public class Ship : MonoBehaviour
 		return num2 * num3;
 	}
 
-	// Token: 0x06000EDD RID: 3805 RVA: 0x0006A684 File Offset: 0x00068884
+	// Token: 0x06000EDE RID: 3806 RVA: 0x0006A80C File Offset: 0x00068A0C
 	private void UpdateWaterForce(float depth, float dt)
 	{
 		if (this.m_lastDepth == -9999f)
@@ -363,7 +363,7 @@ public class Ship : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000EDE RID: 3806 RVA: 0x0006A770 File Offset: 0x00068970
+	// Token: 0x06000EDF RID: 3807 RVA: 0x0006A8F8 File Offset: 0x00068AF8
 	private void ApplyEdgeForce(float dt)
 	{
 		float magnitude = base.transform.position.magnitude;
@@ -377,7 +377,7 @@ public class Ship : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000EDF RID: 3807 RVA: 0x0006A7DC File Offset: 0x000689DC
+	// Token: 0x06000EE0 RID: 3808 RVA: 0x0006A964 File Offset: 0x00068B64
 	private void FixTilt()
 	{
 		float num = Mathf.Asin(base.transform.right.y);
@@ -404,7 +404,7 @@ public class Ship : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000EE0 RID: 3808 RVA: 0x0006A8F4 File Offset: 0x00068AF4
+	// Token: 0x06000EE1 RID: 3809 RVA: 0x0006AA7C File Offset: 0x00068C7C
 	private void UpdateControlls(float dt)
 	{
 		if (this.m_nview.IsOwner())
@@ -420,13 +420,13 @@ public class Ship : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000EE1 RID: 3809 RVA: 0x0006A994 File Offset: 0x00068B94
+	// Token: 0x06000EE2 RID: 3810 RVA: 0x0006AB1C File Offset: 0x00068D1C
 	public bool IsSailUp()
 	{
 		return this.m_speed == Ship.Speed.Half || this.m_speed == Ship.Speed.Full;
 	}
 
-	// Token: 0x06000EE2 RID: 3810 RVA: 0x0006A9AC File Offset: 0x00068BAC
+	// Token: 0x06000EE3 RID: 3811 RVA: 0x0006AB34 File Offset: 0x00068D34
 	private void UpdateSail(float dt)
 	{
 		this.UpdateSailSize(dt);
@@ -448,7 +448,7 @@ public class Ship : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000EE3 RID: 3811 RVA: 0x0006AAF8 File Offset: 0x00068CF8
+	// Token: 0x06000EE4 RID: 3812 RVA: 0x0006AC80 File Offset: 0x00068E80
 	private void UpdateRudder(float dt, bool haveControllingPlayer)
 	{
 		if (this.m_rudderObject)
@@ -471,7 +471,7 @@ public class Ship : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000EE4 RID: 3812 RVA: 0x0006ABF0 File Offset: 0x00068DF0
+	// Token: 0x06000EE5 RID: 3813 RVA: 0x0006AD78 File Offset: 0x00068F78
 	private void UpdateSailSize(float dt)
 	{
 		float num = 0f;
@@ -525,7 +525,7 @@ public class Ship : MonoBehaviour
 		this.sailWasInPosition = flag;
 	}
 
-	// Token: 0x06000EE5 RID: 3813 RVA: 0x0006AD18 File Offset: 0x00068F18
+	// Token: 0x06000EE6 RID: 3814 RVA: 0x0006AEA0 File Offset: 0x000690A0
 	private void UpdateOwner()
 	{
 		if (!this.m_nview.IsValid() || !this.m_nview.IsOwner())
@@ -544,7 +544,7 @@ public class Ship : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000EE6 RID: 3814 RVA: 0x0006ADA4 File Offset: 0x00068FA4
+	// Token: 0x06000EE7 RID: 3815 RVA: 0x0006AF2C File Offset: 0x0006912C
 	private void OnTriggerEnter(Collider collider)
 	{
 		Player component = collider.GetComponent<Player>();
@@ -559,7 +559,7 @@ public class Ship : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000EE7 RID: 3815 RVA: 0x0006AE04 File Offset: 0x00069004
+	// Token: 0x06000EE8 RID: 3816 RVA: 0x0006AF8C File Offset: 0x0006918C
 	private void OnTriggerExit(Collider collider)
 	{
 		Player component = collider.GetComponent<Player>();
@@ -574,7 +574,7 @@ public class Ship : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000EE8 RID: 3816 RVA: 0x0006AE68 File Offset: 0x00069068
+	// Token: 0x06000EE9 RID: 3817 RVA: 0x0006AFF0 File Offset: 0x000691F0
 	public bool IsPlayerInBoat(ZDOID zdoid)
 	{
 		using (List<Player>.Enumerator enumerator = this.m_players.GetEnumerator())
@@ -590,19 +590,19 @@ public class Ship : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000EE9 RID: 3817 RVA: 0x0006AEC8 File Offset: 0x000690C8
+	// Token: 0x06000EEA RID: 3818 RVA: 0x0006B050 File Offset: 0x00069250
 	public bool IsPlayerInBoat(Player player)
 	{
 		return this.m_players.Contains(player);
 	}
 
-	// Token: 0x06000EEA RID: 3818 RVA: 0x0006AED6 File Offset: 0x000690D6
+	// Token: 0x06000EEB RID: 3819 RVA: 0x0006B05E File Offset: 0x0006925E
 	public bool HasPlayerOnboard()
 	{
 		return this.m_players.Count > 0;
 	}
 
-	// Token: 0x06000EEB RID: 3819 RVA: 0x0006AEE8 File Offset: 0x000690E8
+	// Token: 0x06000EEC RID: 3820 RVA: 0x0006B070 File Offset: 0x00069270
 	private void OnDestroyed()
 	{
 		if (this.m_nview.IsValid() && this.m_nview.IsOwner())
@@ -612,7 +612,7 @@ public class Ship : MonoBehaviour
 		Ship.m_currentShips.Remove(this);
 	}
 
-	// Token: 0x06000EEC RID: 3820 RVA: 0x0006AF38 File Offset: 0x00069138
+	// Token: 0x06000EED RID: 3821 RVA: 0x0006B0C0 File Offset: 0x000692C0
 	public bool IsWindControllActive()
 	{
 		using (List<Player>.Enumerator enumerator = this.m_players.GetEnumerator())
@@ -628,7 +628,7 @@ public class Ship : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000EED RID: 3821 RVA: 0x0006AF98 File Offset: 0x00069198
+	// Token: 0x06000EEE RID: 3822 RVA: 0x0006B120 File Offset: 0x00069320
 	public static Ship GetLocalShip()
 	{
 		if (Ship.m_currentShips.Count == 0)
@@ -638,43 +638,43 @@ public class Ship : MonoBehaviour
 		return Ship.m_currentShips[Ship.m_currentShips.Count - 1];
 	}
 
-	// Token: 0x06000EEE RID: 3822 RVA: 0x0006AFBE File Offset: 0x000691BE
+	// Token: 0x06000EEF RID: 3823 RVA: 0x0006B146 File Offset: 0x00069346
 	public bool HaveControllingPlayer()
 	{
 		return this.m_players.Count != 0 && this.m_shipControlls.HaveValidUser();
 	}
 
-	// Token: 0x06000EEF RID: 3823 RVA: 0x0006AFDA File Offset: 0x000691DA
+	// Token: 0x06000EF0 RID: 3824 RVA: 0x0006B162 File Offset: 0x00069362
 	public bool IsOwner()
 	{
 		return this.m_nview.IsValid() && this.m_nview.IsOwner();
 	}
 
-	// Token: 0x06000EF0 RID: 3824 RVA: 0x0006AFF6 File Offset: 0x000691F6
+	// Token: 0x06000EF1 RID: 3825 RVA: 0x0006B17E File Offset: 0x0006937E
 	public float GetSpeed()
 	{
 		return Vector3.Dot(this.m_body.velocity, base.transform.forward);
 	}
 
-	// Token: 0x06000EF1 RID: 3825 RVA: 0x0006B013 File Offset: 0x00069213
+	// Token: 0x06000EF2 RID: 3826 RVA: 0x0006B19B File Offset: 0x0006939B
 	public Ship.Speed GetSpeedSetting()
 	{
 		return this.m_speed;
 	}
 
-	// Token: 0x06000EF2 RID: 3826 RVA: 0x0006B01B File Offset: 0x0006921B
+	// Token: 0x06000EF3 RID: 3827 RVA: 0x0006B1A3 File Offset: 0x000693A3
 	public float GetRudder()
 	{
 		return this.m_rudder;
 	}
 
-	// Token: 0x06000EF3 RID: 3827 RVA: 0x0006B023 File Offset: 0x00069223
+	// Token: 0x06000EF4 RID: 3828 RVA: 0x0006B1AB File Offset: 0x000693AB
 	public float GetRudderValue()
 	{
 		return this.m_rudderValue;
 	}
 
-	// Token: 0x06000EF4 RID: 3828 RVA: 0x0006B02C File Offset: 0x0006922C
+	// Token: 0x06000EF5 RID: 3829 RVA: 0x0006B1B4 File Offset: 0x000693B4
 	public float GetShipYawAngle()
 	{
 		Camera mainCamera = Utils.GetMainCamera();
@@ -685,14 +685,14 @@ public class Ship : MonoBehaviour
 		return -Utils.YawFromDirection(mainCamera.transform.InverseTransformDirection(base.transform.forward));
 	}
 
-	// Token: 0x06000EF5 RID: 3829 RVA: 0x0006B06C File Offset: 0x0006926C
+	// Token: 0x06000EF6 RID: 3830 RVA: 0x0006B1F4 File Offset: 0x000693F4
 	public float GetWindAngle()
 	{
 		Vector3 windDir = EnvMan.instance.GetWindDir();
 		return -Utils.YawFromDirection(base.transform.InverseTransformDirection(windDir));
 	}
 
-	// Token: 0x06000EF6 RID: 3830 RVA: 0x0006B098 File Offset: 0x00069298
+	// Token: 0x06000EF7 RID: 3831 RVA: 0x0006B220 File Offset: 0x00069420
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.red;
@@ -701,161 +701,161 @@ public class Ship : MonoBehaviour
 		Gizmos.DrawWireSphere(base.transform.position + base.transform.up * this.m_sailForceOffset, 0.25f);
 	}
 
-	// Token: 0x04000DB9 RID: 3513
+	// Token: 0x04000DBF RID: 3519
 	private bool m_forwardPressed;
 
-	// Token: 0x04000DBA RID: 3514
+	// Token: 0x04000DC0 RID: 3520
 	private bool m_backwardPressed;
 
-	// Token: 0x04000DBB RID: 3515
+	// Token: 0x04000DC1 RID: 3521
 	private float m_sendRudderTime;
 
-	// Token: 0x04000DBC RID: 3516
+	// Token: 0x04000DC2 RID: 3522
 	private Vector3 windChangeVelocity = Vector3.zero;
 
-	// Token: 0x04000DBD RID: 3517
+	// Token: 0x04000DC3 RID: 3523
 	private bool sailWasInPosition;
 
-	// Token: 0x04000DBE RID: 3518
+	// Token: 0x04000DC4 RID: 3524
 	[Header("Objects")]
 	public GameObject m_sailObject;
 
-	// Token: 0x04000DBF RID: 3519
+	// Token: 0x04000DC5 RID: 3525
 	public GameObject m_mastObject;
 
-	// Token: 0x04000DC0 RID: 3520
+	// Token: 0x04000DC6 RID: 3526
 	public GameObject m_rudderObject;
 
-	// Token: 0x04000DC1 RID: 3521
+	// Token: 0x04000DC7 RID: 3527
 	public ShipControlls m_shipControlls;
 
-	// Token: 0x04000DC2 RID: 3522
+	// Token: 0x04000DC8 RID: 3528
 	public Transform m_controlGuiPos;
 
-	// Token: 0x04000DC3 RID: 3523
+	// Token: 0x04000DC9 RID: 3529
 	[Header("Misc")]
 	public BoxCollider m_floatCollider;
 
-	// Token: 0x04000DC4 RID: 3524
+	// Token: 0x04000DCA RID: 3530
 	public float m_waterLevelOffset;
 
-	// Token: 0x04000DC5 RID: 3525
+	// Token: 0x04000DCB RID: 3531
 	public float m_forceDistance = 1f;
 
-	// Token: 0x04000DC6 RID: 3526
+	// Token: 0x04000DCC RID: 3532
 	public float m_force = 0.5f;
 
-	// Token: 0x04000DC7 RID: 3527
+	// Token: 0x04000DCD RID: 3533
 	public float m_damping = 0.05f;
 
-	// Token: 0x04000DC8 RID: 3528
+	// Token: 0x04000DCE RID: 3534
 	public float m_dampingSideway = 0.05f;
 
-	// Token: 0x04000DC9 RID: 3529
+	// Token: 0x04000DCF RID: 3535
 	public float m_dampingForward = 0.01f;
 
-	// Token: 0x04000DCA RID: 3530
+	// Token: 0x04000DD0 RID: 3536
 	public float m_angularDamping = 0.01f;
 
-	// Token: 0x04000DCB RID: 3531
+	// Token: 0x04000DD1 RID: 3537
 	public float m_disableLevel = -0.5f;
 
-	// Token: 0x04000DCC RID: 3532
+	// Token: 0x04000DD2 RID: 3538
 	public float m_sailForceOffset;
 
-	// Token: 0x04000DCD RID: 3533
+	// Token: 0x04000DD3 RID: 3539
 	public float m_sailForceFactor = 0.1f;
 
-	// Token: 0x04000DCE RID: 3534
+	// Token: 0x04000DD4 RID: 3540
 	public float m_rudderSpeed = 0.5f;
 
-	// Token: 0x04000DCF RID: 3535
+	// Token: 0x04000DD5 RID: 3541
 	public float m_stearForceOffset = -10f;
 
-	// Token: 0x04000DD0 RID: 3536
+	// Token: 0x04000DD6 RID: 3542
 	public float m_stearForce = 0.5f;
 
-	// Token: 0x04000DD1 RID: 3537
+	// Token: 0x04000DD7 RID: 3543
 	public float m_stearVelForceFactor = 0.1f;
 
-	// Token: 0x04000DD2 RID: 3538
+	// Token: 0x04000DD8 RID: 3544
 	public float m_backwardForce = 50f;
 
-	// Token: 0x04000DD3 RID: 3539
+	// Token: 0x04000DD9 RID: 3545
 	public float m_rudderRotationMax = 30f;
 
-	// Token: 0x04000DD4 RID: 3540
+	// Token: 0x04000DDA RID: 3546
 	public float m_rudderRotationSpeed = 30f;
 
-	// Token: 0x04000DD5 RID: 3541
+	// Token: 0x04000DDB RID: 3547
 	public float m_minWaterImpactForce = 2.5f;
 
-	// Token: 0x04000DD6 RID: 3542
+	// Token: 0x04000DDC RID: 3548
 	public float m_minWaterImpactInterval = 2f;
 
-	// Token: 0x04000DD7 RID: 3543
+	// Token: 0x04000DDD RID: 3549
 	public float m_waterImpactDamage = 10f;
 
-	// Token: 0x04000DD8 RID: 3544
+	// Token: 0x04000DDE RID: 3550
 	public float m_upsideDownDmgInterval = 1f;
 
-	// Token: 0x04000DD9 RID: 3545
+	// Token: 0x04000DDF RID: 3551
 	public float m_upsideDownDmg = 20f;
 
-	// Token: 0x04000DDA RID: 3546
+	// Token: 0x04000DE0 RID: 3552
 	public EffectList m_waterImpactEffect = new EffectList();
 
-	// Token: 0x04000DDB RID: 3547
+	// Token: 0x04000DE1 RID: 3553
 	private Ship.Speed m_speed;
 
-	// Token: 0x04000DDC RID: 3548
+	// Token: 0x04000DE2 RID: 3554
 	private float m_rudder;
 
-	// Token: 0x04000DDD RID: 3549
+	// Token: 0x04000DE3 RID: 3555
 	private float m_rudderValue;
 
-	// Token: 0x04000DDE RID: 3550
+	// Token: 0x04000DE4 RID: 3556
 	private Vector3 m_sailForce = Vector3.zero;
 
-	// Token: 0x04000DDF RID: 3551
+	// Token: 0x04000DE5 RID: 3557
 	private List<Player> m_players = new List<Player>();
 
-	// Token: 0x04000DE0 RID: 3552
+	// Token: 0x04000DE6 RID: 3558
 	private static List<Ship> m_currentShips = new List<Ship>();
 
-	// Token: 0x04000DE1 RID: 3553
+	// Token: 0x04000DE7 RID: 3559
 	private Rigidbody m_body;
 
-	// Token: 0x04000DE2 RID: 3554
+	// Token: 0x04000DE8 RID: 3560
 	private ZNetView m_nview;
 
-	// Token: 0x04000DE3 RID: 3555
+	// Token: 0x04000DE9 RID: 3561
 	private Cloth m_sailCloth;
 
-	// Token: 0x04000DE4 RID: 3556
+	// Token: 0x04000DEA RID: 3562
 	private float m_lastDepth = -9999f;
 
-	// Token: 0x04000DE5 RID: 3557
+	// Token: 0x04000DEB RID: 3563
 	private float m_lastWaterImpactTime;
 
-	// Token: 0x04000DE6 RID: 3558
+	// Token: 0x04000DEC RID: 3564
 	private float m_upsideDownDmgTimer;
 
-	// Token: 0x04000DE7 RID: 3559
+	// Token: 0x04000DED RID: 3565
 	private float m_rudderPaddleTimer;
 
 	// Token: 0x020001AA RID: 426
 	public enum Speed
 	{
-		// Token: 0x04001305 RID: 4869
+		// Token: 0x0400130C RID: 4876
 		Stop,
-		// Token: 0x04001306 RID: 4870
+		// Token: 0x0400130D RID: 4877
 		Back,
-		// Token: 0x04001307 RID: 4871
+		// Token: 0x0400130E RID: 4878
 		Slow,
-		// Token: 0x04001308 RID: 4872
+		// Token: 0x0400130F RID: 4879
 		Half,
-		// Token: 0x04001309 RID: 4873
+		// Token: 0x04001310 RID: 4880
 		Full
 	}
 }

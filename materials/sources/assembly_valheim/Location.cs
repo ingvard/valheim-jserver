@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 // Token: 0x020000DD RID: 221
 public class Location : MonoBehaviour
 {
-	// Token: 0x06000DFA RID: 3578 RVA: 0x000639F4 File Offset: 0x00061BF4
+	// Token: 0x06000DFB RID: 3579 RVA: 0x00063B7C File Offset: 0x00061D7C
 	private void Awake()
 	{
 		Location.m_allLocations.Add(this);
@@ -20,20 +20,20 @@ public class Location : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000DFB RID: 3579 RVA: 0x00063A98 File Offset: 0x00061C98
+	// Token: 0x06000DFC RID: 3580 RVA: 0x00063C20 File Offset: 0x00061E20
 	private Vector3 GetZoneCenter()
 	{
 		Vector2i zone = ZoneSystem.instance.GetZone(base.transform.position);
 		return ZoneSystem.instance.GetZonePos(zone);
 	}
 
-	// Token: 0x06000DFC RID: 3580 RVA: 0x00063AC6 File Offset: 0x00061CC6
+	// Token: 0x06000DFD RID: 3581 RVA: 0x00063C4E File Offset: 0x00061E4E
 	private void OnDestroy()
 	{
 		Location.m_allLocations.Remove(this);
 	}
 
-	// Token: 0x06000DFD RID: 3581 RVA: 0x00063AD4 File Offset: 0x00061CD4
+	// Token: 0x06000DFE RID: 3582 RVA: 0x00063C5C File Offset: 0x00061E5C
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = new Color(0.8f, 0.8f, 0.8f, 0.5f);
@@ -51,7 +51,7 @@ public class Location : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000DFE RID: 3582 RVA: 0x00063C2D File Offset: 0x00061E2D
+	// Token: 0x06000DFF RID: 3583 RVA: 0x00063DB5 File Offset: 0x00061FB5
 	private float GetMaxRadius()
 	{
 		if (!this.m_hasInterior)
@@ -61,14 +61,14 @@ public class Location : MonoBehaviour
 		return Mathf.Max(this.m_exteriorRadius, this.m_interiorRadius);
 	}
 
-	// Token: 0x06000DFF RID: 3583 RVA: 0x00063C50 File Offset: 0x00061E50
+	// Token: 0x06000E00 RID: 3584 RVA: 0x00063DD8 File Offset: 0x00061FD8
 	public bool IsInside(Vector3 point, float radius)
 	{
 		float maxRadius = this.GetMaxRadius();
 		return Utils.DistanceXZ(base.transform.position, point) < maxRadius;
 	}
 
-	// Token: 0x06000E00 RID: 3584 RVA: 0x00063C78 File Offset: 0x00061E78
+	// Token: 0x06000E01 RID: 3585 RVA: 0x00063E00 File Offset: 0x00062000
 	public static bool IsInsideLocation(Vector3 point, float distance)
 	{
 		using (List<Location>.Enumerator enumerator = Location.m_allLocations.GetEnumerator())
@@ -84,7 +84,7 @@ public class Location : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000E01 RID: 3585 RVA: 0x00063CD4 File Offset: 0x00061ED4
+	// Token: 0x06000E02 RID: 3586 RVA: 0x00063E5C File Offset: 0x0006205C
 	public static Location GetLocation(Vector3 point)
 	{
 		foreach (Location location in Location.m_allLocations)
@@ -97,7 +97,7 @@ public class Location : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000E02 RID: 3586 RVA: 0x00063D34 File Offset: 0x00061F34
+	// Token: 0x06000E03 RID: 3587 RVA: 0x00063EBC File Offset: 0x000620BC
 	public static bool IsInsideNoBuildLocation(Vector3 point)
 	{
 		foreach (Location location in Location.m_allLocations)
@@ -110,33 +110,33 @@ public class Location : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x04000CA7 RID: 3239
+	// Token: 0x04000CAD RID: 3245
 	[FormerlySerializedAs("m_radius")]
 	public float m_exteriorRadius = 20f;
 
-	// Token: 0x04000CA8 RID: 3240
+	// Token: 0x04000CAE RID: 3246
 	public bool m_noBuild = true;
 
-	// Token: 0x04000CA9 RID: 3241
+	// Token: 0x04000CAF RID: 3247
 	public bool m_clearArea = true;
 
-	// Token: 0x04000CAA RID: 3242
+	// Token: 0x04000CB0 RID: 3248
 	[Header("Other")]
 	public bool m_applyRandomDamage;
 
-	// Token: 0x04000CAB RID: 3243
+	// Token: 0x04000CB1 RID: 3249
 	[Header("Interior")]
 	public bool m_hasInterior;
 
-	// Token: 0x04000CAC RID: 3244
+	// Token: 0x04000CB2 RID: 3250
 	public float m_interiorRadius = 20f;
 
-	// Token: 0x04000CAD RID: 3245
+	// Token: 0x04000CB3 RID: 3251
 	public string m_interiorEnvironment = "";
 
-	// Token: 0x04000CAE RID: 3246
+	// Token: 0x04000CB4 RID: 3252
 	public GameObject m_interiorPrefab;
 
-	// Token: 0x04000CAF RID: 3247
+	// Token: 0x04000CB5 RID: 3253
 	private static List<Location> m_allLocations = new List<Location>();
 }

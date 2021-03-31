@@ -8,7 +8,7 @@ using UnityEngine.Rendering;
 public class AudioMan : MonoBehaviour
 {
 	// Token: 0x17000022 RID: 34
-	// (get) Token: 0x060009F0 RID: 2544 RVA: 0x00047E9A File Offset: 0x0004609A
+	// (get) Token: 0x060009F1 RID: 2545 RVA: 0x00047F46 File Offset: 0x00046146
 	public static AudioMan instance
 	{
 		get
@@ -17,7 +17,7 @@ public class AudioMan : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009F1 RID: 2545 RVA: 0x00047EA4 File Offset: 0x000460A4
+	// Token: 0x060009F2 RID: 2546 RVA: 0x00047F50 File Offset: 0x00046150
 	private void Awake()
 	{
 		if (AudioMan.m_instance != null)
@@ -70,7 +70,7 @@ public class AudioMan : MonoBehaviour
 		AudioMan.SetSFXVolume(PlayerPrefs.GetFloat("SfxVolume", AudioMan.GetSFXVolume()));
 	}
 
-	// Token: 0x060009F2 RID: 2546 RVA: 0x000480F7 File Offset: 0x000462F7
+	// Token: 0x060009F3 RID: 2547 RVA: 0x000481A3 File Offset: 0x000463A3
 	private void OnDestroy()
 	{
 		if (AudioMan.m_instance == this)
@@ -79,7 +79,7 @@ public class AudioMan : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009F3 RID: 2547 RVA: 0x0004810C File Offset: 0x0004630C
+	// Token: 0x060009F4 RID: 2548 RVA: 0x000481B8 File Offset: 0x000463B8
 	private void Update()
 	{
 		float deltaTime = Time.deltaTime;
@@ -88,7 +88,7 @@ public class AudioMan : MonoBehaviour
 		this.UpdateSnapshots(deltaTime);
 	}
 
-	// Token: 0x060009F4 RID: 2548 RVA: 0x00048134 File Offset: 0x00046334
+	// Token: 0x060009F5 RID: 2549 RVA: 0x000481E0 File Offset: 0x000463E0
 	private void FixedUpdate()
 	{
 		float fixedDeltaTime = Time.fixedDeltaTime;
@@ -96,7 +96,7 @@ public class AudioMan : MonoBehaviour
 		this.UpdateWindAmbience(fixedDeltaTime);
 	}
 
-	// Token: 0x060009F5 RID: 2549 RVA: 0x00048158 File Offset: 0x00046358
+	// Token: 0x060009F6 RID: 2550 RVA: 0x00048204 File Offset: 0x00046404
 	public static float GetSFXVolume()
 	{
 		if (AudioMan.m_instance == null)
@@ -108,7 +108,7 @@ public class AudioMan : MonoBehaviour
 		return Mathf.Pow(10f, num / 20f);
 	}
 
-	// Token: 0x060009F6 RID: 2550 RVA: 0x000481A0 File Offset: 0x000463A0
+	// Token: 0x060009F7 RID: 2551 RVA: 0x0004824C File Offset: 0x0004644C
 	public static void SetSFXVolume(float vol)
 	{
 		if (AudioMan.m_instance == null)
@@ -119,7 +119,7 @@ public class AudioMan : MonoBehaviour
 		AudioMan.m_instance.m_masterMixer.SetFloat("SfxVol", value);
 	}
 
-	// Token: 0x060009F7 RID: 2551 RVA: 0x000481F0 File Offset: 0x000463F0
+	// Token: 0x060009F8 RID: 2552 RVA: 0x0004829C File Offset: 0x0004649C
 	private void UpdateRandomAmbient(float dt)
 	{
 		if (this.InMenu())
@@ -150,7 +150,7 @@ public class AudioMan : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009F8 RID: 2552 RVA: 0x000482A8 File Offset: 0x000464A8
+	// Token: 0x060009F9 RID: 2553 RVA: 0x00048354 File Offset: 0x00046554
 	private Vector3 GetRandomAmbiencePoint()
 	{
 		Vector3 a = Vector3.zero;
@@ -168,7 +168,7 @@ public class AudioMan : MonoBehaviour
 		return a + new Vector3(Mathf.Sin(f) * num, 0f, Mathf.Cos(f) * num);
 	}
 
-	// Token: 0x060009F9 RID: 2553 RVA: 0x00048338 File Offset: 0x00046538
+	// Token: 0x060009FA RID: 2554 RVA: 0x000483E4 File Offset: 0x000465E4
 	private AudioClip SelectRandomAmbientClip()
 	{
 		if (EnvMan.instance == null)
@@ -199,7 +199,7 @@ public class AudioMan : MonoBehaviour
 		return list[UnityEngine.Random.Range(0, list.Count)];
 	}
 
-	// Token: 0x060009FA RID: 2554 RVA: 0x000483E0 File Offset: 0x000465E0
+	// Token: 0x060009FB RID: 2555 RVA: 0x0004848C File Offset: 0x0004668C
 	private void UpdateAmbientLoop(float dt)
 	{
 		if (EnvMan.instance == null)
@@ -232,19 +232,19 @@ public class AudioMan : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009FB RID: 2555 RVA: 0x000484FE File Offset: 0x000466FE
+	// Token: 0x060009FC RID: 2556 RVA: 0x000485AA File Offset: 0x000467AA
 	public void SetIndoor(bool indoor)
 	{
 		this.m_indoor = indoor;
 	}
 
-	// Token: 0x060009FC RID: 2556 RVA: 0x00048507 File Offset: 0x00046707
+	// Token: 0x060009FD RID: 2557 RVA: 0x000485B3 File Offset: 0x000467B3
 	private bool InMenu()
 	{
 		return FejdStartup.instance != null || Menu.IsVisible() || (Game.instance && Game.instance.WaitingForRespawn()) || TextViewer.IsShowingIntro();
 	}
 
-	// Token: 0x060009FD RID: 2557 RVA: 0x0004853C File Offset: 0x0004673C
+	// Token: 0x060009FE RID: 2558 RVA: 0x000485E8 File Offset: 0x000467E8
 	private void UpdateSnapshots(float dt)
 	{
 		if (this.InMenu())
@@ -260,7 +260,7 @@ public class AudioMan : MonoBehaviour
 		this.SetSnapshot(AudioMan.Snapshot.Default);
 	}
 
-	// Token: 0x060009FE RID: 2558 RVA: 0x00048568 File Offset: 0x00046768
+	// Token: 0x060009FF RID: 2559 RVA: 0x00048614 File Offset: 0x00046814
 	private void SetSnapshot(AudioMan.Snapshot snapshot)
 	{
 		if (this.m_currentSnapshot == snapshot)
@@ -284,14 +284,14 @@ public class AudioMan : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009FF RID: 2559 RVA: 0x000485EC File Offset: 0x000467EC
+	// Token: 0x06000A00 RID: 2560 RVA: 0x00048698 File Offset: 0x00046898
 	public void StopAmbientLoop()
 	{
 		this.m_queuedAmbientLoop = null;
 		this.m_stopAmbientLoop = true;
 	}
 
-	// Token: 0x06000A00 RID: 2560 RVA: 0x000485FC File Offset: 0x000467FC
+	// Token: 0x06000A01 RID: 2561 RVA: 0x000486A8 File Offset: 0x000468A8
 	public void QueueAmbientLoop(AudioClip clip, float vol)
 	{
 		if (this.m_queuedAmbientLoop == clip && this.m_queuedAmbientVol == vol)
@@ -307,7 +307,7 @@ public class AudioMan : MonoBehaviour
 		this.m_stopAmbientLoop = false;
 	}
 
-	// Token: 0x06000A01 RID: 2561 RVA: 0x00048664 File Offset: 0x00046864
+	// Token: 0x06000A02 RID: 2562 RVA: 0x00048710 File Offset: 0x00046910
 	private void UpdateWindAmbience(float dt)
 	{
 		if (ZoneSystem.instance == null)
@@ -322,7 +322,7 @@ public class AudioMan : MonoBehaviour
 		this.m_windLoopSource.pitch = Mathf.Lerp(this.m_windMinPitch, this.m_windMaxPitch, num);
 	}
 
-	// Token: 0x06000A02 RID: 2562 RVA: 0x0004871C File Offset: 0x0004691C
+	// Token: 0x06000A03 RID: 2563 RVA: 0x000487C8 File Offset: 0x000469C8
 	private void UpdateOceanAmbiance(float dt)
 	{
 		if (ZoneSystem.instance == null)
@@ -347,7 +347,7 @@ public class AudioMan : MonoBehaviour
 		this.m_oceanAmbientSource.volume = Mathf.MoveTowards(this.m_oceanAmbientSource.volume, 0f, this.m_oceanFadeSpeed * dt);
 	}
 
-	// Token: 0x06000A03 RID: 2563 RVA: 0x00048824 File Offset: 0x00046A24
+	// Token: 0x06000A04 RID: 2564 RVA: 0x000488D0 File Offset: 0x00046AD0
 	private bool FindAverageOceanPoint(out Vector3 point)
 	{
 		Camera mainCamera = Utils.GetMainCamera();
@@ -386,14 +386,14 @@ public class AudioMan : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000A04 RID: 2564 RVA: 0x00048904 File Offset: 0x00046B04
+	// Token: 0x06000A05 RID: 2565 RVA: 0x000489B0 File Offset: 0x00046BB0
 	private bool IsOceanZone(Vector3 centerPos)
 	{
 		float groundHeight = ZoneSystem.instance.GetGroundHeight(centerPos);
 		return ZoneSystem.instance.m_waterLevel - groundHeight > this.m_oceanDepthTreshold;
 	}
 
-	// Token: 0x06000A05 RID: 2565 RVA: 0x00048934 File Offset: 0x00046B34
+	// Token: 0x06000A06 RID: 2566 RVA: 0x000489E0 File Offset: 0x00046BE0
 	private AudioMan.BiomeAmbients GetAmbients(string name)
 	{
 		foreach (AudioMan.BiomeAmbients biomeAmbients in this.m_randomAmbients)
@@ -406,7 +406,7 @@ public class AudioMan : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000A06 RID: 2566 RVA: 0x00048998 File Offset: 0x00046B98
+	// Token: 0x06000A07 RID: 2567 RVA: 0x00048A44 File Offset: 0x00046C44
 	private AudioMan.BiomeAmbients GetBiomeAmbients(Heightmap.Biome biome)
 	{
 		foreach (AudioMan.BiomeAmbients biomeAmbients in this.m_randomAmbients)
@@ -419,171 +419,171 @@ public class AudioMan : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x04000901 RID: 2305
+	// Token: 0x04000905 RID: 2309
 	private static AudioMan m_instance;
 
-	// Token: 0x04000902 RID: 2306
+	// Token: 0x04000906 RID: 2310
 	[Header("Mixers")]
 	public AudioMixerGroup m_ambientMixer;
 
-	// Token: 0x04000903 RID: 2307
+	// Token: 0x04000907 RID: 2311
 	public AudioMixer m_masterMixer;
 
-	// Token: 0x04000904 RID: 2308
+	// Token: 0x04000908 RID: 2312
 	public float m_snapshotTransitionTime = 2f;
 
-	// Token: 0x04000905 RID: 2309
+	// Token: 0x04000909 RID: 2313
 	[Header("Wind")]
 	public AudioClip m_windAudio;
 
-	// Token: 0x04000906 RID: 2310
+	// Token: 0x0400090A RID: 2314
 	public float m_windMinVol;
 
-	// Token: 0x04000907 RID: 2311
+	// Token: 0x0400090B RID: 2315
 	public float m_windMaxVol = 1f;
 
-	// Token: 0x04000908 RID: 2312
+	// Token: 0x0400090C RID: 2316
 	public float m_windMinPitch = 0.5f;
 
-	// Token: 0x04000909 RID: 2313
+	// Token: 0x0400090D RID: 2317
 	public float m_windMaxPitch = 1.5f;
 
-	// Token: 0x0400090A RID: 2314
+	// Token: 0x0400090E RID: 2318
 	public float m_windVariation = 0.2f;
 
-	// Token: 0x0400090B RID: 2315
+	// Token: 0x0400090F RID: 2319
 	public float m_windIntensityPower = 1.5f;
 
-	// Token: 0x0400090C RID: 2316
+	// Token: 0x04000910 RID: 2320
 	[Header("Ocean")]
 	public AudioClip m_oceanAudio;
 
-	// Token: 0x0400090D RID: 2317
+	// Token: 0x04000911 RID: 2321
 	public float m_oceanVolumeMax = 1f;
 
-	// Token: 0x0400090E RID: 2318
+	// Token: 0x04000912 RID: 2322
 	public float m_oceanVolumeMin = 1f;
 
-	// Token: 0x0400090F RID: 2319
+	// Token: 0x04000913 RID: 2323
 	public float m_oceanFadeSpeed = 0.1f;
 
-	// Token: 0x04000910 RID: 2320
+	// Token: 0x04000914 RID: 2324
 	public float m_oceanMoveSpeed = 0.1f;
 
-	// Token: 0x04000911 RID: 2321
+	// Token: 0x04000915 RID: 2325
 	public float m_oceanDepthTreshold = 10f;
 
-	// Token: 0x04000912 RID: 2322
+	// Token: 0x04000916 RID: 2326
 	[Header("Random ambients")]
 	public float m_ambientFadeTime = 2f;
 
-	// Token: 0x04000913 RID: 2323
+	// Token: 0x04000917 RID: 2327
 	public float m_randomAmbientInterval = 5f;
 
-	// Token: 0x04000914 RID: 2324
+	// Token: 0x04000918 RID: 2328
 	public float m_randomAmbientChance = 0.5f;
 
-	// Token: 0x04000915 RID: 2325
+	// Token: 0x04000919 RID: 2329
 	public float m_randomMinPitch = 0.9f;
 
-	// Token: 0x04000916 RID: 2326
+	// Token: 0x0400091A RID: 2330
 	public float m_randomMaxPitch = 1.1f;
 
-	// Token: 0x04000917 RID: 2327
+	// Token: 0x0400091B RID: 2331
 	public float m_randomMinVol = 0.2f;
 
-	// Token: 0x04000918 RID: 2328
+	// Token: 0x0400091C RID: 2332
 	public float m_randomMaxVol = 0.4f;
 
-	// Token: 0x04000919 RID: 2329
+	// Token: 0x0400091D RID: 2333
 	public float m_randomPan = 0.2f;
 
-	// Token: 0x0400091A RID: 2330
+	// Token: 0x0400091E RID: 2334
 	public float m_randomFadeIn = 0.2f;
 
-	// Token: 0x0400091B RID: 2331
+	// Token: 0x0400091F RID: 2335
 	public float m_randomFadeOut = 2f;
 
-	// Token: 0x0400091C RID: 2332
+	// Token: 0x04000920 RID: 2336
 	public float m_randomMinDistance = 5f;
 
-	// Token: 0x0400091D RID: 2333
+	// Token: 0x04000921 RID: 2337
 	public float m_randomMaxDistance = 20f;
 
-	// Token: 0x0400091E RID: 2334
+	// Token: 0x04000922 RID: 2338
 	public List<AudioMan.BiomeAmbients> m_randomAmbients = new List<AudioMan.BiomeAmbients>();
 
-	// Token: 0x0400091F RID: 2335
+	// Token: 0x04000923 RID: 2339
 	public GameObject m_randomAmbientPrefab;
 
-	// Token: 0x04000920 RID: 2336
+	// Token: 0x04000924 RID: 2340
 	private AudioSource m_oceanAmbientSource;
 
-	// Token: 0x04000921 RID: 2337
+	// Token: 0x04000925 RID: 2341
 	private AudioSource m_ambientLoopSource;
 
-	// Token: 0x04000922 RID: 2338
+	// Token: 0x04000926 RID: 2342
 	private AudioSource m_windLoopSource;
 
-	// Token: 0x04000923 RID: 2339
+	// Token: 0x04000927 RID: 2343
 	private AudioClip m_queuedAmbientLoop;
 
-	// Token: 0x04000924 RID: 2340
+	// Token: 0x04000928 RID: 2344
 	private float m_queuedAmbientVol;
 
-	// Token: 0x04000925 RID: 2341
+	// Token: 0x04000929 RID: 2345
 	private float m_ambientVol;
 
-	// Token: 0x04000926 RID: 2342
+	// Token: 0x0400092A RID: 2346
 	private float m_randomAmbientTimer;
 
-	// Token: 0x04000927 RID: 2343
+	// Token: 0x0400092B RID: 2347
 	private bool m_stopAmbientLoop;
 
-	// Token: 0x04000928 RID: 2344
+	// Token: 0x0400092C RID: 2348
 	private bool m_indoor;
 
-	// Token: 0x04000929 RID: 2345
+	// Token: 0x0400092D RID: 2349
 	private float m_oceanUpdateTimer;
 
-	// Token: 0x0400092A RID: 2346
+	// Token: 0x0400092E RID: 2350
 	private bool m_haveOcean;
 
-	// Token: 0x0400092B RID: 2347
+	// Token: 0x0400092F RID: 2351
 	private Vector3 m_avgOceanPoint = Vector3.zero;
 
-	// Token: 0x0400092C RID: 2348
+	// Token: 0x04000930 RID: 2352
 	private AudioMan.Snapshot m_currentSnapshot;
 
 	// Token: 0x02000177 RID: 375
 	[Serializable]
 	public class BiomeAmbients
 	{
-		// Token: 0x04001188 RID: 4488
+		// Token: 0x0400118F RID: 4495
 		public string m_name = "";
 
-		// Token: 0x04001189 RID: 4489
+		// Token: 0x04001190 RID: 4496
 		[BitMask(typeof(Heightmap.Biome))]
 		public Heightmap.Biome m_biome;
 
-		// Token: 0x0400118A RID: 4490
+		// Token: 0x04001191 RID: 4497
 		public List<AudioClip> m_randomAmbientClips = new List<AudioClip>();
 
-		// Token: 0x0400118B RID: 4491
+		// Token: 0x04001192 RID: 4498
 		public List<AudioClip> m_randomAmbientClipsDay = new List<AudioClip>();
 
-		// Token: 0x0400118C RID: 4492
+		// Token: 0x04001193 RID: 4499
 		public List<AudioClip> m_randomAmbientClipsNight = new List<AudioClip>();
 	}
 
 	// Token: 0x02000178 RID: 376
 	private enum Snapshot
 	{
-		// Token: 0x0400118E RID: 4494
+		// Token: 0x04001195 RID: 4501
 		Default,
-		// Token: 0x0400118F RID: 4495
+		// Token: 0x04001196 RID: 4502
 		Menu,
-		// Token: 0x04001190 RID: 4496
+		// Token: 0x04001197 RID: 4503
 		Indoor
 	}
 }

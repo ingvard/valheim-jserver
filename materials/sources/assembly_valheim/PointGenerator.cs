@@ -5,14 +5,14 @@ using UnityEngine;
 // Token: 0x020000E8 RID: 232
 public class PointGenerator
 {
-	// Token: 0x06000E5E RID: 3678 RVA: 0x00066A9C File Offset: 0x00064C9C
+	// Token: 0x06000E5F RID: 3679 RVA: 0x00066C24 File Offset: 0x00064E24
 	public PointGenerator(int amount, float gridSize)
 	{
 		this.m_amount = amount;
 		this.m_gridSize = gridSize;
 	}
 
-	// Token: 0x06000E5F RID: 3679 RVA: 0x00066AE8 File Offset: 0x00064CE8
+	// Token: 0x06000E60 RID: 3680 RVA: 0x00066C70 File Offset: 0x00064E70
 	public void Update(Vector3 center, float radius, List<Vector3> newPoints, List<Vector3> removedPoints)
 	{
 		Vector2Int grid = this.GetGrid(center);
@@ -29,7 +29,7 @@ public class PointGenerator
 		}
 	}
 
-	// Token: 0x06000E60 RID: 3680 RVA: 0x00066B48 File Offset: 0x00064D48
+	// Token: 0x06000E61 RID: 3681 RVA: 0x00066CD0 File Offset: 0x00064ED0
 	private void RegeneratePoints(Vector2Int centerGrid, int gridWith)
 	{
 		this.m_currentCenterGrid = centerGrid;
@@ -51,7 +51,7 @@ public class PointGenerator
 		UnityEngine.Random.state = state;
 	}
 
-	// Token: 0x06000E61 RID: 3681 RVA: 0x00066C38 File Offset: 0x00064E38
+	// Token: 0x06000E62 RID: 3682 RVA: 0x00066DC0 File Offset: 0x00064FC0
 	public Vector2Int GetGrid(Vector3 point)
 	{
 		int x = Mathf.FloorToInt((point.x + this.m_gridSize / 2f) / this.m_gridSize);
@@ -59,24 +59,24 @@ public class PointGenerator
 		return new Vector2Int(x, y);
 	}
 
-	// Token: 0x06000E62 RID: 3682 RVA: 0x00066C8A File Offset: 0x00064E8A
+	// Token: 0x06000E63 RID: 3683 RVA: 0x00066E12 File Offset: 0x00065012
 	public Vector3 GetGridPos(Vector2Int grid)
 	{
 		return new Vector3((float)grid.x * this.m_gridSize, 0f, (float)grid.y * this.m_gridSize);
 	}
 
-	// Token: 0x04000D3F RID: 3391
+	// Token: 0x04000D45 RID: 3397
 	private int m_amount;
 
-	// Token: 0x04000D40 RID: 3392
+	// Token: 0x04000D46 RID: 3398
 	private float m_gridSize = 8f;
 
-	// Token: 0x04000D41 RID: 3393
+	// Token: 0x04000D47 RID: 3399
 	private Vector2Int m_currentCenterGrid = new Vector2Int(99999, 99999);
 
-	// Token: 0x04000D42 RID: 3394
+	// Token: 0x04000D48 RID: 3400
 	private int m_currentGridWith;
 
-	// Token: 0x04000D43 RID: 3395
+	// Token: 0x04000D49 RID: 3401
 	private List<Vector3> m_points = new List<Vector3>();
 }

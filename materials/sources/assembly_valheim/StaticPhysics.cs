@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x020000B1 RID: 177
 public class StaticPhysics : SlowUpdate
 {
-	// Token: 0x06000BDF RID: 3039 RVA: 0x00054B4E File Offset: 0x00052D4E
+	// Token: 0x06000BE0 RID: 3040 RVA: 0x00054CD6 File Offset: 0x00052ED6
 	public override void Awake()
 	{
 		base.Awake();
@@ -12,13 +12,13 @@ public class StaticPhysics : SlowUpdate
 		this.m_createTime = Time.time;
 	}
 
-	// Token: 0x06000BE0 RID: 3040 RVA: 0x00054B6D File Offset: 0x00052D6D
+	// Token: 0x06000BE1 RID: 3041 RVA: 0x00054CF5 File Offset: 0x00052EF5
 	private bool ShouldUpdate()
 	{
 		return Time.time - this.m_createTime > 20f;
 	}
 
-	// Token: 0x06000BE1 RID: 3041 RVA: 0x00054B84 File Offset: 0x00052D84
+	// Token: 0x06000BE2 RID: 3042 RVA: 0x00054D0C File Offset: 0x00052F0C
 	public override void SUpdate()
 	{
 		if (!this.ShouldUpdate() || ZNetScene.instance.OutsideActiveArea(base.transform.position) || this.m_falling)
@@ -35,7 +35,7 @@ public class StaticPhysics : SlowUpdate
 		}
 	}
 
-	// Token: 0x06000BE2 RID: 3042 RVA: 0x00054BD8 File Offset: 0x00052DD8
+	// Token: 0x06000BE3 RID: 3043 RVA: 0x00054D60 File Offset: 0x00052F60
 	private void CheckFall()
 	{
 		float fallHeight = this.GetFallHeight();
@@ -45,7 +45,7 @@ public class StaticPhysics : SlowUpdate
 		}
 	}
 
-	// Token: 0x06000BE3 RID: 3043 RVA: 0x00054C0C File Offset: 0x00052E0C
+	// Token: 0x06000BE4 RID: 3044 RVA: 0x00054D94 File Offset: 0x00052F94
 	private float GetFallHeight()
 	{
 		if (this.m_checkSolids)
@@ -68,7 +68,7 @@ public class StaticPhysics : SlowUpdate
 		}
 	}
 
-	// Token: 0x06000BE4 RID: 3044 RVA: 0x00054C84 File Offset: 0x00052E84
+	// Token: 0x06000BE5 RID: 3045 RVA: 0x00054E0C File Offset: 0x0005300C
 	private void Fall()
 	{
 		this.m_falling = true;
@@ -76,7 +76,7 @@ public class StaticPhysics : SlowUpdate
 		base.InvokeRepeating("FallUpdate", 0.05f, 0.05f);
 	}
 
-	// Token: 0x06000BE5 RID: 3045 RVA: 0x00054CB0 File Offset: 0x00052EB0
+	// Token: 0x06000BE6 RID: 3046 RVA: 0x00054E38 File Offset: 0x00053038
 	private void FallUpdate()
 	{
 		float fallHeight = this.GetFallHeight();
@@ -94,7 +94,7 @@ public class StaticPhysics : SlowUpdate
 		}
 	}
 
-	// Token: 0x06000BE6 RID: 3046 RVA: 0x00054D45 File Offset: 0x00052F45
+	// Token: 0x06000BE7 RID: 3047 RVA: 0x00054ECD File Offset: 0x000530CD
 	private void StopFalling()
 	{
 		base.gameObject.isStatic = true;
@@ -102,7 +102,7 @@ public class StaticPhysics : SlowUpdate
 		base.CancelInvoke("FallUpdate");
 	}
 
-	// Token: 0x06000BE7 RID: 3047 RVA: 0x00054D68 File Offset: 0x00052F68
+	// Token: 0x06000BE8 RID: 3048 RVA: 0x00054EF0 File Offset: 0x000530F0
 	private void PushUp()
 	{
 		float num;
@@ -120,30 +120,30 @@ public class StaticPhysics : SlowUpdate
 		}
 	}
 
-	// Token: 0x04000B02 RID: 2818
+	// Token: 0x04000B08 RID: 2824
 	public bool m_pushUp = true;
 
-	// Token: 0x04000B03 RID: 2819
+	// Token: 0x04000B09 RID: 2825
 	public bool m_fall = true;
 
-	// Token: 0x04000B04 RID: 2820
+	// Token: 0x04000B0A RID: 2826
 	public bool m_checkSolids;
 
-	// Token: 0x04000B05 RID: 2821
+	// Token: 0x04000B0B RID: 2827
 	public float m_fallCheckRadius;
 
-	// Token: 0x04000B06 RID: 2822
+	// Token: 0x04000B0C RID: 2828
 	private ZNetView m_nview;
 
-	// Token: 0x04000B07 RID: 2823
+	// Token: 0x04000B0D RID: 2829
 	private const float m_fallSpeed = 4f;
 
-	// Token: 0x04000B08 RID: 2824
+	// Token: 0x04000B0E RID: 2830
 	private const float m_fallStep = 0.05f;
 
-	// Token: 0x04000B09 RID: 2825
+	// Token: 0x04000B0F RID: 2831
 	private float m_createTime;
 
-	// Token: 0x04000B0A RID: 2826
+	// Token: 0x04000B10 RID: 2832
 	private bool m_falling;
 }

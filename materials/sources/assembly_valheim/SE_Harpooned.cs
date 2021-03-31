@@ -4,13 +4,13 @@ using UnityEngine;
 // Token: 0x02000027 RID: 39
 public class SE_Harpooned : StatusEffect
 {
-	// Token: 0x060003AB RID: 939 RVA: 0x0001EE7C File Offset: 0x0001D07C
+	// Token: 0x060003AC RID: 940 RVA: 0x0001EF30 File Offset: 0x0001D130
 	public override void Setup(Character character)
 	{
 		base.Setup(character);
 	}
 
-	// Token: 0x060003AC RID: 940 RVA: 0x0001F3A8 File Offset: 0x0001D5A8
+	// Token: 0x060003AD RID: 941 RVA: 0x0001F45C File Offset: 0x0001D65C
 	public override void SetAttacker(Character attacker)
 	{
 		ZLog.Log("Setting attacker " + attacker.m_name);
@@ -41,7 +41,7 @@ public class SE_Harpooned : StatusEffect
 		}
 	}
 
-	// Token: 0x060003AD RID: 941 RVA: 0x0001F4A0 File Offset: 0x0001D6A0
+	// Token: 0x060003AE RID: 942 RVA: 0x0001F554 File Offset: 0x0001D754
 	public override void UpdateStatusEffect(float dt)
 	{
 		base.UpdateStatusEffect(dt);
@@ -90,7 +90,7 @@ public class SE_Harpooned : StatusEffect
 		}
 	}
 
-	// Token: 0x060003AE RID: 942 RVA: 0x0001F67C File Offset: 0x0001D87C
+	// Token: 0x060003AF RID: 943 RVA: 0x0001F730 File Offset: 0x0001D930
 	public override bool IsDone()
 	{
 		if (base.IsDone())
@@ -113,34 +113,34 @@ public class SE_Harpooned : StatusEffect
 		return false;
 	}
 
-	// Token: 0x04000395 RID: 917
+	// Token: 0x04000399 RID: 921
 	[Header("SE_Harpooned")]
 	public float m_minForce = 2f;
 
-	// Token: 0x04000396 RID: 918
+	// Token: 0x0400039A RID: 922
 	public float m_maxForce = 10f;
 
-	// Token: 0x04000397 RID: 919
+	// Token: 0x0400039B RID: 923
 	public float m_minDistance = 6f;
 
-	// Token: 0x04000398 RID: 920
+	// Token: 0x0400039C RID: 924
 	public float m_maxDistance = 30f;
 
-	// Token: 0x04000399 RID: 921
+	// Token: 0x0400039D RID: 925
 	public float m_staminaDrain = 10f;
 
-	// Token: 0x0400039A RID: 922
+	// Token: 0x0400039E RID: 926
 	public float m_staminaDrainInterval = 0.1f;
 
-	// Token: 0x0400039B RID: 923
+	// Token: 0x0400039F RID: 927
 	public float m_maxMass = 50f;
 
-	// Token: 0x0400039C RID: 924
+	// Token: 0x040003A0 RID: 928
 	private bool m_broken;
 
-	// Token: 0x0400039D RID: 925
+	// Token: 0x040003A1 RID: 929
 	private Character m_attacker;
 
-	// Token: 0x0400039E RID: 926
+	// Token: 0x040003A2 RID: 930
 	private float m_drainStaminaTimer;
 }

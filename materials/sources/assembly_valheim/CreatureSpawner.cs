@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x02000007 RID: 7
 public class CreatureSpawner : MonoBehaviour
 {
-	// Token: 0x060000ED RID: 237 RVA: 0x000070ED File Offset: 0x000052ED
+	// Token: 0x060000EE RID: 238 RVA: 0x00007111 File Offset: 0x00005311
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -15,7 +15,7 @@ public class CreatureSpawner : MonoBehaviour
 		base.InvokeRepeating("UpdateSpawner", UnityEngine.Random.Range(3f, 5f), 5f);
 	}
 
-	// Token: 0x060000EE RID: 238 RVA: 0x00007128 File Offset: 0x00005328
+	// Token: 0x060000EF RID: 239 RVA: 0x0000714C File Offset: 0x0000534C
 	private void UpdateSpawner()
 	{
 		if (!this.m_nview.IsOwner())
@@ -68,13 +68,13 @@ public class CreatureSpawner : MonoBehaviour
 		this.Spawn();
 	}
 
-	// Token: 0x060000EF RID: 239 RVA: 0x000072A0 File Offset: 0x000054A0
+	// Token: 0x060000F0 RID: 240 RVA: 0x000072C4 File Offset: 0x000054C4
 	private bool HasSpawned()
 	{
 		return !(this.m_nview == null) && this.m_nview.GetZDO() != null && !this.m_nview.GetZDO().GetZDOID("spawn_id").IsNone();
 	}
 
-	// Token: 0x060000F0 RID: 240 RVA: 0x000072EC File Offset: 0x000054EC
+	// Token: 0x060000F1 RID: 241 RVA: 0x00007310 File Offset: 0x00005510
 	private ZNetView Spawn()
 	{
 		Vector3 position = base.transform.position;
@@ -114,7 +114,7 @@ public class CreatureSpawner : MonoBehaviour
 		return component;
 	}
 
-	// Token: 0x060000F1 RID: 241 RVA: 0x00007440 File Offset: 0x00005640
+	// Token: 0x060000F2 RID: 242 RVA: 0x00007464 File Offset: 0x00005664
 	private void SpawnEffect(GameObject spawnedObject)
 	{
 		Character component = spawnedObject.GetComponent<Character>();
@@ -122,61 +122,61 @@ public class CreatureSpawner : MonoBehaviour
 		this.m_spawnEffects.Create(pos, Quaternion.identity, null, 1f);
 	}
 
-	// Token: 0x060000F2 RID: 242 RVA: 0x0000749C File Offset: 0x0000569C
+	// Token: 0x060000F3 RID: 243 RVA: 0x000074C0 File Offset: 0x000056C0
 	private float GetRadius()
 	{
 		return 0.75f;
 	}
 
-	// Token: 0x060000F3 RID: 243 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x060000F4 RID: 244 RVA: 0x000027E0 File Offset: 0x000009E0
 	private void OnDrawGizmos()
 	{
 	}
 
-	// Token: 0x040000C2 RID: 194
+	// Token: 0x040000C3 RID: 195
 	private const float m_radius = 0.75f;
 
-	// Token: 0x040000C3 RID: 195
+	// Token: 0x040000C4 RID: 196
 	public GameObject m_creaturePrefab;
 
-	// Token: 0x040000C4 RID: 196
+	// Token: 0x040000C5 RID: 197
 	[Header("Level")]
 	public int m_maxLevel = 1;
 
-	// Token: 0x040000C5 RID: 197
+	// Token: 0x040000C6 RID: 198
 	public int m_minLevel = 1;
 
-	// Token: 0x040000C6 RID: 198
+	// Token: 0x040000C7 RID: 199
 	public float m_levelupChance = 15f;
 
-	// Token: 0x040000C7 RID: 199
+	// Token: 0x040000C8 RID: 200
 	[Header("Spawn settings")]
 	public float m_respawnTimeMinuts = 20f;
 
-	// Token: 0x040000C8 RID: 200
+	// Token: 0x040000C9 RID: 201
 	public float m_triggerDistance = 60f;
 
-	// Token: 0x040000C9 RID: 201
+	// Token: 0x040000CA RID: 202
 	public float m_triggerNoise;
 
-	// Token: 0x040000CA RID: 202
+	// Token: 0x040000CB RID: 203
 	public bool m_spawnAtNight = true;
 
-	// Token: 0x040000CB RID: 203
+	// Token: 0x040000CC RID: 204
 	public bool m_spawnAtDay = true;
 
-	// Token: 0x040000CC RID: 204
+	// Token: 0x040000CD RID: 205
 	public bool m_requireSpawnArea;
 
-	// Token: 0x040000CD RID: 205
+	// Token: 0x040000CE RID: 206
 	public bool m_spawnInPlayerBase;
 
-	// Token: 0x040000CE RID: 206
+	// Token: 0x040000CF RID: 207
 	public bool m_setPatrolSpawnPoint;
 
-	// Token: 0x040000CF RID: 207
+	// Token: 0x040000D0 RID: 208
 	public EffectList m_spawnEffects = new EffectList();
 
-	// Token: 0x040000D0 RID: 208
+	// Token: 0x040000D1 RID: 209
 	private ZNetView m_nview;
 }

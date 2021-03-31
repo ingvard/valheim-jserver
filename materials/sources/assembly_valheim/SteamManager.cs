@@ -10,7 +10,7 @@ using UnityEngine;
 public class SteamManager : MonoBehaviour
 {
 	// Token: 0x1700001E RID: 30
-	// (get) Token: 0x060009DB RID: 2523 RVA: 0x00047A4F File Offset: 0x00045C4F
+	// (get) Token: 0x060009DC RID: 2524 RVA: 0x00047AFB File Offset: 0x00045CFB
 	public static SteamManager instance
 	{
 		get
@@ -19,7 +19,7 @@ public class SteamManager : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009DC RID: 2524 RVA: 0x00047A56 File Offset: 0x00045C56
+	// Token: 0x060009DD RID: 2525 RVA: 0x00047B02 File Offset: 0x00045D02
 	public static bool Initialize()
 	{
 		if (SteamManager.s_instance == null)
@@ -30,7 +30,7 @@ public class SteamManager : MonoBehaviour
 	}
 
 	// Token: 0x1700001F RID: 31
-	// (get) Token: 0x060009DD RID: 2525 RVA: 0x00047A7A File Offset: 0x00045C7A
+	// (get) Token: 0x060009DE RID: 2526 RVA: 0x00047B26 File Offset: 0x00045D26
 	public static bool Initialized
 	{
 		get
@@ -39,19 +39,19 @@ public class SteamManager : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009DE RID: 2526 RVA: 0x00047A95 File Offset: 0x00045C95
+	// Token: 0x060009DF RID: 2527 RVA: 0x00047B41 File Offset: 0x00045D41
 	private static void SteamAPIDebugTextHook(int nSeverity, StringBuilder pchDebugText)
 	{
 		Debug.LogWarning(pchDebugText);
 	}
 
-	// Token: 0x060009DF RID: 2527 RVA: 0x00047A9D File Offset: 0x00045C9D
+	// Token: 0x060009E0 RID: 2528 RVA: 0x00047B49 File Offset: 0x00045D49
 	public static void SetServerPort(int port)
 	{
 		SteamManager.m_serverPort = port;
 	}
 
-	// Token: 0x060009E0 RID: 2528 RVA: 0x00047AA8 File Offset: 0x00045CA8
+	// Token: 0x060009E1 RID: 2529 RVA: 0x00047B54 File Offset: 0x00045D54
 	private uint LoadAPPID()
 	{
 		string environmentVariable = Environment.GetEnvironmentVariable("SteamAppId");
@@ -73,7 +73,7 @@ public class SteamManager : MonoBehaviour
 		return 0U;
 	}
 
-	// Token: 0x060009E1 RID: 2529 RVA: 0x00047B18 File Offset: 0x00045D18
+	// Token: 0x060009E2 RID: 2530 RVA: 0x00047BC4 File Offset: 0x00045DC4
 	private void Awake()
 	{
 		if (SteamManager.s_instance != null)
@@ -127,7 +127,7 @@ public class SteamManager : MonoBehaviour
 		SteamManager.s_EverInialized = true;
 	}
 
-	// Token: 0x060009E2 RID: 2530 RVA: 0x00047C58 File Offset: 0x00045E58
+	// Token: 0x060009E3 RID: 2531 RVA: 0x00047D04 File Offset: 0x00045F04
 	private void OnEnable()
 	{
 		if (SteamManager.s_instance == null)
@@ -145,7 +145,7 @@ public class SteamManager : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009E3 RID: 2531 RVA: 0x00047CA6 File Offset: 0x00045EA6
+	// Token: 0x060009E4 RID: 2532 RVA: 0x00047D52 File Offset: 0x00045F52
 	private void OnDestroy()
 	{
 		ZLog.Log("Steam manager on destroy");
@@ -161,7 +161,7 @@ public class SteamManager : MonoBehaviour
 		SteamAPI.Shutdown();
 	}
 
-	// Token: 0x060009E4 RID: 2532 RVA: 0x00047CD4 File Offset: 0x00045ED4
+	// Token: 0x060009E5 RID: 2533 RVA: 0x00047D80 File Offset: 0x00045F80
 	private void Update()
 	{
 		if (!this.m_bInitialized)
@@ -171,28 +171,28 @@ public class SteamManager : MonoBehaviour
 		SteamAPI.RunCallbacks();
 	}
 
-	// Token: 0x040008F6 RID: 2294
+	// Token: 0x040008FA RID: 2298
 	public static uint[] ACCEPTED_APPIDs = new uint[]
 	{
 		1223920U,
 		892970U
 	};
 
-	// Token: 0x040008F7 RID: 2295
+	// Token: 0x040008FB RID: 2299
 	public static uint APP_ID = 0U;
 
-	// Token: 0x040008F8 RID: 2296
+	// Token: 0x040008FC RID: 2300
 	private static int m_serverPort = 2456;
 
-	// Token: 0x040008F9 RID: 2297
+	// Token: 0x040008FD RID: 2301
 	private static SteamManager s_instance;
 
-	// Token: 0x040008FA RID: 2298
+	// Token: 0x040008FE RID: 2302
 	private static bool s_EverInialized;
 
-	// Token: 0x040008FB RID: 2299
+	// Token: 0x040008FF RID: 2303
 	private bool m_bInitialized;
 
-	// Token: 0x040008FC RID: 2300
+	// Token: 0x04000900 RID: 2304
 	private SteamAPIWarningMessageHook_t m_SteamAPIWarningMessageHook;
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // Token: 0x0200007E RID: 126
 internal static class ShuffleClass
 {
-	// Token: 0x06000809 RID: 2057 RVA: 0x0003EB9C File Offset: 0x0003CD9C
+	// Token: 0x0600080A RID: 2058 RVA: 0x0003EC50 File Offset: 0x0003CE50
 	public static void Shuffle<T>(this IList<T> list)
 	{
 		int i = list.Count;
@@ -18,6 +18,6 @@ internal static class ShuffleClass
 		}
 	}
 
-	// Token: 0x04000809 RID: 2057
+	// Token: 0x0400080D RID: 2061
 	private static Random rng = new Random();
 }

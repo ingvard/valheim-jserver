@@ -5,13 +5,13 @@ using UnityEngine;
 // Token: 0x020000FA RID: 250
 public class StaticTarget : MonoBehaviour
 {
-	// Token: 0x06000F4D RID: 3917 RVA: 0x000027E2 File Offset: 0x000009E2
+	// Token: 0x06000F4E RID: 3918 RVA: 0x000027E2 File Offset: 0x000009E2
 	public virtual bool IsValidMonsterTarget()
 	{
 		return true;
 	}
 
-	// Token: 0x06000F4E RID: 3918 RVA: 0x0006D048 File Offset: 0x0006B248
+	// Token: 0x06000F4F RID: 3919 RVA: 0x0006D1D0 File Offset: 0x0006B3D0
 	public Vector3 GetCenter()
 	{
 		if (!this.m_haveCenter)
@@ -30,7 +30,7 @@ public class StaticTarget : MonoBehaviour
 		return this.m_center;
 	}
 
-	// Token: 0x06000F4F RID: 3919 RVA: 0x0006D0F4 File Offset: 0x0006B2F4
+	// Token: 0x06000F50 RID: 3920 RVA: 0x0006D27C File Offset: 0x0006B47C
 	public List<Collider> GetAllColliders()
 	{
 		if (this.m_colliders == null)
@@ -49,7 +49,7 @@ public class StaticTarget : MonoBehaviour
 		return this.m_colliders;
 	}
 
-	// Token: 0x06000F50 RID: 3920 RVA: 0x0006D16C File Offset: 0x0006B36C
+	// Token: 0x06000F51 RID: 3921 RVA: 0x0006D2F4 File Offset: 0x0006B4F4
 	public Vector3 FindClosestPoint(Vector3 point)
 	{
 		List<Collider> allColliders = this.GetAllColliders();
@@ -73,18 +73,18 @@ public class StaticTarget : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x04000E28 RID: 3624
+	// Token: 0x04000E2E RID: 3630
 	public bool m_primaryTarget;
 
-	// Token: 0x04000E29 RID: 3625
+	// Token: 0x04000E2F RID: 3631
 	public bool m_randomTarget = true;
 
-	// Token: 0x04000E2A RID: 3626
+	// Token: 0x04000E30 RID: 3632
 	private List<Collider> m_colliders;
 
-	// Token: 0x04000E2B RID: 3627
+	// Token: 0x04000E31 RID: 3633
 	private Vector3 m_center;
 
-	// Token: 0x04000E2C RID: 3628
+	// Token: 0x04000E32 RID: 3634
 	private bool m_haveCenter;
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000019 RID: 25
 public class VisEquipment : MonoBehaviour
 {
-	// Token: 0x060002AA RID: 682 RVA: 0x00015360 File Offset: 0x00013560
+	// Token: 0x060002AB RID: 683 RVA: 0x00015414 File Offset: 0x00013614
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -22,13 +22,13 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002AB RID: 683 RVA: 0x000153F7 File Offset: 0x000135F7
+	// Token: 0x060002AC RID: 684 RVA: 0x000154AB File Offset: 0x000136AB
 	private void Start()
 	{
 		this.UpdateVisuals();
 	}
 
-	// Token: 0x060002AC RID: 684 RVA: 0x00015400 File Offset: 0x00013600
+	// Token: 0x060002AD RID: 685 RVA: 0x000154B4 File Offset: 0x000136B4
 	public void SetWeaponTrails(bool enabled)
 	{
 		if (this.m_useAllTrails)
@@ -50,7 +50,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002AD RID: 685 RVA: 0x0001546C File Offset: 0x0001366C
+	// Token: 0x060002AE RID: 686 RVA: 0x00015520 File Offset: 0x00013720
 	public void SetModel(int index)
 	{
 		if (this.m_modelIndex == index)
@@ -69,7 +69,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002AE RID: 686 RVA: 0x000154D7 File Offset: 0x000136D7
+	// Token: 0x060002AF RID: 687 RVA: 0x0001558B File Offset: 0x0001378B
 	public void SetSkinColor(Vector3 color)
 	{
 		if (color == this.m_skinColor)
@@ -83,7 +83,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002AF RID: 687 RVA: 0x00015517 File Offset: 0x00013717
+	// Token: 0x060002B0 RID: 688 RVA: 0x000155CB File Offset: 0x000137CB
 	public void SetHairColor(Vector3 color)
 	{
 		if (this.m_hairColor == color)
@@ -97,7 +97,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002B0 RID: 688 RVA: 0x00015558 File Offset: 0x00013758
+	// Token: 0x060002B1 RID: 689 RVA: 0x0001560C File Offset: 0x0001380C
 	public void SetLeftItem(string name, int variant)
 	{
 		if (this.m_leftItem == name && this.m_leftItemVariant == variant)
@@ -113,7 +113,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002B1 RID: 689 RVA: 0x000155D4 File Offset: 0x000137D4
+	// Token: 0x060002B2 RID: 690 RVA: 0x00015688 File Offset: 0x00013888
 	public void SetRightItem(string name)
 	{
 		if (this.m_rightItem == name)
@@ -127,7 +127,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002B2 RID: 690 RVA: 0x0001562C File Offset: 0x0001382C
+	// Token: 0x060002B3 RID: 691 RVA: 0x000156E0 File Offset: 0x000138E0
 	public void SetLeftBackItem(string name, int variant)
 	{
 		if (this.m_leftBackItem == name && this.m_leftBackItemVariant == variant)
@@ -143,7 +143,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002B3 RID: 691 RVA: 0x000156A8 File Offset: 0x000138A8
+	// Token: 0x060002B4 RID: 692 RVA: 0x0001575C File Offset: 0x0001395C
 	public void SetRightBackItem(string name)
 	{
 		if (this.m_rightBackItem == name)
@@ -158,7 +158,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002B4 RID: 692 RVA: 0x00015710 File Offset: 0x00013910
+	// Token: 0x060002B5 RID: 693 RVA: 0x000157C4 File Offset: 0x000139C4
 	public void SetChestItem(string name)
 	{
 		if (this.m_chestItem == name)
@@ -172,7 +172,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002B5 RID: 693 RVA: 0x00015768 File Offset: 0x00013968
+	// Token: 0x060002B6 RID: 694 RVA: 0x0001581C File Offset: 0x00013A1C
 	public void SetLegItem(string name)
 	{
 		if (this.m_legItem == name)
@@ -186,7 +186,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002B6 RID: 694 RVA: 0x000157C0 File Offset: 0x000139C0
+	// Token: 0x060002B7 RID: 695 RVA: 0x00015874 File Offset: 0x00013A74
 	public void SetHelmetItem(string name)
 	{
 		if (this.m_helmetItem == name)
@@ -200,7 +200,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002B7 RID: 695 RVA: 0x00015818 File Offset: 0x00013A18
+	// Token: 0x060002B8 RID: 696 RVA: 0x000158CC File Offset: 0x00013ACC
 	public void SetShoulderItem(string name, int variant)
 	{
 		if (this.m_shoulderItem == name && this.m_shoulderItemVariant == variant)
@@ -216,7 +216,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002B8 RID: 696 RVA: 0x00015894 File Offset: 0x00013A94
+	// Token: 0x060002B9 RID: 697 RVA: 0x00015948 File Offset: 0x00013B48
 	public void SetBeardItem(string name)
 	{
 		if (this.m_beardItem == name)
@@ -230,7 +230,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002B9 RID: 697 RVA: 0x000158EC File Offset: 0x00013AEC
+	// Token: 0x060002BA RID: 698 RVA: 0x000159A0 File Offset: 0x00013BA0
 	public void SetHairItem(string name)
 	{
 		if (this.m_hairItem == name)
@@ -244,7 +244,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002BA RID: 698 RVA: 0x00015944 File Offset: 0x00013B44
+	// Token: 0x060002BB RID: 699 RVA: 0x000159F8 File Offset: 0x00013BF8
 	public void SetUtilityItem(string name)
 	{
 		if (this.m_utilityItem == name)
@@ -258,13 +258,13 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002BB RID: 699 RVA: 0x000153F7 File Offset: 0x000135F7
+	// Token: 0x060002BC RID: 700 RVA: 0x000154AB File Offset: 0x000136AB
 	private void Update()
 	{
 		this.UpdateVisuals();
 	}
 
-	// Token: 0x060002BC RID: 700 RVA: 0x0001599A File Offset: 0x00013B9A
+	// Token: 0x060002BD RID: 701 RVA: 0x00015A4E File Offset: 0x00013C4E
 	private void UpdateVisuals()
 	{
 		this.UpdateEquipmentVisuals();
@@ -275,7 +275,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002BD RID: 701 RVA: 0x000159B8 File Offset: 0x00013BB8
+	// Token: 0x060002BE RID: 702 RVA: 0x00015A6C File Offset: 0x00013C6C
 	private void UpdateColors()
 	{
 		Color value = Utils.Vec3ToColor(this.m_skinColor);
@@ -305,7 +305,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002BE RID: 702 RVA: 0x00015AD0 File Offset: 0x00013CD0
+	// Token: 0x060002BF RID: 703 RVA: 0x00015B84 File Offset: 0x00013D84
 	private void UpdateBaseModel()
 	{
 		if (this.m_models.Length == 0)
@@ -326,7 +326,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002BF RID: 703 RVA: 0x00015BB8 File Offset: 0x00013DB8
+	// Token: 0x060002C0 RID: 704 RVA: 0x00015C6C File Offset: 0x00013E6C
 	private void UpdateEquipmentVisuals()
 	{
 		int hash = 0;
@@ -438,7 +438,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002C0 RID: 704 RVA: 0x00015EB8 File Offset: 0x000140B8
+	// Token: 0x060002C1 RID: 705 RVA: 0x00015F6C File Offset: 0x0001416C
 	protected void UpdateLodgroup()
 	{
 		if (this.m_lodGroup == null)
@@ -451,7 +451,7 @@ public class VisEquipment : MonoBehaviour
 		this.m_lodGroup.SetLODs(lods);
 	}
 
-	// Token: 0x060002C1 RID: 705 RVA: 0x00015F08 File Offset: 0x00014108
+	// Token: 0x060002C2 RID: 706 RVA: 0x00015FBC File Offset: 0x000141BC
 	private bool SetRightHandEquiped(int hash)
 	{
 		if (this.m_currentRightItemHash == hash)
@@ -471,7 +471,7 @@ public class VisEquipment : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060002C2 RID: 706 RVA: 0x00015F60 File Offset: 0x00014160
+	// Token: 0x060002C3 RID: 707 RVA: 0x00016014 File Offset: 0x00014214
 	private bool SetLeftHandEquiped(int hash, int variant)
 	{
 		if (this.m_currentLeftItemHash == hash && this.m_currentLeftItemVariant == variant)
@@ -492,7 +492,7 @@ public class VisEquipment : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060002C3 RID: 707 RVA: 0x00015FC8 File Offset: 0x000141C8
+	// Token: 0x060002C4 RID: 708 RVA: 0x0001607C File Offset: 0x0001427C
 	private bool SetBackEquiped(int leftItem, int rightItem, int leftVariant)
 	{
 		if (this.m_currentLeftBackItemHash == leftItem && this.m_currentRightBackItemHash == rightItem && this.m_currentLeftBackItemVariant == leftVariant)
@@ -523,7 +523,7 @@ public class VisEquipment : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060002C4 RID: 708 RVA: 0x00016074 File Offset: 0x00014274
+	// Token: 0x060002C5 RID: 709 RVA: 0x00016128 File Offset: 0x00014328
 	private GameObject AttachBackItem(int hash, int variant, bool rightHand)
 	{
 		GameObject itemPrefab = ObjectDB.instance.GetItemPrefab(hash);
@@ -574,7 +574,7 @@ public class VisEquipment : MonoBehaviour
 		return this.AttachItem(hash, variant, this.m_backTool, false);
 	}
 
-	// Token: 0x060002C5 RID: 709 RVA: 0x000161A0 File Offset: 0x000143A0
+	// Token: 0x060002C6 RID: 710 RVA: 0x00016254 File Offset: 0x00014454
 	private bool SetChestEquiped(int hash)
 	{
 		if (this.m_currentChestItemHash == hash)
@@ -622,7 +622,7 @@ public class VisEquipment : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060002C6 RID: 710 RVA: 0x0001637C File Offset: 0x0001457C
+	// Token: 0x060002C7 RID: 711 RVA: 0x00016430 File Offset: 0x00014630
 	private bool SetShoulderEquiped(int hash, int variant)
 	{
 		if (this.m_currentShoulderItemHash == hash && this.m_currenShoulderItemVariant == variant)
@@ -660,7 +660,7 @@ public class VisEquipment : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060002C7 RID: 711 RVA: 0x0001646C File Offset: 0x0001466C
+	// Token: 0x060002C8 RID: 712 RVA: 0x00016520 File Offset: 0x00014720
 	private bool SetLegEquiped(int hash)
 	{
 		if (this.m_currentLegItemHash == hash)
@@ -704,7 +704,7 @@ public class VisEquipment : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060002C8 RID: 712 RVA: 0x0001662C File Offset: 0x0001482C
+	// Token: 0x060002C9 RID: 713 RVA: 0x000166E0 File Offset: 0x000148E0
 	private bool SetBeardEquiped(int hash)
 	{
 		if (this.m_currentBeardItemHash == hash)
@@ -724,7 +724,7 @@ public class VisEquipment : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060002C9 RID: 713 RVA: 0x00016684 File Offset: 0x00014884
+	// Token: 0x060002CA RID: 714 RVA: 0x00016738 File Offset: 0x00014938
 	private bool SetHairEquiped(int hash)
 	{
 		if (this.m_currentHairItemHash == hash)
@@ -744,7 +744,7 @@ public class VisEquipment : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060002CA RID: 714 RVA: 0x000166DC File Offset: 0x000148DC
+	// Token: 0x060002CB RID: 715 RVA: 0x00016790 File Offset: 0x00014990
 	private bool SetHelmetEquiped(int hash, int hairHash)
 	{
 		if (this.m_currentHelmetItemHash == hash)
@@ -765,7 +765,7 @@ public class VisEquipment : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060002CB RID: 715 RVA: 0x00016740 File Offset: 0x00014940
+	// Token: 0x060002CC RID: 716 RVA: 0x000167F4 File Offset: 0x000149F4
 	private bool SetUtilityEquiped(int hash)
 	{
 		if (this.m_currentUtilityItemHash == hash)
@@ -792,7 +792,7 @@ public class VisEquipment : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060002CC RID: 716 RVA: 0x000167E0 File Offset: 0x000149E0
+	// Token: 0x060002CD RID: 717 RVA: 0x00016894 File Offset: 0x00014A94
 	private bool HelmetHidesHair(int itemHash)
 	{
 		if (itemHash == 0)
@@ -803,7 +803,7 @@ public class VisEquipment : MonoBehaviour
 		return !(itemPrefab == null) && itemPrefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_helmetHideHair;
 	}
 
-	// Token: 0x060002CD RID: 717 RVA: 0x00016820 File Offset: 0x00014A20
+	// Token: 0x060002CE RID: 718 RVA: 0x000168D4 File Offset: 0x00014AD4
 	private List<GameObject> AttachArmor(int itemHash, int variant = -1)
 	{
 		GameObject itemPrefab = ObjectDB.instance.GetItemPrefab(itemHash);
@@ -884,7 +884,7 @@ public class VisEquipment : MonoBehaviour
 		return list;
 	}
 
-	// Token: 0x060002CE RID: 718 RVA: 0x00016AA4 File Offset: 0x00014CA4
+	// Token: 0x060002CF RID: 719 RVA: 0x00016B58 File Offset: 0x00014D58
 	protected GameObject AttachItem(int itemHash, int variant, Transform joint, bool enableEquipEffects = true)
 	{
 		GameObject itemPrefab = ObjectDB.instance.GetItemPrefab(itemHash);
@@ -948,7 +948,7 @@ public class VisEquipment : MonoBehaviour
 		return gameObject2;
 	}
 
-	// Token: 0x060002CF RID: 719 RVA: 0x00016C84 File Offset: 0x00014E84
+	// Token: 0x060002D0 RID: 720 RVA: 0x00016D38 File Offset: 0x00014F38
 	private void CleanupInstance(GameObject instance)
 	{
 		Collider[] componentsInChildren = instance.GetComponentsInChildren<Collider>();
@@ -958,7 +958,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002D0 RID: 720 RVA: 0x00016CB0 File Offset: 0x00014EB0
+	// Token: 0x060002D1 RID: 721 RVA: 0x00016D64 File Offset: 0x00014F64
 	private void EnableEquipedEffects(GameObject instance)
 	{
 		Transform transform = instance.transform.Find("equiped");
@@ -968,7 +968,7 @@ public class VisEquipment : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002D1 RID: 721 RVA: 0x00016CE4 File Offset: 0x00014EE4
+	// Token: 0x060002D2 RID: 722 RVA: 0x00016D98 File Offset: 0x00014F98
 	public int GetModelIndex()
 	{
 		int result = this.m_modelIndex;
@@ -979,201 +979,201 @@ public class VisEquipment : MonoBehaviour
 		return result;
 	}
 
-	// Token: 0x04000212 RID: 530
+	// Token: 0x04000216 RID: 534
 	public SkinnedMeshRenderer m_bodyModel;
 
-	// Token: 0x04000213 RID: 531
+	// Token: 0x04000217 RID: 535
 	[Header("Attachment points")]
 	public Transform m_leftHand;
 
-	// Token: 0x04000214 RID: 532
+	// Token: 0x04000218 RID: 536
 	public Transform m_rightHand;
 
-	// Token: 0x04000215 RID: 533
+	// Token: 0x04000219 RID: 537
 	public Transform m_helmet;
 
-	// Token: 0x04000216 RID: 534
+	// Token: 0x0400021A RID: 538
 	public Transform m_backShield;
 
-	// Token: 0x04000217 RID: 535
+	// Token: 0x0400021B RID: 539
 	public Transform m_backMelee;
 
-	// Token: 0x04000218 RID: 536
+	// Token: 0x0400021C RID: 540
 	public Transform m_backTwohandedMelee;
 
-	// Token: 0x04000219 RID: 537
+	// Token: 0x0400021D RID: 541
 	public Transform m_backBow;
 
-	// Token: 0x0400021A RID: 538
+	// Token: 0x0400021E RID: 542
 	public Transform m_backTool;
 
-	// Token: 0x0400021B RID: 539
+	// Token: 0x0400021F RID: 543
 	public Transform m_backAtgeir;
 
-	// Token: 0x0400021C RID: 540
+	// Token: 0x04000220 RID: 544
 	public CapsuleCollider[] m_clothColliders = new CapsuleCollider[0];
 
-	// Token: 0x0400021D RID: 541
+	// Token: 0x04000221 RID: 545
 	public VisEquipment.PlayerModel[] m_models = new VisEquipment.PlayerModel[0];
 
-	// Token: 0x0400021E RID: 542
+	// Token: 0x04000222 RID: 546
 	public bool m_isPlayer;
 
-	// Token: 0x0400021F RID: 543
+	// Token: 0x04000223 RID: 547
 	public bool m_useAllTrails;
 
-	// Token: 0x04000220 RID: 544
+	// Token: 0x04000224 RID: 548
 	private string m_leftItem = "";
 
-	// Token: 0x04000221 RID: 545
+	// Token: 0x04000225 RID: 549
 	private string m_rightItem = "";
 
-	// Token: 0x04000222 RID: 546
+	// Token: 0x04000226 RID: 550
 	private string m_chestItem = "";
 
-	// Token: 0x04000223 RID: 547
+	// Token: 0x04000227 RID: 551
 	private string m_legItem = "";
 
-	// Token: 0x04000224 RID: 548
+	// Token: 0x04000228 RID: 552
 	private string m_helmetItem = "";
 
-	// Token: 0x04000225 RID: 549
+	// Token: 0x04000229 RID: 553
 	private string m_shoulderItem = "";
 
-	// Token: 0x04000226 RID: 550
+	// Token: 0x0400022A RID: 554
 	private string m_beardItem = "";
 
-	// Token: 0x04000227 RID: 551
+	// Token: 0x0400022B RID: 555
 	private string m_hairItem = "";
 
-	// Token: 0x04000228 RID: 552
+	// Token: 0x0400022C RID: 556
 	private string m_utilityItem = "";
 
-	// Token: 0x04000229 RID: 553
+	// Token: 0x0400022D RID: 557
 	private string m_leftBackItem = "";
 
-	// Token: 0x0400022A RID: 554
+	// Token: 0x0400022E RID: 558
 	private string m_rightBackItem = "";
 
-	// Token: 0x0400022B RID: 555
+	// Token: 0x0400022F RID: 559
 	private int m_shoulderItemVariant;
 
-	// Token: 0x0400022C RID: 556
+	// Token: 0x04000230 RID: 560
 	private int m_leftItemVariant;
 
-	// Token: 0x0400022D RID: 557
+	// Token: 0x04000231 RID: 561
 	private int m_leftBackItemVariant;
 
-	// Token: 0x0400022E RID: 558
+	// Token: 0x04000232 RID: 562
 	private GameObject m_leftItemInstance;
 
-	// Token: 0x0400022F RID: 559
+	// Token: 0x04000233 RID: 563
 	private GameObject m_rightItemInstance;
 
-	// Token: 0x04000230 RID: 560
+	// Token: 0x04000234 RID: 564
 	private GameObject m_helmetItemInstance;
 
-	// Token: 0x04000231 RID: 561
+	// Token: 0x04000235 RID: 565
 	private List<GameObject> m_chestItemInstances;
 
-	// Token: 0x04000232 RID: 562
+	// Token: 0x04000236 RID: 566
 	private List<GameObject> m_legItemInstances;
 
-	// Token: 0x04000233 RID: 563
+	// Token: 0x04000237 RID: 567
 	private List<GameObject> m_shoulderItemInstances;
 
-	// Token: 0x04000234 RID: 564
+	// Token: 0x04000238 RID: 568
 	private List<GameObject> m_utilityItemInstances;
 
-	// Token: 0x04000235 RID: 565
+	// Token: 0x04000239 RID: 569
 	private GameObject m_beardItemInstance;
 
-	// Token: 0x04000236 RID: 566
+	// Token: 0x0400023A RID: 570
 	private GameObject m_hairItemInstance;
 
-	// Token: 0x04000237 RID: 567
+	// Token: 0x0400023B RID: 571
 	private GameObject m_leftBackItemInstance;
 
-	// Token: 0x04000238 RID: 568
+	// Token: 0x0400023C RID: 572
 	private GameObject m_rightBackItemInstance;
 
-	// Token: 0x04000239 RID: 569
+	// Token: 0x0400023D RID: 573
 	private int m_currentLeftItemHash;
 
-	// Token: 0x0400023A RID: 570
+	// Token: 0x0400023E RID: 574
 	private int m_currentRightItemHash;
 
-	// Token: 0x0400023B RID: 571
+	// Token: 0x0400023F RID: 575
 	private int m_currentChestItemHash;
 
-	// Token: 0x0400023C RID: 572
+	// Token: 0x04000240 RID: 576
 	private int m_currentLegItemHash;
 
-	// Token: 0x0400023D RID: 573
+	// Token: 0x04000241 RID: 577
 	private int m_currentHelmetItemHash;
 
-	// Token: 0x0400023E RID: 574
+	// Token: 0x04000242 RID: 578
 	private int m_currentShoulderItemHash;
 
-	// Token: 0x0400023F RID: 575
+	// Token: 0x04000243 RID: 579
 	private int m_currentBeardItemHash;
 
-	// Token: 0x04000240 RID: 576
+	// Token: 0x04000244 RID: 580
 	private int m_currentHairItemHash;
 
-	// Token: 0x04000241 RID: 577
+	// Token: 0x04000245 RID: 581
 	private int m_currentUtilityItemHash;
 
-	// Token: 0x04000242 RID: 578
+	// Token: 0x04000246 RID: 582
 	private int m_currentLeftBackItemHash;
 
-	// Token: 0x04000243 RID: 579
+	// Token: 0x04000247 RID: 583
 	private int m_currentRightBackItemHash;
 
-	// Token: 0x04000244 RID: 580
+	// Token: 0x04000248 RID: 584
 	private int m_currenShoulderItemVariant;
 
-	// Token: 0x04000245 RID: 581
+	// Token: 0x04000249 RID: 585
 	private int m_currentLeftItemVariant;
 
-	// Token: 0x04000246 RID: 582
+	// Token: 0x0400024A RID: 586
 	private int m_currentLeftBackItemVariant;
 
-	// Token: 0x04000247 RID: 583
+	// Token: 0x0400024B RID: 587
 	private bool m_helmetHideHair;
 
-	// Token: 0x04000248 RID: 584
+	// Token: 0x0400024C RID: 588
 	private Texture m_emptyBodyTexture;
 
-	// Token: 0x04000249 RID: 585
+	// Token: 0x0400024D RID: 589
 	private int m_modelIndex;
 
-	// Token: 0x0400024A RID: 586
+	// Token: 0x0400024E RID: 590
 	private Vector3 m_skinColor = Vector3.one;
 
-	// Token: 0x0400024B RID: 587
+	// Token: 0x0400024F RID: 591
 	private Vector3 m_hairColor = Vector3.one;
 
-	// Token: 0x0400024C RID: 588
+	// Token: 0x04000250 RID: 592
 	private int m_currentModelIndex;
 
-	// Token: 0x0400024D RID: 589
+	// Token: 0x04000251 RID: 593
 	private ZNetView m_nview;
 
-	// Token: 0x0400024E RID: 590
+	// Token: 0x04000252 RID: 594
 	private GameObject m_visual;
 
-	// Token: 0x0400024F RID: 591
+	// Token: 0x04000253 RID: 595
 	private LODGroup m_lodGroup;
 
 	// Token: 0x0200012F RID: 303
 	[Serializable]
 	public class PlayerModel
 	{
-		// Token: 0x04001025 RID: 4133
+		// Token: 0x0400102C RID: 4140
 		public Mesh m_mesh;
 
-		// Token: 0x04001026 RID: 4134
+		// Token: 0x0400102D RID: 4141
 		public Material m_baseMaterial;
 	}
 }

@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 // Token: 0x0200000E RID: 14
 public class Player : Humanoid
 {
-	// Token: 0x06000159 RID: 345 RVA: 0x0000A868 File Offset: 0x00008A68
+	// Token: 0x0600015A RID: 346 RVA: 0x0000A8A8 File Offset: 0x00008AA8
 	protected override void Awake()
 	{
 		base.Awake();
@@ -106,7 +106,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600015A RID: 346 RVA: 0x0000AB6A File Offset: 0x00008D6A
+	// Token: 0x0600015B RID: 347 RVA: 0x0000ABAA File Offset: 0x00008DAA
 	public void SetLocalPlayer()
 	{
 		if (Player.m_localPlayer == this)
@@ -118,7 +118,7 @@ public class Player : Humanoid
 		EnvMan.instance.SetForceEnvironment("");
 	}
 
-	// Token: 0x0600015B RID: 347 RVA: 0x0000ABA4 File Offset: 0x00008DA4
+	// Token: 0x0600015C RID: 348 RVA: 0x0000ABE4 File Offset: 0x00008DE4
 	public void SetPlayerID(long playerID, string name)
 	{
 		if (this.m_nview.GetZDO() == null)
@@ -133,7 +133,7 @@ public class Player : Humanoid
 		this.m_nview.GetZDO().Set("playerName", name);
 	}
 
-	// Token: 0x0600015C RID: 348 RVA: 0x0000ABF4 File Offset: 0x00008DF4
+	// Token: 0x0600015D RID: 349 RVA: 0x0000AC34 File Offset: 0x00008E34
 	public long GetPlayerID()
 	{
 		if (this.m_nview.IsValid())
@@ -143,7 +143,7 @@ public class Player : Humanoid
 		return 0L;
 	}
 
-	// Token: 0x0600015D RID: 349 RVA: 0x0000AC1D File Offset: 0x00008E1D
+	// Token: 0x0600015E RID: 350 RVA: 0x0000AC5D File Offset: 0x00008E5D
 	public string GetPlayerName()
 	{
 		if (this.m_nview.IsValid())
@@ -153,26 +153,26 @@ public class Player : Humanoid
 		return "";
 	}
 
-	// Token: 0x0600015E RID: 350 RVA: 0x0000AC4C File Offset: 0x00008E4C
+	// Token: 0x0600015F RID: 351 RVA: 0x0000AC8C File Offset: 0x00008E8C
 	public override string GetHoverText()
 	{
 		return "";
 	}
 
-	// Token: 0x0600015F RID: 351 RVA: 0x0000AC53 File Offset: 0x00008E53
+	// Token: 0x06000160 RID: 352 RVA: 0x0000AC93 File Offset: 0x00008E93
 	public override string GetHoverName()
 	{
 		return this.GetPlayerName();
 	}
 
-	// Token: 0x06000160 RID: 352 RVA: 0x0000AC5B File Offset: 0x00008E5B
+	// Token: 0x06000161 RID: 353 RVA: 0x0000AC9B File Offset: 0x00008E9B
 	protected override void Start()
 	{
 		base.Start();
 		this.m_nview.GetZDO();
 	}
 
-	// Token: 0x06000161 RID: 353 RVA: 0x0000AC70 File Offset: 0x00008E70
+	// Token: 0x06000162 RID: 354 RVA: 0x0000ACB0 File Offset: 0x00008EB0
 	public override void OnDestroy()
 	{
 		ZDO zdo = this.m_nview.GetZDO();
@@ -204,7 +204,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000162 RID: 354 RVA: 0x0000AD58 File Offset: 0x00008F58
+	// Token: 0x06000163 RID: 355 RVA: 0x0000AD98 File Offset: 0x00008F98
 	protected override void FixedUpdate()
 	{
 		base.FixedUpdate();
@@ -251,7 +251,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000163 RID: 355 RVA: 0x0000AE88 File Offset: 0x00009088
+	// Token: 0x06000164 RID: 356 RVA: 0x0000AEC8 File Offset: 0x000090C8
 	private void Update()
 	{
 		if (!this.m_nview.IsValid())
@@ -388,7 +388,7 @@ public class Player : Humanoid
 		this.UpdatePlacement(flag, Time.deltaTime);
 	}
 
-	// Token: 0x06000164 RID: 356 RVA: 0x0000B1F4 File Offset: 0x000093F4
+	// Token: 0x06000165 RID: 357 RVA: 0x0000B234 File Offset: 0x00009434
 	private void UpdatePlacement(bool takeInput, float dt)
 	{
 		this.UpdateWearNTearHover();
@@ -410,8 +410,13 @@ public class Player : Humanoid
 			return;
 		}
 		ItemDrop.ItemData rightItem = base.GetRightItem();
-		if ((ZInput.GetButton("Remove") || ZInput.GetButton("JoyRemove")) && rightItem.m_shared.m_buildPieces.m_canRemovePieces && Time.time - this.m_lastToolUseTime > this.m_toolUseDelay)
+		if (ZInput.GetButtonDown("Remove") || ZInput.GetButtonDown("JoyRemove"))
 		{
+			this.m_removePressedTime = Time.time;
+		}
+		if (Time.time - this.m_removePressedTime < 0.2f && rightItem.m_shared.m_buildPieces.m_canRemovePieces && Time.time - this.m_lastToolUseTime > this.m_removeDelay)
+		{
+			this.m_removePressedTime = -9999f;
 			if (this.HaveStamina(rightItem.m_shared.m_attack.m_attackStamina))
 			{
 				if (this.RemovePiece())
@@ -430,11 +435,16 @@ public class Player : Humanoid
 				Hud.instance.StaminaBarNoStaminaFlash();
 			}
 		}
-		if (ZInput.GetButtonDown("Attack") || ZInput.GetButtonDown("JoyPlace"))
+		Piece selectedPiece = this.m_buildPieces.GetSelectedPiece();
+		if (selectedPiece != null)
 		{
-			Piece selectedPiece = this.m_buildPieces.GetSelectedPiece();
-			if (selectedPiece != null && Time.time - this.m_lastToolUseTime > this.m_toolUseDelay)
+			if (ZInput.GetButtonDown("Attack") || ZInput.GetButtonDown("JoyPlace"))
 			{
+				this.m_placePressedTime = Time.time;
+			}
+			if (Time.time - this.m_placePressedTime < 0.2f && Time.time - this.m_lastToolUseTime > this.m_placeDelay)
+			{
+				this.m_placePressedTime = -9999f;
 				if (this.HaveStamina(rightItem.m_shared.m_attack.m_attackStamina))
 				{
 					if (selectedPiece.m_repairPiece)
@@ -508,7 +518,7 @@ public class Player : Humanoid
 		this.m_rotatePieceTimer = 0f;
 	}
 
-	// Token: 0x06000165 RID: 357 RVA: 0x0000B50C File Offset: 0x0000970C
+	// Token: 0x06000166 RID: 358 RVA: 0x0000B5A0 File Offset: 0x000097A0
 	private void UpdateBuildGuiInput()
 	{
 		if (Hud.instance.IsQuickPieceSelectEnabled())
@@ -565,7 +575,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000166 RID: 358 RVA: 0x0000B67C File Offset: 0x0000987C
+	// Token: 0x06000167 RID: 359 RVA: 0x0000B710 File Offset: 0x00009910
 	public void SetSelectedPiece(Vector2Int p)
 	{
 		if (this.m_buildPieces && this.m_buildPieces.GetSelectedIndex() != p)
@@ -575,7 +585,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000167 RID: 359 RVA: 0x0000B6B0 File Offset: 0x000098B0
+	// Token: 0x06000168 RID: 360 RVA: 0x0000B744 File Offset: 0x00009944
 	public Piece GetPiece(Vector2Int p)
 	{
 		if (this.m_buildPieces)
@@ -585,13 +595,13 @@ public class Player : Humanoid
 		return null;
 	}
 
-	// Token: 0x06000168 RID: 360 RVA: 0x0000B6CD File Offset: 0x000098CD
+	// Token: 0x06000169 RID: 361 RVA: 0x0000B761 File Offset: 0x00009961
 	public bool IsPieceAvailable(Piece piece)
 	{
 		return this.m_buildPieces && this.m_buildPieces.IsPieceAvailable(piece);
 	}
 
-	// Token: 0x06000169 RID: 361 RVA: 0x0000B6EA File Offset: 0x000098EA
+	// Token: 0x0600016A RID: 362 RVA: 0x0000B77E File Offset: 0x0000997E
 	public Piece GetSelectedPiece()
 	{
 		if (this.m_buildPieces)
@@ -601,7 +611,7 @@ public class Player : Humanoid
 		return null;
 	}
 
-	// Token: 0x0600016A RID: 362 RVA: 0x0000B706 File Offset: 0x00009906
+	// Token: 0x0600016B RID: 363 RVA: 0x0000B79A File Offset: 0x0000999A
 	private void LateUpdate()
 	{
 		if (!this.m_nview.IsValid())
@@ -616,7 +626,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600016B RID: 363 RVA: 0x0000B748 File Offset: 0x00009948
+	// Token: 0x0600016C RID: 364 RVA: 0x0000B7DC File Offset: 0x000099DC
 	private void SetupAwake()
 	{
 		if (this.m_nview.GetZDO() == null)
@@ -632,7 +642,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600016C RID: 364 RVA: 0x0000B7AC File Offset: 0x000099AC
+	// Token: 0x0600016D RID: 365 RVA: 0x0000B840 File Offset: 0x00009A40
 	private void UpdateAwake(float dt)
 	{
 		if (this.m_wakeupTimer >= 0f)
@@ -650,7 +660,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600016D RID: 365 RVA: 0x0000B820 File Offset: 0x00009A20
+	// Token: 0x0600016E RID: 366 RVA: 0x0000B8B4 File Offset: 0x00009AB4
 	private void EdgeOfWorldKill(float dt)
 	{
 		if (this.IsDead())
@@ -673,7 +683,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600016E RID: 366 RVA: 0x0000B90C File Offset: 0x00009B0C
+	// Token: 0x0600016F RID: 367 RVA: 0x0000B9A0 File Offset: 0x00009BA0
 	private void AutoPickup(float dt)
 	{
 		if (this.IsTeleporting())
@@ -714,7 +724,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600016F RID: 367 RVA: 0x0000BA9C File Offset: 0x00009C9C
+	// Token: 0x06000170 RID: 368 RVA: 0x0000BB30 File Offset: 0x00009D30
 	private void PlayerAttackInput(float dt)
 	{
 		if (this.InPlaceMode())
@@ -803,13 +813,13 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000170 RID: 368 RVA: 0x0000BD18 File Offset: 0x00009F18
+	// Token: 0x06000171 RID: 369 RVA: 0x0000BDAC File Offset: 0x00009FAC
 	protected override bool HaveQueuedChain()
 	{
 		return this.m_queuedAttackTimer > 0f && base.GetCurrentWeapon() != null && this.m_currentAttack != null && this.m_currentAttack.CanStartChainAttack();
 	}
 
-	// Token: 0x06000171 RID: 369 RVA: 0x0000BD44 File Offset: 0x00009F44
+	// Token: 0x06000172 RID: 370 RVA: 0x0000BDD8 File Offset: 0x00009FD8
 	private void UpdateBaseValue(float dt)
 	{
 		this.m_baseValueUpdatetimer += dt;
@@ -822,13 +832,13 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000172 RID: 370 RVA: 0x0000BDB9 File Offset: 0x00009FB9
+	// Token: 0x06000173 RID: 371 RVA: 0x0000BE4D File Offset: 0x0000A04D
 	public int GetComfortLevel()
 	{
 		return this.m_comfortLevel;
 	}
 
-	// Token: 0x06000173 RID: 371 RVA: 0x0000BDC1 File Offset: 0x00009FC1
+	// Token: 0x06000174 RID: 372 RVA: 0x0000BE55 File Offset: 0x0000A055
 	public int GetBaseValue()
 	{
 		if (!this.m_nview.IsValid())
@@ -842,13 +852,13 @@ public class Player : Humanoid
 		return this.m_nview.GetZDO().GetInt("baseValue", 0);
 	}
 
-	// Token: 0x06000174 RID: 372 RVA: 0x0000BDFC File Offset: 0x00009FFC
+	// Token: 0x06000175 RID: 373 RVA: 0x0000BE90 File Offset: 0x0000A090
 	public bool IsSafeInHome()
 	{
 		return this.m_safeInHome;
 	}
 
-	// Token: 0x06000175 RID: 373 RVA: 0x0000BE04 File Offset: 0x0000A004
+	// Token: 0x06000176 RID: 374 RVA: 0x0000BE98 File Offset: 0x0000A098
 	private void UpdateBiome(float dt)
 	{
 		if (this.InIntro())
@@ -868,13 +878,13 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000176 RID: 374 RVA: 0x0000BE68 File Offset: 0x0000A068
+	// Token: 0x06000177 RID: 375 RVA: 0x0000BEFC File Offset: 0x0000A0FC
 	public Heightmap.Biome GetCurrentBiome()
 	{
 		return this.m_currentBiome;
 	}
 
-	// Token: 0x06000177 RID: 375 RVA: 0x0000BE70 File Offset: 0x0000A070
+	// Token: 0x06000178 RID: 376 RVA: 0x0000BF04 File Offset: 0x0000A104
 	public override void RaiseSkill(Skills.SkillType skill, float value = 1f)
 	{
 		float num = 1f;
@@ -883,7 +893,7 @@ public class Player : Humanoid
 		this.m_skills.RaiseSkill(skill, value);
 	}
 
-	// Token: 0x06000178 RID: 376 RVA: 0x0000BEA4 File Offset: 0x0000A0A4
+	// Token: 0x06000179 RID: 377 RVA: 0x0000BF38 File Offset: 0x0000A138
 	private void UpdateStats(float dt)
 	{
 		if (this.InIntro() || this.IsTeleporting())
@@ -938,7 +948,7 @@ public class Player : Humanoid
 		this.UpdateEnvStatusEffects(dt);
 	}
 
-	// Token: 0x06000179 RID: 377 RVA: 0x0000C054 File Offset: 0x0000A254
+	// Token: 0x0600017A RID: 378 RVA: 0x0000C0E8 File Offset: 0x0000A2E8
 	private void UpdateEnvStatusEffects(float dt)
 	{
 		this.m_nearFireTimer += dt;
@@ -1013,7 +1023,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600017A RID: 378 RVA: 0x0000C280 File Offset: 0x0000A480
+	// Token: 0x0600017B RID: 379 RVA: 0x0000C314 File Offset: 0x0000A514
 	private bool CanEat(ItemDrop.ItemData item, bool showMessages)
 	{
 		foreach (Player.Food food in this.m_foods)
@@ -1049,7 +1059,7 @@ public class Player : Humanoid
 		return true;
 	}
 
-	// Token: 0x0600017B RID: 379 RVA: 0x0000C394 File Offset: 0x0000A594
+	// Token: 0x0600017C RID: 380 RVA: 0x0000C428 File Offset: 0x0000A628
 	private Player.Food GetMostDepletedFood()
 	{
 		Player.Food food = null;
@@ -1063,13 +1073,13 @@ public class Player : Humanoid
 		return food;
 	}
 
-	// Token: 0x0600017C RID: 380 RVA: 0x0000C400 File Offset: 0x0000A600
+	// Token: 0x0600017D RID: 381 RVA: 0x0000C494 File Offset: 0x0000A694
 	public void ClearFood()
 	{
 		this.m_foods.Clear();
 	}
 
-	// Token: 0x0600017D RID: 381 RVA: 0x0000C410 File Offset: 0x0000A610
+	// Token: 0x0600017E RID: 382 RVA: 0x0000C4A4 File Offset: 0x0000A6A4
 	private bool EatFood(ItemDrop.ItemData item)
 	{
 		if (!this.CanEat(item, false))
@@ -1113,7 +1123,7 @@ public class Player : Humanoid
 		return false;
 	}
 
-	// Token: 0x0600017E RID: 382 RVA: 0x0000C588 File Offset: 0x0000A788
+	// Token: 0x0600017F RID: 383 RVA: 0x0000C61C File Offset: 0x0000A81C
 	private void UpdateFood(float dt, bool forceUpdate)
 	{
 		this.m_foodUpdateTimer += dt;
@@ -1167,7 +1177,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600017F RID: 383 RVA: 0x0000C790 File Offset: 0x0000A990
+	// Token: 0x06000180 RID: 384 RVA: 0x0000C824 File Offset: 0x0000AA24
 	private void GetTotalFoodValue(out float hp, out float stamina)
 	{
 		hp = 25f;
@@ -1179,19 +1189,19 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000180 RID: 384 RVA: 0x0000C800 File Offset: 0x0000AA00
+	// Token: 0x06000181 RID: 385 RVA: 0x0000C894 File Offset: 0x0000AA94
 	public float GetBaseFoodHP()
 	{
 		return 25f;
 	}
 
-	// Token: 0x06000181 RID: 385 RVA: 0x0000C807 File Offset: 0x0000AA07
+	// Token: 0x06000182 RID: 386 RVA: 0x0000C89B File Offset: 0x0000AA9B
 	public List<Player.Food> GetFoods()
 	{
 		return this.m_foods;
 	}
 
-	// Token: 0x06000182 RID: 386 RVA: 0x0000C810 File Offset: 0x0000AA10
+	// Token: 0x06000183 RID: 387 RVA: 0x0000C8A4 File Offset: 0x0000AAA4
 	public void OnSpawned()
 	{
 		this.m_spawnEffects.Create(base.transform.position, Quaternion.identity, null, 1f);
@@ -1205,7 +1215,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000183 RID: 387 RVA: 0x0000C878 File Offset: 0x0000AA78
+	// Token: 0x06000184 RID: 388 RVA: 0x0000C90C File Offset: 0x0000AB0C
 	protected override bool CheckRun(Vector3 moveDir, float dt)
 	{
 		if (!base.CheckRun(moveDir, dt))
@@ -1236,7 +1246,7 @@ public class Player : Humanoid
 		return false;
 	}
 
-	// Token: 0x06000184 RID: 388 RVA: 0x0000C934 File Offset: 0x0000AB34
+	// Token: 0x06000185 RID: 389 RVA: 0x0000C9C8 File Offset: 0x0000ABC8
 	private void UpdateMovementModifier()
 	{
 		this.m_equipmentMovementModifier = 0f;
@@ -1270,13 +1280,13 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000185 RID: 389 RVA: 0x0000CA4F File Offset: 0x0000AC4F
+	// Token: 0x06000186 RID: 390 RVA: 0x0000CAE3 File Offset: 0x0000ACE3
 	public void OnSkillLevelup(Skills.SkillType skill, float level)
 	{
 		this.m_skillLevelupEffects.Create(this.m_head.position, this.m_head.rotation, this.m_head, 1f);
 	}
 
-	// Token: 0x06000186 RID: 390 RVA: 0x0000CA80 File Offset: 0x0000AC80
+	// Token: 0x06000187 RID: 391 RVA: 0x0000CB14 File Offset: 0x0000AD14
 	protected override void OnJump()
 	{
 		this.AbortEquipQueue();
@@ -1285,7 +1295,7 @@ public class Player : Humanoid
 		this.UseStamina(num);
 	}
 
-	// Token: 0x06000187 RID: 391 RVA: 0x0000CAC0 File Offset: 0x0000ACC0
+	// Token: 0x06000188 RID: 392 RVA: 0x0000CB54 File Offset: 0x0000AD54
 	protected override void OnSwiming(Vector3 targetVel, float dt)
 	{
 		base.OnSwiming(targetVel, dt);
@@ -1321,7 +1331,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000188 RID: 392 RVA: 0x0000CC00 File Offset: 0x0000AE00
+	// Token: 0x06000189 RID: 393 RVA: 0x0000CC94 File Offset: 0x0000AE94
 	protected override bool TakeInput()
 	{
 		bool result = (!Chat.instance || !Chat.instance.HasFocus()) && !global::Console.IsVisible() && !TextInput.IsVisible() && (!StoreGui.IsVisible() && !InventoryGui.IsVisible() && !Menu.IsVisible() && (!TextViewer.instance || !TextViewer.instance.IsVisible()) && !Minimap.IsOpen()) && !GameCamera.InFreeFly();
@@ -1332,7 +1342,7 @@ public class Player : Humanoid
 		return result;
 	}
 
-	// Token: 0x06000189 RID: 393 RVA: 0x0000CC94 File Offset: 0x0000AE94
+	// Token: 0x0600018A RID: 394 RVA: 0x0000CD28 File Offset: 0x0000AF28
 	public void UseHotbarItem(int index)
 	{
 		ItemDrop.ItemData itemAt = this.m_inventory.GetItemAt(index - 1, 0);
@@ -1342,7 +1352,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600018A RID: 394 RVA: 0x0000CCC0 File Offset: 0x0000AEC0
+	// Token: 0x0600018B RID: 395 RVA: 0x0000CD54 File Offset: 0x0000AF54
 	public bool RequiredCraftingStation(Recipe recipe, int qualityLevel, bool checkLevel)
 	{
 		CraftingStation requiredStation = recipe.GetRequiredStation(qualityLevel);
@@ -1372,7 +1382,7 @@ public class Player : Humanoid
 		return true;
 	}
 
-	// Token: 0x0600018B RID: 395 RVA: 0x0000CD44 File Offset: 0x0000AF44
+	// Token: 0x0600018C RID: 396 RVA: 0x0000CDD8 File Offset: 0x0000AFD8
 	public bool HaveRequirements(Recipe recipe, bool discover, int qualityLevel)
 	{
 		if (discover)
@@ -1389,7 +1399,7 @@ public class Player : Humanoid
 		return (recipe.m_item.m_itemData.m_shared.m_dlc.Length <= 0 || DLCMan.instance.IsDLCInstalled(recipe.m_item.m_itemData.m_shared.m_dlc)) && this.HaveRequirements(recipe.m_resources, discover, qualityLevel);
 	}
 
-	// Token: 0x0600018C RID: 396 RVA: 0x0000CDDC File Offset: 0x0000AFDC
+	// Token: 0x0600018D RID: 397 RVA: 0x0000CE70 File Offset: 0x0000B070
 	private bool HaveRequirements(Piece.Requirement[] resources, bool discover, int qualityLevel)
 	{
 		foreach (Piece.Requirement requirement in resources)
@@ -1416,7 +1426,7 @@ public class Player : Humanoid
 		return true;
 	}
 
-	// Token: 0x0600018D RID: 397 RVA: 0x0000CE68 File Offset: 0x0000B068
+	// Token: 0x0600018E RID: 398 RVA: 0x0000CEFC File Offset: 0x0000B0FC
 	public bool HaveRequirements(Piece piece, Player.RequirementMode mode)
 	{
 		if (piece.m_craftingStation)
@@ -1464,7 +1474,7 @@ public class Player : Humanoid
 		return true;
 	}
 
-	// Token: 0x0600018E RID: 398 RVA: 0x0000CFA0 File Offset: 0x0000B1A0
+	// Token: 0x0600018F RID: 399 RVA: 0x0000D034 File Offset: 0x0000B234
 	public void SetCraftingStation(CraftingStation station)
 	{
 		if (this.m_currentStation == station)
@@ -1482,13 +1492,13 @@ public class Player : Humanoid
 		this.m_zanim.SetInt("crafting", value);
 	}
 
-	// Token: 0x0600018F RID: 399 RVA: 0x0000D00B File Offset: 0x0000B20B
+	// Token: 0x06000190 RID: 400 RVA: 0x0000D09F File Offset: 0x0000B29F
 	public CraftingStation GetCurrentCraftingStation()
 	{
 		return this.m_currentStation;
 	}
 
-	// Token: 0x06000190 RID: 400 RVA: 0x0000D014 File Offset: 0x0000B214
+	// Token: 0x06000191 RID: 401 RVA: 0x0000D0A8 File Offset: 0x0000B2A8
 	public void ConsumeResources(Piece.Requirement[] requirements, int qualityLevel)
 	{
 		foreach (Piece.Requirement requirement in requirements)
@@ -1504,7 +1514,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000191 RID: 401 RVA: 0x0000D070 File Offset: 0x0000B270
+	// Token: 0x06000192 RID: 402 RVA: 0x0000D104 File Offset: 0x0000B304
 	private void UpdateHover()
 	{
 		if (this.InPlaceMode() || this.IsDead() || this.m_shipControl != null)
@@ -1516,7 +1526,7 @@ public class Player : Humanoid
 		this.FindHoverObject(out this.m_hovering, out this.m_hoveringCreature);
 	}
 
-	// Token: 0x06000192 RID: 402 RVA: 0x0000D0BC File Offset: 0x0000B2BC
+	// Token: 0x06000193 RID: 403 RVA: 0x0000D150 File Offset: 0x0000B350
 	private bool CheckCanRemovePiece(Piece piece)
 	{
 		if (!this.m_noPlacementCost && piece.m_craftingStation != null && !CraftingStation.HaveBuildStationInRange(piece.m_craftingStation.m_name, base.transform.position))
@@ -1527,7 +1537,7 @@ public class Player : Humanoid
 		return true;
 	}
 
-	// Token: 0x06000193 RID: 403 RVA: 0x0000D114 File Offset: 0x0000B314
+	// Token: 0x06000194 RID: 404 RVA: 0x0000D1A8 File Offset: 0x0000B3A8
 	private bool RemovePiece()
 	{
 		RaycastHit raycastHit;
@@ -1594,13 +1604,13 @@ public class Player : Humanoid
 		return false;
 	}
 
-	// Token: 0x06000194 RID: 404 RVA: 0x0000D318 File Offset: 0x0000B518
+	// Token: 0x06000195 RID: 405 RVA: 0x0000D3AC File Offset: 0x0000B5AC
 	public void FaceLookDirection()
 	{
 		base.transform.rotation = base.GetLookYaw();
 	}
 
-	// Token: 0x06000195 RID: 405 RVA: 0x0000D32C File Offset: 0x0000B52C
+	// Token: 0x06000196 RID: 406 RVA: 0x0000D3C0 File Offset: 0x0000B5C0
 	private bool PlacePiece(Piece piece)
 	{
 		this.UpdatePlacementGhost(true);
@@ -1680,13 +1690,13 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000196 RID: 406 RVA: 0x000027E2 File Offset: 0x000009E2
+	// Token: 0x06000197 RID: 407 RVA: 0x000027E2 File Offset: 0x000009E2
 	public override bool IsPlayer()
 	{
 		return true;
 	}
 
-	// Token: 0x06000197 RID: 407 RVA: 0x0000D570 File Offset: 0x0000B770
+	// Token: 0x06000198 RID: 408 RVA: 0x0000D604 File Offset: 0x0000B804
 	public void GetBuildSelection(out Piece go, out Vector2Int id, out int total, out Piece.PieceCategory category, out bool useCategory)
 	{
 		category = this.m_buildPieces.m_selectedCategory;
@@ -1704,7 +1714,7 @@ public class Player : Humanoid
 		total = this.m_buildPieces.GetAvailablePiecesInSelectedCategory();
 	}
 
-	// Token: 0x06000198 RID: 408 RVA: 0x0000D5F5 File Offset: 0x0000B7F5
+	// Token: 0x06000199 RID: 409 RVA: 0x0000D689 File Offset: 0x0000B889
 	public List<Piece> GetBuildPieces()
 	{
 		if (this.m_buildPieces)
@@ -1714,7 +1724,7 @@ public class Player : Humanoid
 		return null;
 	}
 
-	// Token: 0x06000199 RID: 409 RVA: 0x0000D611 File Offset: 0x0000B811
+	// Token: 0x0600019A RID: 410 RVA: 0x0000D6A5 File Offset: 0x0000B8A5
 	public int GetAvailableBuildPiecesInCategory(Piece.PieceCategory cat)
 	{
 		if (this.m_buildPieces)
@@ -1724,13 +1734,13 @@ public class Player : Humanoid
 		return 0;
 	}
 
-	// Token: 0x0600019A RID: 410 RVA: 0x0000D62E File Offset: 0x0000B82E
+	// Token: 0x0600019B RID: 411 RVA: 0x0000D6C2 File Offset: 0x0000B8C2
 	private void RPC_OnDeath(long sender)
 	{
 		this.m_visual.SetActive(false);
 	}
 
-	// Token: 0x0600019B RID: 411 RVA: 0x0000D63C File Offset: 0x0000B83C
+	// Token: 0x0600019C RID: 412 RVA: 0x0000D6D0 File Offset: 0x0000B8D0
 	private void CreateDeathEffects()
 	{
 		GameObject[] array = this.m_deathEffects.Create(base.transform.position, base.transform.rotation, base.transform, 1f);
@@ -1751,7 +1761,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600019C RID: 412 RVA: 0x0000D6F4 File Offset: 0x0000B8F4
+	// Token: 0x0600019D RID: 413 RVA: 0x0000D788 File Offset: 0x0000B988
 	public void UnequipDeathDropItems()
 	{
 		if (this.m_rightItem != null)
@@ -1772,7 +1782,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600019D RID: 413 RVA: 0x0000D758 File Offset: 0x0000B958
+	// Token: 0x0600019E RID: 414 RVA: 0x0000D7EC File Offset: 0x0000B9EC
 	private void CreateTombStone()
 	{
 		if (this.m_inventory.NrOfItems() == 0)
@@ -1787,13 +1797,13 @@ public class Player : Humanoid
 		component.Setup(playerProfile.GetName(), playerProfile.GetPlayerID());
 	}
 
-	// Token: 0x0600019E RID: 414 RVA: 0x0000D7CC File Offset: 0x0000B9CC
+	// Token: 0x0600019F RID: 415 RVA: 0x0000D860 File Offset: 0x0000BA60
 	private bool HardDeath()
 	{
 		return this.m_timeSinceDeath > this.m_hardDeathCooldown;
 	}
 
-	// Token: 0x0600019F RID: 415 RVA: 0x0000D7DC File Offset: 0x0000B9DC
+	// Token: 0x060001A0 RID: 416 RVA: 0x0000D870 File Offset: 0x0000BA70
 	protected override void OnDeath()
 	{
 		bool flag = this.HardDeath();
@@ -1820,14 +1830,14 @@ public class Player : Humanoid
 		Gogan.LogEvent("Game", "Death", eventLabel, 0L);
 	}
 
-	// Token: 0x060001A0 RID: 416 RVA: 0x0000D8EF File Offset: 0x0000BAEF
+	// Token: 0x060001A1 RID: 417 RVA: 0x0000D983 File Offset: 0x0000BB83
 	public void OnRespawn()
 	{
 		this.m_nview.GetZDO().Set("dead", false);
 		base.SetHealth(base.GetMaxHealth());
 	}
 
-	// Token: 0x060001A1 RID: 417 RVA: 0x0000D914 File Offset: 0x0000BB14
+	// Token: 0x060001A2 RID: 418 RVA: 0x0000D9A8 File Offset: 0x0000BBA8
 	private void SetupPlacementGhost()
 	{
 		if (this.m_placementGhost)
@@ -1948,13 +1958,13 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001A2 RID: 418 RVA: 0x0000DCF3 File Offset: 0x0000BEF3
+	// Token: 0x060001A3 RID: 419 RVA: 0x0000DD87 File Offset: 0x0000BF87
 	private void SetPlacementGhostValid(bool valid)
 	{
 		this.m_placementGhost.GetComponent<Piece>().SetInvalidPlacementHeightlight(!valid);
 	}
 
-	// Token: 0x060001A3 RID: 419 RVA: 0x0000DD09 File Offset: 0x0000BF09
+	// Token: 0x060001A4 RID: 420 RVA: 0x0000DD9D File Offset: 0x0000BF9D
 	protected override void SetPlaceMode(PieceTable buildPieces)
 	{
 		base.SetPlaceMode(buildPieces);
@@ -1962,7 +1972,7 @@ public class Player : Humanoid
 		this.UpdateAvailablePiecesList();
 	}
 
-	// Token: 0x060001A4 RID: 420 RVA: 0x0000DD1F File Offset: 0x0000BF1F
+	// Token: 0x060001A5 RID: 421 RVA: 0x0000DDB3 File Offset: 0x0000BFB3
 	public void SetBuildCategory(int index)
 	{
 		if (this.m_buildPieces != null)
@@ -1972,13 +1982,13 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001A5 RID: 421 RVA: 0x0000DD41 File Offset: 0x0000BF41
+	// Token: 0x060001A6 RID: 422 RVA: 0x0000DDD5 File Offset: 0x0000BFD5
 	public override bool InPlaceMode()
 	{
 		return this.m_buildPieces != null;
 	}
 
-	// Token: 0x060001A6 RID: 422 RVA: 0x0000DD50 File Offset: 0x0000BF50
+	// Token: 0x060001A7 RID: 423 RVA: 0x0000DDE4 File Offset: 0x0000BFE4
 	private void Repair(ItemDrop.ItemData toolItem, Piece repairPiece)
 	{
 		if (!this.InPlaceMode())
@@ -2025,7 +2035,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001A7 RID: 423 RVA: 0x0000DE84 File Offset: 0x0000C084
+	// Token: 0x060001A8 RID: 424 RVA: 0x0000DF18 File Offset: 0x0000C118
 	private void UpdateWearNTearHover()
 	{
 		if (!this.InPlaceMode())
@@ -2050,7 +2060,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001A8 RID: 424 RVA: 0x0000DF2A File Offset: 0x0000C12A
+	// Token: 0x060001A9 RID: 425 RVA: 0x0000DFBE File Offset: 0x0000C1BE
 	public Piece GetHoveringPiece()
 	{
 		if (this.InPlaceMode())
@@ -2060,7 +2070,7 @@ public class Player : Humanoid
 		return null;
 	}
 
-	// Token: 0x060001A9 RID: 425 RVA: 0x0000DF3C File Offset: 0x0000C13C
+	// Token: 0x060001AA RID: 426 RVA: 0x0000DFD0 File Offset: 0x0000C1D0
 	private void UpdatePlacementGhost(bool flashGuardStone)
 	{
 		if (this.m_placementGhost == null)
@@ -2264,7 +2274,7 @@ public class Player : Humanoid
 		this.SetPlacementGhostValid(this.m_placementStatus == Player.PlacementStatus.Valid);
 	}
 
-	// Token: 0x060001AA RID: 426 RVA: 0x0000E5C0 File Offset: 0x0000C7C0
+	// Token: 0x060001AB RID: 427 RVA: 0x0000E654 File Offset: 0x0000C854
 	private bool IsOverlapingOtherPiece(Vector3 p, string pieceName, List<Piece> pieces)
 	{
 		foreach (Piece piece in this.m_tempPieces)
@@ -2277,7 +2287,7 @@ public class Player : Humanoid
 		return false;
 	}
 
-	// Token: 0x060001AB RID: 427 RVA: 0x0000E640 File Offset: 0x0000C840
+	// Token: 0x060001AC RID: 428 RVA: 0x0000E6D4 File Offset: 0x0000C8D4
 	private bool FindClosestSnapPoints(Transform ghost, float maxSnapDistance, out Transform a, out Transform b, List<Piece> pieces)
 	{
 		this.m_tempSnapPoints1.Clear();
@@ -2302,7 +2312,7 @@ public class Player : Humanoid
 		return a != null;
 	}
 
-	// Token: 0x060001AC RID: 428 RVA: 0x0000E71C File Offset: 0x0000C91C
+	// Token: 0x060001AD RID: 429 RVA: 0x0000E7B0 File Offset: 0x0000C9B0
 	private bool FindClosestSnappoint(Vector3 p, List<Transform> snapPoints, float maxDistance, out Transform closest, out float distance)
 	{
 		closest = null;
@@ -2319,7 +2329,7 @@ public class Player : Humanoid
 		return closest != null;
 	}
 
-	// Token: 0x060001AD RID: 429 RVA: 0x0000E798 File Offset: 0x0000C998
+	// Token: 0x060001AE RID: 430 RVA: 0x0000E82C File Offset: 0x0000CA2C
 	private bool TestGhostClipping(GameObject ghost, float maxPenetration)
 	{
 		Collider[] componentsInChildren = ghost.GetComponentsInChildren<Collider>();
@@ -2339,7 +2349,7 @@ public class Player : Humanoid
 		return false;
 	}
 
-	// Token: 0x060001AE RID: 430 RVA: 0x0000E83C File Offset: 0x0000CA3C
+	// Token: 0x060001AF RID: 431 RVA: 0x0000E8D0 File Offset: 0x0000CAD0
 	private bool CheckPlacementGhostVSPlayers()
 	{
 		if (this.m_placementGhost == null)
@@ -2371,7 +2381,7 @@ public class Player : Humanoid
 		return false;
 	}
 
-	// Token: 0x060001AF RID: 431 RVA: 0x0000E950 File Offset: 0x0000CB50
+	// Token: 0x060001B0 RID: 432 RVA: 0x0000E9E4 File Offset: 0x0000CBE4
 	private bool PieceRayTest(out Vector3 point, out Vector3 normal, out Piece piece, out Heightmap heightmap, out Collider waterSurface, bool water)
 	{
 		int layerMask = this.m_placeRayMask;
@@ -2404,7 +2414,7 @@ public class Player : Humanoid
 		return false;
 	}
 
-	// Token: 0x060001B0 RID: 432 RVA: 0x0000EA70 File Offset: 0x0000CC70
+	// Token: 0x060001B1 RID: 433 RVA: 0x0000EB04 File Offset: 0x0000CD04
 	private void FindHoverObject(out GameObject hover, out Character hoverCreature)
 	{
 		hover = null;
@@ -2450,7 +2460,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001B1 RID: 433 RVA: 0x0000EBE4 File Offset: 0x0000CDE4
+	// Token: 0x060001B2 RID: 434 RVA: 0x0000EC78 File Offset: 0x0000CE78
 	private void Interact(GameObject go, bool hold)
 	{
 		if (this.InAttack() || this.InDodge())
@@ -2476,7 +2486,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001B2 RID: 434 RVA: 0x0000EC88 File Offset: 0x0000CE88
+	// Token: 0x060001B3 RID: 435 RVA: 0x0000ED1C File Offset: 0x0000CF1C
 	private void UpdateStations(float dt)
 	{
 		this.m_stationDiscoverTimer += dt;
@@ -2510,7 +2520,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001B3 RID: 435 RVA: 0x0000ED88 File Offset: 0x0000CF88
+	// Token: 0x060001B4 RID: 436 RVA: 0x0000EE1C File Offset: 0x0000D01C
 	private void UpdateCover(float dt)
 	{
 		this.m_updateCoverTimer += dt;
@@ -2521,73 +2531,73 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001B4 RID: 436 RVA: 0x0000EDC7 File Offset: 0x0000CFC7
+	// Token: 0x060001B5 RID: 437 RVA: 0x0000EE5B File Offset: 0x0000D05B
 	public Character GetHoverCreature()
 	{
 		return this.m_hoveringCreature;
 	}
 
-	// Token: 0x060001B5 RID: 437 RVA: 0x0000EDCF File Offset: 0x0000CFCF
+	// Token: 0x060001B6 RID: 438 RVA: 0x0000EE63 File Offset: 0x0000D063
 	public override GameObject GetHoverObject()
 	{
 		return this.m_hovering;
 	}
 
-	// Token: 0x060001B6 RID: 438 RVA: 0x0000EDD7 File Offset: 0x0000CFD7
+	// Token: 0x060001B7 RID: 439 RVA: 0x0000EE6B File Offset: 0x0000D06B
 	public override void OnNearFire(Vector3 point)
 	{
 		this.m_nearFireTimer = 0f;
 	}
 
-	// Token: 0x060001B7 RID: 439 RVA: 0x0000EDE4 File Offset: 0x0000CFE4
+	// Token: 0x060001B8 RID: 440 RVA: 0x0000EE78 File Offset: 0x0000D078
 	public bool InShelter()
 	{
 		return this.m_coverPercentage >= 0.8f && this.m_underRoof;
 	}
 
-	// Token: 0x060001B8 RID: 440 RVA: 0x0000EDFB File Offset: 0x0000CFFB
+	// Token: 0x060001B9 RID: 441 RVA: 0x0000EE8F File Offset: 0x0000D08F
 	public float GetStamina()
 	{
 		return this.m_stamina;
 	}
 
-	// Token: 0x060001B9 RID: 441 RVA: 0x0000EE03 File Offset: 0x0000D003
+	// Token: 0x060001BA RID: 442 RVA: 0x0000EE97 File Offset: 0x0000D097
 	public override float GetMaxStamina()
 	{
 		return this.m_maxStamina;
 	}
 
-	// Token: 0x060001BA RID: 442 RVA: 0x0000EE0B File Offset: 0x0000D00B
+	// Token: 0x060001BB RID: 443 RVA: 0x0000EE9F File Offset: 0x0000D09F
 	public override float GetStaminaPercentage()
 	{
 		return this.m_stamina / this.m_maxStamina;
 	}
 
-	// Token: 0x060001BB RID: 443 RVA: 0x0000EE1A File Offset: 0x0000D01A
+	// Token: 0x060001BC RID: 444 RVA: 0x0000EEAE File Offset: 0x0000D0AE
 	public void SetGodMode(bool godMode)
 	{
 		this.m_godMode = godMode;
 	}
 
-	// Token: 0x060001BC RID: 444 RVA: 0x0000EE23 File Offset: 0x0000D023
+	// Token: 0x060001BD RID: 445 RVA: 0x0000EEB7 File Offset: 0x0000D0B7
 	public override bool InGodMode()
 	{
 		return this.m_godMode;
 	}
 
-	// Token: 0x060001BD RID: 445 RVA: 0x0000EE2B File Offset: 0x0000D02B
+	// Token: 0x060001BE RID: 446 RVA: 0x0000EEBF File Offset: 0x0000D0BF
 	public void SetGhostMode(bool ghostmode)
 	{
 		this.m_ghostMode = ghostmode;
 	}
 
-	// Token: 0x060001BE RID: 446 RVA: 0x0000EE34 File Offset: 0x0000D034
+	// Token: 0x060001BF RID: 447 RVA: 0x0000EEC8 File Offset: 0x0000D0C8
 	public override bool InGhostMode()
 	{
 		return this.m_ghostMode;
 	}
 
-	// Token: 0x060001BF RID: 447 RVA: 0x0000EE3C File Offset: 0x0000D03C
+	// Token: 0x060001C0 RID: 448 RVA: 0x0000EED0 File Offset: 0x0000D0D0
 	public override bool IsDebugFlying()
 	{
 		if (this.m_nview.IsOwner())
@@ -2597,7 +2607,7 @@ public class Player : Humanoid
 		return this.m_nview.GetZDO().GetBool("DebugFly", false);
 	}
 
-	// Token: 0x060001C0 RID: 448 RVA: 0x0000EE68 File Offset: 0x0000D068
+	// Token: 0x060001C1 RID: 449 RVA: 0x0000EEFC File Offset: 0x0000D0FC
 	public override void AddStamina(float v)
 	{
 		this.m_stamina += v;
@@ -2607,7 +2617,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001C1 RID: 449 RVA: 0x0000EE94 File Offset: 0x0000D094
+	// Token: 0x060001C2 RID: 450 RVA: 0x0000EF28 File Offset: 0x0000D128
 	public override void UseStamina(float v)
 	{
 		if (v == 0f)
@@ -2629,7 +2639,7 @@ public class Player : Humanoid
 		});
 	}
 
-	// Token: 0x060001C2 RID: 450 RVA: 0x0000EEEE File Offset: 0x0000D0EE
+	// Token: 0x060001C3 RID: 451 RVA: 0x0000EF82 File Offset: 0x0000D182
 	private void RPC_UseStamina(long sender, float v)
 	{
 		if (v == 0f)
@@ -2644,7 +2654,7 @@ public class Player : Humanoid
 		this.m_staminaRegenTimer = this.m_staminaRegenDelay;
 	}
 
-	// Token: 0x060001C3 RID: 451 RVA: 0x0000EF2C File Offset: 0x0000D12C
+	// Token: 0x060001C4 RID: 452 RVA: 0x0000EFC0 File Offset: 0x0000D1C0
 	public override bool HaveStamina(float amount = 0f)
 	{
 		if (this.m_nview.IsValid() && !this.m_nview.IsOwner())
@@ -2654,7 +2664,7 @@ public class Player : Humanoid
 		return this.m_stamina > amount;
 	}
 
-	// Token: 0x060001C4 RID: 452 RVA: 0x0000EF7C File Offset: 0x0000D17C
+	// Token: 0x060001C5 RID: 453 RVA: 0x0000F010 File Offset: 0x0000D210
 	public void Save(ZPackage pkg)
 	{
 		pkg.Write(24);
@@ -2723,7 +2733,7 @@ public class Player : Humanoid
 		this.m_skills.Save(pkg);
 	}
 
-	// Token: 0x060001C5 RID: 453 RVA: 0x0000F380 File Offset: 0x0000D580
+	// Token: 0x060001C6 RID: 454 RVA: 0x0000F414 File Offset: 0x0000D614
 	public void Load(ZPackage pkg)
 	{
 		this.m_isLoading = true;
@@ -2914,7 +2924,7 @@ public class Player : Humanoid
 		this.EquipIventoryItems();
 	}
 
-	// Token: 0x060001C6 RID: 454 RVA: 0x0000F7A8 File Offset: 0x0000D9A8
+	// Token: 0x060001C7 RID: 455 RVA: 0x0000F83C File Offset: 0x0000DA3C
 	private void EquipIventoryItems()
 	{
 		foreach (ItemDrop.ItemData itemData in this.m_inventory.GetEquipedtems())
@@ -2926,19 +2936,19 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001C7 RID: 455 RVA: 0x0000F80C File Offset: 0x0000DA0C
+	// Token: 0x060001C8 RID: 456 RVA: 0x0000F8A0 File Offset: 0x0000DAA0
 	public override bool CanMove()
 	{
 		return !this.m_teleporting && !this.InCutscene() && (!this.IsEncumbered() || this.HaveStamina(0f)) && base.CanMove();
 	}
 
-	// Token: 0x060001C8 RID: 456 RVA: 0x0000F83F File Offset: 0x0000DA3F
+	// Token: 0x060001C9 RID: 457 RVA: 0x0000F8D3 File Offset: 0x0000DAD3
 	public override bool IsEncumbered()
 	{
 		return this.m_inventory.GetTotalWeight() > this.GetMaxCarryWeight();
 	}
 
-	// Token: 0x060001C9 RID: 457 RVA: 0x0000F854 File Offset: 0x0000DA54
+	// Token: 0x060001CA RID: 458 RVA: 0x0000F8E8 File Offset: 0x0000DAE8
 	public float GetMaxCarryWeight()
 	{
 		float maxCarryWeight = this.m_maxCarryWeight;
@@ -2946,13 +2956,13 @@ public class Player : Humanoid
 		return maxCarryWeight;
 	}
 
-	// Token: 0x060001CA RID: 458 RVA: 0x0000F877 File Offset: 0x0000DA77
+	// Token: 0x060001CB RID: 459 RVA: 0x0000F90B File Offset: 0x0000DB0B
 	public override bool HaveUniqueKey(string name)
 	{
 		return this.m_uniques.Contains(name);
 	}
 
-	// Token: 0x060001CB RID: 459 RVA: 0x0000F885 File Offset: 0x0000DA85
+	// Token: 0x060001CC RID: 460 RVA: 0x0000F919 File Offset: 0x0000DB19
 	public override void AddUniqueKey(string name)
 	{
 		if (!this.m_uniques.Contains(name))
@@ -2961,13 +2971,13 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001CC RID: 460 RVA: 0x0000F8A2 File Offset: 0x0000DAA2
+	// Token: 0x060001CD RID: 461 RVA: 0x0000F936 File Offset: 0x0000DB36
 	public bool IsBiomeKnown(Heightmap.Biome biome)
 	{
 		return this.m_knownBiome.Contains(biome);
 	}
 
-	// Token: 0x060001CD RID: 461 RVA: 0x0000F8B0 File Offset: 0x0000DAB0
+	// Token: 0x060001CE RID: 462 RVA: 0x0000F944 File Offset: 0x0000DB44
 	public void AddKnownBiome(Heightmap.Biome biome)
 	{
 		if (!this.m_knownBiome.Contains(biome))
@@ -2986,13 +2996,13 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001CE RID: 462 RVA: 0x0000F947 File Offset: 0x0000DB47
+	// Token: 0x060001CF RID: 463 RVA: 0x0000F9DB File Offset: 0x0000DBDB
 	public bool IsRecipeKnown(string name)
 	{
 		return this.m_knownRecipes.Contains(name);
 	}
 
-	// Token: 0x060001CF RID: 463 RVA: 0x0000F958 File Offset: 0x0000DB58
+	// Token: 0x060001D0 RID: 464 RVA: 0x0000F9EC File Offset: 0x0000DBEC
 	public void AddKnownRecipe(Recipe recipe)
 	{
 		if (!this.m_knownRecipes.Contains(recipe.m_item.m_itemData.m_shared.m_name))
@@ -3003,7 +3013,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001D0 RID: 464 RVA: 0x0000FA04 File Offset: 0x0000DC04
+	// Token: 0x060001D1 RID: 465 RVA: 0x0000FA98 File Offset: 0x0000DC98
 	public void AddKnownPiece(Piece piece)
 	{
 		if (!this.m_knownRecipes.Contains(piece.m_name))
@@ -3014,7 +3024,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001D1 RID: 465 RVA: 0x0000FA68 File Offset: 0x0000DC68
+	// Token: 0x060001D2 RID: 466 RVA: 0x0000FAFC File Offset: 0x0000DCFC
 	public void AddKnownStation(CraftingStation station)
 	{
 		int level = station.GetLevel();
@@ -3035,14 +3045,14 @@ public class Player : Humanoid
 		this.UpdateKnownRecipesList();
 	}
 
-	// Token: 0x060001D2 RID: 466 RVA: 0x0000FB24 File Offset: 0x0000DD24
+	// Token: 0x060001D3 RID: 467 RVA: 0x0000FBB8 File Offset: 0x0000DDB8
 	private bool KnowStationLevel(string name, int level)
 	{
 		int num;
 		return this.m_knownStations.TryGetValue(name, out num) && num >= level;
 	}
 
-	// Token: 0x060001D3 RID: 467 RVA: 0x0000FB4C File Offset: 0x0000DD4C
+	// Token: 0x060001D4 RID: 468 RVA: 0x0000FBE0 File Offset: 0x0000DDE0
 	public void AddKnownText(string label, string text)
 	{
 		if (label.Length == 0)
@@ -3060,13 +3070,13 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001D4 RID: 468 RVA: 0x0000FBB9 File Offset: 0x0000DDB9
+	// Token: 0x060001D5 RID: 469 RVA: 0x0000FC4D File Offset: 0x0000DE4D
 	public List<KeyValuePair<string, string>> GetKnownTexts()
 	{
 		return this.m_knownTexts.ToList<KeyValuePair<string, string>>();
 	}
 
-	// Token: 0x060001D5 RID: 469 RVA: 0x0000FBC8 File Offset: 0x0000DDC8
+	// Token: 0x060001D6 RID: 470 RVA: 0x0000FC5C File Offset: 0x0000DE5C
 	public void AddKnownItem(ItemDrop.ItemData item)
 	{
 		if (item.m_shared.m_itemType == ItemDrop.ItemData.ItemType.Trophie)
@@ -3093,7 +3103,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001D6 RID: 470 RVA: 0x0000FCC0 File Offset: 0x0000DEC0
+	// Token: 0x060001D7 RID: 471 RVA: 0x0000FD54 File Offset: 0x0000DF54
 	private void AddTrophie(ItemDrop.ItemData item)
 	{
 		if (item.m_shared.m_itemType != ItemDrop.ItemData.ItemType.Trophie)
@@ -3106,7 +3116,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001D7 RID: 471 RVA: 0x0000FD0C File Offset: 0x0000DF0C
+	// Token: 0x060001D8 RID: 472 RVA: 0x0000FDA0 File Offset: 0x0000DFA0
 	public List<string> GetTrophies()
 	{
 		List<string> list = new List<string>();
@@ -3114,7 +3124,7 @@ public class Player : Humanoid
 		return list;
 	}
 
-	// Token: 0x060001D8 RID: 472 RVA: 0x0000FD20 File Offset: 0x0000DF20
+	// Token: 0x060001D9 RID: 473 RVA: 0x0000FDB4 File Offset: 0x0000DFB4
 	private void UpdateKnownRecipesList()
 	{
 		if (Game.instance == null)
@@ -3149,7 +3159,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001D9 RID: 473 RVA: 0x0000FE90 File Offset: 0x0000E090
+	// Token: 0x060001DA RID: 474 RVA: 0x0000FF24 File Offset: 0x0000E124
 	private void UpdateAvailablePiecesList()
 	{
 		if (this.m_buildPieces != null)
@@ -3159,7 +3169,7 @@ public class Player : Humanoid
 		this.SetupPlacementGhost();
 	}
 
-	// Token: 0x060001DA RID: 474 RVA: 0x0000FEC4 File Offset: 0x0000E0C4
+	// Token: 0x060001DB RID: 475 RVA: 0x0000FF58 File Offset: 0x0000E158
 	public override void Message(MessageHud.MessageType type, string msg, int amount = 0, Sprite icon = null)
 	{
 		if (this.m_nview == null || !this.m_nview.IsValid())
@@ -3185,7 +3195,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001DB RID: 475 RVA: 0x0000FF42 File Offset: 0x0000E142
+	// Token: 0x060001DC RID: 476 RVA: 0x0000FFD6 File Offset: 0x0000E1D6
 	private void RPC_Message(long sender, int type, string msg, int amount)
 	{
 		if (!this.m_nview.IsOwner())
@@ -3198,7 +3208,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001DC RID: 476 RVA: 0x0000FF70 File Offset: 0x0000E170
+	// Token: 0x060001DD RID: 477 RVA: 0x00010004 File Offset: 0x0000E204
 	public static Player GetPlayer(long playerID)
 	{
 		foreach (Player player in Player.m_players)
@@ -3211,7 +3221,7 @@ public class Player : Humanoid
 		return null;
 	}
 
-	// Token: 0x060001DD RID: 477 RVA: 0x0000FFCC File Offset: 0x0000E1CC
+	// Token: 0x060001DE RID: 478 RVA: 0x00010060 File Offset: 0x0000E260
 	public static Player GetClosestPlayer(Vector3 point, float maxRange)
 	{
 		Player result = null;
@@ -3228,7 +3238,7 @@ public class Player : Humanoid
 		return result;
 	}
 
-	// Token: 0x060001DE RID: 478 RVA: 0x00010044 File Offset: 0x0000E244
+	// Token: 0x060001DF RID: 479 RVA: 0x000100D8 File Offset: 0x0000E2D8
 	public static bool IsPlayerInRange(Vector3 point, float range, long playerID)
 	{
 		foreach (Player player in Player.m_players)
@@ -3241,7 +3251,7 @@ public class Player : Humanoid
 		return false;
 	}
 
-	// Token: 0x060001DF RID: 479 RVA: 0x000100B4 File Offset: 0x0000E2B4
+	// Token: 0x060001E0 RID: 480 RVA: 0x00010148 File Offset: 0x0000E348
 	public static void MessageAllInRange(Vector3 point, float range, MessageHud.MessageType type, string msg, Sprite icon = null)
 	{
 		foreach (Player player in Player.m_players)
@@ -3253,7 +3263,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001E0 RID: 480 RVA: 0x00010120 File Offset: 0x0000E320
+	// Token: 0x060001E1 RID: 481 RVA: 0x000101B4 File Offset: 0x0000E3B4
 	public static int GetPlayersInRangeXZ(Vector3 point, float range)
 	{
 		int num = 0;
@@ -3270,7 +3280,7 @@ public class Player : Humanoid
 		return num;
 	}
 
-	// Token: 0x060001E1 RID: 481 RVA: 0x00010184 File Offset: 0x0000E384
+	// Token: 0x060001E2 RID: 482 RVA: 0x00010218 File Offset: 0x0000E418
 	public static void GetPlayersInRange(Vector3 point, float range, List<Player> players)
 	{
 		foreach (Player player in Player.m_players)
@@ -3282,7 +3292,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001E2 RID: 482 RVA: 0x000101EC File Offset: 0x0000E3EC
+	// Token: 0x060001E3 RID: 483 RVA: 0x00010280 File Offset: 0x0000E480
 	public static bool IsPlayerInRange(Vector3 point, float range)
 	{
 		using (List<Player>.Enumerator enumerator = Player.m_players.GetEnumerator())
@@ -3298,7 +3308,7 @@ public class Player : Humanoid
 		return false;
 	}
 
-	// Token: 0x060001E3 RID: 483 RVA: 0x00010250 File Offset: 0x0000E450
+	// Token: 0x060001E4 RID: 484 RVA: 0x000102E4 File Offset: 0x0000E4E4
 	public static bool IsPlayerInRange(Vector3 point, float range, float minNoise)
 	{
 		foreach (Player player in Player.m_players)
@@ -3315,7 +3325,7 @@ public class Player : Humanoid
 		return false;
 	}
 
-	// Token: 0x060001E4 RID: 484 RVA: 0x000102C8 File Offset: 0x0000E4C8
+	// Token: 0x060001E5 RID: 485 RVA: 0x0001035C File Offset: 0x0000E55C
 	public static Player GetPlayerNoiseRange(Vector3 point, float noiseRangeScale = 1f)
 	{
 		foreach (Player player in Player.m_players)
@@ -3330,13 +3340,13 @@ public class Player : Humanoid
 		return null;
 	}
 
-	// Token: 0x060001E5 RID: 485 RVA: 0x0001033C File Offset: 0x0000E53C
+	// Token: 0x060001E6 RID: 486 RVA: 0x000103D0 File Offset: 0x0000E5D0
 	public static List<Player> GetAllPlayers()
 	{
 		return Player.m_players;
 	}
 
-	// Token: 0x060001E6 RID: 486 RVA: 0x00010343 File Offset: 0x0000E543
+	// Token: 0x060001E7 RID: 487 RVA: 0x000103D7 File Offset: 0x0000E5D7
 	public static Player GetRandomPlayer()
 	{
 		if (Player.m_players.Count == 0)
@@ -3346,7 +3356,7 @@ public class Player : Humanoid
 		return Player.m_players[UnityEngine.Random.Range(0, Player.m_players.Count)];
 	}
 
-	// Token: 0x060001E7 RID: 487 RVA: 0x00010370 File Offset: 0x0000E570
+	// Token: 0x060001E8 RID: 488 RVA: 0x00010404 File Offset: 0x0000E604
 	public void GetAvailableRecipes(ref List<Recipe> available)
 	{
 		available.Clear();
@@ -3359,7 +3369,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001E8 RID: 488 RVA: 0x0001045C File Offset: 0x0000E65C
+	// Token: 0x060001E9 RID: 489 RVA: 0x000104F0 File Offset: 0x0000E6F0
 	private void OnInventoryChanged()
 	{
 		if (this.m_isLoading)
@@ -3402,13 +3412,13 @@ public class Player : Humanoid
 		this.UpdateAvailablePiecesList();
 	}
 
-	// Token: 0x060001E9 RID: 489 RVA: 0x000105EC File Offset: 0x0000E7EC
+	// Token: 0x060001EA RID: 490 RVA: 0x00010680 File Offset: 0x0000E880
 	public bool InDebugFlyMode()
 	{
 		return this.m_debugFly;
 	}
 
-	// Token: 0x060001EA RID: 490 RVA: 0x000105F4 File Offset: 0x0000E7F4
+	// Token: 0x060001EB RID: 491 RVA: 0x00010688 File Offset: 0x0000E888
 	public void ShowTutorial(string name, bool force = false)
 	{
 		if (this.HaveSeenTutorial(name))
@@ -3418,7 +3428,7 @@ public class Player : Humanoid
 		Tutorial.instance.ShowText(name, force);
 	}
 
-	// Token: 0x060001EB RID: 491 RVA: 0x0001060C File Offset: 0x0000E80C
+	// Token: 0x060001EC RID: 492 RVA: 0x000106A0 File Offset: 0x0000E8A0
 	public void SetSeenTutorial(string name)
 	{
 		if (name.Length == 0)
@@ -3432,19 +3442,19 @@ public class Player : Humanoid
 		this.m_shownTutorials.Add(name);
 	}
 
-	// Token: 0x060001EC RID: 492 RVA: 0x00010633 File Offset: 0x0000E833
+	// Token: 0x060001ED RID: 493 RVA: 0x000106C7 File Offset: 0x0000E8C7
 	public bool HaveSeenTutorial(string name)
 	{
 		return name.Length != 0 && this.m_shownTutorials.Contains(name);
 	}
 
-	// Token: 0x060001ED RID: 493 RVA: 0x0001064B File Offset: 0x0000E84B
+	// Token: 0x060001EE RID: 494 RVA: 0x000106DF File Offset: 0x0000E8DF
 	public static bool IsSeenTutorialsCleared()
 	{
 		return !Player.m_localPlayer || Player.m_localPlayer.m_shownTutorials.Count == 0;
 	}
 
-	// Token: 0x060001EE RID: 494 RVA: 0x0001066D File Offset: 0x0000E86D
+	// Token: 0x060001EF RID: 495 RVA: 0x00010701 File Offset: 0x0000E901
 	public static void ResetSeenTutorials()
 	{
 		if (Player.m_localPlayer)
@@ -3453,7 +3463,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001EF RID: 495 RVA: 0x0001068C File Offset: 0x0000E88C
+	// Token: 0x060001F0 RID: 496 RVA: 0x00010720 File Offset: 0x0000E920
 	public void SetMouseLook(Vector2 mouseLook)
 	{
 		this.m_lookYaw *= Quaternion.Euler(0f, mouseLook.x, 0f);
@@ -3462,25 +3472,25 @@ public class Player : Humanoid
 		this.m_lookDir = this.m_eye.forward;
 	}
 
-	// Token: 0x060001F0 RID: 496 RVA: 0x000106F8 File Offset: 0x0000E8F8
+	// Token: 0x060001F1 RID: 497 RVA: 0x0001078C File Offset: 0x0000E98C
 	protected override void UpdateEyeRotation()
 	{
 		this.m_eye.rotation = this.m_lookYaw * Quaternion.Euler(this.m_lookPitch, 0f, 0f);
 	}
 
-	// Token: 0x060001F1 RID: 497 RVA: 0x00010725 File Offset: 0x0000E925
+	// Token: 0x060001F2 RID: 498 RVA: 0x000107B9 File Offset: 0x0000E9B9
 	public Ragdoll GetRagdoll()
 	{
 		return this.m_ragdoll;
 	}
 
-	// Token: 0x060001F2 RID: 498 RVA: 0x0001072D File Offset: 0x0000E92D
+	// Token: 0x060001F3 RID: 499 RVA: 0x000107C1 File Offset: 0x0000E9C1
 	public void OnDodgeMortal()
 	{
 		this.m_dodgeInvincible = false;
 	}
 
-	// Token: 0x060001F3 RID: 499 RVA: 0x00010738 File Offset: 0x0000E938
+	// Token: 0x060001F4 RID: 500 RVA: 0x000107CC File Offset: 0x0000E9CC
 	private void UpdateDodge(float dt)
 	{
 		this.m_queuedDodgeTimer -= dt;
@@ -3513,33 +3523,33 @@ public class Player : Humanoid
 		this.m_inDodge = flag2;
 	}
 
-	// Token: 0x060001F4 RID: 500 RVA: 0x000108E5 File Offset: 0x0000EAE5
+	// Token: 0x060001F5 RID: 501 RVA: 0x00010979 File Offset: 0x0000EB79
 	public override bool IsDodgeInvincible()
 	{
 		return this.m_nview.IsValid() && this.m_nview.GetZDO().GetBool("dodgeinv", false);
 	}
 
-	// Token: 0x060001F5 RID: 501 RVA: 0x0001090C File Offset: 0x0000EB0C
+	// Token: 0x060001F6 RID: 502 RVA: 0x000109A0 File Offset: 0x0000EBA0
 	public override bool InDodge()
 	{
 		return this.m_nview.IsValid() && this.m_nview.IsOwner() && this.m_inDodge;
 	}
 
-	// Token: 0x060001F6 RID: 502 RVA: 0x00010930 File Offset: 0x0000EB30
+	// Token: 0x060001F7 RID: 503 RVA: 0x000109C4 File Offset: 0x0000EBC4
 	public override bool IsDead()
 	{
 		ZDO zdo = this.m_nview.GetZDO();
 		return zdo != null && zdo.GetBool("dead", false);
 	}
 
-	// Token: 0x060001F7 RID: 503 RVA: 0x0001095A File Offset: 0x0000EB5A
+	// Token: 0x060001F8 RID: 504 RVA: 0x000109EE File Offset: 0x0000EBEE
 	protected void Dodge(Vector3 dodgeDir)
 	{
 		this.m_queuedDodgeTimer = 0.5f;
 		this.m_queuedDodgeDir = dodgeDir;
 	}
 
-	// Token: 0x060001F8 RID: 504 RVA: 0x00010970 File Offset: 0x0000EB70
+	// Token: 0x060001F9 RID: 505 RVA: 0x00010A04 File Offset: 0x0000EC04
 	public override bool AlwaysRotateCamera()
 	{
 		if ((base.GetCurrentWeapon() != null && this.m_currentAttack != null && this.m_lastCombatTimer < 1f && this.m_currentAttack.m_attackType != Attack.AttackType.None && ZInput.IsMouseActive()) || this.IsHoldingAttack() || this.m_blocking)
@@ -3558,7 +3568,7 @@ public class Player : Humanoid
 		return false;
 	}
 
-	// Token: 0x060001F9 RID: 505 RVA: 0x000109F8 File Offset: 0x0000EBF8
+	// Token: 0x060001FA RID: 506 RVA: 0x00010A8C File Offset: 0x0000EC8C
 	public override bool TeleportTo(Vector3 pos, Quaternion rot, bool distantTeleport)
 	{
 		if (this.IsTeleporting())
@@ -3580,7 +3590,7 @@ public class Player : Humanoid
 		return true;
 	}
 
-	// Token: 0x060001FA RID: 506 RVA: 0x00010A74 File Offset: 0x0000EC74
+	// Token: 0x060001FB RID: 507 RVA: 0x00010B08 File Offset: 0x0000ED08
 	private void UpdateTeleport(float dt)
 	{
 		if (!this.m_teleporting)
@@ -3631,19 +3641,19 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x060001FB RID: 507 RVA: 0x00010C36 File Offset: 0x0000EE36
+	// Token: 0x060001FC RID: 508 RVA: 0x00010CCA File Offset: 0x0000EECA
 	public override bool IsTeleporting()
 	{
 		return this.m_teleporting;
 	}
 
-	// Token: 0x060001FC RID: 508 RVA: 0x00010C3E File Offset: 0x0000EE3E
+	// Token: 0x060001FD RID: 509 RVA: 0x00010CD2 File Offset: 0x0000EED2
 	public bool ShowTeleportAnimation()
 	{
 		return this.m_teleporting && this.m_distantTeleport;
 	}
 
-	// Token: 0x060001FD RID: 509 RVA: 0x00010C50 File Offset: 0x0000EE50
+	// Token: 0x060001FE RID: 510 RVA: 0x00010CE4 File Offset: 0x0000EEE4
 	public void SetPlayerModel(int index)
 	{
 		if (this.m_modelIndex == index)
@@ -3654,13 +3664,13 @@ public class Player : Humanoid
 		this.m_visEquipment.SetModel(index);
 	}
 
-	// Token: 0x060001FE RID: 510 RVA: 0x00010C6F File Offset: 0x0000EE6F
+	// Token: 0x060001FF RID: 511 RVA: 0x00010D03 File Offset: 0x0000EF03
 	public int GetPlayerModel()
 	{
 		return this.m_modelIndex;
 	}
 
-	// Token: 0x060001FF RID: 511 RVA: 0x00010C77 File Offset: 0x0000EE77
+	// Token: 0x06000200 RID: 512 RVA: 0x00010D0B File Offset: 0x0000EF0B
 	public void SetSkinColor(Vector3 color)
 	{
 		if (color == this.m_skinColor)
@@ -3671,7 +3681,7 @@ public class Player : Humanoid
 		this.m_visEquipment.SetSkinColor(this.m_skinColor);
 	}
 
-	// Token: 0x06000200 RID: 512 RVA: 0x00010CA0 File Offset: 0x0000EEA0
+	// Token: 0x06000201 RID: 513 RVA: 0x00010D34 File Offset: 0x0000EF34
 	public void SetHairColor(Vector3 color)
 	{
 		if (this.m_hairColor == color)
@@ -3682,7 +3692,7 @@ public class Player : Humanoid
 		this.m_visEquipment.SetHairColor(this.m_hairColor);
 	}
 
-	// Token: 0x06000201 RID: 513 RVA: 0x00010CC9 File Offset: 0x0000EEC9
+	// Token: 0x06000202 RID: 514 RVA: 0x00010D5D File Offset: 0x0000EF5D
 	protected override void SetupVisEquipment(VisEquipment visEq, bool isRagdoll)
 	{
 		base.SetupVisEquipment(visEq, isRagdoll);
@@ -3691,7 +3701,7 @@ public class Player : Humanoid
 		visEq.SetHairColor(this.m_hairColor);
 	}
 
-	// Token: 0x06000202 RID: 514 RVA: 0x00010CF8 File Offset: 0x0000EEF8
+	// Token: 0x06000203 RID: 515 RVA: 0x00010D8C File Offset: 0x0000EF8C
 	public override bool CanConsumeItem(ItemDrop.ItemData item)
 	{
 		if (item.m_shared.m_itemType != ItemDrop.ItemData.ItemType.Consumable)
@@ -3714,7 +3724,7 @@ public class Player : Humanoid
 		return true;
 	}
 
-	// Token: 0x06000203 RID: 515 RVA: 0x00010D94 File Offset: 0x0000EF94
+	// Token: 0x06000204 RID: 516 RVA: 0x00010E28 File Offset: 0x0000F028
 	public override bool ConsumeItem(Inventory inventory, ItemDrop.ItemData item)
 	{
 		if (!this.CanConsumeItem(item))
@@ -3734,7 +3744,7 @@ public class Player : Humanoid
 		return true;
 	}
 
-	// Token: 0x06000204 RID: 516 RVA: 0x00010E05 File Offset: 0x0000F005
+	// Token: 0x06000205 RID: 517 RVA: 0x00010E99 File Offset: 0x0000F099
 	public void SetIntro(bool intro)
 	{
 		if (this.m_intro == intro)
@@ -3745,19 +3755,19 @@ public class Player : Humanoid
 		this.m_zanim.SetBool("intro", intro);
 	}
 
-	// Token: 0x06000205 RID: 517 RVA: 0x00010E29 File Offset: 0x0000F029
+	// Token: 0x06000206 RID: 518 RVA: 0x00010EBD File Offset: 0x0000F0BD
 	public override bool InIntro()
 	{
 		return this.m_intro;
 	}
 
-	// Token: 0x06000206 RID: 518 RVA: 0x00010E34 File Offset: 0x0000F034
+	// Token: 0x06000207 RID: 519 RVA: 0x00010EC8 File Offset: 0x0000F0C8
 	public override bool InCutscene()
 	{
 		return this.m_animator.GetCurrentAnimatorStateInfo(0).tagHash == Player.m_animatorTagCutscene || this.InIntro() || this.m_sleeping || base.InCutscene();
 	}
 
-	// Token: 0x06000207 RID: 519 RVA: 0x00010E78 File Offset: 0x0000F078
+	// Token: 0x06000208 RID: 520 RVA: 0x00010F0C File Offset: 0x0000F10C
 	public void SetMaxStamina(float stamina, bool flashBar)
 	{
 		if (flashBar && Hud.instance != null && stamina > this.m_maxStamina)
@@ -3768,7 +3778,7 @@ public class Player : Humanoid
 		this.m_stamina = Mathf.Clamp(this.m_stamina, 0f, this.m_maxStamina);
 	}
 
-	// Token: 0x06000208 RID: 520 RVA: 0x00010ECB File Offset: 0x0000F0CB
+	// Token: 0x06000209 RID: 521 RVA: 0x00010F5F File Offset: 0x0000F15F
 	public void SetMaxHealth(float health, bool flashBar)
 	{
 		if (flashBar && Hud.instance != null && health > base.GetMaxHealth())
@@ -3778,7 +3788,7 @@ public class Player : Humanoid
 		base.SetMaxHealth(health);
 	}
 
-	// Token: 0x06000209 RID: 521 RVA: 0x00010EF7 File Offset: 0x0000F0F7
+	// Token: 0x0600020A RID: 522 RVA: 0x00010F8B File Offset: 0x0000F18B
 	public override bool IsPVPEnabled()
 	{
 		if (!this.m_nview.IsValid())
@@ -3792,7 +3802,7 @@ public class Player : Humanoid
 		return this.m_nview.GetZDO().GetBool("pvp", false);
 	}
 
-	// Token: 0x0600020A RID: 522 RVA: 0x00010F34 File Offset: 0x0000F134
+	// Token: 0x0600020B RID: 523 RVA: 0x00010FC8 File Offset: 0x0000F1C8
 	public void SetPVP(bool enabled)
 	{
 		if (this.m_pvp == enabled)
@@ -3809,19 +3819,19 @@ public class Player : Humanoid
 		this.Message(MessageHud.MessageType.Center, "$msg_pvpoff", 0, null);
 	}
 
-	// Token: 0x0600020B RID: 523 RVA: 0x00010F92 File Offset: 0x0000F192
+	// Token: 0x0600020C RID: 524 RVA: 0x00011026 File Offset: 0x0000F226
 	public bool CanSwitchPVP()
 	{
 		return this.m_lastCombatTimer > 10f;
 	}
 
-	// Token: 0x0600020C RID: 524 RVA: 0x00010FA1 File Offset: 0x0000F1A1
+	// Token: 0x0600020D RID: 525 RVA: 0x00011035 File Offset: 0x0000F235
 	public bool NoCostCheat()
 	{
 		return this.m_noPlacementCost;
 	}
 
-	// Token: 0x0600020D RID: 525 RVA: 0x00010FAC File Offset: 0x0000F1AC
+	// Token: 0x0600020E RID: 526 RVA: 0x00011040 File Offset: 0x0000F240
 	public void StartEmote(string emote, bool oneshot = true)
 	{
 		if (!this.CanMove() || this.InAttack() || this.IsHoldingAttack())
@@ -3835,7 +3845,7 @@ public class Player : Humanoid
 		this.m_nview.GetZDO().Set("emote_oneshot", oneshot);
 	}
 
-	// Token: 0x0600020E RID: 526 RVA: 0x00011034 File Offset: 0x0000F234
+	// Token: 0x0600020F RID: 527 RVA: 0x000110C8 File Offset: 0x0000F2C8
 	protected override void StopEmote()
 	{
 		if (this.m_nview.GetZDO().GetString("emote", "") != "")
@@ -3846,7 +3856,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600020F RID: 527 RVA: 0x000110B0 File Offset: 0x0000F2B0
+	// Token: 0x06000210 RID: 528 RVA: 0x00011144 File Offset: 0x0000F344
 	private void UpdateEmote()
 	{
 		if (this.m_nview.IsOwner() && this.InEmote() && this.m_moveDir != Vector3.zero)
@@ -3879,19 +3889,19 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000210 RID: 528 RVA: 0x000111D8 File Offset: 0x0000F3D8
+	// Token: 0x06000211 RID: 529 RVA: 0x0001126C File Offset: 0x0000F46C
 	public override bool InEmote()
 	{
 		return !string.IsNullOrEmpty(this.m_emoteState) || this.m_animator.GetCurrentAnimatorStateInfo(0).tagHash == Player.m_animatorTagEmote;
 	}
 
-	// Token: 0x06000211 RID: 529 RVA: 0x00011210 File Offset: 0x0000F410
+	// Token: 0x06000212 RID: 530 RVA: 0x000112A4 File Offset: 0x0000F4A4
 	public override bool IsCrouching()
 	{
 		return this.m_animator.GetCurrentAnimatorStateInfo(0).tagHash == Player.m_animatorTagCrouch;
 	}
 
-	// Token: 0x06000212 RID: 530 RVA: 0x00011238 File Offset: 0x0000F438
+	// Token: 0x06000213 RID: 531 RVA: 0x000112CC File Offset: 0x0000F4CC
 	private void UpdateCrouch(float dt)
 	{
 		if (this.m_crouchToggled)
@@ -3907,7 +3917,7 @@ public class Player : Humanoid
 		this.m_zanim.SetBool(Player.crouching, false);
 	}
 
-	// Token: 0x06000213 RID: 531 RVA: 0x000112D4 File Offset: 0x0000F4D4
+	// Token: 0x06000214 RID: 532 RVA: 0x00011368 File Offset: 0x0000F568
 	protected override void SetCrouch(bool crouch)
 	{
 		if (this.m_crouchToggled == crouch)
@@ -3917,27 +3927,27 @@ public class Player : Humanoid
 		this.m_crouchToggled = crouch;
 	}
 
-	// Token: 0x06000214 RID: 532 RVA: 0x000112E7 File Offset: 0x0000F4E7
+	// Token: 0x06000215 RID: 533 RVA: 0x0001137B File Offset: 0x0000F57B
 	public void SetGuardianPower(string name)
 	{
 		this.m_guardianPower = name;
 		this.m_guardianSE = ObjectDB.instance.GetStatusEffect(this.m_guardianPower);
 	}
 
-	// Token: 0x06000215 RID: 533 RVA: 0x00011306 File Offset: 0x0000F506
+	// Token: 0x06000216 RID: 534 RVA: 0x0001139A File Offset: 0x0000F59A
 	public string GetGuardianPowerName()
 	{
 		return this.m_guardianPower;
 	}
 
-	// Token: 0x06000216 RID: 534 RVA: 0x0001130E File Offset: 0x0000F50E
+	// Token: 0x06000217 RID: 535 RVA: 0x000113A2 File Offset: 0x0000F5A2
 	public void GetGuardianPowerHUD(out StatusEffect se, out float cooldown)
 	{
 		se = this.m_guardianSE;
 		cooldown = this.m_guardianPowerCooldown;
 	}
 
-	// Token: 0x06000217 RID: 535 RVA: 0x00011320 File Offset: 0x0000F520
+	// Token: 0x06000218 RID: 536 RVA: 0x000113B4 File Offset: 0x0000F5B4
 	public bool StartGuardianPower()
 	{
 		if (this.m_guardianSE == null)
@@ -3957,7 +3967,7 @@ public class Player : Humanoid
 		return true;
 	}
 
-	// Token: 0x06000218 RID: 536 RVA: 0x000113A8 File Offset: 0x0000F5A8
+	// Token: 0x06000219 RID: 537 RVA: 0x0001143C File Offset: 0x0000F63C
 	public bool ActivateGuardianPower()
 	{
 		if (this.m_guardianPowerCooldown > 0f)
@@ -3978,7 +3988,7 @@ public class Player : Humanoid
 		return false;
 	}
 
-	// Token: 0x06000219 RID: 537 RVA: 0x00011454 File Offset: 0x0000F654
+	// Token: 0x0600021A RID: 538 RVA: 0x000114E8 File Offset: 0x0000F6E8
 	private void UpdateGuardianPower(float dt)
 	{
 		this.m_guardianPowerCooldown -= dt;
@@ -3988,7 +3998,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600021A RID: 538 RVA: 0x0001147C File Offset: 0x0000F67C
+	// Token: 0x0600021B RID: 539 RVA: 0x00011510 File Offset: 0x0000F710
 	public override void AttachStart(Transform attachPoint, bool hideWeapons, bool isBed, string attachAnimation, Vector3 detachOffset)
 	{
 		if (this.m_attached)
@@ -4008,7 +4018,7 @@ public class Player : Humanoid
 		base.ResetCloth();
 	}
 
-	// Token: 0x0600021B RID: 539 RVA: 0x000114E4 File Offset: 0x0000F6E4
+	// Token: 0x0600021C RID: 540 RVA: 0x00011578 File Offset: 0x0000F778
 	private void UpdateAttach()
 	{
 		if (this.m_attached)
@@ -4028,19 +4038,19 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600021C RID: 540 RVA: 0x000115A9 File Offset: 0x0000F7A9
+	// Token: 0x0600021D RID: 541 RVA: 0x0001163D File Offset: 0x0000F83D
 	public override bool IsAttached()
 	{
 		return this.m_attached;
 	}
 
-	// Token: 0x0600021D RID: 541 RVA: 0x000115B1 File Offset: 0x0000F7B1
+	// Token: 0x0600021E RID: 542 RVA: 0x00011645 File Offset: 0x0000F845
 	public override bool InBed()
 	{
 		return this.m_nview.IsValid() && this.m_nview.GetZDO().GetBool("inBed", false);
 	}
 
-	// Token: 0x0600021E RID: 542 RVA: 0x000115D8 File Offset: 0x0000F7D8
+	// Token: 0x0600021F RID: 543 RVA: 0x0001166C File Offset: 0x0000F86C
 	public override void AttachStop()
 	{
 		if (this.m_sleeping)
@@ -4062,14 +4072,14 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600021F RID: 543 RVA: 0x00011668 File Offset: 0x0000F868
+	// Token: 0x06000220 RID: 544 RVA: 0x000116FC File Offset: 0x0000F8FC
 	public void StartShipControl(ShipControlls shipControl)
 	{
 		this.m_shipControl = shipControl;
 		ZLog.Log("ship controlls set " + shipControl.GetShip().gameObject.name);
 	}
 
-	// Token: 0x06000220 RID: 544 RVA: 0x00011690 File Offset: 0x0000F890
+	// Token: 0x06000221 RID: 545 RVA: 0x00011724 File Offset: 0x0000F924
 	public void StopShipControl()
 	{
 		if (this.m_shipControl != null)
@@ -4083,14 +4093,14 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000221 RID: 545 RVA: 0x000116CA File Offset: 0x0000F8CA
+	// Token: 0x06000222 RID: 546 RVA: 0x0001175E File Offset: 0x0000F95E
 	private void SetShipControl(ref Vector3 moveDir)
 	{
 		this.m_shipControl.GetShip().ApplyMovementControlls(moveDir);
 		moveDir = Vector3.zero;
 	}
 
-	// Token: 0x06000222 RID: 546 RVA: 0x000116ED File Offset: 0x0000F8ED
+	// Token: 0x06000223 RID: 547 RVA: 0x00011781 File Offset: 0x0000F981
 	public Ship GetControlledShip()
 	{
 		if (this.m_shipControl)
@@ -4100,13 +4110,13 @@ public class Player : Humanoid
 		return null;
 	}
 
-	// Token: 0x06000223 RID: 547 RVA: 0x00011709 File Offset: 0x0000F909
+	// Token: 0x06000224 RID: 548 RVA: 0x0001179D File Offset: 0x0000F99D
 	public ShipControlls GetShipControl()
 	{
 		return this.m_shipControl;
 	}
 
-	// Token: 0x06000224 RID: 548 RVA: 0x00011714 File Offset: 0x0000F914
+	// Token: 0x06000225 RID: 549 RVA: 0x000117A8 File Offset: 0x0000F9A8
 	private void UpdateShipControl(float dt)
 	{
 		if (!this.m_shipControl)
@@ -4124,13 +4134,13 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000225 RID: 549 RVA: 0x000117B0 File Offset: 0x0000F9B0
+	// Token: 0x06000226 RID: 550 RVA: 0x00011844 File Offset: 0x0000FA44
 	public bool IsSleeping()
 	{
 		return this.m_sleeping;
 	}
 
-	// Token: 0x06000226 RID: 550 RVA: 0x000117B8 File Offset: 0x0000F9B8
+	// Token: 0x06000227 RID: 551 RVA: 0x0001184C File Offset: 0x0000FA4C
 	public void SetSleeping(bool sleep)
 	{
 		if (this.m_sleeping == sleep)
@@ -4145,7 +4155,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000227 RID: 551 RVA: 0x000117F0 File Offset: 0x0000F9F0
+	// Token: 0x06000228 RID: 552 RVA: 0x00011884 File Offset: 0x0000FA84
 	public void SetControls(Vector3 movedir, bool attack, bool attackHold, bool secondaryAttack, bool block, bool blockHold, bool jump, bool crouch, bool run, bool autoRun)
 	{
 		if ((movedir != Vector3.zero || attack || secondaryAttack || block || blockHold || jump || crouch) && this.GetControlledShip() == null)
@@ -4234,14 +4244,14 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000228 RID: 552 RVA: 0x00011A34 File Offset: 0x0000FC34
+	// Token: 0x06000229 RID: 553 RVA: 0x00011AC8 File Offset: 0x0000FCC8
 	private void UpdateTargeted(float dt)
 	{
 		this.m_timeSinceTargeted += dt;
 		this.m_timeSinceSensed += dt;
 	}
 
-	// Token: 0x06000229 RID: 553 RVA: 0x00011A54 File Offset: 0x0000FC54
+	// Token: 0x0600022A RID: 554 RVA: 0x00011AE8 File Offset: 0x0000FCE8
 	public override void OnTargeted(bool sensed, bool alerted)
 	{
 		if (sensed)
@@ -4268,7 +4278,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600022A RID: 554 RVA: 0x00011AE5 File Offset: 0x0000FCE5
+	// Token: 0x0600022B RID: 555 RVA: 0x00011B79 File Offset: 0x0000FD79
 	private void RPC_OnTargeted(long sender, bool sensed, bool alerted)
 	{
 		this.m_timeSinceTargeted = 0f;
@@ -4282,26 +4292,26 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600022B RID: 555 RVA: 0x00011B0D File Offset: 0x0000FD0D
+	// Token: 0x0600022C RID: 556 RVA: 0x00011BA1 File Offset: 0x0000FDA1
 	protected override void OnDamaged(HitData hit)
 	{
 		base.OnDamaged(hit);
 		Hud.instance.DamageFlash();
 	}
 
-	// Token: 0x0600022C RID: 556 RVA: 0x00011B20 File Offset: 0x0000FD20
+	// Token: 0x0600022D RID: 557 RVA: 0x00011BB4 File Offset: 0x0000FDB4
 	public bool IsTargeted()
 	{
 		return this.m_timeSinceTargeted < 1f;
 	}
 
-	// Token: 0x0600022D RID: 557 RVA: 0x00011B2F File Offset: 0x0000FD2F
+	// Token: 0x0600022E RID: 558 RVA: 0x00011BC3 File Offset: 0x0000FDC3
 	public bool IsSensed()
 	{
 		return this.m_timeSinceSensed < 1f;
 	}
 
-	// Token: 0x0600022E RID: 558 RVA: 0x00011B40 File Offset: 0x0000FD40
+	// Token: 0x0600022F RID: 559 RVA: 0x00011BD4 File Offset: 0x0000FDD4
 	protected override void ApplyArmorDamageMods(ref HitData.DamageModifiers mods)
 	{
 		if (this.m_chestItem != null)
@@ -4322,7 +4332,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600022F RID: 559 RVA: 0x00011BC8 File Offset: 0x0000FDC8
+	// Token: 0x06000230 RID: 560 RVA: 0x00011C5C File Offset: 0x0000FE5C
 	public override float GetBodyArmor()
 	{
 		float num = 0f;
@@ -4345,7 +4355,7 @@ public class Player : Humanoid
 		return num;
 	}
 
-	// Token: 0x06000230 RID: 560 RVA: 0x00011C34 File Offset: 0x0000FE34
+	// Token: 0x06000231 RID: 561 RVA: 0x00011CC8 File Offset: 0x0000FEC8
 	protected override void OnSneaking(float dt)
 	{
 		float t = Mathf.Pow(this.m_skills.GetSkillFactor(Skills.SkillType.Sneak), 0.5f);
@@ -4368,7 +4378,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000231 RID: 561 RVA: 0x00011CDC File Offset: 0x0000FEDC
+	// Token: 0x06000232 RID: 562 RVA: 0x00011D70 File Offset: 0x0000FF70
 	private void UpdateStealth(float dt)
 	{
 		this.m_stealthFactorUpdateTimer += dt;
@@ -4395,7 +4405,7 @@ public class Player : Humanoid
 		this.m_nview.GetZDO().Set("Stealth", this.m_stealthFactor);
 	}
 
-	// Token: 0x06000232 RID: 562 RVA: 0x00011E00 File Offset: 0x00010000
+	// Token: 0x06000233 RID: 563 RVA: 0x00011E94 File Offset: 0x00010094
 	public override float GetStealthFactor()
 	{
 		if (!this.m_nview.IsValid())
@@ -4409,7 +4419,7 @@ public class Player : Humanoid
 		return this.m_nview.GetZDO().GetFloat("Stealth", 0f);
 	}
 
-	// Token: 0x06000233 RID: 563 RVA: 0x00011E50 File Offset: 0x00010050
+	// Token: 0x06000234 RID: 564 RVA: 0x00011EE4 File Offset: 0x000100E4
 	public override bool InAttack()
 	{
 		if (this.m_animator.IsInTransition(0))
@@ -4419,19 +4429,19 @@ public class Player : Humanoid
 		return this.m_animator.GetCurrentAnimatorStateInfo(0).tagHash == Humanoid.m_animatorTagAttack || this.m_animator.GetCurrentAnimatorStateInfo(1).tagHash == Humanoid.m_animatorTagAttack;
 	}
 
-	// Token: 0x06000234 RID: 564 RVA: 0x00011EE2 File Offset: 0x000100E2
+	// Token: 0x06000235 RID: 565 RVA: 0x00011F76 File Offset: 0x00010176
 	public override float GetEquipmentMovementModifier()
 	{
 		return this.m_equipmentMovementModifier;
 	}
 
-	// Token: 0x06000235 RID: 565 RVA: 0x00011EEA File Offset: 0x000100EA
+	// Token: 0x06000236 RID: 566 RVA: 0x00011F7E File Offset: 0x0001017E
 	protected override float GetJogSpeedFactor()
 	{
 		return 1f + this.m_equipmentMovementModifier;
 	}
 
-	// Token: 0x06000236 RID: 566 RVA: 0x00011EF8 File Offset: 0x000100F8
+	// Token: 0x06000237 RID: 567 RVA: 0x00011F8C File Offset: 0x0001018C
 	protected override float GetRunSpeedFactor()
 	{
 		float num = 1f;
@@ -4439,13 +4449,13 @@ public class Player : Humanoid
 		return (num + skillFactor * 0.25f) * (1f + this.m_equipmentMovementModifier * 1.5f);
 	}
 
-	// Token: 0x06000237 RID: 567 RVA: 0x00011F34 File Offset: 0x00010134
+	// Token: 0x06000238 RID: 568 RVA: 0x00011FC8 File Offset: 0x000101C8
 	public override bool InMinorAction()
 	{
 		return (this.m_animator.IsInTransition(1) ? this.m_animator.GetNextAnimatorStateInfo(1) : this.m_animator.GetCurrentAnimatorStateInfo(1)).tagHash == Player.m_animatorTagMinorAction;
 	}
 
-	// Token: 0x06000238 RID: 568 RVA: 0x00011F78 File Offset: 0x00010178
+	// Token: 0x06000239 RID: 569 RVA: 0x0001200C File Offset: 0x0001020C
 	public override bool GetRelativePosition(out ZDOID parent, out Vector3 relativePos, out Vector3 relativeVel)
 	{
 		if (this.m_attached && this.m_attachPoint)
@@ -4462,25 +4472,25 @@ public class Player : Humanoid
 		return base.GetRelativePosition(out parent, out relativePos, out relativeVel);
 	}
 
-	// Token: 0x06000239 RID: 569 RVA: 0x00011FF9 File Offset: 0x000101F9
+	// Token: 0x0600023A RID: 570 RVA: 0x0001208D File Offset: 0x0001028D
 	public override Skills GetSkills()
 	{
 		return this.m_skills;
 	}
 
-	// Token: 0x0600023A RID: 570 RVA: 0x00012001 File Offset: 0x00010201
+	// Token: 0x0600023B RID: 571 RVA: 0x00012095 File Offset: 0x00010295
 	public override float GetRandomSkillFactor(Skills.SkillType skill)
 	{
 		return this.m_skills.GetRandomSkillFactor(skill);
 	}
 
-	// Token: 0x0600023B RID: 571 RVA: 0x0001200F File Offset: 0x0001020F
+	// Token: 0x0600023C RID: 572 RVA: 0x000120A3 File Offset: 0x000102A3
 	public override float GetSkillFactor(Skills.SkillType skill)
 	{
 		return this.m_skills.GetSkillFactor(skill);
 	}
 
-	// Token: 0x0600023C RID: 572 RVA: 0x00012020 File Offset: 0x00010220
+	// Token: 0x0600023D RID: 573 RVA: 0x000120B4 File Offset: 0x000102B4
 	protected override void DoDamageCameraShake(HitData hit)
 	{
 		if (GameCamera.instance && hit.GetTotalPhysicalDamage() > 0f)
@@ -4490,7 +4500,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x0600023D RID: 573 RVA: 0x0001207C File Offset: 0x0001027C
+	// Token: 0x0600023E RID: 574 RVA: 0x00012110 File Offset: 0x00010310
 	protected override bool ToggleEquiped(ItemDrop.ItemData item)
 	{
 		if (!item.IsEquipable())
@@ -4523,7 +4533,7 @@ public class Player : Humanoid
 		return true;
 	}
 
-	// Token: 0x0600023E RID: 574 RVA: 0x000120E8 File Offset: 0x000102E8
+	// Token: 0x0600023F RID: 575 RVA: 0x0001217C File Offset: 0x0001037C
 	public void GetActionProgress(out string name, out float progress)
 	{
 		if (this.m_equipQueue.Count > 0)
@@ -4547,7 +4557,7 @@ public class Player : Humanoid
 		progress = 0f;
 	}
 
-	// Token: 0x0600023F RID: 575 RVA: 0x00012180 File Offset: 0x00010380
+	// Token: 0x06000240 RID: 576 RVA: 0x00012214 File Offset: 0x00010414
 	private void UpdateEquipQueue(float dt)
 	{
 		if (this.m_equipQueuePause > 0f)
@@ -4582,7 +4592,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000240 RID: 576 RVA: 0x00012288 File Offset: 0x00010488
+	// Token: 0x06000241 RID: 577 RVA: 0x0001231C File Offset: 0x0001051C
 	private void QueueEquipItem(ItemDrop.ItemData item)
 	{
 		if (item == null)
@@ -4601,7 +4611,7 @@ public class Player : Humanoid
 		this.m_equipQueue.Add(equipQueueData);
 	}
 
-	// Token: 0x06000241 RID: 577 RVA: 0x000122DC File Offset: 0x000104DC
+	// Token: 0x06000242 RID: 578 RVA: 0x00012370 File Offset: 0x00010570
 	private void QueueUnequipItem(ItemDrop.ItemData item)
 	{
 		if (item == null)
@@ -4620,13 +4630,13 @@ public class Player : Humanoid
 		this.m_equipQueue.Add(equipQueueData);
 	}
 
-	// Token: 0x06000242 RID: 578 RVA: 0x0001232F File Offset: 0x0001052F
+	// Token: 0x06000243 RID: 579 RVA: 0x000123C3 File Offset: 0x000105C3
 	public override void AbortEquipQueue()
 	{
 		this.m_equipQueue.Clear();
 	}
 
-	// Token: 0x06000243 RID: 579 RVA: 0x0001233C File Offset: 0x0001053C
+	// Token: 0x06000244 RID: 580 RVA: 0x000123D0 File Offset: 0x000105D0
 	public override void RemoveFromEquipQueue(ItemDrop.ItemData item)
 	{
 		if (item == null)
@@ -4643,7 +4653,7 @@ public class Player : Humanoid
 		}
 	}
 
-	// Token: 0x06000244 RID: 580 RVA: 0x000123A4 File Offset: 0x000105A4
+	// Token: 0x06000245 RID: 581 RVA: 0x00012438 File Offset: 0x00010638
 	public bool IsItemQueued(ItemDrop.ItemData item)
 	{
 		if (item == null)
@@ -4663,7 +4673,7 @@ public class Player : Humanoid
 		return false;
 	}
 
-	// Token: 0x06000245 RID: 581 RVA: 0x00012404 File Offset: 0x00010604
+	// Token: 0x06000246 RID: 582 RVA: 0x00012498 File Offset: 0x00010698
 	public void ResetCharacter()
 	{
 		this.m_guardianPowerCooldown = 0f;
@@ -4678,524 +4688,533 @@ public class Player : Humanoid
 		this.m_knownTexts.Clear();
 	}
 
-	// Token: 0x04000116 RID: 278
+	// Token: 0x04000117 RID: 279
 	private float m_rotatePieceTimer;
 
-	// Token: 0x04000117 RID: 279
+	// Token: 0x04000118 RID: 280
 	private float m_baseValueUpdatetimer;
 
-	// Token: 0x04000118 RID: 280
+	// Token: 0x04000119 RID: 281
 	private const int dataVersion = 24;
 
-	// Token: 0x04000119 RID: 281
+	// Token: 0x0400011A RID: 282
 	private float m_equipQueuePause;
 
-	// Token: 0x0400011A RID: 282
+	// Token: 0x0400011B RID: 283
 	public static Player m_localPlayer = null;
 
-	// Token: 0x0400011B RID: 283
+	// Token: 0x0400011C RID: 284
 	private static List<Player> m_players = new List<Player>();
 
-	// Token: 0x0400011C RID: 284
+	// Token: 0x0400011D RID: 285
 	public static bool m_debugMode = false;
 
-	// Token: 0x0400011D RID: 285
+	// Token: 0x0400011E RID: 286
 	[Header("Player")]
 	public float m_maxPlaceDistance = 5f;
 
-	// Token: 0x0400011E RID: 286
+	// Token: 0x0400011F RID: 287
 	public float m_maxInteractDistance = 5f;
 
-	// Token: 0x0400011F RID: 287
+	// Token: 0x04000120 RID: 288
 	public float m_scrollSens = 4f;
 
-	// Token: 0x04000120 RID: 288
+	// Token: 0x04000121 RID: 289
 	public float m_staminaRegen = 5f;
 
-	// Token: 0x04000121 RID: 289
+	// Token: 0x04000122 RID: 290
 	public float m_staminaRegenTimeMultiplier = 1f;
 
-	// Token: 0x04000122 RID: 290
+	// Token: 0x04000123 RID: 291
 	public float m_staminaRegenDelay = 1f;
 
-	// Token: 0x04000123 RID: 291
+	// Token: 0x04000124 RID: 292
 	public float m_runStaminaDrain = 10f;
 
-	// Token: 0x04000124 RID: 292
+	// Token: 0x04000125 RID: 293
 	public float m_sneakStaminaDrain = 5f;
 
-	// Token: 0x04000125 RID: 293
+	// Token: 0x04000126 RID: 294
 	public float m_swimStaminaDrainMinSkill = 5f;
 
-	// Token: 0x04000126 RID: 294
+	// Token: 0x04000127 RID: 295
 	public float m_swimStaminaDrainMaxSkill = 2f;
 
-	// Token: 0x04000127 RID: 295
+	// Token: 0x04000128 RID: 296
 	public float m_dodgeStaminaUsage = 10f;
 
-	// Token: 0x04000128 RID: 296
+	// Token: 0x04000129 RID: 297
 	public float m_weightStaminaFactor = 0.1f;
 
-	// Token: 0x04000129 RID: 297
+	// Token: 0x0400012A RID: 298
 	public float m_autoPickupRange = 2f;
 
-	// Token: 0x0400012A RID: 298
+	// Token: 0x0400012B RID: 299
 	public float m_maxCarryWeight = 300f;
 
-	// Token: 0x0400012B RID: 299
+	// Token: 0x0400012C RID: 300
 	public float m_encumberedStaminaDrain = 10f;
 
-	// Token: 0x0400012C RID: 300
+	// Token: 0x0400012D RID: 301
 	public float m_hardDeathCooldown = 10f;
 
-	// Token: 0x0400012D RID: 301
+	// Token: 0x0400012E RID: 302
 	public float m_baseCameraShake = 4f;
 
-	// Token: 0x0400012E RID: 302
-	public float m_toolUseDelay = 0.25f;
-
 	// Token: 0x0400012F RID: 303
-	public EffectList m_drownEffects = new EffectList();
+	public float m_placeDelay = 0.4f;
 
 	// Token: 0x04000130 RID: 304
-	public EffectList m_spawnEffects = new EffectList();
+	public float m_removeDelay = 0.25f;
 
 	// Token: 0x04000131 RID: 305
-	public EffectList m_removeEffects = new EffectList();
+	public EffectList m_drownEffects = new EffectList();
 
 	// Token: 0x04000132 RID: 306
-	public EffectList m_dodgeEffects = new EffectList();
+	public EffectList m_spawnEffects = new EffectList();
 
 	// Token: 0x04000133 RID: 307
-	public EffectList m_autopickupEffects = new EffectList();
+	public EffectList m_removeEffects = new EffectList();
 
 	// Token: 0x04000134 RID: 308
-	public EffectList m_skillLevelupEffects = new EffectList();
+	public EffectList m_dodgeEffects = new EffectList();
 
 	// Token: 0x04000135 RID: 309
-	public EffectList m_equipStartEffects = new EffectList();
+	public EffectList m_autopickupEffects = new EffectList();
 
 	// Token: 0x04000136 RID: 310
-	public GameObject m_placeMarker;
+	public EffectList m_skillLevelupEffects = new EffectList();
 
 	// Token: 0x04000137 RID: 311
-	public GameObject m_tombstone;
+	public EffectList m_equipStartEffects = new EffectList();
 
 	// Token: 0x04000138 RID: 312
-	public GameObject m_valkyrie;
+	public GameObject m_placeMarker;
 
 	// Token: 0x04000139 RID: 313
-	public Sprite m_textIcon;
+	public GameObject m_tombstone;
 
 	// Token: 0x0400013A RID: 314
-	private Skills m_skills;
+	public GameObject m_valkyrie;
 
 	// Token: 0x0400013B RID: 315
-	private PieceTable m_buildPieces;
+	public Sprite m_textIcon;
 
 	// Token: 0x0400013C RID: 316
-	private bool m_noPlacementCost;
+	private Skills m_skills;
 
 	// Token: 0x0400013D RID: 317
-	private bool m_hideUnavailable;
+	private PieceTable m_buildPieces;
 
 	// Token: 0x0400013E RID: 318
-	private HashSet<string> m_knownRecipes = new HashSet<string>();
+	private bool m_noPlacementCost;
 
 	// Token: 0x0400013F RID: 319
-	private Dictionary<string, int> m_knownStations = new Dictionary<string, int>();
+	private bool m_hideUnavailable;
 
 	// Token: 0x04000140 RID: 320
-	private HashSet<string> m_knownMaterial = new HashSet<string>();
+	private HashSet<string> m_knownRecipes = new HashSet<string>();
 
 	// Token: 0x04000141 RID: 321
-	private HashSet<string> m_shownTutorials = new HashSet<string>();
+	private Dictionary<string, int> m_knownStations = new Dictionary<string, int>();
 
 	// Token: 0x04000142 RID: 322
-	private HashSet<string> m_uniques = new HashSet<string>();
+	private HashSet<string> m_knownMaterial = new HashSet<string>();
 
 	// Token: 0x04000143 RID: 323
-	private HashSet<string> m_trophies = new HashSet<string>();
+	private HashSet<string> m_shownTutorials = new HashSet<string>();
 
 	// Token: 0x04000144 RID: 324
-	private HashSet<Heightmap.Biome> m_knownBiome = new HashSet<Heightmap.Biome>();
+	private HashSet<string> m_uniques = new HashSet<string>();
 
 	// Token: 0x04000145 RID: 325
-	private Dictionary<string, string> m_knownTexts = new Dictionary<string, string>();
+	private HashSet<string> m_trophies = new HashSet<string>();
 
 	// Token: 0x04000146 RID: 326
-	private float m_stationDiscoverTimer;
+	private HashSet<Heightmap.Biome> m_knownBiome = new HashSet<Heightmap.Biome>();
 
 	// Token: 0x04000147 RID: 327
-	private bool m_debugFly;
+	private Dictionary<string, string> m_knownTexts = new Dictionary<string, string>();
 
 	// Token: 0x04000148 RID: 328
-	private bool m_godMode;
+	private float m_stationDiscoverTimer;
 
 	// Token: 0x04000149 RID: 329
-	private bool m_ghostMode;
+	private bool m_debugFly;
 
 	// Token: 0x0400014A RID: 330
-	private float m_lookPitch;
+	private bool m_godMode;
 
 	// Token: 0x0400014B RID: 331
-	private const float m_baseHP = 25f;
+	private bool m_ghostMode;
 
 	// Token: 0x0400014C RID: 332
-	private const float m_baseStamina = 75f;
+	private float m_lookPitch;
 
 	// Token: 0x0400014D RID: 333
-	private const int m_maxFoods = 3;
+	private const float m_baseHP = 25f;
 
 	// Token: 0x0400014E RID: 334
-	private const float m_foodDrainPerSec = 0.1f;
+	private const float m_baseStamina = 75f;
 
 	// Token: 0x0400014F RID: 335
-	private float m_foodUpdateTimer;
+	private const int m_maxFoods = 3;
 
 	// Token: 0x04000150 RID: 336
-	private float m_foodRegenTimer;
+	private const float m_foodDrainPerSec = 0.1f;
 
 	// Token: 0x04000151 RID: 337
-	private List<Player.Food> m_foods = new List<Player.Food>();
+	private float m_foodUpdateTimer;
 
 	// Token: 0x04000152 RID: 338
-	private float m_stamina = 100f;
+	private float m_foodRegenTimer;
 
 	// Token: 0x04000153 RID: 339
-	private float m_maxStamina = 100f;
+	private List<Player.Food> m_foods = new List<Player.Food>();
 
 	// Token: 0x04000154 RID: 340
-	private float m_staminaRegenTimer;
+	private float m_stamina = 100f;
 
 	// Token: 0x04000155 RID: 341
-	private string m_guardianPower = "";
+	private float m_maxStamina = 100f;
 
 	// Token: 0x04000156 RID: 342
-	private float m_guardianPowerCooldown;
+	private float m_staminaRegenTimer;
 
 	// Token: 0x04000157 RID: 343
-	private StatusEffect m_guardianSE;
+	private string m_guardianPower = "";
 
 	// Token: 0x04000158 RID: 344
-	private float m_lastToolUseTime;
+	private float m_guardianPowerCooldown;
 
 	// Token: 0x04000159 RID: 345
-	private GameObject m_placementMarkerInstance;
+	private StatusEffect m_guardianSE;
 
 	// Token: 0x0400015A RID: 346
-	private GameObject m_placementGhost;
+	private float m_placePressedTime = -1000f;
 
 	// Token: 0x0400015B RID: 347
-	private Player.PlacementStatus m_placementStatus = Player.PlacementStatus.Invalid;
+	private float m_removePressedTime = -1000f;
 
 	// Token: 0x0400015C RID: 348
-	private int m_placeRotation;
+	private float m_lastToolUseTime;
 
 	// Token: 0x0400015D RID: 349
-	private int m_placeRayMask;
+	private GameObject m_placementMarkerInstance;
 
 	// Token: 0x0400015E RID: 350
-	private int m_placeGroundRayMask;
+	private GameObject m_placementGhost;
 
 	// Token: 0x0400015F RID: 351
-	private int m_placeWaterRayMask;
+	private Player.PlacementStatus m_placementStatus = Player.PlacementStatus.Invalid;
 
 	// Token: 0x04000160 RID: 352
-	private int m_removeRayMask;
+	private int m_placeRotation;
 
 	// Token: 0x04000161 RID: 353
-	private int m_interactMask;
+	private int m_placeRayMask;
 
 	// Token: 0x04000162 RID: 354
-	private int m_autoPickupMask;
+	private int m_placeGroundRayMask;
 
 	// Token: 0x04000163 RID: 355
-	private List<Player.EquipQueueData> m_equipQueue = new List<Player.EquipQueueData>();
+	private int m_placeWaterRayMask;
 
 	// Token: 0x04000164 RID: 356
-	private GameObject m_hovering;
+	private int m_removeRayMask;
 
 	// Token: 0x04000165 RID: 357
-	private Character m_hoveringCreature;
+	private int m_interactMask;
 
 	// Token: 0x04000166 RID: 358
-	private float m_lastHoverInteractTime;
+	private int m_autoPickupMask;
 
 	// Token: 0x04000167 RID: 359
-	private bool m_pvp;
+	private List<Player.EquipQueueData> m_equipQueue = new List<Player.EquipQueueData>();
 
 	// Token: 0x04000168 RID: 360
-	private float m_updateCoverTimer;
+	private GameObject m_hovering;
 
 	// Token: 0x04000169 RID: 361
-	private float m_coverPercentage;
+	private Character m_hoveringCreature;
 
 	// Token: 0x0400016A RID: 362
-	private bool m_underRoof = true;
+	private float m_lastHoverInteractTime;
 
 	// Token: 0x0400016B RID: 363
-	private float m_nearFireTimer;
+	private bool m_pvp;
 
 	// Token: 0x0400016C RID: 364
-	private bool m_isLoading;
+	private float m_updateCoverTimer;
 
 	// Token: 0x0400016D RID: 365
-	private float m_queuedAttackTimer;
+	private float m_coverPercentage;
 
 	// Token: 0x0400016E RID: 366
-	private float m_queuedSecondAttackTimer;
+	private bool m_underRoof = true;
 
 	// Token: 0x0400016F RID: 367
-	private float m_queuedDodgeTimer;
+	private float m_nearFireTimer;
 
 	// Token: 0x04000170 RID: 368
-	private Vector3 m_queuedDodgeDir = Vector3.zero;
+	private bool m_isLoading;
 
 	// Token: 0x04000171 RID: 369
-	private bool m_inDodge;
+	private float m_queuedAttackTimer;
 
 	// Token: 0x04000172 RID: 370
-	private bool m_dodgeInvincible;
+	private float m_queuedSecondAttackTimer;
 
 	// Token: 0x04000173 RID: 371
-	private CraftingStation m_currentStation;
+	private float m_queuedDodgeTimer;
 
 	// Token: 0x04000174 RID: 372
-	private Ragdoll m_ragdoll;
+	private Vector3 m_queuedDodgeDir = Vector3.zero;
 
 	// Token: 0x04000175 RID: 373
-	private Piece m_hoveringPiece;
+	private bool m_inDodge;
 
 	// Token: 0x04000176 RID: 374
-	private string m_emoteState = "";
+	private bool m_dodgeInvincible;
 
 	// Token: 0x04000177 RID: 375
-	private int m_emoteID;
+	private CraftingStation m_currentStation;
 
 	// Token: 0x04000178 RID: 376
-	private bool m_intro;
+	private Ragdoll m_ragdoll;
 
 	// Token: 0x04000179 RID: 377
-	private bool m_firstSpawn = true;
+	private Piece m_hoveringPiece;
 
 	// Token: 0x0400017A RID: 378
-	private bool m_crouchToggled;
+	private string m_emoteState = "";
 
 	// Token: 0x0400017B RID: 379
-	private bool m_autoRun;
+	private int m_emoteID;
 
 	// Token: 0x0400017C RID: 380
-	private bool m_safeInHome;
+	private bool m_intro;
 
 	// Token: 0x0400017D RID: 381
-	private ShipControlls m_shipControl;
+	private bool m_firstSpawn = true;
 
 	// Token: 0x0400017E RID: 382
-	private bool m_attached;
+	private bool m_crouchToggled;
 
 	// Token: 0x0400017F RID: 383
-	private string m_attachAnimation = "";
+	private bool m_autoRun;
 
 	// Token: 0x04000180 RID: 384
-	private bool m_sleeping;
+	private bool m_safeInHome;
 
 	// Token: 0x04000181 RID: 385
-	private Transform m_attachPoint;
+	private ShipControlls m_shipControl;
 
 	// Token: 0x04000182 RID: 386
-	private Vector3 m_detachOffset = Vector3.zero;
+	private bool m_attached;
 
 	// Token: 0x04000183 RID: 387
-	private int m_modelIndex;
+	private string m_attachAnimation = "";
 
 	// Token: 0x04000184 RID: 388
-	private Vector3 m_skinColor = Vector3.one;
+	private bool m_sleeping;
 
 	// Token: 0x04000185 RID: 389
-	private Vector3 m_hairColor = Vector3.one;
+	private Transform m_attachPoint;
 
 	// Token: 0x04000186 RID: 390
-	private bool m_teleporting;
+	private Vector3 m_detachOffset = Vector3.zero;
 
 	// Token: 0x04000187 RID: 391
-	private bool m_distantTeleport;
+	private int m_modelIndex;
 
 	// Token: 0x04000188 RID: 392
-	private float m_teleportTimer;
+	private Vector3 m_skinColor = Vector3.one;
 
 	// Token: 0x04000189 RID: 393
-	private float m_teleportCooldown;
+	private Vector3 m_hairColor = Vector3.one;
 
 	// Token: 0x0400018A RID: 394
-	private Vector3 m_teleportFromPos;
+	private bool m_teleporting;
 
 	// Token: 0x0400018B RID: 395
-	private Quaternion m_teleportFromRot;
+	private bool m_distantTeleport;
 
 	// Token: 0x0400018C RID: 396
-	private Vector3 m_teleportTargetPos;
+	private float m_teleportTimer;
 
 	// Token: 0x0400018D RID: 397
-	private Quaternion m_teleportTargetRot;
+	private float m_teleportCooldown;
 
 	// Token: 0x0400018E RID: 398
-	private Heightmap.Biome m_currentBiome;
+	private Vector3 m_teleportFromPos;
 
 	// Token: 0x0400018F RID: 399
-	private float m_biomeTimer;
+	private Quaternion m_teleportFromRot;
 
 	// Token: 0x04000190 RID: 400
-	private int m_baseValue;
+	private Vector3 m_teleportTargetPos;
 
 	// Token: 0x04000191 RID: 401
-	private int m_comfortLevel;
+	private Quaternion m_teleportTargetRot;
 
 	// Token: 0x04000192 RID: 402
-	private float m_drownDamageTimer;
+	private Heightmap.Biome m_currentBiome;
 
 	// Token: 0x04000193 RID: 403
-	private float m_timeSinceTargeted;
+	private float m_biomeTimer;
 
 	// Token: 0x04000194 RID: 404
-	private float m_timeSinceSensed;
+	private int m_baseValue;
 
 	// Token: 0x04000195 RID: 405
-	private float m_stealthFactorUpdateTimer;
+	private int m_comfortLevel;
 
 	// Token: 0x04000196 RID: 406
-	private float m_stealthFactor;
+	private float m_drownDamageTimer;
 
 	// Token: 0x04000197 RID: 407
-	private float m_stealthFactorTarget;
+	private float m_timeSinceTargeted;
 
 	// Token: 0x04000198 RID: 408
-	private Vector3 m_lastStealthPosition = Vector3.zero;
+	private float m_timeSinceSensed;
 
 	// Token: 0x04000199 RID: 409
-	private float m_wakeupTimer = -1f;
+	private float m_stealthFactorUpdateTimer;
 
 	// Token: 0x0400019A RID: 410
-	private float m_timeSinceDeath = 999999f;
+	private float m_stealthFactor;
 
 	// Token: 0x0400019B RID: 411
-	private float m_runSkillImproveTimer;
+	private float m_stealthFactorTarget;
 
 	// Token: 0x0400019C RID: 412
-	private float m_swimSkillImproveTimer;
+	private Vector3 m_lastStealthPosition = Vector3.zero;
 
 	// Token: 0x0400019D RID: 413
-	private float m_sneakSkillImproveTimer;
+	private float m_wakeupTimer = -1f;
 
 	// Token: 0x0400019E RID: 414
-	private float m_equipmentMovementModifier;
+	private float m_timeSinceDeath = 999999f;
 
 	// Token: 0x0400019F RID: 415
-	private static int crouching = 0;
+	private float m_runSkillImproveTimer;
 
 	// Token: 0x040001A0 RID: 416
-	protected static int m_attackMask = 0;
+	private float m_swimSkillImproveTimer;
 
 	// Token: 0x040001A1 RID: 417
-	protected static int m_animatorTagDodge = Animator.StringToHash("dodge");
+	private float m_sneakSkillImproveTimer;
 
 	// Token: 0x040001A2 RID: 418
-	protected static int m_animatorTagCutscene = Animator.StringToHash("cutscene");
+	private float m_equipmentMovementModifier;
 
 	// Token: 0x040001A3 RID: 419
-	protected static int m_animatorTagCrouch = Animator.StringToHash("crouch");
+	private static int crouching = 0;
 
 	// Token: 0x040001A4 RID: 420
-	protected static int m_animatorTagMinorAction = Animator.StringToHash("minoraction");
+	protected static int m_attackMask = 0;
 
 	// Token: 0x040001A5 RID: 421
-	protected static int m_animatorTagEmote = Animator.StringToHash("emote");
+	protected static int m_animatorTagDodge = Animator.StringToHash("dodge");
 
 	// Token: 0x040001A6 RID: 422
-	private List<PieceTable> m_tempOwnedPieceTables = new List<PieceTable>();
+	protected static int m_animatorTagCutscene = Animator.StringToHash("cutscene");
 
 	// Token: 0x040001A7 RID: 423
-	private List<Transform> m_tempSnapPoints1 = new List<Transform>();
+	protected static int m_animatorTagCrouch = Animator.StringToHash("crouch");
 
 	// Token: 0x040001A8 RID: 424
-	private List<Transform> m_tempSnapPoints2 = new List<Transform>();
+	protected static int m_animatorTagMinorAction = Animator.StringToHash("minoraction");
 
 	// Token: 0x040001A9 RID: 425
+	protected static int m_animatorTagEmote = Animator.StringToHash("emote");
+
+	// Token: 0x040001AA RID: 426
+	private List<PieceTable> m_tempOwnedPieceTables = new List<PieceTable>();
+
+	// Token: 0x040001AB RID: 427
+	private List<Transform> m_tempSnapPoints1 = new List<Transform>();
+
+	// Token: 0x040001AC RID: 428
+	private List<Transform> m_tempSnapPoints2 = new List<Transform>();
+
+	// Token: 0x040001AD RID: 429
 	private List<Piece> m_tempPieces = new List<Piece>();
 
 	// Token: 0x02000124 RID: 292
 	public enum RequirementMode
 	{
-		// Token: 0x04000FE0 RID: 4064
+		// Token: 0x04000FE7 RID: 4071
 		CanBuild,
-		// Token: 0x04000FE1 RID: 4065
+		// Token: 0x04000FE8 RID: 4072
 		IsKnown,
-		// Token: 0x04000FE2 RID: 4066
+		// Token: 0x04000FE9 RID: 4073
 		CanAlmostBuild
 	}
 
 	// Token: 0x02000125 RID: 293
 	public class Food
 	{
-		// Token: 0x060010B7 RID: 4279 RVA: 0x00076A4A File Offset: 0x00074C4A
+		// Token: 0x060010B8 RID: 4280 RVA: 0x00076BD2 File Offset: 0x00074DD2
 		public bool CanEatAgain()
 		{
 			return this.m_health < this.m_item.m_shared.m_food / 2f;
 		}
 
-		// Token: 0x04000FE3 RID: 4067
+		// Token: 0x04000FEA RID: 4074
 		public string m_name = "";
 
-		// Token: 0x04000FE4 RID: 4068
+		// Token: 0x04000FEB RID: 4075
 		public ItemDrop.ItemData m_item;
 
-		// Token: 0x04000FE5 RID: 4069
+		// Token: 0x04000FEC RID: 4076
 		public float m_health;
 
-		// Token: 0x04000FE6 RID: 4070
+		// Token: 0x04000FED RID: 4077
 		public float m_stamina;
 	}
 
 	// Token: 0x02000126 RID: 294
 	public class EquipQueueData
 	{
-		// Token: 0x04000FE7 RID: 4071
+		// Token: 0x04000FEE RID: 4078
 		public ItemDrop.ItemData m_item;
 
-		// Token: 0x04000FE8 RID: 4072
+		// Token: 0x04000FEF RID: 4079
 		public bool m_equip = true;
 
-		// Token: 0x04000FE9 RID: 4073
+		// Token: 0x04000FF0 RID: 4080
 		public float m_time;
 
-		// Token: 0x04000FEA RID: 4074
+		// Token: 0x04000FF1 RID: 4081
 		public float m_duration;
 	}
 
 	// Token: 0x02000127 RID: 295
 	private enum PlacementStatus
 	{
-		// Token: 0x04000FEC RID: 4076
-		Valid,
-		// Token: 0x04000FED RID: 4077
-		Invalid,
-		// Token: 0x04000FEE RID: 4078
-		BlockedbyPlayer,
-		// Token: 0x04000FEF RID: 4079
-		NoBuildZone,
-		// Token: 0x04000FF0 RID: 4080
-		PrivateZone,
-		// Token: 0x04000FF1 RID: 4081
-		MoreSpace,
-		// Token: 0x04000FF2 RID: 4082
-		NoTeleportArea,
 		// Token: 0x04000FF3 RID: 4083
-		ExtensionMissingStation,
+		Valid,
 		// Token: 0x04000FF4 RID: 4084
-		WrongBiome,
+		Invalid,
 		// Token: 0x04000FF5 RID: 4085
-		NeedCultivated,
+		BlockedbyPlayer,
 		// Token: 0x04000FF6 RID: 4086
+		NoBuildZone,
+		// Token: 0x04000FF7 RID: 4087
+		PrivateZone,
+		// Token: 0x04000FF8 RID: 4088
+		MoreSpace,
+		// Token: 0x04000FF9 RID: 4089
+		NoTeleportArea,
+		// Token: 0x04000FFA RID: 4090
+		ExtensionMissingStation,
+		// Token: 0x04000FFB RID: 4091
+		WrongBiome,
+		// Token: 0x04000FFC RID: 4092
+		NeedCultivated,
+		// Token: 0x04000FFD RID: 4093
 		NotInDungeon
 	}
 }

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Chat : MonoBehaviour
 {
 	// Token: 0x17000004 RID: 4
-	// (get) Token: 0x060004A6 RID: 1190 RVA: 0x000253C5 File Offset: 0x000235C5
+	// (get) Token: 0x060004A7 RID: 1191 RVA: 0x00025479 File Offset: 0x00023679
 	public static Chat instance
 	{
 		get
@@ -18,7 +18,7 @@ public class Chat : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004A7 RID: 1191 RVA: 0x000253CC File Offset: 0x000235CC
+	// Token: 0x060004A8 RID: 1192 RVA: 0x00025480 File Offset: 0x00023680
 	private void Awake()
 	{
 		Chat.m_instance = this;
@@ -34,19 +34,19 @@ public class Chat : MonoBehaviour
 		this.m_worldTextBase.SetActive(false);
 	}
 
-	// Token: 0x060004A8 RID: 1192 RVA: 0x000254A0 File Offset: 0x000236A0
+	// Token: 0x060004A9 RID: 1193 RVA: 0x00025554 File Offset: 0x00023754
 	public bool HasFocus()
 	{
 		return this.m_chatWindow.gameObject.activeInHierarchy && this.m_input.isFocused;
 	}
 
-	// Token: 0x060004A9 RID: 1193 RVA: 0x000254C1 File Offset: 0x000236C1
+	// Token: 0x060004AA RID: 1194 RVA: 0x00025575 File Offset: 0x00023775
 	public bool IsChatDialogWindowVisible()
 	{
 		return this.m_chatWindow.gameObject.activeSelf;
 	}
 
-	// Token: 0x060004AA RID: 1194 RVA: 0x000254D4 File Offset: 0x000236D4
+	// Token: 0x060004AB RID: 1195 RVA: 0x00025588 File Offset: 0x00023788
 	private void Update()
 	{
 		this.m_hideTimer += Time.deltaTime;
@@ -78,14 +78,14 @@ public class Chat : MonoBehaviour
 		this.m_wasFocused = this.m_input.isFocused;
 	}
 
-	// Token: 0x060004AB RID: 1195 RVA: 0x00025608 File Offset: 0x00023808
+	// Token: 0x060004AC RID: 1196 RVA: 0x000256BC File Offset: 0x000238BC
 	private void LateUpdate()
 	{
 		this.UpdateWorldTexts(Time.deltaTime);
 		this.UpdateNpcTexts(Time.deltaTime);
 	}
 
-	// Token: 0x060004AC RID: 1196 RVA: 0x00025620 File Offset: 0x00023820
+	// Token: 0x060004AD RID: 1197 RVA: 0x000256D4 File Offset: 0x000238D4
 	private void UpdateChat()
 	{
 		StringBuilder stringBuilder = new StringBuilder();
@@ -97,7 +97,7 @@ public class Chat : MonoBehaviour
 		this.m_output.text = stringBuilder.ToString();
 	}
 
-	// Token: 0x060004AD RID: 1197 RVA: 0x00025698 File Offset: 0x00023898
+	// Token: 0x060004AE RID: 1198 RVA: 0x0002574C File Offset: 0x0002394C
 	public void OnNewChatMessage(GameObject go, long senderID, Vector3 pos, Talker.Type type, string user, string text)
 	{
 		text = text.Replace('<', ' ');
@@ -106,7 +106,7 @@ public class Chat : MonoBehaviour
 		this.AddInworldText(go, senderID, pos, type, user, text);
 	}
 
-	// Token: 0x060004AE RID: 1198 RVA: 0x000256D0 File Offset: 0x000238D0
+	// Token: 0x060004AF RID: 1199 RVA: 0x00025784 File Offset: 0x00023984
 	private void UpdateWorldTexts(float dt)
 	{
 		Chat.WorldTextInstance worldTextInstance = null;
@@ -171,7 +171,7 @@ public class Chat : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004AF RID: 1199 RVA: 0x000259F8 File Offset: 0x00023BF8
+	// Token: 0x060004B0 RID: 1200 RVA: 0x00025AAC File Offset: 0x00023CAC
 	private void AddInworldText(GameObject go, long senderID, Vector3 position, Talker.Type type, string user, string text)
 	{
 		Chat.WorldTextInstance worldTextInstance = this.FindExistingWorldText(senderID);
@@ -213,7 +213,7 @@ public class Chat : MonoBehaviour
 		this.UpdateWorldTextField(worldTextInstance);
 	}
 
-	// Token: 0x060004B0 RID: 1200 RVA: 0x00025B44 File Offset: 0x00023D44
+	// Token: 0x060004B1 RID: 1201 RVA: 0x00025BF8 File Offset: 0x00023DF8
 	private void UpdateWorldTextField(Chat.WorldTextInstance wt)
 	{
 		string text = "";
@@ -225,7 +225,7 @@ public class Chat : MonoBehaviour
 		wt.m_textField.text = text;
 	}
 
-	// Token: 0x060004B1 RID: 1201 RVA: 0x00025B94 File Offset: 0x00023D94
+	// Token: 0x060004B2 RID: 1202 RVA: 0x00025C48 File Offset: 0x00023E48
 	private Chat.WorldTextInstance FindExistingWorldText(long senderID)
 	{
 		foreach (Chat.WorldTextInstance worldTextInstance in this.m_worldTexts)
@@ -238,7 +238,7 @@ public class Chat : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x060004B2 RID: 1202 RVA: 0x00025BF0 File Offset: 0x00023DF0
+	// Token: 0x060004B3 RID: 1203 RVA: 0x00025CA4 File Offset: 0x00023EA4
 	private void AddString(string user, string text, Talker.Type type)
 	{
 		Color color = Color.white;
@@ -272,7 +272,7 @@ public class Chat : MonoBehaviour
 		this.AddString(text2);
 	}
 
-	// Token: 0x060004B3 RID: 1203 RVA: 0x00025C89 File Offset: 0x00023E89
+	// Token: 0x060004B4 RID: 1204 RVA: 0x00025D3D File Offset: 0x00023F3D
 	private void AddString(string text)
 	{
 		this.m_chatBuffer.Add(text);
@@ -283,7 +283,7 @@ public class Chat : MonoBehaviour
 		this.UpdateChat();
 	}
 
-	// Token: 0x060004B4 RID: 1204 RVA: 0x00025CBC File Offset: 0x00023EBC
+	// Token: 0x060004B5 RID: 1205 RVA: 0x00025D70 File Offset: 0x00023F70
 	private void InputText()
 	{
 		string text = this.m_input.text;
@@ -354,13 +354,13 @@ public class Chat : MonoBehaviour
 		this.SendText(type, text);
 	}
 
-	// Token: 0x060004B5 RID: 1205 RVA: 0x00025E5F File Offset: 0x0002405F
+	// Token: 0x060004B6 RID: 1206 RVA: 0x00025F13 File Offset: 0x00024113
 	private void RPC_ChatMessage(long sender, Vector3 position, int type, string name, string text)
 	{
 		this.OnNewChatMessage(null, sender, position, (Talker.Type)type, name, text);
 	}
 
-	// Token: 0x060004B6 RID: 1206 RVA: 0x00025E70 File Offset: 0x00024070
+	// Token: 0x060004B7 RID: 1207 RVA: 0x00025F24 File Offset: 0x00024124
 	public void SendText(Talker.Type type, string text)
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -381,7 +381,7 @@ public class Chat : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004B7 RID: 1207 RVA: 0x00025EDC File Offset: 0x000240DC
+	// Token: 0x060004B8 RID: 1208 RVA: 0x00025F90 File Offset: 0x00024190
 	public void SendPing(Vector3 position)
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -399,7 +399,7 @@ public class Chat : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004B8 RID: 1208 RVA: 0x00025F50 File Offset: 0x00024150
+	// Token: 0x060004B9 RID: 1209 RVA: 0x00026004 File Offset: 0x00024204
 	public void GetShoutWorldTexts(List<Chat.WorldTextInstance> texts)
 	{
 		foreach (Chat.WorldTextInstance worldTextInstance in this.m_worldTexts)
@@ -411,7 +411,7 @@ public class Chat : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004B9 RID: 1209 RVA: 0x00025FAC File Offset: 0x000241AC
+	// Token: 0x060004BA RID: 1210 RVA: 0x00026060 File Offset: 0x00024260
 	public void GetPingWorldTexts(List<Chat.WorldTextInstance> texts)
 	{
 		foreach (Chat.WorldTextInstance worldTextInstance in this.m_worldTexts)
@@ -423,7 +423,7 @@ public class Chat : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004BA RID: 1210 RVA: 0x00026008 File Offset: 0x00024208
+	// Token: 0x060004BB RID: 1211 RVA: 0x000260BC File Offset: 0x000242BC
 	private void UpdateNpcTexts(float dt)
 	{
 		Chat.NpcText npcText = null;
@@ -484,7 +484,7 @@ public class Chat : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004BB RID: 1211 RVA: 0x00026234 File Offset: 0x00024434
+	// Token: 0x060004BC RID: 1212 RVA: 0x000262E8 File Offset: 0x000244E8
 	public void SetNpcText(GameObject talker, Vector3 offset, float cullDistance, float ttl, string topic, string text, bool large)
 	{
 		Chat.NpcText npcText = this.FindNpcText(talker);
@@ -514,14 +514,14 @@ public class Chat : MonoBehaviour
 		this.m_npcTexts.Add(npcText);
 	}
 
-	// Token: 0x060004BC RID: 1212 RVA: 0x00026368 File Offset: 0x00024568
+	// Token: 0x060004BD RID: 1213 RVA: 0x0002641C File Offset: 0x0002461C
 	public bool IsDialogVisible(GameObject talker)
 	{
 		Chat.NpcText npcText = this.FindNpcText(talker);
 		return npcText != null && npcText.IsVisible();
 	}
 
-	// Token: 0x060004BD RID: 1213 RVA: 0x00026388 File Offset: 0x00024588
+	// Token: 0x060004BE RID: 1214 RVA: 0x0002643C File Offset: 0x0002463C
 	public void ClearNpcText(GameObject talker)
 	{
 		Chat.NpcText npcText = this.FindNpcText(talker);
@@ -531,14 +531,14 @@ public class Chat : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004BE RID: 1214 RVA: 0x000263A7 File Offset: 0x000245A7
+	// Token: 0x060004BF RID: 1215 RVA: 0x0002645B File Offset: 0x0002465B
 	private void ClearNpcText(Chat.NpcText npcText)
 	{
 		UnityEngine.Object.Destroy(npcText.m_gui);
 		this.m_npcTexts.Remove(npcText);
 	}
 
-	// Token: 0x060004BF RID: 1215 RVA: 0x000263C4 File Offset: 0x000245C4
+	// Token: 0x060004C0 RID: 1216 RVA: 0x00026478 File Offset: 0x00024678
 	private Chat.NpcText FindNpcText(GameObject go)
 	{
 		foreach (Chat.NpcText npcText in this.m_npcTexts)
@@ -551,122 +551,122 @@ public class Chat : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x040004E0 RID: 1248
+	// Token: 0x040004E4 RID: 1252
 	private static Chat m_instance;
 
-	// Token: 0x040004E1 RID: 1249
+	// Token: 0x040004E5 RID: 1253
 	public RectTransform m_chatWindow;
 
-	// Token: 0x040004E2 RID: 1250
+	// Token: 0x040004E6 RID: 1254
 	public Text m_output;
 
-	// Token: 0x040004E3 RID: 1251
+	// Token: 0x040004E7 RID: 1255
 	public InputField m_input;
 
-	// Token: 0x040004E4 RID: 1252
+	// Token: 0x040004E8 RID: 1256
 	public float m_hideDelay = 10f;
 
-	// Token: 0x040004E5 RID: 1253
+	// Token: 0x040004E9 RID: 1257
 	public float m_worldTextTTL = 5f;
 
-	// Token: 0x040004E6 RID: 1254
+	// Token: 0x040004EA RID: 1258
 	public GameObject m_worldTextBase;
 
-	// Token: 0x040004E7 RID: 1255
+	// Token: 0x040004EB RID: 1259
 	public GameObject m_npcTextBase;
 
-	// Token: 0x040004E8 RID: 1256
+	// Token: 0x040004EC RID: 1260
 	public GameObject m_npcTextBaseLarge;
 
-	// Token: 0x040004E9 RID: 1257
+	// Token: 0x040004ED RID: 1261
 	private List<Chat.WorldTextInstance> m_worldTexts = new List<Chat.WorldTextInstance>();
 
-	// Token: 0x040004EA RID: 1258
+	// Token: 0x040004EE RID: 1262
 	private List<Chat.NpcText> m_npcTexts = new List<Chat.NpcText>();
 
-	// Token: 0x040004EB RID: 1259
+	// Token: 0x040004EF RID: 1263
 	private float m_hideTimer = 9999f;
 
-	// Token: 0x040004EC RID: 1260
+	// Token: 0x040004F0 RID: 1264
 	private bool m_wasFocused;
 
-	// Token: 0x040004ED RID: 1261
+	// Token: 0x040004F1 RID: 1265
 	private const int m_maxBufferLength = 15;
 
-	// Token: 0x040004EE RID: 1262
+	// Token: 0x040004F2 RID: 1266
 	private List<string> m_chatBuffer = new List<string>();
 
 	// Token: 0x02000144 RID: 324
 	public class WorldTextInstance
 	{
-		// Token: 0x040010AF RID: 4271
+		// Token: 0x040010B6 RID: 4278
 		public long m_talkerID;
 
-		// Token: 0x040010B0 RID: 4272
+		// Token: 0x040010B7 RID: 4279
 		public GameObject m_go;
 
-		// Token: 0x040010B1 RID: 4273
+		// Token: 0x040010B8 RID: 4280
 		public Vector3 m_position;
 
-		// Token: 0x040010B2 RID: 4274
+		// Token: 0x040010B9 RID: 4281
 		public float m_timer;
 
-		// Token: 0x040010B3 RID: 4275
+		// Token: 0x040010BA RID: 4282
 		public GameObject m_gui;
 
-		// Token: 0x040010B4 RID: 4276
+		// Token: 0x040010BB RID: 4283
 		public Text m_textField;
 
-		// Token: 0x040010B5 RID: 4277
+		// Token: 0x040010BC RID: 4284
 		public string m_name = "";
 
-		// Token: 0x040010B6 RID: 4278
+		// Token: 0x040010BD RID: 4285
 		public Talker.Type m_type;
 
-		// Token: 0x040010B7 RID: 4279
+		// Token: 0x040010BE RID: 4286
 		public string m_text = "";
 	}
 
 	// Token: 0x02000145 RID: 325
 	public class NpcText
 	{
-		// Token: 0x06001109 RID: 4361 RVA: 0x000777D1 File Offset: 0x000759D1
+		// Token: 0x0600110A RID: 4362 RVA: 0x00077959 File Offset: 0x00075B59
 		public void SetVisible(bool visible)
 		{
 			this.m_animator.SetBool("visible", visible);
 		}
 
-		// Token: 0x0600110A RID: 4362 RVA: 0x000777E4 File Offset: 0x000759E4
+		// Token: 0x0600110B RID: 4363 RVA: 0x0007796C File Offset: 0x00075B6C
 		public bool IsVisible()
 		{
 			return this.m_animator.GetCurrentAnimatorStateInfo(0).IsTag("visible") || this.m_animator.GetBool("visible");
 		}
 
-		// Token: 0x040010B8 RID: 4280
+		// Token: 0x040010BF RID: 4287
 		public GameObject m_go;
 
-		// Token: 0x040010B9 RID: 4281
+		// Token: 0x040010C0 RID: 4288
 		public Vector3 m_offset = Vector3.zero;
 
-		// Token: 0x040010BA RID: 4282
+		// Token: 0x040010C1 RID: 4289
 		public float m_cullDistance = 20f;
 
-		// Token: 0x040010BB RID: 4283
+		// Token: 0x040010C2 RID: 4290
 		public GameObject m_gui;
 
-		// Token: 0x040010BC RID: 4284
+		// Token: 0x040010C3 RID: 4291
 		public Animator m_animator;
 
-		// Token: 0x040010BD RID: 4285
+		// Token: 0x040010C4 RID: 4292
 		public Text m_textField;
 
-		// Token: 0x040010BE RID: 4286
+		// Token: 0x040010C5 RID: 4293
 		public Text m_topicField;
 
-		// Token: 0x040010BF RID: 4287
+		// Token: 0x040010C6 RID: 4294
 		public float m_ttl;
 
-		// Token: 0x040010C0 RID: 4288
+		// Token: 0x040010C7 RID: 4295
 		public bool m_timeout;
 	}
 }

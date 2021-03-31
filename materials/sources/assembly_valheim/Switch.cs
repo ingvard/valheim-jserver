@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x020000FC RID: 252
 public class Switch : MonoBehaviour, Interactable, Hoverable
 {
-	// Token: 0x06000F63 RID: 3939 RVA: 0x0006D624 File Offset: 0x0006B824
+	// Token: 0x06000F64 RID: 3940 RVA: 0x0006D7AC File Offset: 0x0006B9AC
 	public bool Interact(Humanoid character, bool hold)
 	{
 		if (hold)
@@ -22,40 +22,40 @@ public class Switch : MonoBehaviour, Interactable, Hoverable
 		return this.m_onUse != null && this.m_onUse(this, character, null);
 	}
 
-	// Token: 0x06000F64 RID: 3940 RVA: 0x0006D67C File Offset: 0x0006B87C
+	// Token: 0x06000F65 RID: 3941 RVA: 0x0006D804 File Offset: 0x0006BA04
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		return this.m_onUse != null && this.m_onUse(this, user, item);
 	}
 
-	// Token: 0x06000F65 RID: 3941 RVA: 0x0006D696 File Offset: 0x0006B896
+	// Token: 0x06000F66 RID: 3942 RVA: 0x0006D81E File Offset: 0x0006BA1E
 	public string GetHoverText()
 	{
 		return Localization.instance.Localize(this.m_hoverText);
 	}
 
-	// Token: 0x06000F66 RID: 3942 RVA: 0x0006D6A8 File Offset: 0x0006B8A8
+	// Token: 0x06000F67 RID: 3943 RVA: 0x0006D830 File Offset: 0x0006BA30
 	public string GetHoverName()
 	{
 		return Localization.instance.Localize(this.m_name);
 	}
 
-	// Token: 0x04000E34 RID: 3636
+	// Token: 0x04000E3A RID: 3642
 	public Switch.Callback m_onUse;
 
-	// Token: 0x04000E35 RID: 3637
+	// Token: 0x04000E3B RID: 3643
 	public string m_hoverText = "";
 
-	// Token: 0x04000E36 RID: 3638
+	// Token: 0x04000E3C RID: 3644
 	public string m_name = "";
 
-	// Token: 0x04000E37 RID: 3639
+	// Token: 0x04000E3D RID: 3645
 	public float m_holdRepeatInterval = -1f;
 
-	// Token: 0x04000E38 RID: 3640
+	// Token: 0x04000E3E RID: 3646
 	private float m_lastUseTime;
 
 	// Token: 0x020001AC RID: 428
-	// (Invoke) Token: 0x060011C3 RID: 4547
+	// (Invoke) Token: 0x060011C4 RID: 4548
 	public delegate bool Callback(Switch caller, Humanoid user, ItemDrop.ItemData item);
 }

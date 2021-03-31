@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x020000D8 RID: 216
 public class ItemStand : MonoBehaviour, Interactable, Hoverable
 {
-	// Token: 0x06000DCF RID: 3535 RVA: 0x00062944 File Offset: 0x00060B44
+	// Token: 0x06000DD0 RID: 3536 RVA: 0x00062ACC File Offset: 0x00060CCC
 	private void Awake()
 	{
 		this.m_nview = (this.m_netViewOverride ? this.m_netViewOverride : base.gameObject.GetComponent<ZNetView>());
@@ -26,7 +26,7 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		base.InvokeRepeating("UpdateVisual", 1f, 4f);
 	}
 
-	// Token: 0x06000DD0 RID: 3536 RVA: 0x00062A3B File Offset: 0x00060C3B
+	// Token: 0x06000DD1 RID: 3537 RVA: 0x00062BC3 File Offset: 0x00060DC3
 	private void OnDestroyed()
 	{
 		if (this.m_nview.IsOwner())
@@ -35,7 +35,7 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		}
 	}
 
-	// Token: 0x06000DD1 RID: 3537 RVA: 0x00062A50 File Offset: 0x00060C50
+	// Token: 0x06000DD2 RID: 3538 RVA: 0x00062BD8 File Offset: 0x00060DD8
 	public string GetHoverText()
 	{
 		if (!Player.m_localPlayer)
@@ -80,13 +80,13 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		}
 	}
 
-	// Token: 0x06000DD2 RID: 3538 RVA: 0x00062B7C File Offset: 0x00060D7C
+	// Token: 0x06000DD3 RID: 3539 RVA: 0x00062D04 File Offset: 0x00060F04
 	public string GetHoverName()
 	{
 		return this.m_name;
 	}
 
-	// Token: 0x06000DD3 RID: 3539 RVA: 0x00062B84 File Offset: 0x00060D84
+	// Token: 0x06000DD4 RID: 3540 RVA: 0x00062D0C File Offset: 0x00060F0C
 	public bool Interact(Humanoid user, bool hold)
 	{
 		if (hold)
@@ -134,13 +134,13 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		return false;
 	}
 
-	// Token: 0x06000DD4 RID: 3540 RVA: 0x00062CBA File Offset: 0x00060EBA
+	// Token: 0x06000DD5 RID: 3541 RVA: 0x00062E42 File Offset: 0x00061042
 	private bool IsGuardianPowerActive(Humanoid user)
 	{
 		return (user as Player).GetGuardianPowerName() == this.m_guardianPower.name;
 	}
 
-	// Token: 0x06000DD5 RID: 3541 RVA: 0x00062CD8 File Offset: 0x00060ED8
+	// Token: 0x06000DD6 RID: 3542 RVA: 0x00062E60 File Offset: 0x00061060
 	private void DelayedPowerActivation()
 	{
 		Player localPlayer = Player.m_localPlayer;
@@ -151,7 +151,7 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		localPlayer.SetGuardianPower(this.m_guardianPower.name);
 	}
 
-	// Token: 0x06000DD6 RID: 3542 RVA: 0x00062D08 File Offset: 0x00060F08
+	// Token: 0x06000DD7 RID: 3543 RVA: 0x00062E90 File Offset: 0x00061090
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		if (this.HaveAttachment())
@@ -173,7 +173,7 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		return true;
 	}
 
-	// Token: 0x06000DD7 RID: 3543 RVA: 0x00062D82 File Offset: 0x00060F82
+	// Token: 0x06000DD8 RID: 3544 RVA: 0x00062F0A File Offset: 0x0006110A
 	private void RPC_DropItem(long sender)
 	{
 		if (!this.m_nview.IsOwner())
@@ -187,13 +187,13 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		this.DropItem();
 	}
 
-	// Token: 0x06000DD8 RID: 3544 RVA: 0x00062DA1 File Offset: 0x00060FA1
+	// Token: 0x06000DD9 RID: 3545 RVA: 0x00062F29 File Offset: 0x00061129
 	public void DestroyAttachment()
 	{
 		this.m_nview.InvokeRPC("DestroyAttachment", Array.Empty<object>());
 	}
 
-	// Token: 0x06000DD9 RID: 3545 RVA: 0x00062DB8 File Offset: 0x00060FB8
+	// Token: 0x06000DDA RID: 3546 RVA: 0x00062F40 File Offset: 0x00061140
 	public void RPC_DestroyAttachment(long sender)
 	{
 		if (!this.m_nview.IsOwner())
@@ -213,7 +213,7 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		this.m_destroyEffects.Create(this.m_dropSpawnPoint.position, Quaternion.identity, null, 1f);
 	}
 
-	// Token: 0x06000DDA RID: 3546 RVA: 0x00062E44 File Offset: 0x00061044
+	// Token: 0x06000DDB RID: 3547 RVA: 0x00062FCC File Offset: 0x000611CC
 	private void DropItem()
 	{
 		if (!this.HaveAttachment())
@@ -237,13 +237,13 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		});
 	}
 
-	// Token: 0x06000DDB RID: 3547 RVA: 0x00062F3C File Offset: 0x0006113C
+	// Token: 0x06000DDC RID: 3548 RVA: 0x000630C4 File Offset: 0x000612C4
 	private Transform GetAttach(ItemDrop.ItemData item)
 	{
 		return this.m_attachOther;
 	}
 
-	// Token: 0x06000DDC RID: 3548 RVA: 0x00062F44 File Offset: 0x00061144
+	// Token: 0x06000DDD RID: 3549 RVA: 0x000630CC File Offset: 0x000612CC
 	private void UpdateAttach()
 	{
 		if (this.m_nview.IsOwner())
@@ -270,7 +270,7 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		}
 	}
 
-	// Token: 0x06000DDD RID: 3549 RVA: 0x0006307F File Offset: 0x0006127F
+	// Token: 0x06000DDE RID: 3550 RVA: 0x00063207 File Offset: 0x00061407
 	private void RPC_RequestOwn(long sender)
 	{
 		if (!this.m_nview.IsOwner())
@@ -280,7 +280,7 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		this.m_nview.GetZDO().SetOwner(sender);
 	}
 
-	// Token: 0x06000DDE RID: 3550 RVA: 0x000630A0 File Offset: 0x000612A0
+	// Token: 0x06000DDF RID: 3551 RVA: 0x00063228 File Offset: 0x00061428
 	private void UpdateVisual()
 	{
 		string @string = this.m_nview.GetZDO().GetString("item", "");
@@ -288,13 +288,13 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		this.SetVisualItem(@string, @int);
 	}
 
-	// Token: 0x06000DDF RID: 3551 RVA: 0x000630E7 File Offset: 0x000612E7
+	// Token: 0x06000DE0 RID: 3552 RVA: 0x0006326F File Offset: 0x0006146F
 	private void RPC_SetVisualItem(long sender, string itemName, int variant)
 	{
 		this.SetVisualItem(itemName, variant);
 	}
 
-	// Token: 0x06000DE0 RID: 3552 RVA: 0x000630F4 File Offset: 0x000612F4
+	// Token: 0x06000DE1 RID: 3553 RVA: 0x0006327C File Offset: 0x0006147C
 	private void SetVisualItem(string itemName, int variant)
 	{
 		if (this.m_visualName == itemName && this.m_visualVariant == variant)
@@ -334,7 +334,7 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		}
 	}
 
-	// Token: 0x06000DE1 RID: 3553 RVA: 0x00063230 File Offset: 0x00061430
+	// Token: 0x06000DE2 RID: 3554 RVA: 0x000633B8 File Offset: 0x000615B8
 	private GameObject GetAttachPrefab(GameObject item)
 	{
 		Transform transform = item.transform.Find("attach");
@@ -345,13 +345,13 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		return null;
 	}
 
-	// Token: 0x06000DE2 RID: 3554 RVA: 0x00063260 File Offset: 0x00061460
+	// Token: 0x06000DE3 RID: 3555 RVA: 0x000633E8 File Offset: 0x000615E8
 	private bool CanAttach(ItemDrop.ItemData item)
 	{
 		return !(this.GetAttachPrefab(item.m_dropPrefab) == null) && !this.IsUnsupported(item) && this.IsSupported(item) && this.m_supportedTypes.Contains(item.m_shared.m_itemType);
 	}
 
-	// Token: 0x06000DE3 RID: 3555 RVA: 0x000632B0 File Offset: 0x000614B0
+	// Token: 0x06000DE4 RID: 3556 RVA: 0x00063438 File Offset: 0x00061638
 	public bool IsUnsupported(ItemDrop.ItemData item)
 	{
 		using (List<ItemDrop>.Enumerator enumerator = this.m_unsupportedItems.GetEnumerator())
@@ -367,7 +367,7 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		return false;
 	}
 
-	// Token: 0x06000DE4 RID: 3556 RVA: 0x00063324 File Offset: 0x00061524
+	// Token: 0x06000DE5 RID: 3557 RVA: 0x000634AC File Offset: 0x000616AC
 	public bool IsSupported(ItemDrop.ItemData item)
 	{
 		if (this.m_supportedItems.Count == 0)
@@ -387,13 +387,13 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		return false;
 	}
 
-	// Token: 0x06000DE5 RID: 3557 RVA: 0x000633A8 File Offset: 0x000615A8
+	// Token: 0x06000DE6 RID: 3558 RVA: 0x00063530 File Offset: 0x00061730
 	public bool HaveAttachment()
 	{
 		return this.m_nview.IsValid() && this.m_nview.GetZDO().GetString("item", "") != "";
 	}
 
-	// Token: 0x06000DE6 RID: 3558 RVA: 0x000633DD File Offset: 0x000615DD
+	// Token: 0x06000DE7 RID: 3559 RVA: 0x00063565 File Offset: 0x00061765
 	public string GetAttachedItem()
 	{
 		if (!this.m_nview.IsValid())
@@ -403,67 +403,67 @@ public class ItemStand : MonoBehaviour, Interactable, Hoverable
 		return this.m_nview.GetZDO().GetString("item", "");
 	}
 
-	// Token: 0x04000C78 RID: 3192
+	// Token: 0x04000C7E RID: 3198
 	public ZNetView m_netViewOverride;
 
-	// Token: 0x04000C79 RID: 3193
+	// Token: 0x04000C7F RID: 3199
 	public string m_name = "";
 
-	// Token: 0x04000C7A RID: 3194
+	// Token: 0x04000C80 RID: 3200
 	public Transform m_attachOther;
 
-	// Token: 0x04000C7B RID: 3195
+	// Token: 0x04000C81 RID: 3201
 	public Transform m_dropSpawnPoint;
 
-	// Token: 0x04000C7C RID: 3196
+	// Token: 0x04000C82 RID: 3202
 	public bool m_canBeRemoved = true;
 
-	// Token: 0x04000C7D RID: 3197
+	// Token: 0x04000C83 RID: 3203
 	public bool m_autoAttach;
 
-	// Token: 0x04000C7E RID: 3198
+	// Token: 0x04000C84 RID: 3204
 	public List<ItemDrop.ItemData.ItemType> m_supportedTypes = new List<ItemDrop.ItemData.ItemType>();
 
-	// Token: 0x04000C7F RID: 3199
+	// Token: 0x04000C85 RID: 3205
 	public List<ItemDrop> m_unsupportedItems = new List<ItemDrop>();
 
-	// Token: 0x04000C80 RID: 3200
+	// Token: 0x04000C86 RID: 3206
 	public List<ItemDrop> m_supportedItems = new List<ItemDrop>();
 
-	// Token: 0x04000C81 RID: 3201
+	// Token: 0x04000C87 RID: 3207
 	public EffectList m_effects = new EffectList();
 
-	// Token: 0x04000C82 RID: 3202
+	// Token: 0x04000C88 RID: 3208
 	public EffectList m_destroyEffects = new EffectList();
 
-	// Token: 0x04000C83 RID: 3203
+	// Token: 0x04000C89 RID: 3209
 	[Header("Guardian power")]
 	public float m_powerActivationDelay = 2f;
 
-	// Token: 0x04000C84 RID: 3204
+	// Token: 0x04000C8A RID: 3210
 	public StatusEffect m_guardianPower;
 
-	// Token: 0x04000C85 RID: 3205
+	// Token: 0x04000C8B RID: 3211
 	public EffectList m_activatePowerEffects = new EffectList();
 
-	// Token: 0x04000C86 RID: 3206
+	// Token: 0x04000C8C RID: 3212
 	public EffectList m_activatePowerEffectsPlayer = new EffectList();
 
-	// Token: 0x04000C87 RID: 3207
+	// Token: 0x04000C8D RID: 3213
 	private string m_visualName = "";
 
-	// Token: 0x04000C88 RID: 3208
+	// Token: 0x04000C8E RID: 3214
 	private int m_visualVariant;
 
-	// Token: 0x04000C89 RID: 3209
+	// Token: 0x04000C8F RID: 3215
 	private GameObject m_visualItem;
 
-	// Token: 0x04000C8A RID: 3210
+	// Token: 0x04000C90 RID: 3216
 	private string m_currentItemName = "";
 
-	// Token: 0x04000C8B RID: 3211
+	// Token: 0x04000C91 RID: 3217
 	private ItemDrop.ItemData m_queuedItem;
 
-	// Token: 0x04000C8C RID: 3212
+	// Token: 0x04000C92 RID: 3218
 	private ZNetView m_nview;
 }

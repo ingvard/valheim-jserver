@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x020000BF RID: 191
 public class Container : MonoBehaviour, Hoverable, Interactable
 {
-	// Token: 0x06000CA3 RID: 3235 RVA: 0x0005A698 File Offset: 0x00058898
+	// Token: 0x06000CA4 RID: 3236 RVA: 0x0005A820 File Offset: 0x00058A20
 	private void Awake()
 	{
 		this.m_nview = (this.m_rootObjectOverride ? this.m_rootObjectOverride.GetComponent<ZNetView>() : base.GetComponent<ZNetView>());
@@ -44,7 +44,7 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		base.InvokeRepeating("CheckForChanges", 0f, 1f);
 	}
 
-	// Token: 0x06000CA4 RID: 3236 RVA: 0x0005A898 File Offset: 0x00058A98
+	// Token: 0x06000CA5 RID: 3237 RVA: 0x0005AA20 File Offset: 0x00058C20
 	private void AddDefaultItems()
 	{
 		foreach (ItemDrop.ItemData item in this.m_defaultItems.GetDropListItems())
@@ -53,7 +53,7 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000CA5 RID: 3237 RVA: 0x0005A8F8 File Offset: 0x00058AF8
+	// Token: 0x06000CA6 RID: 3238 RVA: 0x0005AA80 File Offset: 0x00058C80
 	private void DropAllItems(GameObject lootContainerPrefab)
 	{
 		while (this.m_inventory.NrOfItems() > 0)
@@ -63,7 +63,7 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000CA6 RID: 3238 RVA: 0x0005A958 File Offset: 0x00058B58
+	// Token: 0x06000CA7 RID: 3239 RVA: 0x0005AAE0 File Offset: 0x00058CE0
 	private void DropAllItems()
 	{
 		List<ItemDrop.ItemData> allItems = this.m_inventory.GetAllItems();
@@ -79,7 +79,7 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		this.Save();
 	}
 
-	// Token: 0x06000CA7 RID: 3239 RVA: 0x0005AA18 File Offset: 0x00058C18
+	// Token: 0x06000CA8 RID: 3240 RVA: 0x0005ABA0 File Offset: 0x00058DA0
 	private void OnDestroyed()
 	{
 		if (this.m_nview.IsOwner())
@@ -93,7 +93,7 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000CA8 RID: 3240 RVA: 0x0005AA48 File Offset: 0x00058C48
+	// Token: 0x06000CA9 RID: 3241 RVA: 0x0005ABD0 File Offset: 0x00058DD0
 	private void CheckForChanges()
 	{
 		if (!this.m_nview.IsValid())
@@ -108,7 +108,7 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000CA9 RID: 3241 RVA: 0x0005AAA4 File Offset: 0x00058CA4
+	// Token: 0x06000CAA RID: 3242 RVA: 0x0005AC2C File Offset: 0x00058E2C
 	private void UpdateUseVisual()
 	{
 		bool flag;
@@ -131,7 +131,7 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000CAA RID: 3242 RVA: 0x0005AB38 File Offset: 0x00058D38
+	// Token: 0x06000CAB RID: 3243 RVA: 0x0005ACC0 File Offset: 0x00058EC0
 	public string GetHoverText()
 	{
 		if (this.m_checkGuardStone && !PrivateArea.CheckAccess(base.transform.position, 0f, false, false))
@@ -151,13 +151,13 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		return Localization.instance.Localize(text);
 	}
 
-	// Token: 0x06000CAB RID: 3243 RVA: 0x0005ABBF File Offset: 0x00058DBF
+	// Token: 0x06000CAC RID: 3244 RVA: 0x0005AD47 File Offset: 0x00058F47
 	public string GetHoverName()
 	{
 		return this.m_name;
 	}
 
-	// Token: 0x06000CAC RID: 3244 RVA: 0x0005ABC8 File Offset: 0x00058DC8
+	// Token: 0x06000CAD RID: 3245 RVA: 0x0005AD50 File Offset: 0x00058F50
 	public bool Interact(Humanoid character, bool hold)
 	{
 		if (hold)
@@ -181,19 +181,19 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x06000CAD RID: 3245 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000CAE RID: 3246 RVA: 0x000023E2 File Offset: 0x000005E2
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		return false;
 	}
 
-	// Token: 0x06000CAE RID: 3246 RVA: 0x0005AC46 File Offset: 0x00058E46
+	// Token: 0x06000CAF RID: 3247 RVA: 0x0005ADCE File Offset: 0x00058FCE
 	public bool CanBeRemoved()
 	{
 		return this.m_privacy != Container.PrivacySetting.Private || this.GetInventory().NrOfItems() <= 0;
 	}
 
-	// Token: 0x06000CAF RID: 3247 RVA: 0x0005AC64 File Offset: 0x00058E64
+	// Token: 0x06000CB0 RID: 3248 RVA: 0x0005ADEC File Offset: 0x00058FEC
 	private bool CheckAccess(long playerID)
 	{
 		switch (this.m_privacy)
@@ -209,19 +209,19 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000CB0 RID: 3248 RVA: 0x0005ACA3 File Offset: 0x00058EA3
+	// Token: 0x06000CB1 RID: 3249 RVA: 0x0005AE2B File Offset: 0x0005902B
 	public bool IsOwner()
 	{
 		return this.m_nview.IsOwner();
 	}
 
-	// Token: 0x06000CB1 RID: 3249 RVA: 0x0005ACB0 File Offset: 0x00058EB0
+	// Token: 0x06000CB2 RID: 3250 RVA: 0x0005AE38 File Offset: 0x00059038
 	public bool IsInUse()
 	{
 		return this.m_inUse;
 	}
 
-	// Token: 0x06000CB2 RID: 3250 RVA: 0x0005ACB8 File Offset: 0x00058EB8
+	// Token: 0x06000CB3 RID: 3251 RVA: 0x0005AE40 File Offset: 0x00059040
 	public void SetInUse(bool inUse)
 	{
 		if (!this.m_nview.IsOwner())
@@ -242,13 +242,13 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		this.m_closeEffects.Create(base.transform.position, base.transform.rotation, null, 1f);
 	}
 
-	// Token: 0x06000CB3 RID: 3251 RVA: 0x0005AD3E File Offset: 0x00058F3E
+	// Token: 0x06000CB4 RID: 3252 RVA: 0x0005AEC6 File Offset: 0x000590C6
 	public Inventory GetInventory()
 	{
 		return this.m_inventory;
 	}
 
-	// Token: 0x06000CB4 RID: 3252 RVA: 0x0005AD48 File Offset: 0x00058F48
+	// Token: 0x06000CB5 RID: 3253 RVA: 0x0005AED0 File Offset: 0x000590D0
 	private void RPC_RequestOpen(long uid, long playerID)
 	{
 		ZLog.Log(string.Concat(new object[]
@@ -291,7 +291,7 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		});
 	}
 
-	// Token: 0x06000CB5 RID: 3253 RVA: 0x0005AE98 File Offset: 0x00059098
+	// Token: 0x06000CB6 RID: 3254 RVA: 0x0005B020 File Offset: 0x00059220
 	private void RPC_OpenRespons(long uid, bool granted)
 	{
 		if (!Player.m_localPlayer)
@@ -306,7 +306,7 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		Player.m_localPlayer.Message(MessageHud.MessageType.Center, "$msg_inuse", 0, null);
 	}
 
-	// Token: 0x06000CB6 RID: 3254 RVA: 0x0005AEC8 File Offset: 0x000590C8
+	// Token: 0x06000CB7 RID: 3255 RVA: 0x0005B050 File Offset: 0x00059250
 	public bool TakeAll(Humanoid character)
 	{
 		if (this.m_checkGuardStone && !PrivateArea.CheckAccess(base.transform.position, 0f, true, false))
@@ -326,7 +326,7 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x06000CB7 RID: 3255 RVA: 0x0005AF44 File Offset: 0x00059144
+	// Token: 0x06000CB8 RID: 3256 RVA: 0x0005B0CC File Offset: 0x000592CC
 	private void RPC_RequestTakeAll(long uid, long playerID)
 	{
 		ZLog.Log(string.Concat(new object[]
@@ -372,7 +372,7 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		});
 	}
 
-	// Token: 0x06000CB8 RID: 3256 RVA: 0x0005B088 File Offset: 0x00059288
+	// Token: 0x06000CB9 RID: 3257 RVA: 0x0005B210 File Offset: 0x00059410
 	private void RPC_TakeAllRespons(long uid, bool granted)
 	{
 		if (!Player.m_localPlayer)
@@ -396,7 +396,7 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000CB9 RID: 3257 RVA: 0x0005B106 File Offset: 0x00059306
+	// Token: 0x06000CBA RID: 3258 RVA: 0x0005B28E File Offset: 0x0005948E
 	private void OnContainerChanged()
 	{
 		if (this.m_loading)
@@ -410,7 +410,7 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		this.Save();
 	}
 
-	// Token: 0x06000CBA RID: 3258 RVA: 0x0005B120 File Offset: 0x00059320
+	// Token: 0x06000CBB RID: 3259 RVA: 0x0005B2A8 File Offset: 0x000594A8
 	private void Save()
 	{
 		ZPackage zpackage = new ZPackage();
@@ -421,7 +421,7 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		this.m_lastDataString = @base;
 	}
 
-	// Token: 0x06000CBB RID: 3259 RVA: 0x0005B17C File Offset: 0x0005937C
+	// Token: 0x06000CBC RID: 3260 RVA: 0x0005B304 File Offset: 0x00059504
 	private void Load()
 	{
 		if (this.m_nview.GetZDO().m_dataRevision == this.m_lastRevision)
@@ -441,86 +441,86 @@ public class Container : MonoBehaviour, Hoverable, Interactable
 		this.m_lastDataString = @string;
 	}
 
-	// Token: 0x04000B88 RID: 2952
+	// Token: 0x04000B8E RID: 2958
 	private float m_lastTakeAllTime;
 
-	// Token: 0x04000B89 RID: 2953
+	// Token: 0x04000B8F RID: 2959
 	public Action m_onTakeAllSuccess;
 
-	// Token: 0x04000B8A RID: 2954
+	// Token: 0x04000B90 RID: 2960
 	public string m_name = "Container";
 
-	// Token: 0x04000B8B RID: 2955
+	// Token: 0x04000B91 RID: 2961
 	public Sprite m_bkg;
 
-	// Token: 0x04000B8C RID: 2956
+	// Token: 0x04000B92 RID: 2962
 	public int m_width = 3;
 
-	// Token: 0x04000B8D RID: 2957
+	// Token: 0x04000B93 RID: 2963
 	public int m_height = 2;
 
-	// Token: 0x04000B8E RID: 2958
+	// Token: 0x04000B94 RID: 2964
 	public Container.PrivacySetting m_privacy = Container.PrivacySetting.Public;
 
-	// Token: 0x04000B8F RID: 2959
+	// Token: 0x04000B95 RID: 2965
 	public bool m_checkGuardStone;
 
-	// Token: 0x04000B90 RID: 2960
+	// Token: 0x04000B96 RID: 2966
 	public bool m_autoDestroyEmpty;
 
-	// Token: 0x04000B91 RID: 2961
+	// Token: 0x04000B97 RID: 2967
 	public DropTable m_defaultItems = new DropTable();
 
-	// Token: 0x04000B92 RID: 2962
+	// Token: 0x04000B98 RID: 2968
 	public GameObject m_open;
 
-	// Token: 0x04000B93 RID: 2963
+	// Token: 0x04000B99 RID: 2969
 	public GameObject m_closed;
 
-	// Token: 0x04000B94 RID: 2964
+	// Token: 0x04000B9A RID: 2970
 	public EffectList m_openEffects = new EffectList();
 
-	// Token: 0x04000B95 RID: 2965
+	// Token: 0x04000B9B RID: 2971
 	public EffectList m_closeEffects = new EffectList();
 
-	// Token: 0x04000B96 RID: 2966
+	// Token: 0x04000B9C RID: 2972
 	public ZNetView m_rootObjectOverride;
 
-	// Token: 0x04000B97 RID: 2967
+	// Token: 0x04000B9D RID: 2973
 	public Vagon m_wagon;
 
-	// Token: 0x04000B98 RID: 2968
+	// Token: 0x04000B9E RID: 2974
 	public GameObject m_destroyedLootPrefab;
 
-	// Token: 0x04000B99 RID: 2969
+	// Token: 0x04000B9F RID: 2975
 	private Inventory m_inventory;
 
-	// Token: 0x04000B9A RID: 2970
+	// Token: 0x04000BA0 RID: 2976
 	private ZNetView m_nview;
 
-	// Token: 0x04000B9B RID: 2971
+	// Token: 0x04000BA1 RID: 2977
 	private Piece m_piece;
 
-	// Token: 0x04000B9C RID: 2972
+	// Token: 0x04000BA2 RID: 2978
 	private bool m_inUse;
 
-	// Token: 0x04000B9D RID: 2973
+	// Token: 0x04000BA3 RID: 2979
 	private bool m_loading;
 
-	// Token: 0x04000B9E RID: 2974
+	// Token: 0x04000BA4 RID: 2980
 	private uint m_lastRevision;
 
-	// Token: 0x04000B9F RID: 2975
+	// Token: 0x04000BA5 RID: 2981
 	private string m_lastDataString = "";
 
 	// Token: 0x02000192 RID: 402
 	public enum PrivacySetting
 	{
-		// Token: 0x04001273 RID: 4723
+		// Token: 0x0400127A RID: 4730
 		Private,
-		// Token: 0x04001274 RID: 4724
+		// Token: 0x0400127B RID: 4731
 		Group,
-		// Token: 0x04001275 RID: 4725
+		// Token: 0x0400127C RID: 4732
 		Public
 	}
 }

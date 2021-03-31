@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000091 RID: 145
 public class ZSyncAnimation : MonoBehaviour
 {
-	// Token: 0x060009C1 RID: 2497 RVA: 0x00046C64 File Offset: 0x00044E64
+	// Token: 0x060009C2 RID: 2498 RVA: 0x00046D10 File Offset: 0x00044F10
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -47,13 +47,13 @@ public class ZSyncAnimation : MonoBehaviour
 		this.SyncParameters();
 	}
 
-	// Token: 0x060009C2 RID: 2498 RVA: 0x00046E62 File Offset: 0x00045062
+	// Token: 0x060009C3 RID: 2499 RVA: 0x00046F0E File Offset: 0x0004510E
 	public static int GetHash(string name)
 	{
 		return Animator.StringToHash(name);
 	}
 
-	// Token: 0x060009C3 RID: 2499 RVA: 0x00046E6A File Offset: 0x0004506A
+	// Token: 0x060009C4 RID: 2500 RVA: 0x00046F16 File Offset: 0x00045116
 	private void FixedUpdate()
 	{
 		if (!this.m_nview.IsValid())
@@ -63,7 +63,7 @@ public class ZSyncAnimation : MonoBehaviour
 		this.SyncParameters();
 	}
 
-	// Token: 0x060009C4 RID: 2500 RVA: 0x00046E80 File Offset: 0x00045080
+	// Token: 0x060009C5 RID: 2501 RVA: 0x00046F2C File Offset: 0x0004512C
 	private void SyncParameters()
 	{
 		ZDO zdo = this.m_nview.GetZDO();
@@ -101,7 +101,7 @@ public class ZSyncAnimation : MonoBehaviour
 		zdo.Set(ZSyncAnimation.m_animSpeedID, this.m_animator.speed);
 	}
 
-	// Token: 0x060009C5 RID: 2501 RVA: 0x00046FE7 File Offset: 0x000451E7
+	// Token: 0x060009C6 RID: 2502 RVA: 0x00047093 File Offset: 0x00045293
 	public void SetTrigger(string name)
 	{
 		this.m_nview.InvokeRPC(ZNetView.Everybody, "SetTrigger", new object[]
@@ -110,14 +110,14 @@ public class ZSyncAnimation : MonoBehaviour
 		});
 	}
 
-	// Token: 0x060009C6 RID: 2502 RVA: 0x00047008 File Offset: 0x00045208
+	// Token: 0x060009C7 RID: 2503 RVA: 0x000470B4 File Offset: 0x000452B4
 	public void SetBool(string name, bool value)
 	{
 		int hash = ZSyncAnimation.GetHash(name);
 		this.SetBool(hash, value);
 	}
 
-	// Token: 0x060009C7 RID: 2503 RVA: 0x00047024 File Offset: 0x00045224
+	// Token: 0x060009C8 RID: 2504 RVA: 0x000470D0 File Offset: 0x000452D0
 	public void SetBool(int hash, bool value)
 	{
 		if (this.m_animator.GetBool(hash) == value)
@@ -131,14 +131,14 @@ public class ZSyncAnimation : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009C8 RID: 2504 RVA: 0x00047080 File Offset: 0x00045280
+	// Token: 0x060009C9 RID: 2505 RVA: 0x0004712C File Offset: 0x0004532C
 	public void SetFloat(string name, float value)
 	{
 		int hash = ZSyncAnimation.GetHash(name);
 		this.SetFloat(hash, value);
 	}
 
-	// Token: 0x060009C9 RID: 2505 RVA: 0x0004709C File Offset: 0x0004529C
+	// Token: 0x060009CA RID: 2506 RVA: 0x00047148 File Offset: 0x00045348
 	public void SetFloat(int hash, float value)
 	{
 		if (Mathf.Abs(this.m_animator.GetFloat(hash) - value) < 0.01f)
@@ -159,14 +159,14 @@ public class ZSyncAnimation : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009CA RID: 2506 RVA: 0x00047134 File Offset: 0x00045334
+	// Token: 0x060009CB RID: 2507 RVA: 0x000471E0 File Offset: 0x000453E0
 	public void SetInt(string name, int value)
 	{
 		int hash = ZSyncAnimation.GetHash(name);
 		this.SetInt(hash, value);
 	}
 
-	// Token: 0x060009CB RID: 2507 RVA: 0x00047150 File Offset: 0x00045350
+	// Token: 0x060009CC RID: 2508 RVA: 0x000471FC File Offset: 0x000453FC
 	public void SetInt(int hash, int value)
 	{
 		if (this.m_animator.GetInteger(hash) == value)
@@ -180,69 +180,69 @@ public class ZSyncAnimation : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060009CC RID: 2508 RVA: 0x000471AC File Offset: 0x000453AC
+	// Token: 0x060009CD RID: 2509 RVA: 0x00047258 File Offset: 0x00045458
 	private void RPC_SetTrigger(long sender, string name)
 	{
 		this.m_animator.SetTrigger(name);
 	}
 
-	// Token: 0x060009CD RID: 2509 RVA: 0x000471BA File Offset: 0x000453BA
+	// Token: 0x060009CE RID: 2510 RVA: 0x00047266 File Offset: 0x00045466
 	public void SetSpeed(float speed)
 	{
 		this.m_animator.speed = speed;
 	}
 
-	// Token: 0x060009CE RID: 2510 RVA: 0x000471C8 File Offset: 0x000453C8
+	// Token: 0x060009CF RID: 2511 RVA: 0x00047274 File Offset: 0x00045474
 	public bool IsOwner()
 	{
 		return this.m_nview.IsValid() && this.m_nview.IsOwner();
 	}
 
-	// Token: 0x040008CF RID: 2255
+	// Token: 0x040008D3 RID: 2259
 	private ZNetView m_nview;
 
-	// Token: 0x040008D0 RID: 2256
+	// Token: 0x040008D4 RID: 2260
 	private Animator m_animator;
 
-	// Token: 0x040008D1 RID: 2257
+	// Token: 0x040008D5 RID: 2261
 	public List<string> m_syncBools = new List<string>();
 
-	// Token: 0x040008D2 RID: 2258
+	// Token: 0x040008D6 RID: 2262
 	public List<string> m_syncFloats = new List<string>();
 
-	// Token: 0x040008D3 RID: 2259
+	// Token: 0x040008D7 RID: 2263
 	public List<string> m_syncInts = new List<string>();
 
-	// Token: 0x040008D4 RID: 2260
+	// Token: 0x040008D8 RID: 2264
 	public bool m_smoothCharacterSpeeds = true;
 
-	// Token: 0x040008D5 RID: 2261
+	// Token: 0x040008D9 RID: 2265
 	private static int m_forwardSpeedID;
 
-	// Token: 0x040008D6 RID: 2262
+	// Token: 0x040008DA RID: 2266
 	private static int m_sidewaySpeedID;
 
-	// Token: 0x040008D7 RID: 2263
+	// Token: 0x040008DB RID: 2267
 	private static int m_animSpeedID;
 
-	// Token: 0x040008D8 RID: 2264
+	// Token: 0x040008DC RID: 2268
 	private int[] m_boolHashes;
 
-	// Token: 0x040008D9 RID: 2265
+	// Token: 0x040008DD RID: 2269
 	private bool[] m_boolDefaults;
 
-	// Token: 0x040008DA RID: 2266
+	// Token: 0x040008DE RID: 2270
 	private int[] m_floatHashes;
 
-	// Token: 0x040008DB RID: 2267
+	// Token: 0x040008DF RID: 2271
 	private float[] m_floatDefaults;
 
-	// Token: 0x040008DC RID: 2268
+	// Token: 0x040008E0 RID: 2272
 	private int[] m_intHashes;
 
-	// Token: 0x040008DD RID: 2269
+	// Token: 0x040008E1 RID: 2273
 	private int[] m_intDefaults;
 
-	// Token: 0x040008DE RID: 2270
+	// Token: 0x040008E2 RID: 2274
 	private const int m_zdoSalt = 438569;
 }

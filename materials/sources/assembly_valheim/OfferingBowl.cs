@@ -5,12 +5,12 @@ using UnityEngine;
 // Token: 0x020000E5 RID: 229
 public class OfferingBowl : MonoBehaviour, Hoverable, Interactable
 {
-	// Token: 0x06000E36 RID: 3638 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x06000E37 RID: 3639 RVA: 0x000027E0 File Offset: 0x000009E0
 	private void Awake()
 	{
 	}
 
-	// Token: 0x06000E37 RID: 3639 RVA: 0x00065798 File Offset: 0x00063998
+	// Token: 0x06000E38 RID: 3640 RVA: 0x00065920 File Offset: 0x00063B20
 	public string GetHoverText()
 	{
 		if (this.m_useItemStands)
@@ -20,13 +20,13 @@ public class OfferingBowl : MonoBehaviour, Hoverable, Interactable
 		return Localization.instance.Localize(this.m_name + "\n[<color=yellow><b>1-8</b></color>] " + this.m_useItemText);
 	}
 
-	// Token: 0x06000E38 RID: 3640 RVA: 0x000657FD File Offset: 0x000639FD
+	// Token: 0x06000E39 RID: 3641 RVA: 0x00065985 File Offset: 0x00063B85
 	public string GetHoverName()
 	{
 		return this.m_name;
 	}
 
-	// Token: 0x06000E39 RID: 3641 RVA: 0x00065808 File Offset: 0x00063A08
+	// Token: 0x06000E3A RID: 3642 RVA: 0x00065990 File Offset: 0x00063B90
 	public bool Interact(Humanoid user, bool hold)
 	{
 		if (hold)
@@ -68,7 +68,7 @@ public class OfferingBowl : MonoBehaviour, Hoverable, Interactable
 		return false;
 	}
 
-	// Token: 0x06000E3A RID: 3642 RVA: 0x00065920 File Offset: 0x00063B20
+	// Token: 0x06000E3B RID: 3643 RVA: 0x00065AA8 File Offset: 0x00063CA8
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		if (this.m_useItemStands)
@@ -129,7 +129,7 @@ public class OfferingBowl : MonoBehaviour, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x06000E3B RID: 3643 RVA: 0x00065B64 File Offset: 0x00063D64
+	// Token: 0x06000E3C RID: 3644 RVA: 0x00065CEC File Offset: 0x00063EEC
 	private bool SpawnItem(ItemDrop item, Player player)
 	{
 		if (item.m_itemData.m_shared.m_questItem && player.HaveUniqueKey(item.m_itemData.m_shared.m_name))
@@ -141,7 +141,7 @@ public class OfferingBowl : MonoBehaviour, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x06000E3C RID: 3644 RVA: 0x00065BC4 File Offset: 0x00063DC4
+	// Token: 0x06000E3D RID: 3645 RVA: 0x00065D4C File Offset: 0x00063F4C
 	private bool SpawnBoss(Vector3 point)
 	{
 		for (int i = 0; i < 100; i++)
@@ -161,13 +161,13 @@ public class OfferingBowl : MonoBehaviour, Hoverable, Interactable
 		return false;
 	}
 
-	// Token: 0x06000E3D RID: 3645 RVA: 0x00065C87 File Offset: 0x00063E87
+	// Token: 0x06000E3E RID: 3646 RVA: 0x00065E0F File Offset: 0x0006400F
 	private bool IsBossSpawnQueued()
 	{
 		return base.IsInvoking("DelayedSpawnBoss");
 	}
 
-	// Token: 0x06000E3E RID: 3646 RVA: 0x00065C94 File Offset: 0x00063E94
+	// Token: 0x06000E3F RID: 3647 RVA: 0x00065E1C File Offset: 0x0006401C
 	private void DelayedSpawnBoss()
 	{
 		BaseAI component = UnityEngine.Object.Instantiate<GameObject>(this.m_bossPrefab, this.m_bossSpawnPoint, Quaternion.identity).GetComponent<BaseAI>();
@@ -178,7 +178,7 @@ public class OfferingBowl : MonoBehaviour, Hoverable, Interactable
 		this.m_spawnBossDoneffects.Create(this.m_bossSpawnPoint, Quaternion.identity, null, 1f);
 	}
 
-	// Token: 0x06000E3F RID: 3647 RVA: 0x00065CEC File Offset: 0x00063EEC
+	// Token: 0x06000E40 RID: 3648 RVA: 0x00065E74 File Offset: 0x00064074
 	private List<ItemStand> FindItemStands()
 	{
 		List<ItemStand> list = new List<ItemStand>();
@@ -192,63 +192,63 @@ public class OfferingBowl : MonoBehaviour, Hoverable, Interactable
 		return list;
 	}
 
-	// Token: 0x04000CEE RID: 3310
+	// Token: 0x04000CF4 RID: 3316
 	public string m_name = "Ancient bowl";
 
-	// Token: 0x04000CEF RID: 3311
+	// Token: 0x04000CF5 RID: 3317
 	public string m_useItemText = "Burn item";
 
-	// Token: 0x04000CF0 RID: 3312
+	// Token: 0x04000CF6 RID: 3318
 	public ItemDrop m_bossItem;
 
-	// Token: 0x04000CF1 RID: 3313
+	// Token: 0x04000CF7 RID: 3319
 	public int m_bossItems = 1;
 
-	// Token: 0x04000CF2 RID: 3314
+	// Token: 0x04000CF8 RID: 3320
 	public GameObject m_bossPrefab;
 
-	// Token: 0x04000CF3 RID: 3315
+	// Token: 0x04000CF9 RID: 3321
 	public ItemDrop m_itemPrefab;
 
-	// Token: 0x04000CF4 RID: 3316
+	// Token: 0x04000CFA RID: 3322
 	public Transform m_itemSpawnPoint;
 
-	// Token: 0x04000CF5 RID: 3317
+	// Token: 0x04000CFB RID: 3323
 	public string m_setGlobalKey = "";
 
-	// Token: 0x04000CF6 RID: 3318
+	// Token: 0x04000CFC RID: 3324
 	[Header("Boss")]
 	public float m_spawnBossDelay = 5f;
 
-	// Token: 0x04000CF7 RID: 3319
+	// Token: 0x04000CFD RID: 3325
 	public float m_spawnBossMaxDistance = 40f;
 
-	// Token: 0x04000CF8 RID: 3320
+	// Token: 0x04000CFE RID: 3326
 	public float m_spawnBossMaxYDistance = 9999f;
 
-	// Token: 0x04000CF9 RID: 3321
+	// Token: 0x04000CFF RID: 3327
 	public float m_spawnOffset = 1f;
 
-	// Token: 0x04000CFA RID: 3322
+	// Token: 0x04000D00 RID: 3328
 	[Header("Use itemstands")]
 	public bool m_useItemStands;
 
-	// Token: 0x04000CFB RID: 3323
+	// Token: 0x04000D01 RID: 3329
 	public string m_itemStandPrefix = "";
 
-	// Token: 0x04000CFC RID: 3324
+	// Token: 0x04000D02 RID: 3330
 	public float m_itemstandMaxRange = 20f;
 
-	// Token: 0x04000CFD RID: 3325
+	// Token: 0x04000D03 RID: 3331
 	[Header("Effects")]
 	public EffectList m_fuelAddedEffects = new EffectList();
 
-	// Token: 0x04000CFE RID: 3326
+	// Token: 0x04000D04 RID: 3332
 	public EffectList m_spawnBossStartEffects = new EffectList();
 
-	// Token: 0x04000CFF RID: 3327
+	// Token: 0x04000D05 RID: 3333
 	public EffectList m_spawnBossDoneffects = new EffectList();
 
-	// Token: 0x04000D00 RID: 3328
+	// Token: 0x04000D06 RID: 3334
 	private Vector3 m_bossSpawnPoint;
 }

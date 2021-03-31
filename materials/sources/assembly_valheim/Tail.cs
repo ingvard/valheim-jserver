@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x02000015 RID: 21
 public class Tail : MonoBehaviour
 {
-	// Token: 0x0600027F RID: 639 RVA: 0x000141D8 File Offset: 0x000123D8
+	// Token: 0x06000280 RID: 640 RVA: 0x0001428C File Offset: 0x0001248C
 	private void Awake()
 	{
 		foreach (Transform transform in this.m_tailJoints)
@@ -21,7 +21,7 @@ public class Tail : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000280 RID: 640 RVA: 0x0001427C File Offset: 0x0001247C
+	// Token: 0x06000281 RID: 641 RVA: 0x00014330 File Offset: 0x00012530
 	private void LateUpdate()
 	{
 		float deltaTime = Time.deltaTime;
@@ -80,64 +80,64 @@ public class Tail : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040001E7 RID: 487
+	// Token: 0x040001EB RID: 491
 	public List<Transform> m_tailJoints = new List<Transform>();
 
-	// Token: 0x040001E8 RID: 488
+	// Token: 0x040001EC RID: 492
 	public float m_yMovementDistance = 0.5f;
 
-	// Token: 0x040001E9 RID: 489
+	// Token: 0x040001ED RID: 493
 	public float m_yMovementFreq = 0.5f;
 
-	// Token: 0x040001EA RID: 490
+	// Token: 0x040001EE RID: 494
 	public float m_yMovementOffset = 0.2f;
 
-	// Token: 0x040001EB RID: 491
+	// Token: 0x040001EF RID: 495
 	public float m_maxAngle = 80f;
 
-	// Token: 0x040001EC RID: 492
+	// Token: 0x040001F0 RID: 496
 	public float m_gravity = 2f;
 
-	// Token: 0x040001ED RID: 493
+	// Token: 0x040001F1 RID: 497
 	public float m_gravityInWater = 0.1f;
 
-	// Token: 0x040001EE RID: 494
+	// Token: 0x040001F2 RID: 498
 	public bool m_waterSurfaceCheck;
 
-	// Token: 0x040001EF RID: 495
+	// Token: 0x040001F3 RID: 499
 	public bool m_groundCheck;
 
-	// Token: 0x040001F0 RID: 496
+	// Token: 0x040001F4 RID: 500
 	public float m_smoothness = 0.1f;
 
-	// Token: 0x040001F1 RID: 497
+	// Token: 0x040001F5 RID: 501
 	public float m_tailRadius;
 
-	// Token: 0x040001F2 RID: 498
+	// Token: 0x040001F6 RID: 502
 	public Character m_character;
 
-	// Token: 0x040001F3 RID: 499
+	// Token: 0x040001F7 RID: 503
 	public Rigidbody m_characterBody;
 
-	// Token: 0x040001F4 RID: 500
+	// Token: 0x040001F8 RID: 504
 	public Rigidbody m_tailBody;
 
-	// Token: 0x040001F5 RID: 501
+	// Token: 0x040001F9 RID: 505
 	private List<Tail.TailSegment> m_positions = new List<Tail.TailSegment>();
 
 	// Token: 0x0200012D RID: 301
 	private class TailSegment
 	{
-		// Token: 0x0400101C RID: 4124
+		// Token: 0x04001023 RID: 4131
 		public Transform transform;
 
-		// Token: 0x0400101D RID: 4125
+		// Token: 0x04001024 RID: 4132
 		public Vector3 pos;
 
-		// Token: 0x0400101E RID: 4126
+		// Token: 0x04001025 RID: 4133
 		public Quaternion rot;
 
-		// Token: 0x0400101F RID: 4127
+		// Token: 0x04001026 RID: 4134
 		public float distance;
 	}
 }

@@ -7,7 +7,7 @@ using System.Threading;
 public class ZNtp : IDisposable
 {
 	// Token: 0x1700001B RID: 27
-	// (get) Token: 0x060008BA RID: 2234 RVA: 0x00042311 File Offset: 0x00040511
+	// (get) Token: 0x060008BB RID: 2235 RVA: 0x000423C5 File Offset: 0x000405C5
 	public static ZNtp instance
 	{
 		get
@@ -16,7 +16,7 @@ public class ZNtp : IDisposable
 		}
 	}
 
-	// Token: 0x060008BB RID: 2235 RVA: 0x00042318 File Offset: 0x00040518
+	// Token: 0x060008BC RID: 2236 RVA: 0x000423CC File Offset: 0x000405CC
 	public ZNtp()
 	{
 		ZNtp.m_instance = this;
@@ -25,7 +25,7 @@ public class ZNtp : IDisposable
 		this.m_ntpThread.Start();
 	}
 
-	// Token: 0x060008BC RID: 2236 RVA: 0x0004236C File Offset: 0x0004056C
+	// Token: 0x060008BD RID: 2237 RVA: 0x00042420 File Offset: 0x00040620
 	public void Dispose()
 	{
 		if (this.m_ntpThread != null)
@@ -44,13 +44,13 @@ public class ZNtp : IDisposable
 		}
 	}
 
-	// Token: 0x060008BD RID: 2237 RVA: 0x000423D5 File Offset: 0x000405D5
+	// Token: 0x060008BE RID: 2238 RVA: 0x00042489 File Offset: 0x00040689
 	public bool GetStatus()
 	{
 		return this.m_status;
 	}
 
-	// Token: 0x060008BE RID: 2238 RVA: 0x000423DD File Offset: 0x000405DD
+	// Token: 0x060008BF RID: 2239 RVA: 0x00042491 File Offset: 0x00040691
 	public void Update(float dt)
 	{
 		this.m_lock.WaitOne();
@@ -58,7 +58,7 @@ public class ZNtp : IDisposable
 		this.m_lock.ReleaseMutex();
 	}
 
-	// Token: 0x060008BF RID: 2239 RVA: 0x0004240C File Offset: 0x0004060C
+	// Token: 0x060008C0 RID: 2240 RVA: 0x000424C0 File Offset: 0x000406C0
 	private void NtpThread()
 	{
 		while (!this.m_stop)
@@ -79,13 +79,13 @@ public class ZNtp : IDisposable
 		}
 	}
 
-	// Token: 0x060008C0 RID: 2240 RVA: 0x0004246A File Offset: 0x0004066A
+	// Token: 0x060008C1 RID: 2241 RVA: 0x0004251E File Offset: 0x0004071E
 	public DateTime GetTime()
 	{
 		return this.m_ntpTime;
 	}
 
-	// Token: 0x060008C1 RID: 2241 RVA: 0x00042474 File Offset: 0x00040674
+	// Token: 0x060008C2 RID: 2242 RVA: 0x00042528 File Offset: 0x00040728
 	private bool GetNetworkTime(string ntpServer, out DateTime time)
 	{
 		byte[] array = new byte[48];
@@ -143,21 +143,21 @@ public class ZNtp : IDisposable
 		return true;
 	}
 
-	// Token: 0x04000851 RID: 2129
+	// Token: 0x04000855 RID: 2133
 	private static ZNtp m_instance;
 
-	// Token: 0x04000852 RID: 2130
+	// Token: 0x04000856 RID: 2134
 	private DateTime m_ntpTime;
 
-	// Token: 0x04000853 RID: 2131
+	// Token: 0x04000857 RID: 2135
 	private bool m_status;
 
-	// Token: 0x04000854 RID: 2132
+	// Token: 0x04000858 RID: 2136
 	private bool m_stop;
 
-	// Token: 0x04000855 RID: 2133
+	// Token: 0x04000859 RID: 2137
 	private Thread m_ntpThread;
 
-	// Token: 0x04000856 RID: 2134
+	// Token: 0x0400085A RID: 2138
 	private Mutex m_lock = new Mutex();
 }

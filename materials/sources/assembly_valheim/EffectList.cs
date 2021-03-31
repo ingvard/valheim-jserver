@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class EffectList
 {
-	// Token: 0x06000421 RID: 1057 RVA: 0x0002177C File Offset: 0x0001F97C
+	// Token: 0x06000422 RID: 1058 RVA: 0x00021830 File Offset: 0x0001FA30
 	public GameObject[] Create(Vector3 pos, Quaternion rot, Transform parent = null, float scale = 1f)
 	{
 		List<GameObject> list = new List<GameObject>();
@@ -50,7 +50,7 @@ public class EffectList
 		return list.ToArray();
 	}
 
-	// Token: 0x06000422 RID: 1058 RVA: 0x000218A0 File Offset: 0x0001FAA0
+	// Token: 0x06000423 RID: 1059 RVA: 0x00021954 File Offset: 0x0001FB54
 	public bool HasEffects()
 	{
 		if (this.m_effectPrefabs == null || this.m_effectPrefabs.Length == 0)
@@ -68,32 +68,32 @@ public class EffectList
 		return false;
 	}
 
-	// Token: 0x0400041F RID: 1055
+	// Token: 0x04000423 RID: 1059
 	public EffectList.EffectData[] m_effectPrefabs = new EffectList.EffectData[0];
 
 	// Token: 0x02000138 RID: 312
 	[Serializable]
 	public class EffectData
 	{
-		// Token: 0x0400104E RID: 4174
+		// Token: 0x04001055 RID: 4181
 		public GameObject m_prefab;
 
-		// Token: 0x0400104F RID: 4175
+		// Token: 0x04001056 RID: 4182
 		public bool m_enabled = true;
 
-		// Token: 0x04001050 RID: 4176
+		// Token: 0x04001057 RID: 4183
 		public bool m_attach;
 
-		// Token: 0x04001051 RID: 4177
+		// Token: 0x04001058 RID: 4184
 		public bool m_inheritParentRotation;
 
-		// Token: 0x04001052 RID: 4178
+		// Token: 0x04001059 RID: 4185
 		public bool m_inheritParentScale;
 
-		// Token: 0x04001053 RID: 4179
+		// Token: 0x0400105A RID: 4186
 		public bool m_randomRotation;
 
-		// Token: 0x04001054 RID: 4180
+		// Token: 0x0400105B RID: 4187
 		public bool m_scale;
 	}
 }

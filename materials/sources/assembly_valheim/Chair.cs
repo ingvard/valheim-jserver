@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x020000BD RID: 189
 public class Chair : MonoBehaviour, Hoverable, Interactable
 {
-	// Token: 0x06000C89 RID: 3209 RVA: 0x00059800 File Offset: 0x00057A00
+	// Token: 0x06000C8A RID: 3210 RVA: 0x00059988 File Offset: 0x00057B88
 	public string GetHoverText()
 	{
 		if (Time.time - Chair.m_lastSitTime < 2f)
@@ -18,13 +18,13 @@ public class Chair : MonoBehaviour, Hoverable, Interactable
 		return Localization.instance.Localize(this.m_name + "\n[<color=yellow><b>$KEY_Use</b></color>] $piece_use");
 	}
 
-	// Token: 0x06000C8A RID: 3210 RVA: 0x0005985C File Offset: 0x00057A5C
+	// Token: 0x06000C8B RID: 3211 RVA: 0x000599E4 File Offset: 0x00057BE4
 	public string GetHoverName()
 	{
 		return this.m_name;
 	}
 
-	// Token: 0x06000C8B RID: 3211 RVA: 0x00059864 File Offset: 0x00057A64
+	// Token: 0x06000C8C RID: 3212 RVA: 0x000599EC File Offset: 0x00057BEC
 	public bool Interact(Humanoid human, bool hold)
 	{
 		if (hold)
@@ -52,36 +52,36 @@ public class Chair : MonoBehaviour, Hoverable, Interactable
 		return false;
 	}
 
-	// Token: 0x06000C8C RID: 3212 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000C8D RID: 3213 RVA: 0x000023E2 File Offset: 0x000005E2
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		return false;
 	}
 
-	// Token: 0x06000C8D RID: 3213 RVA: 0x000598D3 File Offset: 0x00057AD3
+	// Token: 0x06000C8E RID: 3214 RVA: 0x00059A5B File Offset: 0x00057C5B
 	private bool InUseDistance(Humanoid human)
 	{
 		return Vector3.Distance(human.transform.position, this.m_attachPoint.position) < this.m_useDistance;
 	}
 
-	// Token: 0x04000B70 RID: 2928
+	// Token: 0x04000B76 RID: 2934
 	public string m_name = "Chair";
 
-	// Token: 0x04000B71 RID: 2929
+	// Token: 0x04000B77 RID: 2935
 	public float m_useDistance = 2f;
 
-	// Token: 0x04000B72 RID: 2930
+	// Token: 0x04000B78 RID: 2936
 	public Transform m_attachPoint;
 
-	// Token: 0x04000B73 RID: 2931
+	// Token: 0x04000B79 RID: 2937
 	public Vector3 m_detachOffset = new Vector3(0f, 0.5f, 0f);
 
-	// Token: 0x04000B74 RID: 2932
+	// Token: 0x04000B7A RID: 2938
 	public string m_attachAnimation = "attach_chair";
 
-	// Token: 0x04000B75 RID: 2933
+	// Token: 0x04000B7B RID: 2939
 	private const float m_minSitDelay = 2f;
 
-	// Token: 0x04000B76 RID: 2934
+	// Token: 0x04000B7C RID: 2940
 	private static float m_lastSitTime;
 }

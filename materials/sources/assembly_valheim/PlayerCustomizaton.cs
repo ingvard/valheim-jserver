@@ -6,7 +6,7 @@ using UnityEngine.UI;
 // Token: 0x0200005B RID: 91
 public class PlayerCustomizaton : MonoBehaviour
 {
-	// Token: 0x060005E5 RID: 1509 RVA: 0x00032AA8 File Offset: 0x00030CA8
+	// Token: 0x060005E6 RID: 1510 RVA: 0x00032B5C File Offset: 0x00030D5C
 	private void OnEnable()
 	{
 		this.m_maleToggle.isOn = true;
@@ -22,7 +22,7 @@ public class PlayerCustomizaton : MonoBehaviour
 		this.m_hairs.Insert(0, this.m_noHair);
 	}
 
-	// Token: 0x060005E6 RID: 1510 RVA: 0x00032BA8 File Offset: 0x00030DA8
+	// Token: 0x060005E7 RID: 1511 RVA: 0x00032C5C File Offset: 0x00030E5C
 	private void Update()
 	{
 		if (this.GetPlayer() == null)
@@ -37,23 +37,23 @@ public class PlayerCustomizaton : MonoBehaviour
 		this.GetPlayer().SetHairColor(Utils.ColorToVec3(c2));
 	}
 
-	// Token: 0x060005E7 RID: 1511 RVA: 0x00032C77 File Offset: 0x00030E77
+	// Token: 0x060005E8 RID: 1512 RVA: 0x00032D2B File Offset: 0x00030F2B
 	private Player GetPlayer()
 	{
 		return base.GetComponentInParent<FejdStartup>().GetPreviewPlayer();
 	}
 
-	// Token: 0x060005E8 RID: 1512 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x060005E9 RID: 1513 RVA: 0x000027E0 File Offset: 0x000009E0
 	public void OnHairHueChange(float v)
 	{
 	}
 
-	// Token: 0x060005E9 RID: 1513 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x060005EA RID: 1514 RVA: 0x000027E0 File Offset: 0x000009E0
 	public void OnSkinHueChange(float v)
 	{
 	}
 
-	// Token: 0x060005EA RID: 1514 RVA: 0x00032C84 File Offset: 0x00030E84
+	// Token: 0x060005EB RID: 1515 RVA: 0x00032D38 File Offset: 0x00030F38
 	public void SetPlayerModel(int index)
 	{
 		this.GetPlayer().SetPlayerModel(index);
@@ -63,19 +63,19 @@ public class PlayerCustomizaton : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060005EB RID: 1515 RVA: 0x00032C9C File Offset: 0x00030E9C
+	// Token: 0x060005EC RID: 1516 RVA: 0x00032D50 File Offset: 0x00030F50
 	public void OnHairLeft()
 	{
 		this.SetHair(this.GetHairIndex() - 1);
 	}
 
-	// Token: 0x060005EC RID: 1516 RVA: 0x00032CAC File Offset: 0x00030EAC
+	// Token: 0x060005ED RID: 1517 RVA: 0x00032D60 File Offset: 0x00030F60
 	public void OnHairRight()
 	{
 		this.SetHair(this.GetHairIndex() + 1);
 	}
 
-	// Token: 0x060005ED RID: 1517 RVA: 0x00032CBC File Offset: 0x00030EBC
+	// Token: 0x060005EE RID: 1518 RVA: 0x00032D70 File Offset: 0x00030F70
 	public void OnBeardLeft()
 	{
 		if (this.GetPlayer().GetPlayerModel() == 1)
@@ -85,7 +85,7 @@ public class PlayerCustomizaton : MonoBehaviour
 		this.SetBeard(this.GetBeardIndex() - 1);
 	}
 
-	// Token: 0x060005EE RID: 1518 RVA: 0x00032CDB File Offset: 0x00030EDB
+	// Token: 0x060005EF RID: 1519 RVA: 0x00032D8F File Offset: 0x00030F8F
 	public void OnBeardRight()
 	{
 		if (this.GetPlayer().GetPlayerModel() == 1)
@@ -95,13 +95,13 @@ public class PlayerCustomizaton : MonoBehaviour
 		this.SetBeard(this.GetBeardIndex() + 1);
 	}
 
-	// Token: 0x060005EF RID: 1519 RVA: 0x00032CFA File Offset: 0x00030EFA
+	// Token: 0x060005F0 RID: 1520 RVA: 0x00032DAE File Offset: 0x00030FAE
 	private void ResetBeard()
 	{
 		this.GetPlayer().SetBeard(this.m_noBeard.gameObject.name);
 	}
 
-	// Token: 0x060005F0 RID: 1520 RVA: 0x00032D17 File Offset: 0x00030F17
+	// Token: 0x060005F1 RID: 1521 RVA: 0x00032DCB File Offset: 0x00030FCB
 	private void SetBeard(int index)
 	{
 		if (index < 0 || index >= this.m_beards.Count)
@@ -111,7 +111,7 @@ public class PlayerCustomizaton : MonoBehaviour
 		this.GetPlayer().SetBeard(this.m_beards[index].gameObject.name);
 	}
 
-	// Token: 0x060005F1 RID: 1521 RVA: 0x00032D50 File Offset: 0x00030F50
+	// Token: 0x060005F2 RID: 1522 RVA: 0x00032E04 File Offset: 0x00031004
 	private void SetHair(int index)
 	{
 		ZLog.Log("Set hair " + index);
@@ -122,7 +122,7 @@ public class PlayerCustomizaton : MonoBehaviour
 		this.GetPlayer().SetHair(this.m_hairs[index].gameObject.name);
 	}
 
-	// Token: 0x060005F2 RID: 1522 RVA: 0x00032DA8 File Offset: 0x00030FA8
+	// Token: 0x060005F3 RID: 1523 RVA: 0x00032E5C File Offset: 0x0003105C
 	private int GetBeardIndex()
 	{
 		string beard = this.GetPlayer().GetBeard();
@@ -136,7 +136,7 @@ public class PlayerCustomizaton : MonoBehaviour
 		return 0;
 	}
 
-	// Token: 0x060005F3 RID: 1523 RVA: 0x00032DF8 File Offset: 0x00030FF8
+	// Token: 0x060005F4 RID: 1524 RVA: 0x00032EAC File Offset: 0x000310AC
 	private int GetHairIndex()
 	{
 		string hair = this.GetPlayer().GetHair();
@@ -150,69 +150,69 @@ public class PlayerCustomizaton : MonoBehaviour
 		return 0;
 	}
 
-	// Token: 0x060005F4 RID: 1524 RVA: 0x00032E48 File Offset: 0x00031048
+	// Token: 0x060005F5 RID: 1525 RVA: 0x00032EFC File Offset: 0x000310FC
 	private string GetHair()
 	{
 		return this.m_hairs[this.GetHairIndex()].m_itemData.m_shared.m_name;
 	}
 
-	// Token: 0x060005F5 RID: 1525 RVA: 0x00032E6A File Offset: 0x0003106A
+	// Token: 0x060005F6 RID: 1526 RVA: 0x00032F1E File Offset: 0x0003111E
 	private string GetBeard()
 	{
 		return this.m_beards[this.GetBeardIndex()].m_itemData.m_shared.m_name;
 	}
 
-	// Token: 0x0400068E RID: 1678
+	// Token: 0x04000692 RID: 1682
 	public Color m_skinColor0 = Color.white;
 
-	// Token: 0x0400068F RID: 1679
+	// Token: 0x04000693 RID: 1683
 	public Color m_skinColor1 = Color.white;
 
-	// Token: 0x04000690 RID: 1680
+	// Token: 0x04000694 RID: 1684
 	public Color m_hairColor0 = Color.white;
 
-	// Token: 0x04000691 RID: 1681
+	// Token: 0x04000695 RID: 1685
 	public Color m_hairColor1 = Color.white;
 
-	// Token: 0x04000692 RID: 1682
+	// Token: 0x04000696 RID: 1686
 	public float m_hairMaxLevel = 1f;
 
-	// Token: 0x04000693 RID: 1683
+	// Token: 0x04000697 RID: 1687
 	public float m_hairMinLevel = 0.1f;
 
-	// Token: 0x04000694 RID: 1684
+	// Token: 0x04000698 RID: 1688
 	public Text m_selectedBeard;
 
-	// Token: 0x04000695 RID: 1685
+	// Token: 0x04000699 RID: 1689
 	public Text m_selectedHair;
 
-	// Token: 0x04000696 RID: 1686
+	// Token: 0x0400069A RID: 1690
 	public Slider m_skinHue;
 
-	// Token: 0x04000697 RID: 1687
+	// Token: 0x0400069B RID: 1691
 	public Slider m_hairLevel;
 
-	// Token: 0x04000698 RID: 1688
+	// Token: 0x0400069C RID: 1692
 	public Slider m_hairTone;
 
-	// Token: 0x04000699 RID: 1689
+	// Token: 0x0400069D RID: 1693
 	public RectTransform m_beardPanel;
 
-	// Token: 0x0400069A RID: 1690
+	// Token: 0x0400069E RID: 1694
 	public Toggle m_maleToggle;
 
-	// Token: 0x0400069B RID: 1691
+	// Token: 0x0400069F RID: 1695
 	public Toggle m_femaleToggle;
 
-	// Token: 0x0400069C RID: 1692
+	// Token: 0x040006A0 RID: 1696
 	public ItemDrop m_noHair;
 
-	// Token: 0x0400069D RID: 1693
+	// Token: 0x040006A1 RID: 1697
 	public ItemDrop m_noBeard;
 
-	// Token: 0x0400069E RID: 1694
+	// Token: 0x040006A2 RID: 1698
 	private List<ItemDrop> m_beards;
 
-	// Token: 0x0400069F RID: 1695
+	// Token: 0x040006A3 RID: 1699
 	private List<ItemDrop> m_hairs;
 }

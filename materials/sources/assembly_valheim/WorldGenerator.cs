@@ -6,20 +6,20 @@ using UnityEngine;
 // Token: 0x02000115 RID: 277
 public class WorldGenerator
 {
-	// Token: 0x06001041 RID: 4161 RVA: 0x00072908 File Offset: 0x00070B08
+	// Token: 0x06001042 RID: 4162 RVA: 0x00072A90 File Offset: 0x00070C90
 	public static void Initialize(World world)
 	{
 		WorldGenerator.m_instance = new WorldGenerator(world);
 	}
 
-	// Token: 0x06001042 RID: 4162 RVA: 0x00072915 File Offset: 0x00070B15
+	// Token: 0x06001043 RID: 4163 RVA: 0x00072A9D File Offset: 0x00070C9D
 	public static void Deitialize()
 	{
 		WorldGenerator.m_instance = null;
 	}
 
 	// Token: 0x17000032 RID: 50
-	// (get) Token: 0x06001043 RID: 4163 RVA: 0x0007291D File Offset: 0x00070B1D
+	// (get) Token: 0x06001044 RID: 4164 RVA: 0x00072AA5 File Offset: 0x00070CA5
 	public static WorldGenerator instance
 	{
 		get
@@ -28,7 +28,7 @@ public class WorldGenerator
 		}
 	}
 
-	// Token: 0x06001044 RID: 4164 RVA: 0x00072924 File Offset: 0x00070B24
+	// Token: 0x06001045 RID: 4165 RVA: 0x00072AAC File Offset: 0x00070CAC
 	private WorldGenerator(World world)
 	{
 		this.m_world = world;
@@ -50,7 +50,7 @@ public class WorldGenerator
 		UnityEngine.Random.state = state;
 	}
 
-	// Token: 0x06001045 RID: 4165 RVA: 0x00072A77 File Offset: 0x00070C77
+	// Token: 0x06001046 RID: 4166 RVA: 0x00072BFF File Offset: 0x00070DFF
 	private void VersionSetup(int version)
 	{
 		if (version < 1)
@@ -59,7 +59,7 @@ public class WorldGenerator
 		}
 	}
 
-	// Token: 0x06001046 RID: 4166 RVA: 0x00072A88 File Offset: 0x00070C88
+	// Token: 0x06001047 RID: 4167 RVA: 0x00072C10 File Offset: 0x00070E10
 	private void Pregenerate()
 	{
 		this.FindMountains();
@@ -68,31 +68,31 @@ public class WorldGenerator
 		this.m_streams = this.PlaceStreams();
 	}
 
-	// Token: 0x06001047 RID: 4167 RVA: 0x00072AAE File Offset: 0x00070CAE
+	// Token: 0x06001048 RID: 4168 RVA: 0x00072C36 File Offset: 0x00070E36
 	public List<Vector2> GetMountains()
 	{
 		return this.m_mountains;
 	}
 
-	// Token: 0x06001048 RID: 4168 RVA: 0x00072AB6 File Offset: 0x00070CB6
+	// Token: 0x06001049 RID: 4169 RVA: 0x00072C3E File Offset: 0x00070E3E
 	public List<Vector2> GetLakes()
 	{
 		return this.m_lakes;
 	}
 
-	// Token: 0x06001049 RID: 4169 RVA: 0x00072ABE File Offset: 0x00070CBE
+	// Token: 0x0600104A RID: 4170 RVA: 0x00072C46 File Offset: 0x00070E46
 	public List<WorldGenerator.River> GetRivers()
 	{
 		return this.m_rivers;
 	}
 
-	// Token: 0x0600104A RID: 4170 RVA: 0x00072AC6 File Offset: 0x00070CC6
+	// Token: 0x0600104B RID: 4171 RVA: 0x00072C4E File Offset: 0x00070E4E
 	public List<WorldGenerator.River> GetStreams()
 	{
 		return this.m_streams;
 	}
 
-	// Token: 0x0600104B RID: 4171 RVA: 0x00072AD0 File Offset: 0x00070CD0
+	// Token: 0x0600104C RID: 4172 RVA: 0x00072C58 File Offset: 0x00070E58
 	private void FindMountains()
 	{
 		DateTime now = DateTime.Now;
@@ -111,7 +111,7 @@ public class WorldGenerator
 		DateTime.Now - now;
 	}
 
-	// Token: 0x0600104C RID: 4172 RVA: 0x00072B6C File Offset: 0x00070D6C
+	// Token: 0x0600104D RID: 4173 RVA: 0x00072CF4 File Offset: 0x00070EF4
 	private void FindLakes()
 	{
 		DateTime now = DateTime.Now;
@@ -130,7 +130,7 @@ public class WorldGenerator
 		DateTime.Now - now;
 	}
 
-	// Token: 0x0600104D RID: 4173 RVA: 0x00072C08 File Offset: 0x00070E08
+	// Token: 0x0600104E RID: 4174 RVA: 0x00072D90 File Offset: 0x00070F90
 	private List<Vector2> MergePoints(List<Vector2> points, float range)
 	{
 		List<Vector2> list = new List<Vector2>();
@@ -154,7 +154,7 @@ public class WorldGenerator
 		return list;
 	}
 
-	// Token: 0x0600104E RID: 4174 RVA: 0x00072C94 File Offset: 0x00070E94
+	// Token: 0x0600104F RID: 4175 RVA: 0x00072E1C File Offset: 0x0007101C
 	private int FindClosest(List<Vector2> points, Vector2 p, float maxDistance)
 	{
 		int result = -1;
@@ -174,7 +174,7 @@ public class WorldGenerator
 		return result;
 	}
 
-	// Token: 0x0600104F RID: 4175 RVA: 0x00072CE4 File Offset: 0x00070EE4
+	// Token: 0x06001050 RID: 4176 RVA: 0x00072E6C File Offset: 0x0007106C
 	private List<WorldGenerator.River> PlaceStreams()
 	{
 		UnityEngine.Random.State state = UnityEngine.Random.state;
@@ -213,7 +213,7 @@ public class WorldGenerator
 		return list;
 	}
 
-	// Token: 0x06001050 RID: 4176 RVA: 0x00072E40 File Offset: 0x00071040
+	// Token: 0x06001051 RID: 4177 RVA: 0x00072FC8 File Offset: 0x000711C8
 	private bool FindStreamEndPoint(int iterations, float minHeight, float maxHeight, Vector2 start, float minLength, float maxLength, out Vector2 end)
 	{
 		float num = (maxLength - minLength) / (float)iterations;
@@ -234,7 +234,7 @@ public class WorldGenerator
 		return false;
 	}
 
-	// Token: 0x06001051 RID: 4177 RVA: 0x00072ED4 File Offset: 0x000710D4
+	// Token: 0x06001052 RID: 4178 RVA: 0x0007305C File Offset: 0x0007125C
 	private bool FindStreamStartPoint(int iterations, float minHeight, float maxHeight, out Vector2 p, out float starth)
 	{
 		for (int i = 0; i < iterations; i++)
@@ -254,7 +254,7 @@ public class WorldGenerator
 		return false;
 	}
 
-	// Token: 0x06001052 RID: 4178 RVA: 0x00072F48 File Offset: 0x00071148
+	// Token: 0x06001053 RID: 4179 RVA: 0x000730D0 File Offset: 0x000712D0
 	private List<WorldGenerator.River> PlaceRivers()
 	{
 		UnityEngine.Random.State state = UnityEngine.Random.state;
@@ -294,7 +294,7 @@ public class WorldGenerator
 		return list;
 	}
 
-	// Token: 0x06001053 RID: 4179 RVA: 0x000730C4 File Offset: 0x000712C4
+	// Token: 0x06001054 RID: 4180 RVA: 0x0007324C File Offset: 0x0007144C
 	private int FindClosestRiverEnd(List<WorldGenerator.River> rivers, List<Vector2> points, Vector2 p, float maxDistance, float heightLimit, float checkStep)
 	{
 		int result = -1;
@@ -314,7 +314,7 @@ public class WorldGenerator
 		return result;
 	}
 
-	// Token: 0x06001054 RID: 4180 RVA: 0x0007313C File Offset: 0x0007133C
+	// Token: 0x06001055 RID: 4181 RVA: 0x000732C4 File Offset: 0x000714C4
 	private int FindRandomRiverEnd(List<WorldGenerator.River> rivers, List<Vector2> points, Vector2 p, float maxDistance, float heightLimit, float checkStep)
 	{
 		List<int> list = new List<int>();
@@ -332,7 +332,7 @@ public class WorldGenerator
 		return list[UnityEngine.Random.Range(0, list.Count)];
 	}
 
-	// Token: 0x06001055 RID: 4181 RVA: 0x000731C8 File Offset: 0x000713C8
+	// Token: 0x06001056 RID: 4182 RVA: 0x00073350 File Offset: 0x00071550
 	private bool HaveRiver(List<WorldGenerator.River> rivers, Vector2 p0)
 	{
 		foreach (WorldGenerator.River river in rivers)
@@ -345,7 +345,7 @@ public class WorldGenerator
 		return false;
 	}
 
-	// Token: 0x06001056 RID: 4182 RVA: 0x00073234 File Offset: 0x00071434
+	// Token: 0x06001057 RID: 4183 RVA: 0x000733BC File Offset: 0x000715BC
 	private bool HaveRiver(List<WorldGenerator.River> rivers, Vector2 p0, Vector2 p1)
 	{
 		foreach (WorldGenerator.River river in rivers)
@@ -358,7 +358,7 @@ public class WorldGenerator
 		return false;
 	}
 
-	// Token: 0x06001057 RID: 4183 RVA: 0x000732BC File Offset: 0x000714BC
+	// Token: 0x06001058 RID: 4184 RVA: 0x00073444 File Offset: 0x00071644
 	private bool IsRiverAllowed(Vector2 p0, Vector2 p1, float step, float heightLimit)
 	{
 		float num = Vector2.Distance(p0, p1);
@@ -380,7 +380,7 @@ public class WorldGenerator
 		return !flag;
 	}
 
-	// Token: 0x06001058 RID: 4184 RVA: 0x00073338 File Offset: 0x00071538
+	// Token: 0x06001059 RID: 4185 RVA: 0x000734C0 File Offset: 0x000716C0
 	private void RenderRivers(List<WorldGenerator.River> rivers)
 	{
 		DateTime now = DateTime.Now;
@@ -418,7 +418,7 @@ public class WorldGenerator
 		DateTime.Now - now;
 	}
 
-	// Token: 0x06001059 RID: 4185 RVA: 0x00073540 File Offset: 0x00071740
+	// Token: 0x0600105A RID: 4186 RVA: 0x000736C8 File Offset: 0x000718C8
 	private void AddRiverPoint(Dictionary<Vector2i, List<WorldGenerator.RiverPoint>> riverPoints, Vector2 p, float r, WorldGenerator.River river)
 	{
 		Vector2i riverGrid = this.GetRiverGrid(p.x, p.y);
@@ -436,7 +436,7 @@ public class WorldGenerator
 		}
 	}
 
-	// Token: 0x0600105A RID: 4186 RVA: 0x000735C4 File Offset: 0x000717C4
+	// Token: 0x0600105B RID: 4187 RVA: 0x0007374C File Offset: 0x0007194C
 	private void AddRiverPoint(Dictionary<Vector2i, List<WorldGenerator.RiverPoint>> riverPoints, Vector2i grid, Vector2 p, float r, WorldGenerator.River river)
 	{
 		List<WorldGenerator.RiverPoint> list;
@@ -450,7 +450,7 @@ public class WorldGenerator
 		riverPoints.Add(grid, list);
 	}
 
-	// Token: 0x0600105B RID: 4187 RVA: 0x00073608 File Offset: 0x00071808
+	// Token: 0x0600105C RID: 4188 RVA: 0x00073790 File Offset: 0x00071990
 	public bool InsideRiverGrid(Vector2i grid, Vector2 p, float r)
 	{
 		Vector2 b = new Vector2((float)grid.x * 64f, (float)grid.y * 64f);
@@ -458,7 +458,7 @@ public class WorldGenerator
 		return Mathf.Abs(vector.x) < r + 32f && Mathf.Abs(vector.y) < r + 32f;
 	}
 
-	// Token: 0x0600105C RID: 4188 RVA: 0x00073668 File Offset: 0x00071868
+	// Token: 0x0600105D RID: 4189 RVA: 0x000737F0 File Offset: 0x000719F0
 	public Vector2i GetRiverGrid(float wx, float wy)
 	{
 		int x = Mathf.FloorToInt((wx + 32f) / 64f);
@@ -466,7 +466,7 @@ public class WorldGenerator
 		return new Vector2i(x, y);
 	}
 
-	// Token: 0x0600105D RID: 4189 RVA: 0x000736A0 File Offset: 0x000718A0
+	// Token: 0x0600105E RID: 4190 RVA: 0x00073828 File Offset: 0x00071A28
 	private void GetRiverWeight(float wx, float wy, out float weight, out float width)
 	{
 		Vector2i riverGrid = this.GetRiverGrid(wx, wy);
@@ -507,7 +507,7 @@ public class WorldGenerator
 		}
 	}
 
-	// Token: 0x0600105E RID: 4190 RVA: 0x00073790 File Offset: 0x00071990
+	// Token: 0x0600105F RID: 4191 RVA: 0x00073918 File Offset: 0x00071B18
 	private void GetWeight(WorldGenerator.RiverPoint[] points, float wx, float wy, out float weight, out float width)
 	{
 		Vector2 b = new Vector2(wx, wy);
@@ -536,7 +536,7 @@ public class WorldGenerator
 		}
 	}
 
-	// Token: 0x0600105F RID: 4191 RVA: 0x00073840 File Offset: 0x00071A40
+	// Token: 0x06001060 RID: 4192 RVA: 0x000739C8 File Offset: 0x00071BC8
 	private void GenerateBiomes()
 	{
 		this.m_biomes = new List<Heightmap.Biome>();
@@ -547,7 +547,7 @@ public class WorldGenerator
 		}
 	}
 
-	// Token: 0x06001060 RID: 4192 RVA: 0x00073878 File Offset: 0x00071A78
+	// Token: 0x06001061 RID: 4193 RVA: 0x00073A00 File Offset: 0x00071C00
 	public Heightmap.BiomeArea GetBiomeArea(Vector3 point)
 	{
 		Heightmap.Biome biome = this.GetBiome(point);
@@ -566,13 +566,13 @@ public class WorldGenerator
 		return Heightmap.BiomeArea.Edge;
 	}
 
-	// Token: 0x06001061 RID: 4193 RVA: 0x000739C2 File Offset: 0x00071BC2
+	// Token: 0x06001062 RID: 4194 RVA: 0x00073B4A File Offset: 0x00071D4A
 	public Heightmap.Biome GetBiome(Vector3 point)
 	{
 		return this.GetBiome(point.x, point.z);
 	}
 
-	// Token: 0x06001062 RID: 4194 RVA: 0x000739D8 File Offset: 0x00071BD8
+	// Token: 0x06001063 RID: 4195 RVA: 0x00073B60 File Offset: 0x00071D60
 	public Heightmap.Biome GetBiome(float wx, float wy)
 	{
 		if (this.m_world.m_menu)
@@ -635,13 +635,13 @@ public class WorldGenerator
 		}
 	}
 
-	// Token: 0x06001063 RID: 4195 RVA: 0x00073BA8 File Offset: 0x00071DA8
+	// Token: 0x06001064 RID: 4196 RVA: 0x00073D30 File Offset: 0x00071F30
 	private float WorldAngle(float wx, float wy)
 	{
 		return Mathf.Sin(Mathf.Atan2(wx, wy) * 20f);
 	}
 
-	// Token: 0x06001064 RID: 4196 RVA: 0x00073BBC File Offset: 0x00071DBC
+	// Token: 0x06001065 RID: 4197 RVA: 0x00073D44 File Offset: 0x00071F44
 	private float GetBaseHeight(float wx, float wy, bool menuTerrain)
 	{
 		if (menuTerrain)
@@ -687,7 +687,7 @@ public class WorldGenerator
 		return num3;
 	}
 
-	// Token: 0x06001065 RID: 4197 RVA: 0x00073F30 File Offset: 0x00072130
+	// Token: 0x06001066 RID: 4198 RVA: 0x000740B8 File Offset: 0x000722B8
 	private float AddRivers(float wx, float wy, float h)
 	{
 		float num;
@@ -712,14 +712,14 @@ public class WorldGenerator
 		return h;
 	}
 
-	// Token: 0x06001066 RID: 4198 RVA: 0x00073FBC File Offset: 0x000721BC
+	// Token: 0x06001067 RID: 4199 RVA: 0x00074144 File Offset: 0x00072344
 	public float GetHeight(float wx, float wy)
 	{
 		Heightmap.Biome biome = this.GetBiome(wx, wy);
 		return this.GetBiomeHeight(biome, wx, wy);
 	}
 
-	// Token: 0x06001067 RID: 4199 RVA: 0x00073FDC File Offset: 0x000721DC
+	// Token: 0x06001068 RID: 4200 RVA: 0x00074164 File Offset: 0x00072364
 	public float GetBiomeHeight(Heightmap.Biome biome, float wx, float wy)
 	{
 		if (!this.m_world.m_menu)
@@ -779,7 +779,7 @@ public class WorldGenerator
 		return this.GetMenuHeight(wx, wy) * 200f;
 	}
 
-	// Token: 0x06001068 RID: 4200 RVA: 0x00074100 File Offset: 0x00072300
+	// Token: 0x06001069 RID: 4201 RVA: 0x00074288 File Offset: 0x00072488
 	private float GetMarshHeight(float wx, float wy)
 	{
 		float wx2 = wx;
@@ -794,7 +794,7 @@ public class WorldGenerator
 		return num + Mathf.PerlinNoise(wx * 0.4f, wy * 0.4f) * 0.003f;
 	}
 
-	// Token: 0x06001069 RID: 4201 RVA: 0x000741A0 File Offset: 0x000723A0
+	// Token: 0x0600106A RID: 4202 RVA: 0x00074328 File Offset: 0x00072528
 	private float GetMeadowsHeight(float wx, float wy)
 	{
 		float wx2 = wx;
@@ -818,7 +818,7 @@ public class WorldGenerator
 		return num2 + Mathf.PerlinNoise(wx * 0.4f, wy * 0.4f) * 0.003f;
 	}
 
-	// Token: 0x0600106A RID: 4202 RVA: 0x000742BC File Offset: 0x000724BC
+	// Token: 0x0600106B RID: 4203 RVA: 0x00074444 File Offset: 0x00072644
 	private float GetForestHeight(float wx, float wy)
 	{
 		float wx2 = wx;
@@ -834,7 +834,7 @@ public class WorldGenerator
 		return num + Mathf.PerlinNoise(wx * 0.4f, wy * 0.4f) * 0.003f;
 	}
 
-	// Token: 0x0600106B RID: 4203 RVA: 0x000743A0 File Offset: 0x000725A0
+	// Token: 0x0600106C RID: 4204 RVA: 0x00074528 File Offset: 0x00072728
 	private float GetPlainsHeight(float wx, float wy)
 	{
 		float wx2 = wx;
@@ -858,7 +858,7 @@ public class WorldGenerator
 		return num2 + Mathf.PerlinNoise(wx * 0.4f, wy * 0.4f) * 0.003f;
 	}
 
-	// Token: 0x0600106C RID: 4204 RVA: 0x000744BC File Offset: 0x000726BC
+	// Token: 0x0600106D RID: 4205 RVA: 0x00074644 File Offset: 0x00072844
 	private float GetMenuHeight(float wx, float wy)
 	{
 		float baseHeight = this.GetBaseHeight(wx, wy, true);
@@ -869,7 +869,7 @@ public class WorldGenerator
 		return baseHeight + num * 0.1f + Mathf.PerlinNoise(wx * 0.1f, wy * 0.1f) * 0.01f + Mathf.PerlinNoise(wx * 0.4f, wy * 0.4f) * 0.003f;
 	}
 
-	// Token: 0x0600106D RID: 4205 RVA: 0x00074588 File Offset: 0x00072788
+	// Token: 0x0600106E RID: 4206 RVA: 0x00074710 File Offset: 0x00072910
 	private float GetAshlandsHeight(float wx, float wy)
 	{
 		float wx2 = wx;
@@ -886,7 +886,7 @@ public class WorldGenerator
 		return this.AddRivers(wx2, wy2, num);
 	}
 
-	// Token: 0x0600106E RID: 4206 RVA: 0x00074674 File Offset: 0x00072874
+	// Token: 0x0600106F RID: 4207 RVA: 0x000747FC File Offset: 0x000729FC
 	private float GetEdgeHeight(float wx, float wy)
 	{
 		float magnitude = new Vector2(wx, wy).magnitude;
@@ -902,13 +902,13 @@ public class WorldGenerator
 		return this.AddRivers(wx, wy, num3);
 	}
 
-	// Token: 0x0600106F RID: 4207 RVA: 0x000746F2 File Offset: 0x000728F2
+	// Token: 0x06001070 RID: 4208 RVA: 0x0007487A File Offset: 0x00072A7A
 	private float GetOceanHeight(float wx, float wy)
 	{
 		return this.GetBaseHeight(wx, wy, false);
 	}
 
-	// Token: 0x06001070 RID: 4208 RVA: 0x00074700 File Offset: 0x00072900
+	// Token: 0x06001071 RID: 4209 RVA: 0x00074888 File Offset: 0x00072A88
 	private float BaseHeightTilt(float wx, float wy)
 	{
 		float baseHeight = this.GetBaseHeight(wx - 1f, wy, false);
@@ -918,7 +918,7 @@ public class WorldGenerator
 		return Mathf.Abs(baseHeight2 - baseHeight) + Mathf.Abs(baseHeight3 - baseHeight4);
 	}
 
-	// Token: 0x06001071 RID: 4209 RVA: 0x0007475C File Offset: 0x0007295C
+	// Token: 0x06001072 RID: 4210 RVA: 0x000748E4 File Offset: 0x00072AE4
 	private float GetSnowMountainHeight(float wx, float wy, bool menu)
 	{
 		float wx2 = wx;
@@ -938,7 +938,7 @@ public class WorldGenerator
 		return num + Mathf.PerlinNoise(wx * 0.2f, wy * 0.2f) * 2f * num2;
 	}
 
-	// Token: 0x06001072 RID: 4210 RVA: 0x00074878 File Offset: 0x00072A78
+	// Token: 0x06001073 RID: 4211 RVA: 0x00074A00 File Offset: 0x00072C00
 	private float GetDeepNorthHeight(float wx, float wy)
 	{
 		float wx2 = wx;
@@ -957,20 +957,20 @@ public class WorldGenerator
 		return num + Mathf.PerlinNoise(wx * 0.4f, wy * 0.4f) * 0.003f;
 	}
 
-	// Token: 0x06001073 RID: 4211 RVA: 0x0007497D File Offset: 0x00072B7D
+	// Token: 0x06001074 RID: 4212 RVA: 0x00074B05 File Offset: 0x00072D05
 	public static bool InForest(Vector3 pos)
 	{
 		return WorldGenerator.GetForestFactor(pos) < 1.15f;
 	}
 
-	// Token: 0x06001074 RID: 4212 RVA: 0x0007498C File Offset: 0x00072B8C
+	// Token: 0x06001075 RID: 4213 RVA: 0x00074B14 File Offset: 0x00072D14
 	public static float GetForestFactor(Vector3 pos)
 	{
 		float d = 0.4f;
 		return Utils.Fbm(pos * 0.01f * d, 3, 1.6f, 0.7f);
 	}
 
-	// Token: 0x06001075 RID: 4213 RVA: 0x000749C0 File Offset: 0x00072BC0
+	// Token: 0x06001076 RID: 4214 RVA: 0x00074B48 File Offset: 0x00072D48
 	public void GetTerrainDelta(Vector3 center, float radius, out float delta, out Vector3 slopeDirection)
 	{
 		int num = 10;
@@ -998,224 +998,224 @@ public class WorldGenerator
 		slopeDirection = Vector3.Normalize(a - b);
 	}
 
-	// Token: 0x06001076 RID: 4214 RVA: 0x00074A64 File Offset: 0x00072C64
+	// Token: 0x06001077 RID: 4215 RVA: 0x00074BEC File Offset: 0x00072DEC
 	public int GetSeed()
 	{
 		return this.m_world.m_seed;
 	}
 
-	// Token: 0x04000F32 RID: 3890
+	// Token: 0x04000F38 RID: 3896
 	private const float m_waterTreshold = 0.05f;
 
-	// Token: 0x04000F33 RID: 3891
+	// Token: 0x04000F39 RID: 3897
 	private static WorldGenerator m_instance;
 
-	// Token: 0x04000F34 RID: 3892
+	// Token: 0x04000F3A RID: 3898
 	private World m_world;
 
-	// Token: 0x04000F35 RID: 3893
+	// Token: 0x04000F3B RID: 3899
 	private int m_version;
 
-	// Token: 0x04000F36 RID: 3894
+	// Token: 0x04000F3C RID: 3900
 	private float m_offset0;
 
-	// Token: 0x04000F37 RID: 3895
+	// Token: 0x04000F3D RID: 3901
 	private float m_offset1;
 
-	// Token: 0x04000F38 RID: 3896
+	// Token: 0x04000F3E RID: 3902
 	private float m_offset2;
 
-	// Token: 0x04000F39 RID: 3897
+	// Token: 0x04000F3F RID: 3903
 	private float m_offset3;
 
-	// Token: 0x04000F3A RID: 3898
+	// Token: 0x04000F40 RID: 3904
 	private float m_offset4;
 
-	// Token: 0x04000F3B RID: 3899
+	// Token: 0x04000F41 RID: 3905
 	private int m_riverSeed;
 
-	// Token: 0x04000F3C RID: 3900
+	// Token: 0x04000F42 RID: 3906
 	private int m_streamSeed;
 
-	// Token: 0x04000F3D RID: 3901
+	// Token: 0x04000F43 RID: 3907
 	private List<Vector2> m_mountains;
 
-	// Token: 0x04000F3E RID: 3902
+	// Token: 0x04000F44 RID: 3908
 	private List<Vector2> m_lakes;
 
-	// Token: 0x04000F3F RID: 3903
+	// Token: 0x04000F45 RID: 3909
 	private List<WorldGenerator.River> m_rivers = new List<WorldGenerator.River>();
 
-	// Token: 0x04000F40 RID: 3904
+	// Token: 0x04000F46 RID: 3910
 	private List<WorldGenerator.River> m_streams = new List<WorldGenerator.River>();
 
-	// Token: 0x04000F41 RID: 3905
+	// Token: 0x04000F47 RID: 3911
 	private Dictionary<Vector2i, WorldGenerator.RiverPoint[]> m_riverPoints = new Dictionary<Vector2i, WorldGenerator.RiverPoint[]>();
 
-	// Token: 0x04000F42 RID: 3906
+	// Token: 0x04000F48 RID: 3912
 	private WorldGenerator.RiverPoint[] m_cachedRiverPoints;
 
-	// Token: 0x04000F43 RID: 3907
+	// Token: 0x04000F49 RID: 3913
 	private Vector2i m_cachedRiverGrid = new Vector2i(-999999, -999999);
 
-	// Token: 0x04000F44 RID: 3908
+	// Token: 0x04000F4A RID: 3914
 	private ReaderWriterLockSlim m_riverCacheLock = new ReaderWriterLockSlim();
 
-	// Token: 0x04000F45 RID: 3909
+	// Token: 0x04000F4B RID: 3915
 	private List<Heightmap.Biome> m_biomes = new List<Heightmap.Biome>();
 
-	// Token: 0x04000F46 RID: 3910
+	// Token: 0x04000F4C RID: 3916
 	private const float riverGridSize = 64f;
 
-	// Token: 0x04000F47 RID: 3911
+	// Token: 0x04000F4D RID: 3917
 	private const float minRiverWidth = 60f;
 
-	// Token: 0x04000F48 RID: 3912
+	// Token: 0x04000F4E RID: 3918
 	private const float maxRiverWidth = 100f;
 
-	// Token: 0x04000F49 RID: 3913
+	// Token: 0x04000F4F RID: 3919
 	private const float minRiverCurveWidth = 50f;
 
-	// Token: 0x04000F4A RID: 3914
+	// Token: 0x04000F50 RID: 3920
 	private const float maxRiverCurveWidth = 80f;
 
-	// Token: 0x04000F4B RID: 3915
+	// Token: 0x04000F51 RID: 3921
 	private const float minRiverCurveWaveLength = 50f;
 
-	// Token: 0x04000F4C RID: 3916
+	// Token: 0x04000F52 RID: 3922
 	private const float maxRiverCurveWaveLength = 70f;
 
-	// Token: 0x04000F4D RID: 3917
+	// Token: 0x04000F53 RID: 3923
 	private const int streams = 3000;
 
-	// Token: 0x04000F4E RID: 3918
+	// Token: 0x04000F54 RID: 3924
 	private const float streamWidth = 20f;
 
-	// Token: 0x04000F4F RID: 3919
+	// Token: 0x04000F55 RID: 3925
 	private const float meadowsMaxDistance = 5000f;
 
-	// Token: 0x04000F50 RID: 3920
+	// Token: 0x04000F56 RID: 3926
 	private const float minDeepForestNoise = 0.4f;
 
-	// Token: 0x04000F51 RID: 3921
+	// Token: 0x04000F57 RID: 3927
 	private const float minDeepForestDistance = 600f;
 
-	// Token: 0x04000F52 RID: 3922
+	// Token: 0x04000F58 RID: 3928
 	private const float maxDeepForestDistance = 6000f;
 
-	// Token: 0x04000F53 RID: 3923
+	// Token: 0x04000F59 RID: 3929
 	private const float deepForestForestFactorMax = 0.9f;
 
-	// Token: 0x04000F54 RID: 3924
+	// Token: 0x04000F5A RID: 3930
 	private const float marshBiomeScale = 0.001f;
 
-	// Token: 0x04000F55 RID: 3925
+	// Token: 0x04000F5B RID: 3931
 	private const float minMarshNoise = 0.6f;
 
-	// Token: 0x04000F56 RID: 3926
+	// Token: 0x04000F5C RID: 3932
 	private const float minMarshDistance = 2000f;
 
-	// Token: 0x04000F57 RID: 3927
+	// Token: 0x04000F5D RID: 3933
 	private const float maxMarshDistance = 8000f;
 
-	// Token: 0x04000F58 RID: 3928
+	// Token: 0x04000F5E RID: 3934
 	private const float minMarshHeight = 0.05f;
 
-	// Token: 0x04000F59 RID: 3929
+	// Token: 0x04000F5F RID: 3935
 	private const float maxMarshHeight = 0.25f;
 
-	// Token: 0x04000F5A RID: 3930
+	// Token: 0x04000F60 RID: 3936
 	private const float heathBiomeScale = 0.001f;
 
-	// Token: 0x04000F5B RID: 3931
+	// Token: 0x04000F61 RID: 3937
 	private const float minHeathNoise = 0.4f;
 
-	// Token: 0x04000F5C RID: 3932
+	// Token: 0x04000F62 RID: 3938
 	private const float minHeathDistance = 3000f;
 
-	// Token: 0x04000F5D RID: 3933
+	// Token: 0x04000F63 RID: 3939
 	private const float maxHeathDistance = 8000f;
 
-	// Token: 0x04000F5E RID: 3934
+	// Token: 0x04000F64 RID: 3940
 	private const float darklandBiomeScale = 0.001f;
 
-	// Token: 0x04000F5F RID: 3935
+	// Token: 0x04000F65 RID: 3941
 	private const float minDarklandNoise = 0.5f;
 
-	// Token: 0x04000F60 RID: 3936
+	// Token: 0x04000F66 RID: 3942
 	private const float minDarklandDistance = 6000f;
 
-	// Token: 0x04000F61 RID: 3937
+	// Token: 0x04000F67 RID: 3943
 	private const float maxDarklandDistance = 10000f;
 
-	// Token: 0x04000F62 RID: 3938
+	// Token: 0x04000F68 RID: 3944
 	private const float oceanBiomeScale = 0.0005f;
 
-	// Token: 0x04000F63 RID: 3939
+	// Token: 0x04000F69 RID: 3945
 	private const float oceanBiomeMinNoise = 0.4f;
 
-	// Token: 0x04000F64 RID: 3940
+	// Token: 0x04000F6A RID: 3946
 	private const float oceanBiomeMaxNoise = 0.6f;
 
-	// Token: 0x04000F65 RID: 3941
+	// Token: 0x04000F6B RID: 3947
 	private const float oceanBiomeMinDistance = 1000f;
 
-	// Token: 0x04000F66 RID: 3942
+	// Token: 0x04000F6C RID: 3948
 	private const float oceanBiomeMinDistanceBuffer = 256f;
 
-	// Token: 0x04000F67 RID: 3943
+	// Token: 0x04000F6D RID: 3949
 	private float m_minMountainDistance = 1000f;
 
-	// Token: 0x04000F68 RID: 3944
+	// Token: 0x04000F6E RID: 3950
 	private const float mountainBaseHeightMin = 0.4f;
 
-	// Token: 0x04000F69 RID: 3945
+	// Token: 0x04000F6F RID: 3951
 	private const float deepNorthMinDistance = 12000f;
 
-	// Token: 0x04000F6A RID: 3946
+	// Token: 0x04000F70 RID: 3952
 	private const float deepNorthYOffset = 4000f;
 
-	// Token: 0x04000F6B RID: 3947
+	// Token: 0x04000F71 RID: 3953
 	private const float ashlandsMinDistance = 12000f;
 
-	// Token: 0x04000F6C RID: 3948
+	// Token: 0x04000F72 RID: 3954
 	private const float ashlandsYOffset = -4000f;
 
-	// Token: 0x04000F6D RID: 3949
+	// Token: 0x04000F73 RID: 3955
 	public const float worldSize = 10000f;
 
-	// Token: 0x04000F6E RID: 3950
+	// Token: 0x04000F74 RID: 3956
 	public const float waterEdge = 10500f;
 
 	// Token: 0x020001B6 RID: 438
 	public class River
 	{
-		// Token: 0x0400132F RID: 4911
+		// Token: 0x04001336 RID: 4918
 		public Vector2 p0;
 
-		// Token: 0x04001330 RID: 4912
+		// Token: 0x04001337 RID: 4919
 		public Vector2 p1;
 
-		// Token: 0x04001331 RID: 4913
+		// Token: 0x04001338 RID: 4920
 		public Vector2 center;
 
-		// Token: 0x04001332 RID: 4914
+		// Token: 0x04001339 RID: 4921
 		public float widthMin;
 
-		// Token: 0x04001333 RID: 4915
+		// Token: 0x0400133A RID: 4922
 		public float widthMax;
 
-		// Token: 0x04001334 RID: 4916
+		// Token: 0x0400133B RID: 4923
 		public float curveWidth;
 
-		// Token: 0x04001335 RID: 4917
+		// Token: 0x0400133C RID: 4924
 		public float curveWavelength;
 	}
 
 	// Token: 0x020001B7 RID: 439
 	public struct RiverPoint
 	{
-		// Token: 0x060011DB RID: 4571 RVA: 0x0007A4CF File Offset: 0x000786CF
+		// Token: 0x060011DC RID: 4572 RVA: 0x0007A657 File Offset: 0x00078857
 		public RiverPoint(Vector2 p_p, float p_w)
 		{
 			this.p = p_p;
@@ -1223,13 +1223,13 @@ public class WorldGenerator
 			this.w2 = p_w * p_w;
 		}
 
-		// Token: 0x04001336 RID: 4918
+		// Token: 0x0400133D RID: 4925
 		public Vector2 p;
 
-		// Token: 0x04001337 RID: 4919
+		// Token: 0x0400133E RID: 4926
 		public float w;
 
-		// Token: 0x04001338 RID: 4920
+		// Token: 0x0400133F RID: 4927
 		public float w2;
 	}
 }

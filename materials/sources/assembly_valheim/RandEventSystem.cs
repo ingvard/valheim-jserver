@@ -7,7 +7,7 @@ using UnityEngine;
 public class RandEventSystem : MonoBehaviour
 {
 	// Token: 0x1700002B RID: 43
-	// (get) Token: 0x06000B7C RID: 2940 RVA: 0x00052842 File Offset: 0x00050A42
+	// (get) Token: 0x06000B7D RID: 2941 RVA: 0x000529CA File Offset: 0x00050BCA
 	public static RandEventSystem instance
 	{
 		get
@@ -16,25 +16,25 @@ public class RandEventSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B7D RID: 2941 RVA: 0x00052849 File Offset: 0x00050A49
+	// Token: 0x06000B7E RID: 2942 RVA: 0x000529D1 File Offset: 0x00050BD1
 	private void Awake()
 	{
 		RandEventSystem.m_instance = this;
 	}
 
-	// Token: 0x06000B7E RID: 2942 RVA: 0x00052851 File Offset: 0x00050A51
+	// Token: 0x06000B7F RID: 2943 RVA: 0x000529D9 File Offset: 0x00050BD9
 	private void OnDestroy()
 	{
 		RandEventSystem.m_instance = null;
 	}
 
-	// Token: 0x06000B7F RID: 2943 RVA: 0x00052859 File Offset: 0x00050A59
+	// Token: 0x06000B80 RID: 2944 RVA: 0x000529E1 File Offset: 0x00050BE1
 	private void Start()
 	{
 		ZRoutedRpc.instance.Register<string, float, Vector3>("SetEvent", new Action<long, string, float, Vector3>(this.RPC_SetEvent));
 	}
 
-	// Token: 0x06000B80 RID: 2944 RVA: 0x00052878 File Offset: 0x00050A78
+	// Token: 0x06000B81 RID: 2945 RVA: 0x00052A00 File Offset: 0x00050C00
 	private void FixedUpdate()
 	{
 		float fixedDeltaTime = Time.fixedDeltaTime;
@@ -70,13 +70,13 @@ public class RandEventSystem : MonoBehaviour
 		this.SetActiveEvent(null, false);
 	}
 
-	// Token: 0x06000B81 RID: 2945 RVA: 0x00052978 File Offset: 0x00050B78
+	// Token: 0x06000B82 RID: 2946 RVA: 0x00052B00 File Offset: 0x00050D00
 	private bool IsInsideRandomEventArea(RandomEvent re, Vector3 position)
 	{
 		return position.y <= 3000f && Utils.DistanceXZ(position, re.m_pos) < this.m_randomEventRange;
 	}
 
-	// Token: 0x06000B82 RID: 2946 RVA: 0x000529A0 File Offset: 0x00050BA0
+	// Token: 0x06000B83 RID: 2947 RVA: 0x00052B28 File Offset: 0x00050D28
 	private void UpdateRandomEvent(float dt)
 	{
 		if (ZNet.instance.IsServer())
@@ -99,7 +99,7 @@ public class RandEventSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B83 RID: 2947 RVA: 0x00052A30 File Offset: 0x00050C30
+	// Token: 0x06000B84 RID: 2948 RVA: 0x00052BB8 File Offset: 0x00050DB8
 	private void UpdateForcedEvents(float dt)
 	{
 		this.m_forcedEventUpdateTimer += dt;
@@ -111,7 +111,7 @@ public class RandEventSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B84 RID: 2948 RVA: 0x00052A74 File Offset: 0x00050C74
+	// Token: 0x06000B85 RID: 2949 RVA: 0x00052BFC File Offset: 0x00050DFC
 	private void SetForcedEvent(string name)
 	{
 		if (this.m_forcedEvent != null && name != null && this.m_forcedEvent.m_name == name)
@@ -135,7 +135,7 @@ public class RandEventSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B85 RID: 2949 RVA: 0x00052AF4 File Offset: 0x00050CF4
+	// Token: 0x06000B86 RID: 2950 RVA: 0x00052C7C File Offset: 0x00050E7C
 	private string GetForcedEvent()
 	{
 		if (EnemyHud.instance != null)
@@ -154,7 +154,7 @@ public class RandEventSystem : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000B86 RID: 2950 RVA: 0x00052B44 File Offset: 0x00050D44
+	// Token: 0x06000B87 RID: 2951 RVA: 0x00052CCC File Offset: 0x00050ECC
 	private void SendCurrentRandomEvent()
 	{
 		if (this.m_randomEvent != null)
@@ -175,7 +175,7 @@ public class RandEventSystem : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06000B87 RID: 2951 RVA: 0x00052BE4 File Offset: 0x00050DE4
+	// Token: 0x06000B88 RID: 2952 RVA: 0x00052D6C File Offset: 0x00050F6C
 	private void RPC_SetEvent(long sender, string eventName, float time, Vector3 pos)
 	{
 		if (ZNet.instance.IsServer())
@@ -193,7 +193,7 @@ public class RandEventSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B88 RID: 2952 RVA: 0x00052C44 File Offset: 0x00050E44
+	// Token: 0x06000B89 RID: 2953 RVA: 0x00052DCC File Offset: 0x00050FCC
 	public void StartRandomEvent()
 	{
 		if (!ZNet.instance.IsServer())
@@ -214,7 +214,7 @@ public class RandEventSystem : MonoBehaviour
 		this.SetRandomEvent(keyValuePair2.Key, keyValuePair2.Value);
 	}
 
-	// Token: 0x06000B89 RID: 2953 RVA: 0x00052D04 File Offset: 0x00050F04
+	// Token: 0x06000B8A RID: 2954 RVA: 0x00052E8C File Offset: 0x0005108C
 	private RandomEvent GetEvent(string name)
 	{
 		if (string.IsNullOrEmpty(name))
@@ -231,26 +231,26 @@ public class RandEventSystem : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000B8A RID: 2954 RVA: 0x00052D78 File Offset: 0x00050F78
+	// Token: 0x06000B8B RID: 2955 RVA: 0x00052F00 File Offset: 0x00051100
 	public void SetRandomEventByName(string name, Vector3 pos)
 	{
 		RandomEvent @event = this.GetEvent(name);
 		this.SetRandomEvent(@event, pos);
 	}
 
-	// Token: 0x06000B8B RID: 2955 RVA: 0x00052D95 File Offset: 0x00050F95
+	// Token: 0x06000B8C RID: 2956 RVA: 0x00052F1D File Offset: 0x0005111D
 	public void ResetRandomEvent()
 	{
 		this.SetRandomEvent(null, Vector3.zero);
 	}
 
-	// Token: 0x06000B8C RID: 2956 RVA: 0x00052DA3 File Offset: 0x00050FA3
+	// Token: 0x06000B8D RID: 2957 RVA: 0x00052F2B File Offset: 0x0005112B
 	public bool HaveEvent(string name)
 	{
 		return this.GetEvent(name) != null;
 	}
 
-	// Token: 0x06000B8D RID: 2957 RVA: 0x00052DB0 File Offset: 0x00050FB0
+	// Token: 0x06000B8E RID: 2958 RVA: 0x00052F38 File Offset: 0x00051138
 	private void SetRandomEvent(RandomEvent ev, Vector3 pos)
 	{
 		if (this.m_randomEvent != null)
@@ -279,7 +279,7 @@ public class RandEventSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B8E RID: 2958 RVA: 0x00052E58 File Offset: 0x00051058
+	// Token: 0x06000B8F RID: 2959 RVA: 0x00052FE0 File Offset: 0x000511E0
 	private bool IsAnyPlayerInEventArea(RandomEvent re)
 	{
 		foreach (ZDO zdo in ZNet.instance.GetAllCharacterZDOS())
@@ -292,7 +292,7 @@ public class RandEventSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000B8F RID: 2959 RVA: 0x00052EC0 File Offset: 0x000510C0
+	// Token: 0x06000B90 RID: 2960 RVA: 0x00053048 File Offset: 0x00051248
 	private List<KeyValuePair<RandomEvent, Vector3>> GetPossibleRandomEvents()
 	{
 		List<KeyValuePair<RandomEvent, Vector3>> list = new List<KeyValuePair<RandomEvent, Vector3>>();
@@ -312,7 +312,7 @@ public class RandEventSystem : MonoBehaviour
 		return list;
 	}
 
-	// Token: 0x06000B90 RID: 2960 RVA: 0x00052F70 File Offset: 0x00051170
+	// Token: 0x06000B91 RID: 2961 RVA: 0x000530F8 File Offset: 0x000512F8
 	private List<Vector3> GetValidEventPoints(RandomEvent ev, List<ZDO> characters)
 	{
 		List<Vector3> list = new List<Vector3>();
@@ -326,7 +326,7 @@ public class RandEventSystem : MonoBehaviour
 		return list;
 	}
 
-	// Token: 0x06000B91 RID: 2961 RVA: 0x00052FF0 File Offset: 0x000511F0
+	// Token: 0x06000B92 RID: 2962 RVA: 0x00053178 File Offset: 0x00051378
 	private bool InValidBiome(RandomEvent ev, ZDO zdo)
 	{
 		if (ev.m_biome == Heightmap.Biome.None)
@@ -337,13 +337,13 @@ public class RandEventSystem : MonoBehaviour
 		return (WorldGenerator.instance.GetBiome(position) & ev.m_biome) != Heightmap.Biome.None;
 	}
 
-	// Token: 0x06000B92 RID: 2962 RVA: 0x00053025 File Offset: 0x00051225
+	// Token: 0x06000B93 RID: 2963 RVA: 0x000531AD File Offset: 0x000513AD
 	private bool CheckBase(RandomEvent ev, ZDO zdo)
 	{
 		return ev.m_nearBaseOnly && zdo.GetInt("baseValue", 0) >= 3;
 	}
 
-	// Token: 0x06000B93 RID: 2963 RVA: 0x00053044 File Offset: 0x00051244
+	// Token: 0x06000B94 RID: 2964 RVA: 0x000531CC File Offset: 0x000513CC
 	private bool HaveGlobalKeys(RandomEvent ev)
 	{
 		foreach (string name in ev.m_requiredGlobalKeys)
@@ -363,7 +363,7 @@ public class RandEventSystem : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000B94 RID: 2964 RVA: 0x000530F0 File Offset: 0x000512F0
+	// Token: 0x06000B95 RID: 2965 RVA: 0x00053278 File Offset: 0x00051478
 	public List<SpawnSystem.SpawnData> GetCurrentSpawners()
 	{
 		if (this.m_activeEvent != null)
@@ -373,7 +373,7 @@ public class RandEventSystem : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000B95 RID: 2965 RVA: 0x00053107 File Offset: 0x00051307
+	// Token: 0x06000B96 RID: 2966 RVA: 0x0005328F File Offset: 0x0005148F
 	public string GetEnvOverride()
 	{
 		if (this.m_activeEvent != null && !string.IsNullOrEmpty(this.m_activeEvent.m_forceEnvironment) && this.m_activeEvent.InEventBiome())
@@ -383,7 +383,7 @@ public class RandEventSystem : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000B96 RID: 2966 RVA: 0x0005313D File Offset: 0x0005133D
+	// Token: 0x06000B97 RID: 2967 RVA: 0x000532C5 File Offset: 0x000514C5
 	public string GetMusicOverride()
 	{
 		if (this.m_activeEvent != null && !string.IsNullOrEmpty(this.m_activeEvent.m_forceMusic))
@@ -393,7 +393,7 @@ public class RandEventSystem : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06000B97 RID: 2967 RVA: 0x00053168 File Offset: 0x00051368
+	// Token: 0x06000B98 RID: 2968 RVA: 0x000532F0 File Offset: 0x000514F0
 	private void SetActiveEvent(RandomEvent ev, bool end = false)
 	{
 		if (ev != null && this.m_activeEvent != null && ev.m_name == this.m_activeEvent.m_name)
@@ -415,31 +415,31 @@ public class RandEventSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000B98 RID: 2968 RVA: 0x000531D1 File Offset: 0x000513D1
+	// Token: 0x06000B99 RID: 2969 RVA: 0x00053359 File Offset: 0x00051559
 	public static bool InEvent()
 	{
 		return !(RandEventSystem.m_instance == null) && RandEventSystem.m_instance.m_activeEvent != null;
 	}
 
-	// Token: 0x06000B99 RID: 2969 RVA: 0x000531EF File Offset: 0x000513EF
+	// Token: 0x06000B9A RID: 2970 RVA: 0x00053377 File Offset: 0x00051577
 	public static bool HaveActiveEvent()
 	{
 		return !(RandEventSystem.m_instance == null) && (RandEventSystem.m_instance.m_activeEvent != null || RandEventSystem.m_instance.m_randomEvent != null || RandEventSystem.m_instance.m_activeEvent != null);
 	}
 
-	// Token: 0x06000B9A RID: 2970 RVA: 0x00053229 File Offset: 0x00051429
+	// Token: 0x06000B9B RID: 2971 RVA: 0x000533B1 File Offset: 0x000515B1
 	public RandomEvent GetCurrentRandomEvent()
 	{
 		return this.m_randomEvent;
 	}
 
-	// Token: 0x06000B9B RID: 2971 RVA: 0x00053231 File Offset: 0x00051431
+	// Token: 0x06000B9C RID: 2972 RVA: 0x000533B9 File Offset: 0x000515B9
 	public RandomEvent GetActiveEvent()
 	{
 		return this.m_activeEvent;
 	}
 
-	// Token: 0x06000B9C RID: 2972 RVA: 0x0005323C File Offset: 0x0005143C
+	// Token: 0x06000B9D RID: 2973 RVA: 0x000533C4 File Offset: 0x000515C4
 	public void PrepareSave()
 	{
 		this.m_tempSaveEventTimer = this.m_eventTimer;
@@ -455,7 +455,7 @@ public class RandEventSystem : MonoBehaviour
 		this.m_tempSaveRandomEventPos = Vector3.zero;
 	}
 
-	// Token: 0x06000B9D RID: 2973 RVA: 0x000532B4 File Offset: 0x000514B4
+	// Token: 0x06000B9E RID: 2974 RVA: 0x0005343C File Offset: 0x0005163C
 	public void SaveAsync(BinaryWriter writer)
 	{
 		writer.Write(this.m_tempSaveEventTimer);
@@ -466,7 +466,7 @@ public class RandEventSystem : MonoBehaviour
 		writer.Write(this.m_tempSaveRandomEventPos.z);
 	}
 
-	// Token: 0x06000B9E RID: 2974 RVA: 0x00053318 File Offset: 0x00051518
+	// Token: 0x06000B9F RID: 2975 RVA: 0x000534A0 File Offset: 0x000516A0
 	public void Load(BinaryReader reader, int version)
 	{
 		this.m_eventTimer = reader.ReadSingle();
@@ -490,48 +490,48 @@ public class RandEventSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000AB9 RID: 2745
+	// Token: 0x04000ABF RID: 2751
 	private static RandEventSystem m_instance;
 
-	// Token: 0x04000ABA RID: 2746
+	// Token: 0x04000AC0 RID: 2752
 	public float m_eventIntervalMin = 1f;
 
-	// Token: 0x04000ABB RID: 2747
+	// Token: 0x04000AC1 RID: 2753
 	public float m_eventChance = 25f;
 
-	// Token: 0x04000ABC RID: 2748
+	// Token: 0x04000AC2 RID: 2754
 	public float m_randomEventRange = 200f;
 
-	// Token: 0x04000ABD RID: 2749
+	// Token: 0x04000AC3 RID: 2755
 	private float m_eventTimer;
 
-	// Token: 0x04000ABE RID: 2750
+	// Token: 0x04000AC4 RID: 2756
 	private float m_sendTimer;
 
-	// Token: 0x04000ABF RID: 2751
+	// Token: 0x04000AC5 RID: 2757
 	public List<RandomEvent> m_events = new List<RandomEvent>();
 
-	// Token: 0x04000AC0 RID: 2752
+	// Token: 0x04000AC6 RID: 2758
 	private RandomEvent m_randomEvent;
 
-	// Token: 0x04000AC1 RID: 2753
+	// Token: 0x04000AC7 RID: 2759
 	private float m_forcedEventUpdateTimer;
 
-	// Token: 0x04000AC2 RID: 2754
+	// Token: 0x04000AC8 RID: 2760
 	private RandomEvent m_forcedEvent;
 
-	// Token: 0x04000AC3 RID: 2755
+	// Token: 0x04000AC9 RID: 2761
 	private RandomEvent m_activeEvent;
 
-	// Token: 0x04000AC4 RID: 2756
+	// Token: 0x04000ACA RID: 2762
 	private float m_tempSaveEventTimer;
 
-	// Token: 0x04000AC5 RID: 2757
+	// Token: 0x04000ACB RID: 2763
 	private string m_tempSaveRandomEvent;
 
-	// Token: 0x04000AC6 RID: 2758
+	// Token: 0x04000ACC RID: 2764
 	private float m_tempSaveRandomEventTime;
 
-	// Token: 0x04000AC7 RID: 2759
+	// Token: 0x04000ACD RID: 2765
 	private Vector3 m_tempSaveRandomEventPos;
 }

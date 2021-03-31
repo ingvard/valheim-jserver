@@ -5,13 +5,13 @@ using UnityEngine;
 // Token: 0x020000CD RID: 205
 public class FishingFloat : MonoBehaviour, IProjectile
 {
-	// Token: 0x06000D44 RID: 3396 RVA: 0x0000AC4C File Offset: 0x00008E4C
+	// Token: 0x06000D45 RID: 3397 RVA: 0x0000AC8C File Offset: 0x00008E8C
 	public string GetTooltipString(int itemQuality)
 	{
 		return "";
 	}
 
-	// Token: 0x06000D45 RID: 3397 RVA: 0x0005EACC File Offset: 0x0005CCCC
+	// Token: 0x06000D46 RID: 3398 RVA: 0x0005EC54 File Offset: 0x0005CE54
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -20,13 +20,13 @@ public class FishingFloat : MonoBehaviour, IProjectile
 		this.m_nview.Register<ZDOID>("Nibble", new Action<long, ZDOID>(this.RPC_Nibble));
 	}
 
-	// Token: 0x06000D46 RID: 3398 RVA: 0x0005EB19 File Offset: 0x0005CD19
+	// Token: 0x06000D47 RID: 3399 RVA: 0x0005ECA1 File Offset: 0x0005CEA1
 	private void OnDestroy()
 	{
 		FishingFloat.m_allInstances.Remove(this);
 	}
 
-	// Token: 0x06000D47 RID: 3399 RVA: 0x0005EB28 File Offset: 0x0005CD28
+	// Token: 0x06000D48 RID: 3400 RVA: 0x0005ECB0 File Offset: 0x0005CEB0
 	public void Setup(Character owner, Vector3 velocity, float hitNoise, HitData hitData, ItemDrop.ItemData item)
 	{
 		FishingFloat fishingFloat = FishingFloat.FindFloat(owner);
@@ -48,7 +48,7 @@ public class FishingFloat : MonoBehaviour, IProjectile
 		owner.Message(MessageHud.MessageType.Center, this.m_lineLength.ToString("0m"), 0, null);
 	}
 
-	// Token: 0x06000D48 RID: 3400 RVA: 0x0005EBE0 File Offset: 0x0005CDE0
+	// Token: 0x06000D49 RID: 3401 RVA: 0x0005ED68 File Offset: 0x0005CF68
 	public Character GetOwner()
 	{
 		if (!this.m_nview.IsValid())
@@ -64,7 +64,7 @@ public class FishingFloat : MonoBehaviour, IProjectile
 		return gameObject.GetComponent<Character>();
 	}
 
-	// Token: 0x06000D49 RID: 3401 RVA: 0x0005EC30 File Offset: 0x0005CE30
+	// Token: 0x06000D4A RID: 3402 RVA: 0x0005EDB8 File Offset: 0x0005CFB8
 	private Transform GetRodTop(Character owner)
 	{
 		Transform transform = Utils.FindChild(owner.transform, "_RodTop");
@@ -76,7 +76,7 @@ public class FishingFloat : MonoBehaviour, IProjectile
 		return transform;
 	}
 
-	// Token: 0x06000D4A RID: 3402 RVA: 0x0005EC64 File Offset: 0x0005CE64
+	// Token: 0x06000D4B RID: 3403 RVA: 0x0005EDEC File Offset: 0x0005CFEC
 	private void FixedUpdate()
 	{
 		if (!this.m_nview.IsOwner())
@@ -167,7 +167,7 @@ public class FishingFloat : MonoBehaviour, IProjectile
 		Utils.Pull(this.m_body, rodTop.transform.position, this.m_lineLength, this.m_moveForce, 1f, 0.3f);
 	}
 
-	// Token: 0x06000D4B RID: 3403 RVA: 0x0005EF54 File Offset: 0x0005D154
+	// Token: 0x06000D4C RID: 3404 RVA: 0x0005F0DC File Offset: 0x0005D2DC
 	private void TryToHook()
 	{
 		if (this.m_nibbler != null && Time.time - this.m_nibbleTime < 0.5f && this.GetCatch() == null)
@@ -178,7 +178,7 @@ public class FishingFloat : MonoBehaviour, IProjectile
 		}
 	}
 
-	// Token: 0x06000D4C RID: 3404 RVA: 0x0005EFB0 File Offset: 0x0005D1B0
+	// Token: 0x06000D4D RID: 3405 RVA: 0x0005F138 File Offset: 0x0005D338
 	private void SetCatch(Fish fish)
 	{
 		if (fish)
@@ -191,7 +191,7 @@ public class FishingFloat : MonoBehaviour, IProjectile
 		this.m_hookLine.SetPeer(ZDOID.None);
 	}
 
-	// Token: 0x06000D4D RID: 3405 RVA: 0x0005F01C File Offset: 0x0005D21C
+	// Token: 0x06000D4E RID: 3406 RVA: 0x0005F1A4 File Offset: 0x0005D3A4
 	public Fish GetCatch()
 	{
 		if (!this.m_nview.IsValid())
@@ -210,13 +210,13 @@ public class FishingFloat : MonoBehaviour, IProjectile
 		return null;
 	}
 
-	// Token: 0x06000D4E RID: 3406 RVA: 0x0005F073 File Offset: 0x0005D273
+	// Token: 0x06000D4F RID: 3407 RVA: 0x0005F1FB File Offset: 0x0005D3FB
 	public bool IsInWater()
 	{
 		return this.m_floating.IsInWater();
 	}
 
-	// Token: 0x06000D4F RID: 3407 RVA: 0x0005F080 File Offset: 0x0005D280
+	// Token: 0x06000D50 RID: 3408 RVA: 0x0005F208 File Offset: 0x0005D408
 	public void Nibble(Fish fish)
 	{
 		this.m_nview.InvokeRPC("Nibble", new object[]
@@ -225,7 +225,7 @@ public class FishingFloat : MonoBehaviour, IProjectile
 		});
 	}
 
-	// Token: 0x06000D50 RID: 3408 RVA: 0x0005F0A8 File Offset: 0x0005D2A8
+	// Token: 0x06000D51 RID: 3409 RVA: 0x0005F230 File Offset: 0x0005D430
 	public void RPC_Nibble(long sender, ZDOID fishID)
 	{
 		if (Time.time - this.m_nibbleTime < 1f)
@@ -246,13 +246,13 @@ public class FishingFloat : MonoBehaviour, IProjectile
 		}
 	}
 
-	// Token: 0x06000D51 RID: 3409 RVA: 0x0005F146 File Offset: 0x0005D346
+	// Token: 0x06000D52 RID: 3410 RVA: 0x0005F2CE File Offset: 0x0005D4CE
 	public static List<FishingFloat> GetAllInstances()
 	{
 		return FishingFloat.m_allInstances;
 	}
 
-	// Token: 0x06000D52 RID: 3410 RVA: 0x0005F150 File Offset: 0x0005D350
+	// Token: 0x06000D53 RID: 3411 RVA: 0x0005F2D8 File Offset: 0x0005D4D8
 	private static FishingFloat FindFloat(Character owner)
 	{
 		foreach (FishingFloat fishingFloat in FishingFloat.m_allInstances)
@@ -265,7 +265,7 @@ public class FishingFloat : MonoBehaviour, IProjectile
 		return null;
 	}
 
-	// Token: 0x06000D53 RID: 3411 RVA: 0x0005F1B0 File Offset: 0x0005D3B0
+	// Token: 0x06000D54 RID: 3412 RVA: 0x0005F338 File Offset: 0x0005D538
 	public static FishingFloat FindFloat(Fish fish)
 	{
 		foreach (FishingFloat fishingFloat in FishingFloat.m_allInstances)
@@ -278,7 +278,7 @@ public class FishingFloat : MonoBehaviour, IProjectile
 		return null;
 	}
 
-	// Token: 0x06000D54 RID: 3412 RVA: 0x0005F210 File Offset: 0x0005D410
+	// Token: 0x06000D55 RID: 3413 RVA: 0x0005F398 File Offset: 0x0005D598
 	private void Message(string msg, bool prioritized = false)
 	{
 		if (!prioritized && Time.time - this.m_msgTime < 1f)
@@ -293,66 +293,66 @@ public class FishingFloat : MonoBehaviour, IProjectile
 		}
 	}
 
-	// Token: 0x04000C21 RID: 3105
+	// Token: 0x04000C27 RID: 3111
 	public float m_maxDistance = 30f;
 
-	// Token: 0x04000C22 RID: 3106
+	// Token: 0x04000C28 RID: 3112
 	public float m_moveForce = 10f;
 
-	// Token: 0x04000C23 RID: 3107
+	// Token: 0x04000C29 RID: 3113
 	public float m_pullLineSpeed = 1f;
 
-	// Token: 0x04000C24 RID: 3108
+	// Token: 0x04000C2A RID: 3114
 	public float m_pullStaminaUse = 10f;
 
-	// Token: 0x04000C25 RID: 3109
+	// Token: 0x04000C2B RID: 3115
 	public float m_hookedStaminaPerSec = 1f;
 
-	// Token: 0x04000C26 RID: 3110
+	// Token: 0x04000C2C RID: 3116
 	public float m_breakDistance = 4f;
 
-	// Token: 0x04000C27 RID: 3111
+	// Token: 0x04000C2D RID: 3117
 	public float m_range = 10f;
 
-	// Token: 0x04000C28 RID: 3112
+	// Token: 0x04000C2E RID: 3118
 	public float m_nibbleForce = 10f;
 
-	// Token: 0x04000C29 RID: 3113
+	// Token: 0x04000C2F RID: 3119
 	public EffectList m_nibbleEffect = new EffectList();
 
-	// Token: 0x04000C2A RID: 3114
+	// Token: 0x04000C30 RID: 3120
 	public EffectList m_lineBreakEffect = new EffectList();
 
-	// Token: 0x04000C2B RID: 3115
+	// Token: 0x04000C31 RID: 3121
 	public float m_maxLineSlack = 0.3f;
 
-	// Token: 0x04000C2C RID: 3116
+	// Token: 0x04000C32 RID: 3122
 	public LineConnect m_rodLine;
 
-	// Token: 0x04000C2D RID: 3117
+	// Token: 0x04000C33 RID: 3123
 	public LineConnect m_hookLine;
 
-	// Token: 0x04000C2E RID: 3118
+	// Token: 0x04000C34 RID: 3124
 	private ZNetView m_nview;
 
-	// Token: 0x04000C2F RID: 3119
+	// Token: 0x04000C35 RID: 3125
 	private Rigidbody m_body;
 
-	// Token: 0x04000C30 RID: 3120
+	// Token: 0x04000C36 RID: 3126
 	private Floating m_floating;
 
-	// Token: 0x04000C31 RID: 3121
+	// Token: 0x04000C37 RID: 3127
 	private float m_lineLength;
 
-	// Token: 0x04000C32 RID: 3122
+	// Token: 0x04000C38 RID: 3128
 	private float m_msgTime;
 
-	// Token: 0x04000C33 RID: 3123
+	// Token: 0x04000C39 RID: 3129
 	private Fish m_nibbler;
 
-	// Token: 0x04000C34 RID: 3124
+	// Token: 0x04000C3A RID: 3130
 	private float m_nibbleTime;
 
-	// Token: 0x04000C35 RID: 3125
+	// Token: 0x04000C3B RID: 3131
 	private static List<FishingFloat> m_allInstances = new List<FishingFloat>();
 }

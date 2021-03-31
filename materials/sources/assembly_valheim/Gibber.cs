@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x0200003A RID: 58
 public class Gibber : MonoBehaviour
 {
-	// Token: 0x06000429 RID: 1065 RVA: 0x00021AAA File Offset: 0x0001FCAA
+	// Token: 0x0600042A RID: 1066 RVA: 0x00021B5E File Offset: 0x0001FD5E
 	private void Start()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -14,13 +14,13 @@ public class Gibber : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600042A RID: 1066 RVA: 0x00021AD6 File Offset: 0x0001FCD6
+	// Token: 0x0600042B RID: 1067 RVA: 0x00021B8A File Offset: 0x0001FD8A
 	public void Setup(Vector3 hitPoint, Vector3 hitDirection)
 	{
 		this.Explode(hitPoint, hitDirection);
 	}
 
-	// Token: 0x0600042B RID: 1067 RVA: 0x00021AE0 File Offset: 0x0001FCE0
+	// Token: 0x0600042C RID: 1068 RVA: 0x00021B94 File Offset: 0x0001FD94
 	private void DestroyAll()
 	{
 		if (this.m_nview)
@@ -41,7 +41,7 @@ public class Gibber : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600042C RID: 1068 RVA: 0x00021B40 File Offset: 0x0001FD40
+	// Token: 0x0600042D RID: 1069 RVA: 0x00021BF4 File Offset: 0x0001FDF4
 	private void CreateBodies()
 	{
 		MeshRenderer[] componentsInChildren = base.gameObject.GetComponentsInChildren<MeshRenderer>();
@@ -56,7 +56,7 @@ public class Gibber : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600042D RID: 1069 RVA: 0x00021B8C File Offset: 0x0001FD8C
+	// Token: 0x0600042E RID: 1070 RVA: 0x00021C40 File Offset: 0x0001FE40
 	private void Explode(Vector3 hitPoint, Vector3 hitDirection)
 	{
 		this.m_done = true;
@@ -85,50 +85,50 @@ public class Gibber : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000428 RID: 1064
+	// Token: 0x0400042C RID: 1068
 	public EffectList m_punchEffector = new EffectList();
 
-	// Token: 0x04000429 RID: 1065
+	// Token: 0x0400042D RID: 1069
 	public GameObject m_gibHitEffect;
 
-	// Token: 0x0400042A RID: 1066
+	// Token: 0x0400042E RID: 1070
 	public GameObject m_gibDestroyEffect;
 
-	// Token: 0x0400042B RID: 1067
+	// Token: 0x0400042F RID: 1071
 	public float m_gibHitDestroyChance;
 
-	// Token: 0x0400042C RID: 1068
+	// Token: 0x04000430 RID: 1072
 	public Gibber.GibbData[] m_gibbs = new Gibber.GibbData[0];
 
-	// Token: 0x0400042D RID: 1069
+	// Token: 0x04000431 RID: 1073
 	public float m_minVel = 10f;
 
-	// Token: 0x0400042E RID: 1070
+	// Token: 0x04000432 RID: 1074
 	public float m_maxVel = 20f;
 
-	// Token: 0x0400042F RID: 1071
+	// Token: 0x04000433 RID: 1075
 	public float m_maxRotVel = 20f;
 
-	// Token: 0x04000430 RID: 1072
+	// Token: 0x04000434 RID: 1076
 	public float m_impactDirectionMix = 0.5f;
 
-	// Token: 0x04000431 RID: 1073
+	// Token: 0x04000435 RID: 1077
 	public float m_timeout = 5f;
 
-	// Token: 0x04000432 RID: 1074
+	// Token: 0x04000436 RID: 1078
 	private bool m_done;
 
-	// Token: 0x04000433 RID: 1075
+	// Token: 0x04000437 RID: 1079
 	private ZNetView m_nview;
 
 	// Token: 0x0200013A RID: 314
 	[Serializable]
 	public class GibbData
 	{
-		// Token: 0x04001058 RID: 4184
+		// Token: 0x0400105F RID: 4191
 		public GameObject m_object;
 
-		// Token: 0x04001059 RID: 4185
+		// Token: 0x04001060 RID: 4192
 		public float m_chanceToSpawn = 1f;
 	}
 }

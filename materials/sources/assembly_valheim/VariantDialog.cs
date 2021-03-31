@@ -6,7 +6,7 @@ using UnityEngine.UI;
 // Token: 0x02000066 RID: 102
 public class VariantDialog : MonoBehaviour
 {
-	// Token: 0x06000668 RID: 1640 RVA: 0x00035EE8 File Offset: 0x000340E8
+	// Token: 0x06000669 RID: 1641 RVA: 0x00035F9C File Offset: 0x0003419C
 	public void Setup(ItemDrop.ItemData item)
 	{
 		base.gameObject.SetActive(true);
@@ -34,13 +34,13 @@ public class VariantDialog : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000669 RID: 1641 RVA: 0x00034714 File Offset: 0x00032914
+	// Token: 0x0600066A RID: 1642 RVA: 0x000347C8 File Offset: 0x000329C8
 	public void OnClose()
 	{
 		base.gameObject.SetActive(false);
 	}
 
-	// Token: 0x0600066A RID: 1642 RVA: 0x00036038 File Offset: 0x00034238
+	// Token: 0x0600066B RID: 1643 RVA: 0x000360EC File Offset: 0x000342EC
 	private void OnClicked(int index)
 	{
 		ZLog.Log("Clicked button " + index);
@@ -48,21 +48,21 @@ public class VariantDialog : MonoBehaviour
 		this.m_selected(index);
 	}
 
-	// Token: 0x04000726 RID: 1830
+	// Token: 0x0400072A RID: 1834
 	public Transform m_listRoot;
 
-	// Token: 0x04000727 RID: 1831
+	// Token: 0x0400072B RID: 1835
 	public GameObject m_elementPrefab;
 
-	// Token: 0x04000728 RID: 1832
+	// Token: 0x0400072C RID: 1836
 	public float m_spacing = 70f;
 
-	// Token: 0x04000729 RID: 1833
+	// Token: 0x0400072D RID: 1837
 	public int m_gridWidth = 5;
 
-	// Token: 0x0400072A RID: 1834
+	// Token: 0x0400072E RID: 1838
 	private List<GameObject> m_elements = new List<GameObject>();
 
-	// Token: 0x0400072B RID: 1835
+	// Token: 0x0400072F RID: 1839
 	public Action<int> m_selected;
 }

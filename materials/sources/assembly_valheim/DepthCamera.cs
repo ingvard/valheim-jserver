@@ -4,14 +4,14 @@ using UnityEngine;
 // Token: 0x02000097 RID: 151
 public class DepthCamera : MonoBehaviour
 {
-	// Token: 0x06000A10 RID: 2576 RVA: 0x00048D13 File Offset: 0x00046F13
+	// Token: 0x06000A11 RID: 2577 RVA: 0x00048DBF File Offset: 0x00046FBF
 	private void Start()
 	{
 		this.m_camera = base.GetComponent<Camera>();
 		base.InvokeRepeating("RenderDepth", this.m_updateInterval, this.m_updateInterval);
 	}
 
-	// Token: 0x06000A11 RID: 2577 RVA: 0x00048D38 File Offset: 0x00046F38
+	// Token: 0x06000A12 RID: 2578 RVA: 0x00048DE4 File Offset: 0x00046FE4
 	private void RenderDepth()
 	{
 		Camera mainCamera = Utils.GetMainCamera();
@@ -32,18 +32,18 @@ public class DepthCamera : MonoBehaviour
 		Shader.SetGlobalVector("_SkyAlphaPosition", base.transform.position);
 	}
 
-	// Token: 0x0400092F RID: 2351
+	// Token: 0x04000933 RID: 2355
 	public Shader m_depthShader;
 
-	// Token: 0x04000930 RID: 2352
+	// Token: 0x04000934 RID: 2356
 	public float m_offset = 50f;
 
-	// Token: 0x04000931 RID: 2353
+	// Token: 0x04000935 RID: 2357
 	public RenderTexture m_texture;
 
-	// Token: 0x04000932 RID: 2354
+	// Token: 0x04000936 RID: 2358
 	public float m_updateInterval = 1f;
 
-	// Token: 0x04000933 RID: 2355
+	// Token: 0x04000937 RID: 2359
 	private Camera m_camera;
 }

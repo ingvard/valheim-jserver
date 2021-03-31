@@ -5,20 +5,20 @@ using UnityEngine;
 // Token: 0x02000103 RID: 259
 public class TestSceneCharacter : MonoBehaviour
 {
-	// Token: 0x06000F96 RID: 3990 RVA: 0x0006E386 File Offset: 0x0006C586
+	// Token: 0x06000F97 RID: 3991 RVA: 0x0006E50E File Offset: 0x0006C70E
 	private void Start()
 	{
 		this.m_body = base.GetComponent<Rigidbody>();
 	}
 
-	// Token: 0x06000F97 RID: 3991 RVA: 0x0006E394 File Offset: 0x0006C594
+	// Token: 0x06000F98 RID: 3992 RVA: 0x0006E51C File Offset: 0x0006C71C
 	private void Update()
 	{
 		Thread.Sleep(30);
 		this.HandleInput(Time.deltaTime);
 	}
 
-	// Token: 0x06000F98 RID: 3992 RVA: 0x0006E3A8 File Offset: 0x0006C5A8
+	// Token: 0x06000F99 RID: 3993 RVA: 0x0006E530 File Offset: 0x0006C730
 	private void HandleInput(float dt)
 	{
 		Camera mainCamera = Utils.GetMainCamera();
@@ -75,18 +75,18 @@ public class TestSceneCharacter : MonoBehaviour
 		mainCamera.transform.LookAt(base.transform.position + Vector3.up);
 	}
 
-	// Token: 0x04000E5F RID: 3679
+	// Token: 0x04000E65 RID: 3685
 	public float m_speed = 5f;
 
-	// Token: 0x04000E60 RID: 3680
+	// Token: 0x04000E66 RID: 3686
 	public float m_cameraDistance = 10f;
 
-	// Token: 0x04000E61 RID: 3681
+	// Token: 0x04000E67 RID: 3687
 	private Rigidbody m_body;
 
-	// Token: 0x04000E62 RID: 3682
+	// Token: 0x04000E68 RID: 3688
 	private Quaternion m_lookYaw = Quaternion.identity;
 
-	// Token: 0x04000E63 RID: 3683
+	// Token: 0x04000E69 RID: 3689
 	private float m_lookPitch;
 }

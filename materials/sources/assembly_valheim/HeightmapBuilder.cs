@@ -8,7 +8,7 @@ using UnityEngine;
 public class HeightmapBuilder
 {
 	// Token: 0x17000031 RID: 49
-	// (get) Token: 0x06000DAD RID: 3501 RVA: 0x00061968 File Offset: 0x0005FB68
+	// (get) Token: 0x06000DAE RID: 3502 RVA: 0x00061AF0 File Offset: 0x0005FCF0
 	public static HeightmapBuilder instance
 	{
 		get
@@ -21,7 +21,7 @@ public class HeightmapBuilder
 		}
 	}
 
-	// Token: 0x06000DAE RID: 3502 RVA: 0x00061980 File Offset: 0x0005FB80
+	// Token: 0x06000DAF RID: 3503 RVA: 0x00061B08 File Offset: 0x0005FD08
 	public HeightmapBuilder()
 	{
 		HeightmapBuilder.m_instance = this;
@@ -29,7 +29,7 @@ public class HeightmapBuilder
 		this.m_builder.Start();
 	}
 
-	// Token: 0x06000DAF RID: 3503 RVA: 0x000619DC File Offset: 0x0005FBDC
+	// Token: 0x06000DB0 RID: 3504 RVA: 0x00061B64 File Offset: 0x0005FD64
 	public void Dispose()
 	{
 		if (this.m_builder != null)
@@ -48,7 +48,7 @@ public class HeightmapBuilder
 		}
 	}
 
-	// Token: 0x06000DB0 RID: 3504 RVA: 0x00061A48 File Offset: 0x0005FC48
+	// Token: 0x06000DB1 RID: 3505 RVA: 0x00061BD0 File Offset: 0x0005FDD0
 	private void BuildThread()
 	{
 		ZLog.Log("Builder started");
@@ -77,7 +77,7 @@ public class HeightmapBuilder
 		}
 	}
 
-	// Token: 0x06000DB1 RID: 3505 RVA: 0x00061B24 File Offset: 0x0005FD24
+	// Token: 0x06000DB2 RID: 3506 RVA: 0x00061CAC File Offset: 0x0005FEAC
 	private void Build(HeightmapBuilder.HMBuildData data)
 	{
 		int num = data.m_width + 1;
@@ -166,7 +166,7 @@ public class HeightmapBuilder
 		}
 	}
 
-	// Token: 0x06000DB2 RID: 3506 RVA: 0x00061F10 File Offset: 0x00060110
+	// Token: 0x06000DB3 RID: 3507 RVA: 0x00062098 File Offset: 0x00060298
 	public HeightmapBuilder.HMBuildData RequestTerrainSync(Vector3 center, int width, float scale, bool distantLod, WorldGenerator worldGen)
 	{
 		HeightmapBuilder.HMBuildData hmbuildData;
@@ -178,7 +178,7 @@ public class HeightmapBuilder
 		return hmbuildData;
 	}
 
-	// Token: 0x06000DB3 RID: 3507 RVA: 0x00061F30 File Offset: 0x00060130
+	// Token: 0x06000DB4 RID: 3508 RVA: 0x000620B8 File Offset: 0x000602B8
 	public HeightmapBuilder.HMBuildData RequestTerrain(Vector3 center, int width, float scale, bool distantLod, WorldGenerator worldGen)
 	{
 		this.m_lock.WaitOne();
@@ -205,7 +205,7 @@ public class HeightmapBuilder
 		return null;
 	}
 
-	// Token: 0x06000DB4 RID: 3508 RVA: 0x00061FF4 File Offset: 0x000601F4
+	// Token: 0x06000DB5 RID: 3509 RVA: 0x0006217C File Offset: 0x0006037C
 	public bool IsTerrainReady(Vector3 center, int width, float scale, bool distantLod, WorldGenerator worldGen)
 	{
 		this.m_lock.WaitOne();
@@ -230,31 +230,31 @@ public class HeightmapBuilder
 		return false;
 	}
 
-	// Token: 0x04000C60 RID: 3168
+	// Token: 0x04000C66 RID: 3174
 	private static HeightmapBuilder m_instance;
 
-	// Token: 0x04000C61 RID: 3169
+	// Token: 0x04000C67 RID: 3175
 	private const int m_maxReadyQueue = 16;
 
-	// Token: 0x04000C62 RID: 3170
+	// Token: 0x04000C68 RID: 3176
 	private List<HeightmapBuilder.HMBuildData> m_toBuild = new List<HeightmapBuilder.HMBuildData>();
 
-	// Token: 0x04000C63 RID: 3171
+	// Token: 0x04000C69 RID: 3177
 	private List<HeightmapBuilder.HMBuildData> m_ready = new List<HeightmapBuilder.HMBuildData>();
 
-	// Token: 0x04000C64 RID: 3172
+	// Token: 0x04000C6A RID: 3178
 	private Thread m_builder;
 
-	// Token: 0x04000C65 RID: 3173
+	// Token: 0x04000C6B RID: 3179
 	private Mutex m_lock = new Mutex();
 
-	// Token: 0x04000C66 RID: 3174
+	// Token: 0x04000C6C RID: 3180
 	private bool m_stop;
 
 	// Token: 0x0200019A RID: 410
 	public class HMBuildData
 	{
-		// Token: 0x060011A0 RID: 4512 RVA: 0x0007917D File Offset: 0x0007737D
+		// Token: 0x060011A1 RID: 4513 RVA: 0x00079305 File Offset: 0x00077505
 		public HMBuildData(Vector3 center, int width, float scale, bool distantLod, WorldGenerator worldGen)
 		{
 			this.m_center = center;
@@ -264,34 +264,34 @@ public class HeightmapBuilder
 			this.m_worldGen = worldGen;
 		}
 
-		// Token: 0x060011A1 RID: 4513 RVA: 0x000791AA File Offset: 0x000773AA
+		// Token: 0x060011A2 RID: 4514 RVA: 0x00079332 File Offset: 0x00077532
 		public bool IsEqual(Vector3 center, int width, float scale, bool distantLod, WorldGenerator worldGen)
 		{
 			return this.m_center == center && this.m_width == width && this.m_scale == scale && this.m_distantLod == distantLod && this.m_worldGen == worldGen;
 		}
 
-		// Token: 0x0400129D RID: 4765
+		// Token: 0x040012A4 RID: 4772
 		public Vector3 m_center;
 
-		// Token: 0x0400129E RID: 4766
+		// Token: 0x040012A5 RID: 4773
 		public int m_width;
 
-		// Token: 0x0400129F RID: 4767
+		// Token: 0x040012A6 RID: 4774
 		public float m_scale;
 
-		// Token: 0x040012A0 RID: 4768
+		// Token: 0x040012A7 RID: 4775
 		public bool m_distantLod;
 
-		// Token: 0x040012A1 RID: 4769
+		// Token: 0x040012A8 RID: 4776
 		public bool m_menu;
 
-		// Token: 0x040012A2 RID: 4770
+		// Token: 0x040012A9 RID: 4777
 		public WorldGenerator m_worldGen;
 
-		// Token: 0x040012A3 RID: 4771
+		// Token: 0x040012AA RID: 4778
 		public Heightmap.Biome[] m_cornerBiomes;
 
-		// Token: 0x040012A4 RID: 4772
+		// Token: 0x040012AB RID: 4779
 		public List<float> m_baseHeights;
 	}
 }

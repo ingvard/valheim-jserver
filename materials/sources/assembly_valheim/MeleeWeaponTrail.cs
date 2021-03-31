@@ -6,7 +6,7 @@ using UnityEngine;
 public class MeleeWeaponTrail : MonoBehaviour
 {
 	// Token: 0x17000002 RID: 2
-	// (set) Token: 0x0600046E RID: 1134 RVA: 0x000234AE File Offset: 0x000216AE
+	// (set) Token: 0x0600046F RID: 1135 RVA: 0x00023562 File Offset: 0x00021762
 	public bool Emit
 	{
 		set
@@ -16,7 +16,7 @@ public class MeleeWeaponTrail : MonoBehaviour
 	}
 
 	// Token: 0x17000003 RID: 3
-	// (set) Token: 0x0600046F RID: 1135 RVA: 0x000234B7 File Offset: 0x000216B7
+	// (set) Token: 0x06000470 RID: 1136 RVA: 0x0002356B File Offset: 0x0002176B
 	public bool Use
 	{
 		set
@@ -25,7 +25,7 @@ public class MeleeWeaponTrail : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000470 RID: 1136 RVA: 0x000234C0 File Offset: 0x000216C0
+	// Token: 0x06000471 RID: 1137 RVA: 0x00023574 File Offset: 0x00021774
 	private void Start()
 	{
 		this._lastPosition = base.transform.position;
@@ -44,13 +44,13 @@ public class MeleeWeaponTrail : MonoBehaviour
 		this._maxVertexDistanceSqr = this._maxVertexDistance * this._maxVertexDistance;
 	}
 
-	// Token: 0x06000471 RID: 1137 RVA: 0x000235E2 File Offset: 0x000217E2
+	// Token: 0x06000472 RID: 1138 RVA: 0x00023696 File Offset: 0x00021896
 	private void OnDisable()
 	{
 		UnityEngine.Object.Destroy(this._trailObject);
 	}
 
-	// Token: 0x06000472 RID: 1138 RVA: 0x000235F0 File Offset: 0x000217F0
+	// Token: 0x06000473 RID: 1139 RVA: 0x000236A4 File Offset: 0x000218A4
 	private void FixedUpdate()
 	{
 		if (!this._use)
@@ -268,7 +268,7 @@ public class MeleeWeaponTrail : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000473 RID: 1139 RVA: 0x00023FC4 File Offset: 0x000221C4
+	// Token: 0x06000474 RID: 1140 RVA: 0x00024078 File Offset: 0x00022278
 	private void RemoveOldPoints(List<MeleeWeaponTrail.Point> pointList)
 	{
 		List<MeleeWeaponTrail.Point> list = new List<MeleeWeaponTrail.Point>();
@@ -285,93 +285,93 @@ public class MeleeWeaponTrail : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0400046E RID: 1134
+	// Token: 0x04000472 RID: 1138
 	[SerializeField]
 	private bool _emit = true;
 
-	// Token: 0x0400046F RID: 1135
-	private bool _use = true;
-
-	// Token: 0x04000470 RID: 1136
-	[SerializeField]
-	private float _emitTime;
-
-	// Token: 0x04000471 RID: 1137
-	[SerializeField]
-	private Material _material;
-
-	// Token: 0x04000472 RID: 1138
-	[SerializeField]
-	private float _lifeTime = 1f;
-
 	// Token: 0x04000473 RID: 1139
-	[SerializeField]
-	private Color[] _colors;
+	private bool _use = true;
 
 	// Token: 0x04000474 RID: 1140
 	[SerializeField]
-	private float[] _sizes;
+	private float _emitTime;
 
 	// Token: 0x04000475 RID: 1141
 	[SerializeField]
-	private float _minVertexDistance = 0.1f;
+	private Material _material;
 
 	// Token: 0x04000476 RID: 1142
 	[SerializeField]
-	private float _maxVertexDistance = 10f;
+	private float _lifeTime = 1f;
 
 	// Token: 0x04000477 RID: 1143
-	private float _minVertexDistanceSqr;
+	[SerializeField]
+	private Color[] _colors;
 
 	// Token: 0x04000478 RID: 1144
-	private float _maxVertexDistanceSqr;
+	[SerializeField]
+	private float[] _sizes;
 
 	// Token: 0x04000479 RID: 1145
 	[SerializeField]
-	private float _maxAngle = 3f;
+	private float _minVertexDistance = 0.1f;
 
 	// Token: 0x0400047A RID: 1146
 	[SerializeField]
-	private bool _autoDestruct;
+	private float _maxVertexDistance = 10f;
 
 	// Token: 0x0400047B RID: 1147
-	[SerializeField]
-	private int subdivisions = 4;
+	private float _minVertexDistanceSqr;
 
 	// Token: 0x0400047C RID: 1148
-	[SerializeField]
-	private Transform _base;
+	private float _maxVertexDistanceSqr;
 
 	// Token: 0x0400047D RID: 1149
 	[SerializeField]
-	private Transform _tip;
+	private float _maxAngle = 3f;
 
 	// Token: 0x0400047E RID: 1150
-	private List<MeleeWeaponTrail.Point> _points = new List<MeleeWeaponTrail.Point>();
+	[SerializeField]
+	private bool _autoDestruct;
 
 	// Token: 0x0400047F RID: 1151
-	private List<MeleeWeaponTrail.Point> _smoothedPoints = new List<MeleeWeaponTrail.Point>();
+	[SerializeField]
+	private int subdivisions = 4;
 
 	// Token: 0x04000480 RID: 1152
-	private GameObject _trailObject;
+	[SerializeField]
+	private Transform _base;
 
 	// Token: 0x04000481 RID: 1153
-	private Mesh _trailMesh;
+	[SerializeField]
+	private Transform _tip;
 
 	// Token: 0x04000482 RID: 1154
+	private List<MeleeWeaponTrail.Point> _points = new List<MeleeWeaponTrail.Point>();
+
+	// Token: 0x04000483 RID: 1155
+	private List<MeleeWeaponTrail.Point> _smoothedPoints = new List<MeleeWeaponTrail.Point>();
+
+	// Token: 0x04000484 RID: 1156
+	private GameObject _trailObject;
+
+	// Token: 0x04000485 RID: 1157
+	private Mesh _trailMesh;
+
+	// Token: 0x04000486 RID: 1158
 	private Vector3 _lastPosition;
 
 	// Token: 0x02000143 RID: 323
 	[Serializable]
 	public class Point
 	{
-		// Token: 0x040010AC RID: 4268
+		// Token: 0x040010B3 RID: 4275
 		public float timeCreated;
 
-		// Token: 0x040010AD RID: 4269
+		// Token: 0x040010B4 RID: 4276
 		public Vector3 basePosition;
 
-		// Token: 0x040010AE RID: 4270
+		// Token: 0x040010B5 RID: 4277
 		public Vector3 tipPosition;
 	}
 }

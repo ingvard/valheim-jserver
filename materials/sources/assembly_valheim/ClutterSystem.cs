@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 public class ClutterSystem : MonoBehaviour
 {
 	// Token: 0x17000030 RID: 48
-	// (get) Token: 0x06000C90 RID: 3216 RVA: 0x00059946 File Offset: 0x00057B46
+	// (get) Token: 0x06000C91 RID: 3217 RVA: 0x00059ACE File Offset: 0x00057CCE
 	public static ClutterSystem instance
 	{
 		get
@@ -16,7 +16,7 @@ public class ClutterSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C91 RID: 3217 RVA: 0x00059950 File Offset: 0x00057B50
+	// Token: 0x06000C92 RID: 3218 RVA: 0x00059AD8 File Offset: 0x00057CD8
 	private void Awake()
 	{
 		ClutterSystem.m_instance = this;
@@ -33,7 +33,7 @@ public class ClutterSystem : MonoBehaviour
 		this.m_grassRoot.transform.SetParent(base.transform);
 	}
 
-	// Token: 0x06000C92 RID: 3218 RVA: 0x000599B4 File Offset: 0x00057BB4
+	// Token: 0x06000C93 RID: 3219 RVA: 0x00059B3C File Offset: 0x00057D3C
 	public void ApplySettings()
 	{
 		ClutterSystem.Quality @int = (ClutterSystem.Quality)PlayerPrefs.GetInt("ClutterQuality", 2);
@@ -45,7 +45,7 @@ public class ClutterSystem : MonoBehaviour
 		this.ClearAll();
 	}
 
-	// Token: 0x06000C93 RID: 3219 RVA: 0x000599E4 File Offset: 0x00057BE4
+	// Token: 0x06000C94 RID: 3220 RVA: 0x00059B6C File Offset: 0x00057D6C
 	private void LateUpdate()
 	{
 		Camera mainCamera = Utils.GetMainCamera();
@@ -78,7 +78,7 @@ public class ClutterSystem : MonoBehaviour
 		Shader.SetGlobalVector("_PlayerOldPosition", new Vector3(999999f, 999999f, 999999f));
 	}
 
-	// Token: 0x06000C94 RID: 3220 RVA: 0x00059B14 File Offset: 0x00057D14
+	// Token: 0x06000C95 RID: 3221 RVA: 0x00059C9C File Offset: 0x00057E9C
 	public Vector2Int GetVegPatch(Vector3 point)
 	{
 		int x = Mathf.FloorToInt((point.x + this.m_grassPatchSize / 2f) / this.m_grassPatchSize);
@@ -86,20 +86,20 @@ public class ClutterSystem : MonoBehaviour
 		return new Vector2Int(x, y);
 	}
 
-	// Token: 0x06000C95 RID: 3221 RVA: 0x00059B66 File Offset: 0x00057D66
+	// Token: 0x06000C96 RID: 3222 RVA: 0x00059CEE File Offset: 0x00057EEE
 	public Vector3 GetVegPatchCenter(Vector2Int p)
 	{
 		return new Vector3((float)p.x * this.m_grassPatchSize, 0f, (float)p.y * this.m_grassPatchSize);
 	}
 
-	// Token: 0x06000C96 RID: 3222 RVA: 0x00059B90 File Offset: 0x00057D90
+	// Token: 0x06000C97 RID: 3223 RVA: 0x00059D18 File Offset: 0x00057F18
 	private bool IsHeightmapReady()
 	{
 		Camera mainCamera = Utils.GetMainCamera();
 		return mainCamera && !Heightmap.HaveQueuedRebuild(mainCamera.transform.position, this.m_distance);
 	}
 
-	// Token: 0x06000C97 RID: 3223 RVA: 0x00059BC8 File Offset: 0x00057DC8
+	// Token: 0x06000C98 RID: 3224 RVA: 0x00059D50 File Offset: 0x00057F50
 	private void UpdateGrass(float dt, bool rebuildAll, Vector3 center)
 	{
 		if (this.m_quality == ClutterSystem.Quality.Off)
@@ -110,7 +110,7 @@ public class ClutterSystem : MonoBehaviour
 		this.TimeoutPatches(dt);
 	}
 
-	// Token: 0x06000C98 RID: 3224 RVA: 0x00059BE4 File Offset: 0x00057DE4
+	// Token: 0x06000C99 RID: 3225 RVA: 0x00059D6C File Offset: 0x00057F6C
 	private void GeneratePatches(bool rebuildAll, Vector3 center)
 	{
 		bool flag = false;
@@ -132,7 +132,7 @@ public class ClutterSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C99 RID: 3225 RVA: 0x00059CE4 File Offset: 0x00057EE4
+	// Token: 0x06000C9A RID: 3226 RVA: 0x00059E6C File Offset: 0x0005806C
 	private void GeneratePatch(Vector3 camPos, Vector2Int p, ref bool generated, bool rebuildAll)
 	{
 		if (Utils.DistanceXZ(this.GetVegPatchCenter(p), camPos) > this.m_distance)
@@ -166,7 +166,7 @@ public class ClutterSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C9A RID: 3226 RVA: 0x00059DC4 File Offset: 0x00057FC4
+	// Token: 0x06000C9B RID: 3227 RVA: 0x00059F4C File Offset: 0x0005814C
 	private void TimeoutPatches(float dt)
 	{
 		this.m_tempToRemovePair.Clear();
@@ -189,7 +189,7 @@ public class ClutterSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C9B RID: 3227 RVA: 0x00059EF0 File Offset: 0x000580F0
+	// Token: 0x06000C9C RID: 3228 RVA: 0x0005A078 File Offset: 0x00058278
 	private void ClearAll()
 	{
 		foreach (KeyValuePair<Vector2Int, ClutterSystem.PatchData> keyValuePair in this.m_patches)
@@ -204,7 +204,7 @@ public class ClutterSystem : MonoBehaviour
 		this.m_forceRebuild = true;
 	}
 
-	// Token: 0x06000C9C RID: 3228 RVA: 0x00059FA0 File Offset: 0x000581A0
+	// Token: 0x06000C9D RID: 3229 RVA: 0x0005A128 File Offset: 0x00058328
 	public void ResetGrass(Vector3 center, float radius)
 	{
 		float num = this.m_grassPatchSize / 2f;
@@ -219,7 +219,7 @@ public class ClutterSystem : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C9D RID: 3229 RVA: 0x0005A064 File Offset: 0x00058264
+	// Token: 0x06000C9E RID: 3230 RVA: 0x0005A1EC File Offset: 0x000583EC
 	public bool GetGroundInfo(Vector3 p, out Vector3 point, out Vector3 normal, out Heightmap hmap, out Heightmap.Biome biome)
 	{
 		RaycastHit raycastHit;
@@ -238,7 +238,7 @@ public class ClutterSystem : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000C9E RID: 3230 RVA: 0x0005A0F8 File Offset: 0x000582F8
+	// Token: 0x06000C9F RID: 3231 RVA: 0x0005A280 File Offset: 0x00058480
 	private Heightmap.Biome GetPatchBiomes(Vector3 center, float halfSize)
 	{
 		Heightmap.Biome biome = Heightmap.FindBiomeClutter(new Vector3(center.x - halfSize, 0f, center.z - halfSize));
@@ -252,7 +252,7 @@ public class ClutterSystem : MonoBehaviour
 		return biome | biome2 | biome3 | biome4;
 	}
 
-	// Token: 0x06000C9F RID: 3231 RVA: 0x0005A19C File Offset: 0x0005839C
+	// Token: 0x06000CA0 RID: 3232 RVA: 0x0005A324 File Offset: 0x00058524
 	private ClutterSystem.PatchData GenerateVegPatch(Vector2Int patchID, float size)
 	{
 		Vector3 vegPatchCenter = this.GetVegPatchCenter(patchID);
@@ -376,7 +376,7 @@ public class ClutterSystem : MonoBehaviour
 		return patchData;
 	}
 
-	// Token: 0x06000CA0 RID: 3232 RVA: 0x0005A5AD File Offset: 0x000587AD
+	// Token: 0x06000CA1 RID: 3233 RVA: 0x0005A735 File Offset: 0x00058935
 	private ClutterSystem.PatchData AllocatePatch()
 	{
 		if (this.m_freePatches.Count > 0)
@@ -386,7 +386,7 @@ public class ClutterSystem : MonoBehaviour
 		return new ClutterSystem.PatchData();
 	}
 
-	// Token: 0x06000CA1 RID: 3233 RVA: 0x0005A5CE File Offset: 0x000587CE
+	// Token: 0x06000CA2 RID: 3234 RVA: 0x0005A756 File Offset: 0x00058956
 	private void FreePatch(ClutterSystem.PatchData patch)
 	{
 		patch.center = Vector3.zero;
@@ -396,165 +396,165 @@ public class ClutterSystem : MonoBehaviour
 		this.m_freePatches.Push(patch);
 	}
 
-	// Token: 0x04000B77 RID: 2935
+	// Token: 0x04000B7D RID: 2941
 	private static ClutterSystem m_instance;
 
-	// Token: 0x04000B78 RID: 2936
+	// Token: 0x04000B7E RID: 2942
 	private int m_placeRayMask;
 
-	// Token: 0x04000B79 RID: 2937
+	// Token: 0x04000B7F RID: 2943
 	public List<ClutterSystem.Clutter> m_clutter = new List<ClutterSystem.Clutter>();
 
-	// Token: 0x04000B7A RID: 2938
+	// Token: 0x04000B80 RID: 2944
 	public float m_grassPatchSize = 8f;
 
-	// Token: 0x04000B7B RID: 2939
+	// Token: 0x04000B81 RID: 2945
 	public float m_distance = 40f;
 
-	// Token: 0x04000B7C RID: 2940
+	// Token: 0x04000B82 RID: 2946
 	public float m_waterLevel = 27f;
 
-	// Token: 0x04000B7D RID: 2941
+	// Token: 0x04000B83 RID: 2947
 	public float m_playerPushFade = 0.05f;
 
-	// Token: 0x04000B7E RID: 2942
+	// Token: 0x04000B84 RID: 2948
 	public float m_amountScale = 1f;
 
-	// Token: 0x04000B7F RID: 2943
+	// Token: 0x04000B85 RID: 2949
 	public bool m_menuHack;
 
-	// Token: 0x04000B80 RID: 2944
+	// Token: 0x04000B86 RID: 2950
 	private Dictionary<Vector2Int, ClutterSystem.PatchData> m_patches = new Dictionary<Vector2Int, ClutterSystem.PatchData>();
 
-	// Token: 0x04000B81 RID: 2945
+	// Token: 0x04000B87 RID: 2951
 	private Stack<ClutterSystem.PatchData> m_freePatches = new Stack<ClutterSystem.PatchData>();
 
-	// Token: 0x04000B82 RID: 2946
+	// Token: 0x04000B88 RID: 2952
 	private GameObject m_grassRoot;
 
-	// Token: 0x04000B83 RID: 2947
+	// Token: 0x04000B89 RID: 2953
 	private Vector3 m_oldPlayerPos = Vector3.zero;
 
-	// Token: 0x04000B84 RID: 2948
+	// Token: 0x04000B8A RID: 2954
 	private List<Vector2Int> m_tempToRemove = new List<Vector2Int>();
 
-	// Token: 0x04000B85 RID: 2949
+	// Token: 0x04000B8B RID: 2955
 	private List<KeyValuePair<Vector2Int, ClutterSystem.PatchData>> m_tempToRemovePair = new List<KeyValuePair<Vector2Int, ClutterSystem.PatchData>>();
 
-	// Token: 0x04000B86 RID: 2950
+	// Token: 0x04000B8C RID: 2956
 	private ClutterSystem.Quality m_quality = ClutterSystem.Quality.High;
 
-	// Token: 0x04000B87 RID: 2951
+	// Token: 0x04000B8D RID: 2957
 	private bool m_forceRebuild;
 
 	// Token: 0x0200018F RID: 399
 	[Serializable]
 	public class Clutter
 	{
-		// Token: 0x04001251 RID: 4689
+		// Token: 0x04001258 RID: 4696
 		public string m_name = "";
 
-		// Token: 0x04001252 RID: 4690
+		// Token: 0x04001259 RID: 4697
 		public bool m_enabled = true;
 
-		// Token: 0x04001253 RID: 4691
+		// Token: 0x0400125A RID: 4698
 		[BitMask(typeof(Heightmap.Biome))]
 		public Heightmap.Biome m_biome;
 
-		// Token: 0x04001254 RID: 4692
+		// Token: 0x0400125B RID: 4699
 		public bool m_instanced;
 
-		// Token: 0x04001255 RID: 4693
+		// Token: 0x0400125C RID: 4700
 		public GameObject m_prefab;
 
-		// Token: 0x04001256 RID: 4694
+		// Token: 0x0400125D RID: 4701
 		public int m_amount = 80;
 
-		// Token: 0x04001257 RID: 4695
+		// Token: 0x0400125E RID: 4702
 		public bool m_onUncleared = true;
 
-		// Token: 0x04001258 RID: 4696
+		// Token: 0x0400125F RID: 4703
 		public bool m_onCleared;
 
-		// Token: 0x04001259 RID: 4697
+		// Token: 0x04001260 RID: 4704
 		public float m_scaleMin = 1f;
 
-		// Token: 0x0400125A RID: 4698
+		// Token: 0x04001261 RID: 4705
 		public float m_scaleMax = 1f;
 
-		// Token: 0x0400125B RID: 4699
+		// Token: 0x04001262 RID: 4706
 		public float m_maxTilt = 18f;
 
-		// Token: 0x0400125C RID: 4700
+		// Token: 0x04001263 RID: 4707
 		public float m_maxAlt = 1000f;
 
-		// Token: 0x0400125D RID: 4701
+		// Token: 0x04001264 RID: 4708
 		public float m_minAlt = 27f;
 
-		// Token: 0x0400125E RID: 4702
+		// Token: 0x04001265 RID: 4709
 		public bool m_snapToWater;
 
-		// Token: 0x0400125F RID: 4703
+		// Token: 0x04001266 RID: 4710
 		public bool m_terrainTilt;
 
-		// Token: 0x04001260 RID: 4704
+		// Token: 0x04001267 RID: 4711
 		public float m_randomOffset;
 
-		// Token: 0x04001261 RID: 4705
+		// Token: 0x04001268 RID: 4712
 		[Header("Ocean depth ")]
 		public float m_minOceanDepth;
 
-		// Token: 0x04001262 RID: 4706
+		// Token: 0x04001269 RID: 4713
 		public float m_maxOceanDepth;
 
-		// Token: 0x04001263 RID: 4707
+		// Token: 0x0400126A RID: 4714
 		[Header("Forest fractal 0-1 inside forest")]
 		public bool m_inForest;
 
-		// Token: 0x04001264 RID: 4708
+		// Token: 0x0400126B RID: 4715
 		public float m_forestTresholdMin;
 
-		// Token: 0x04001265 RID: 4709
+		// Token: 0x0400126C RID: 4716
 		public float m_forestTresholdMax = 1f;
 
-		// Token: 0x04001266 RID: 4710
+		// Token: 0x0400126D RID: 4717
 		[Header("Fractal placement (m_fractalScale > 0 == enabled) ")]
 		public float m_fractalScale;
 
-		// Token: 0x04001267 RID: 4711
+		// Token: 0x0400126E RID: 4718
 		public float m_fractalOffset;
 
-		// Token: 0x04001268 RID: 4712
+		// Token: 0x0400126F RID: 4719
 		public float m_fractalTresholdMin = 0.5f;
 
-		// Token: 0x04001269 RID: 4713
+		// Token: 0x04001270 RID: 4720
 		public float m_fractalTresholdMax = 1f;
 	}
 
 	// Token: 0x02000190 RID: 400
 	private class PatchData
 	{
-		// Token: 0x0400126A RID: 4714
+		// Token: 0x04001271 RID: 4721
 		public Vector3 center;
 
-		// Token: 0x0400126B RID: 4715
+		// Token: 0x04001272 RID: 4722
 		public List<GameObject> m_objects = new List<GameObject>();
 
-		// Token: 0x0400126C RID: 4716
+		// Token: 0x04001273 RID: 4723
 		public float m_timer;
 
-		// Token: 0x0400126D RID: 4717
+		// Token: 0x04001274 RID: 4724
 		public bool m_reset;
 	}
 
 	// Token: 0x02000191 RID: 401
 	public enum Quality
 	{
-		// Token: 0x0400126F RID: 4719
+		// Token: 0x04001276 RID: 4726
 		Off,
-		// Token: 0x04001270 RID: 4720
+		// Token: 0x04001277 RID: 4727
 		Med,
-		// Token: 0x04001271 RID: 4721
+		// Token: 0x04001278 RID: 4728
 		High
 	}
 }

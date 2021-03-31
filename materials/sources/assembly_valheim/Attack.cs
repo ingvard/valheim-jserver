@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 [Serializable]
 public class Attack
 {
-	// Token: 0x060002E0 RID: 736 RVA: 0x00017641 File Offset: 0x00015841
+	// Token: 0x060002E1 RID: 737 RVA: 0x000176F5 File Offset: 0x000158F5
 	public bool StartDraw(Humanoid character, ItemDrop.ItemData weapon)
 	{
 		if (!Attack.HaveAmmo(character, weapon))
@@ -18,7 +18,7 @@ public class Attack
 		return true;
 	}
 
-	// Token: 0x060002E1 RID: 737 RVA: 0x00017658 File Offset: 0x00015858
+	// Token: 0x060002E2 RID: 738 RVA: 0x0001770C File Offset: 0x0001590C
 	public bool Start(Humanoid character, Rigidbody body, ZSyncAnimation zanim, CharacterAnimEvent animEvent, VisEquipment visEquipment, ItemDrop.ItemData weapon, Attack previousAttack, float timeSinceLastAttack, float attackDrawPercentage)
 	{
 		if (this.m_attackAnimation == "")
@@ -118,7 +118,7 @@ public class Attack
 		return true;
 	}
 
-	// Token: 0x060002E2 RID: 738 RVA: 0x00017970 File Offset: 0x00015B70
+	// Token: 0x060002E3 RID: 739 RVA: 0x00017A24 File Offset: 0x00015C24
 	private float GetStaminaUsage()
 	{
 		if (this.m_attackStamina <= 0f)
@@ -130,7 +130,7 @@ public class Attack
 		return attackStamina - attackStamina * 0.33f * skillFactor;
 	}
 
-	// Token: 0x060002E3 RID: 739 RVA: 0x000179BC File Offset: 0x00015BBC
+	// Token: 0x060002E4 RID: 740 RVA: 0x00017A70 File Offset: 0x00015C70
 	public void Update(float dt)
 	{
 		this.m_time += dt;
@@ -159,7 +159,7 @@ public class Attack
 		this.UpdateProjectile(dt);
 	}
 
-	// Token: 0x060002E4 RID: 740 RVA: 0x00017ABD File Offset: 0x00015CBD
+	// Token: 0x060002E5 RID: 741 RVA: 0x00017B71 File Offset: 0x00015D71
 	private void OnAttackDone()
 	{
 		if (this.m_visEquipment)
@@ -168,7 +168,7 @@ public class Attack
 		}
 	}
 
-	// Token: 0x060002E5 RID: 741 RVA: 0x00017AD8 File Offset: 0x00015CD8
+	// Token: 0x060002E6 RID: 742 RVA: 0x00017B8C File Offset: 0x00015D8C
 	public void Stop()
 	{
 		if (this.m_wasInAttack)
@@ -178,7 +178,7 @@ public class Attack
 		}
 	}
 
-	// Token: 0x060002E6 RID: 742 RVA: 0x00017AF0 File Offset: 0x00015CF0
+	// Token: 0x060002E7 RID: 743 RVA: 0x00017BA4 File Offset: 0x00015DA4
 	public void OnAttackTrigger()
 	{
 		if (!this.UseAmmo())
@@ -207,7 +207,7 @@ public class Attack
 		}
 	}
 
-	// Token: 0x060002E7 RID: 743 RVA: 0x00017B58 File Offset: 0x00015D58
+	// Token: 0x060002E8 RID: 744 RVA: 0x00017C0C File Offset: 0x00015E0C
 	private void ConsumeItem()
 	{
 		if (this.m_weapon.m_shared.m_maxStackSize > 1 && this.m_weapon.m_stack > 1)
@@ -219,7 +219,7 @@ public class Attack
 		this.m_character.GetInventory().RemoveItem(this.m_weapon);
 	}
 
-	// Token: 0x060002E8 RID: 744 RVA: 0x00017BC4 File Offset: 0x00015DC4
+	// Token: 0x060002E9 RID: 745 RVA: 0x00017C78 File Offset: 0x00015E78
 	private static bool EquipAmmoItem(Humanoid character, ItemDrop.ItemData weapon)
 	{
 		if (!string.IsNullOrEmpty(weapon.m_shared.m_ammoType))
@@ -238,7 +238,7 @@ public class Attack
 		return true;
 	}
 
-	// Token: 0x060002E9 RID: 745 RVA: 0x00017C4C File Offset: 0x00015E4C
+	// Token: 0x060002EA RID: 746 RVA: 0x00017D00 File Offset: 0x00015F00
 	private static bool HaveAmmo(Humanoid character, ItemDrop.ItemData weapon)
 	{
 		if (string.IsNullOrEmpty(weapon.m_shared.m_ammoType))
@@ -262,7 +262,7 @@ public class Attack
 		return itemData.m_shared.m_itemType != ItemDrop.ItemData.ItemType.Consumable || character.CanConsumeItem(itemData);
 	}
 
-	// Token: 0x060002EA RID: 746 RVA: 0x00017CFC File Offset: 0x00015EFC
+	// Token: 0x060002EB RID: 747 RVA: 0x00017DB0 File Offset: 0x00015FB0
 	private bool UseAmmo()
 	{
 		this.m_ammoItem = null;
@@ -298,7 +298,7 @@ public class Attack
 		return true;
 	}
 
-	// Token: 0x060002EB RID: 747 RVA: 0x00017E10 File Offset: 0x00016010
+	// Token: 0x060002EC RID: 748 RVA: 0x00017EC4 File Offset: 0x000160C4
 	private void ProjectileAttackTriggered()
 	{
 		Vector3 pos;
@@ -318,7 +318,7 @@ public class Attack
 		this.m_projectileAttackStarted = true;
 	}
 
-	// Token: 0x060002EC RID: 748 RVA: 0x00017EBC File Offset: 0x000160BC
+	// Token: 0x060002ED RID: 749 RVA: 0x00017F70 File Offset: 0x00016170
 	private void UpdateProjectile(float dt)
 	{
 		if (this.m_projectileAttackStarted && this.m_projectileBurstsFired < this.m_projectileBursts)
@@ -333,7 +333,7 @@ public class Attack
 		}
 	}
 
-	// Token: 0x060002ED RID: 749 RVA: 0x00017F1A File Offset: 0x0001611A
+	// Token: 0x060002EE RID: 750 RVA: 0x00017FCE File Offset: 0x000161CE
 	private Transform GetAttackOrigin()
 	{
 		if (this.m_attackOriginJoint.Length > 0)
@@ -343,7 +343,7 @@ public class Attack
 		return this.m_character.transform;
 	}
 
-	// Token: 0x060002EE RID: 750 RVA: 0x00017F54 File Offset: 0x00016154
+	// Token: 0x060002EF RID: 751 RVA: 0x00018008 File Offset: 0x00016208
 	private void GetProjectileSpawnPoint(out Vector3 spawnPoint, out Vector3 aimDir)
 	{
 		Transform attackOrigin = this.GetAttackOrigin();
@@ -361,7 +361,7 @@ public class Attack
 		}
 	}
 
-	// Token: 0x060002EF RID: 751 RVA: 0x0001803C File Offset: 0x0001623C
+	// Token: 0x060002F0 RID: 752 RVA: 0x000180F0 File Offset: 0x000162F0
 	private void FireProjectileBurst()
 	{
 		ItemDrop.ItemData ammoItem = this.m_ammoItem;
@@ -460,7 +460,7 @@ public class Attack
 		}
 	}
 
-	// Token: 0x060002F0 RID: 752 RVA: 0x000184C8 File Offset: 0x000166C8
+	// Token: 0x060002F1 RID: 753 RVA: 0x0001857C File Offset: 0x0001677C
 	private void DoNonAttack()
 	{
 		if (this.m_weapon.m_shared.m_useDurability && this.m_character.IsPlayer())
@@ -477,13 +477,13 @@ public class Attack
 		this.m_character.AddNoise(this.m_attackHitNoise);
 	}
 
-	// Token: 0x060002F1 RID: 753 RVA: 0x000185C1 File Offset: 0x000167C1
+	// Token: 0x060002F2 RID: 754 RVA: 0x00018675 File Offset: 0x00016875
 	private float GetLevelDamageFactor()
 	{
 		return 1f + (float)Mathf.Max(0, this.m_character.GetLevel() - 1) * 0.5f;
 	}
 
-	// Token: 0x060002F2 RID: 754 RVA: 0x000185E4 File Offset: 0x000167E4
+	// Token: 0x060002F3 RID: 755 RVA: 0x00018698 File Offset: 0x00016898
 	private void DoAreaAttack()
 	{
 		Transform transform = this.m_character.transform;
@@ -596,7 +596,7 @@ public class Attack
 		}
 	}
 
-	// Token: 0x060002F3 RID: 755 RVA: 0x00018B1C File Offset: 0x00016D1C
+	// Token: 0x060002F4 RID: 756 RVA: 0x00018BD0 File Offset: 0x00016DD0
 	private void GetMeleeAttackDir(out Transform originJoint, out Vector3 attackDir)
 	{
 		originJoint = this.GetAttackOrigin();
@@ -608,7 +608,7 @@ public class Attack
 		attackDir = Vector3.RotateTowards(this.m_character.transform.forward, aimDir, 0.017453292f * this.m_maxYAngle, 10f);
 	}
 
-	// Token: 0x060002F4 RID: 756 RVA: 0x00018BA4 File Offset: 0x00016DA4
+	// Token: 0x060002F5 RID: 757 RVA: 0x00018C58 File Offset: 0x00016E58
 	private void AddHitPoint(List<Attack.HitPoint> list, GameObject go, Collider collider, Vector3 point, float distance)
 	{
 		Attack.HitPoint hitPoint = null;
@@ -637,7 +637,7 @@ public class Attack
 		}
 	}
 
-	// Token: 0x060002F5 RID: 757 RVA: 0x00018C48 File Offset: 0x00016E48
+	// Token: 0x060002F6 RID: 758 RVA: 0x00018CFC File Offset: 0x00016EFC
 	private void DoMeleeAttack()
 	{
 		Transform transform;
@@ -840,7 +840,7 @@ public class Attack
 		}
 	}
 
-	// Token: 0x060002F6 RID: 758 RVA: 0x00019504 File Offset: 0x00017704
+	// Token: 0x060002F7 RID: 759 RVA: 0x000195B8 File Offset: 0x000177B8
 	private void SpawnOnHitTerrain(Vector3 hitPoint, GameObject prefab)
 	{
 		TerrainModifier componentInChildren = prefab.GetComponentInChildren<TerrainModifier>();
@@ -865,25 +865,25 @@ public class Attack
 		}
 	}
 
-	// Token: 0x060002F7 RID: 759 RVA: 0x00019589 File Offset: 0x00017789
+	// Token: 0x060002F8 RID: 760 RVA: 0x0001963D File Offset: 0x0001783D
 	public Attack Clone()
 	{
 		return base.MemberwiseClone() as Attack;
 	}
 
-	// Token: 0x060002F8 RID: 760 RVA: 0x00019596 File Offset: 0x00017796
+	// Token: 0x060002F9 RID: 761 RVA: 0x0001964A File Offset: 0x0001784A
 	public ItemDrop.ItemData GetWeapon()
 	{
 		return this.m_weapon;
 	}
 
-	// Token: 0x060002F9 RID: 761 RVA: 0x0001959E File Offset: 0x0001779E
+	// Token: 0x060002FA RID: 762 RVA: 0x00019652 File Offset: 0x00017852
 	public bool CanStartChainAttack()
 	{
 		return this.m_nextAttackChainLevel > 0 && this.m_animEvent.CanChain();
 	}
 
-	// Token: 0x060002FA RID: 762 RVA: 0x000195B8 File Offset: 0x000177B8
+	// Token: 0x060002FB RID: 763 RVA: 0x0001966C File Offset: 0x0001786C
 	public void OnTrailStart()
 	{
 		if (this.m_attackType == Attack.AttackType.Projectile)
@@ -901,268 +901,268 @@ public class Attack
 		this.m_trailStartEffect.Create(transform.position, rot, null, 1f);
 	}
 
-	// Token: 0x04000271 RID: 625
+	// Token: 0x04000275 RID: 629
 	[Header("Common")]
 	public Attack.AttackType m_attackType;
 
-	// Token: 0x04000272 RID: 626
+	// Token: 0x04000276 RID: 630
 	public string m_attackAnimation = "";
 
-	// Token: 0x04000273 RID: 627
+	// Token: 0x04000277 RID: 631
 	public int m_attackRandomAnimations;
 
-	// Token: 0x04000274 RID: 628
+	// Token: 0x04000278 RID: 632
 	public int m_attackChainLevels;
 
-	// Token: 0x04000275 RID: 629
+	// Token: 0x04000279 RID: 633
 	public bool m_consumeItem;
 
-	// Token: 0x04000276 RID: 630
+	// Token: 0x0400027A RID: 634
 	public bool m_hitTerrain = true;
 
-	// Token: 0x04000277 RID: 631
+	// Token: 0x0400027B RID: 635
 	public float m_attackStamina = 20f;
 
-	// Token: 0x04000278 RID: 632
+	// Token: 0x0400027C RID: 636
 	public float m_speedFactor = 0.2f;
 
-	// Token: 0x04000279 RID: 633
+	// Token: 0x0400027D RID: 637
 	public float m_speedFactorRotation = 0.2f;
 
-	// Token: 0x0400027A RID: 634
+	// Token: 0x0400027E RID: 638
 	public float m_attackStartNoise = 10f;
 
-	// Token: 0x0400027B RID: 635
+	// Token: 0x0400027F RID: 639
 	public float m_attackHitNoise = 30f;
 
-	// Token: 0x0400027C RID: 636
+	// Token: 0x04000280 RID: 640
 	public float m_damageMultiplier = 1f;
 
-	// Token: 0x0400027D RID: 637
+	// Token: 0x04000281 RID: 641
 	public float m_forceMultiplier = 1f;
 
-	// Token: 0x0400027E RID: 638
+	// Token: 0x04000282 RID: 642
 	public float m_staggerMultiplier = 1f;
 
-	// Token: 0x0400027F RID: 639
+	// Token: 0x04000283 RID: 643
 	[Header("Misc")]
 	public string m_attackOriginJoint = "";
 
-	// Token: 0x04000280 RID: 640
+	// Token: 0x04000284 RID: 644
 	public float m_attackRange = 1.5f;
 
-	// Token: 0x04000281 RID: 641
+	// Token: 0x04000285 RID: 645
 	public float m_attackHeight = 0.6f;
 
-	// Token: 0x04000282 RID: 642
+	// Token: 0x04000286 RID: 646
 	public float m_attackOffset;
 
-	// Token: 0x04000283 RID: 643
+	// Token: 0x04000287 RID: 647
 	public GameObject m_spawnOnTrigger;
 
-	// Token: 0x04000284 RID: 644
+	// Token: 0x04000288 RID: 648
 	[Header("Melee/AOE")]
 	public float m_attackAngle = 90f;
 
-	// Token: 0x04000285 RID: 645
+	// Token: 0x04000289 RID: 649
 	public float m_attackRayWidth;
 
-	// Token: 0x04000286 RID: 646
+	// Token: 0x0400028A RID: 650
 	public float m_maxYAngle;
 
-	// Token: 0x04000287 RID: 647
+	// Token: 0x0400028B RID: 651
 	public bool m_lowerDamagePerHit = true;
 
-	// Token: 0x04000288 RID: 648
+	// Token: 0x0400028C RID: 652
 	public Attack.HitPointType m_hitPointtype;
 
-	// Token: 0x04000289 RID: 649
+	// Token: 0x0400028D RID: 653
 	public bool m_hitThroughWalls;
 
-	// Token: 0x0400028A RID: 650
+	// Token: 0x0400028E RID: 654
 	public bool m_multiHit = true;
 
-	// Token: 0x0400028B RID: 651
+	// Token: 0x0400028F RID: 655
 	public float m_lastChainDamageMultiplier = 2f;
 
-	// Token: 0x0400028C RID: 652
+	// Token: 0x04000290 RID: 656
 	[BitMask(typeof(DestructibleType))]
 	public DestructibleType m_resetChainIfHit;
 
-	// Token: 0x0400028D RID: 653
+	// Token: 0x04000291 RID: 657
 	[Header("Melee special-skill")]
 	public Skills.SkillType m_specialHitSkill;
 
-	// Token: 0x0400028E RID: 654
+	// Token: 0x04000292 RID: 658
 	[BitMask(typeof(DestructibleType))]
 	public DestructibleType m_specialHitType;
 
-	// Token: 0x0400028F RID: 655
+	// Token: 0x04000293 RID: 659
 	[Header("Projectile")]
 	public GameObject m_attackProjectile;
 
-	// Token: 0x04000290 RID: 656
+	// Token: 0x04000294 RID: 660
 	public float m_projectileVel = 10f;
 
-	// Token: 0x04000291 RID: 657
+	// Token: 0x04000295 RID: 661
 	public float m_projectileVelMin = 2f;
 
-	// Token: 0x04000292 RID: 658
+	// Token: 0x04000296 RID: 662
 	public float m_projectileAccuracy = 10f;
 
-	// Token: 0x04000293 RID: 659
+	// Token: 0x04000297 RID: 663
 	public float m_projectileAccuracyMin = 20f;
 
-	// Token: 0x04000294 RID: 660
+	// Token: 0x04000298 RID: 664
 	public bool m_useCharacterFacing;
 
-	// Token: 0x04000295 RID: 661
+	// Token: 0x04000299 RID: 665
 	public bool m_useCharacterFacingYAim;
 
-	// Token: 0x04000296 RID: 662
+	// Token: 0x0400029A RID: 666
 	[FormerlySerializedAs("m_useCharacterFacingAngle")]
 	public float m_launchAngle;
 
-	// Token: 0x04000297 RID: 663
+	// Token: 0x0400029B RID: 667
 	public int m_projectiles = 1;
 
-	// Token: 0x04000298 RID: 664
+	// Token: 0x0400029C RID: 668
 	public int m_projectileBursts = 1;
 
-	// Token: 0x04000299 RID: 665
+	// Token: 0x0400029D RID: 669
 	public float m_burstInterval;
 
-	// Token: 0x0400029A RID: 666
+	// Token: 0x0400029E RID: 670
 	public bool m_destroyPreviousProjectile;
 
-	// Token: 0x0400029B RID: 667
+	// Token: 0x0400029F RID: 671
 	[Header("Attack-Effects")]
 	public EffectList m_hitEffect = new EffectList();
 
-	// Token: 0x0400029C RID: 668
+	// Token: 0x040002A0 RID: 672
 	public EffectList m_hitTerrainEffect = new EffectList();
 
-	// Token: 0x0400029D RID: 669
+	// Token: 0x040002A1 RID: 673
 	public EffectList m_startEffect = new EffectList();
 
-	// Token: 0x0400029E RID: 670
+	// Token: 0x040002A2 RID: 674
 	public EffectList m_triggerEffect = new EffectList();
 
-	// Token: 0x0400029F RID: 671
+	// Token: 0x040002A3 RID: 675
 	public EffectList m_trailStartEffect = new EffectList();
 
-	// Token: 0x040002A0 RID: 672
+	// Token: 0x040002A4 RID: 676
 	protected static int m_attackMask;
 
-	// Token: 0x040002A1 RID: 673
+	// Token: 0x040002A5 RID: 677
 	protected static int m_attackMaskTerrain;
 
-	// Token: 0x040002A2 RID: 674
+	// Token: 0x040002A6 RID: 678
 	private Humanoid m_character;
 
-	// Token: 0x040002A3 RID: 675
+	// Token: 0x040002A7 RID: 679
 	private BaseAI m_baseAI;
 
-	// Token: 0x040002A4 RID: 676
+	// Token: 0x040002A8 RID: 680
 	private Rigidbody m_body;
 
-	// Token: 0x040002A5 RID: 677
+	// Token: 0x040002A9 RID: 681
 	private ZSyncAnimation m_zanim;
 
-	// Token: 0x040002A6 RID: 678
+	// Token: 0x040002AA RID: 682
 	private CharacterAnimEvent m_animEvent;
 
-	// Token: 0x040002A7 RID: 679
+	// Token: 0x040002AB RID: 683
 	[NonSerialized]
 	private ItemDrop.ItemData m_weapon;
 
-	// Token: 0x040002A8 RID: 680
+	// Token: 0x040002AC RID: 684
 	private VisEquipment m_visEquipment;
 
-	// Token: 0x040002A9 RID: 681
+	// Token: 0x040002AD RID: 685
 	private float m_attackDrawPercentage;
 
-	// Token: 0x040002AA RID: 682
+	// Token: 0x040002AE RID: 686
 	private const float m_freezeFrameDuration = 0.15f;
 
-	// Token: 0x040002AB RID: 683
+	// Token: 0x040002AF RID: 687
 	private const float m_chainAttackMaxTime = 0.2f;
 
-	// Token: 0x040002AC RID: 684
+	// Token: 0x040002B0 RID: 688
 	private int m_nextAttackChainLevel;
 
-	// Token: 0x040002AD RID: 685
+	// Token: 0x040002B1 RID: 689
 	private int m_currentAttackCainLevel;
 
-	// Token: 0x040002AE RID: 686
+	// Token: 0x040002B2 RID: 690
 	private bool m_wasInAttack;
 
-	// Token: 0x040002AF RID: 687
+	// Token: 0x040002B3 RID: 691
 	private float m_time;
 
-	// Token: 0x040002B0 RID: 688
+	// Token: 0x040002B4 RID: 692
 	private bool m_projectileAttackStarted;
 
-	// Token: 0x040002B1 RID: 689
+	// Token: 0x040002B5 RID: 693
 	private float m_projectileFireTimer = -1f;
 
-	// Token: 0x040002B2 RID: 690
+	// Token: 0x040002B6 RID: 694
 	private int m_projectileBurstsFired;
 
-	// Token: 0x040002B3 RID: 691
+	// Token: 0x040002B7 RID: 695
 	[NonSerialized]
 	private ItemDrop.ItemData m_ammoItem;
 
 	// Token: 0x02000130 RID: 304
 	private class HitPoint
 	{
-		// Token: 0x04001027 RID: 4135
+		// Token: 0x0400102E RID: 4142
 		public GameObject go;
 
-		// Token: 0x04001028 RID: 4136
+		// Token: 0x0400102F RID: 4143
 		public Vector3 avgPoint = Vector3.zero;
 
-		// Token: 0x04001029 RID: 4137
+		// Token: 0x04001030 RID: 4144
 		public int count;
 
-		// Token: 0x0400102A RID: 4138
+		// Token: 0x04001031 RID: 4145
 		public Vector3 firstPoint;
 
-		// Token: 0x0400102B RID: 4139
+		// Token: 0x04001032 RID: 4146
 		public Collider collider;
 
-		// Token: 0x0400102C RID: 4140
+		// Token: 0x04001033 RID: 4147
 		public Vector3 closestPoint;
 
-		// Token: 0x0400102D RID: 4141
+		// Token: 0x04001034 RID: 4148
 		public float closestDistance = 999999f;
 	}
 
 	// Token: 0x02000131 RID: 305
 	public enum AttackType
 	{
-		// Token: 0x0400102F RID: 4143
+		// Token: 0x04001036 RID: 4150
 		Horizontal,
-		// Token: 0x04001030 RID: 4144
+		// Token: 0x04001037 RID: 4151
 		Vertical,
-		// Token: 0x04001031 RID: 4145
+		// Token: 0x04001038 RID: 4152
 		Projectile,
-		// Token: 0x04001032 RID: 4146
+		// Token: 0x04001039 RID: 4153
 		None,
-		// Token: 0x04001033 RID: 4147
+		// Token: 0x0400103A RID: 4154
 		Area,
-		// Token: 0x04001034 RID: 4148
+		// Token: 0x0400103B RID: 4155
 		TriggerProjectile
 	}
 
 	// Token: 0x02000132 RID: 306
 	public enum HitPointType
 	{
-		// Token: 0x04001036 RID: 4150
+		// Token: 0x0400103D RID: 4157
 		Closest,
-		// Token: 0x04001037 RID: 4151
+		// Token: 0x0400103E RID: 4158
 		Average,
-		// Token: 0x04001038 RID: 4152
+		// Token: 0x0400103F RID: 4159
 		First
 	}
 }

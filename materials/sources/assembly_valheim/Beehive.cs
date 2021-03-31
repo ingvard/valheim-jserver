@@ -4,7 +4,7 @@ using UnityEngine;
 // Token: 0x020000BA RID: 186
 public class Beehive : MonoBehaviour, Hoverable, Interactable
 {
-	// Token: 0x06000C6E RID: 3182 RVA: 0x00059018 File Offset: 0x00057218
+	// Token: 0x06000C6F RID: 3183 RVA: 0x000591A0 File Offset: 0x000573A0
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -20,7 +20,7 @@ public class Beehive : MonoBehaviour, Hoverable, Interactable
 		base.InvokeRepeating("UpdateBees", 0f, 10f);
 	}
 
-	// Token: 0x06000C6F RID: 3183 RVA: 0x000590C0 File Offset: 0x000572C0
+	// Token: 0x06000C70 RID: 3184 RVA: 0x00059248 File Offset: 0x00057448
 	public string GetHoverText()
 	{
 		if (!PrivateArea.CheckAccess(base.transform.position, 0f, false, false))
@@ -43,13 +43,13 @@ public class Beehive : MonoBehaviour, Hoverable, Interactable
 		return Localization.instance.Localize(this.m_name + " ( $piece_container_empty )\n[<color=yellow><b>$KEY_Use</b></color>] $piece_beehive_check");
 	}
 
-	// Token: 0x06000C70 RID: 3184 RVA: 0x0005917E File Offset: 0x0005737E
+	// Token: 0x06000C71 RID: 3185 RVA: 0x00059306 File Offset: 0x00057506
 	public string GetHoverName()
 	{
 		return this.m_name;
 	}
 
-	// Token: 0x06000C71 RID: 3185 RVA: 0x00059188 File Offset: 0x00057388
+	// Token: 0x06000C72 RID: 3186 RVA: 0x00059310 File Offset: 0x00057510
 	public bool Interact(Humanoid character, bool repeat)
 	{
 		if (repeat)
@@ -86,19 +86,19 @@ public class Beehive : MonoBehaviour, Hoverable, Interactable
 		return true;
 	}
 
-	// Token: 0x06000C72 RID: 3186 RVA: 0x000023E2 File Offset: 0x000005E2
+	// Token: 0x06000C73 RID: 3187 RVA: 0x000023E2 File Offset: 0x000005E2
 	public bool UseItem(Humanoid user, ItemDrop.ItemData item)
 	{
 		return false;
 	}
 
-	// Token: 0x06000C73 RID: 3187 RVA: 0x00059221 File Offset: 0x00057421
+	// Token: 0x06000C74 RID: 3188 RVA: 0x000593A9 File Offset: 0x000575A9
 	private void Extract()
 	{
 		this.m_nview.InvokeRPC("Extract", Array.Empty<object>());
 	}
 
-	// Token: 0x06000C74 RID: 3188 RVA: 0x00059238 File Offset: 0x00057438
+	// Token: 0x06000C75 RID: 3189 RVA: 0x000593C0 File Offset: 0x000575C0
 	private void RPC_Extract(long caller)
 	{
 		int honeyLevel = this.GetHoneyLevel();
@@ -115,7 +115,7 @@ public class Beehive : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000C75 RID: 3189 RVA: 0x000592D4 File Offset: 0x000574D4
+	// Token: 0x06000C76 RID: 3190 RVA: 0x0005945C File Offset: 0x0005765C
 	private float GetTimeSinceLastUpdate()
 	{
 		DateTime d = new DateTime(this.m_nview.GetZDO().GetLong("lastTime", ZNet.instance.GetTime().Ticks));
@@ -130,13 +130,13 @@ public class Beehive : MonoBehaviour, Hoverable, Interactable
 		return (float)num;
 	}
 
-	// Token: 0x06000C76 RID: 3190 RVA: 0x0005935F File Offset: 0x0005755F
+	// Token: 0x06000C77 RID: 3191 RVA: 0x000594E7 File Offset: 0x000576E7
 	private void ResetLevel()
 	{
 		this.m_nview.GetZDO().Set("level", 0);
 	}
 
-	// Token: 0x06000C77 RID: 3191 RVA: 0x00059378 File Offset: 0x00057578
+	// Token: 0x06000C78 RID: 3192 RVA: 0x00059500 File Offset: 0x00057700
 	private void IncreseLevel(int i)
 	{
 		int num = this.GetHoneyLevel();
@@ -145,13 +145,13 @@ public class Beehive : MonoBehaviour, Hoverable, Interactable
 		this.m_nview.GetZDO().Set("level", num);
 	}
 
-	// Token: 0x06000C78 RID: 3192 RVA: 0x000593B4 File Offset: 0x000575B4
+	// Token: 0x06000C79 RID: 3193 RVA: 0x0005953C File Offset: 0x0005773C
 	private int GetHoneyLevel()
 	{
 		return this.m_nview.GetZDO().GetInt("level", 0);
 	}
 
-	// Token: 0x06000C79 RID: 3193 RVA: 0x000593CC File Offset: 0x000575CC
+	// Token: 0x06000C7A RID: 3194 RVA: 0x00059554 File Offset: 0x00057754
 	private void UpdateBees()
 	{
 		bool flag = this.CheckBiome() && this.HaveFreeSpace();
@@ -172,7 +172,7 @@ public class Beehive : MonoBehaviour, Hoverable, Interactable
 		}
 	}
 
-	// Token: 0x06000C7A RID: 3194 RVA: 0x00059478 File Offset: 0x00057678
+	// Token: 0x06000C7B RID: 3195 RVA: 0x00059600 File Offset: 0x00057800
 	private bool HaveFreeSpace()
 	{
 		float num;
@@ -181,43 +181,43 @@ public class Beehive : MonoBehaviour, Hoverable, Interactable
 		return num < this.m_maxCover;
 	}
 
-	// Token: 0x06000C7B RID: 3195 RVA: 0x000594A2 File Offset: 0x000576A2
+	// Token: 0x06000C7C RID: 3196 RVA: 0x0005962A File Offset: 0x0005782A
 	private bool CheckBiome()
 	{
 		return (Heightmap.FindBiome(base.transform.position) & this.m_biome) > Heightmap.Biome.None;
 	}
 
-	// Token: 0x04000B57 RID: 2903
+	// Token: 0x04000B5D RID: 2909
 	public string m_name = "";
 
-	// Token: 0x04000B58 RID: 2904
+	// Token: 0x04000B5E RID: 2910
 	public Transform m_coverPoint;
 
-	// Token: 0x04000B59 RID: 2905
+	// Token: 0x04000B5F RID: 2911
 	public Transform m_spawnPoint;
 
-	// Token: 0x04000B5A RID: 2906
+	// Token: 0x04000B60 RID: 2912
 	public GameObject m_beeEffect;
 
-	// Token: 0x04000B5B RID: 2907
+	// Token: 0x04000B61 RID: 2913
 	public float m_maxCover = 0.25f;
 
-	// Token: 0x04000B5C RID: 2908
+	// Token: 0x04000B62 RID: 2914
 	[BitMask(typeof(Heightmap.Biome))]
 	public Heightmap.Biome m_biome;
 
-	// Token: 0x04000B5D RID: 2909
+	// Token: 0x04000B63 RID: 2915
 	public float m_secPerUnit = 10f;
 
-	// Token: 0x04000B5E RID: 2910
+	// Token: 0x04000B64 RID: 2916
 	public int m_maxHoney = 4;
 
-	// Token: 0x04000B5F RID: 2911
+	// Token: 0x04000B65 RID: 2917
 	public ItemDrop m_honeyItem;
 
-	// Token: 0x04000B60 RID: 2912
+	// Token: 0x04000B66 RID: 2918
 	public EffectList m_spawnEffect = new EffectList();
 
-	// Token: 0x04000B61 RID: 2913
+	// Token: 0x04000B67 RID: 2919
 	private ZNetView m_nview;
 }

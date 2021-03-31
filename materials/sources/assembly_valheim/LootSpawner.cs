@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x0200006C RID: 108
 public class LootSpawner : MonoBehaviour
 {
-	// Token: 0x060006E0 RID: 1760 RVA: 0x00038AE1 File Offset: 0x00036CE1
+	// Token: 0x060006E1 RID: 1761 RVA: 0x00038B95 File Offset: 0x00036D95
 	private void Awake()
 	{
 		this.m_nview = base.GetComponent<ZNetView>();
@@ -16,7 +16,7 @@ public class LootSpawner : MonoBehaviour
 		base.InvokeRepeating("UpdateSpawner", 10f, 2f);
 	}
 
-	// Token: 0x060006E1 RID: 1761 RVA: 0x00038B14 File Offset: 0x00036D14
+	// Token: 0x060006E2 RID: 1762 RVA: 0x00038BC8 File Offset: 0x00036DC8
 	private void UpdateSpawner()
 	{
 		if (!this.m_nview.IsOwner())
@@ -72,7 +72,7 @@ public class LootSpawner : MonoBehaviour
 		this.m_seenEnemies = false;
 	}
 
-	// Token: 0x060006E2 RID: 1762 RVA: 0x00038CE0 File Offset: 0x00036EE0
+	// Token: 0x060006E3 RID: 1763 RVA: 0x00038D94 File Offset: 0x00036F94
 	public static bool IsMonsterInRange(Vector3 point, float range)
 	{
 		foreach (Character character in Character.GetAllCharacters())
@@ -85,38 +85,38 @@ public class LootSpawner : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x060006E3 RID: 1763 RVA: 0x000027E0 File Offset: 0x000009E0
+	// Token: 0x060006E4 RID: 1764 RVA: 0x000027E0 File Offset: 0x000009E0
 	private void OnDrawGizmos()
 	{
 	}
 
-	// Token: 0x04000763 RID: 1891
+	// Token: 0x04000767 RID: 1895
 	public DropTable m_items = new DropTable();
 
-	// Token: 0x04000764 RID: 1892
+	// Token: 0x04000768 RID: 1896
 	public EffectList m_spawnEffect = new EffectList();
 
-	// Token: 0x04000765 RID: 1893
+	// Token: 0x04000769 RID: 1897
 	public float m_respawnTimeMinuts = 10f;
 
-	// Token: 0x04000766 RID: 1894
+	// Token: 0x0400076A RID: 1898
 	private const float m_triggerDistance = 20f;
 
-	// Token: 0x04000767 RID: 1895
+	// Token: 0x0400076B RID: 1899
 	public bool m_spawnAtNight = true;
 
-	// Token: 0x04000768 RID: 1896
+	// Token: 0x0400076C RID: 1900
 	public bool m_spawnAtDay = true;
 
-	// Token: 0x04000769 RID: 1897
+	// Token: 0x0400076D RID: 1901
 	public bool m_spawnWhenEnemiesCleared;
 
-	// Token: 0x0400076A RID: 1898
+	// Token: 0x0400076E RID: 1902
 	public float m_enemiesCheckRange = 30f;
 
-	// Token: 0x0400076B RID: 1899
+	// Token: 0x0400076F RID: 1903
 	private ZNetView m_nview;
 
-	// Token: 0x0400076C RID: 1900
+	// Token: 0x04000770 RID: 1904
 	private bool m_seenEnemies;
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 // Token: 0x0200002E RID: 46
 public class SE_Stats : StatusEffect
 {
-	// Token: 0x060003C8 RID: 968 RVA: 0x0001FE38 File Offset: 0x0001E038
+	// Token: 0x060003C9 RID: 969 RVA: 0x0001FEEC File Offset: 0x0001E0EC
 	public override void Setup(Character character)
 	{
 		base.Setup(character);
@@ -24,7 +24,7 @@ public class SE_Stats : StatusEffect
 		}
 	}
 
-	// Token: 0x060003C9 RID: 969 RVA: 0x0001FECC File Offset: 0x0001E0CC
+	// Token: 0x060003CA RID: 970 RVA: 0x0001FF80 File Offset: 0x0001E180
 	public override void UpdateStatusEffect(float dt)
 	{
 		base.UpdateStatusEffect(dt);
@@ -71,7 +71,7 @@ public class SE_Stats : StatusEffect
 		}
 	}
 
-	// Token: 0x060003CA RID: 970 RVA: 0x0002002F File Offset: 0x0001E22F
+	// Token: 0x060003CB RID: 971 RVA: 0x000200E3 File Offset: 0x0001E2E3
 	public override void ModifyHealthRegen(ref float regenMultiplier)
 	{
 		if (this.m_healthRegenMultiplier > 1f)
@@ -82,7 +82,7 @@ public class SE_Stats : StatusEffect
 		regenMultiplier *= this.m_healthRegenMultiplier;
 	}
 
-	// Token: 0x060003CB RID: 971 RVA: 0x0002005B File Offset: 0x0001E25B
+	// Token: 0x060003CC RID: 972 RVA: 0x0002010F File Offset: 0x0001E30F
 	public override void ModifyStaminaRegen(ref float staminaRegen)
 	{
 		if (this.m_staminaRegenMultiplier > 1f)
@@ -93,13 +93,13 @@ public class SE_Stats : StatusEffect
 		staminaRegen *= this.m_staminaRegenMultiplier;
 	}
 
-	// Token: 0x060003CC RID: 972 RVA: 0x00020087 File Offset: 0x0001E287
+	// Token: 0x060003CD RID: 973 RVA: 0x0002013B File Offset: 0x0001E33B
 	public override void ModifyDamageMods(ref HitData.DamageModifiers modifiers)
 	{
 		modifiers.Apply(this.m_mods);
 	}
 
-	// Token: 0x060003CD RID: 973 RVA: 0x00020095 File Offset: 0x0001E295
+	// Token: 0x060003CE RID: 974 RVA: 0x00020149 File Offset: 0x0001E349
 	public override void ModifyRaiseSkill(Skills.SkillType skill, ref float value)
 	{
 		if (this.m_raiseSkill == Skills.SkillType.None)
@@ -112,19 +112,19 @@ public class SE_Stats : StatusEffect
 		}
 	}
 
-	// Token: 0x060003CE RID: 974 RVA: 0x000200C1 File Offset: 0x0001E2C1
+	// Token: 0x060003CF RID: 975 RVA: 0x00020175 File Offset: 0x0001E375
 	public override void ModifyNoise(float baseNoise, ref float noise)
 	{
 		noise += baseNoise * this.m_noiseModifier;
 	}
 
-	// Token: 0x060003CF RID: 975 RVA: 0x000200D0 File Offset: 0x0001E2D0
+	// Token: 0x060003D0 RID: 976 RVA: 0x00020184 File Offset: 0x0001E384
 	public override void ModifyStealth(float baseStealth, ref float stealth)
 	{
 		stealth += baseStealth * this.m_stealthModifier;
 	}
 
-	// Token: 0x060003D0 RID: 976 RVA: 0x000200DF File Offset: 0x0001E2DF
+	// Token: 0x060003D1 RID: 977 RVA: 0x00020193 File Offset: 0x0001E393
 	public override void ModifyMaxCarryWeight(float baseLimit, ref float limit)
 	{
 		limit += this.m_addMaxCarryWeight;
@@ -134,7 +134,7 @@ public class SE_Stats : StatusEffect
 		}
 	}
 
-	// Token: 0x060003D1 RID: 977 RVA: 0x000200FC File Offset: 0x0001E2FC
+	// Token: 0x060003D2 RID: 978 RVA: 0x000201B0 File Offset: 0x0001E3B0
 	public override void ModifyAttack(Skills.SkillType skill, ref HitData hitData)
 	{
 		if (skill == this.m_modifyAttackSkill || this.m_modifyAttackSkill == Skills.SkillType.All)
@@ -143,19 +143,19 @@ public class SE_Stats : StatusEffect
 		}
 	}
 
-	// Token: 0x060003D2 RID: 978 RVA: 0x00020126 File Offset: 0x0001E326
+	// Token: 0x060003D3 RID: 979 RVA: 0x000201DA File Offset: 0x0001E3DA
 	public override void ModifyRunStaminaDrain(float baseDrain, ref float drain)
 	{
 		drain += baseDrain * this.m_runStaminaDrainModifier;
 	}
 
-	// Token: 0x060003D3 RID: 979 RVA: 0x00020135 File Offset: 0x0001E335
+	// Token: 0x060003D4 RID: 980 RVA: 0x000201E9 File Offset: 0x0001E3E9
 	public override void ModifyJumpStaminaUsage(float baseStaminaUse, ref float staminaUse)
 	{
 		staminaUse += baseStaminaUse * this.m_jumpStaminaUseModifier;
 	}
 
-	// Token: 0x060003D4 RID: 980 RVA: 0x00020144 File Offset: 0x0001E344
+	// Token: 0x060003D5 RID: 981 RVA: 0x000201F8 File Offset: 0x0001E3F8
 	public override string GetTooltipString()
 	{
 		string text = "";
@@ -206,7 +206,7 @@ public class SE_Stats : StatusEffect
 		return text;
 	}
 
-	// Token: 0x060003D5 RID: 981 RVA: 0x00020370 File Offset: 0x0001E570
+	// Token: 0x060003D6 RID: 982 RVA: 0x00020424 File Offset: 0x0001E624
 	public static string GetDamageModifiersTooltipString(List<HitData.DamageModPair> mods)
 	{
 		if (mods.Count == 0)
@@ -306,88 +306,88 @@ public class SE_Stats : StatusEffect
 		return text;
 	}
 
-	// Token: 0x040003BB RID: 955
+	// Token: 0x040003BF RID: 959
 	[Header("__SE_Stats__")]
 	[Header("HP per tick")]
 	public float m_tickInterval;
 
-	// Token: 0x040003BC RID: 956
+	// Token: 0x040003C0 RID: 960
 	public float m_healthPerTickMinHealthPercentage;
 
-	// Token: 0x040003BD RID: 957
+	// Token: 0x040003C1 RID: 961
 	public float m_healthPerTick;
 
-	// Token: 0x040003BE RID: 958
+	// Token: 0x040003C2 RID: 962
 	[Header("Health over time")]
 	public float m_healthOverTime;
 
-	// Token: 0x040003BF RID: 959
+	// Token: 0x040003C3 RID: 963
 	public float m_healthOverTimeDuration;
 
-	// Token: 0x040003C0 RID: 960
+	// Token: 0x040003C4 RID: 964
 	public float m_healthOverTimeInterval = 5f;
 
-	// Token: 0x040003C1 RID: 961
+	// Token: 0x040003C5 RID: 965
 	[Header("Stamina")]
 	public float m_staminaOverTime;
 
-	// Token: 0x040003C2 RID: 962
+	// Token: 0x040003C6 RID: 966
 	public float m_staminaOverTimeDuration;
 
-	// Token: 0x040003C3 RID: 963
+	// Token: 0x040003C7 RID: 967
 	public float m_staminaDrainPerSec;
 
-	// Token: 0x040003C4 RID: 964
+	// Token: 0x040003C8 RID: 968
 	public float m_runStaminaDrainModifier;
 
-	// Token: 0x040003C5 RID: 965
+	// Token: 0x040003C9 RID: 969
 	public float m_jumpStaminaUseModifier;
 
-	// Token: 0x040003C6 RID: 966
+	// Token: 0x040003CA RID: 970
 	[Header("Regen modifiers")]
 	public float m_healthRegenMultiplier = 1f;
 
-	// Token: 0x040003C7 RID: 967
+	// Token: 0x040003CB RID: 971
 	public float m_staminaRegenMultiplier = 1f;
 
-	// Token: 0x040003C8 RID: 968
+	// Token: 0x040003CC RID: 972
 	[Header("Modify raise skill")]
 	public Skills.SkillType m_raiseSkill;
 
-	// Token: 0x040003C9 RID: 969
+	// Token: 0x040003CD RID: 973
 	public float m_raiseSkillModifier;
 
-	// Token: 0x040003CA RID: 970
+	// Token: 0x040003CE RID: 974
 	[Header("Hit modifier")]
 	public List<HitData.DamageModPair> m_mods = new List<HitData.DamageModPair>();
 
-	// Token: 0x040003CB RID: 971
+	// Token: 0x040003CF RID: 975
 	[Header("Attack")]
 	public Skills.SkillType m_modifyAttackSkill;
 
-	// Token: 0x040003CC RID: 972
+	// Token: 0x040003D0 RID: 976
 	public float m_damageModifier = 1f;
 
-	// Token: 0x040003CD RID: 973
+	// Token: 0x040003D1 RID: 977
 	[Header("Sneak")]
 	public float m_noiseModifier;
 
-	// Token: 0x040003CE RID: 974
+	// Token: 0x040003D2 RID: 978
 	public float m_stealthModifier;
 
-	// Token: 0x040003CF RID: 975
+	// Token: 0x040003D3 RID: 979
 	[Header("Carry weight")]
 	public float m_addMaxCarryWeight;
 
-	// Token: 0x040003D0 RID: 976
+	// Token: 0x040003D4 RID: 980
 	private float m_tickTimer;
 
-	// Token: 0x040003D1 RID: 977
+	// Token: 0x040003D5 RID: 981
 	private float m_healthOverTimeTimer;
 
-	// Token: 0x040003D2 RID: 978
+	// Token: 0x040003D6 RID: 982
 	private float m_healthOverTimeTicks;
 
-	// Token: 0x040003D3 RID: 979
+	// Token: 0x040003D7 RID: 983
 	private float m_healthOverTimeTickHP;
 }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class EnemyHud : MonoBehaviour
 {
 	// Token: 0x17000008 RID: 8
-	// (get) Token: 0x060004DE RID: 1246 RVA: 0x00028526 File Offset: 0x00026726
+	// (get) Token: 0x060004DF RID: 1247 RVA: 0x000285DA File Offset: 0x000267DA
 	public static EnemyHud instance
 	{
 		get
@@ -16,7 +16,7 @@ public class EnemyHud : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004DF RID: 1247 RVA: 0x0002852D File Offset: 0x0002672D
+	// Token: 0x060004E0 RID: 1248 RVA: 0x000285E1 File Offset: 0x000267E1
 	private void Awake()
 	{
 		EnemyHud.m_instance = this;
@@ -25,13 +25,13 @@ public class EnemyHud : MonoBehaviour
 		this.m_baseHudPlayer.SetActive(false);
 	}
 
-	// Token: 0x060004E0 RID: 1248 RVA: 0x00028559 File Offset: 0x00026759
+	// Token: 0x060004E1 RID: 1249 RVA: 0x0002860D File Offset: 0x0002680D
 	private void OnDestroy()
 	{
 		EnemyHud.m_instance = null;
 	}
 
-	// Token: 0x060004E1 RID: 1249 RVA: 0x00028564 File Offset: 0x00026764
+	// Token: 0x060004E2 RID: 1250 RVA: 0x00028618 File Offset: 0x00026818
 	private void LateUpdate()
 	{
 		this.m_hudRoot.SetActive(!Hud.IsUserHidden());
@@ -50,7 +50,7 @@ public class EnemyHud : MonoBehaviour
 		this.UpdateHuds(localPlayer, Time.deltaTime);
 	}
 
-	// Token: 0x060004E2 RID: 1250 RVA: 0x00028608 File Offset: 0x00026808
+	// Token: 0x060004E3 RID: 1251 RVA: 0x000286BC File Offset: 0x000268BC
 	private bool TestShow(Character c)
 	{
 		float num = Vector3.SqrMagnitude(c.transform.position - this.m_refPoint);
@@ -68,7 +68,7 @@ public class EnemyHud : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x060004E3 RID: 1251 RVA: 0x00028690 File Offset: 0x00026890
+	// Token: 0x060004E4 RID: 1252 RVA: 0x00028744 File Offset: 0x00026944
 	private void ShowHud(Character c)
 	{
 		EnemyHud.HudData hudData;
@@ -106,7 +106,7 @@ public class EnemyHud : MonoBehaviour
 		this.m_huds.Add(c, hudData);
 	}
 
-	// Token: 0x060004E4 RID: 1252 RVA: 0x0002883C File Offset: 0x00026A3C
+	// Token: 0x060004E5 RID: 1253 RVA: 0x000288F0 File Offset: 0x00026AF0
 	private void UpdateHuds(Player player, float dt)
 	{
 		Camera mainCamera = Utils.GetMainCamera();
@@ -195,7 +195,7 @@ public class EnemyHud : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004E5 RID: 1253 RVA: 0x00028B7C File Offset: 0x00026D7C
+	// Token: 0x060004E6 RID: 1254 RVA: 0x00028C30 File Offset: 0x00026E30
 	public bool ShowingBossHud()
 	{
 		foreach (KeyValuePair<Character, EnemyHud.HudData> keyValuePair in this.m_huds)
@@ -208,7 +208,7 @@ public class EnemyHud : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x060004E6 RID: 1254 RVA: 0x00028BF8 File Offset: 0x00026DF8
+	// Token: 0x060004E7 RID: 1255 RVA: 0x00028CAC File Offset: 0x00026EAC
 	public Character GetActiveBoss()
 	{
 		foreach (KeyValuePair<Character, EnemyHud.HudData> keyValuePair in this.m_huds)
@@ -221,73 +221,73 @@ public class EnemyHud : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x04000525 RID: 1317
+	// Token: 0x04000529 RID: 1321
 	private static EnemyHud m_instance;
 
-	// Token: 0x04000526 RID: 1318
+	// Token: 0x0400052A RID: 1322
 	public GameObject m_hudRoot;
 
-	// Token: 0x04000527 RID: 1319
+	// Token: 0x0400052B RID: 1323
 	public GameObject m_baseHud;
 
-	// Token: 0x04000528 RID: 1320
+	// Token: 0x0400052C RID: 1324
 	public GameObject m_baseHudBoss;
 
-	// Token: 0x04000529 RID: 1321
+	// Token: 0x0400052D RID: 1325
 	public GameObject m_baseHudPlayer;
 
-	// Token: 0x0400052A RID: 1322
+	// Token: 0x0400052E RID: 1326
 	public float m_maxShowDistance = 10f;
 
-	// Token: 0x0400052B RID: 1323
+	// Token: 0x0400052F RID: 1327
 	public float m_maxShowDistanceBoss = 100f;
 
-	// Token: 0x0400052C RID: 1324
+	// Token: 0x04000530 RID: 1328
 	public float m_hoverShowDuration = 60f;
 
-	// Token: 0x0400052D RID: 1325
+	// Token: 0x04000531 RID: 1329
 	private Vector3 m_refPoint = Vector3.zero;
 
-	// Token: 0x0400052E RID: 1326
+	// Token: 0x04000532 RID: 1330
 	private Dictionary<Character, EnemyHud.HudData> m_huds = new Dictionary<Character, EnemyHud.HudData>();
 
 	// Token: 0x02000148 RID: 328
 	private class HudData
 	{
-		// Token: 0x040010CD RID: 4301
+		// Token: 0x040010D4 RID: 4308
 		public Character m_character;
 
-		// Token: 0x040010CE RID: 4302
+		// Token: 0x040010D5 RID: 4309
 		public BaseAI m_ai;
 
-		// Token: 0x040010CF RID: 4303
+		// Token: 0x040010D6 RID: 4310
 		public GameObject m_gui;
 
-		// Token: 0x040010D0 RID: 4304
+		// Token: 0x040010D7 RID: 4311
 		public GameObject m_healthRoot;
 
-		// Token: 0x040010D1 RID: 4305
+		// Token: 0x040010D8 RID: 4312
 		public RectTransform m_level2;
 
-		// Token: 0x040010D2 RID: 4306
+		// Token: 0x040010D9 RID: 4313
 		public RectTransform m_level3;
 
-		// Token: 0x040010D3 RID: 4307
+		// Token: 0x040010DA RID: 4314
 		public RectTransform m_alerted;
 
-		// Token: 0x040010D4 RID: 4308
+		// Token: 0x040010DB RID: 4315
 		public RectTransform m_aware;
 
-		// Token: 0x040010D5 RID: 4309
+		// Token: 0x040010DC RID: 4316
 		public GuiBar m_healthFast;
 
-		// Token: 0x040010D6 RID: 4310
+		// Token: 0x040010DD RID: 4317
 		public GuiBar m_healthSlow;
 
-		// Token: 0x040010D7 RID: 4311
+		// Token: 0x040010DE RID: 4318
 		public Text m_name;
 
-		// Token: 0x040010D8 RID: 4312
+		// Token: 0x040010DF RID: 4319
 		public float m_hoverTimer = 99999f;
 	}
 }

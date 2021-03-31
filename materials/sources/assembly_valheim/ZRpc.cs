@@ -6,25 +6,25 @@ using UnityEngine;
 // Token: 0x0200008B RID: 139
 public class ZRpc : IDisposable
 {
-	// Token: 0x06000904 RID: 2308 RVA: 0x0004309F File Offset: 0x0004129F
+	// Token: 0x06000905 RID: 2309 RVA: 0x00043153 File Offset: 0x00041353
 	public ZRpc(ISocket socket)
 	{
 		this.m_socket = socket;
 	}
 
-	// Token: 0x06000905 RID: 2309 RVA: 0x000430C4 File Offset: 0x000412C4
+	// Token: 0x06000906 RID: 2310 RVA: 0x00043178 File Offset: 0x00041378
 	public void Dispose()
 	{
 		this.m_socket.Dispose();
 	}
 
-	// Token: 0x06000906 RID: 2310 RVA: 0x000430D1 File Offset: 0x000412D1
+	// Token: 0x06000907 RID: 2311 RVA: 0x00043185 File Offset: 0x00041385
 	public ISocket GetSocket()
 	{
 		return this.m_socket;
 	}
 
-	// Token: 0x06000907 RID: 2311 RVA: 0x000430DC File Offset: 0x000412DC
+	// Token: 0x06000908 RID: 2312 RVA: 0x00043190 File Offset: 0x00041390
 	public bool Update(float dt)
 	{
 		if (!this.m_socket.IsConnected())
@@ -48,7 +48,7 @@ public class ZRpc : IDisposable
 		return true;
 	}
 
-	// Token: 0x06000908 RID: 2312 RVA: 0x0004316C File Offset: 0x0004136C
+	// Token: 0x06000909 RID: 2313 RVA: 0x00043220 File Offset: 0x00041420
 	private void UpdatePing(float dt)
 	{
 		this.m_pingTimer += dt;
@@ -68,7 +68,7 @@ public class ZRpc : IDisposable
 		}
 	}
 
-	// Token: 0x06000909 RID: 2313 RVA: 0x00043200 File Offset: 0x00041400
+	// Token: 0x0600090A RID: 2314 RVA: 0x000432B4 File Offset: 0x000414B4
 	private void ReceivePing(ZPackage package)
 	{
 		if (package.ReadBool())
@@ -82,19 +82,19 @@ public class ZRpc : IDisposable
 		this.m_timeSinceLastPing = 0f;
 	}
 
-	// Token: 0x0600090A RID: 2314 RVA: 0x00043250 File Offset: 0x00041450
+	// Token: 0x0600090B RID: 2315 RVA: 0x00043304 File Offset: 0x00041504
 	public float GetTimeSinceLastPing()
 	{
 		return this.m_timeSinceLastPing;
 	}
 
-	// Token: 0x0600090B RID: 2315 RVA: 0x00043258 File Offset: 0x00041458
+	// Token: 0x0600090C RID: 2316 RVA: 0x0004330C File Offset: 0x0004150C
 	public bool IsConnected()
 	{
 		return this.m_socket.IsConnected();
 	}
 
-	// Token: 0x0600090C RID: 2316 RVA: 0x00043268 File Offset: 0x00041468
+	// Token: 0x0600090D RID: 2317 RVA: 0x0004331C File Offset: 0x0004151C
 	private void HandlePackage(ZPackage package)
 	{
 		int num = package.ReadInt();
@@ -120,7 +120,7 @@ public class ZRpc : IDisposable
 		}
 	}
 
-	// Token: 0x0600090D RID: 2317 RVA: 0x000432C8 File Offset: 0x000414C8
+	// Token: 0x0600090E RID: 2318 RVA: 0x0004337C File Offset: 0x0004157C
 	public void Register(string name, ZRpc.RpcMethod.Method f)
 	{
 		int stableHashCode = name.GetStableHashCode();
@@ -128,7 +128,7 @@ public class ZRpc : IDisposable
 		this.m_functions.Add(stableHashCode, new ZRpc.RpcMethod(f));
 	}
 
-	// Token: 0x0600090E RID: 2318 RVA: 0x000432FC File Offset: 0x000414FC
+	// Token: 0x0600090F RID: 2319 RVA: 0x000433B0 File Offset: 0x000415B0
 	public void Register<T>(string name, Action<ZRpc, T> f)
 	{
 		int stableHashCode = name.GetStableHashCode();
@@ -136,7 +136,7 @@ public class ZRpc : IDisposable
 		this.m_functions.Add(stableHashCode, new ZRpc.RpcMethod<T>(f));
 	}
 
-	// Token: 0x0600090F RID: 2319 RVA: 0x00043330 File Offset: 0x00041530
+	// Token: 0x06000910 RID: 2320 RVA: 0x000433E4 File Offset: 0x000415E4
 	public void Register<T, U>(string name, Action<ZRpc, T, U> f)
 	{
 		int stableHashCode = name.GetStableHashCode();
@@ -144,7 +144,7 @@ public class ZRpc : IDisposable
 		this.m_functions.Add(stableHashCode, new ZRpc.RpcMethod<T, U>(f));
 	}
 
-	// Token: 0x06000910 RID: 2320 RVA: 0x00043364 File Offset: 0x00041564
+	// Token: 0x06000911 RID: 2321 RVA: 0x00043418 File Offset: 0x00041618
 	public void Register<T, U, V>(string name, Action<ZRpc, T, U, V> f)
 	{
 		int stableHashCode = name.GetStableHashCode();
@@ -152,7 +152,7 @@ public class ZRpc : IDisposable
 		this.m_functions.Add(stableHashCode, new ZRpc.RpcMethod<T, U, V>(f));
 	}
 
-	// Token: 0x06000911 RID: 2321 RVA: 0x00043398 File Offset: 0x00041598
+	// Token: 0x06000912 RID: 2322 RVA: 0x0004344C File Offset: 0x0004164C
 	public void Register<T, U, V, W>(string name, ZRpc.RpcMethod<T, U, V, W>.Method f)
 	{
 		int stableHashCode = name.GetStableHashCode();
@@ -160,14 +160,14 @@ public class ZRpc : IDisposable
 		this.m_functions.Add(stableHashCode, new ZRpc.RpcMethod<T, U, V, W>(f));
 	}
 
-	// Token: 0x06000912 RID: 2322 RVA: 0x000433CC File Offset: 0x000415CC
+	// Token: 0x06000913 RID: 2323 RVA: 0x00043480 File Offset: 0x00041680
 	public void Unregister(string name)
 	{
 		int stableHashCode = name.GetStableHashCode();
 		this.m_functions.Remove(stableHashCode);
 	}
 
-	// Token: 0x06000913 RID: 2323 RVA: 0x000433F0 File Offset: 0x000415F0
+	// Token: 0x06000914 RID: 2324 RVA: 0x000434A4 File Offset: 0x000416A4
 	public void Invoke(string method, params object[] parameters)
 	{
 		if (!this.IsConnected())
@@ -185,7 +185,7 @@ public class ZRpc : IDisposable
 		this.SendPackage(this.m_pkg);
 	}
 
-	// Token: 0x06000914 RID: 2324 RVA: 0x0004344F File Offset: 0x0004164F
+	// Token: 0x06000915 RID: 2325 RVA: 0x00043503 File Offset: 0x00041703
 	private void SendPackage(ZPackage pkg)
 	{
 		this.m_sentPackages++;
@@ -193,7 +193,7 @@ public class ZRpc : IDisposable
 		this.m_socket.Send(this.m_pkg);
 	}
 
-	// Token: 0x06000915 RID: 2325 RVA: 0x00043484 File Offset: 0x00041684
+	// Token: 0x06000916 RID: 2326 RVA: 0x00043538 File Offset: 0x00041738
 	public static void Serialize(object[] parameters, ref ZPackage pkg)
 	{
 		foreach (object obj in parameters)
@@ -272,7 +272,7 @@ public class ZRpc : IDisposable
 		}
 	}
 
-	// Token: 0x06000916 RID: 2326 RVA: 0x0004369C File Offset: 0x0004189C
+	// Token: 0x06000917 RID: 2327 RVA: 0x00043750 File Offset: 0x00041950
 	public static object[] Deserialize(ZRpc rpc, ParameterInfo[] paramInfo, ZPackage pkg)
 	{
 		List<object> list = new List<object>();
@@ -281,7 +281,7 @@ public class ZRpc : IDisposable
 		return list.ToArray();
 	}
 
-	// Token: 0x06000917 RID: 2327 RVA: 0x000436C8 File Offset: 0x000418C8
+	// Token: 0x06000918 RID: 2328 RVA: 0x0004377C File Offset: 0x0004197C
 	public static void Deserialize(ParameterInfo[] paramInfo, ZPackage pkg, ref List<object> parameters)
 	{
 		for (int i = 1; i < paramInfo.Length; i++)
@@ -352,149 +352,149 @@ public class ZRpc : IDisposable
 		}
 	}
 
-	// Token: 0x04000862 RID: 2146
+	// Token: 0x04000866 RID: 2150
 	private ISocket m_socket;
 
-	// Token: 0x04000863 RID: 2147
+	// Token: 0x04000867 RID: 2151
 	private ZPackage m_pkg = new ZPackage();
 
-	// Token: 0x04000864 RID: 2148
+	// Token: 0x04000868 RID: 2152
 	private Dictionary<int, ZRpc.RpcMethodBase> m_functions = new Dictionary<int, ZRpc.RpcMethodBase>();
 
-	// Token: 0x04000865 RID: 2149
+	// Token: 0x04000869 RID: 2153
 	private int m_sentPackages;
 
-	// Token: 0x04000866 RID: 2150
+	// Token: 0x0400086A RID: 2154
 	private int m_sentData;
 
-	// Token: 0x04000867 RID: 2151
+	// Token: 0x0400086B RID: 2155
 	private int m_recvPackages;
 
-	// Token: 0x04000868 RID: 2152
+	// Token: 0x0400086C RID: 2156
 	private int m_recvData;
 
-	// Token: 0x04000869 RID: 2153
+	// Token: 0x0400086D RID: 2157
 	private float m_pingTimer;
 
-	// Token: 0x0400086A RID: 2154
+	// Token: 0x0400086E RID: 2158
 	private float m_timeSinceLastPing;
 
-	// Token: 0x0400086B RID: 2155
+	// Token: 0x0400086F RID: 2159
 	private static float m_pingInterval = 1f;
 
-	// Token: 0x0400086C RID: 2156
+	// Token: 0x04000870 RID: 2160
 	private static float m_timeout = 30f;
 
-	// Token: 0x0400086D RID: 2157
+	// Token: 0x04000871 RID: 2161
 	private static bool m_DEBUG = false;
 
 	// Token: 0x02000171 RID: 369
 	private interface RpcMethodBase
 	{
-		// Token: 0x06001162 RID: 4450
+		// Token: 0x06001163 RID: 4451
 		void Invoke(ZRpc rpc, ZPackage pkg);
 	}
 
 	// Token: 0x02000172 RID: 370
 	public class RpcMethod : ZRpc.RpcMethodBase
 	{
-		// Token: 0x06001163 RID: 4451 RVA: 0x00078664 File Offset: 0x00076864
+		// Token: 0x06001164 RID: 4452 RVA: 0x000787EC File Offset: 0x000769EC
 		public RpcMethod(ZRpc.RpcMethod.Method action)
 		{
 			this.m_action = action;
 		}
 
-		// Token: 0x06001164 RID: 4452 RVA: 0x00078673 File Offset: 0x00076873
+		// Token: 0x06001165 RID: 4453 RVA: 0x000787FB File Offset: 0x000769FB
 		public void Invoke(ZRpc rpc, ZPackage pkg)
 		{
 			this.m_action(rpc);
 		}
 
-		// Token: 0x04001183 RID: 4483
+		// Token: 0x0400118A RID: 4490
 		private ZRpc.RpcMethod.Method m_action;
 
 		// Token: 0x020001C5 RID: 453
-		// (Invoke) Token: 0x060011E4 RID: 4580
+		// (Invoke) Token: 0x060011E5 RID: 4581
 		public delegate void Method(ZRpc RPC);
 	}
 
 	// Token: 0x02000173 RID: 371
 	private class RpcMethod<T> : ZRpc.RpcMethodBase
 	{
-		// Token: 0x06001165 RID: 4453 RVA: 0x00078681 File Offset: 0x00076881
+		// Token: 0x06001166 RID: 4454 RVA: 0x00078809 File Offset: 0x00076A09
 		public RpcMethod(Action<ZRpc, T> action)
 		{
 			this.m_action = action;
 		}
 
-		// Token: 0x06001166 RID: 4454 RVA: 0x00078690 File Offset: 0x00076890
+		// Token: 0x06001167 RID: 4455 RVA: 0x00078818 File Offset: 0x00076A18
 		public void Invoke(ZRpc rpc, ZPackage pkg)
 		{
 			this.m_action.DynamicInvoke(ZRpc.Deserialize(rpc, this.m_action.Method.GetParameters(), pkg));
 		}
 
-		// Token: 0x04001184 RID: 4484
+		// Token: 0x0400118B RID: 4491
 		private Action<ZRpc, T> m_action;
 	}
 
 	// Token: 0x02000174 RID: 372
 	private class RpcMethod<T, U> : ZRpc.RpcMethodBase
 	{
-		// Token: 0x06001167 RID: 4455 RVA: 0x000786B5 File Offset: 0x000768B5
+		// Token: 0x06001168 RID: 4456 RVA: 0x0007883D File Offset: 0x00076A3D
 		public RpcMethod(Action<ZRpc, T, U> action)
 		{
 			this.m_action = action;
 		}
 
-		// Token: 0x06001168 RID: 4456 RVA: 0x000786C4 File Offset: 0x000768C4
+		// Token: 0x06001169 RID: 4457 RVA: 0x0007884C File Offset: 0x00076A4C
 		public void Invoke(ZRpc rpc, ZPackage pkg)
 		{
 			this.m_action.DynamicInvoke(ZRpc.Deserialize(rpc, this.m_action.Method.GetParameters(), pkg));
 		}
 
-		// Token: 0x04001185 RID: 4485
+		// Token: 0x0400118C RID: 4492
 		private Action<ZRpc, T, U> m_action;
 	}
 
 	// Token: 0x02000175 RID: 373
 	private class RpcMethod<T, U, V> : ZRpc.RpcMethodBase
 	{
-		// Token: 0x06001169 RID: 4457 RVA: 0x000786E9 File Offset: 0x000768E9
+		// Token: 0x0600116A RID: 4458 RVA: 0x00078871 File Offset: 0x00076A71
 		public RpcMethod(Action<ZRpc, T, U, V> action)
 		{
 			this.m_action = action;
 		}
 
-		// Token: 0x0600116A RID: 4458 RVA: 0x000786F8 File Offset: 0x000768F8
+		// Token: 0x0600116B RID: 4459 RVA: 0x00078880 File Offset: 0x00076A80
 		public void Invoke(ZRpc rpc, ZPackage pkg)
 		{
 			this.m_action.DynamicInvoke(ZRpc.Deserialize(rpc, this.m_action.Method.GetParameters(), pkg));
 		}
 
-		// Token: 0x04001186 RID: 4486
+		// Token: 0x0400118D RID: 4493
 		private Action<ZRpc, T, U, V> m_action;
 	}
 
 	// Token: 0x02000176 RID: 374
 	public class RpcMethod<T, U, V, B> : ZRpc.RpcMethodBase
 	{
-		// Token: 0x0600116B RID: 4459 RVA: 0x0007871D File Offset: 0x0007691D
+		// Token: 0x0600116C RID: 4460 RVA: 0x000788A5 File Offset: 0x00076AA5
 		public RpcMethod(ZRpc.RpcMethod<T, U, V, B>.Method action)
 		{
 			this.m_action = action;
 		}
 
-		// Token: 0x0600116C RID: 4460 RVA: 0x0007872C File Offset: 0x0007692C
+		// Token: 0x0600116D RID: 4461 RVA: 0x000788B4 File Offset: 0x00076AB4
 		public void Invoke(ZRpc rpc, ZPackage pkg)
 		{
 			this.m_action.DynamicInvoke(ZRpc.Deserialize(rpc, this.m_action.Method.GetParameters(), pkg));
 		}
 
-		// Token: 0x04001187 RID: 4487
+		// Token: 0x0400118E RID: 4494
 		private ZRpc.RpcMethod<T, U, V, B>.Method m_action;
 
 		// Token: 0x020001C6 RID: 454
-		// (Invoke) Token: 0x060011E8 RID: 4584
+		// (Invoke) Token: 0x060011E9 RID: 4585
 		public delegate void Method(ZRpc RPC, T p0, U p1, V p2, B p3);
 	}
 }

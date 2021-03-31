@@ -5,20 +5,20 @@ using UnityEngine;
 // Token: 0x02000110 RID: 272
 public class WaterVolume : MonoBehaviour
 {
-	// Token: 0x06000FF8 RID: 4088 RVA: 0x00070578 File Offset: 0x0006E778
+	// Token: 0x06000FF9 RID: 4089 RVA: 0x00070700 File Offset: 0x0006E900
 	private void Awake()
 	{
 		this.m_collider = base.GetComponent<BoxCollider>();
 	}
 
-	// Token: 0x06000FF9 RID: 4089 RVA: 0x00070586 File Offset: 0x0006E786
+	// Token: 0x06000FFA RID: 4090 RVA: 0x0007070E File Offset: 0x0006E90E
 	private void Start()
 	{
 		this.DetectWaterDepth();
 		this.SetupMaterial();
 	}
 
-	// Token: 0x06000FFA RID: 4090 RVA: 0x00070594 File Offset: 0x0006E794
+	// Token: 0x06000FFB RID: 4091 RVA: 0x0007071C File Offset: 0x0006E91C
 	private void DetectWaterDepth()
 	{
 		if (this.m_heightmap)
@@ -36,7 +36,7 @@ public class WaterVolume : MonoBehaviour
 		this.m_normalizedDepth[3] = this.m_forceDepth;
 	}
 
-	// Token: 0x06000FFB RID: 4091 RVA: 0x0007064C File Offset: 0x0006E84C
+	// Token: 0x06000FFC RID: 4092 RVA: 0x000707D4 File Offset: 0x0006E9D4
 	private void Update()
 	{
 		if (WaterVolume.m_waterUpdateFrame != Time.frameCount)
@@ -48,7 +48,7 @@ public class WaterVolume : MonoBehaviour
 		this.m_waterSurface.material.SetFloat(WaterVolume._WaterTime, WaterVolume.m_waterTime);
 	}
 
-	// Token: 0x06000FFC RID: 4092 RVA: 0x0007069C File Offset: 0x0006E89C
+	// Token: 0x06000FFD RID: 4093 RVA: 0x00070824 File Offset: 0x0006EA24
 	private void UpdateWaterTime(float dt)
 	{
 		float num = this.m_menuWater ? Time.time : ZNet.instance.GetWrappedDayTimeSeconds();
@@ -60,7 +60,7 @@ public class WaterVolume : MonoBehaviour
 		WaterVolume.m_waterTime = Mathf.Lerp(WaterVolume.m_waterTime, num, 0.05f);
 	}
 
-	// Token: 0x06000FFD RID: 4093 RVA: 0x00070700 File Offset: 0x0006E900
+	// Token: 0x06000FFE RID: 4094 RVA: 0x00070888 File Offset: 0x0006EA88
 	private void SetupMaterial()
 	{
 		if (this.m_forceDepth >= 0f)
@@ -80,7 +80,7 @@ public class WaterVolume : MonoBehaviour
 		this.m_waterSurface.material.SetFloat(WaterVolume._UseGlobalWind, this.m_useGlobalWind ? 1f : 0f);
 	}
 
-	// Token: 0x06000FFE RID: 4094 RVA: 0x000707A0 File Offset: 0x0006E9A0
+	// Token: 0x06000FFF RID: 4095 RVA: 0x00070928 File Offset: 0x0006EB28
 	public static float GetWaterLevel(Vector3 p, float waveFactor = 1f)
 	{
 		if (WaterVolume.m_waterVolumeMask == 0)
@@ -102,7 +102,7 @@ public class WaterVolume : MonoBehaviour
 		return -10000f;
 	}
 
-	// Token: 0x06000FFF RID: 4095 RVA: 0x00070814 File Offset: 0x0006EA14
+	// Token: 0x06001000 RID: 4096 RVA: 0x0007099C File Offset: 0x0006EB9C
 	private float GetWaterSurface(Vector3 point, float waveFactor = 1f)
 	{
 		float wrappedDayTimeSeconds = ZNet.instance.GetWrappedDayTimeSeconds();
@@ -116,13 +116,13 @@ public class WaterVolume : MonoBehaviour
 		return num2;
 	}
 
-	// Token: 0x06001000 RID: 4096 RVA: 0x00070875 File Offset: 0x0006EA75
+	// Token: 0x06001001 RID: 4097 RVA: 0x000709FD File Offset: 0x0006EBFD
 	private float TrochSin(float x, float k)
 	{
 		return Mathf.Sin(x - Mathf.Cos(x) * k) * 0.5f + 0.5f;
 	}
 
-	// Token: 0x06001001 RID: 4097 RVA: 0x00070894 File Offset: 0x0006EA94
+	// Token: 0x06001002 RID: 4098 RVA: 0x00070A1C File Offset: 0x0006EC1C
 	private float CreateWave(Vector3 worldPos, float time, float waveSpeed, float waveLength, float waveHeight, Vector2 dir2d, float sharpness)
 	{
 		Vector3 normalized = new Vector3(dir2d.x, 0f, dir2d.y).normalized;
@@ -131,7 +131,7 @@ public class WaterVolume : MonoBehaviour
 		return (this.TrochSin(time * waveSpeed + vector.z * waveLength, sharpness) * this.TrochSin(time * waveSpeed * 0.123f + vector.x * 0.13123f * waveLength, sharpness) - 0.2f) * waveHeight;
 	}
 
-	// Token: 0x06001002 RID: 4098 RVA: 0x00070934 File Offset: 0x0006EB34
+	// Token: 0x06001003 RID: 4099 RVA: 0x00070ABC File Offset: 0x0006ECBC
 	private float CalcWave(Vector3 worldPos, float depth, Vector4 wind, float _WaterTime, float waveFactor)
 	{
 		Vector3 vector = new Vector3(wind.x, wind.y, wind.z);
@@ -151,7 +151,7 @@ public class WaterVolume : MonoBehaviour
 		return (num2 + num3 + num4 + num5 + num6 + num7 + num8 + num9 + num10 + num11) * num;
 	}
 
-	// Token: 0x06001003 RID: 4099 RVA: 0x00070B64 File Offset: 0x0006ED64
+	// Token: 0x06001004 RID: 4100 RVA: 0x00070CEC File Offset: 0x0006EEEC
 	private float CalcWave(Vector3 worldPos, float depth, float _WaterTime, float waveFactor)
 	{
 		Vector4 wind = new Vector4(1f, 0f, 0f, 0f);
@@ -166,7 +166,7 @@ public class WaterVolume : MonoBehaviour
 		return Mathf.Lerp(a, b, t);
 	}
 
-	// Token: 0x06001004 RID: 4100 RVA: 0x00070BE8 File Offset: 0x0006EDE8
+	// Token: 0x06001005 RID: 4101 RVA: 0x00070D70 File Offset: 0x0006EF70
 	private float Depth(Vector3 point)
 	{
 		Vector3 vector = base.transform.InverseTransformPoint(point);
@@ -179,7 +179,7 @@ public class WaterVolume : MonoBehaviour
 		return Mathf.Lerp(a, b, num2);
 	}
 
-	// Token: 0x06001005 RID: 4101 RVA: 0x00070CC0 File Offset: 0x0006EEC0
+	// Token: 0x06001006 RID: 4102 RVA: 0x00070E48 File Offset: 0x0006F048
 	private void OnTriggerEnter(Collider collider)
 	{
 		IWaterInteractable component = collider.attachedRigidbody.GetComponent<IWaterInteractable>();
@@ -189,7 +189,7 @@ public class WaterVolume : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001006 RID: 4102 RVA: 0x00070CF8 File Offset: 0x0006EEF8
+	// Token: 0x06001007 RID: 4103 RVA: 0x00070E80 File Offset: 0x0006F080
 	private void UpdateFloaters()
 	{
 		if (this.m_inWater.Count == 0)
@@ -219,7 +219,7 @@ public class WaterVolume : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001007 RID: 4103 RVA: 0x00070D9C File Offset: 0x0006EF9C
+	// Token: 0x06001008 RID: 4104 RVA: 0x00070F24 File Offset: 0x0006F124
 	private void OnTriggerExit(Collider collider)
 	{
 		IWaterInteractable component = collider.attachedRigidbody.GetComponent<IWaterInteractable>();
@@ -230,48 +230,48 @@ public class WaterVolume : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000EDD RID: 3805
+	// Token: 0x04000EE3 RID: 3811
 	private static Collider[] tempColliderArray = new Collider[256];
 
-	// Token: 0x04000EDE RID: 3806
+	// Token: 0x04000EE4 RID: 3812
 	private float[] m_normalizedDepth = new float[4];
 
-	// Token: 0x04000EDF RID: 3807
+	// Token: 0x04000EE5 RID: 3813
 	private BoxCollider m_collider;
 
-	// Token: 0x04000EE0 RID: 3808
+	// Token: 0x04000EE6 RID: 3814
 	public MeshRenderer m_waterSurface;
 
-	// Token: 0x04000EE1 RID: 3809
+	// Token: 0x04000EE7 RID: 3815
 	public Heightmap m_heightmap;
 
-	// Token: 0x04000EE2 RID: 3810
+	// Token: 0x04000EE8 RID: 3816
 	public float m_forceDepth = -1f;
 
-	// Token: 0x04000EE3 RID: 3811
+	// Token: 0x04000EE9 RID: 3817
 	public bool m_menuWater;
 
-	// Token: 0x04000EE4 RID: 3812
+	// Token: 0x04000EEA RID: 3818
 	public bool m_useGlobalWind = true;
 
-	// Token: 0x04000EE5 RID: 3813
+	// Token: 0x04000EEB RID: 3819
 	private static float m_waterTime = 0f;
 
-	// Token: 0x04000EE6 RID: 3814
+	// Token: 0x04000EEC RID: 3820
 	private static int m_waterUpdateFrame = 0;
 
-	// Token: 0x04000EE7 RID: 3815
+	// Token: 0x04000EED RID: 3821
 	private static int m_waterVolumeMask = 0;
 
-	// Token: 0x04000EE8 RID: 3816
+	// Token: 0x04000EEE RID: 3822
 	private static int _WaterTime = Shader.PropertyToID("_WaterTime");
 
-	// Token: 0x04000EE9 RID: 3817
+	// Token: 0x04000EEF RID: 3823
 	private static int _depth = Shader.PropertyToID("_depth");
 
-	// Token: 0x04000EEA RID: 3818
+	// Token: 0x04000EF0 RID: 3824
 	private static int _UseGlobalWind = Shader.PropertyToID("_UseGlobalWind");
 
-	// Token: 0x04000EEB RID: 3819
+	// Token: 0x04000EF1 RID: 3825
 	private List<IWaterInteractable> m_inWater = new List<IWaterInteractable>();
 }
